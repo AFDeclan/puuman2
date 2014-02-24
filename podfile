@@ -1,0 +1,5 @@
+platform:ios
+pod 'ASIHTTPRequest'
+pod 'MBProgressHUD'
+pod 'FMDB'
+pod 'JSONKit'
