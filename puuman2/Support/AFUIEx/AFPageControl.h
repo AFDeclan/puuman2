@@ -1,6 +1,6 @@
 //
 //  AFPageControl.h
-//  PuumanForPhone
+//  AFUIEx
 //
 //  Created by Declan on 14-1-15.
 //  Copyright (c) 2014年 Declan. All rights reserved.

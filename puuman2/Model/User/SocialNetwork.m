@@ -9,7 +9,6 @@
 #import "SocialNetwork.h"
 #import "UniverseConstant.h"
 #import "UserInfo.h"
-#import "MainViewController.h"
 #import "TaskUploader.h"
 #import "ErrorLog.h"
 

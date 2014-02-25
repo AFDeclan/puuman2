@@ -23,6 +23,7 @@
 #define kUDK_ReconfirmedIdentity            @"ReconfirmedIdentity"
 
 #define STARTDATE @"_puman_StartDate"
+#define kUDK_FirstEnterDate @"FirstEnterDate"
 #define kUserDefaultKey_AliPayAccount @"_puman_AliPayAccount"
 
 // Userdefault 扑满币相关
@@ -39,4 +40,5 @@
 #define kDiaryNewCameraNum  @"NewCameraDiaryButtonClickedNumber"
 #define kDiaryNewVideoNum   @"NewVideoDiaryButtonClickedNumber"
 #define kDiaryNewImportNum  @"NewImportDiaryButtonClickedNumber"
+
 #endif

@@ -11,11 +11,11 @@
 #import <FMDatabase.h>
 #import <FMResultSet.h>
 #import "UniverseConstant.h"
-#import "DiaryCell.h"
 #import "DateFormatter.h"
 #import <Reachability.h>
 #import "ErrorLog.h"
 #import "TaskUploader.h"
+#import "DiaryFileManager.h"
 
 static DiaryModel * instance;
 
@@ -479,7 +479,7 @@ static DiaryModel * instance;
         [label setBackgroundColor:[UIColor colorWithRed:232/255.0 green:232/255.0 blue:232/255.0 alpha:1]];
         [label setText:dayStr];
         [label setTextAlignment:NSTextAlignmentCenter];
-        [label setTextColor:Color_bl2];
+        [label setTextColor:PMColor2];
         [view addSubview:label];
         height += 24;
     }
@@ -496,7 +496,7 @@ static DiaryModel * instance;
             [label setBackgroundColor:[UIColor colorWithRed:232/255.0 green:232/255.0 blue:232/255.0 alpha:1]];
             [label setText:dayStr];
           
-            [label setTextColor:Color_bl2];
+            [label setTextColor:PMColor2];
             [view addSubview:label];
             height += 24;
         }

@@ -1,6 +1,6 @@
 //
 //  AFButton.h
-//  puman
+//  AFUIEx
 //
 //  Created by Declan on 13-12-18.
 //  Copyright (c) 2013年 创始人团队. All rights reserved.

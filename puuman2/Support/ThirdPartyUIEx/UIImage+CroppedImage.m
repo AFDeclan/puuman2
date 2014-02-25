@@ -7,7 +7,6 @@
 //
 
 #import "UIImage+CroppedImage.h"
-#import "MainViewController.h"
 
 @implementation UIImage (CroppedImage)
 + (UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize

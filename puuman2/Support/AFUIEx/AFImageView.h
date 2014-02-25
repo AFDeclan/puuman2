@@ -1,6 +1,6 @@
 //
 //  AFImageView.h
-//  AFNetwork
+//  AFNetwork AFUIEx
 //
 //  Created by Declan on 13-12-21.
 //  Copyright (c) 2013年 Declan. All rights reserved.

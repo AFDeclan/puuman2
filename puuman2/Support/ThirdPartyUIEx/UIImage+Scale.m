@@ -9,7 +9,6 @@
 
 #import "UIImage+Scale.h"
 #import <Accelerate/Accelerate.h>
-#import "MainViewController.h"
 
 
 

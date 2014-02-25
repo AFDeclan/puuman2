@@ -8,7 +8,6 @@
 
 #import "UserInfo.h"
 #import "UniverseConstant.h"
-#import "MainViewController.h"
 #import "DateFormatter.h"
 #import "ErrorLog.h"
 #import "PumanRequest.h"

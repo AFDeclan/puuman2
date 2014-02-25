@@ -1,6 +1,6 @@
 //
 //  UILabel+AdjustSize.h
-//  PuumanForPhone
+//  AFUIEx
 //
 //  Created by Declan on 14-1-4.
 //  Copyright (c) 2014年 Declan. All rights reserved.

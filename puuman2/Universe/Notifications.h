@@ -41,9 +41,7 @@
 
 //刷新网络
 #define Noti_Refresh                            @"Noti_Refresh"
-
 #define Noti_ReloadDiaryTable                   @"Noti_ReloadDiaryTable"
-
 #define Noti_HideKeyBoard                       @"Noti_HideKeyBoard"
 
 #endif

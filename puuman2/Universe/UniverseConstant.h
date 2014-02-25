@@ -11,10 +11,10 @@
 #import "Notifications.h"
 #import "UserdefaultKeys.h"
 #import "UmengDefine.h"
-#import "FileManager.h"
 #import "ErrorLog.h"
 #import "AFNetwork.h"
 #import "Device.h"
+#import "AFUICode.h"
 
 #ifndef puman_UniverseConstant_h
 #define puman_UniverseConstant_h
@@ -55,42 +55,6 @@
 #define Cart_PutIntoCart @"Cart_PutIntoCart"
 #define Cart_Done_Batch @"Cart_Done_Batch"
 
-
-
-
-
-#define MODE_OFFLINE  @"_puman_offline"
-#define MODE_ONLINE   @"_puman_online"
-
-
-
-#pragma mark - 新版本相关参数
-#define _puman_new_version_remindInterval 10 // 提醒用户有新版本的间隔(以秒为单位)
-#define _puman_new_version_exist @"_puman_new_version_exist"
-#define _puman_new_version_id @"_puman_new_version_id"
-#define _puman_new_version_lastcheck @"_puman_new_version_lastcheck"
-#define _puman_new_version_trackViewUrl @"_puman_new_version_trackViewUrl"
-
-
-
-#pragma mark - 动画持续时间
-#define ShowInterval 0.5    // DimView进场动画
-
-
-#pragma mark - 获取ranklist时的传入参数
-#define RANK_WSale @"WSale"
-#define RANK_WRate @"WRate"
-#define RANK_WPriceLB @"WPriceLB"
-#define RANK_WShopCnt @"WShopCnt"
-#define RANK_DEFAULT @"WID"
-#define RANK_ASC @"Asc"
-#define RANK_DESC @"Desc"
-
-#pragma mark - 商品搜索字段
-#define SEARCH_LOCALIZE_STRING  @"searchStr"
-#define SEARCH_LOCALIZE_BATCH  @"batch"
-#define SEARCH_LOCALIZE_TAG 1
-
 #pragma mark - AlertView Tag
 #define _puman_alertView_normal 0
 #define _puman_alertView_networkerror 1
@@ -109,12 +73,6 @@
 #define _task_UTID          @"UTID"
 #define _task_UTStatus      @"UTStatus"
 #define _task_IsWithDrew    @"IsWithDraw"
-
-// 扑满声音播放类
-#define _audio_Puman    @"PumanPuman"
-
-
-
 
 #pragma mark - Tutorial
 #define tutorial_diaryPage_showed           @"DiaryPageTutorialShowed"
@@ -155,21 +113,6 @@
 #define uMeta_InvitedKey            @"Invited"
 #define uMeta_PBLEFT    @"_puman_PayBackLeft"
 #define uMeta_PBLastCheck   @"_puman_PayBack_LastCheck"
-
-//#pragma mark - 新手任务相关
-//#define task1_finished              @"task1_finished"
-//#define task2_finished              @"task2_finished"
-//#define task3_finished              @"task3_finished"
-//#define task4_finished              @"task4_finished"
-//#define task5_finished              @"task5_finished"
-
-#pragma mark - ASIHTTPRequest userInfo 中的 key
-
-#define kHttpRequest_WareBatch      @"WareBatch"
-#define kHttpRequest_WareType       @"WareType"
-#define kHttpRequest_WareRankMode   @"WareRankMode"
-
-
 
 
 #endif
