@@ -81,6 +81,10 @@
 		14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
+		54A9659018BDEA53002A76D4 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9658F18BDEA53002A76D4 /* MainTabBarController.m */; };
+		54A9659318BDEA6A002A76D4 /* DiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9659218BDEA6A002A76D4 /* DiaryViewController.m */; };
+		54A9659618BDEA80002A76D4 /* PuumanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9659518BDEA80002A76D4 /* PuumanViewController.m */; };
+		54A9659918BDEA93002A76D4 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9659818BDEA93002A76D4 /* ShopViewController.m */; };
 		6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A163B769C9D646389F66C162 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -233,6 +237,14 @@
 		14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		54A9658E18BDEA53002A76D4 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		54A9658F18BDEA53002A76D4 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		54A9659118BDEA6A002A76D4 /* DiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryViewController.h; sourceTree = "<group>"; };
+		54A9659218BDEA6A002A76D4 /* DiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryViewController.m; sourceTree = "<group>"; };
+		54A9659418BDEA80002A76D4 /* PuumanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuumanViewController.h; sourceTree = "<group>"; };
+		54A9659518BDEA80002A76D4 /* PuumanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuumanViewController.m; sourceTree = "<group>"; };
+		54A9659718BDEA93002A76D4 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
+		54A9659818BDEA93002A76D4 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 		721904F09AE644A085A71BDA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A163B769C9D646389F66C162 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -314,7 +326,7 @@
 				14B8DEBB18BC37A30047C6B3 /* Other */,
 				14B8DEC118BC37A30047C6B3 /* Support */,
 				14B8DF0418BC37A30047C6B3 /* Universe */,
-				14B8DF1D18BC37A30047C6B3 /* ViewAndController */,
+				54A9658918BDE7FC002A76D4 /* ViewAndController */,
 				148D79F118B8A71A001B4FA7 /* AppDelegate.h */,
 				148D79F218B8A71A001B4FA7 /* AppDelegate.m */,
 				148D79F418B8A71A001B4FA7 /* Images.xcassets */,
@@ -657,11 +669,51 @@
 			path = UIEx;
 			sourceTree = "<group>";
 		};
-		14B8DF1D18BC37A30047C6B3 /* ViewAndController */ = {
+		54A9658918BDE7FC002A76D4 /* ViewAndController */ = {
 			isa = PBXGroup;
 			children = (
+				54A9658B18BDE9D5002A76D4 /* MainTabBarViewController */,
+				54A9658A18BDE9D5002A76D4 /* DiaryViewAndController */,
+				54A9658C18BDE9D5002A76D4 /* PuumanViewAndController */,
+				54A9658D18BDE9D5002A76D4 /* ShopViewAndController */,
 			);
 			path = ViewAndController;
+			sourceTree = "<group>";
+		};
+		54A9658A18BDE9D5002A76D4 /* DiaryViewAndController */ = {
+			isa = PBXGroup;
+			children = (
+				54A9659118BDEA6A002A76D4 /* DiaryViewController.h */,
+				54A9659218BDEA6A002A76D4 /* DiaryViewController.m */,
+			);
+			path = DiaryViewAndController;
+			sourceTree = "<group>";
+		};
+		54A9658B18BDE9D5002A76D4 /* MainTabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				54A9658E18BDEA53002A76D4 /* MainTabBarController.h */,
+				54A9658F18BDEA53002A76D4 /* MainTabBarController.m */,
+			);
+			path = MainTabBarViewController;
+			sourceTree = "<group>";
+		};
+		54A9658C18BDE9D5002A76D4 /* PuumanViewAndController */ = {
+			isa = PBXGroup;
+			children = (
+				54A9659418BDEA80002A76D4 /* PuumanViewController.h */,
+				54A9659518BDEA80002A76D4 /* PuumanViewController.m */,
+			);
+			path = PuumanViewAndController;
+			sourceTree = "<group>";
+		};
+		54A9658D18BDE9D5002A76D4 /* ShopViewAndController */ = {
+			isa = PBXGroup;
+			children = (
+				54A9659718BDEA93002A76D4 /* ShopViewController.h */,
+				54A9659818BDEA93002A76D4 /* ShopViewController.m */,
+			);
+			path = ShopViewAndController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -810,6 +862,7 @@
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
 				14B8DF5218BC37A40047C6B3 /* FileUploader.m in Sources */,
 				14B8DF4618BC37A40047C6B3 /* MJRefreshConst.m in Sources */,
+				54A9659918BDEA93002A76D4 /* ShopViewController.m in Sources */,
 				14B8DF4B18BC37A40047C6B3 /* UIImage+CroppedImage.m in Sources */,
 				14B8DF4C18BC37A40047C6B3 /* UIImage+Scale.m in Sources */,
 				14B8DF3518BC37A30047C6B3 /* AFDataStore.m in Sources */,
@@ -827,10 +880,12 @@
 				14B8DF3C18BC37A30047C6B3 /* UILabel+AdjustSize.m in Sources */,
 				14B8DF2818BC37A30047C6B3 /* RecomWare.m in Sources */,
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
+				54A9659618BDEA80002A76D4 /* PuumanViewController.m in Sources */,
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */,
 				14B8DF4318BC37A40047C6B3 /* ADTickerLabel.m in Sources */,
+				54A9659318BDEA6A002A76D4 /* DiaryViewController.m in Sources */,
 				14B8DF4018BC37A30047C6B3 /* SinaWeiboRequest.m in Sources */,
 				14B8DF3A18BC37A30047C6B3 /* AFImageView.m in Sources */,
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
@@ -841,6 +896,7 @@
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,
 				14B8DF5918BC39B80047C6B3 /* AFIconButton.m in Sources */,
 				14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */,
+				54A9659018BDEA53002A76D4 /* MainTabBarController.m in Sources */,
 				14B8DF4718BC37A40047C6B3 /* MJRefreshFooterView.m in Sources */,
 				14B8DF3B18BC37A30047C6B3 /* AFPageControl.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
