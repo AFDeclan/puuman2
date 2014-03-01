@@ -8,6 +8,7 @@
 
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
+#import "AFCustonPopViewController.h"
 
 @interface MainTabBarController ()
 
@@ -32,6 +33,8 @@
     [super viewDidLoad];
     [self.tabBar removeFromSuperview];
     [self initWithTabBar];
+   // AFCustonPopViewController *pop = [[AFCustonPopViewController alloc] init];
+    //[self.view addSubview:pop.view];
 	// Do any additional setup after loading the view.
 }
 

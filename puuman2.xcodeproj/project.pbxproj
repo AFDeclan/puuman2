@@ -121,6 +121,7 @@
 		54CE119018C1CA5200966396 /* pic1_circle_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE118F18C1CA5200966396 /* pic1_circle_diary.png */; };
 		54CE119318C1CD7C00966396 /* MainTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE119218C1CD7C00966396 /* MainTabBarButton.m */; };
 		54CE119618C1E0D900966396 /* SocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE119518C1E0D900966396 /* SocialViewController.m */; };
+		54CE119918C1E9C100966396 /* AFCustonPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE119818C1E9C100966396 /* AFCustonPopViewController.m */; };
 		6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A163B769C9D646389F66C162 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -216,6 +217,8 @@
 		14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		5473686118C1F4F3009688F5 /* libPods-XMLReader.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-XMLReader.a"; path = "Pods/build/Release-iphoneos/libPods-XMLReader.a"; sourceTree = "<group>"; };
+		5473686318C1F4FB009688F5 /* libPods-Reachability.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-Reachability.a"; path = "Pods/build/Release-iphoneos/libPods-Reachability.a"; sourceTree = "<group>"; };
 		54CE109D18C1842C00966396 /* AFNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetwork.h; sourceTree = "<group>"; };
 		54CE109F18C1842C00966396 /* AFDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDataDownloader.h; sourceTree = "<group>"; };
 		54CE10A018C1842C00966396 /* AFDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDataDownloader.m; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 		54CE119218C1CD7C00966396 /* MainTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarButton.m; sourceTree = "<group>"; };
 		54CE119418C1E0D900966396 /* SocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialViewController.h; sourceTree = "<group>"; };
 		54CE119518C1E0D900966396 /* SocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialViewController.m; sourceTree = "<group>"; };
+		54CE119718C1E9C100966396 /* AFCustonPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCustonPopViewController.h; sourceTree = "<group>"; };
+		54CE119818C1E9C100966396 /* AFCustonPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFCustonPopViewController.m; sourceTree = "<group>"; };
 		721904F09AE644A085A71BDA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A163B769C9D646389F66C162 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -380,6 +385,8 @@
 		148D79E118B8A71A001B4FA7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5473686318C1F4FB009688F5 /* libPods-Reachability.a */,
+				5473686118C1F4F3009688F5 /* libPods-XMLReader.a */,
 				14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */,
 				14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */,
 				14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */,
@@ -653,6 +660,8 @@
 				54CE10B218C1842C00966396 /* AFPageControl.h */,
 				54CE10B318C1842C00966396 /* AFPageControl.m */,
 				54CE10B418C1842C00966396 /* AFUICode.h */,
+				54CE119718C1E9C100966396 /* AFCustonPopViewController.h */,
+				54CE119818C1E9C100966396 /* AFCustonPopViewController.m */,
 				54CE10B518C1842C00966396 /* UILabel+AdjustSize.h */,
 				54CE10B618C1842C00966396 /* UILabel+AdjustSize.m */,
 			);
@@ -1090,6 +1099,7 @@
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54CE10E618C1842C00966396 /* AFImageButton.m in Sources */,
+				54CE119918C1E9C100966396 /* AFCustonPopViewController.m in Sources */,
 				54CE10F518C1842C00966396 /* MJRefreshHeaderView.m in Sources */,
 				54CE10F218C1842C00966396 /* MJRefreshBaseView.m in Sources */,
 				54CE10EC18C1842C00966396 /* SinaWeiboAuthorizeView.m in Sources */,
@@ -1200,6 +1210,7 @@
 				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -1236,6 +1247,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
