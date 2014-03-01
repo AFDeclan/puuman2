@@ -115,4 +115,10 @@
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 768)];
 }
+
+- (void)showSettingView
+{
+
+}
+
 @end

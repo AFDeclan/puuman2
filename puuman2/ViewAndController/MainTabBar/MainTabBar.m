@@ -23,67 +23,86 @@
 
 - (void)initWithSelectBoard
 {
-    selectedBoard = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 768)];
+    animating = NO;
+    selectedBoard = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 368)];
     [self addSubview:selectedBoard];
     
-    diaryBtn = [[UIButton alloc] initWithFrame:CGRectMake(0,140, 64, 80)];
+    bg_Btn = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 64, 128)];
+    [bg_Btn setImage:[UIImage imageNamed:@"pic1_circle_diary.png"]];
+    [selectedBoard addSubview:bg_Btn];
+    
+    diaryBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,24, 64, 80)];
     diaryBtn.tag = 1;
     [diaryBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [diaryBtn setImage:[UIImage imageNamed:@"btn_diary1_diary.png"] forState:UIControlStateNormal];
+    diaryBtn.normalImage = [UIImage imageNamed:@"btn_diary2_diary.png"];
+    diaryBtn.selectedImage = [UIImage imageNamed:@"btn_diary1_diary.png"];
+    [diaryBtn setSelected:YES withAnimate:NO];
     [selectedBoard addSubview:diaryBtn];
     
-    
-    babyInfoBtn = [[UIButton alloc] initWithFrame:CGRectMake(0,220, 64, 80)];
+    babyInfoBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,104, 64, 80)];
     babyInfoBtn.tag = 2;
     [babyInfoBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [babyInfoBtn setImage:[UIImage imageNamed:@"btn_baby1_diary.png"] forState:UIControlStateNormal];
+    babyInfoBtn.normalImage = [UIImage imageNamed:@"btn_baby2_diary.png"];
+    babyInfoBtn.selectedImage = [UIImage imageNamed:@"btn_baby1_diary.png"];
     [selectedBoard addSubview:babyInfoBtn];
-    
-    socialBtn = [[UIButton alloc] initWithFrame:CGRectMake(0,300, 64, 80)];
-    socialBtn.tag = 4;
+      [babyInfoBtn setSelected:NO];
+    socialBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,184, 64, 80)];
+    socialBtn.tag = 3;
     [socialBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [socialBtn setImage:[UIImage imageNamed:@"btn_happen1_diary.png"] forState:UIControlStateNormal];
+    socialBtn.normalImage = [UIImage imageNamed:@"btn_happen2_diary.png"];
+    socialBtn.selectedImage = [UIImage imageNamed:@"btn_happen1_diary.png"];
     [selectedBoard addSubview:socialBtn];
-    
-    shopBtn = [[UIButton alloc] initWithFrame:CGRectMake(0,380, 64, 80)];
-    shopBtn.tag = 3;
+      [socialBtn setSelected:NO];
+    shopBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,264, 64, 80)];
+    shopBtn.tag = 4;
     [shopBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [shopBtn setImage:[UIImage imageNamed:@"btn_shop1_diary.png"] forState:UIControlStateNormal];
+    shopBtn.normalImage = [UIImage imageNamed:@"btn_shop2_diary.png"];
+    shopBtn.selectedImage = [UIImage imageNamed:@"btn_shop1_diary.png"];
     [selectedBoard addSubview:shopBtn];
-    
+    [shopBtn setSelected:NO];
+    selectedBtn = diaryBtn;
     settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 688, 64, 80)];
-     settingBtn.tag = 5;
-    [settingBtn setImage:[UIImage imageNamed:@"btn_set1_diary.png"] forState:UIControlStateNormal];
-    [settingBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [selectedBoard addSubview:settingBtn];
+    [settingBtn setImage:[UIImage imageNamed:@"btn_set2_diary.png"] forState:UIControlStateNormal];
+    [settingBtn addTarget:self action:@selector(settingBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:settingBtn];
 }
 
-- (void)clickedBtn:(UIButton *)sender
+- (void)clickedBtn:(MainTabBarButton *)sender
 {
-    NSInteger tag = sender.tag;
-    NSLog(@"%d",tag);
-    if (tag== 4) {
-        return;
-    }else if (tag == 5) {
-        return;
-    }else{
-        
-     [_delegate selectedWithTag:tag];
+    
+    if (!animating) {
+        [selectedBtn setSelected:NO];
+        [sender setSelected:YES];
+        selectedBtn = sender;
+        NSInteger tag = sender.tag;
+        NSLog(@"%d",tag);
+        [_delegate selectedWithTag:tag];
+        animating = YES;
+        [UIView animateWithDuration:animateTime animations:^{
+            SetViewLeftUp(bg_Btn,0,(tag-1)*80);
+        }completion:^(BOOL finished) {
+            animating = NO;
+        }];
     }
-   
+
+}
+
+- (void)settingBtnPressed
+{
+    [_delegate showSettingView];
 }
 
 -(void)setVerticalFrame
 {
-
     self.frame = CGRectMake(0, 0, 80, 1024);
-    
-
-    
+    SetViewLeftUp(selectedBoard, 0, 328);
+    SetViewLeftUp(settingBtn, 0, 944);
 }
 
 -(void)setHorizontalFrame
 {
     self.frame = CGRectMake(0,0, 80, 768);
+    SetViewLeftUp(selectedBoard, 0, 150);
+    SetViewLeftUp(settingBtn, 0, 688);
 }
 @end

@@ -1,18 +1,18 @@
 //
-//  BabyInfoViewController.m
+//  SocialViewController.m
 //  puuman2
 //
 //  Created by Ra.（祁文龙） on 14-3-1.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "BabyInfoViewController.h"
+#import "SocialViewController.h"
 
-@interface BabyInfoViewController ()
+@interface SocialViewController ()
 
 @end
 
-@implementation BabyInfoViewController
+@implementation SocialViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-      [self.view setBackgroundColor:[UIColor clearColor]];
+    [self.view setBackgroundColor:[UIColor clearColor]];
 	// Do any additional setup after loading the view.
 }
 

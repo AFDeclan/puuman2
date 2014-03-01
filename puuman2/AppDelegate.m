@@ -11,7 +11,7 @@
 #import "DiaryViewController.h"
 #import "ShopViewController.h"
 #import "BabyInfoViewController.h"
-
+#import "SocialViewController.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -28,10 +28,13 @@
 {
     MainTabBarController *tabBarC = [[MainTabBarController alloc] initWithNibName:nil bundle:nil];
     DiaryViewController *diaryVC = [[DiaryViewController alloc] init];
+    BabyInfoViewController *babyInfoVC = [[BabyInfoViewController alloc] init];
+    SocialViewController *socialVC = [[SocialViewController alloc] init];
     ShopViewController *shopVC = [[ShopViewController alloc] init];
-    BabyInfoViewController *babyInfo = [[BabyInfoViewController alloc] init];
+   
     [tabBarC addChildViewController:diaryVC];
-    [tabBarC addChildViewController:babyInfo];
+    [tabBarC addChildViewController:babyInfoVC];
+    [tabBarC addChildViewController:socialVC];
     [tabBarC addChildViewController:shopVC];
     self.window.rootViewController = tabBarC;
     
