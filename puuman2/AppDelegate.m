@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "MainTabBarController.h"
+#import "DiaryViewController.h"
+#import "ShopViewController.h"
+#import "BabyInfoViewController.h"
 
 @implementation AppDelegate
 
@@ -15,8 +19,22 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    [self initWithContent];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)initWithContent
+{
+    MainTabBarController *tabBarC = [[MainTabBarController alloc] initWithNibName:nil bundle:nil];
+    DiaryViewController *diaryVC = [[DiaryViewController alloc] init];
+    ShopViewController *shopVC = [[ShopViewController alloc] init];
+    BabyInfoViewController *babyInfo = [[BabyInfoViewController alloc] init];
+    [tabBarC addChildViewController:diaryVC];
+    [tabBarC addChildViewController:babyInfo];
+    [tabBarC addChildViewController:shopVC];
+    self.window.rootViewController = tabBarC;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
