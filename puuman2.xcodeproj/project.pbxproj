@@ -124,8 +124,6 @@
 		54CE119018C1CA5200966396 /* pic1_circle_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE118F18C1CA5200966396 /* pic1_circle_diary.png */; };
 		54CE119318C1CD7C00966396 /* MainTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE119218C1CD7C00966396 /* MainTabBarButton.m */; };
 		54CE119618C1E0D900966396 /* SocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE119518C1E0D900966396 /* SocialViewController.m */; };
-		54F1D0FC18C47D130005CDD9 /* AFPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D0FB18C47D130005CDD9 /* AFPopView.m */; };
-		54F1D0FF18C47E8D0005CDD9 /* AFCustomPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D0FE18C47E8D0005CDD9 /* AFCustomPopView.m */; };
 		54F1D10518C48B340005CDD9 /* bg_prompt.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10118C48B340005CDD9 /* bg_prompt.png */; };
 		54F1D10618C48B340005CDD9 /* bg_subpage.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10218C48B340005CDD9 /* bg_subpage.png */; };
 		54F1D10718C48B340005CDD9 /* btn_close1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10318C48B340005CDD9 /* btn_close1.png */; };
@@ -153,6 +151,8 @@
 		54F1D13A18C48FA50005CDD9 /* icon_stop2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12818C48FA50005CDD9 /* icon_stop2_diary.png */; };
 		54F1D13B18C48FA50005CDD9 /* icon_text2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12918C48FA50005CDD9 /* icon_text2_diary.png */; };
 		54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D13D18C490A10005CDD9 /* PopUpViewController.m */; };
+		54F1D14418C497230005CDD9 /* PopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D14318C497230005CDD9 /* PopViewController.m */; };
+		54F1D14718C497F90005CDD9 /* CustomPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D14618C497F90005CDD9 /* CustomPopViewController.m */; };
 		6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A163B769C9D646389F66C162 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -360,10 +360,6 @@
 		54CE119218C1CD7C00966396 /* MainTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarButton.m; sourceTree = "<group>"; };
 		54CE119418C1E0D900966396 /* SocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialViewController.h; sourceTree = "<group>"; };
 		54CE119518C1E0D900966396 /* SocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialViewController.m; sourceTree = "<group>"; };
-		54F1D0FA18C47D130005CDD9 /* AFPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPopView.h; sourceTree = "<group>"; };
-		54F1D0FB18C47D130005CDD9 /* AFPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPopView.m; sourceTree = "<group>"; };
-		54F1D0FD18C47E8D0005CDD9 /* AFCustomPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCustomPopView.h; sourceTree = "<group>"; };
-		54F1D0FE18C47E8D0005CDD9 /* AFCustomPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFCustomPopView.m; sourceTree = "<group>"; };
 		54F1D10118C48B340005CDD9 /* bg_prompt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_prompt.png; sourceTree = "<group>"; };
 		54F1D10218C48B340005CDD9 /* bg_subpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_subpage.png; sourceTree = "<group>"; };
 		54F1D10318C48B340005CDD9 /* btn_close1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close1.png; sourceTree = "<group>"; };
@@ -395,6 +391,10 @@
 		54F1D12918C48FA50005CDD9 /* icon_text2_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_text2_diary.png; sourceTree = "<group>"; };
 		54F1D13C18C490A10005CDD9 /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
 		54F1D13D18C490A10005CDD9 /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
+		54F1D14218C497230005CDD9 /* PopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopViewController.h; sourceTree = "<group>"; };
+		54F1D14318C497230005CDD9 /* PopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopViewController.m; sourceTree = "<group>"; };
+		54F1D14518C497F90005CDD9 /* CustomPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopViewController.h; sourceTree = "<group>"; };
+		54F1D14618C497F90005CDD9 /* CustomPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopViewController.m; sourceTree = "<group>"; };
 		721904F09AE644A085A71BDA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A163B769C9D646389F66C162 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -981,10 +981,10 @@
 		54F1D0F618C479900005CDD9 /* CustomPopAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				54F1D0FA18C47D130005CDD9 /* AFPopView.h */,
-				54F1D0FB18C47D130005CDD9 /* AFPopView.m */,
-				54F1D0FD18C47E8D0005CDD9 /* AFCustomPopView.h */,
-				54F1D0FE18C47E8D0005CDD9 /* AFCustomPopView.m */,
+				54F1D14218C497230005CDD9 /* PopViewController.h */,
+				54F1D14318C497230005CDD9 /* PopViewController.m */,
+				54F1D14518C497F90005CDD9 /* CustomPopViewController.h */,
+				54F1D14618C497F90005CDD9 /* CustomPopViewController.m */,
 				54B4B18318C470D2006230D6 /* UIView+AFAnimation.h */,
 				54B4B18418C470D2006230D6 /* UIView+AFAnimation.m */,
 				54B4B17B18C470D2006230D6 /* AFAnimationManager.h */,
@@ -1257,7 +1257,6 @@
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				54B4B18918C470D2006230D6 /* UIView+AFAnimation.m in Sources */,
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
-				54F1D0FC18C47D130005CDD9 /* AFPopView.m in Sources */,
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
 				54CE10F418C1842C00966396 /* MJRefreshFooterView.m in Sources */,
 				14B8DF5218BC37A40047C6B3 /* FileUploader.m in Sources */,
@@ -1287,6 +1286,7 @@
 				14B8DF2718BC37A30047C6B3 /* RecomModel.m in Sources */,
 				54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */,
 				14B8DF5518BC37A40047C6B3 /* UserNameCheck.m in Sources */,
+				54F1D14718C497F90005CDD9 /* CustomPopViewController.m in Sources */,
 				14B8DF1E18BC37A30047C6B3 /* DiaryFileManager.m in Sources */,
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,
 				14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */,
@@ -1300,8 +1300,8 @@
 				54CE10F018C1842C00966396 /* ADTickerLabel.m in Sources */,
 				14B8DF2C18BC37A30047C6B3 /* BabyData.m in Sources */,
 				54CE10E818C1842C00966396 /* AFPageControl.m in Sources */,
+				54F1D14418C497230005CDD9 /* PopViewController.m in Sources */,
 				54CE112718C1BC6D00966396 /* MainTabBarController.m in Sources */,
-				54F1D0FF18C47E8D0005CDD9 /* AFCustomPopView.m in Sources */,
 				54F1D11018C48E450005CDD9 /* NewTextDiaryView.m in Sources */,
 				54CE10EB18C1842C00966396 /* SinaWeibo.m in Sources */,
 				148D79EF18B8A71A001B4FA7 /* main.m in Sources */,

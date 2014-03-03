@@ -7,21 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIView+AFAnimation.h"
 
-typedef enum PopUpAnimationType {
-    PopUpAnimationType_slide,
-    PopUpAnimationType_fade
-} PopUpAnimationType;
 
 @interface PopUpViewController : UIViewController
 {
     UIView *_subview;
 }
 
-@property (nonatomic, assign) PopUpAnimationType animationType;
-@property (nonatomic, assign) CGPoint toPos;
-
-+ (void)showOnView:(UIView *)view animationType:(PopUpAnimationType)type;
-+ (void)showOnView:(UIView *)view toPos:(CGPoint)pos animationType:(PopUpAnimationType)type;
-
+@property (nonatomic, assign) AFAnimationDirection animationType;
++ (void)showOnView:(UIView *)view animationType:(AFAnimationDirection)type;
 @end

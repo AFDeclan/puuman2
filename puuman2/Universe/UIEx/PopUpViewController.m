@@ -17,23 +17,14 @@ static NSMutableArray * instances = nil;
 
 @implementation PopUpViewController
 
-+ (void)showOnView:(UIView *)view animationType:(PopUpAnimationType)type
++ (void)showOnView:(UIView *)view animationType:(AFAnimationDirection)type
 {
     PopUpViewController *popViewCon = [[PopUpViewController alloc] init];
     popViewCon.view.frame = CGRectMake(0, 0, ViewWidth(view), ViewHeight(view));
-    popViewCon.toPos = CGPointMake(ViewWidth(view)/2, ViewHeight(view)/2);
     popViewCon.animationType = type;
     [view addSubview:popViewCon.view];
 }
 
-+ (void)showOnView:(UIView *)view toPos:(CGPoint)pos animationType:(PopUpAnimationType)type
-{
-    PopUpViewController *popViewCon = [[PopUpViewController alloc] init];
-    popViewCon.toPos = pos;
-    popViewCon.animationType = type;
-    popViewCon.view.frame = CGRectMake(0, 0, ViewWidth(view), ViewHeight(view));
-    [view addSubview:popViewCon.view];
-}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -43,48 +34,13 @@ static NSMutableArray * instances = nil;
     }];
     _subview = [self subview];
     [self.view addSubview:_subview];
-    switch (_animationType) {
-        case PopUpAnimationType_fade:
-        {
-            break;
-        }
-        case PopUpAnimationType_slide:
-        {
-            _subview.center = CGPointMake(ViewWidth(self.view)/2, -ViewHeight(_subview)/2);
-            [UIView animateWithDuration:0.3 animations:^{
-                _subview.center = _toPos;
-            }];
-            break;
-        }
-        default:
-            break;
-    }
+    
 }
 
 - (void)exit
 {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.view.backgroundColor = [UIColor clearColor];
-    } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
-        [self releaseSelf];
-    }];
-    switch (_animationType) {
-        case PopUpAnimationType_fade:
-        {
-            break;
-        }
-        case PopUpAnimationType_slide:
-        {
-            [UIView animateWithDuration:0.3 animations:^{
-                _subview.center = CGPointMake(ViewWidth(self.view)/2, -ViewHeight(_subview)/2);
-            }];
-            break;
-        }
-        default:
-            break;
-    }
-
+    [self.view removeFromSuperview];
+    [self releaseSelf];
 }
 
 - (UIView *)subview
@@ -105,8 +61,6 @@ static NSMutableArray * instances = nil;
 {
     [instances removeObject:self];
 }
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
