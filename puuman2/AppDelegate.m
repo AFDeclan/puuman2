@@ -13,6 +13,7 @@
 #import "BabyInfoViewController.h"
 #import "SocialViewController.h"
 @implementation AppDelegate
+@synthesize rootTabBarC = _rootTabBarC;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -26,17 +27,17 @@
 
 - (void)initWithContent
 {
-    MainTabBarController *tabBarC = [[MainTabBarController alloc] initWithNibName:nil bundle:nil];
+    _rootTabBarC = [MainTabBarController sharedMainViewController];
     DiaryViewController *diaryVC = [[DiaryViewController alloc] init];
     BabyInfoViewController *babyInfoVC = [[BabyInfoViewController alloc] init];
     SocialViewController *socialVC = [[SocialViewController alloc] init];
     ShopViewController *shopVC = [[ShopViewController alloc] init];
    
-    [tabBarC addChildViewController:diaryVC];
-    [tabBarC addChildViewController:babyInfoVC];
-    [tabBarC addChildViewController:socialVC];
-    [tabBarC addChildViewController:shopVC];
-    self.window.rootViewController = tabBarC;
+    [_rootTabBarC addChildViewController:diaryVC];
+    [_rootTabBarC addChildViewController:babyInfoVC];
+    [_rootTabBarC addChildViewController:socialVC];
+    [_rootTabBarC addChildViewController:shopVC];
+    self.window.rootViewController = _rootTabBarC;
     
 }
 

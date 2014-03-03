@@ -8,6 +8,7 @@
 
 #import "BabyInfoViewController.h"
 
+#import "AppDelegate.h"
 @interface BabyInfoViewController ()
 
 @end
@@ -28,8 +29,24 @@
     [super viewDidLoad];
       [self.view setBackgroundColor:[UIColor clearColor]];
 	// Do any additional setup after loading the view.
+
+    
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+   
+    popView = [[AFCustomPopView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
+    [[MainTabBarController sharedMainViewController].view addSubview:popView];
+    [popView setControlBtnType:kCloseAndFinishButton];
+    [popView setTitle:@"录声音" withIcon:[UIImage imageNamed:@"icon_info_diary.png"]];
+    [popView show];
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

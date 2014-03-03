@@ -8,21 +8,30 @@
 
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
-#import "AFCustonPopViewController.h"
+
 
 @interface MainTabBarController ()
 
 @end
-
+static MainTabBarController *instance;
 @implementation MainTabBarController
 @synthesize isVertical = _isVertical;
 
++ (MainTabBarController *)sharedMainViewController
+{
+    if (!instance)
+    {
+        instance = [[MainTabBarController alloc] initWithNibName:nil bundle:nil];
+    }
+    return instance;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         [self setDelegate:self];
+        _isVertical = YES;
     }
     return self;
 }
@@ -31,11 +40,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self.tabBar removeFromSuperview];
     [self initWithTabBar];
    // AFCustonPopViewController *pop = [[AFCustonPopViewController alloc] init];
     //[self.view addSubview:pop.view];
 	// Do any additional setup after loading the view.
+    
+    
 }
 
 - (void)initWithTabBar

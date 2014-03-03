@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AFCustomPopView.h"
 @interface BabyInfoViewController : UIViewController
-
+{
+    AFCustomPopView *popView;
+}
 @end

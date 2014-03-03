@@ -19,4 +19,5 @@
 }
 
 @property(assign,nonatomic) BOOL isVertical;
++ (MainTabBarController *)sharedMainViewController;
 @end
