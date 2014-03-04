@@ -44,7 +44,7 @@
     titleTextField.placeholder = @"这些照片是……";
     [_content addSubview:titleTextField];
     
-    takePicBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    takePicBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
     [takePicBtn setImage:[UIImage imageNamed:@"btn_pic_diary.png"] forState:UIControlStateNormal];
     [takePicBtn addTarget:self action:@selector(selectedPhoto) forControlEvents:UIControlEventTouchUpInside];
     [titleTextField setRightViewMode:UITextFieldViewModeAlways];

@@ -116,8 +116,7 @@
     [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     popover = [[UIPopoverController alloc] initWithContentViewController:imagePickerController];
     [popover setDelegate:self];
-    [imagePickerController.view setBackgroundColor:[UIColor blueColor]];
-    [popover setBackgroundColor:[UIColor blackColor]];
+
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [popover presentPopoverFromRect:CGRectMake(654, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
     }else
@@ -171,14 +170,16 @@
 
 - (void)show
 {
-    [_content showInFrom:kAFAnimationNone inView:self.view withFade:YES duration:0.7 delegate:self startSelector:nil stopSelector:nil];
+
+    [self.view showInFrom:kAFAnimationNone inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:nil];
 }
 
 - (void)hidden
 {
-   
-    [_content hiddenOutTo:kAFAnimationNone inView:self.view withFade:YES duration:0.2 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
+
+    [self.view hiddenOutTo:kAFAnimationNone inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
 }
+
 
 - (void)finishOut
 {

@@ -139,13 +139,21 @@
 
 - (void)show
 {
-    [_content showInFrom:kAFAnimationTop inView:self.view withFade:YES duration:0.7 delegate:self startSelector:nil stopSelector:nil];
+    [bgView setAlpha:0];
+    [UIView animateWithDuration:0.4 animations:^{
+        [bgView setAlpha:0.3];
+    }];
+    [_content showInFrom:kAFAnimationTop inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:nil];
+ 
 }
 
 - (void)hidden
 {
-   
-    [_content hiddenOutTo:kAFAnimationTop inView:self.view withFade:YES duration:1 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
+    [UIView animateWithDuration:0.4 animations:^{
+        [bgView setAlpha:0];
+    }];
+    [_content hiddenOutTo:kAFAnimationTop inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
+ 
 }
 
 - (void)finishOut
