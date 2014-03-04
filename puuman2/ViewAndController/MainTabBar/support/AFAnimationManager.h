@@ -85,7 +85,6 @@ static inline CGPoint FTAnimationOutOfViewCenterPoint(CGRect enclosingViewFrame,
 			break;
 		}
         case kAFAnimationNone: {
-
 			return CGPointMake(viewCenter.x,viewCenter.y);
 			break;
 		}

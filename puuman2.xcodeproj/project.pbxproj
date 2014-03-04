@@ -53,9 +53,20 @@
 		14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
-		54B4B18518C470D2006230D6 /* AFAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4B17C18C470D2006230D6 /* AFAnimationManager.m */; };
-		54B4B18718C470D2006230D6 /* NSObject+AFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4B18018C470D2006230D6 /* NSObject+AFUtils.m */; };
-		54B4B18918C470D2006230D6 /* UIView+AFAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4B18418C470D2006230D6 /* UIView+AFAnimation.m */; };
+		5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */; };
+		5474A47E18C5B7100073B2FE /* AFTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A47D18C5B7100073B2FE /* AFTextImgButton.m */; };
+		5474A48018C5C0630073B2FE /* btn_finish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A47F18C5C0630073B2FE /* btn_finish2.png */; };
+		5474A48218C5C0840073B2FE /* btn_close2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48118C5C0840073B2FE /* btn_close2.png */; };
+		5474A48418C5C7AE0073B2FE /* btn_input_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48318C5C7AE0073B2FE /* btn_input_diary.png */; };
+		5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48518C5C8040073B2FE /* btn_photo3_diary.png */; };
+		54B4EB2D18C576E5004489DA /* AFAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2418C576E5004489DA /* AFAnimationManager.m */; };
+		54B4EB2E18C576E5004489DA /* CustomPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2618C576E5004489DA /* CustomPopViewController.m */; };
+		54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2818C576E5004489DA /* NSObject+AFUtils.m */; };
+		54B4EB3018C576E5004489DA /* PopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2A18C576E5004489DA /* PopViewController.m */; };
+		54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2C18C576E5004489DA /* UIView+AFAnimation.m */; };
+		54B4EB3418C577C9004489DA /* NewTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB3318C577C9004489DA /* NewTextViewController.m */; };
+		54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB3818C57C1D004489DA /* CustomTextField.m */; };
+		54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */; };
 		54CE10E018C1842C00966396 /* AFDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A018C1842C00966396 /* AFDataDownloader.m */; };
 		54CE10E118C1842C00966396 /* AFDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A218C1842C00966396 /* AFDataStore.m */; };
 		54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A518C1842C00966396 /* AFBaseRequest.m */; };
@@ -129,9 +140,6 @@
 		54F1D10718C48B340005CDD9 /* btn_close1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10318C48B340005CDD9 /* btn_close1.png */; };
 		54F1D10818C48B340005CDD9 /* btn_finish1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10418C48B340005CDD9 /* btn_finish1.png */; };
 		54F1D10A18C48B8B0005CDD9 /* icon_info_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10918C48B8B0005CDD9 /* icon_info_diary.png */; };
-		54F1D11018C48E450005CDD9 /* NewTextDiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D10F18C48E450005CDD9 /* NewTextDiaryView.m */; };
-		54F1D11318C48E670005CDD9 /* NewAudioDiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D11218C48E670005CDD9 /* NewAudioDiaryView.m */; };
-		54F1D11618C48E810005CDD9 /* NewImportDiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D11518C48E810005CDD9 /* NewImportDiaryView.m */; };
 		54F1D12A18C48FA50005CDD9 /* block_photo__h_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11818C48FA50005CDD9 /* block_photo__h_diary.png */; };
 		54F1D12B18C48FA50005CDD9 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11918C48FA50005CDD9 /* block_photo_diary.png */; };
 		54F1D12C18C48FA50005CDD9 /* btn_auphoto_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11A18C48FA50005CDD9 /* btn_auphoto_diary.png */; };
@@ -151,8 +159,6 @@
 		54F1D13A18C48FA50005CDD9 /* icon_stop2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12818C48FA50005CDD9 /* icon_stop2_diary.png */; };
 		54F1D13B18C48FA50005CDD9 /* icon_text2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12918C48FA50005CDD9 /* icon_text2_diary.png */; };
 		54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D13D18C490A10005CDD9 /* PopUpViewController.m */; };
-		54F1D14418C497230005CDD9 /* PopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D14318C497230005CDD9 /* PopViewController.m */; };
-		54F1D14718C497F90005CDD9 /* CustomPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D14618C497F90005CDD9 /* CustomPopViewController.m */; };
 		6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A163B769C9D646389F66C162 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -250,12 +256,30 @@
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		5473686118C1F4F3009688F5 /* libPods-XMLReader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XMLReader.a"; path = "Pods/build/Release-iphoneos/libPods-XMLReader.a"; sourceTree = "<group>"; };
 		5473686318C1F4FB009688F5 /* libPods-Reachability.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Reachability.a"; path = "Pods/build/Release-iphoneos/libPods-Reachability.a"; sourceTree = "<group>"; };
-		54B4B17B18C470D2006230D6 /* AFAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimationManager.h; sourceTree = "<group>"; };
-		54B4B17C18C470D2006230D6 /* AFAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimationManager.m; sourceTree = "<group>"; };
-		54B4B17F18C470D2006230D6 /* NSObject+AFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AFUtils.h"; sourceTree = "<group>"; };
-		54B4B18018C470D2006230D6 /* NSObject+AFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AFUtils.m"; sourceTree = "<group>"; };
-		54B4B18318C470D2006230D6 /* UIView+AFAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AFAnimation.h"; sourceTree = "<group>"; };
-		54B4B18418C470D2006230D6 /* UIView+AFAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AFAnimation.m"; sourceTree = "<group>"; };
+		5474A47518C5A40A0073B2FE /* NewTextPhotoSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTextPhotoSelectedViewController.h; sourceTree = "<group>"; };
+		5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTextPhotoSelectedViewController.m; sourceTree = "<group>"; };
+		5474A47C18C5B7100073B2FE /* AFTextImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTextImgButton.h; sourceTree = "<group>"; };
+		5474A47D18C5B7100073B2FE /* AFTextImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTextImgButton.m; sourceTree = "<group>"; };
+		5474A47F18C5C0630073B2FE /* btn_finish2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_finish2.png; sourceTree = "<group>"; };
+		5474A48118C5C0840073B2FE /* btn_close2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close2.png; sourceTree = "<group>"; };
+		5474A48318C5C7AE0073B2FE /* btn_input_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_input_diary.png; sourceTree = "<group>"; };
+		5474A48518C5C8040073B2FE /* btn_photo3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_photo3_diary.png; sourceTree = "<group>"; };
+		54B4EB2318C576E5004489DA /* AFAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimationManager.h; sourceTree = "<group>"; };
+		54B4EB2418C576E5004489DA /* AFAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimationManager.m; sourceTree = "<group>"; };
+		54B4EB2518C576E5004489DA /* CustomPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopViewController.h; sourceTree = "<group>"; };
+		54B4EB2618C576E5004489DA /* CustomPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopViewController.m; sourceTree = "<group>"; };
+		54B4EB2718C576E5004489DA /* NSObject+AFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AFUtils.h"; sourceTree = "<group>"; };
+		54B4EB2818C576E5004489DA /* NSObject+AFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AFUtils.m"; sourceTree = "<group>"; };
+		54B4EB2918C576E5004489DA /* PopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopViewController.h; sourceTree = "<group>"; };
+		54B4EB2A18C576E5004489DA /* PopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopViewController.m; sourceTree = "<group>"; };
+		54B4EB2B18C576E5004489DA /* UIView+AFAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AFAnimation.h"; sourceTree = "<group>"; };
+		54B4EB2C18C576E5004489DA /* UIView+AFAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AFAnimation.m"; sourceTree = "<group>"; };
+		54B4EB3218C577C9004489DA /* NewTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTextViewController.h; sourceTree = SOURCE_ROOT; };
+		54B4EB3318C577C9004489DA /* NewTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTextViewController.m; sourceTree = SOURCE_ROOT; };
+		54B4EB3718C57C1D004489DA /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		54B4EB3818C57C1D004489DA /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		54B4EB4018C58D9E004489DA /* CustomAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertViewController.h; sourceTree = "<group>"; };
+		54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertViewController.m; sourceTree = "<group>"; };
 		54CE109D18C1842C00966396 /* AFNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetwork.h; sourceTree = "<group>"; };
 		54CE109F18C1842C00966396 /* AFDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDataDownloader.h; sourceTree = "<group>"; };
 		54CE10A018C1842C00966396 /* AFDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDataDownloader.m; sourceTree = "<group>"; };
@@ -365,12 +389,6 @@
 		54F1D10318C48B340005CDD9 /* btn_close1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close1.png; sourceTree = "<group>"; };
 		54F1D10418C48B340005CDD9 /* btn_finish1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_finish1.png; sourceTree = "<group>"; };
 		54F1D10918C48B8B0005CDD9 /* icon_info_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_info_diary.png; sourceTree = "<group>"; };
-		54F1D10E18C48E450005CDD9 /* NewTextDiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTextDiaryView.h; sourceTree = "<group>"; };
-		54F1D10F18C48E450005CDD9 /* NewTextDiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTextDiaryView.m; sourceTree = "<group>"; };
-		54F1D11118C48E670005CDD9 /* NewAudioDiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAudioDiaryView.h; sourceTree = "<group>"; };
-		54F1D11218C48E670005CDD9 /* NewAudioDiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAudioDiaryView.m; sourceTree = "<group>"; };
-		54F1D11418C48E810005CDD9 /* NewImportDiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewImportDiaryView.h; sourceTree = "<group>"; };
-		54F1D11518C48E810005CDD9 /* NewImportDiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewImportDiaryView.m; sourceTree = "<group>"; };
 		54F1D11818C48FA50005CDD9 /* block_photo__h_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo__h_diary.png; sourceTree = "<group>"; };
 		54F1D11918C48FA50005CDD9 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		54F1D11A18C48FA50005CDD9 /* btn_auphoto_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_auphoto_diary.png; sourceTree = "<group>"; };
@@ -391,10 +409,6 @@
 		54F1D12918C48FA50005CDD9 /* icon_text2_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_text2_diary.png; sourceTree = "<group>"; };
 		54F1D13C18C490A10005CDD9 /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
 		54F1D13D18C490A10005CDD9 /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
-		54F1D14218C497230005CDD9 /* PopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopViewController.h; sourceTree = "<group>"; };
-		54F1D14318C497230005CDD9 /* PopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopViewController.m; sourceTree = "<group>"; };
-		54F1D14518C497F90005CDD9 /* CustomPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopViewController.h; sourceTree = "<group>"; };
-		54F1D14618C497F90005CDD9 /* CustomPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopViewController.m; sourceTree = "<group>"; };
 		721904F09AE644A085A71BDA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A163B769C9D646389F66C162 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -679,6 +693,55 @@
 			path = UIEx;
 			sourceTree = "<group>";
 		};
+		5474A47818C5B0860073B2FE /* AFButton */ = {
+			isa = PBXGroup;
+			children = (
+				5474A47C18C5B7100073B2FE /* AFTextImgButton.h */,
+				5474A47D18C5B7100073B2FE /* AFTextImgButton.m */,
+			);
+			name = AFButton;
+			sourceTree = "<group>";
+		};
+		54B4EB2218C576E5004489DA /* support */ = {
+			isa = PBXGroup;
+			children = (
+				54B4EB3718C57C1D004489DA /* CustomTextField.h */,
+				54B4EB3818C57C1D004489DA /* CustomTextField.m */,
+				5474A47818C5B0860073B2FE /* AFButton */,
+				54B4EB3F18C58D64004489DA /* alertView */,
+				54B4EB3518C57A10004489DA /* popView */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
+		54B4EB3518C57A10004489DA /* popView */ = {
+			isa = PBXGroup;
+			children = (
+				54B4EB2318C576E5004489DA /* AFAnimationManager.h */,
+				54B4EB2418C576E5004489DA /* AFAnimationManager.m */,
+				54B4EB2518C576E5004489DA /* CustomPopViewController.h */,
+				54B4EB2618C576E5004489DA /* CustomPopViewController.m */,
+				54B4EB2718C576E5004489DA /* NSObject+AFUtils.h */,
+				54B4EB2818C576E5004489DA /* NSObject+AFUtils.m */,
+				54B4EB2918C576E5004489DA /* PopViewController.h */,
+				54B4EB2A18C576E5004489DA /* PopViewController.m */,
+				54B4EB2B18C576E5004489DA /* UIView+AFAnimation.h */,
+				54B4EB2C18C576E5004489DA /* UIView+AFAnimation.m */,
+			);
+			name = popView;
+			sourceTree = "<group>";
+		};
+		54B4EB3F18C58D64004489DA /* alertView */ = {
+			isa = PBXGroup;
+			children = (
+				54B4EB4018C58D9E004489DA /* CustomAlertViewController.h */,
+				54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */,
+				5474A47518C5A40A0073B2FE /* NewTextPhotoSelectedViewController.h */,
+				5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */,
+			);
+			name = alertView;
+			sourceTree = "<group>";
+		};
 		54CE109C18C1842C00966396 /* AFNetwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,7 +784,6 @@
 		54CE10A918C1842C00966396 /* AFUIEx */ = {
 			isa = PBXGroup;
 			children = (
-				54F1D0F618C479900005CDD9 /* CustomPopAnimation */,
 				54CE10AA18C1842C00966396 /* AFButton.h */,
 				54CE10AB18C1842C00966396 /* AFButton.m */,
 				54CE10AC18C1842C00966396 /* AFIconButton.h */,
@@ -852,6 +914,7 @@
 		54CE111B18C1BC6D00966396 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				54B4EB2218C576E5004489DA /* support */,
 				54CE111C18C1BC6D00966396 /* MainTabBar.h */,
 				54CE111D18C1BC6D00966396 /* MainTabBar.m */,
 				54CE119118C1CD7C00966396 /* MainTabBarButton.h */,
@@ -978,23 +1041,6 @@
 			path = MainTabBarImages;
 			sourceTree = "<group>";
 		};
-		54F1D0F618C479900005CDD9 /* CustomPopAnimation */ = {
-			isa = PBXGroup;
-			children = (
-				54F1D14218C497230005CDD9 /* PopViewController.h */,
-				54F1D14318C497230005CDD9 /* PopViewController.m */,
-				54F1D14518C497F90005CDD9 /* CustomPopViewController.h */,
-				54F1D14618C497F90005CDD9 /* CustomPopViewController.m */,
-				54B4B18318C470D2006230D6 /* UIView+AFAnimation.h */,
-				54B4B18418C470D2006230D6 /* UIView+AFAnimation.m */,
-				54B4B17B18C470D2006230D6 /* AFAnimationManager.h */,
-				54B4B17C18C470D2006230D6 /* AFAnimationManager.m */,
-				54B4B17F18C470D2006230D6 /* NSObject+AFUtils.h */,
-				54B4B18018C470D2006230D6 /* NSObject+AFUtils.m */,
-			);
-			name = CustomPopAnimation;
-			sourceTree = "<group>";
-		};
 		54F1D10018C48AF80005CDD9 /* CustomPopImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1002,7 +1048,10 @@
 				54F1D10118C48B340005CDD9 /* bg_prompt.png */,
 				54F1D10218C48B340005CDD9 /* bg_subpage.png */,
 				54F1D10318C48B340005CDD9 /* btn_close1.png */,
+				5474A47F18C5C0630073B2FE /* btn_finish2.png */,
 				54F1D10418C48B340005CDD9 /* btn_finish1.png */,
+				5474A48118C5C0840073B2FE /* btn_close2.png */,
+				5474A48518C5C8040073B2FE /* btn_photo3_diary.png */,
 			);
 			name = CustomPopImage;
 			sourceTree = "<group>";
@@ -1017,12 +1066,8 @@
 		54F1D10D18C48DCA0005CDD9 /* NewDiary */ = {
 			isa = PBXGroup;
 			children = (
-				54F1D10E18C48E450005CDD9 /* NewTextDiaryView.h */,
-				54F1D10F18C48E450005CDD9 /* NewTextDiaryView.m */,
-				54F1D11118C48E670005CDD9 /* NewAudioDiaryView.h */,
-				54F1D11218C48E670005CDD9 /* NewAudioDiaryView.m */,
-				54F1D11418C48E810005CDD9 /* NewImportDiaryView.h */,
-				54F1D11518C48E810005CDD9 /* NewImportDiaryView.m */,
+				54B4EB3218C577C9004489DA /* NewTextViewController.h */,
+				54B4EB3318C577C9004489DA /* NewTextViewController.m */,
 			);
 			path = NewDiary;
 			sourceTree = "<group>";
@@ -1030,6 +1075,7 @@
 		54F1D11718C48F7F0005CDD9 /* NewDiary */ = {
 			isa = PBXGroup;
 			children = (
+				5474A48318C5C7AE0073B2FE /* btn_input_diary.png */,
 				54F1D11818C48FA50005CDD9 /* block_photo__h_diary.png */,
 				54F1D11918C48FA50005CDD9 /* block_photo_diary.png */,
 				54F1D11A18C48FA50005CDD9 /* btn_auphoto_diary.png */,
@@ -1148,11 +1194,13 @@
 				54CE116318C1C7BF00966396 /* btn_blue1.png in Resources */,
 				54F1D13718C48FA50005CDD9 /* dot_number_diary.png in Resources */,
 				54CE116A18C1C7BF00966396 /* btn_gray1.png in Resources */,
+				5474A48218C5C0840073B2FE /* btn_close2.png in Resources */,
 				54CE116D18C1C7BF00966396 /* btn_red.png in Resources */,
 				14B8DF3018BC37A30047C6B3 /* sampleDiary_auphoto.jpg in Resources */,
 				54F1D13418C48FA50005CDD9 /* btn_stop_diary.png in Resources */,
 				54F1D13B18C48FA50005CDD9 /* icon_text2_diary.png in Resources */,
 				54CE118318C1C8DC00966396 /* bg_h.png in Resources */,
+				5474A48418C5C7AE0073B2FE /* btn_input_diary.png in Resources */,
 				54F1D12F18C48FA50005CDD9 /* btn_photo_diary.png in Resources */,
 				14B8DF2518BC37A30047C6B3 /* Readme.rtf in Resources */,
 				54CE116418C1C7BF00966396 /* btn_blue2.png in Resources */,
@@ -1172,6 +1220,7 @@
 				54F1D13218C48FA50005CDD9 /* btn_play_diary.png in Resources */,
 				54CE118418C1C8DC00966396 /* bg.png in Resources */,
 				54F1D12E18C48FA50005CDD9 /* btn_delete3_diary.png in Resources */,
+				5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */,
 				54CE115E18C1C7BF00966396 /* bg_subpage.png in Resources */,
 				54F1D13A18C48FA50005CDD9 /* icon_stop2_diary.png in Resources */,
 				54CE10F118C1842C00966396 /* MJRefresh.bundle in Resources */,
@@ -1195,6 +1244,7 @@
 				54CE116018C1C7BF00966396 /* block2_btn.png in Resources */,
 				54CE119018C1CA5200966396 /* pic1_circle_diary.png in Resources */,
 				54CE117018C1C7BF00966396 /* circle_status.png in Resources */,
+				5474A48018C5C0630073B2FE /* btn_finish2.png in Resources */,
 				54F1D13318C48FA50005CDD9 /* btn_record_diary.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1247,15 +1297,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */,
 				14B8DF2B18BC37A30047C6B3 /* Ware.m in Sources */,
-				54B4B18518C470D2006230D6 /* AFAnimationManager.m in Sources */,
 				54CE10F318C1842C00966396 /* MJRefreshConst.m in Sources */,
 				14B8DF2D18BC37A30047C6B3 /* RegisterForm.m in Sources */,
 				54CE10F818C1842C00966396 /* UIImage+CroppedImage.m in Sources */,
 				54CE10F618C1842C00966396 /* TextLayoutLabel.m in Sources */,
 				14B8DF2218BC37A30047C6B3 /* TaskUploader.m in Sources */,
+				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
-				54B4B18918C470D2006230D6 /* UIView+AFAnimation.m in Sources */,
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
 				54CE10F418C1842C00966396 /* MJRefreshFooterView.m in Sources */,
@@ -1265,9 +1315,10 @@
 				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
 				54CE10E318C1842C00966396 /* NSString+VersionCompare.m in Sources */,
 				54CE10E918C1842C00966396 /* UILabel+AdjustSize.m in Sources */,
+				54B4EB3418C577C9004489DA /* NewTextViewController.m in Sources */,
 				14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */,
-				54F1D11618C48E810005CDD9 /* NewImportDiaryView.m in Sources */,
 				54CE10F918C1842C00966396 /* UIImage+Scale.m in Sources */,
+				54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */,
 				14B8DF2818BC37A30047C6B3 /* RecomWare.m in Sources */,
 				54CE10E518C1842C00966396 /* AFIconButton.m in Sources */,
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
@@ -1275,39 +1326,40 @@
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54CE10E618C1842C00966396 /* AFImageButton.m in Sources */,
 				54CE10F518C1842C00966396 /* MJRefreshHeaderView.m in Sources */,
+				54B4EB2D18C576E5004489DA /* AFAnimationManager.m in Sources */,
 				54CE10F218C1842C00966396 /* MJRefreshBaseView.m in Sources */,
 				54CE10EC18C1842C00966396 /* SinaWeiboAuthorizeView.m in Sources */,
 				14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */,
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
-				54B4B18718C470D2006230D6 /* NSObject+AFUtils.m in Sources */,
 				54CE112518C1BC6D00966396 /* DiaryViewController.m in Sources */,
 				54CE112418C1BC6D00966396 /* BabyInfoViewController.m in Sources */,
-				54F1D11318C48E670005CDD9 /* NewAudioDiaryView.m in Sources */,
 				14B8DF2718BC37A30047C6B3 /* RecomModel.m in Sources */,
 				54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */,
 				14B8DF5518BC37A40047C6B3 /* UserNameCheck.m in Sources */,
-				54F1D14718C497F90005CDD9 /* CustomPopViewController.m in Sources */,
 				14B8DF1E18BC37A30047C6B3 /* DiaryFileManager.m in Sources */,
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,
+				54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */,
 				14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */,
+				54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */,
 				54CE112818C1BC6D00966396 /* ShopViewController.m in Sources */,
 				54CE10E418C1842C00966396 /* AFButton.m in Sources */,
 				54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
+				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
 				54CE10ED18C1842C00966396 /* SinaWeiboRequest.m in Sources */,
 				54CE10E118C1842C00966396 /* AFDataStore.m in Sources */,
 				54CE10F018C1842C00966396 /* ADTickerLabel.m in Sources */,
 				14B8DF2C18BC37A30047C6B3 /* BabyData.m in Sources */,
 				54CE10E818C1842C00966396 /* AFPageControl.m in Sources */,
-				54F1D14418C497230005CDD9 /* PopViewController.m in Sources */,
 				54CE112718C1BC6D00966396 /* MainTabBarController.m in Sources */,
-				54F1D11018C48E450005CDD9 /* NewTextDiaryView.m in Sources */,
 				54CE10EB18C1842C00966396 /* SinaWeibo.m in Sources */,
+				5474A47E18C5B7100073B2FE /* AFTextImgButton.m in Sources */,
 				148D79EF18B8A71A001B4FA7 /* main.m in Sources */,
 				14B8DF2418BC37A30047C6B3 /* PumanBookModel.m in Sources */,
 				54CE10E718C1842C00966396 /* AFImageView.m in Sources */,
 				54CE119318C1CD7C00966396 /* MainTabBarButton.m in Sources */,
+				54B4EB2E18C576E5004489DA /* CustomPopViewController.m in Sources */,
 				54CE10E018C1842C00966396 /* AFDataDownloader.m in Sources */,
 				54CE10F718C1842C00966396 /* UIColumnView.m in Sources */,
 			);

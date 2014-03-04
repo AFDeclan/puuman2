@@ -34,7 +34,12 @@ static NSMutableArray * instances = nil;
     }];
     _subview = [self subview];
     [self.view addSubview:_subview];
-    
+    [self retainSelf];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self releaseSelf];
 }
 
 - (void)exit

@@ -7,7 +7,13 @@
 //
 
 #import "PopUpViewController.h"
-
+typedef enum
+{
+    kCloseAndFinishButton,
+    kOnlyCloseButton,
+    kOnlyFinishButton,
+    kNoneButton
+}ControlBtnType;
 @interface PopViewController : PopUpViewController
 {
     UIView *bgView;

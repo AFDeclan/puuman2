@@ -36,8 +36,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
    
-    popView = [[AFCustomPopView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
-    [[MainTabBarController sharedMainViewController].view addSubview:popView];
+    popView = [[NewTextViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:popView.view];
     [popView setControlBtnType:kCloseAndFinishButton];
     [popView setTitle:@"录声音" withIcon:[UIImage imageNamed:@"icon_info_diary.png"]];
     [popView show];

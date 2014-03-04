@@ -33,6 +33,7 @@ static AFAnimationManager *sharedAnimationManager = nil;
                            duration:(NSTimeInterval)duration delegate:(id)delegate
                       startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector
 {
+    
     CGPoint path[3] = {
 		FTAnimationOutOfViewCenterPoint(enclosingView.bounds, view.frame, view.center, direction),
 		[self overshootPointFor:view.center withDirection:direction threshold:(_overshootThreshold * 1.15)],
@@ -48,10 +49,19 @@ static AFAnimationManager *sharedAnimationManager = nil;
 	if(fade) {
 		CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:NO];
 		fade.fillMode = kCAFillModeForwards;
+		if (direction == kAFAnimationNone) {
+            animations = [NSArray arrayWithObjects:fade, nil];
+        }else{
+            animations = [NSArray arrayWithObjects:animation, fade, nil];
+        }
 		
-		animations = [NSArray arrayWithObjects:animation, fade, nil];
 	} else {
-		animations = [NSArray arrayWithObject:animation];
+        if (direction == kAFAnimationNone) {
+            animations = [NSArray arrayWithObjects: nil];
+        }else{
+            animations = [NSArray arrayWithObjects:animation, nil];
+        }
+		
 	}
 	return [self animationGroupFor:animations withView:view duration:duration
 						  delegate:delegate startSelector:startSelector stopSelector:stopSelector
@@ -63,7 +73,7 @@ static AFAnimationManager *sharedAnimationManager = nil;
                          startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector
 {
 
-    
+  
     CGPoint path[3] = {
 		view.center,
 		[self overshootPointFor:view.center withDirection:direction threshold:_overshootThreshold],
@@ -82,9 +92,19 @@ static AFAnimationManager *sharedAnimationManager = nil;
 		CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:YES];
 		fade.beginTime = duration * .5f;
 		fade.fillMode = kCAFillModeForwards;
-		animations = [NSArray arrayWithObjects:animation, fade, nil];
+        if (direction == kAFAnimationNone) {
+            animations = [NSArray arrayWithObjects:fade, nil];
+        }else{
+            animations = [NSArray arrayWithObjects:animation, fade, nil];
+        }
+		
 	} else {
-		animations = [NSArray arrayWithObject:animation];
+        if (direction == kAFAnimationNone) {
+            animations = [NSArray arrayWithObjects: nil];
+        }else{
+            animations = [NSArray arrayWithObjects:animation, nil];
+        }
+
 	}
 	return [self animationGroupFor:animations withView:view duration:duration
 						  delegate:delegate startSelector:startSelector stopSelector:stopSelector

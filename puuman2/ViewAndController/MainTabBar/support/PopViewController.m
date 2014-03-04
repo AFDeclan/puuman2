@@ -31,8 +31,8 @@
 - (void)initialization
 {
     bgView = [[UIView alloc] init];
-    [bgView setBackgroundColor:[UIColor clearColor]];
-    [bgView setAlpha:0.2];
+    [bgView setBackgroundColor:[UIColor blackColor]];
+    [bgView setAlpha:0.3];
     [self.view addSubview:bgView];
     _content = [[UIView alloc] init];
     [_content setBackgroundColor:[UIColor clearColor]];

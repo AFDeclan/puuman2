@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFCustomPopView.h"
+#import "NewTextViewController.h"
 @interface BabyInfoViewController : UIViewController
 {
-    AFCustomPopView *popView;
+    NewTextViewController *popView;
 }
 @end
