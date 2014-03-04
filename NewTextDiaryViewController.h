@@ -1,5 +1,5 @@
 //
-//  NewTextViewController.h
+//  NewTextDiaryViewController.h
 //  puuman2
 //
 //  Created by Ra.（祁文龙） on 14-3-4.
@@ -10,7 +10,7 @@
 #import "CustomTextField.h"
 #import "NewTextPhotoSelectedViewController.h"
 
-@interface NewTextViewController :CustomPopViewController<NewTextSelectPhotoDelegate>
+@interface NewTextDiaryViewController :CustomPopViewController<NewTextSelectPhotoDelegate>
 {
     CustomTextField *titleTextField;
     UIView *imgBox;

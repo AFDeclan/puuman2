@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewTextViewController.h"
+#import "NewTextDiaryViewController.h"
 @interface BabyInfoViewController : UIViewController
 {
-    NewTextViewController *popView;
+    NewTextDiaryViewController *popView;
 }
 @end

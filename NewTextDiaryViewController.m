@@ -1,23 +1,23 @@
 //
-//  NewTextViewController.m
+//  NewTextDiaryViewController.m
 //  puuman2
 //
 //  Created by Ra.（祁文龙） on 14-3-4.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "NewTextViewController.h"
+#import "NewTextDiaryViewController.h"
 #import "ColorsAndFonts.h"
 #import "UIImage+CroppedImage.h"
 #import "DiaryFileManager.h"
 
 
 
-@interface NewTextViewController ()
+@interface NewTextDiaryViewController ()
 
 @end
 
-@implementation NewTextViewController
+@implementation NewTextDiaryViewController
 @synthesize taskInfo = _taskInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

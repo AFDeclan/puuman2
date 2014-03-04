@@ -36,7 +36,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
    
-    popView = [[NewTextViewController alloc] initWithNibName:nil bundle:nil];
+//    popView = [[NewTextViewController alloc] initWithNibName:nil bundle:nil];
+//    [[MainTabBarController sharedMainViewController].view addSubview:popView.view];
+//    [popView setControlBtnType:kCloseAndFinishButton];
+//    [popView setTitle:@"写日记" withIcon:[UIImage imageNamed:@"icon_text2_diary.png"]];
+//    [popView show];
+//
+    popView = [[NewTextDiaryViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:popView.view];
     [popView setControlBtnType:kCloseAndFinishButton];
     [popView setTitle:@"录声音" withIcon:[UIImage imageNamed:@"icon_info_diary.png"]];

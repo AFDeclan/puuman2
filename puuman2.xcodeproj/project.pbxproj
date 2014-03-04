@@ -59,12 +59,13 @@
 		5474A48218C5C0840073B2FE /* btn_close2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48118C5C0840073B2FE /* btn_close2.png */; };
 		5474A48418C5C7AE0073B2FE /* btn_input_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48318C5C7AE0073B2FE /* btn_input_diary.png */; };
 		5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48518C5C8040073B2FE /* btn_photo3_diary.png */; };
+		5474A48918C5DDE20073B2FE /* NewImportDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A48818C5DDE20073B2FE /* NewImportDiaryViewController.m */; };
 		54B4EB2D18C576E5004489DA /* AFAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2418C576E5004489DA /* AFAnimationManager.m */; };
 		54B4EB2E18C576E5004489DA /* CustomPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2618C576E5004489DA /* CustomPopViewController.m */; };
 		54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2818C576E5004489DA /* NSObject+AFUtils.m */; };
 		54B4EB3018C576E5004489DA /* PopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2A18C576E5004489DA /* PopViewController.m */; };
 		54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2C18C576E5004489DA /* UIView+AFAnimation.m */; };
-		54B4EB3418C577C9004489DA /* NewTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB3318C577C9004489DA /* NewTextViewController.m */; };
+		54B4EB3418C577C9004489DA /* NewTextDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB3318C577C9004489DA /* NewTextDiaryViewController.m */; };
 		54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB3818C57C1D004489DA /* CustomTextField.m */; };
 		54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */; };
 		54CE10E018C1842C00966396 /* AFDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A018C1842C00966396 /* AFDataDownloader.m */; };
@@ -264,6 +265,8 @@
 		5474A48118C5C0840073B2FE /* btn_close2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close2.png; sourceTree = "<group>"; };
 		5474A48318C5C7AE0073B2FE /* btn_input_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_input_diary.png; sourceTree = "<group>"; };
 		5474A48518C5C8040073B2FE /* btn_photo3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_photo3_diary.png; sourceTree = "<group>"; };
+		5474A48718C5DDE20073B2FE /* NewImportDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewImportDiaryViewController.h; sourceTree = SOURCE_ROOT; };
+		5474A48818C5DDE20073B2FE /* NewImportDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewImportDiaryViewController.m; sourceTree = SOURCE_ROOT; };
 		54B4EB2318C576E5004489DA /* AFAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimationManager.h; sourceTree = "<group>"; };
 		54B4EB2418C576E5004489DA /* AFAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimationManager.m; sourceTree = "<group>"; };
 		54B4EB2518C576E5004489DA /* CustomPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopViewController.h; sourceTree = "<group>"; };
@@ -274,8 +277,8 @@
 		54B4EB2A18C576E5004489DA /* PopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopViewController.m; sourceTree = "<group>"; };
 		54B4EB2B18C576E5004489DA /* UIView+AFAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AFAnimation.h"; sourceTree = "<group>"; };
 		54B4EB2C18C576E5004489DA /* UIView+AFAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AFAnimation.m"; sourceTree = "<group>"; };
-		54B4EB3218C577C9004489DA /* NewTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTextViewController.h; sourceTree = SOURCE_ROOT; };
-		54B4EB3318C577C9004489DA /* NewTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTextViewController.m; sourceTree = SOURCE_ROOT; };
+		54B4EB3218C577C9004489DA /* NewTextDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTextDiaryViewController.h; sourceTree = SOURCE_ROOT; };
+		54B4EB3318C577C9004489DA /* NewTextDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTextDiaryViewController.m; sourceTree = SOURCE_ROOT; };
 		54B4EB3718C57C1D004489DA /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		54B4EB3818C57C1D004489DA /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		54B4EB4018C58D9E004489DA /* CustomAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertViewController.h; sourceTree = "<group>"; };
@@ -1066,8 +1069,10 @@
 		54F1D10D18C48DCA0005CDD9 /* NewDiary */ = {
 			isa = PBXGroup;
 			children = (
-				54B4EB3218C577C9004489DA /* NewTextViewController.h */,
-				54B4EB3318C577C9004489DA /* NewTextViewController.m */,
+				54B4EB3218C577C9004489DA /* NewTextDiaryViewController.h */,
+				54B4EB3318C577C9004489DA /* NewTextDiaryViewController.m */,
+				5474A48718C5DDE20073B2FE /* NewImportDiaryViewController.h */,
+				5474A48818C5DDE20073B2FE /* NewImportDiaryViewController.m */,
 			);
 			path = NewDiary;
 			sourceTree = "<group>";
@@ -1305,6 +1310,7 @@
 				54CE10F618C1842C00966396 /* TextLayoutLabel.m in Sources */,
 				14B8DF2218BC37A30047C6B3 /* TaskUploader.m in Sources */,
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
+				5474A48918C5DDE20073B2FE /* NewImportDiaryViewController.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
@@ -1315,7 +1321,7 @@
 				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
 				54CE10E318C1842C00966396 /* NSString+VersionCompare.m in Sources */,
 				54CE10E918C1842C00966396 /* UILabel+AdjustSize.m in Sources */,
-				54B4EB3418C577C9004489DA /* NewTextViewController.m in Sources */,
+				54B4EB3418C577C9004489DA /* NewTextDiaryViewController.m in Sources */,
 				14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */,
 				54CE10F918C1842C00966396 /* UIImage+Scale.m in Sources */,
 				54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */,
