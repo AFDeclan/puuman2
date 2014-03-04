@@ -8,7 +8,9 @@
 
 #import "NewTextViewController.h"
 #import "ColorsAndFonts.h"
-#import "NewTextPhotoSelectedViewController.h"
+#import "UIImage+CroppedImage.h"
+#import "DiaryFileManager.h"
+
 
 
 @interface NewTextViewController ()
@@ -16,6 +18,7 @@
 @end
 
 @implementation NewTextViewController
+@synthesize taskInfo = _taskInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,7 +60,7 @@
     
     delBtn = [[UIButton alloc] initWithFrame:CGRectMake(88, 8, 32, 32)];
     [delBtn setImage:[UIImage imageNamed:@"btn_delete3_diary.png"] forState:UIControlStateNormal];
-    [delBtn addTarget:self action:@selector(delegate) forControlEvents:UIControlEventTouchUpInside];
+    [delBtn addTarget:self action:@selector(deletePhoto) forControlEvents:UIControlEventTouchUpInside];
     [imgBox addSubview:delBtn];
     
     textView = [[UITextView alloc] initWithFrame:CGRectMake(32, 176, 640, 360)]; //512
@@ -72,13 +75,27 @@
 {
     NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
     [self.view addSubview:chooseView.view];
+    [chooseView setDelegate:self];
     [chooseView setControlBtnType:kOnlyCloseButton];
     [chooseView show];
     
 }
 
-- (void)deletaPhoto
+- (void)selectedPhoto:(UIImage *)img
 {
+    photo = img;
+    img = [UIImage croppedImage:img WithHeight:224 andWidth:224];
+    [imageView setImage:img];
+    [imgBox setAlpha:1];
+    [textView setFrame:CGRectMake(32, 176, 512, 360)];
+}
+
+- (void)deletePhoto
+{
+    photo = nil;
+    [imageView setImage:nil];
+    [imgBox setAlpha:0];
+    [textView setFrame:CGRectMake(32, 176, 640, 360)];
     
 
 }
@@ -88,5 +105,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)finishBtnPressed
+{
+    if ([textView.text isEqualToString:@""]) {
+        if (photo) {
+            [DiaryFileManager savePhotos:[NSArray arrayWithObject:photo] withAudio:nil withTitle:titleTextField.text andTaskInfo:nil];
+        }
+    }else{
+        [DiaryFileManager saveText:textView.text withPhoto:photo withTitle:titleTextField.text andTaskInfo:_taskInfo];
+    }
+
+    
+    [super finishBtnPressed];
+}
+
 
 @end

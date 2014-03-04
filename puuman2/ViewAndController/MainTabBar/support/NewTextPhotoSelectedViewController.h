@@ -7,13 +7,22 @@
 //
 
 #import "CustomAlertViewController.h"
-
-@interface NewTextPhotoSelectedViewController : CustomAlertViewController
+@protocol NewTextSelectPhotoDelegate;
+@interface NewTextPhotoSelectedViewController : CustomAlertViewController<UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
 
     UILabel *takePicLabel;
     UILabel *importPicLabel;
     UIButton *takePicBtn;
     UIButton *importPicBtn;
+    UIImagePickerController *imagePickerController;
+    UIPopoverController *popover;
+    BOOL imagePickerShowed;
 }
+@property(nonatomic,assign)id<NewTextSelectPhotoDelegate>delegate;
+@end
+
+@protocol NewTextSelectPhotoDelegate <NSObject>
+
+- (void)selectedPhoto:(UIImage *)img;
 @end

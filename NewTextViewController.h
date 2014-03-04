@@ -8,9 +8,9 @@
 
 #import "CustomPopViewController.h"
 #import "CustomTextField.h"
+#import "NewTextPhotoSelectedViewController.h"
 
-
-@interface NewTextViewController :CustomPopViewController
+@interface NewTextViewController :CustomPopViewController<NewTextSelectPhotoDelegate>
 {
     CustomTextField *titleTextField;
     UIView *imgBox;
@@ -18,5 +18,7 @@
     UIImageView *imageView;
     UITextView *textView;
     UIButton *delBtn;
+    UIImage *photo;
 }
+@property (retain, nonatomic) NSDictionary *taskInfo;
 @end
