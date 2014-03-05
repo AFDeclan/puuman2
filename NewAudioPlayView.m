@@ -125,4 +125,14 @@
     [_delegate stopPlay];
     
 }
+
+- (void)removePlay
+{
+    if ([player isPlaying]) {
+        [timer invalidate];
+         timer = nil;
+        [player stop];
+        _playFile = nil;
+    }
+}
 @end

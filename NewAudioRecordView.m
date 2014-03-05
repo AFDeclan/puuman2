@@ -120,7 +120,10 @@ const NSTimeInterval MAX_DURATION = 90;
     isRecording = NO;
     isRecorded = YES;
     [_delegate stopRecord];
-    [audioRecorder stop];
+    if ([audioRecorder isRecording]) {
+        [audioRecorder stop];
+    }
+    
 }
 
 - (NSURL *)recordUrl
@@ -133,4 +136,16 @@ const NSTimeInterval MAX_DURATION = 90;
 
     return [audioRecorder  currentTime];
 }
+
+- (void)removeRecord
+{
+    if ([audioRecorder isRecording]) {
+        [timer invalidate];
+        timer = nil;
+        [audioRecorder stop];
+        recordedFile = nil;
+    }
+
+}
+
 @end

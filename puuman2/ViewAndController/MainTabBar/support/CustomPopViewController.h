@@ -24,4 +24,5 @@
 - (void)setTitle:(NSString *)title withIcon:(UIImage *)image;
 - (void)show;
 - (void)finishBtnPressed;
+- (void)closeBtnPressed;
 @end

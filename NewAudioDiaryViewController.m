@@ -173,4 +173,12 @@
     [super finishBtnPressed];
 }
 
+- (void)closeBtnPressed
+{
+    [play removePlay];
+    [record removeRecord];
+    [super closeBtnPressed];
+   
+}
+
 @end

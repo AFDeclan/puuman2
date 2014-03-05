@@ -27,6 +27,7 @@
 - (NSURL *)recordUrl;
 - (void)restartRecord;
 - (NSTimeInterval)recordTime;
+- (void)removeRecord;
 @end
 
 @protocol NewAudioRecordDelegate <NSObject>

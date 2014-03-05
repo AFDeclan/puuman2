@@ -21,7 +21,7 @@
 @property (assign,nonatomic) NSURL *playFile;
 @property (assign,nonatomic) NSTimeInterval maxTime;
 @property (assign,nonatomic)id<NewAudioPlayDelegate>delegate;
-
+- (void)removePlay;
 @end
 @protocol NewAudioPlayDelegate <NSObject>
 - (void)stopPlay;
