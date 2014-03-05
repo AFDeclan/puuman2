@@ -9,11 +9,12 @@
 #import "CustomPopViewController.h"
 #import "CustomTextField.h"
 #import "UIColumnView.h"
-
-@interface NewImportDiaryViewController : CustomPopViewController<UIColumnViewDataSource,UIColumnViewDelegate>
+#import "NewImportDiaryTableViewCell.h"
+@interface NewImportDiaryViewController : CustomPopViewController<UIColumnViewDataSource,UIColumnViewDelegate,NewImportCellDelegate,UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     CustomTextField *titleTextField;
     UIColumnView *photosTable;
     NSMutableArray *photosArr;
+    UIImagePickerController *imagePickerController;
 }
 @end

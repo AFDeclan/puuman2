@@ -60,6 +60,7 @@
 		5474A48418C5C7AE0073B2FE /* btn_input_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48318C5C7AE0073B2FE /* btn_input_diary.png */; };
 		5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48518C5C8040073B2FE /* btn_photo3_diary.png */; };
 		5474A48918C5DDE20073B2FE /* NewImportDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A48818C5DDE20073B2FE /* NewImportDiaryViewController.m */; };
+		54B1FBE218C6C05400529B2C /* NewImportDiaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1FBE118C6C05400529B2C /* NewImportDiaryTableViewCell.m */; };
 		54B4EB2D18C576E5004489DA /* AFAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2418C576E5004489DA /* AFAnimationManager.m */; };
 		54B4EB2E18C576E5004489DA /* CustomPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2618C576E5004489DA /* CustomPopViewController.m */; };
 		54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2818C576E5004489DA /* NSObject+AFUtils.m */; };
@@ -267,6 +268,8 @@
 		5474A48518C5C8040073B2FE /* btn_photo3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_photo3_diary.png; sourceTree = "<group>"; };
 		5474A48718C5DDE20073B2FE /* NewImportDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewImportDiaryViewController.h; sourceTree = SOURCE_ROOT; };
 		5474A48818C5DDE20073B2FE /* NewImportDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewImportDiaryViewController.m; sourceTree = SOURCE_ROOT; };
+		54B1FBE018C6C05400529B2C /* NewImportDiaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewImportDiaryTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		54B1FBE118C6C05400529B2C /* NewImportDiaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewImportDiaryTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		54B4EB2318C576E5004489DA /* AFAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimationManager.h; sourceTree = "<group>"; };
 		54B4EB2418C576E5004489DA /* AFAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimationManager.m; sourceTree = "<group>"; };
 		54B4EB2518C576E5004489DA /* CustomPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopViewController.h; sourceTree = "<group>"; };
@@ -705,6 +708,15 @@
 			name = AFButton;
 			sourceTree = "<group>";
 		};
+		54B1FBDF18C6BF4700529B2C /* support */ = {
+			isa = PBXGroup;
+			children = (
+				54B1FBE018C6C05400529B2C /* NewImportDiaryTableViewCell.h */,
+				54B1FBE118C6C05400529B2C /* NewImportDiaryTableViewCell.m */,
+			);
+			name = support;
+			sourceTree = "<group>";
+		};
 		54B4EB2218C576E5004489DA /* support */ = {
 			isa = PBXGroup;
 			children = (
@@ -1073,6 +1085,7 @@
 				54B4EB3318C577C9004489DA /* NewTextDiaryViewController.m */,
 				5474A48718C5DDE20073B2FE /* NewImportDiaryViewController.h */,
 				5474A48818C5DDE20073B2FE /* NewImportDiaryViewController.m */,
+				54B1FBDF18C6BF4700529B2C /* support */,
 			);
 			path = NewDiary;
 			sourceTree = "<group>";
@@ -1341,6 +1354,7 @@
 				54CE112418C1BC6D00966396 /* BabyInfoViewController.m in Sources */,
 				14B8DF2718BC37A30047C6B3 /* RecomModel.m in Sources */,
 				54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */,
+				54B1FBE218C6C05400529B2C /* NewImportDiaryTableViewCell.m in Sources */,
 				14B8DF5518BC37A40047C6B3 /* UserNameCheck.m in Sources */,
 				14B8DF1E18BC37A30047C6B3 /* DiaryFileManager.m in Sources */,
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,

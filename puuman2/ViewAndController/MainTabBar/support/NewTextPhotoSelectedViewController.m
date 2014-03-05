@@ -132,7 +132,7 @@
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     imagePickerShowed = NO;
-    [self finishOut];
+    [self hidden];
 }
 
 - (void)takePicBtnPressed
@@ -159,7 +159,7 @@
     }else{
         [picker dismissModalViewControllerAnimated:YES];
     }
-    [self finishOut];
+    [self hidden];
 }
 
 - (void)didReceiveMemoryWarning

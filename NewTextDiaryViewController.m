@@ -42,6 +42,7 @@
 {
     titleTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 112, 640, 48)];
     titleTextField.placeholder = @"这些照片是……";
+    [titleTextField setDelegate:self];
     [_content addSubview:titleTextField];
     
     takePicBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
@@ -65,6 +66,7 @@
     
     textView = [[UITextView alloc] initWithFrame:CGRectMake(32, 176, 640, 360)]; //512
     [textView setFont:PMFont2];
+    [textView setDelegate:self];
     [textView setTextColor:PMColor1];
     [textView setBackgroundColor:[UIColor clearColor]];
     [_content addSubview:textView];
@@ -120,5 +122,46 @@
     [super finishBtnPressed];
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+//    if (!img) {
+//        
+//        if (range.length == 1) {
+//            if ([textView.text length]==1) {
+//                if (!img) {
+//                    [_finishBtn setAlpha:0.5];
+//                    [_finishBtn setEnabled:NO];
+//                }
+//            }else
+//            {
+//                [_finishBtn setAlpha:1];
+//                [_finishBtn setEnabled:YES];
+//            }
+//        }else{
+//            if ([text isEqualToString:@""]) {
+//                if (!img) {
+//                    [_finishBtn setAlpha:0.5];
+//                    [_finishBtn setEnabled:NO];
+//                }
+//            }else{
+//                [_finishBtn setAlpha:1];
+//                [_finishBtn setEnabled:YES];
+//            }
+//            
+//        }
+//    }
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+//    if (range.length == 0) {
+//        if ([textField.text length] >=15) {
+//            NSString *str = [textField.text substringToIndex:15];
+//            textField.text =str;
+//        }
+//    }
+    return YES;
+}
 
 @end
