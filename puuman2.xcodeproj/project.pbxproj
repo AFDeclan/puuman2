@@ -62,6 +62,9 @@
 		5474A48918C5DDE20073B2FE /* NewImportDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A48818C5DDE20073B2FE /* NewImportDiaryViewController.m */; };
 		54B1FBE218C6C05400529B2C /* NewImportDiaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1FBE118C6C05400529B2C /* NewImportDiaryTableViewCell.m */; };
 		54B1FBE518C6F77E00529B2C /* NewAudioDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1FBE418C6F77E00529B2C /* NewAudioDiaryViewController.m */; };
+		54B1FBE818C7004B00529B2C /* NewAudioRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1FBE718C7004B00529B2C /* NewAudioRecordView.m */; };
+		54B1FBEB18C700AA00529B2C /* NewAudioProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1FBEA18C700AA00529B2C /* NewAudioProgressView.m */; };
+		54B1FBEE18C700E900529B2C /* NewAudioPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1FBED18C700E900529B2C /* NewAudioPlayView.m */; };
 		54B4EB2D18C576E5004489DA /* AFAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2418C576E5004489DA /* AFAnimationManager.m */; };
 		54B4EB2E18C576E5004489DA /* CustomPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2618C576E5004489DA /* CustomPopViewController.m */; };
 		54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2818C576E5004489DA /* NSObject+AFUtils.m */; };
@@ -273,6 +276,12 @@
 		54B1FBE118C6C05400529B2C /* NewImportDiaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewImportDiaryTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		54B1FBE318C6F77E00529B2C /* NewAudioDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAudioDiaryViewController.h; sourceTree = SOURCE_ROOT; };
 		54B1FBE418C6F77E00529B2C /* NewAudioDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAudioDiaryViewController.m; sourceTree = SOURCE_ROOT; };
+		54B1FBE618C7004B00529B2C /* NewAudioRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAudioRecordView.h; sourceTree = SOURCE_ROOT; };
+		54B1FBE718C7004B00529B2C /* NewAudioRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAudioRecordView.m; sourceTree = SOURCE_ROOT; };
+		54B1FBE918C700AA00529B2C /* NewAudioProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAudioProgressView.h; sourceTree = SOURCE_ROOT; };
+		54B1FBEA18C700AA00529B2C /* NewAudioProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAudioProgressView.m; sourceTree = SOURCE_ROOT; };
+		54B1FBEC18C700E900529B2C /* NewAudioPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAudioPlayView.h; sourceTree = SOURCE_ROOT; };
+		54B1FBED18C700E900529B2C /* NewAudioPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAudioPlayView.m; sourceTree = SOURCE_ROOT; };
 		54B4EB2318C576E5004489DA /* AFAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimationManager.h; sourceTree = "<group>"; };
 		54B4EB2418C576E5004489DA /* AFAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimationManager.m; sourceTree = "<group>"; };
 		54B4EB2518C576E5004489DA /* CustomPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopViewController.h; sourceTree = "<group>"; };
@@ -716,6 +725,12 @@
 			children = (
 				54B1FBE018C6C05400529B2C /* NewImportDiaryTableViewCell.h */,
 				54B1FBE118C6C05400529B2C /* NewImportDiaryTableViewCell.m */,
+				54B1FBE618C7004B00529B2C /* NewAudioRecordView.h */,
+				54B1FBE718C7004B00529B2C /* NewAudioRecordView.m */,
+				54B1FBEC18C700E900529B2C /* NewAudioPlayView.h */,
+				54B1FBED18C700E900529B2C /* NewAudioPlayView.m */,
+				54B1FBE918C700AA00529B2C /* NewAudioProgressView.h */,
+				54B1FBEA18C700AA00529B2C /* NewAudioProgressView.m */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -1333,9 +1348,11 @@
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
 				54CE10F418C1842C00966396 /* MJRefreshFooterView.m in Sources */,
+				54B1FBEB18C700AA00529B2C /* NewAudioProgressView.m in Sources */,
 				14B8DF5218BC37A40047C6B3 /* FileUploader.m in Sources */,
 				14B8DF2918BC37A30047C6B3 /* ShopClassModel.m in Sources */,
 				14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */,
+				54B1FBEE18C700E900529B2C /* NewAudioPlayView.m in Sources */,
 				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
 				54CE10E318C1842C00966396 /* NSString+VersionCompare.m in Sources */,
 				54CE10E918C1842C00966396 /* UILabel+AdjustSize.m in Sources */,
@@ -1372,6 +1389,7 @@
 				54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
 				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
+				54B1FBE818C7004B00529B2C /* NewAudioRecordView.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
 				54CE10ED18C1842C00966396 /* SinaWeiboRequest.m in Sources */,
 				54CE10E118C1842C00966396 /* AFDataStore.m in Sources */,

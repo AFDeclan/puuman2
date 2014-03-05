@@ -8,9 +8,19 @@
 
 #import "CustomPopViewController.h"
 #import "CustomTextField.h"
-@interface NewAudioDiaryViewController : CustomPopViewController
+#import "NewAudioRecordView.h"
+#import "NewAudioPlayView.h"
+
+@interface NewAudioDiaryViewController : CustomPopViewController<NewAudioRecordDelegate,NewAudioPlayDelegate>
 {
     CustomTextField *titleTextField;
-
+    NewAudioRecordView *record;
+    NewAudioPlayView *play;
+    UILabel *label_start;
+    UILabel *label_restart;
+    UILabel *label_stop;
+    UILabel *label_play;
+    UILabel *label_stopPlay;
 }
+@property (retain, nonatomic) NSDictionary *taskInfo;
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "PopViewController.h"
-
+#import "ColorsAndFonts.h"
+#import "MainTabBarController.h"
+#import "UniverseConstant.h"
 
 
 @interface CustomPopViewController : PopViewController
