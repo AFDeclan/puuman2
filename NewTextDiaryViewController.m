@@ -42,7 +42,7 @@
 {
     titleTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 112, 640, 48)];
     titleTextField.placeholder = @"这些照片是……";
-    [titleTextField setDelegate:self];
+   // [titleTextField setDelegate:self];
     [_content addSubview:titleTextField];
     
     takePicBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
@@ -153,15 +153,15 @@
     return YES;
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-//    if (range.length == 0) {
-//        if ([textField.text length] >=15) {
-//            NSString *str = [textField.text substringToIndex:15];
-//            textField.text =str;
-//        }
-//    }
-    return YES;
-}
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+//{
+////    if (range.length == 0) {
+////        if ([textField.text length] >=15) {
+////            NSString *str = [textField.text substringToIndex:15];
+////            textField.text =str;
+////        }
+////    }
+//    return YES;
+//}
 
 @end
