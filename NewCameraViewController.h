@@ -7,9 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewCameraControlView.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import "TimeView.h"
 
-@interface NewCameraViewController : UIViewController
+@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
-
+    NewCameraControlView *controlView;
+    UIImagePickerController *cameraUI;
+    NSString *titleStr;
+    NSMutableArray *photoPath;
+    NSMutableDictionary *photosStatus;
+    NSMutableArray *photos;
+    NSURL *movieUrl;
+    MPMoviePlayerController *moviePlayer;
+    TimeView *timeView;
 }
+@property (retain, nonatomic) NSDictionary *taskInfo;
 @end

@@ -49,9 +49,7 @@
 
 - (void)setCurrentTime:(NSTimeInterval)currentTime
 {
-    _currentTime = currentTime;
-    NSLog(@"%f  %f",currentTime,_maxTime);
-    
+    _currentTime = currentTime;    
     CGPoint pos = self.contentOffset;
     pos.y = (_currentTime/_maxTime)*self.frame.size.height;
     self.contentOffset = pos;

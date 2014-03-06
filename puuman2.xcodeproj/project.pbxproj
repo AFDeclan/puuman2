@@ -60,6 +60,7 @@
 		5474A48418C5C7AE0073B2FE /* btn_input_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48318C5C7AE0073B2FE /* btn_input_diary.png */; };
 		5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48518C5C8040073B2FE /* btn_photo3_diary.png */; };
 		5474A48918C5DDE20073B2FE /* NewImportDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A48818C5DDE20073B2FE /* NewImportDiaryViewController.m */; };
+		54ADE07218C84EE500B166C4 /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE07118C84EE500B166C4 /* TimeView.m */; };
 		54B1FBE218C6C05400529B2C /* NewImportDiaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1FBE118C6C05400529B2C /* NewImportDiaryTableViewCell.m */; };
 		54B1FBE518C6F77E00529B2C /* NewAudioDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1FBE418C6F77E00529B2C /* NewAudioDiaryViewController.m */; };
 		54B1FBE818C7004B00529B2C /* NewAudioRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1FBE718C7004B00529B2C /* NewAudioRecordView.m */; };
@@ -272,6 +273,8 @@
 		5474A48518C5C8040073B2FE /* btn_photo3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_photo3_diary.png; sourceTree = "<group>"; };
 		5474A48718C5DDE20073B2FE /* NewImportDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewImportDiaryViewController.h; sourceTree = SOURCE_ROOT; };
 		5474A48818C5DDE20073B2FE /* NewImportDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewImportDiaryViewController.m; sourceTree = SOURCE_ROOT; };
+		54ADE07018C84EE500B166C4 /* TimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeView.h; sourceTree = SOURCE_ROOT; };
+		54ADE07118C84EE500B166C4 /* TimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeView.m; sourceTree = SOURCE_ROOT; };
 		54B1FBE018C6C05400529B2C /* NewImportDiaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewImportDiaryTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		54B1FBE118C6C05400529B2C /* NewImportDiaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewImportDiaryTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		54B1FBE318C6F77E00529B2C /* NewAudioDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAudioDiaryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -735,6 +738,8 @@
 				54B1FBEA18C700AA00529B2C /* NewAudioProgressView.m */,
 				54B1FBF518C72ECC00529B2C /* NewCameraControlView.h */,
 				54B1FBF618C72ECC00529B2C /* NewCameraControlView.m */,
+				54ADE07018C84EE500B166C4 /* TimeView.h */,
+				54ADE07118C84EE500B166C4 /* TimeView.m */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -1370,6 +1375,7 @@
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54B1FBE518C6F77E00529B2C /* NewAudioDiaryViewController.m in Sources */,
 				54CE10E618C1842C00966396 /* AFImageButton.m in Sources */,
+				54ADE07218C84EE500B166C4 /* TimeView.m in Sources */,
 				54CE10F518C1842C00966396 /* MJRefreshHeaderView.m in Sources */,
 				54B4EB2D18C576E5004489DA /* AFAnimationManager.m in Sources */,
 				54CE10F218C1842C00966396 /* MJRefreshBaseView.m in Sources */,

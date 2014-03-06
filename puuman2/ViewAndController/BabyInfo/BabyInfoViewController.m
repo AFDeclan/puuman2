@@ -48,7 +48,10 @@
 //    [popView setTitle:@"传照片" withIcon:[UIImage imageNamed:@"icon_input_diary.png"]];
 //    [popView show];
     
-    popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
+   popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
+    
+    
+    
    [self presentModalViewController:popView animated:YES];
 }
 
