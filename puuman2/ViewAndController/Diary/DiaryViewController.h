@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DiaryNewButton.h"
 
 @interface DiaryViewController : UIViewController
+{
+    UIButton *newDiaryBtn[5];
+    DiaryNewButton *newBtn;
+    BOOL isFirst;
+    NSTimer *timer;
+}
+@property (assign,nonatomic) BOOL cameraModel;
++ (DiaryViewController *)sharedDiaryViewController;
+- (void)hideNewDiaryBtns;
+- (void)showNewDiaryBtns;
+- (void)showNewDiaryBtnPressed;
+- (void)hideNewDiaryBtnPressed;
+- (void)showNewDiaryViewWithType:(NewButtonType)type;
 
+//- (void)hideNewDiaryBtns;
 @end

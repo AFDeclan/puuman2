@@ -7,7 +7,6 @@
 //
 
 #import "BabyInfoViewController.h"
-
 #import "AppDelegate.h"
 @interface BabyInfoViewController ()
 
@@ -36,23 +35,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
    
-//    popView = [[NewTextDiaryViewController alloc] initWithNibName:nil bundle:nil];
-//    [[MainTabBarController sharedMainViewController].view addSubview:popView.view];
-//    [popView setControlBtnType:kCloseAndFinishButton];
-//    [popView setTitle:@"写日记" withIcon:[UIImage imageNamed:@"icon_text2_diary.png"]];
-//    [popView show];
-
-//    popView = [[NewImportDiaryViewController alloc] initWithNibName:nil bundle:nil];
-//    [[MainTabBarController sharedMainViewController].view addSubview:popView.view];
-//    [popView setControlBtnType:kCloseAndFinishButton];
-//    [popView setTitle:@"传照片" withIcon:[UIImage imageNamed:@"icon_input_diary.png"]];
-//    [popView show];
-    
-   popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
-    
-    
-    
-   [self presentModalViewController:popView animated:YES];
 }
 
 

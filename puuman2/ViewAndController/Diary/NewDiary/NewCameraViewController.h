@@ -24,5 +24,6 @@
     MPMoviePlayerController *moviePlayer;
     TimeView *timeView;
 }
+
 @property (retain, nonatomic) NSDictionary *taskInfo;
 @end

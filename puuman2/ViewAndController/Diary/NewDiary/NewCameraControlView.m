@@ -211,6 +211,7 @@
 
 - (void)canStopVideo
 {
+    hasEffect = YES;
     [playCameraBtn setEnabled:YES];
 }
 

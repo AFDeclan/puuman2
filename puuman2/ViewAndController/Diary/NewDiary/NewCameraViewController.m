@@ -10,7 +10,7 @@
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
 #import "DiaryFileManager.h"
-
+#import "DiaryViewController.h"
 @interface NewCameraViewController ()
 
 @end
@@ -47,6 +47,14 @@
 {
     BOOL videoOnly = NO;
     //判断是否是拍照
+    
+    if (![DiaryViewController sharedDiaryViewController].cameraModel) {
+        [controlView setVideoMode:YES];
+        videoOnly = YES;
+    }else{
+        [controlView setVideoMode:NO];
+    }
+    
     if ([UIImagePickerController isSourceTypeAvailable:
          UIImagePickerControllerSourceTypeCamera] == NO)
         return;

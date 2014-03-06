@@ -28,7 +28,7 @@
 - (void)initWithContent
 {
     _rootTabBarC = [MainTabBarController sharedMainViewController];
-    DiaryViewController *diaryVC = [[DiaryViewController alloc] init];
+    DiaryViewController *diaryVC = [DiaryViewController sharedDiaryViewController];
     BabyInfoViewController *babyInfoVC = [[BabyInfoViewController alloc] init];
     SocialViewController *socialVC = [[SocialViewController alloc] init];
     ShopViewController *shopVC = [[ShopViewController alloc] init];

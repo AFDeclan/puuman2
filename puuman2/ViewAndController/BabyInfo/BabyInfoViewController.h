@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "NewTextDiaryViewController.h"
-//#import "NewImportDiaryViewController.h"
-//#import "NewAudioDiaryViewController.h"
-#import "NewCameraViewController.h"
+
 
 @interface BabyInfoViewController : UIViewController
 {
-    NewCameraViewController *popView;
+
+   
 }
 @end
