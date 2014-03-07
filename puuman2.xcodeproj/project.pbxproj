@@ -53,6 +53,7 @@
 		14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
+		5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463755A18C96622004B11EF /* btn_pic_diary.png */; };
 		5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */; };
 		5474A47E18C5B7100073B2FE /* AFTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A47D18C5B7100073B2FE /* AFTextImgButton.m */; };
 		5474A48018C5C0630073B2FE /* btn_finish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A47F18C5C0630073B2FE /* btn_finish2.png */; };
@@ -171,7 +172,6 @@
 		54F1D12E18C48FA50005CDD9 /* btn_delete3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11C18C48FA50005CDD9 /* btn_delete3_diary.png */; };
 		54F1D12F18C48FA50005CDD9 /* btn_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11D18C48FA50005CDD9 /* btn_photo_diary.png */; };
 		54F1D13018C48FA50005CDD9 /* btn_photo2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11E18C48FA50005CDD9 /* btn_photo2_diary.png */; };
-		54F1D13118C48FA50005CDD9 /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11F18C48FA50005CDD9 /* btn_pic_diary.png */; };
 		54F1D13218C48FA50005CDD9 /* btn_play_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12018C48FA50005CDD9 /* btn_play_diary.png */; };
 		54F1D13318C48FA50005CDD9 /* btn_record_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12118C48FA50005CDD9 /* btn_record_diary.png */; };
 		54F1D13418C48FA50005CDD9 /* btn_stop_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12218C48FA50005CDD9 /* btn_stop_diary.png */; };
@@ -278,6 +278,7 @@
 		14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		5463755A18C96622004B11EF /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
 		5473686118C1F4F3009688F5 /* libPods-XMLReader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XMLReader.a"; path = "Pods/build/Release-iphoneos/libPods-XMLReader.a"; sourceTree = "<group>"; };
 		5473686318C1F4FB009688F5 /* libPods-Reachability.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Reachability.a"; path = "Pods/build/Release-iphoneos/libPods-Reachability.a"; sourceTree = "<group>"; };
 		5474A47518C5A40A0073B2FE /* NewTextPhotoSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTextPhotoSelectedViewController.h; sourceTree = "<group>"; };
@@ -456,7 +457,6 @@
 		54F1D11C18C48FA50005CDD9 /* btn_delete3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_delete3_diary.png; sourceTree = "<group>"; };
 		54F1D11D18C48FA50005CDD9 /* btn_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_photo_diary.png; sourceTree = "<group>"; };
 		54F1D11E18C48FA50005CDD9 /* btn_photo2_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_photo2_diary.png; sourceTree = "<group>"; };
-		54F1D11F18C48FA50005CDD9 /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
 		54F1D12018C48FA50005CDD9 /* btn_play_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_play_diary.png; sourceTree = "<group>"; };
 		54F1D12118C48FA50005CDD9 /* btn_record_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_record_diary.png; sourceTree = "<group>"; };
 		54F1D12218C48FA50005CDD9 /* btn_stop_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_stop_diary.png; sourceTree = "<group>"; };
@@ -1194,8 +1194,8 @@
 				54F1D11B18C48FA50005CDD9 /* btn_change_diary.png */,
 				54F1D11C18C48FA50005CDD9 /* btn_delete3_diary.png */,
 				54F1D11D18C48FA50005CDD9 /* btn_photo_diary.png */,
+				5463755A18C96622004B11EF /* btn_pic_diary.png */,
 				54F1D11E18C48FA50005CDD9 /* btn_photo2_diary.png */,
-				54F1D11F18C48FA50005CDD9 /* btn_pic_diary.png */,
 				54F1D12018C48FA50005CDD9 /* btn_play_diary.png */,
 				54F1D12118C48FA50005CDD9 /* btn_record_diary.png */,
 				54F1D12218C48FA50005CDD9 /* btn_stop_diary.png */,
@@ -1310,6 +1310,7 @@
 				54ADE0AC18C861B700B166C4 /* btn_input_newdiary.png in Resources */,
 				54F1D13718C48FA50005CDD9 /* dot_number_diary.png in Resources */,
 				54CE116A18C1C7BF00966396 /* btn_gray1.png in Resources */,
+				5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */,
 				5474A48218C5C0840073B2FE /* btn_close2.png in Resources */,
 				54CE116D18C1C7BF00966396 /* btn_red.png in Resources */,
 				14B8DF3018BC37A30047C6B3 /* sampleDiary_auphoto.jpg in Resources */,
@@ -1356,7 +1357,6 @@
 				54CE10EF18C1842C00966396 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				54CE10EA18C1842C00966396 /* SinaWeibo.bundle in Resources */,
 				54CE118818C1C8DC00966396 /* btn_diary2_diary.png in Resources */,
-				54F1D13118C48FA50005CDD9 /* btn_pic_diary.png in Resources */,
 				54ADE07E18C85D1C00B166C4 /* btn2_audio_diary.png in Resources */,
 				54CE118A18C1C8DC00966396 /* btn_happen2_diary.png in Resources */,
 				54ADE07F18C85D1C00B166C4 /* btn2_camera_diary.png in Resources */,

@@ -25,9 +25,9 @@ static NSMutableArray * instances = nil;
     [view addSubview:popViewCon.view];
 }
 
-
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLoad
 {
+      [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
     [UIView animateWithDuration:0.3 animations:^{
         self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
@@ -35,11 +35,16 @@ static NSMutableArray * instances = nil;
     _subview = [self subview];
     [self.view addSubview:_subview];
     [self retainSelf];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [self releaseSelf];
+    //[self releaseSelf];
 }
 
 - (void)exit
@@ -76,10 +81,7 @@ static NSMutableArray * instances = nil;
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
+
 
 - (void)didReceiveMemoryWarning
 {
