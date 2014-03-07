@@ -98,7 +98,7 @@
     frame.origin.y = 0;
     [_calendar setFrame:frame];
     [imgIcon setAlpha:0];
-    [calendarView setFrame:CGRectMake(362, 217, 300, 490)];
+    [calendarView setFrame:CGRectMake(362, 169, 300, 490)];
 }
 -(void)setVerticalFrame
 {
@@ -106,7 +106,7 @@
     frame.origin.y = 20;
     [_calendar setFrame:frame];
     [imgIcon setAlpha:1];
-    [calendarView setFrame:CGRectMake(234, 535, 300, 490)];
+    [calendarView setFrame:CGRectMake(234, 583, 300, 490)];
     
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
