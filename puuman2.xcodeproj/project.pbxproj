@@ -59,6 +59,8 @@
 		5474A48218C5C0840073B2FE /* btn_close2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48118C5C0840073B2FE /* btn_close2.png */; };
 		5474A48418C5C7AE0073B2FE /* btn_input_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48318C5C7AE0073B2FE /* btn_input_diary.png */; };
 		5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48518C5C8040073B2FE /* btn_photo3_diary.png */; };
+		54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */; };
+		54A9288418C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */; };
 		54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */; };
 		54ADE07D18C85D1C00B166C4 /* btn_more_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE07718C85D1C00B166C4 /* btn_more_diary.png */; };
 		54ADE07E18C85D1C00B166C4 /* btn2_audio_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE07818C85D1C00B166C4 /* btn2_audio_diary.png */; };
@@ -72,7 +74,6 @@
 		54ADE09A18C8608700B166C4 /* NewAudioRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE08A18C8608700B166C4 /* NewAudioRecordView.m */; };
 		54ADE09B18C8608700B166C4 /* NewCameraControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE08C18C8608700B166C4 /* NewCameraControlView.m */; };
 		54ADE09C18C8608700B166C4 /* NewCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE08E18C8608700B166C4 /* NewCameraViewController.m */; };
-		54ADE09D18C8608700B166C4 /* NewImportDiaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE09018C8608700B166C4 /* NewImportDiaryTableViewCell.m */; };
 		54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE09218C8608700B166C4 /* NewImportDiaryViewController.m */; };
 		54ADE09F18C8608700B166C4 /* NewTextDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE09418C8608700B166C4 /* NewTextDiaryViewController.m */; };
 		54ADE0A018C8608700B166C4 /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE09618C8608700B166C4 /* TimeView.m */; };
@@ -84,6 +85,7 @@
 		54ADE0B018C861B700B166C4 /* btn_text_newdiary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE0A718C861B700B166C4 /* btn_text_newdiary.png */; };
 		54ADE0B118C861B700B166C4 /* btn_text2_newdiary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE0A818C861B700B166C4 /* btn_text2_newdiary.png */; };
 		54ADE0B218C861B700B166C4 /* btn_video_newdiary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE0A918C861B700B166C4 /* btn_video_newdiary.png */; };
+		54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE0B718C87E9C00B166C4 /* NewCameraShowPhotosViewController.m */; };
 		54B4EB2D18C576E5004489DA /* AFAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2418C576E5004489DA /* AFAnimationManager.m */; };
 		54B4EB2E18C576E5004489DA /* CustomPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2618C576E5004489DA /* CustomPopViewController.m */; };
 		54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2818C576E5004489DA /* NSObject+AFUtils.m */; };
@@ -286,6 +288,10 @@
 		5474A48118C5C0840073B2FE /* btn_close2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close2.png; sourceTree = "<group>"; };
 		5474A48318C5C7AE0073B2FE /* btn_input_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_input_diary.png; sourceTree = "<group>"; };
 		5474A48518C5C8040073B2FE /* btn_photo3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_photo3_diary.png; sourceTree = "<group>"; };
+		54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDiaryDeleteCell.m; sourceTree = "<group>"; };
+		54A9288118C95D0200C9D366 /* NewDiaryDeleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDiaryDeleteCell.h; sourceTree = "<group>"; };
+		54A9288218C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDiaryDeleteTableViewCell.h; sourceTree = "<group>"; };
+		54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDiaryDeleteTableViewCell.m; sourceTree = "<group>"; };
 		54ADE07318C85B6B00B166C4 /* DiaryNewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryNewButton.h; sourceTree = "<group>"; };
 		54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryNewButton.m; sourceTree = "<group>"; };
 		54ADE07718C85D1C00B166C4 /* btn_more_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_more_diary.png; sourceTree = "<group>"; };
@@ -306,8 +312,6 @@
 		54ADE08C18C8608700B166C4 /* NewCameraControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCameraControlView.m; sourceTree = "<group>"; };
 		54ADE08D18C8608700B166C4 /* NewCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCameraViewController.h; sourceTree = "<group>"; };
 		54ADE08E18C8608700B166C4 /* NewCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCameraViewController.m; sourceTree = "<group>"; };
-		54ADE08F18C8608700B166C4 /* NewImportDiaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewImportDiaryTableViewCell.h; sourceTree = "<group>"; };
-		54ADE09018C8608700B166C4 /* NewImportDiaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewImportDiaryTableViewCell.m; sourceTree = "<group>"; };
 		54ADE09118C8608700B166C4 /* NewImportDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewImportDiaryViewController.h; sourceTree = "<group>"; };
 		54ADE09218C8608700B166C4 /* NewImportDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewImportDiaryViewController.m; sourceTree = "<group>"; };
 		54ADE09318C8608700B166C4 /* NewTextDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTextDiaryViewController.h; sourceTree = "<group>"; };
@@ -322,6 +326,8 @@
 		54ADE0A718C861B700B166C4 /* btn_text_newdiary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_text_newdiary.png; sourceTree = "<group>"; };
 		54ADE0A818C861B700B166C4 /* btn_text2_newdiary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_text2_newdiary.png; sourceTree = "<group>"; };
 		54ADE0A918C861B700B166C4 /* btn_video_newdiary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_video_newdiary.png; sourceTree = "<group>"; };
+		54ADE0B618C87E9C00B166C4 /* NewCameraShowPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCameraShowPhotosViewController.h; sourceTree = "<group>"; };
+		54ADE0B718C87E9C00B166C4 /* NewCameraShowPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCameraShowPhotosViewController.m; sourceTree = "<group>"; };
 		54B4EB2318C576E5004489DA /* AFAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimationManager.h; sourceTree = "<group>"; };
 		54B4EB2418C576E5004489DA /* AFAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimationManager.m; sourceTree = "<group>"; };
 		54B4EB2518C576E5004489DA /* CustomPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopViewController.h; sourceTree = "<group>"; };
@@ -788,8 +794,12 @@
 				54ADE08A18C8608700B166C4 /* NewAudioRecordView.m */,
 				54ADE08B18C8608700B166C4 /* NewCameraControlView.h */,
 				54ADE08C18C8608700B166C4 /* NewCameraControlView.m */,
-				54ADE08F18C8608700B166C4 /* NewImportDiaryTableViewCell.h */,
-				54ADE09018C8608700B166C4 /* NewImportDiaryTableViewCell.m */,
+				54ADE0B618C87E9C00B166C4 /* NewCameraShowPhotosViewController.h */,
+				54ADE0B718C87E9C00B166C4 /* NewCameraShowPhotosViewController.m */,
+				54A9288218C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.h */,
+				54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */,
+				54A9288118C95D0200C9D366 /* NewDiaryDeleteCell.h */,
+				54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */,
 				54ADE09518C8608700B166C4 /* TimeView.h */,
 				54ADE09618C8608700B166C4 /* TimeView.m */,
 			);
@@ -1414,6 +1424,7 @@
 				5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */,
 				14B8DF2B18BC37A30047C6B3 /* Ware.m in Sources */,
 				54CE10F318C1842C00966396 /* MJRefreshConst.m in Sources */,
+				54A9288418C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m in Sources */,
 				14B8DF2D18BC37A30047C6B3 /* RegisterForm.m in Sources */,
 				54CE10F818C1842C00966396 /* UIImage+CroppedImage.m in Sources */,
 				54CE10F618C1842C00966396 /* TextLayoutLabel.m in Sources */,
@@ -1433,6 +1444,7 @@
 				54ADE09818C8608700B166C4 /* NewAudioPlayView.m in Sources */,
 				54CE10E918C1842C00966396 /* UILabel+AdjustSize.m in Sources */,
 				54ADE09718C8608700B166C4 /* NewAudioDiaryViewController.m in Sources */,
+				54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */,
 				54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */,
 				14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */,
 				54CE10F918C1842C00966396 /* UIImage+Scale.m in Sources */,
@@ -1449,6 +1461,7 @@
 				54CE10F218C1842C00966396 /* MJRefreshBaseView.m in Sources */,
 				54CE10EC18C1842C00966396 /* SinaWeiboAuthorizeView.m in Sources */,
 				14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */,
+				54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */,
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
 				54CE112518C1BC6D00966396 /* DiaryViewController.m in Sources */,
 				54CE112418C1BC6D00966396 /* BabyInfoViewController.m in Sources */,
@@ -1463,7 +1476,6 @@
 				54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */,
 				54CE112818C1BC6D00966396 /* ShopViewController.m in Sources */,
 				54CE10E418C1842C00966396 /* AFButton.m in Sources */,
-				54ADE09D18C8608700B166C4 /* NewImportDiaryTableViewCell.m in Sources */,
 				54ADE09B18C8608700B166C4 /* NewCameraControlView.m in Sources */,
 				54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,

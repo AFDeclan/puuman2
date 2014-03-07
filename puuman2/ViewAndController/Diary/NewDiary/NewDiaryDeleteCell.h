@@ -1,5 +1,5 @@
 //
-//  NewImportDiaryTableViewCell.h
+//  NewDiaryDeleteCell.h
 //  puuman2
 //
 //  Created by Ra.（祁文龙） on 14-3-5.
@@ -7,18 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol NewImportCellDelegate;
-@interface NewImportDiaryTableViewCell : UITableViewCell
+@protocol NewDiaryDeleteCellDelegate;
+@interface NewDiaryDeleteCell : UIView
 {
     UIButton *delBtn;
     UIImageView *imgView;
 }
-@property(assign,nonatomic)id<NewImportCellDelegate> delegate;
-@property(assign,nonatomic)UIImage *image;
+@property(assign,nonatomic)id<NewDiaryDeleteCellDelegate> delegate;
+@property(assign,nonatomic)UIImage *img;
 @property(assign,nonatomic)NSInteger index;
 @end
 
-@protocol NewImportCellDelegate <NSObject>
+@protocol NewDiaryDeleteCellDelegate <NSObject>
 
 - (void)deleteWithIndex:(NSInteger)index;
 

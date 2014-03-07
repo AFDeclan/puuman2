@@ -11,8 +11,9 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "TimeView.h"
+#import "NewCameraShowPhotosViewController.h"
 
-@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate>
 {
     NewCameraControlView *controlView;
     UIImagePickerController *cameraUI;

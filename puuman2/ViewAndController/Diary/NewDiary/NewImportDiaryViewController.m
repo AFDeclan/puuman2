@@ -158,15 +158,15 @@
 {
     
     NSString * cellIdentifier = @"importColumnCell";
-    NewImportDiaryTableViewCell *cell = (NewImportDiaryTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NewDiaryDeleteTableViewCell *cell = (NewDiaryDeleteTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
     {
-        cell = [[NewImportDiaryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[NewDiaryDeleteTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.delegate = self;
         
     }
     
-    cell.image = (UIImage *)[photosArr objectAtIndex:index];
+    cell.img = (UIImage *)[photosArr objectAtIndex:index];
     cell.index =index;
     
     [cell setBackgroundColor:[UIColor whiteColor]];
@@ -184,7 +184,7 @@
     [photosTable setViewDelegate:self];
     [photosTable setViewDataSource:self];
     [_content addSubview:photosTable];
-    
+    [photosTable reloadData];
     
     
     float posX = 0;

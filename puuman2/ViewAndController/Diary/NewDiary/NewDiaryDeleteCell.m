@@ -1,26 +1,28 @@
 //
-//  NewImportDiaryTableViewCell.m
+// NewDiaryDeleteCell.m
 //  puuman2
 //
 //  Created by Ra.（祁文龙） on 14-3-5.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "NewImportDiaryTableViewCell.h"
+#import "NewDiaryDeleteCell.h"
 
-@implementation NewImportDiaryTableViewCell
+@implementation NewDiaryDeleteCell
 @synthesize index = _index;
-@synthesize image = _image;
+@synthesize img = _img;
 @synthesize delegate =_delegate;
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
         [self initialization];
     }
     return self;
 }
+
 
 - (void)initialization
 {
@@ -37,19 +39,14 @@
     
 }
 
-- (void)setImage:(UIImage *)image
+- (void)setImg:(UIImage *)img
 {
-    _image = image;
-    [imgView setImage:image];
+    _img = img;
+    [imgView setImage:img];
     
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-}
 
 - (void)deleteBtnPressed
 {

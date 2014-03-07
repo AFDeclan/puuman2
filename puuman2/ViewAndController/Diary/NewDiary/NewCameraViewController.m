@@ -11,6 +11,8 @@
 #import "UniverseConstant.h"
 #import "DiaryFileManager.h"
 #import "DiaryViewController.h"
+
+
 @interface NewCameraViewController ()
 
 @end
@@ -240,7 +242,13 @@
 
 - (void)showSampleView
 {
-
+    NewCameraShowPhotosViewController *showView =[[NewCameraShowPhotosViewController alloc] initWithNibName:nil bundle:nil];
+   [self.view addSubview:showView.view];
+    [showView setDelegate:self];
+    [showView setTitle:@"选择照片" withIcon:nil];
+    [showView setControlBtnType:kOnlyCloseButton];
+    [showView initWithPhotos:photos andphotoPaths:photoPath];
+    [showView show];
 }
 
 - (void)showAudioView
@@ -303,6 +311,19 @@
 {
     _taskInfo = taskInfo;
     [controlView setTaskInfo:taskInfo];
+}
+
+- (void)resetSampleImgWithPhotos:(NSMutableArray *)photosArr  andphotoPaths:(NSMutableArray *)pathsArr
+{
+    int num = [photosArr count];
+    photos = photosArr;
+    photoPath = pathsArr;
+    if ([photosArr count]>0) {
+        [controlView addPhoto:[photosArr objectAtIndex:num-1] andNum:num];
+    }else{
+        [controlView addPhoto:nil andNum:0];
+    }
+    
 }
 
 @end

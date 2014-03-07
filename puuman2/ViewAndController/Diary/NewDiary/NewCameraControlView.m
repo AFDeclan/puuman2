@@ -155,6 +155,8 @@
     }else if (num == 2){
         
         [audioBtn setAlpha:0];
+    }else if (num == 0){
+        [sampleBtn setAlpha:0];
     }
     
 
