@@ -15,9 +15,10 @@
     UILabel *_titleLabel;
     AFTextImgButton *_closeBtn;
     AFTextImgButton *_finishBtn;
+    NSTimer *timer;
 }
 @property(assign,nonatomic)ControlBtnType controlBtnType;
-
++ (void)showAlertWithTitle:(NSString *)title andContrlType:(ControlBtnType)controlBtnType;
 - (void)showWithTitle:(NSString *)title;
 - (void)show;
 - (void)finishOut;

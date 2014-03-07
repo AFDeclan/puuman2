@@ -52,7 +52,7 @@
 - (void)setVerticalFrame
 {
     [super setVerticalFrame];
-    [_content setFrame:CGRectMake(32, 16, 704, 608)];
+    [_content setFrame:CGRectMake(32, 64, 704, 608)];
     
     
 }

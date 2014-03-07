@@ -11,7 +11,9 @@
 typedef enum
 {
     kButtonTypeOne,
-    kButtonTypeTwo
+    kButtonTypeTwo,
+    kButtonTypeThree,
+    kButtonTypeFour
     
 }TextImgBtnType;
 @interface AFTextImgButton : UIButton
@@ -19,7 +21,11 @@ typedef enum
     UILabel *_titleLabel;
     UIImageView *_iconView;
     TextImgBtnType btnType;
+    UIImageView *mark;
+    UIImageView *backgroundImgView;
 }
+- (void)selected;
+- (void)unSelected;
 @property (nonatomic, assign)  UIColor *titleLabelColor;
 
 - (void)setTitle:(NSString *)title andImg:(UIImage *)image andButtonType:(TextImgBtnType)type;

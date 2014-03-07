@@ -91,6 +91,14 @@
             [self initCloseBtn];
             break;
         case kNoneButton:
+        {
+            if (timer) {
+                [timer invalidate];
+                timer = nil;
+            }
+            timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hidden) userInfo:nil repeats:NO];
+            
+        }
             break;
         default:
             break;
@@ -163,4 +171,12 @@
     [self.view removeFromSuperview];
 }
 
++ (void)showAlertWithTitle:(NSString *)title andContrlType:(ControlBtnType)controlBtnType
+{
+    CustomAlertViewController *alert  = [[CustomAlertViewController alloc] initWithNibName:nil bundle:nil];
+    [alert setControlBtnType:controlBtnType];
+    [[MainTabBarController sharedMainViewController].view addSubview:alert.view];
+    [alert showWithTitle:title];
+    
+}
 @end
