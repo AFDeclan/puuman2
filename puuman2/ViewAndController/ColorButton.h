@@ -24,5 +24,6 @@ typedef enum{
 {
 
 }
-- (void)initWithTitle:(NSString *)str andButtonType:(ColorBtnType)type;
+- (void)initWithTitle:(NSString *)str  andButtonType:(ColorBtnType)type;
+- (void)initWithTitle:(NSString *)str andIcon:(UIImage *)img andButtonType:(ColorBtnType)type;
 @end

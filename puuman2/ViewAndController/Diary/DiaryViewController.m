@@ -48,12 +48,15 @@ static DiaryViewController * instance;
 
 - (void)initContent
 {
+    
+    diaryTableVC = [[DiaryTableViewController alloc] init];
+    [self.view addSubview:diaryTableVC.view];
+
+    
     newBtn = [[DiaryNewButton alloc] initWithFrame:CGRectMake(0, 0, 56, 88)];
     [self.view addSubview:newBtn];
     [newBtn setCommonBtnType:[self newBtnType]];
     //new Diary Btns
-    
-    
     for (int i=0; i<5; i++)
     {
        // newDiaryBtn[i] = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -87,6 +90,7 @@ static DiaryViewController * instance;
 //竖屏
 -(void)setVerticalFrame
 {
+    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 1024)];
     [newBtn setFrame:CGRectMake(680, 904, 56, 88)];
     
     if ([newBtn directionChangedWithVertical:YES] &&isFirst == NO) {
@@ -152,6 +156,7 @@ static DiaryViewController * instance;
 //横屏
 -(void)setHorizontalFrame
 {
+    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 768)];
     [newBtn setFrame:CGRectMake(936, 648, 56, 88)];
     
     if ([newBtn directionChangedWithVertical:NO]&&isFirst == NO) {

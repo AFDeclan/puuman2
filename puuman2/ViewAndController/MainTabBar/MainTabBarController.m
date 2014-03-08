@@ -8,7 +8,11 @@
 
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
-
+#import "BabyData.h"
+#import "TaskModel.h"
+#import "PumanBookModel.h"
+#import "CartModel.h"
+#import "SocialNetwork.h"
 
 @interface MainTabBarController ()
 
@@ -152,7 +156,20 @@ static MainTabBarController *instance;
 
 - (void)userChanged
 {
-    [loginViewC loginSucceed];
+    if (loginViewC) {
+         [loginViewC loginSucceed];
+    }
+   
+    [[BabyData sharedBabyData] reloadData];
+    [[TaskModel sharedTaskModel] updateTasks];
+    [[PumanBookModel bookModel] initialize];
+    [[CartModel sharedCart] update:NO];
+    [SocialNetwork initSocialNetwork];
+    [[DiaryModel sharedDiaryModel] reloadData];
+    PostNotification(Noti_ReloadDiaryTable, nil);
+    //    [[JoinView sharedJoinView] refreshStaus];
+    [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
+
 }
 
 - (void)showSettingView

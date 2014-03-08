@@ -70,7 +70,7 @@
     SetViewLeftCenter(_registerBtn, 592, 443);
     
     _loginBtn = [[ColorButton alloc] init];
-    [_loginBtn initWithTitle:@"登陆" andButtonType:kBlueLeftDown];
+    [_loginBtn initWithTitle:@"登陆"  andButtonType:kBlueLeftDown];
     [_loginBtn addTarget:self action:@selector(loginButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_loginBtn];
      SetViewLeftCenter(_loginBtn, 592, 443);

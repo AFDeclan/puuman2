@@ -25,9 +25,15 @@
     return [self initWithFrame:CGRectMake(0, 0, 112, 40)];
 }
 
-- (void)initWithTitle:(NSString *)str andButtonType:(ColorBtnType)type
+- (void)initWithTitle:(NSString *)str  andButtonType:(ColorBtnType)type
 {
-    [self setTitle:str andImg:nil andButtonType:kButtonTypeTwo];
+    [self initWithTitle:str andIcon:nil andButtonType:type];
+}
+
+
+- (void)initWithTitle:(NSString *)str  andIcon:(UIImage *)img andButtonType:(ColorBtnType)type
+{
+    [self setTitle:str andImg:img andButtonType:kButtonTypeTwo];
     
     [self setBackgroundColor:[UIColor clearColor]];
     switch (type) {
