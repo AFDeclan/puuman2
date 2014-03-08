@@ -16,7 +16,7 @@
 #define kLoginsubViewWidth 704
 #define kLoginsubViewHeight 1024
 
-@interface LoginViewController : CustomPopViewController<LoginStartViewDelegate,EndViewDelegate>
+@interface LoginViewController : CustomPopViewController<LoginStartViewDelegate,EndViewDelegate,LoginPregnancyViewDelegate,LoginBirthViewDelegate>
 {
     UIScrollView *changeView;
     LoginStartView *startView;
@@ -29,6 +29,7 @@
     BOOL isBirthView;
     BOOL modifyMode;
     UIView *protocolNotiView;
+    CGRect myFrame;
 }
 - (void)loginSetting;
 - (void)loginSucceed;

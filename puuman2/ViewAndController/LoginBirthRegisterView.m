@@ -14,7 +14,7 @@
 
 #define _NAME_MAX_LENGTH_ 30
 @implementation LoginBirthRegisterView
-
+@synthesize delegate = _delegate;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -61,13 +61,13 @@
     name_textfield.delegate = self;
     [self addSubview:name_textfield];
      boy = [[AFTextImgButton alloc] initWithFrame:CGRectMake(224, 312, 120, 48)];
-    [boy setTitle:@"男宝宝" andImg:[UIImage imageNamed:@"icon_male_baby.png"] andButtonType:kButtonTypeOne];
+    [boy setTitle:@"男宝宝" andImg:[UIImage imageNamed:@"icon_male_baby.png"] andButtonType:kButtonTypeTwo];
     [boy setBackgroundColor:PMColor5];
     [boy addTarget:self action:@selector(gender:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:boy];
     
     girl = [[AFTextImgButton alloc] initWithFrame:CGRectMake(360, 312, 120, 48)];
-    [girl setTitle:@"女宝宝" andImg:[UIImage imageNamed:@"icon_female_baby.png"] andButtonType:kButtonTypeOne];
+    [girl setTitle:@"女宝宝" andImg:[UIImage imageNamed:@"icon_female_baby.png"] andButtonType:kButtonTypeTwo];
     [girl addTarget:self action:@selector(gender:) forControlEvents:UIControlEventTouchUpInside];
     [girl setBackgroundColor:PMColor5];
     [self addSubview:girl];
@@ -118,6 +118,13 @@
       
         isAllowEdit = NO;
     }
+   
+    if (range.length == 1 && range.location == 0) {
+        [self isFinishedwithNameHas:NO];
+    }else{
+        [self isFinishedwithNameHas:YES];
+    }
+    
     return isAllowEdit;
 }
 - (BOOL)textFieldShouldClear:(UITextField *)textField
@@ -133,7 +140,7 @@
 
 - (void)gender:(UIButton *)sender
 {
-
+    
     if (sender==girl) {
         babyType = kGenderGirl;
         [girl selected];
@@ -144,7 +151,7 @@
         [boy selected];
         [girl unSelected];
     }
-    
+    [self isFinished];
     [calendarView setAlpha:0];
     [name_textfield resignFirstResponder];
     
@@ -184,11 +191,13 @@
     
     
 }
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     [calendarView setAlpha:0];
     return YES;
 }
+
 - (void)calendar:(BirthCalendar *)calendar selectedButton:(DateButton *)sender
 {
     if ([calendar dateIsAvailable:sender.date])
@@ -206,6 +215,7 @@
         calendar.selectedDate = nil;
         birthday = nil;
     }
+    [self isFinished];
 }
 - (void)selectDate:(NSDate *)date
 {
@@ -214,12 +224,24 @@
     age.text = [dateFormatter stringFromDate:date];
     birthday = date;
 }
-- (BOOL)isFinished
+- (void)isFinished
 {
     if (birthday != nil &&
         ![[name_textfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] isEqualToString:@""] && babyType != kGenderNone) {
-        return YES;
+        [_delegate isFinished];
+    }else{
+      [_delegate unFinished];
     }
-    return NO;
+  
 }
+
+- (void)isFinishedwithNameHas:(BOOL)hasName
+{
+    if (hasName&& babyType != kGenderNone&&birthday != nil) {
+        [_delegate isFinished];
+    }else{
+        [_delegate unFinished];
+    }
+}
+
 @end

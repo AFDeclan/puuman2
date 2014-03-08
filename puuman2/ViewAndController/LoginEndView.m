@@ -8,12 +8,11 @@
 
 #import "LoginEndView.h"
 #import "ColorsAndFonts.h"
-#import "CustomAlertViewController.h"
 #import "UserInfo.h"
 #import "MainTabBarController.h"
 #import "DateFormatter.h"
 #import "RegisterForm.h"
-//#import "ProtocalViewController.h"
+
 
 @implementation LoginEndView
 @synthesize delegate = _delegate;
@@ -96,6 +95,7 @@
 
 - (void)forgetBtnPressed:(UIButton *)sender
 {
+    [self resigntextField];
     [MobClick event:umeng_event_click label:@"Forget_LoginEndView"];
     [_delegate forget];
 }
@@ -124,6 +124,7 @@
 
 - (void)inviteBtnClicked
 {
+     [self resigntextField];
     _hasInviteCode = !_hasInviteCode;
     [UIView animateWithDuration:0.2 animations:^{
         self.alpha = 0;

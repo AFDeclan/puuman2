@@ -15,7 +15,7 @@
 #define _NAME_MAX_LENGTH_ 30
 
 @implementation LoginPregnancyView
-
+@synthesize delegate = _delegate;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -159,6 +159,7 @@
         calendar.selectedDate = nil;
         _date = nil;
     }
+    [self isFinished];
 }
 - (void)selectDate:(NSDate *)date
 {
@@ -167,11 +168,13 @@
     birthday.text = [dateFormatter stringFromDate:date];
     _date = date;
 }
-- (BOOL)isFinished
+- (void)isFinished
 {
     if (_date != nil) {
-        return YES;
+        [_delegate isFinished];
+    }else{
+      [_delegate unFinished];
     }
-    return NO;
+  
 }
 @end

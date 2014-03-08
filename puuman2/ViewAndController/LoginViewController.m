@@ -13,7 +13,7 @@
 #import "TaskModel.h"
 #import "BabyData.h"
 #import "ProtocalPuumanViewController.h"
-
+#import "MainTabBarController.h"
 
 @interface LoginViewController ()
 
@@ -57,6 +57,7 @@
             break;
     }
 }
+
 -(void)setHorizontalFrame
 {
     [super setHorizontalFrame];
@@ -66,7 +67,9 @@
     if (kLoginPregnancyRegisterView) {
         [pregnancy setHorizontalFrame];
     }
+    myFrame = _content.frame;
 }
+
 -(void)setVerticalFrame
 {
     [super setVerticalFrame];
@@ -76,12 +79,62 @@
     if (kLoginPregnancyRegisterView) {
         [pregnancy setVerticalFrame];
     }
+    myFrame = _content.frame;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+
 	// Do any additional setup after loading the view.
 
+}
+
+
+
+
+- (void)keyboardWillShow:(NSNotification *)notif
+{
+    
+    
+    if (![MainTabBarController sharedMainViewController].isVertical) {
+         CGRect kframe = myFrame;
+        CGRect rect = [[notif.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        NSTimeInterval animationDuration = [[[notif userInfo] valueForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+       // if (loginView == kLoginLoadView ||loginView == kLoginEndView) {
+            float height = rect.size.height>rect.size.width ?rect.size.width:rect.size.height;
+            height = height - 272>0 ?height - 272 :0;
+            
+            kframe.origin.y = myFrame.origin.y-height;
+            [UIView animateWithDuration:animationDuration animations:^{
+                _content.frame = kframe;
+            }];
+      //  }
+    }
+    
+}
+
+- (void)keyboardWillHide:(NSNotification *)notif
+{
+    if (![MainTabBarController sharedMainViewController].isVertical)
+    {
+        NSTimeInterval animationDuration = [[[notif userInfo] valueForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+      //  if (loginView == kLoginLoadView ||loginView == kLoginEndView) {
+            [UIView animateWithDuration:animationDuration animations:^{
+                _content.frame = myFrame;
+            }];
+     //   }
+       
+    }
 }
 
 - (void)loginSetting
@@ -164,7 +217,7 @@
         case kLoginCodeView:
             loginView = kLoginLoadView;
             [changeView scrollRectToVisible:loadView.frame animated:YES];
-            //[loginCode removeFromSuperview];
+            [loginCode removeFromSuperview];
             break;
         default:
             [_finishBtn setAlpha:0];
@@ -181,9 +234,8 @@
 {
     switch (loginView) {
         case kLoginBirthRegisterView:
+        {
             [birth resigntextField];
-            if ([birth isFinished]) {
-                
                 if (modifyMode)
                 {
                     NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
@@ -224,16 +276,12 @@
                 [changeView scrollRectToVisible:endView.frame animated:YES];
                 [_finishBtn setAlpha:0];
                 [_closeBtn setAlpha:1];
-                
-            }else
-            {
-             //   [CustomAlertView showInView:nil content:@"您还没有填好所有的信息喔~"];
-            }
+    }
             break;
         case kLoginPregnancyRegisterView:
+        {
             [pregnancy resigntextField];
-            if ([pregnancy isFinished]) {
-                
+            
                 if (modifyMode)
                 {
                     NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
@@ -263,12 +311,8 @@
                 [changeView scrollRectToVisible:endView.frame animated:YES];
                 [_finishBtn setAlpha:0];
                 [_closeBtn setAlpha:1];
-                
-            }else
-            {
-              //  [CustomAlertView showInView:nil content:@"您还没有填好所有的信息喔~"];
-            }
-            
+           
+        }
             break;
         default:
             break;
@@ -311,7 +355,8 @@
                     break;
             }
             [changeView scrollRectToVisible:birth.frame animated:YES];
-            [_finishBtn setAlpha:1];
+            [_finishBtn setAlpha:0.5];
+            [_finishBtn setEnabled:NO];
             [_closeBtn setAlpha:1];
             break;
         case kLoginPregnancyRegisterView:
@@ -325,7 +370,8 @@
                     break;
             }
             [changeView scrollRectToVisible:pregnancy.frame animated:YES];
-            [_finishBtn setAlpha:1];
+            [_finishBtn setAlpha:0.5];
+            [_finishBtn setEnabled:NO];
             [_closeBtn setAlpha:1];
             break;
         default:
@@ -347,6 +393,7 @@
     [pregnancy setAlpha:0];
     [loadView setBackgroundColor:[UIColor clearColor]];
     [changeView addSubview:loadView];
+   
 }
 
 - (void)initBirthRegisterView
@@ -354,8 +401,10 @@
     loginView = kLoginBirthRegisterView;
     if (!birth) {
         birth = [[LoginBirthRegisterView alloc] initWithFrame:CGRectMake(kLoginsubViewWidth, 0, kLoginsubViewWidth, kLoginsubViewHeight)];
+        [birth setDelegate:self];
         
     }
+    
     [birth setAlpha:1];
     [loadView setAlpha:0];
     [pregnancy setAlpha:0];
@@ -368,6 +417,7 @@
     loginView = kLoginPregnancyRegisterView;
     if (!pregnancy) {
         pregnancy = [[LoginPregnancyView alloc] initWithFrame:CGRectMake(kLoginsubViewWidth, 0, kLoginsubViewWidth, kLoginsubViewHeight)];
+        [pregnancy setDelegate:self];
     }
     [birth setAlpha:0];
     [loadView setAlpha:0];
@@ -390,6 +440,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         [protocolNotiView setAlpha:1];
     }];
+    
     
 }
 
@@ -450,6 +501,20 @@
 
 - (void)loginSucceed
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     [super finishBtnPressed];
+}
+
+- (void)isFinished
+{
+    [_finishBtn setAlpha:1];
+    [_finishBtn setEnabled:YES];
+}
+
+- (void)unFinished
+{
+    [_finishBtn setAlpha:0.5];
+    [_finishBtn setEnabled:NO];
 }
 @end

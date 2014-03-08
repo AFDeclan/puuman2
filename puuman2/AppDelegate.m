@@ -12,6 +12,7 @@
 #import "ShopViewController.h"
 #import "BabyInfoViewController.h"
 #import "SocialViewController.h"
+#import "Models.h"
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
 
@@ -21,6 +22,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self initWithContent];
+    [self initialUmeng];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -39,6 +41,49 @@
     [_rootTabBarC addChildViewController:shopVC];
     self.window.rootViewController = _rootTabBarC;
     
+}
+
+#pragma mark - Refresh Net
+- (void)refreshNet
+{
+    [[TaskModel sharedTaskModel] updateTasks];
+    [[CartModel sharedCart] update:YES];
+    [[UserInfo sharedUserInfo] updateUserInfo];
+    [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
+    [MobClick updateOnlineConfig];
+    [MobClick checkUpdateWithDelegate:self selector:@selector(appUpdate:)];
+    PostNotification(Noti_Refresh, nil);
+}
+
+#pragma mark - Umeng and Update
+
+- (void)initialUmeng
+{
+    //Umeng
+    [MobClick startWithAppkey:umeng_appkey reportPolicy:(ReportPolicy) BATCH channelId:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onlineConfigCallBack:) name:UMOnlineConfigDidFinishedNotification object:nil];
+    
+}
+
+- (void)onlineConfigCallBack:(NSNotification *)notification {
+    NSLog(@"online config has fininshed and params = %@", notification.userInfo);
+    NSString *noti = [notification.userInfo valueForKey:@"notification"];
+    if (noti && ![noti isEqualToString:@"none"])
+    {
+    }
+}
+
+- (void)appUpdate:(NSDictionary *)appInfo
+{
+    if ([[appInfo valueForKey:@"update"] boolValue])
+    {
+        NSString *newVersion = [appInfo valueForKey:@"version"];
+        NSString *hint = [NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。", newVersion];
+        NSString *trackViewUrl = [appInfo valueForKey:@"path"];
+//        [CustomAlertView showInView:nil content:hint confirmHandler:^{
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+//        }];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -60,6 +105,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    [self refreshNet];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
