@@ -197,7 +197,7 @@
                         [meta setValue:@"女宝宝" forKey:uMeta_gender];
                     if ([[UserInfo sharedUserInfo] uploadBabyMeta:meta])
                     {
-                        [CustomAlertViewController showAlertWithTitle:@"宝宝信息修改成功！~" andContrlType:kNoneButton];
+//                        [CustomAlertViewController showAlertWithTitle:@"宝宝信息修改成功！~" andContrlType:kNoneButton];
                        // [[DiaryViewController sharedDiaryViewController] diaryTableReload];
                        // [[TaskModel sharedTaskModel] updateTasks];
                         [self dismiss];
@@ -448,4 +448,8 @@
     [endView resigntextField];
 }
 
+- (void)loginSucceed
+{
+    [super finishBtnPressed];
+}
 @end

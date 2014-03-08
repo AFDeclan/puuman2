@@ -169,7 +169,7 @@
         if (![self passWordIsRight])
         {
 
-            [CustomAlertViewController showAlertWithTitle:@"请输入密码" andContrlType:kNoneButton];
+          //  [CustomAlertViewController showAlertWithTitle:@"请输入密码" andContrlType:kNoneButton];
             return;
         }
         enum userActionResult ret = [[RegisterForm sharedForm] registerUserWithInvitationCode:_userField.text password:_pwdField.text];

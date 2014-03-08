@@ -74,37 +74,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setControlBtnType:(ControlBtnType)controlBtnType
+- (void)setStyle:(AlertStyle)style
 {
-    _controlBtnType = controlBtnType;
-    switch (controlBtnType) {
-        case kCloseAndFinishButton:
-        {
-            [self initCloseAndFinishBtn];
-        }
-            
-            break;
-        case kOnlyFinishButton:
+    _style = style;
+    switch (style) {
+        case ConfirmRight:
             [self initFinishBtn];
             break;
-        case kOnlyCloseButton:
+        case ConfirmError:
             [self initCloseBtn];
             break;
-        case kNoneButton:
-        {
-            if (timer) {
-                [timer invalidate];
-                timer = nil;
-            }
-            timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hidden) userInfo:nil repeats:NO];
-            
-        }
+        case Question:
+            [self initCloseAndFinishBtn];
             break;
         default:
             break;
     }
-    
 }
+
 - (void)initCloseAndFinishBtn
 {
     _closeBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 192, 224, 64)];
@@ -140,11 +127,13 @@
 
 - (void)closeBtnPressed
 {
+    if (self.cancelHandler) self.cancelHandler();
     [self hidden];
 }
 
 - (void)finishBtnPressed
 {
+    if (self.confirmHandler) self.confirmHandler();
     [self hidden];
 }
 
@@ -171,12 +160,36 @@
     [self.view removeFromSuperview];
 }
 
-+ (void)showAlertWithTitle:(NSString *)title andContrlType:(ControlBtnType)controlBtnType
+
++ (void)showAlertWithTitle:(NSString *)title confirmHandler:(CustomAlertViewHandler)confirm cancelHandler:(CustomAlertViewHandler)cancel
 {
     CustomAlertViewController *alert  = [[CustomAlertViewController alloc] initWithNibName:nil bundle:nil];
-    [alert setControlBtnType:controlBtnType];
+    [alert setStyle:Question];
+    alert.confirmHandler = confirm;
+    alert.cancelHandler = cancel;
     [[MainTabBarController sharedMainViewController].view addSubview:alert.view];
     [alert showWithTitle:title];
-    
+
+
+}
++ (void)showAlertWithTitle:(NSString *)title confirmErrorHandler:(CustomAlertViewHandler)confirm
+{
+    CustomAlertViewController *alert  = [[CustomAlertViewController alloc] initWithNibName:nil bundle:nil];
+    [alert setStyle:ConfirmError];
+    alert.confirmHandler = nil;
+    alert.cancelHandler = confirm;
+    [[MainTabBarController sharedMainViewController].view addSubview:alert.view];
+    [alert showWithTitle:title];
+
+}
++ (void)showAlertWithTitle:(NSString *)title confirmRightHandler:(CustomAlertViewHandler)confirm
+{
+    CustomAlertViewController *alert  = [[CustomAlertViewController alloc] initWithNibName:nil bundle:nil];
+    [alert setStyle:ConfirmRight];
+    alert.confirmHandler = confirm;
+    alert.cancelHandler = nil;
+    [[MainTabBarController sharedMainViewController].view addSubview:alert.view];
+    [alert showWithTitle:title];
+
 }
 @end

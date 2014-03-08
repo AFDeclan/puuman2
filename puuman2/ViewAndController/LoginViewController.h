@@ -31,4 +31,5 @@
     UIView *protocolNotiView;
 }
 - (void)loginSetting;
+- (void)loginSucceed;
 @end

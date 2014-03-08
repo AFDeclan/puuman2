@@ -93,7 +93,14 @@
             [self adjustLayoutRight];
         }
             break;
-            
+        case kButtonTypeFive:
+        {
+            [_iconView setFrame:CGRectMake(37, 32, 32, 22)];
+            [_titleLabel setFrame:CGRectMake(0, 64, 106, 24)];
+            [_titleLabel setFont:PMFont2];
+            [self setBackgroundColor:[UIColor whiteColor]];
+        }
+            break;
         default:
             break;
     }

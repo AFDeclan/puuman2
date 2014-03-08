@@ -78,7 +78,7 @@
     NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
     [self.view addSubview:chooseView.view];
     [chooseView setDelegate:self];
-    [chooseView setControlBtnType:kOnlyCloseButton];
+    [chooseView setStyle:Question];
     [chooseView show];
     
 }

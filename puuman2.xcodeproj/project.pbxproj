@@ -96,6 +96,9 @@
 		5474A48218C5C0840073B2FE /* btn_close2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48118C5C0840073B2FE /* btn_close2.png */; };
 		5474A48418C5C7AE0073B2FE /* btn_input_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48318C5C7AE0073B2FE /* btn_input_diary.png */; };
 		5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48518C5C8040073B2FE /* btn_photo3_diary.png */; };
+		549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549B62C618CABC5A00AFEEAB /* CustomNotiViewController.m */; };
+		549B62CB18CABEAB00AFEEAB /* circle_status.png in Resources */ = {isa = PBXBuildFile; fileRef = 549B62CA18CABEAB00AFEEAB /* circle_status.png */; };
+		549B62CD18CAC79800AFEEAB /* check_status.png in Resources */ = {isa = PBXBuildFile; fileRef = 549B62CC18CAC79800AFEEAB /* check_status.png */; };
 		54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */; };
 		54A9288418C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */; };
 		54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */; };
@@ -374,6 +377,10 @@
 		5474A48118C5C0840073B2FE /* btn_close2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close2.png; sourceTree = "<group>"; };
 		5474A48318C5C7AE0073B2FE /* btn_input_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_input_diary.png; sourceTree = "<group>"; };
 		5474A48518C5C8040073B2FE /* btn_photo3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_photo3_diary.png; sourceTree = "<group>"; };
+		549B62C518CABC5A00AFEEAB /* CustomNotiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNotiViewController.h; sourceTree = "<group>"; };
+		549B62C618CABC5A00AFEEAB /* CustomNotiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNotiViewController.m; sourceTree = "<group>"; };
+		549B62CA18CABEAB00AFEEAB /* circle_status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_status.png; sourceTree = "<group>"; };
+		549B62CC18CAC79800AFEEAB /* check_status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_status.png; sourceTree = "<group>"; };
 		54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDiaryDeleteCell.m; sourceTree = "<group>"; };
 		54A9288118C95D0200C9D366 /* NewDiaryDeleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDiaryDeleteCell.h; sourceTree = "<group>"; };
 		54A9288218C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDiaryDeleteTableViewCell.h; sourceTree = "<group>"; };
@@ -1007,6 +1014,8 @@
 			children = (
 				54B4EB4018C58D9E004489DA /* CustomAlertViewController.h */,
 				54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */,
+				549B62C518CABC5A00AFEEAB /* CustomNotiViewController.h */,
+				549B62C618CABC5A00AFEEAB /* CustomNotiViewController.m */,
 				5474A47518C5A40A0073B2FE /* NewTextPhotoSelectedViewController.h */,
 				5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */,
 			);
@@ -1333,6 +1342,8 @@
 		54F1D10018C48AF80005CDD9 /* CustomPopImage */ = {
 			isa = PBXGroup;
 			children = (
+				549B62CC18CAC79800AFEEAB /* check_status.png */,
+				549B62CA18CABEAB00AFEEAB /* circle_status.png */,
 				54F1D10918C48B8B0005CDD9 /* icon_info_diary.png */,
 				54F1D10118C48B340005CDD9 /* bg_prompt.png */,
 				54F1D10218C48B340005CDD9 /* bg_subpage.png */,
@@ -1485,6 +1496,7 @@
 				54F1D12B18C48FA50005CDD9 /* block_photo_diary.png in Resources */,
 				5463759018C98493004B11EF /* tri_blue_down.png in Resources */,
 				54ADE08018C85D1C00B166C4 /* btn2_input_diary.png in Resources */,
+				549B62CD18CAC79800AFEEAB /* check_status.png in Resources */,
 				54F1D13518C48FA50005CDD9 /* btn_video_diary.png in Resources */,
 				546375BC18C9AB36004B11EF /* tri_login_diary.png in Resources */,
 				54ADE0B218C861B700B166C4 /* btn_video_newdiary.png in Resources */,
@@ -1521,6 +1533,7 @@
 				54CE115D18C1C7BF00966396 /* bg_prompt.png in Resources */,
 				54CE116618C1C7BF00966396 /* btn_close1.png in Resources */,
 				5463759B18C98493004B11EF /* tri_white_up.png in Resources */,
+				549B62CB18CABEAB00AFEEAB /* circle_status.png in Resources */,
 				54F1D10A18C48B8B0005CDD9 /* icon_info_diary.png in Resources */,
 				546375B918C9A2C2004B11EF /* icon_female_baby.png in Resources */,
 				5463759618C98493004B11EF /* tri_gray_right.png in Resources */,
@@ -1672,6 +1685,7 @@
 				54CE10F218C1842C00966396 /* MJRefreshBaseView.m in Sources */,
 				54CE10EC18C1842C00966396 /* SinaWeiboAuthorizeView.m in Sources */,
 				14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */,
+				549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */,
 				54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */,
 				546375CE18C9D011004B11EF /* ProtocalPuumanViewController.m in Sources */,
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
