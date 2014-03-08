@@ -96,7 +96,7 @@ static TaskCell * instance;
     [textScrollView setContentSize:CGSizeMake([[TaskModel sharedTaskModel] taskCount]*416, 192)];
     [self.contentView addSubview:textScrollView];
 
-    pageControl = [[AFPageControl alloc] initWithFrame:CGRectMake(112, 264, 416, 6)];
+    pageControl = [[AFPageControl alloc] initWithFrame:CGRectMake(112, 300, 416, 6)];
     pageControl.pointSize = CGSizeMake(6, 6);
     pageControl.currentPage = taskTitle.taskIndex;
     pageControl.hidesForSinglePage = YES;
