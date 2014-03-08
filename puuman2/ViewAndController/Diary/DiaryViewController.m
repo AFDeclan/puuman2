@@ -267,20 +267,13 @@ static DiaryViewController * instance;
         }
     
     [sender setImage:[UIImage imageNamed:newDiaryBtnSelectedImageName[p]] forState:UIControlStateNormal];
-    [self showNewDiaryViewWithType:p];
+    [self showNewDiaryViewWithType:p withTaskInfo:nil];
     
 }
 
-- (void)showNewDiaryViewWithType:(NewButtonType)type
+- (void)showNewDiaryViewWithType:(NewButtonType)type withTaskInfo:(NSDictionary *)info
 {
-    
 
-    
-
-    
-    
-
-    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSInteger uid = [UserInfo sharedUserInfo].UID;
     [newBtn hiddenBtns];
@@ -296,6 +289,7 @@ static DiaryViewController * instance;
             [[MainTabBarController sharedMainViewController].view addSubview:popView.view];
             [popView setControlBtnType:kCloseAndFinishButton];
             [popView setTitle:@"传照片" withIcon:[UIImage imageNamed:@"icon_input_diary.png"]];
+            
             [popView show];
         }
             break;
@@ -309,7 +303,9 @@ static DiaryViewController * instance;
             [[MainTabBarController sharedMainViewController].view addSubview:popView.view];
             [popView setControlBtnType:kCloseAndFinishButton];
             [popView setTitle:@"写日记" withIcon:[UIImage imageNamed:@"icon_text2_diary.png"]];
+            [popView setTaskInfo:info];
             [popView show];
+            
         }
             break;
         case AudioDiary:
@@ -321,6 +317,7 @@ static DiaryViewController * instance;
             [[MainTabBarController sharedMainViewController].view addSubview:popView.view];
             [popView setControlBtnType:kCloseAndFinishButton];
             [popView setTitle:@"录声音" withIcon:[UIImage imageNamed:@"icon_audio2_diary.png"]];
+            [popView setTaskInfo:info];
             [popView show];
             
         }
@@ -332,6 +329,7 @@ static DiaryViewController * instance;
             [userDefaults setInteger:num+1 forKey:camerakey];
             NewCameraViewController  *popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
             self.cameraModel = YES;
+            [popView setTaskInfo:info];
             [self presentModalViewController:popView animated:YES];
         }
             return;
@@ -342,6 +340,7 @@ static DiaryViewController * instance;
             [userDefaults setInteger:num+1 forKey:videokey];
             NewCameraViewController  *popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
             self.cameraModel = NO;
+            [popView setTaskInfo:info];
             [self presentModalViewController:popView animated:YES];
         }
             return;
@@ -408,6 +407,56 @@ static DiaryViewController * instance;
 - (void)hideNewBtns
 {
     [newBtn hiddenBtns];
+}
+
+-(void)setTaskInfo:(NSDictionary *)taskInfo
+{
+    
+    
+    switch ([[taskInfo valueForKey:_task_TaskType] integerValue]) {
+        case 2:
+        case 7:
+        {
+            [self showNewDiaryViewWithType:TextDiary withTaskInfo:taskInfo];
+            break;
+        }
+        case 3:
+        {
+            
+     
+            [self showNewDiaryViewWithType:AudioDiary withTaskInfo:taskInfo];
+            
+            break;
+        }
+        case 1:
+        case 4:
+        case 6:
+        {
+            NSString *templateUrl = [taskInfo valueForKey:@"phototemplate"];
+            if (templateUrl && ![templateUrl isEqualToString:@"yes"])
+            {
+                PostNotification(Noti_ShowHud,@"照片模板下载中...");
+                FileUploader *downloader = [[FileUploader alloc] init];
+                NSData *templateData = [downloader downloadDataSynchoronusFromUrl:templateUrl];
+                PostNotification(Noti_HideHud, nil);
+                if (!templateData)
+                {
+                   // [CustomAlertView showInView:nil content:@"照片模板下载失败，请稍后再试。"];
+                    return;
+                }
+                // UIImage *templateImg = [UIImage imageWithData:templateData];
+            }
+            [self showNewDiaryViewWithType:CameraDiary withTaskInfo:taskInfo];
+            return;
+        }
+        default:
+            [ErrorLog errorLog:@"Unknown Task Type" fromFile:@"TaskCell.m" error:nil];
+            NSLog(@"Unknown Task Type: %@", [taskInfo valueForKey:_task_TaskType]);
+            break;
+    }
+    
+    
+
 }
 
 @end

@@ -240,7 +240,7 @@ static TaskCell * instance;
                 break;
         }
         
-        [startButton initWithTitle:@"资讯" andIcon:[UIImage imageNamed:iconImageName] andButtonType:kBlueLeftDown];
+        [startButton initWithTitle:@"开始" andIcon:[UIImage imageNamed:iconImageName] andButtonType:kBlueLeftDown];
        
         if ([taskInfo valueForKey:@"info"])
         {
@@ -306,8 +306,8 @@ static TaskCell * instance;
 
 - (void)didStartTask
 {
-//    NSDictionary *taskInfo = [[TaskModel sharedTaskModel] nowTaskAtIndex:taskTitle.taskIndex];
-//    [[DiaryViewController sharedDiaryViewController] setTaskInfo:taskInfo];
+    NSDictionary *taskInfo = [[TaskModel sharedTaskModel] nowTaskAtIndex:taskTitle.taskIndex];
+    [[DiaryViewController sharedDiaryViewController] setTaskInfo:taskInfo];
     
 }
 

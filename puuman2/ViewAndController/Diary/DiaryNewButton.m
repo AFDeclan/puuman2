@@ -124,7 +124,7 @@
 }
 - (void)addDiary
 {
-    [[DiaryViewController sharedDiaryViewController] showNewDiaryViewWithType:_commonBtnType];
+    [[DiaryViewController sharedDiaryViewController] showNewDiaryViewWithType:_commonBtnType withTaskInfo:nil];
 
 }
 - (BOOL)directionChangedWithVertical:(BOOL)vertical;

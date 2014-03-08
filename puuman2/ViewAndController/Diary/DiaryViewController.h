@@ -24,7 +24,7 @@
 - (void)showNewDiaryBtns;
 - (void)showNewDiaryBtnPressed;
 - (void)hideNewDiaryBtnPressed;
-- (void)showNewDiaryViewWithType:(NewButtonType)type;
+- (void)showNewDiaryViewWithType:(NewButtonType)type withTaskInfo:(NSDictionary *)info;
+- (void)setTaskInfo:(NSDictionary *)taskInfo;
 
-//- (void)hideNewDiaryBtns;
 @end
