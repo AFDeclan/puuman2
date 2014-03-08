@@ -7,6 +7,7 @@
 //
 
 #import "CustomPopViewController.h"
+#import "MainTabBarController.h"
 
 
 @interface CustomPopViewController ()

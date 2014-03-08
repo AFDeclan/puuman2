@@ -8,7 +8,6 @@
 
 #import "BabyInfoViewController.h"
 #import "AppDelegate.h"
-#import "LoginViewController.h"
 #import "MainTabBarController.h"
 
 @interface BabyInfoViewController ()
@@ -31,12 +30,7 @@
     [super viewDidLoad];
       [self.view setBackgroundColor:[UIColor clearColor]];
 	// Do any additional setup after loading the view.
-    LoginViewController *login = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:login.view];
-      [login setControlBtnType:kCloseAndFinishButton];
-    [login setTitle:@"欢迎使用扑满日记！" withIcon:nil];
-   [login loginSetting];
-    [login show];
+   
 }
 
 - (void)viewWillAppear:(BOOL)animated

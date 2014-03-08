@@ -32,6 +32,7 @@ static MainTabBarController *instance;
         // Custom initialization
         [self setDelegate:self];
         _isVertical = YES;
+        [MyNotiCenter addObserver:self selector:@selector(userChanged) name:Noti_UserLogined object:nil];
     }
     return self;
 }
@@ -40,14 +41,22 @@ static MainTabBarController *instance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.tabBar removeFromSuperview];
     [self initWithTabBar];
-   // AFCustonPopViewController *pop = [[AFCustonPopViewController alloc] init];
-    //[self.view addSubview:pop.view];
-	// Do any additional setup after loading the view.
+    userInfo = [UserInfo sharedUserInfo];
+
     
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (![userInfo loginFromUserDefault])
+    {
+        [self showLoginView];
+    }
+    else
+    {
+    }
 }
 
 - (void)initWithTabBar
@@ -129,6 +138,21 @@ static MainTabBarController *instance;
     [tabBar setHorizontalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 768)];
+}
+
+- (void)showLoginView
+{
+    loginViewC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+    [self.view addSubview:loginViewC.view];
+    [loginViewC setControlBtnType:kCloseAndFinishButton];
+    [loginViewC setTitle:@"欢迎使用扑满日记！" withIcon:nil];
+    [loginViewC loginSetting];
+    [loginViewC show];
+}
+
+- (void)userChanged
+{
+    [loginViewC loginSucceed];
 }
 
 - (void)showSettingView

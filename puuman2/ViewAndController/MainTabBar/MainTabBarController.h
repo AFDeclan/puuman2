@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MainTabBar.h"
+#import "LoginViewController.h"
+#import "UserInfo.h"
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
 
@@ -16,6 +18,8 @@
 {
     MainTabBar *tabBar;
     UIImageView *bgImgView;
+    LoginViewController *loginViewC;
+    UserInfo *userInfo;
 }
 
 @property(assign,nonatomic) BOOL isVertical;
