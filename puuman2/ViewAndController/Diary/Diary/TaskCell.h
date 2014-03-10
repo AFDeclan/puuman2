@@ -23,8 +23,6 @@
 {
     TaskTitleView *taskTitle;
     UIImageView *bgImgView;
-
-   
     UIImageView *bonusBackView;
     ColorButton *startButton;
     ColorButton *infoButton;

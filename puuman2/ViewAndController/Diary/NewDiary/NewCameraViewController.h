@@ -12,8 +12,9 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "TimeView.h"
 #import "NewCameraShowPhotosViewController.h"
+#import "CameraAudioViewController.h"
 
-@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate>
+@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate>
 {
     NewCameraControlView *controlView;
     UIImagePickerController *cameraUI;
@@ -24,6 +25,8 @@
     NSURL *movieUrl;
     MPMoviePlayerController *moviePlayer;
     TimeView *timeView;
+    NSURL *audioFileUrl;
+    CameraAudioViewController *audioView;
 }
 
 @property (retain, nonatomic) NSDictionary *taskInfo;

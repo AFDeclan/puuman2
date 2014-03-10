@@ -150,7 +150,7 @@
         
         if (self.taskInfo && ([[self.taskInfo valueForKey:_task_TaskType] integerValue] == 6 || [[self.taskInfo valueForKey:_task_ID] integerValue] == 2))
         {   //有声图任务
-            //[self audioBtnPressed:nil];
+           [self recordAudio];
         }
     }else if (num == 2){
         

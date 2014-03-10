@@ -6,21 +6,10 @@
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "CustomPopViewController.h"
-#import "CustomTextField.h"
-#import "NewAudioRecordView.h"
-#import "NewAudioPlayView.h"
+#import "AudioViewController.h"
 
-@interface NewAudioDiaryViewController : CustomPopViewController<NewAudioRecordDelegate,NewAudioPlayDelegate>
-{
-    CustomTextField *titleTextField;
-    NewAudioRecordView *record;
-    NewAudioPlayView *play;
-    UILabel *label_start;
-    UILabel *label_restart;
-    UILabel *label_stop;
-    UILabel *label_play;
-    UILabel *label_stopPlay;
-}
+
+@interface NewAudioDiaryViewController : AudioViewController
+
 @property (retain, nonatomic) NSDictionary *taskInfo;
 @end

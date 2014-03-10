@@ -138,12 +138,12 @@
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
     {
         [self setHorizontalFrame];
-       // PostNotification(NOTIFICATION_Horizontal, nil);
+        PostNotification(NOTIFICATION_Horizontal, nil);
     }
     else
     {
         [self setVerticalFrame];
-       // PostNotification(NOTIFICATION_Vertical, nil);
+        PostNotification(NOTIFICATION_Vertical, nil);
     }
 }
 
@@ -253,7 +253,15 @@
 
 - (void)showAudioView
 {
+    if (!audioView) {
+        audioView = [[CameraAudioViewController alloc] initWithNibName:nil bundle:nil];
+        [audioView setControlBtnType:kCloseAndFinishButton];
+        [audioView setTitle:@"录声音" withIcon:[UIImage imageNamed:@"icon_audio2_diary.png"]];
 
+    }
+    [self.view addSubview:audioView.view];
+    [audioView show];
+    
 }
 
 - (void) imagePickerController: (UIImagePickerController *) picker
@@ -326,4 +334,8 @@
     
 }
 
+- (void)getAudioWithUrl:(NSURL *)audioUrl
+{
+    audioFileUrl = audioUrl;
+}
 @end

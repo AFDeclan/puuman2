@@ -42,9 +42,7 @@ static TaskCell * instance;
 - (void)customInit
 {
    
-    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     self.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_diary.png"]];
-    
     bgImgView =[[UIImageView alloc] initWithFrame:CGRectMake(16, 0, 640, 112)];
     [bgImgView setImage:[UIImage imageNamed:@"paper_task1_diary.png"]];
     [bgImgView setBackgroundColor:[UIColor clearColor]];

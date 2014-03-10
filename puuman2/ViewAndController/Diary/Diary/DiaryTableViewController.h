@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "TaskCell.h"
+#import "DiaryCell.h"
+#import "TextDiaryCell.h"
 
-@interface DiaryTableViewController : UITableViewController<TaskClickDelegate>
-
+@interface DiaryTableViewController : UITableViewController<TaskClickDelegate,TextDiaryDelegate>
+{
+    NSIndexPath *selectedPath;
+}
 @end
