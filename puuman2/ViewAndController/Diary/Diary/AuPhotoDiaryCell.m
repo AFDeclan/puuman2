@@ -10,7 +10,7 @@
 #import "UniverseConstant.h"
 #import "DiaryFileManager.h"
 //#import "CustomAlertView.h"
-//#import "DetailsShowView.h"
+#import "DetailShowViewController.h"
 #import "UIImage+CroppedImage.h"
 #import "DiaryViewController.h"
 
@@ -112,8 +112,8 @@
 
 - (void)showPhoto
 {
-    
- // [DetailsShowView showPhoto:photo];
+    [DetailShowViewController showPhotoPath:[self.diaryInfo valueForKey:kFilePathName]];
+
 }
 
 - (void)prepareForReuse

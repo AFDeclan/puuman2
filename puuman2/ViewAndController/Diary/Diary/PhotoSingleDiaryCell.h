@@ -12,7 +12,7 @@
 {
     UIImageView *_imgView;
     UIButton *showBtn;
-    UIImage *photo;
+    NSString *_photoPath;
     UIImageView *titleView;
     UILabel *titleLabel;
 }

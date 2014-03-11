@@ -9,6 +9,7 @@
 #import "PhotoSingleDiaryCell.h"
 #import "DiaryFileManager.h"
 #import "UIImage+CroppedImage.h"
+#import "DetailShowViewController.h"
 
 @implementation PhotoSingleDiaryCell
 
@@ -19,7 +20,7 @@
     {
         // Initialization code
         _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
-        [_imgView setBackgroundColor:[UIColor blackColor]];
+        [_imgView setBackgroundColor:[UIColor clearColor]];
         _imgView.userInteractionEnabled = YES;
         [_content addSubview:_imgView];
         
@@ -43,8 +44,8 @@
 
 - (void)showPhoto
 {
-    if (photo) {
-    //    [DetailsShowView showPhoto:photo];
+    if (_photoPath) {
+        [DetailShowViewController showPhotoPath:_photoPath];
      }
     
 }
@@ -61,11 +62,13 @@
     NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     for (NSString *photoPath in photoPaths)
     {
-        photo = [DiaryFileManager imageForPath:photoPath];
-        if (photo != nil) {
+        _photoPath = photoPath;
+      
+        if (_photoPath != nil) {
             break;
         }
     }
+    UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
     UIImage *image  = [UIImage croppedImage:photo WithHeight:832 andWidth:832];
     [_imgView setImage:image];
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,440);

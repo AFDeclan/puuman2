@@ -11,7 +11,7 @@
 
 @interface PhotoMoreDiaryCell : DiaryCell<UIColumnViewDataSource, UIColumnViewDelegate>
 {
-    NSMutableArray *_photos;
+
     NSArray *_photoPaths;
     UIColumnView *_showColumnView;
     int selectedIndex;

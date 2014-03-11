@@ -9,6 +9,7 @@
 #import "PhotoMoreDiaryCell.h"
 #import "DiaryFileManager.h"
 #import "UIImage+CroppedImage.h"
+#import "DetailShowViewController.h"
 
 @implementation PhotoMoreDiaryCell
 
@@ -62,8 +63,10 @@
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
 {
-
-
+    if (index == selectedIndex ) {
+        [self showPhotoAtIndex:index];
+    }
+   
 
 }
 
@@ -151,6 +154,12 @@
     }
 }
 
+- (void)showPhotoAtIndex:(NSInteger)index
+{
+
+    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1];
+    
+}
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
 {

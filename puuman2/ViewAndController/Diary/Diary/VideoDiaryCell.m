@@ -10,7 +10,7 @@
 #import "MainTabBarController.h"
 #import "DiaryFileManager.h"
 #import "Device.h"
-//#import "DetailsShowView.h"
+#import "DetailShowViewController.h"
 #import "UniverseConstant.h"
 #import "UIImage+CroppedImage.h"
 
@@ -71,7 +71,7 @@
 
 - (void)playVideo
 {
-   // [DetailsShowView showVideo:[self.diaryInfo valueForKey:kFilePathName]];
+   [DetailShowViewController showVideo:[self.diaryInfo valueForKey:kFilePathName]];
 }
 
 - (void)share:(id)sender

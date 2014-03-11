@@ -11,7 +11,7 @@
 #import "DiaryModel.h"
 #import "UILabel+AdjustSize.h"
 //#import "CustomAlertView.h"
-//#import "DetailsShowView.h"
+#import "DetailShowViewController.h"
 #import "UIImage+CroppedImage.h"
 #import "DiaryViewController.h"
 #import "DiaryFileManager.h"
@@ -187,9 +187,10 @@
 }
 - (void)showPhoto
 {
-//    if (photo) {
-//        [DetailsShowView showPhoto:photo];
-//    }
+    if (photo) {
+        NSString *photoPath = [self.diaryInfo valueForKey:kFilePath2Name];
+        [DetailShowViewController showPhotoPath:photoPath];
+    }
 
 }
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr

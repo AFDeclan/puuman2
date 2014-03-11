@@ -320,6 +320,7 @@
 }
 
 
+
 - (void)saveWithImg:(UIImage *)img
 {
     NSString *path = [DiaryFileManager saveTmpPhoto:img];
