@@ -27,6 +27,7 @@
         
         _photoView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
         [_content addSubview:_photoView];
+        
         UITapGestureRecognizer *tapPhoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto)];
         [_photoView addGestureRecognizer:tapPhoto];
         [_photoView setBackgroundColor:[UIColor clearColor]];
@@ -40,9 +41,9 @@
 
         
         titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 416, 80)];
-        [titleView setImage:[UIImage imageNamed:@"block_photo_diary.png"]];
+        [titleView setImage:[UIImage imageNamed:@"bg_title_diary.png"]];
         [titleView setBackgroundColor:[UIColor clearColor]];
-        [_content bringSubviewToFront:titleView];
+        [_photoView addSubview:titleView];
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 416, 80)];
         [titleLabel setTextAlignment:NSTextAlignmentRight];
         [titleLabel setFont:PMFont1];

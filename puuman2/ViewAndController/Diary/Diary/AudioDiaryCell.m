@@ -45,15 +45,16 @@
         height += 40;
         [titleLabel setAlpha:1];
     }
-
-
+    SetViewLeftUp(playBtn, 216, 24+height);
+    height += 24+96;
+   
     //在这里调整控件坐标，填充内容
     //audio player init
     SetViewRightCenter(_delScrollView, ViewX(_delBtn), ViewY(_delBtn)+ViewHeight(_delBtn)/2);
     NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
     
     [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
-     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height+24+96);
+     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
      [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
@@ -99,12 +100,12 @@
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr 
 {
-    CGFloat height = 0;
+    CGFloat height = 120;
     if (![[diaryInfo valueForKey:kTitleName] isEqualToString:@""])
         height += 40;
     //计算高度
     
-    return height+24+96;
+    return height;
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "TextDiaryCell.h"
 #import "AuPhotoDiaryCell.h"
 #import "AudioDiaryCell.h"
+#import "VideoDiaryCell.h"
 
 @interface DiaryTableViewController : UITableViewController<TaskClickDelegate,TextDiaryDelegate>
 {

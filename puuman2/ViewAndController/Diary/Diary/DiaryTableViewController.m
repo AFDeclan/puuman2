@@ -122,6 +122,12 @@
         if (!cell)
             cell = [[AudioDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
         
+    }else if ([type isEqualToString:vType_Video])
+    {
+        identity = vType_Video;
+        cell = [tableView dequeueReusableCellWithIdentifier:identity];
+        if (!cell)
+            cell = [[VideoDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
     }else if ([type isEqualToString:vType_Photo])
     {
         if ([type2 isEqualToString:vType_Audio])

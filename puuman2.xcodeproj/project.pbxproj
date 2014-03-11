@@ -54,6 +54,8 @@
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
 		543BAEBE18CEB4EB00ED4672 /* AudioDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */; };
+		543BAEC118CEBA1800ED4672 /* VideoDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAEC018CEBA1800ED4672 /* VideoDiaryCell.m */; };
+		543BAEC518CEBE9E00ED4672 /* bg_title_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 543BAEC418CEBE9E00ED4672 /* bg_title_diary.png */; };
 		5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463755A18C96622004B11EF /* btn_pic_diary.png */; };
 		5463756B18C96B1D004B11EF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756A18C96B1D004B11EF /* LoginViewController.m */; };
 		5463756F18C96E3E004B11EF /* LoginStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756E18C96E3E004B11EF /* LoginStartView.m */; };
@@ -348,6 +350,9 @@
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		543BAEBC18CEB4EB00ED4672 /* AudioDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDiaryCell.h; sourceTree = "<group>"; };
 		543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDiaryCell.m; sourceTree = "<group>"; };
+		543BAEBF18CEBA1700ED4672 /* VideoDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDiaryCell.h; sourceTree = "<group>"; };
+		543BAEC018CEBA1800ED4672 /* VideoDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDiaryCell.m; sourceTree = "<group>"; };
+		543BAEC418CEBE9E00ED4672 /* bg_title_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_title_diary.png; sourceTree = "<group>"; };
 		5463755A18C96622004B11EF /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
 		5463756918C96B1D004B11EF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5463756A18C96B1D004B11EF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -1015,6 +1020,8 @@
 				54A8F45618CDC22C00D0D523 /* AuPhotoDiaryCell.m */,
 				543BAEBC18CEB4EB00ED4672 /* AudioDiaryCell.h */,
 				543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */,
+				543BAEBF18CEBA1700ED4672 /* VideoDiaryCell.h */,
+				543BAEC018CEBA1800ED4672 /* VideoDiaryCell.m */,
 				54A8F45818CDC27D00D0D523 /* support */,
 			);
 			name = DiaryCell;
@@ -1519,6 +1526,7 @@
 		54F1D11718C48F7F0005CDD9 /* NewDiary */ = {
 			isa = PBXGroup;
 			children = (
+				543BAEC418CEBE9E00ED4672 /* bg_title_diary.png */,
 				5474A48318C5C7AE0073B2FE /* btn_input_diary.png */,
 				54F1D11818C48FA50005CDD9 /* block_photo__h_diary.png */,
 				54F1D11918C48FA50005CDD9 /* block_photo_diary.png */,
@@ -1690,6 +1698,7 @@
 				54F1D13218C48FA50005CDD9 /* btn_play_diary.png in Resources */,
 				54D1500118CAEFD70022E1F4 /* paper_top_diary.png in Resources */,
 				54ADE0AA18C861B700B166C4 /* btn_audio_newdiary.png in Resources */,
+				543BAEC518CEBE9E00ED4672 /* bg_title_diary.png in Resources */,
 				54CE118418C1C8DC00966396 /* bg.png in Resources */,
 				54F1D12E18C48FA50005CDD9 /* btn_delete3_diary.png in Resources */,
 				5463759718C98493004B11EF /* tri_gray_up.png in Resources */,
@@ -1858,6 +1867,7 @@
 				14B8DF2718BC37A30047C6B3 /* RecomModel.m in Sources */,
 				54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */,
 				54ADE09F18C8608700B166C4 /* NewTextDiaryViewController.m in Sources */,
+				543BAEC118CEBA1800ED4672 /* VideoDiaryCell.m in Sources */,
 				14B8DF5518BC37A40047C6B3 /* UserNameCheck.m in Sources */,
 				14B8DF1E18BC37A30047C6B3 /* DiaryFileManager.m in Sources */,
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,

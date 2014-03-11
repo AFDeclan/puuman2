@@ -10,6 +10,7 @@
 #import "TextDiaryCell.h"
 #import "AuPhotoDiaryCell.h"
 #import "AudioDiaryCell.h"
+#import "VideoDiaryCell.h"
 
 @implementation DiaryCell
 @synthesize diaryInfo = _diaryInfo;
@@ -306,7 +307,7 @@
         height += [AudioDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
     }else if ([type isEqualToString:vType_Video])
     {
-            // height += [VideoDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+        height += [VideoDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
     }
         return height;
 }
