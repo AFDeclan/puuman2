@@ -119,6 +119,12 @@
     [self.contentView addSubview:_delScrollView];
     SetViewLeftUp(noti, width, 0);
     [_delScrollView addSubview:noti];
+    if ([_diaryInfo valueForKey:kSampleDiary])
+    {
+        [_delBtn setEnabled:NO];
+    }else{
+        [_delBtn setEnabled:YES];
+    }
 
 
 }
@@ -225,7 +231,12 @@
         _fromLabel.text = @"来自爸爸";
         _icon_from.image = [UIImage imageNamed:@"tri_blue_diary.png"];
     }
-    
+    if (![self.diaryInfo valueForKey:kSampleDiary] &&[fromIdentity isEqualToString:[UserInfo sharedUserInfo].identityStr])
+    {
+        [_delBtn setAlpha:1];
+    }else{
+        [_delBtn setAlpha:0];
+    }
 
 }
 

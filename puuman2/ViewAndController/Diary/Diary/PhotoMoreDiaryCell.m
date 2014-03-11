@@ -37,6 +37,7 @@
 
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr
 {
+    [_shareBtn setAlpha:1];
     float height = 0;
     titleLabel.text = [self.diaryInfo valueForKey:kTitleName];
     if ([[self.diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {

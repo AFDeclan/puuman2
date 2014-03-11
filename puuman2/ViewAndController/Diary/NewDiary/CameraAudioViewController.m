@@ -53,7 +53,6 @@
 
 - (void)finishOut
 {
-   
     [self.view removeFromSuperview];
 }
 

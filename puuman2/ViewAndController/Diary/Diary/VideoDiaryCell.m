@@ -61,6 +61,7 @@
     }else{
         [titleView setAlpha:1];
     }
+    [_shareBtn setAlpha:0];
     UIImage *image = [DiaryFileManager imageForVideo:[self.diaryInfo valueForKey:kFilePathName]];
     image  = [UIImage croppedImage:image WithHeight:832 andWidth:832];
     [_imgView setImage:image];
