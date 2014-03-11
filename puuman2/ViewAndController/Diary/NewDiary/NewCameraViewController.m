@@ -316,6 +316,8 @@
         [moviePlayer setFullscreen:NO];
         [moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
         [self.view addSubview:moviePlayer.view ];
+        [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:moviePlayer ];
+
     }
 }
 
@@ -327,7 +329,10 @@
     [photoPath addObject:path];
 }
 
-
+- (void)moviePlayerPlaybackDidFinish:(NSNotification*)notification
+{
+    [self finishBtnPressed];
+}
 
 - (void)setTaskInfo:(NSDictionary *)taskInfo
 {

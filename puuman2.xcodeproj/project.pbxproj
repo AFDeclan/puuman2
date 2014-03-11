@@ -59,6 +59,7 @@
 		543BAECE18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAECD18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m */; };
 		543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED018CEC30100ED4672 /* PhotoMoreDiaryCell.m */; };
 		543BAED718CEF4F300ED4672 /* DetailShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED618CEF4F300ED4672 /* DetailShowViewController.m */; };
+		543BAEDA18CF172D00ED4672 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED918CF172D00ED4672 /* VideoViewController.m */; };
 		5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463755A18C96622004B11EF /* btn_pic_diary.png */; };
 		5463756B18C96B1D004B11EF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756A18C96B1D004B11EF /* LoginViewController.m */; };
 		5463756F18C96E3E004B11EF /* LoginStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756E18C96E3E004B11EF /* LoginStartView.m */; };
@@ -362,6 +363,8 @@
 		543BAED018CEC30100ED4672 /* PhotoMoreDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoMoreDiaryCell.m; sourceTree = "<group>"; };
 		543BAED518CEF4F300ED4672 /* DetailShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailShowViewController.h; sourceTree = "<group>"; };
 		543BAED618CEF4F300ED4672 /* DetailShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailShowViewController.m; sourceTree = "<group>"; };
+		543BAED818CF172D00ED4672 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		543BAED918CF172D00ED4672 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		5463755A18C96622004B11EF /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
 		5463756918C96B1D004B11EF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5463756A18C96B1D004B11EF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -1091,6 +1094,8 @@
 				54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */,
 				54A9288118C95D0200C9D366 /* NewDiaryDeleteCell.h */,
 				54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */,
+				543BAED818CF172D00ED4672 /* VideoViewController.h */,
+				543BAED918CF172D00ED4672 /* VideoViewController.m */,
 				54ADE09518C8608700B166C4 /* TimeView.h */,
 				54ADE09618C8608700B166C4 /* TimeView.m */,
 			);
@@ -1867,6 +1872,7 @@
 				54CE10E518C1842C00966396 /* AFIconButton.m in Sources */,
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
+				543BAEDA18CF172D00ED4672 /* VideoViewController.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54CE10E618C1842C00966396 /* AFImageButton.m in Sources */,
 				54ADE0A018C8608700B166C4 /* TimeView.m in Sources */,

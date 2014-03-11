@@ -272,6 +272,18 @@
     [playCameraBtn setAlpha:1];
 }
 
-
+- (void)setVideoShowModelwithNewVideo:(BOOL)newVideo
+{
+    [sampleBtn setAlpha:0];
+    [audioBtn setAlpha:0];
+    [modelChangeBtn setAlpha:0];
+    [frontRareChangeBtn setAlpha:0];
+    if (newVideo) {
+        [closeBtn setAlpha:1];
+    }else{
+        [closeBtn setAlpha:0];
+    }
+    
+}
 
 @end
