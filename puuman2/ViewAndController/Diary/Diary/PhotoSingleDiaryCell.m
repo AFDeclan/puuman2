@@ -1,41 +1,30 @@
 //
-//  VideoDiaryCell.m
-//  puman
+//  PhotoSingleDiaryCell.m
+//  puuman2
 //
-//  Created by Declan on 13-12-28.
-//  Copyright (c) 2013年 创始人团队. All rights reserved.
+//  Created by Ra.（祁文龙） on 14-3-11.
+//  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "VideoDiaryCell.h"
-#import "MainTabBarController.h"
+#import "PhotoSingleDiaryCell.h"
 #import "DiaryFileManager.h"
-#import "Device.h"
-//#import "DetailsShowView.h"
-#import "UniverseConstant.h"
 #import "UIImage+CroppedImage.h"
 
-
-@implementation VideoDiaryCell
-
-@synthesize reuseIdentifier = _reuseIdentifier;
+@implementation PhotoSingleDiaryCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        //在这里初始化控件（可重用的部分）
+        // Initialization code
         _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
-        [_imgView setBackgroundColor:[UIColor clearColor]];
+        [_imgView setBackgroundColor:[UIColor blackColor]];
         _imgView.userInteractionEnabled = YES;
         [_content addSubview:_imgView];
         
-        _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _playBtn.frame = CGRectMake(216, 184, 96, 96);
-        [_playBtn setImage:[UIImage imageNamed:@"btn_play_diary.png"] forState:UIControlStateNormal];
-        [_playBtn addTarget:self action:@selector(playVideo) forControlEvents:UIControlEventTouchUpInside];
-        [_content addSubview:_playBtn];
-        
+        UITapGestureRecognizer *tapPhoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto)];
+        [_imgView addGestureRecognizer:tapPhoto];
         titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 416, 80)];
         [titleView setImage:[UIImage imageNamed:@"bg_title_diary.png"]];
         [titleView setBackgroundColor:[UIColor clearColor]];
@@ -50,6 +39,13 @@
 
     }
     return self;
+}
+
+- (void)showPhoto
+{
+    if (photo) {
+    //    [DetailsShowView showPhoto:photo];
+     }
     
 }
 
@@ -61,34 +57,26 @@
     }else{
         [titleView setAlpha:1];
     }
-    UIImage *image = [DiaryFileManager imageForVideo:[self.diaryInfo valueForKey:kFilePathName]];
-    image  = [UIImage croppedImage:image WithHeight:832 andWidth:832];
+    NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
+    NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+    for (NSString *photoPath in photoPaths)
+    {
+        photo = [DiaryFileManager imageForPath:photoPath];
+        if (photo != nil) {
+            break;
+        }
+    }
+    UIImage *image  = [UIImage croppedImage:photo WithHeight:832 andWidth:832];
     [_imgView setImage:image];
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,440);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
-    //在这里调整控件坐标，填充内容
 }
 
-- (void)playVideo
-{
-   // [DetailsShowView showVideo:[self.diaryInfo valueForKey:kFilePathName]];
-}
-
-- (void)share:(id)sender
-{
-    //子类重载
-    
-}
-
-- (void)prepareForReuse
-{
-    [super prepareForReuse];
-    //去除临时控件，准备重用
-}
-
-+ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr 
++ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
 {
     return 440;
 }
+
+
 
 @end

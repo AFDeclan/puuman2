@@ -44,7 +44,7 @@
         [titleView setImage:[UIImage imageNamed:@"bg_title_diary.png"]];
         [titleView setBackgroundColor:[UIColor clearColor]];
         [_photoView addSubview:titleView];
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 416, 80)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 80)];
         [titleLabel setTextAlignment:NSTextAlignmentRight];
         [titleLabel setFont:PMFont1];
         [titleLabel setTextColor:[UIColor whiteColor]];

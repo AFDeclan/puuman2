@@ -146,7 +146,11 @@
     }
     if ([[self.diaryInfo valueForKey:kType2Name] isEqualToString:vType_Photo])
         if (dh < TEXT_PHOTO_HEIGHT) dh = TEXT_PHOTO_HEIGHT;
-    [_content setFrame:CGRectMake(112,kHeaderHeight, ContentWidth, dh+ViewHeight(titleLabel)+ViewY(titleLabel)+24)];
+    dh += ViewHeight(titleLabel)+ViewY(titleLabel)+24;
+    if (dh <80) {
+        dh = 80;
+    }
+    [_content setFrame:CGRectMake(112,kHeaderHeight, ContentWidth,dh )];
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 

@@ -139,19 +139,22 @@
         }
         else
         {
-            identity = vType_Text;
-            cell = [tableView dequeueReusableCellWithIdentifier:identity];
-            if (!cell)
-            {
-                cell = [[TextDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
-                [(TextDiaryCell *)cell setDelegate:self];
+            NSString *photoPathsString = [diaryInfo objectForKey:kFilePathName];
+            NSArray *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+            if ([photoPaths count] > 1) {
+                identity = vType_Photo_More;
+                cell = [tableView dequeueReusableCellWithIdentifier:identity];
+                if (!cell)
+                    cell = [[PhotoMoreDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+            }else{
+                identity = vType_Photo_Single;
+                cell = [tableView dequeueReusableCellWithIdentifier:identity];
+                if (!cell)
+                    cell = [[PhotoSingleDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
             }
-//            identity = vType_Photo;
-//            cell = [tableView dequeueReusableCellWithIdentifier:identity];
-//            if (!cell)
-//                cell = [[PhotoDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+            
         }
-    }else{
+    }else if ([type isEqualToString:vType_Text]){
         identity = vType_Text;
         cell = [tableView dequeueReusableCellWithIdentifier:identity];
         if (!cell)
@@ -160,7 +163,7 @@
             [(TextDiaryCell *)cell setDelegate:self];
         }
     
-    }
+    } else return nil;
     [cell setIndexPath:indexPath];
     [cell setDiaryInfo:diaryInfo];
     [cell buildCellViewWithIndexRow:indexPath.row abbreviated:(selectedPath == nil || [indexPath compare:selectedPath] != NSOrderedSame)];

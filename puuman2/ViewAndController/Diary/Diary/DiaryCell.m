@@ -11,6 +11,9 @@
 #import "AuPhotoDiaryCell.h"
 #import "AudioDiaryCell.h"
 #import "VideoDiaryCell.h"
+#import "PhotoMoreDiaryCell.h"
+#import "PhotoSingleDiaryCell.h"
+
 
 @implementation DiaryCell
 @synthesize diaryInfo = _diaryInfo;
@@ -82,7 +85,6 @@
 
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr
 {
-    
     CGFloat height = kHeaderHeight + kFooterHeight + ViewHeight(_content);
     [self buildParentControl];
     SetViewLeftUp(dividingLine, 0, height-2);
@@ -300,7 +302,14 @@
                 }
                 else
                 {
-                   // height += [PhotoDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+                    NSString *photoPathsString = [diaryInfo objectForKey:kFilePathName];
+                    NSArray *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+                    if ([photoPaths count]>1) {
+                         height += [PhotoMoreDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+                    }else{
+                        height += [PhotoSingleDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+                    }
+                   
                 }
     }else if ([type isEqualToString:vType_Audio])
     {
