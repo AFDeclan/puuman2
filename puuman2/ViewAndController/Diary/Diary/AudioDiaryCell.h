@@ -1,5 +1,5 @@
 //
-//  AuPhotoDiaryCell.h
+//  AudioDiaryCell.h
 //  puman
 //
 //  Created by Declan on 13-12-28.
@@ -9,13 +9,14 @@
 #import "DiaryCell.h"
 #import "NewAudioPlayView.h"
 
-@interface AuPhotoDiaryCell : DiaryCell <NewAudioPlayDelegate>
+
+@interface AudioDiaryCell : DiaryCell <NewAudioPlayDelegate>
 {
-    UIImageView *_photoView;
     NewAudioPlayView *playBtn;
-    UIImage *photo;
-    UIImageView *titleView;
     UILabel *titleLabel;
+ 
 }
+
++ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
 
 @end

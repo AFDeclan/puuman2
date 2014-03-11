@@ -115,7 +115,14 @@
     NSString *type = [diaryInfo valueForKey:kTypeName];
     NSString *type2 = [diaryInfo valueForKey:kType2Name];
     NSString *identity;
-    if ([type isEqualToString:vType_Photo])
+    if ([type isEqualToString:vType_Audio])
+    {
+        identity = vType_Audio;
+        cell = [tableView dequeueReusableCellWithIdentifier:identity];
+        if (!cell)
+            cell = [[AudioDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+        
+    }else if ([type isEqualToString:vType_Photo])
     {
         if ([type2 isEqualToString:vType_Audio])
         {

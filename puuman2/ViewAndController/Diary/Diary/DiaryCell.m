@@ -9,7 +9,7 @@
 #import "DiaryCell.h"
 #import "TextDiaryCell.h"
 #import "AuPhotoDiaryCell.h"
-
+#import "AudioDiaryCell.h"
 
 @implementation DiaryCell
 @synthesize diaryInfo = _diaryInfo;
@@ -291,9 +291,8 @@
     if ([type isEqualToString:vType_Text])  //是文本类型
     {
         height += [TextDiaryCell heightForDiary:diaryInfo abbreviated:abbr]  ;
-    }
-    else if ([type isEqualToString:vType_Photo])    //是照片类型
-        {
+    }else if ([type isEqualToString:vType_Photo])    //是照片类型
+    {
                 if ([[diaryInfo valueForKey:kType2Name] isEqualToString:vType_Audio]) //有声图
                 {
                     height += [AuPhotoDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
@@ -302,15 +301,13 @@
                 {
                    // height += [PhotoDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
                 }
-        }
-                else if ([type isEqualToString:vType_Audio])
-                {
-                  //  height += [AudioDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
-                }
-                else if ([type isEqualToString:vType_Video])
-                {
-                   // height += [VideoDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
-                }
+    }else if ([type isEqualToString:vType_Audio])
+    {
+        height += [AudioDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+    }else if ([type isEqualToString:vType_Video])
+    {
+            // height += [VideoDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+    }
         return height;
 }
 

@@ -53,6 +53,7 @@
 		14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
+		543BAEBE18CEB4EB00ED4672 /* AudioDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */; };
 		5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463755A18C96622004B11EF /* btn_pic_diary.png */; };
 		5463756B18C96B1D004B11EF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756A18C96B1D004B11EF /* LoginViewController.m */; };
 		5463756F18C96E3E004B11EF /* LoginStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756E18C96E3E004B11EF /* LoginStartView.m */; };
@@ -345,6 +346,8 @@
 		14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		543BAEBC18CEB4EB00ED4672 /* AudioDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDiaryCell.h; sourceTree = "<group>"; };
+		543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDiaryCell.m; sourceTree = "<group>"; };
 		5463755A18C96622004B11EF /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
 		5463756918C96B1D004B11EF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5463756A18C96B1D004B11EF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -1010,6 +1013,8 @@
 				54A8F44718CD712100D0D523 /* TextDiaryCell.m */,
 				54A8F45518CDC21B00D0D523 /* AuPhotoDiaryCell.h */,
 				54A8F45618CDC22C00D0D523 /* AuPhotoDiaryCell.m */,
+				543BAEBC18CEB4EB00ED4672 /* AudioDiaryCell.h */,
+				543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */,
 				54A8F45818CDC27D00D0D523 /* support */,
 			);
 			name = DiaryCell;
@@ -1877,6 +1882,7 @@
 				54CE10E118C1842C00966396 /* AFDataStore.m in Sources */,
 				54CE10F018C1842C00966396 /* ADTickerLabel.m in Sources */,
 				14B8DF2C18BC37A30047C6B3 /* BabyData.m in Sources */,
+				543BAEBE18CEB4EB00ED4672 /* AudioDiaryCell.m in Sources */,
 				54CE10E818C1842C00966396 /* AFPageControl.m in Sources */,
 				54CE112718C1BC6D00966396 /* MainTabBarController.m in Sources */,
 				54CE10EB18C1842C00966396 /* SinaWeibo.m in Sources */,
