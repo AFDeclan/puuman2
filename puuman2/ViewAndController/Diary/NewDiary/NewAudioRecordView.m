@@ -68,6 +68,7 @@ const NSTimeInterval MAX_DURATION = 90;
     if ([audioRecorder currentTime] >2) {
         [recordBtn setEnabled:YES];
     }
+  
     [progress setCurrentTime:[audioRecorder currentTime]];
 }
 

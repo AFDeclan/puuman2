@@ -22,6 +22,8 @@
 @property (assign,nonatomic) NSTimeInterval maxTime;
 @property (assign,nonatomic)id<NewAudioPlayDelegate>delegate;
 - (void)removePlay;
+- (void)stopPlay;
+- (void)startPlay;
 @end
 @protocol NewAudioPlayDelegate <NSObject>
 - (void)stopPlay;

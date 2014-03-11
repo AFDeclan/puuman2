@@ -23,7 +23,7 @@
     if (self)
     {
         //在这里初始化控件（可重用的部分）
-        [MyNotiCenter addObserver:self selector:@selector(stopCircleAudio) name:Noti_PauseMultiMedia object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(stopPlayAudio) name:Noti_PauseMultiMedia object:nil];
         
         _photoView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
         [_content addSubview:_photoView];
@@ -32,19 +32,10 @@
         [_photoView setBackgroundColor:[UIColor clearColor]];
         _photoView.userInteractionEnabled = YES;
         
-        UIImageView *bgBtnView = [[UIImageView alloc] initWithFrame:CGRectMake(216, 392, 96, 96)];
-        [_content addSubview:bgBtnView];
-        [bgBtnView setImage:[UIImage imageNamed:@"circle_audio_diary.png"]];
-        
-        _playStopBtn = [[UIButton alloc] initWithFrame:bgBtnView.frame];
-        [_playStopBtn setImage:[UIImage imageNamed:@"btn_play3_diary.png"] forState:UIControlStateNormal];
-        [_playStopBtn addTarget:self action:@selector(playStopCircleAudio) forControlEvents:UIControlEventTouchUpInside];
-        _circleProgress = [[CircleProgress alloc] initWithFrame:_playStopBtn.frame];
-        [_circleProgress setTrackTintColor:PMColor7];
-        [_circleProgress setProgressTintColor:PMColor6];
-        [_circleProgress setProgress:0];
-        [_content addSubview:_circleProgress];
-        [_content addSubview:_playStopBtn];
+        playBtn = [[NewAudioPlayView alloc] initWithFrame:CGRectMake(216, 392, 96, 96)];
+        [playBtn setDelegate:self];
+        [_content addSubview:playBtn];
+      
       
 
         
@@ -79,56 +70,29 @@
     [_photoView setImage:photo];
     
     NSString *filePath = [self.diaryInfo valueForKey:kFilePath2Name];
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:nil];
-    [_audioPlayer prepareToPlay];
-    [_audioPlayer setDelegate:self];
-     _content.frame = CGRectMake(0,0,ContentWidth,488);
+    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,488);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 
    
 }
-- (void)playStopCircleAudio
+
+- (void)stopPlayAudio
 {
-    [_circleProgress setProgress:0];
-    if (_audioPlayer == nil) return;
-    if ([_audioPlayer isPlaying])    //停止播放
-    {
-        [self stopCircleAudio];
-    }
-    else    //开始或继续播放
-    {
-        [_audioPlayer play];
-        NSTimeInterval interval = [_audioPlayer duration] / 100;
-        if (interval < 0.05) interval = 0.05;
-        if (interval > 1) interval = 1;
-        _timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(updateCircleAudioProgress) userInfo:nil repeats:YES];
-        [_playStopBtn setImage:[UIImage imageNamed:@"btn_stop2_diary.png"] forState:UIControlStateNormal];
-    }
-}
-- (void)stopCircleAudio
-{
-    [_audioPlayer stop];
-    [_audioPlayer setCurrentTime:0];
-    [self updateCircleAudioProgress];
-    [_timer invalidate];
-    _timer = nil;
-    [_playStopBtn setImage:[UIImage imageNamed:@"btn_play3_diary.png"] forState:UIControlStateNormal];
+    [playBtn stopPlay];
 }
 
-- (void)updateCircleAudioProgress
+- (void)stopPlay
 {
-    //progressView
-    [_circleProgress setProgress:[_audioPlayer currentTime] / [_audioPlayer duration]];
+
+}
+- (void)startPlay
+{
+
 }
 
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
-{
-    [_audioPlayer setCurrentTime:0];
-    [_circleProgress setProgress:0 ];
-    [_timer invalidate];
-    _timer = nil;
-    [_playStopBtn setImage:[UIImage imageNamed:@"btn_play3_diary.png"] forState:UIControlStateNormal];
-}
+
+
 
 - (void)dealloc
 {

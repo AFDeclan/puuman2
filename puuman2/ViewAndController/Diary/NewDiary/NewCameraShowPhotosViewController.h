@@ -20,10 +20,14 @@
 }
 
 @property (assign,nonatomic)id<NewCameraShowPhotosDelegate>delegate;
+@property (retain,nonatomic)NSString *titleStr;
 - (void)initWithPhotos:(NSMutableArray *)photos  andphotoPaths:(NSMutableArray *)paths;
 - (NSMutableArray *)getPaths;
 - (NSMutableArray *)getPhotos;
+
+
 @end
 @protocol NewCameraShowPhotosDelegate <NSObject>
 - (void)resetSampleImgWithPhotos:(NSMutableArray *)photosArr  andphotoPaths:(NSMutableArray *)pathsArr;
+- (void)setTitleStr:(NSString *)title;
 @end

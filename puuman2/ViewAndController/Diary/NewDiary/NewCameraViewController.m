@@ -36,7 +36,7 @@
     [super viewDidLoad];
     
     movieUrl = nil;
-    
+    titleStr= @"";
     photos = [[NSMutableArray alloc] init];
     photoPath = [[NSMutableArray alloc] init];
     photosStatus = [[NSMutableDictionary alloc] init];
@@ -154,6 +154,18 @@
 
 - (void)finishBtnPressed
 {
+    if (controlView.videoMode) {
+        if (movieUrl != nil) {
+            [DiaryFileManager saveVideo:movieUrl withTitle:titleStr andTaskInfo:_taskInfo];
+        }
+     
+        
+    }else{
+        [DiaryFileManager savePhotoWithPaths:photoPath withAudio:audioFileUrl withTitle:titleStr andTaskInfo:_taskInfo];
+       
+    }
+    
+    
     [self cancel];
 }
 
@@ -245,6 +257,7 @@
     NewCameraShowPhotosViewController *showView =[[NewCameraShowPhotosViewController alloc] initWithNibName:nil bundle:nil];
    [self.view addSubview:showView.view];
     [showView setDelegate:self];
+    [showView setTitleStr:titleStr];
     [showView setTitle:@"选择照片" withIcon:nil];
     [showView setControlBtnType:kOnlyCloseButton];
     [showView initWithPhotos:photos andphotoPaths:photoPath];
@@ -257,7 +270,7 @@
         audioView = [[CameraAudioViewController alloc] initWithNibName:nil bundle:nil];
         [audioView setControlBtnType:kCloseAndFinishButton];
         [audioView setTitle:@"录声音" withIcon:[UIImage imageNamed:@"icon_audio2_diary.png"]];
-
+        [audioView setDelegate:self];
     }
     [self.view addSubview:audioView.view];
     [audioView show];
@@ -332,6 +345,11 @@
         [controlView addPhoto:nil andNum:0];
     }
     
+}
+
+- (void)setTitleStr:(NSString *)title
+{
+    titleStr = title;
 }
 
 - (void)getAudioWithUrl:(NSURL *)audioUrl

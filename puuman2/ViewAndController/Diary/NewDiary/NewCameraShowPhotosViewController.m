@@ -14,6 +14,7 @@
 
 @implementation NewCameraShowPhotosViewController
 @synthesize delegate = _delegate;
+@synthesize titleStr = _titleStr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -122,9 +123,15 @@
 
 }
 
+- (void)setTitleStr:(NSString *)titleStr
+{
+    _titleStr = titleStr;
+    [titleTextField setText:titleStr];
+}
+
 - (void)closeBtnPressed
 {
-    
+    [_delegate setTitleStr:titleTextField.text];
     [super closeBtnPressed];
     
 }

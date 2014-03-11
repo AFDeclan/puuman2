@@ -102,7 +102,6 @@
 		54A8F43F18CD593700D0D523 /* DiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A8F43E18CD593700D0D523 /* DiaryCell.m */; };
 		54A8F44D18CD712100D0D523 /* TextDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A8F44718CD712100D0D523 /* TextDiaryCell.m */; };
 		54A8F45718CDC22C00D0D523 /* AuPhotoDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A8F45618CDC22C00D0D523 /* AuPhotoDiaryCell.m */; };
-		54A8F45B18CDC28500D0D523 /* CircleProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A8F45A18CDC28500D0D523 /* CircleProgress.m */; };
 		54A8F45E18CDC9A000D0D523 /* AudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A8F45D18CDC9A000D0D523 /* AudioViewController.m */; };
 		54A8F46118CDCAE900D0D523 /* CameraAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A8F46018CDCAE900D0D523 /* CameraAudioViewController.m */; };
 		54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */; };
@@ -416,8 +415,6 @@
 		54A8F44718CD712100D0D523 /* TextDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextDiaryCell.m; sourceTree = "<group>"; };
 		54A8F45518CDC21B00D0D523 /* AuPhotoDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuPhotoDiaryCell.h; sourceTree = "<group>"; };
 		54A8F45618CDC22C00D0D523 /* AuPhotoDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuPhotoDiaryCell.m; sourceTree = "<group>"; };
-		54A8F45918CDC28500D0D523 /* CircleProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgress.h; sourceTree = "<group>"; };
-		54A8F45A18CDC28500D0D523 /* CircleProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgress.m; sourceTree = "<group>"; };
 		54A8F45C18CDC9A000D0D523 /* AudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioViewController.h; sourceTree = "<group>"; };
 		54A8F45D18CDC9A000D0D523 /* AudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioViewController.m; sourceTree = "<group>"; };
 		54A8F45F18CDCAE900D0D523 /* CameraAudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraAudioViewController.h; sourceTree = "<group>"; };
@@ -1021,8 +1018,6 @@
 		54A8F45818CDC27D00D0D523 /* support */ = {
 			isa = PBXGroup;
 			children = (
-				54A8F45918CDC28500D0D523 /* CircleProgress.h */,
-				54A8F45A18CDC28500D0D523 /* CircleProgress.m */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -1868,7 +1863,6 @@
 				546375AF18C99E94004B11EF /* SelectButton.m in Sources */,
 				54CE112818C1BC6D00966396 /* ShopViewController.m in Sources */,
 				54A8F45718CDC22C00D0D523 /* AuPhotoDiaryCell.m in Sources */,
-				54A8F45B18CDC28500D0D523 /* CircleProgress.m in Sources */,
 				54CE10E418C1842C00966396 /* AFButton.m in Sources */,
 				54ADE09B18C8608700B166C4 /* NewCameraControlView.m in Sources */,
 				54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */,

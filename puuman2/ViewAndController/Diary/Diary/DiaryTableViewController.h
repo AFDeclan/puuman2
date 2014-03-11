@@ -10,6 +10,7 @@
 #import "TaskCell.h"
 #import "DiaryCell.h"
 #import "TextDiaryCell.h"
+#import "AuPhotoDiaryCell.h"
 
 @interface DiaryTableViewController : UITableViewController<TaskClickDelegate,TextDiaryDelegate>
 {

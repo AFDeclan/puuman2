@@ -8,15 +8,12 @@
 
 #import "DiaryCell.h"
 #import <AVFoundation/AVFoundation.h>
-#import "CircleProgress.h"
+#import "NewAudioPlayView.h"
 
-@interface AuPhotoDiaryCell : DiaryCell <AVAudioPlayerDelegate>
+@interface AuPhotoDiaryCell : DiaryCell <AVAudioPlayerDelegate,NewAudioPlayDelegate>
 {
-    NSTimer *_timer;
-    AVAudioPlayer* _audioPlayer;
     UIImageView *_photoView;
-    CircleProgress *_circleProgress;
-    UIButton *_playStopBtn;
+    NewAudioPlayView *playBtn;
     UIImage *photo;
     UIImageView *titleView;
     UILabel *titleLabel;

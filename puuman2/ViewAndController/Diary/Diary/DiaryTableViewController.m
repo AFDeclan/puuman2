@@ -109,12 +109,36 @@
         return cell;
 
     }
-        DiaryModel *diaryModel = [DiaryModel sharedDiaryModel];
-        NSDictionary *diaryInfo = [diaryModel diaryInfoAtIndex:indexPath.row filtered:DIARY_FILTER_ALL];
-        DiaryCell *cell;
-        NSString *type = [diaryInfo valueForKey:kTypeName];
-        NSString *type2 = [diaryInfo valueForKey:kType2Name];
-        NSString *identity;
+    DiaryModel *diaryModel = [DiaryModel sharedDiaryModel];
+    NSDictionary *diaryInfo = [diaryModel diaryInfoAtIndex:indexPath.row filtered:DIARY_FILTER_ALL];
+    DiaryCell *cell;
+    NSString *type = [diaryInfo valueForKey:kTypeName];
+    NSString *type2 = [diaryInfo valueForKey:kType2Name];
+    NSString *identity;
+    if ([type isEqualToString:vType_Photo])
+    {
+        if ([type2 isEqualToString:vType_Audio])
+        {
+            identity = [NSString stringWithFormat:@"%@%@", vType_Photo, vType_Audio];
+            cell = [tableView dequeueReusableCellWithIdentifier:identity];
+            if (!cell)
+                cell = [[AuPhotoDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+        }
+        else
+        {
+            identity = vType_Text;
+            cell = [tableView dequeueReusableCellWithIdentifier:identity];
+            if (!cell)
+            {
+                cell = [[TextDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+                [(TextDiaryCell *)cell setDelegate:self];
+            }
+//            identity = vType_Photo;
+//            cell = [tableView dequeueReusableCellWithIdentifier:identity];
+//            if (!cell)
+//                cell = [[PhotoDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+        }
+    }else{
         identity = vType_Text;
         cell = [tableView dequeueReusableCellWithIdentifier:identity];
         if (!cell)
@@ -122,13 +146,16 @@
             cell = [[TextDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
             [(TextDiaryCell *)cell setDelegate:self];
         }
-        
-        [cell setIndexPath:indexPath];
-        [cell setDiaryInfo:diaryInfo];
-        [cell buildCellViewWithIndexRow:indexPath.row abbreviated:(selectedPath == nil || [indexPath compare:selectedPath] != NSOrderedSame)];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [cell setBackgroundColor: [UIColor clearColor]];
+    
+    }
+    [cell setIndexPath:indexPath];
+    [cell setDiaryInfo:diaryInfo];
+    [cell buildCellViewWithIndexRow:indexPath.row abbreviated:(selectedPath == nil || [indexPath compare:selectedPath] != NSOrderedSame)];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setBackgroundColor: [UIColor clearColor]];
+
         return cell;
+    
     
     
 }

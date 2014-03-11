@@ -126,7 +126,6 @@
         [_finishBtn setAlpha:1];
         [_finishBtn setEnabled:YES];
         [play setPlayFile:url];
-        [play setMaxTime:[record recordTime]];
         [UIView animateWithDuration:0.5 animations:^{
             SetViewLeftUp(record, 80, 240);
             [label_restart setAlpha:1];

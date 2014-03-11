@@ -29,16 +29,16 @@
 - (void)initialization
 {
 
-    playBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 224, 224)];
+    playBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
     [playBg setImage:[UIImage imageNamed:@"btn_play_diary.png"]];
     [playBg setBackgroundColor:[UIColor clearColor]];
     [self addSubview:playBg];
     
-    progress = [[NewAudioProgressView alloc] initWithFrame:CGRectMake(0, 0, 224, 224)];
+    progress = [[NewAudioProgressView alloc] initWithFrame:playBg.frame];
     [self addSubview:progress];
     
     
-    playBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 224, 224)];
+    playBtn = [[UIButton alloc] initWithFrame:playBg.frame];
     [playBtn setBackgroundColor:[UIColor clearColor]];
     [playBtn addTarget:self action:@selector(playOrStop) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:playBtn];
@@ -59,6 +59,7 @@
         }
         player.delegate = self;
         [progress setCurrentTime:0];
+        [self setMaxTime:[player duration]];
        
     }else{
         if ([player isPlaying])
@@ -112,7 +113,7 @@
 
 - (void)refreshProgress
 {
-
+    [progress setMaxTime:[player duration]];
     [progress setCurrentTime:[player currentTime]];
 }
 
