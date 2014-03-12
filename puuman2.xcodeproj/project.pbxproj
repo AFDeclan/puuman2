@@ -53,12 +53,12 @@
 		14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
+		5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */; };
 		543BAEBE18CEB4EB00ED4672 /* AudioDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */; };
 		543BAEC118CEBA1800ED4672 /* VideoDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAEC018CEBA1800ED4672 /* VideoDiaryCell.m */; };
 		543BAEC518CEBE9E00ED4672 /* bg_title_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 543BAEC418CEBE9E00ED4672 /* bg_title_diary.png */; };
 		543BAECE18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAECD18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m */; };
 		543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED018CEC30100ED4672 /* PhotoMoreDiaryCell.m */; };
-		543BAED718CEF4F300ED4672 /* DetailShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED618CEF4F300ED4672 /* DetailShowViewController.m */; };
 		543BAEDA18CF172D00ED4672 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED918CF172D00ED4672 /* VideoViewController.m */; };
 		5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463755A18C96622004B11EF /* btn_pic_diary.png */; };
 		5463756B18C96B1D004B11EF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756A18C96B1D004B11EF /* LoginViewController.m */; };
@@ -100,7 +100,6 @@
 		5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */; };
 		5474A47E18C5B7100073B2FE /* AFTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A47D18C5B7100073B2FE /* AFTextImgButton.m */; };
 		5474A48018C5C0630073B2FE /* btn_finish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A47F18C5C0630073B2FE /* btn_finish2.png */; };
-		5474A48218C5C0840073B2FE /* btn_close2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48118C5C0840073B2FE /* btn_close2.png */; };
 		5474A48418C5C7AE0073B2FE /* btn_input_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48318C5C7AE0073B2FE /* btn_input_diary.png */; };
 		5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A48518C5C8040073B2FE /* btn_photo3_diary.png */; };
 		549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549B62C618CABC5A00AFEEAB /* CustomNotiViewController.m */; };
@@ -352,6 +351,8 @@
 		14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		5403CC5E18D006C7004CAE22 /* DetailShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailShowViewController.h; sourceTree = "<group>"; };
+		5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailShowViewController.m; sourceTree = "<group>"; };
 		543BAEBC18CEB4EB00ED4672 /* AudioDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDiaryCell.h; sourceTree = "<group>"; };
 		543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDiaryCell.m; sourceTree = "<group>"; };
 		543BAEBF18CEBA1700ED4672 /* VideoDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDiaryCell.h; sourceTree = "<group>"; };
@@ -361,8 +362,6 @@
 		543BAECD18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSingleDiaryCell.m; sourceTree = "<group>"; };
 		543BAECF18CEC30100ED4672 /* PhotoMoreDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoMoreDiaryCell.h; sourceTree = "<group>"; };
 		543BAED018CEC30100ED4672 /* PhotoMoreDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoMoreDiaryCell.m; sourceTree = "<group>"; };
-		543BAED518CEF4F300ED4672 /* DetailShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailShowViewController.h; sourceTree = "<group>"; };
-		543BAED618CEF4F300ED4672 /* DetailShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailShowViewController.m; sourceTree = "<group>"; };
 		543BAED818CF172D00ED4672 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		543BAED918CF172D00ED4672 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		5463755A18C96622004B11EF /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
@@ -422,7 +421,6 @@
 		5474A47C18C5B7100073B2FE /* AFTextImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTextImgButton.h; sourceTree = "<group>"; };
 		5474A47D18C5B7100073B2FE /* AFTextImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTextImgButton.m; sourceTree = "<group>"; };
 		5474A47F18C5C0630073B2FE /* btn_finish2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_finish2.png; sourceTree = "<group>"; };
-		5474A48118C5C0840073B2FE /* btn_close2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close2.png; sourceTree = "<group>"; };
 		5474A48318C5C7AE0073B2FE /* btn_input_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_input_diary.png; sourceTree = "<group>"; };
 		5474A48518C5C8040073B2FE /* btn_photo3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_photo3_diary.png; sourceTree = "<group>"; };
 		549B62C518CABC5A00AFEEAB /* CustomNotiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNotiViewController.h; sourceTree = "<group>"; };
@@ -1046,8 +1044,8 @@
 		54A8F45818CDC27D00D0D523 /* support */ = {
 			isa = PBXGroup;
 			children = (
-				543BAED518CEF4F300ED4672 /* DetailShowViewController.h */,
-				543BAED618CEF4F300ED4672 /* DetailShowViewController.m */,
+				5403CC5E18D006C7004CAE22 /* DetailShowViewController.h */,
+				5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -1510,7 +1508,6 @@
 				54F1D10118C48B340005CDD9 /* bg_prompt.png */,
 				54F1D10218C48B340005CDD9 /* bg_subpage.png */,
 				5474A47F18C5C0630073B2FE /* btn_finish2.png */,
-				5474A48118C5C0840073B2FE /* btn_close2.png */,
 				5474A48518C5C8040073B2FE /* btn_photo3_diary.png */,
 			);
 			name = CustomPopImage;
@@ -1683,7 +1680,6 @@
 				54F1D13718C48FA50005CDD9 /* dot_number_diary.png in Resources */,
 				54CE116A18C1C7BF00966396 /* btn_gray1.png in Resources */,
 				5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */,
-				5474A48218C5C0840073B2FE /* btn_close2.png in Resources */,
 				54CE116D18C1C7BF00966396 /* btn_red.png in Resources */,
 				14B8DF3018BC37A30047C6B3 /* sampleDiary_auphoto.jpg in Resources */,
 				54F1D13418C48FA50005CDD9 /* btn_stop_diary.png in Resources */,
@@ -1912,7 +1908,7 @@
 				54ADE09A18C8608700B166C4 /* NewAudioRecordView.m in Sources */,
 				54CE10ED18C1842C00966396 /* SinaWeiboRequest.m in Sources */,
 				546375A118C98E67004B11EF /* LoginPregnancyView.m in Sources */,
-				543BAED718CEF4F300ED4672 /* DetailShowViewController.m in Sources */,
+				5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */,
 				54CE10E118C1842C00966396 /* AFDataStore.m in Sources */,
 				54CE10F018C1842C00966396 /* ADTickerLabel.m in Sources */,
 				14B8DF2C18BC37A30047C6B3 /* BabyData.m in Sources */,
@@ -1990,8 +1986,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanglin Hu (HU7TNQNUEQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2033,8 +2029,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanglin Hu (HU7TNQNUEQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
