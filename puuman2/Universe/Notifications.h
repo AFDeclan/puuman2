@@ -23,6 +23,7 @@
 #define Noti_SocialLoginSucceeded               @"Noti_SocialLoginSucceeded"
 #define Noti_SettingSafeViewReload              @"Noti_SettingSafeViewReload"
 #define Noti_BabyDataUpdated                    @"Noti_BabyDataUpdated"
+#define Noti_BabyInfoUpdated                    @"Noti_BabyInfoUpdated"
 #define Noti_VaccineUpdated                     @"Noti_VaccineUpdated"
 #define Noti_RecomWaresUpdated                  @"Noti_RecomWaresUpdated"
 
@@ -34,7 +35,8 @@
 
 #define Noti_PauseMultiMedia                    @"Noti_PauseMultiMedia"
 #define Noti_DeleteDiary                        @"Noti_DeleteDiary"
-
+#define Noti_DiaryCellVisible                   @"Noti_DiaryCellVisible"
+#define Noti_DelBtnShowed                       @"Noti_DelBtnShowed"
 #define Noti_UserInfoUpdated                    @"Noti_UserInfoUpdated"
 #define Noti_UserLogined                        @"Noti_UserLogined"
 #define Noti_UserLogouted                       @"Noti_UserLogouted"

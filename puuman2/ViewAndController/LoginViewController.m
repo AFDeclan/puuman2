@@ -176,25 +176,46 @@
     LoginView nextView = loginView;
     switch (nextView) {
         case kLoginLoadView:
+        {
             [_finishBtn setAlpha:0];
-            [_closeBtn setAlpha:0];
+            if ([[UserInfo sharedUserInfo] logined])
+            {
+                [_closeBtn setAlpha:1];
+            }else{
+                [_closeBtn setAlpha:0];
+            }
             loginView = kLoginStartView;
             [changeView scrollRectToVisible:startView.frame animated:YES];
             [loadView resigntextField];
+        }
             break;
         case kLoginBirthRegisterView:
+        {
             [_finishBtn setAlpha:0];
-            [_closeBtn setAlpha:0];
+            if ([[UserInfo sharedUserInfo] logined])
+            {
+                [_closeBtn setAlpha:1];
+            }else{
+                [_closeBtn setAlpha:0];
+            }
             loginView = kLoginStartView;
             [changeView scrollRectToVisible:startView.frame animated:YES];
             [birth resigntextField];
+        }
             break;
         case kLoginPregnancyRegisterView:
+        {
             [_finishBtn setAlpha:0];
-            [_closeBtn setAlpha:0];
+            if ([[UserInfo sharedUserInfo] logined])
+            {
+                [_closeBtn setAlpha:1];
+            }else{
+                [_closeBtn setAlpha:0];
+            }
             loginView = kLoginStartView;
             [changeView scrollRectToVisible:startView.frame animated:YES];
             [pregnancy resigntextField];
+        }
             break;
         case kLoginEndView:
         {
@@ -215,15 +236,23 @@
         }
             break;
         case kLoginCodeView:
+        {
             loginView = kLoginLoadView;
             [changeView scrollRectToVisible:loadView.frame animated:YES];
             [loginCode removeFromSuperview];
+        }
             break;
+        case kLoginStartView:
+        {
+            [super  closeBtnPressed];
+        }
         default:
+        {
             [_finishBtn setAlpha:0];
             [_closeBtn setAlpha:0];
             loginView = kLoginStartView;
             [changeView scrollRectToVisible:startView.frame animated:YES];
+        }
             break;
     }
     
@@ -295,6 +324,8 @@
 //                            
 //                            [self dismiss];
 //                        }];
+                        [MyNotiCenter postNotificationName:Noti_BabyDataUpdated object:nil];
+                        [super finishBtnPressed];
                     }
                     else
                     {

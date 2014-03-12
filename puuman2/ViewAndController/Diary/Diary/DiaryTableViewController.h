@@ -20,5 +20,8 @@
 @interface DiaryTableViewController : UITableViewController<TaskClickDelegate,TextDiaryDelegate>
 {
     NSIndexPath *selectedPath;
+    DiaryCell *_activeCell;
 }
+
+- (void)tapWithPoint:(CGPoint)pos;
 @end

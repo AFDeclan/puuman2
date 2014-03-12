@@ -51,7 +51,7 @@
    
     //在这里调整控件坐标，填充内容
     //audio player init
-    SetViewRightCenter(_delScrollView, ViewX(_delBtn), ViewY(_delBtn)+ViewHeight(_delBtn)/2);
+   
     NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
     
     [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];

@@ -13,12 +13,15 @@
 #import "VideoDiaryCell.h"
 #import "PhotoMoreDiaryCell.h"
 #import "PhotoSingleDiaryCell.h"
+#import "MainTabBarController.h"
 
 
 @implementation DiaryCell
 @synthesize diaryInfo = _diaryInfo;
 @synthesize indexPath = _indexPath;
-
+@synthesize delBtn = _delBtn;
+@synthesize delScrollView = _delScrollView;
+@synthesize diaryType = _diaryType;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -78,7 +81,7 @@
         dividingLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 672, 2)];
         [dividingLine setImage:[UIImage imageNamed:@"line2_diary.png"]];
         [self.contentView addSubview:dividingLine];
-        
+        [MyNotiCenter addObserver:self selector:@selector(CellVisibled:) name:Noti_DiaryCellVisible object:nil];
     }
     return self;
 }
@@ -234,8 +237,10 @@
     if (![self.diaryInfo valueForKey:kSampleDiary] &&[fromIdentity isEqualToString:[UserInfo sharedUserInfo].identityStr])
     {
         [_delBtn setAlpha:1];
+        delCanShow = YES;
     }else{
         [_delBtn setAlpha:0];
+        delCanShow = NO;
     }
 
 }
@@ -258,6 +263,7 @@
             [_delBtn setImage:[UIImage imageNamed:@"btn_delete2_diary.png"] forState:UIControlStateNormal];
             [_delScrollView setContentOffset:CGPointMake(_delScrollView.contentSize.width/2, 0)];
         }];
+        [MyNotiCenter postNotificationName:Noti_DelBtnShowed object:self];
     }
     
 }
@@ -266,6 +272,7 @@
 {
     
     [MyNotiCenter postNotificationName:Noti_DeleteDiary object:self.diaryInfo];
+
     
 }
 
@@ -291,11 +298,66 @@
     }];
 }
 
+
 - (void)share:(id)sender
 {
     //子类重载
     
     
+}
+
+- (void)CellVisibled:(NSNotification *)notification
+{
+    float tableY  = [[notification object] floatValue];
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        if (self.frame.origin.y < tableY+512 && self.frame.origin.y + self.frame.size.height > tableY+512) {
+            [self showAndHideControlBtnWithHidden:NO];
+        }else{
+            [self showAndHideControlBtnWithHidden:YES];
+        }
+    }else{
+        if (self.frame.origin.y < tableY+384 && self.frame.origin.y + self.frame.size.height > tableY+384) {
+            [self showAndHideControlBtnWithHidden:NO];
+        }else{
+            [self showAndHideControlBtnWithHidden:YES];
+        }
+    }
+   
+    NSLog(@"%f %d",self.frame.origin.y,self.indexPath.row);
+}
+
+- (void)showAndHideControlBtnWithHidden:(BOOL)isHidden;
+{
+
+    if (isHidden) {
+        [_delBtn setAlpha:0];
+
+        [_shareBtn setAlpha:0];
+
+    }else{
+        if (delCanShow) {
+                 [_delBtn setAlpha:1];
+        }
+        if (shareCanShow) {
+             [_shareBtn setAlpha:1];
+        }
+
+    }
+    
+}
+
+- (void)setDiaryType:(DiaryType)diaryType
+{
+    _diaryType = diaryType;
+    if(diaryType == kDiaryPhotoType ||diaryType == kDiaryTextType ||diaryType == kDiaryPhotoAudioType)
+    {
+        shareCanShow = YES;
+        
+    }else{
+        shareCanShow = NO;
+    }
+    
+  
 }
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr

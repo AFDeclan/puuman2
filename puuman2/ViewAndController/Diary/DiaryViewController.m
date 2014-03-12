@@ -47,7 +47,7 @@ static DiaryViewController * instance;
 
 - (void)initContent
 {
-    
+    [self initActiveView];
     diaryTableVC = [[DiaryTableViewController alloc] init];
     [self.view addSubview:diaryTableVC.view];
 
@@ -64,6 +64,29 @@ static DiaryViewController * instance;
         [newDiaryBtn[i] addTarget:self action:@selector(showNewDiaryView:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:newDiaryBtn[i]];
     }
+
+}
+
+- (void)initActiveView
+{
+    
+    activeNewestView = [[UIView alloc] initWithFrame:CGRectMake(768, 0, 240, 656)];
+    [activeNewestView setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:activeNewestView];
+    
+    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 656)];
+    [bgImgView setImage:[UIImage imageNamed:@"bg_calendar_diary.png"]];
+    [activeNewestView addSubview:bgImgView];
+    
+    joinView = [[JoinView alloc] initWithFrame:CGRectMake(0, 0, 240, 288)];
+    [joinView setBackgroundColor:[UIColor clearColor]];
+    [activeNewestView addSubview:joinView];
+    
+    UIImageView *partingLineOne = [[UIImageView alloc] initWithFrame:CGRectMake(0, 288, 240, 2)];
+    [partingLineOne setImage:[UIImage imageNamed:@"line1_diary.png"]];
+    [partingLineOne setBackgroundColor:[UIColor clearColor]];
+    [activeNewestView addSubview:partingLineOne];
+    
 
 }
 
@@ -84,11 +107,29 @@ static DiaryViewController * instance;
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+    UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    [gestureRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:gestureRecognizer];
 }
+
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    
+    [joinView resign];
+    CGPoint pos =[touch locationInView:self.view];
+    [diaryTableVC tapWithPoint:pos];
+    return YES;
+    
+}
+
+
+
 
 //竖屏
 -(void)setVerticalFrame
 {
+   
+    [activeNewestView setAlpha:0];
     [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 1024)];
     [newBtn setFrame:CGRectMake(680, 904, 56, 88)];
     
@@ -155,6 +196,7 @@ static DiaryViewController * instance;
 //横屏
 -(void)setHorizontalFrame
 {
+    [activeNewestView setAlpha:1];
     [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 768)];
     [newBtn setFrame:CGRectMake(936, 648, 56, 88)];
     

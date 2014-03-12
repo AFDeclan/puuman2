@@ -26,6 +26,7 @@
     }
     return self;
 }
+
 - (void) initialize
 {
     
@@ -86,6 +87,7 @@
     [self addSubview:goLoginViewButton];
     
 }
+
 - (void)motherSelected:(UIButton *)sender
 {
     [MobClick event:umeng_event_click label:@"Mother_LoginStartView"];
@@ -106,6 +108,7 @@
             break;
     }
 }
+
 - (void)fatherSelected:(UIButton *)sender
 {
    [MobClick event:umeng_event_click label:@"Father_LoginStartView"];

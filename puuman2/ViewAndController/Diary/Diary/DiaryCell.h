@@ -19,6 +19,15 @@
 #define kHeaderHeight    36
 #define kFooterHeight    24
 #define ContentWidth  512
+
+typedef enum{
+    kDiaryTextType,
+    kDiaryPhotoType,
+    kDiaryAudioType,
+    kDiaryPhotoAudioType,
+    kDiaryVideoType
+} DiaryType;
+
 @interface DiaryCell : UITableViewCell
 {
     UILabel *_fromLabel;
@@ -30,16 +39,21 @@
     UILabel *_ageLabel1;
     UILabel *_ageLabel2;
     UILabel *_ageLabel3;
-    UIButton *_delBtn, *_shareBtn;
-    UIScrollView *_delScrollView;
+    UIButton  *_shareBtn;
     BOOL delConfirm;
     UIView *_content;
     UIView *bg;
+    BOOL delCanShow;
+    BOOL shareCanShow;
 }
-
+@property (assign, nonatomic)DiaryType diaryType;
+@property (strong, nonatomic)UIButton *delBtn;
+@property (strong, nonatomic)UIScrollView *delScrollView;
 @property (retain,nonatomic) NSDictionary* diaryInfo;
 @property (strong,nonatomic) NSIndexPath *indexPath;
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
 - (void)share:(id)sender;
+- (void)delBtnReset;
+- (void)showAndHideControlBtnWithHidden:(BOOL)isHidden;
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr;
 @end

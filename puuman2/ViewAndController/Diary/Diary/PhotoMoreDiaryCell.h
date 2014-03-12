@@ -9,12 +9,13 @@
 #import "DiaryCell.h"
 #import "UIColumnView.h"
 
-@interface PhotoMoreDiaryCell : DiaryCell<UIColumnViewDataSource, UIColumnViewDelegate>
+@interface PhotoMoreDiaryCell : DiaryCell<UIColumnViewDataSource, UIColumnViewDelegate,UIScrollViewDelegate>
 {
 
     NSArray *_photoPaths;
     UIColumnView *_showColumnView;
     int selectedIndex;
     UILabel *titleLabel;
+    UIScrollView *_scrollView;
 }
 @end

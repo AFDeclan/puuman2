@@ -93,13 +93,26 @@
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    
-    BOOL isAllowEdit = YES;
-    if([string length]>range.length&&[textField.text length]+[string length]-range.length>_NAME_MAX_LENGTH_)
-    {
+  
+        BOOL isAllowEdit = YES;
+        if([string length]>range.length&&[textField.text length]+[string length]-range.length>_NAME_MAX_LENGTH_)
+        {
+            
+            isAllowEdit = NO;
+        }
         
-        isAllowEdit = NO;
-    }
+        if (range.length == 1 && range.location == 0) {
+            if ([[UserInfo sharedUserInfo] logined])
+            {
+                [self isFinished];
+            }
+        }else{
+            if ([[UserInfo sharedUserInfo] logined])
+            {
+                [self isFinished];
+            }
+        }
+        
     return isAllowEdit;
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField

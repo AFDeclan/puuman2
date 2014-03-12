@@ -29,8 +29,12 @@
         [_showColumnView setViewDelegate:self];
         [_showColumnView setViewDataSource:self];
         [_showColumnView setPagingEnabled:NO];
+        [_showColumnView setScrollEnabled:NO];
         [_content addSubview:_showColumnView];
-
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(56, 24, 416, 192)];
+        [_scrollView setDelegate:self];
+        [_scrollView setPagingEnabled:YES];
+        [_content addSubview:_scrollView];
     }
     return self;
 }
@@ -52,6 +56,7 @@
     selectedIndex = 1;
     NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
     _photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+    [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
     if ([_photoPaths count] >1) {
           [_showColumnView reloadData];
     }
@@ -75,9 +80,9 @@
 {
 
     if (index == 0 || index == [_photoPaths count]+1)  {
-        return 96;
+        return 100;
     }else{
-        return 192;
+        return 200;
     }
     
 }
@@ -89,26 +94,38 @@
     
 }
 
-- (void)scrollViewDidScroll:(UIColumnView *)scrollView
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-   
-    float x = scrollView.contentOffset.x;
-    int index =2+ (x-96)/192;
-    [[[scrollView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0.5];
-    selectedIndex = index;
-    [[[scrollView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0];
+    if (scrollView == _scrollView) {
+        CGPoint pos= _scrollView.contentOffset;
+        pos.x = pos.x*192/416;
+        [_showColumnView setContentOffset:pos];
+    }
+    
+    if (scrollView == _showColumnView) {
+        float x = scrollView.contentOffset.x;
+        int index =2+ (x-100)/200;
+        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0.5];
+        selectedIndex = index;
+        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0];
+    }
+  
     
 }
 
 - (void)scrollViewDidEndDecelerating:(UIColumnView *)scrollView
 {
-
-    [scrollView setContentOffset:CGPointMake((selectedIndex-1)*192 , 0) animated:YES];
+    
+    CGPoint pos= _scrollView.contentOffset;
+    pos.x = pos.x*192/416;
+    [_showColumnView setContentOffset:pos];
 }
 
 - (void)scrollViewDidEndDragging:(UIColumnView *)scrollView willDecelerate:(BOOL)decelerate;
 {
-    [scrollView setContentOffset:CGPointMake((selectedIndex-1)*192 , 0) animated:YES];
+    CGPoint pos= _scrollView.contentOffset;
+    pos.x = pos.x*192/416;
+    [_showColumnView setContentOffset:pos];
 }
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
@@ -130,26 +147,28 @@
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 192, 192)];
+            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 0, 192, 192)];
             imgView.tag = 11;
             [cell.contentView addSubview:imgView];
-            UIImageView *mask = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 192, 192)];
+            UIImageView *mask = [[UIImageView alloc] initWithFrame:CGRectMake(4, 0, 192, 192)];
             mask.tag = 12;
             [cell.contentView addSubview:mask];
         }
+  
         UIImage *photo = [DiaryFileManager imageForPath:[_photoPaths objectAtIndex:index-1]];
        // photo = [UIImage croppedImage:photo WithHeight:384 andWidth:384];
         UIImageView *photoView = (UIImageView *)[cell viewWithTag:11];
         [photoView setImage:photo];
-        
+
         UIImageView *mask = (UIImageView *)[cell viewWithTag:12];
         [mask setBackgroundColor:[UIColor whiteColor]];
-        
+
         if (selectedIndex == index) {
             [mask setAlpha:0];
         }else{
             [mask setAlpha:0.5];
         }
+        [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
 
     }

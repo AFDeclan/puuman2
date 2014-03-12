@@ -81,15 +81,26 @@
     [button addTarget:self action:@selector(selectedAge) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     
-    babyType = kGenderNone;
-    
     if ([[UserInfo sharedUserInfo] logined])
     {
         name_textfield.text = [[BabyData sharedBabyData] babyName];
         if ([[BabyData sharedBabyData] babyHasBorned])
         {
             [self selectDate:[[BabyData sharedBabyData] babyBirth]];
+            if ([[BabyData sharedBabyData] babyIsBoy]) {
+                babyType = kGenderGirl;
+                [girl selected];
+                [boy unSelected];
+            }else{
+                babyType = kGenderBoy;
+                [boy selected];
+                [girl unSelected];
+            }
         }
+        
+        
+    }else{
+        babyType = kGenderNone;
     }
 }
 -(void)setHorizontalFrame

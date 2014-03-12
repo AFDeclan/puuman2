@@ -9,13 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "DiaryNewButton.h"
 #import "DiaryTableViewController.h"
+#import "JoinView.h"
 
-@interface DiaryViewController : UIViewController
+@interface DiaryViewController : UIViewController<UIGestureRecognizerDelegate>
 {
     UIButton *newDiaryBtn[5];
     DiaryNewButton *newBtn;
     BOOL isFirst;
     NSTimer *timer;
+    JoinView *joinView;
+    UIView *activeNewestView;
     DiaryTableViewController *diaryTableVC;
 }
 @property (assign,nonatomic) BOOL cameraModel;

@@ -33,7 +33,7 @@
 #define kTaskDiary      @"taskDiary"
 #define vType_Text      @"text"
 #define vType_Photo     @"photo"
-#define vType_Photo_Single     @"photoSingle"
+#define vType_Photo_Single    @"photoSingle"
 #define vType_Photo_More     @"photoMore"
 #define vType_Audio     @"audio"
 #define vType_Video     @"video"
