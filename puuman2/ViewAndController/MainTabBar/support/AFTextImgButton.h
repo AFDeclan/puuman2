@@ -14,7 +14,8 @@ typedef enum
     kButtonTypeTwo,
     kButtonTypeThree,
     kButtonTypeFour,
-    kButtonTypeFive
+    kButtonTypeFive,
+    kButtonTypeSix
 }TextImgBtnType;
 @interface AFTextImgButton : UIButton
 {

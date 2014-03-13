@@ -103,15 +103,27 @@ static DiaryViewController * instance;
     {
         [self setHorizontalFrame];
     }
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+
     UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
     [gestureRecognizer setDelegate:self];
     [self.view addGestureRecognizer:gestureRecognizer];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
+    
+}
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     

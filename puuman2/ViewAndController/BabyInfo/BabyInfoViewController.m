@@ -9,6 +9,15 @@
 #import "BabyInfoViewController.h"
 #import "MainTabBarController.h"
 #import "LoginViewController.h"
+#import "BabyData.h"
+
+
+ NSString *bornselectedBtnImgs[4] = {@"btn_body1_baby.png",@"btn_vac1_baby.png",@"btn_equip1_baby.png",@"btn_bank1_baby.png"};
+ NSString *bornunselectedBtnImgs[4] = {@"btn_body2_baby.png",@"btn_vac2_baby.png",@"btn_equip2_baby.png",@"btn_bank2_baby.png"};
+ NSString *unbornselectedBtnImgs[4] = {@"btn_pre1_baby.png",@"btn_Bpre1_baby.png",@"btn_equip1_baby.png",@"btn_bank1_baby.png"};
+ NSString *unbornunselectedBtnImgs[4] = {@"btn_pre2_baby.png",@"btn_Bpre2_baby.png",@"btn_equip2_baby.png",@"btn_bank2_baby.png"};
+const BabyInfoButtonType bornBtnType[4] = {kBodyButton,kVaccineButton,kPropButton,kPuumanButton};
+const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,kPuumanButton};
 
 @interface BabyInfoViewController ()
 
@@ -39,10 +48,22 @@
         [self setHorizontalFrame];
     }
 	// Do any additional setup after loading the view.
+   
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
 
 }
 
@@ -59,18 +80,109 @@
     [modifyBtn initWithTitle:@"修改" andIcon:[UIImage imageNamed:@"icon_fix_baby.png"] andButtonType:kGrayLeft];
     [modifyBtn addTarget:self action:@selector(moadifyBabyInfo) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:modifyBtn];
+    [self initWithButtonsView];
+    
 }
 
 
-
-- (void)viewWillAppear:(BOOL)animated
+- (void)initWithButtonsView
 {
-   
+    controlBtnsView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 384)];
+    [controlBtnsView setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:controlBtnsView];
+    for (int i = 0; i <4; i++) {
+            BabyInfoButton *babyBtn = [[BabyInfoButton alloc] init];
+            [babyBtn setBackgroundColor:[UIColor clearColor]];
+            [controlBtnsView addSubview:babyBtn];
+            [babyBtn addTarget:self action:@selector(pressedControlBtn:) forControlEvents:UIControlEventTouchUpInside];
+            SetViewLeftUp(babyBtn, 0, 96*i);
+        
+        if ([[BabyData sharedBabyData] babyHasBorned]) {
+             [babyBtn setSelectedImg:[UIImage imageNamed:bornselectedBtnImgs[i]] andUnselectedImg:[UIImage imageNamed:bornunselectedBtnImgs[i]]];
+             [babyBtn setType:bornBtnType[i]];
+        }else{
+            [babyBtn setSelectedImg:[UIImage imageNamed:unbornselectedBtnImgs[i]] andUnselectedImg:[UIImage imageNamed:unbornunselectedBtnImgs[i]]];
+            [babyBtn setType:unbornBtnType[i]];
+        }
+        if (i == 0) {
+            acticeBtn = babyBtn;
+            [babyBtn selected];
+            [self pressedControlBtn:babyBtn];
+        }else{
+            [babyBtn unSelected];
+        }
+
+    }
 }
+
+- (void)pressedControlBtn:(BabyInfoButton *)sender
+{
+    [acticeBtn unSelected];
+    [sender selected];
+    acticeBtn = sender;
+    switch (sender.type) {
+        case kBodyButton:
+        {
+            if (!bodyView) {
+                bodyView = [[BabyBodyView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+                [bodyView setBackgroundColor:[UIColor clearColor]];
+                [self.view addSubview:bodyView];
+            }else{
+                [bodyView refresh];
+            }
+            [bodyView setAlpha:1];
+            
+            
+        }
+            break;
+        case kVaccineButton:
+        {
+            if (bodyView) {
+                [bodyView setAlpha:0];
+            }
+            
+        }
+            break;
+        case kPropButton:
+        {
+            if (bodyView) {
+                [bodyView setAlpha:0];
+            }
+        }
+            break;
+        case kPuumanButton:
+        {
+            if (bodyView) {
+                [bodyView setAlpha:0];
+            }
+        }
+            break;
+        case kBpreButton:
+        {
+            if (bodyView) {
+                [bodyView setAlpha:0];
+            }
+        }
+            break;
+        case kPreButton:
+        {
+            if (bodyView) {
+                [bodyView setAlpha:0];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+
 
 //竖屏
 -(void)setVerticalFrame
 {
+    [bodyView setVerticalFrame];
+    SetViewLeftUp(controlBtnsView, 688, 176);
     SetViewLeftUp(modifyBtn, 640, 40);
     SetViewLeftUp(babyInfoView, 114, 16);
     [bgImageView setFrame:CGRectMake(80, 16, 672, 992)];
@@ -80,6 +192,8 @@
 //横屏
 -(void)setHorizontalFrame
 {
+    [bodyView setHorizontalFrame];
+    SetViewLeftUp(controlBtnsView, 944, 176);
     SetViewLeftUp(modifyBtn, 896, 40);
     SetViewLeftUp(babyInfoView, 242, 16);
     [bgImageView setFrame:CGRectMake(80, 16, 928, 736)];
@@ -106,6 +220,9 @@
 - (void)updateBabyDate
 {
     [babyInfoView resetBabyInfo];
+    if (bodyView) {
+        [bodyView refresh];
+    }
 }
 
 @end

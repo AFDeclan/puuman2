@@ -101,6 +101,10 @@
             [self setBackgroundColor:[UIColor whiteColor]];
         }
             break;
+        case kButtonTypeSix:
+        {
+        }
+            break;
         default:
             break;
     }
