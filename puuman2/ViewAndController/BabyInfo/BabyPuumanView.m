@@ -43,12 +43,12 @@
     [inBookTitle setBackgroundColor:[UIColor clearColor]];
     [inBookTitle setTitle:[NSString stringWithFormat:@"入库 %0.1f",[PumanBookModel bookModel].inTotal] andImg:[UIImage imageNamed:@"icon_in_baby.png"] andButtonType:kButtonTypeSeven];
     [inBookTitle setTintColor:PMColor6];
-    [leftView addSubview:inBookTitle];
+    [self addSubview:inBookTitle];
     outBookTitle = [[AFTextImgButton alloc] initWithFrame:CGRectMake(216, 0, 216, 64)];
     [outBookTitle setBackgroundColor:[UIColor clearColor]];
     [outBookTitle setTitle:[NSString stringWithFormat:@"兑现 %0.1f",[PumanBookModel bookModel].outTotal] andImg:[UIImage imageNamed:@"icon_out_baby.png"] andButtonType:kButtonTypeSeven];
     [outBookTitle setTintColor:PMColor1];
-    [leftView addSubview:outBookTitle];
+    [self addSubview:outBookTitle];
     
     
     inBookTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
