@@ -8,10 +8,12 @@
 
 #import "AFTextImgButton.h"
 typedef enum{
+
     kRedLeftUp,
     kRedLeftDown,
     kBlueLeft,
     kBlueRight,
+    kBlueLeftUp,
     kBlueLeftDown,
     kGrayLeftUp,
     kGrayLeftDown,
@@ -22,8 +24,11 @@ typedef enum{
 
 @interface ColorButton : AFTextImgButton
 {
-
+    ColorBtnType _type;
+    UIImage *icon;
+    NSString *title;
 }
 - (void)initWithTitle:(NSString *)str  andButtonType:(ColorBtnType)type;
 - (void)initWithTitle:(NSString *)str andIcon:(UIImage *)img andButtonType:(ColorBtnType)type;
+
 @end

@@ -33,6 +33,9 @@
 
 - (void)initWithTitle:(NSString *)str  andIcon:(UIImage *)img andButtonType:(ColorBtnType)type
 {
+    _type = type;
+    icon = img;
+    title = str;
     [self setTitle:str andImg:img andButtonType:kButtonTypeTwo];
     
     [self setBackgroundColor:[UIColor clearColor]];
@@ -52,6 +55,11 @@
         case kBlueLeftDown:
             [self setTitleLabelColor:[UIColor whiteColor]];
             [backgroundImgView setImage:[UIImage imageNamed:@"btn_blue3.png"]];
+
+            break;
+        case kBlueLeftUp:
+            [self setTitleLabelColor:[UIColor whiteColor]];
+            [backgroundImgView setImage:[UIImage imageNamed:@"btn_blue4.png"]];
             break;
         case kBlueRight:
             [self setTitleLabelColor:[UIColor whiteColor]];
@@ -73,9 +81,20 @@
             [self setTitleLabelColor:PMColor2];
             [backgroundImgView setImage:[UIImage imageNamed:@"block4_btn.png"]];
             break;
+
         default:
             break;
     }
 }
 
+- (void)selected
+{
+    [self initWithTitle:title andIcon:icon andButtonType:_type];
+}
+
+- (void)unSelected
+{
+    [self setTitleLabelColor:PMColor6];
+    [backgroundImgView setImage:nil];
+}
 @end

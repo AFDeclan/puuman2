@@ -131,12 +131,23 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
                 [bodyView refresh];
             }
             [bodyView setAlpha:1];
-            
+            if (vaccineView) {
+                [vaccineView setAlpha:0];
+            }
             
         }
             break;
         case kVaccineButton:
         {
+            if (!vaccineView) {
+                vaccineView = [[BabyVaccineView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+                [vaccineView setBackgroundColor:[UIColor clearColor]];
+                [self.view addSubview:vaccineView];
+            }else{
+                [vaccineView refresh];
+            }
+            [vaccineView setAlpha:1];
+            
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
@@ -148,12 +159,18 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
+            if (vaccineView) {
+                [vaccineView setAlpha:0];
+            }
         }
             break;
         case kPuumanButton:
         {
             if (bodyView) {
                 [bodyView setAlpha:0];
+            }
+            if (vaccineView) {
+                [vaccineView setAlpha:0];
             }
         }
             break;
@@ -162,12 +179,18 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
+            if (vaccineView) {
+                [vaccineView setAlpha:0];
+            }
         }
             break;
         case kPreButton:
         {
             if (bodyView) {
                 [bodyView setAlpha:0];
+            }
+            if (vaccineView) {
+                [vaccineView setAlpha:0];
             }
         }
             break;
@@ -181,7 +204,13 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
 //竖屏
 -(void)setVerticalFrame
 {
-    [bodyView setVerticalFrame];
+    if (bodyView) {
+        [bodyView setVerticalFrame];
+    }
+    if (vaccineView) {
+        [vaccineView setVerticalFrame];
+    }
+    
     SetViewLeftUp(controlBtnsView, 688, 176);
     SetViewLeftUp(modifyBtn, 640, 40);
     SetViewLeftUp(babyInfoView, 114, 16);
@@ -192,7 +221,13 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
 //横屏
 -(void)setHorizontalFrame
 {
-    [bodyView setHorizontalFrame];
+    if (bodyView) {
+         [bodyView setHorizontalFrame];
+    }
+   
+    if (vaccineView) {
+        [vaccineView setHorizontalFrame];
+    }
     SetViewLeftUp(controlBtnsView, 944, 176);
     SetViewLeftUp(modifyBtn, 896, 40);
     SetViewLeftUp(babyInfoView, 242, 16);

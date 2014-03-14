@@ -17,5 +17,6 @@
     int selectedIndex;
     UILabel *titleLabel;
     UIScrollView *_scrollView;
+    UIButton *tapBtn;
 }
 @end

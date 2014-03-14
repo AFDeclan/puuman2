@@ -35,6 +35,9 @@
         [_scrollView setDelegate:self];
         [_scrollView setPagingEnabled:YES];
         [_content addSubview:_scrollView];
+        UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
+        [_scrollView addGestureRecognizer:gestureRecognizer];
+       
     }
     return self;
 }
@@ -76,6 +79,14 @@
 
 }
 
+- (void)tapped
+{
+    float x = _scrollView.contentOffset.x;
+    int index =x/416;
+    [self showPhotoAtIndex:index+1];
+
+}
+
 - (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
 {
 
@@ -98,7 +109,9 @@
 {
     if (scrollView == _scrollView) {
         CGPoint pos= _scrollView.contentOffset;
-        pos.x = pos.x*192/416;
+            NSLog(@"%f",pos.x/416);
+        pos.x = pos.x*200/416;
+    
         [_showColumnView setContentOffset:pos];
     }
     
@@ -115,17 +128,20 @@
 
 - (void)scrollViewDidEndDecelerating:(UIColumnView *)scrollView
 {
-    
-    CGPoint pos= _scrollView.contentOffset;
-    pos.x = pos.x*192/416;
-    [_showColumnView setContentOffset:pos];
+     if (scrollView == _scrollView) {
+         CGPoint pos= _scrollView.contentOffset;
+         pos.x = pos.x*200/416;
+         [_showColumnView setContentOffset:pos];
+     }
 }
 
 - (void)scrollViewDidEndDragging:(UIColumnView *)scrollView willDecelerate:(BOOL)decelerate;
 {
-    CGPoint pos= _scrollView.contentOffset;
-    pos.x = pos.x*192/416;
-    [_showColumnView setContentOffset:pos];
+     if (scrollView == _scrollView) {
+         CGPoint pos= _scrollView.contentOffset;
+         pos.x = pos.x*200/416;
+         [_showColumnView setContentOffset:pos];
+     }
 }
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {

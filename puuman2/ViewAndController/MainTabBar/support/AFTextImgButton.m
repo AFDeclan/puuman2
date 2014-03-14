@@ -103,6 +103,9 @@
             break;
         case kButtonTypeSix:
         {
+            [_iconView setFrame:CGRectMake(0, 0, 16, 28)];
+            [_titleLabel setFont:PMFont1];
+            [self adjustLayout];
         }
             break;
         default:

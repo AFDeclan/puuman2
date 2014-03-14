@@ -11,7 +11,7 @@
 #import "ColorButton.h"
 #import "BabyInfoButton.h"
 #import "BabyBodyView.h"
-
+#import "BabyVaccineView.h"
 
 @interface BabyInfoViewController : UIViewController
 {
@@ -22,6 +22,7 @@
     UIView *controlBtnsView;
     BabyInfoButton *acticeBtn;
     BabyBodyView *bodyView;
+    BabyVaccineView *vaccineView;
 }
 
 @end
