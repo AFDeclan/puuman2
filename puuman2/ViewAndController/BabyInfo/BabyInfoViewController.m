@@ -134,6 +134,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (vaccineView) {
                 [vaccineView setAlpha:0];
             }
+            if (puumanView) {
+                [puumanView setAlpha:0];
+            }
             
         }
             break;
@@ -151,21 +154,36 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
+            if (puumanView) {
+                [puumanView setAlpha:0];
+            }
             
         }
             break;
         case kPropButton:
         {
+            
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
             if (vaccineView) {
                 [vaccineView setAlpha:0];
             }
+            if (puumanView) {
+                [puumanView setAlpha:0];
+            }
         }
             break;
         case kPuumanButton:
         {
+            if (!puumanView) {
+                puumanView  = [[BabyPuumanView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+                [puumanView setBackgroundColor:[UIColor clearColor]];
+                [self.view addSubview:puumanView];
+            }else{
+                [puumanView refresh];
+            }
+            [puumanView setAlpha:1];
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
@@ -211,6 +229,10 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
         [vaccineView setVerticalFrame];
     }
     
+    if (puumanView) {
+        [puumanView setVerticalFrame];
+    }
+    
     SetViewLeftUp(controlBtnsView, 688, 176);
     SetViewLeftUp(modifyBtn, 640, 40);
     SetViewLeftUp(babyInfoView, 114, 16);
@@ -227,6 +249,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
    
     if (vaccineView) {
         [vaccineView setHorizontalFrame];
+    }
+    if (puumanView) {
+        [puumanView setHorizontalFrame];
     }
     SetViewLeftUp(controlBtnsView, 944, 176);
     SetViewLeftUp(modifyBtn, 896, 40);

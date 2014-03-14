@@ -10,6 +10,8 @@
 
 @interface BabyPuumanView : BabyInfoContentView<UITableViewDataSource,UITableViewDelegate>
 {
-    UITableView *dataTable;
+    UITableView *inBookTable;
+    UITableView *outBookTable;
 }
+- (void)refresh;
 @end

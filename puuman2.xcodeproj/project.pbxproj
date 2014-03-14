@@ -261,6 +261,8 @@
 		54B753A818D2CF12002411CF /* btn_blue4.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B753A718D2CF12002411CF /* btn_blue4.png */; };
 		54B753AA18D2F8C4002411CF /* pic_ruler_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B753A918D2F8C4002411CF /* pic_ruler_baby.png */; };
 		54B753AD18D2F9E5002411CF /* BabyPuumanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753AC18D2F9E5002411CF /* BabyPuumanView.m */; };
+		54B753B018D3020B002411CF /* PuumanInBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753AF18D3020B002411CF /* PuumanInBookCell.m */; };
+		54B753B318D3021E002411CF /* PuumanOutBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753B218D3021E002411CF /* PuumanOutBookCell.m */; };
 		54BAD45D18D14B8A003822CC /* BabyInfoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD45C18D14B8A003822CC /* BabyInfoContentView.m */; };
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
@@ -750,6 +752,10 @@
 		54B753A918D2F8C4002411CF /* pic_ruler_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_ruler_baby.png; sourceTree = "<group>"; };
 		54B753AB18D2F9E5002411CF /* BabyPuumanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPuumanView.h; sourceTree = "<group>"; };
 		54B753AC18D2F9E5002411CF /* BabyPuumanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPuumanView.m; sourceTree = "<group>"; };
+		54B753AE18D3020B002411CF /* PuumanInBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuumanInBookCell.h; sourceTree = "<group>"; };
+		54B753AF18D3020B002411CF /* PuumanInBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuumanInBookCell.m; sourceTree = "<group>"; };
+		54B753B118D3021E002411CF /* PuumanOutBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuumanOutBookCell.h; sourceTree = "<group>"; };
+		54B753B218D3021E002411CF /* PuumanOutBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuumanOutBookCell.m; sourceTree = "<group>"; };
 		54BAD45B18D14B8A003822CC /* BabyInfoContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoContentView.h; sourceTree = "<group>"; };
 		54BAD45C18D14B8A003822CC /* BabyInfoContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoContentView.m; sourceTree = "<group>"; };
 		54BAD46218D15087003822CC /* PageControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlButton.h; sourceTree = "<group>"; };
@@ -1616,6 +1622,10 @@
 				547F9B5018D162A600486337 /* BodyInfoTableViewCell.m */,
 				54B753A118D2A8EB002411CF /* VaccineInfoTableViewCell.h */,
 				54B753A218D2A8EB002411CF /* VaccineInfoTableViewCell.m */,
+				54B753AE18D3020B002411CF /* PuumanInBookCell.h */,
+				54B753AF18D3020B002411CF /* PuumanInBookCell.m */,
+				54B753B118D3021E002411CF /* PuumanOutBookCell.h */,
+				54B753B218D3021E002411CF /* PuumanOutBookCell.m */,
 				541970D918D19CE00058FE64 /* AddBodyDataViewController.h */,
 				541970DA18D19CE00058FE64 /* AddBodyDataViewController.m */,
 				541970DC18D1A0B70058FE64 /* ruler */,
@@ -2418,6 +2428,7 @@
 				14B8DF2218BC37A30047C6B3 /* TaskUploader.m in Sources */,
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				54D14FDC18CAEACC0022E1F4 /* DiaryTableViewController.m in Sources */,
+				54B753B018D3020B002411CF /* PuumanInBookCell.m in Sources */,
 				546375C518C9B5D5004B11EF /* ColorButton.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
@@ -2460,6 +2471,7 @@
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54CE10E618C1842C00966396 /* AFImageButton.m in Sources */,
 				5403CC6518D03B68004CAE22 /* JoinView.m in Sources */,
+				54B753B318D3021E002411CF /* PuumanOutBookCell.m in Sources */,
 				5403CC7318D03B7D004CAE22 /* WaitView.m in Sources */,
 				54ADE0A018C8608700B166C4 /* TimeView.m in Sources */,
 				54CE10F518C1842C00966396 /* MJRefreshHeaderView.m in Sources */,

@@ -39,7 +39,7 @@
     [label_status setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:label_status];
     
-    info_date = [[UILabel alloc] initWithFrame:CGRectMake(96, 40, 336, 8)];
+    info_date = [[UILabel alloc] initWithFrame:CGRectMake(96, 40, 336, 10)];
     [info_date setFont:PMFont3];
     [info_date setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:info_date];
