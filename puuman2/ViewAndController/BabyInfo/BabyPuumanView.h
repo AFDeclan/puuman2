@@ -7,11 +7,13 @@
 //
 
 #import "BabyInfoContentView.h"
-
+#import "AFTextImgButton.h"
 @interface BabyPuumanView : BabyInfoContentView<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *inBookTable;
     UITableView *outBookTable;
+    AFTextImgButton *inBookTitle;
+    AFTextImgButton *outBookTitle;
 }
 - (void)refresh;
 @end

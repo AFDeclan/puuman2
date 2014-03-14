@@ -108,6 +108,13 @@
             [self adjustLayout];
         }
             break;
+        case kButtonTypeSeven:
+        {
+            [_iconView setFrame:CGRectMake(0, 0, 24, 24)];
+            [_titleLabel setFont:PMFont1];
+            [self adjustLayout];
+        }
+            break;
         default:
             break;
     }

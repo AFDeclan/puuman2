@@ -10,6 +10,7 @@
 #import "ColorButton.h"
 
 
+
 @interface BabyBodyView : BabyInfoContentView<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *dataTable;
@@ -17,6 +18,7 @@
     UITableView *_lineChartView;
     ColorButton *addDataBtn;
     UILabel *noti_label;
+    
 
 }
 - (void)refresh;

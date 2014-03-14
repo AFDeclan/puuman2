@@ -20,6 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+         SetViewLeftUp(showAndHiddenBtn, 432, 376);
         [self initWithLeftView];
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
@@ -38,6 +39,18 @@
 
 - (void)initWithLeftView
 {
+    inBookTitle = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 216, 64)];
+    [inBookTitle setBackgroundColor:[UIColor clearColor]];
+    [inBookTitle setTitle:[NSString stringWithFormat:@"入库 %0.1f",[PumanBookModel bookModel].inTotal] andImg:[UIImage imageNamed:@"icon_in_baby.png"] andButtonType:kButtonTypeSeven];
+    [inBookTitle setTintColor:PMColor6];
+    [leftView addSubview:inBookTitle];
+    outBookTitle = [[AFTextImgButton alloc] initWithFrame:CGRectMake(216, 0, 216, 64)];
+    [outBookTitle setBackgroundColor:[UIColor clearColor]];
+    [outBookTitle setTitle:[NSString stringWithFormat:@"兑现 %0.1f",[PumanBookModel bookModel].outTotal] andImg:[UIImage imageNamed:@"icon_out_baby.png"] andButtonType:kButtonTypeSeven];
+    [outBookTitle setTintColor:PMColor1];
+    [leftView addSubview:outBookTitle];
+    
+    
     inBookTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
     [inBookTable setBackgroundColor:PMColor6];
     [inBookTable setDataSource:self];
@@ -111,10 +124,10 @@
 -(void)setVerticalFrame
 {
     [super setVerticalFrame];
-    [leftView setFrame:CGRectMake(-432, 0, 472, 768)];
+    [leftView setFrame:CGRectMake(-432, 0, 472, 832)];
    [showAndHiddenBtn setAlpha:1];
-    [inBookTable setFrame:CGRectMake(0, 0, 216, 768)];
-    [outBookTable setFrame:CGRectMake(216, 0, 216, 768)];
+    [inBookTable setFrame:CGRectMake(0, 64, 216, 768)];
+    [outBookTable setFrame:CGRectMake(216, 64, 216, 768)];
 
     
 }
@@ -122,12 +135,29 @@
 -(void)setHorizontalFrame
 {
     [super setHorizontalFrame];
-    [leftView setFrame:CGRectMake(0, 64, 432, 512)];
+    [leftView setFrame:CGRectMake(0, 0, 432, 576)];
     [showAndHiddenBtn setAlpha:0];
-    [inBookTable setFrame:CGRectMake(0, 0, 216, 512)];
-    [outBookTable setFrame:CGRectMake(216, 0, 216, 512)];
+    [inBookTable setFrame:CGRectMake(0, 64, 216, 512)];
+    [outBookTable setFrame:CGRectMake(216, 64, 216, 512)];
    
     
+}
+
+- (void)fold
+{
+    [showAndHiddenBtn foldWithDuration:0.3];
+    [UIView animateWithDuration:0.3 animations:^{
+        SetViewLeftUp(leftView, -432, 0);
+    }];
+    
+}
+
+- (void)unfold
+{
+    [showAndHiddenBtn unfoldWithDuration:0.3];
+    [UIView animateWithDuration:0.3 animations:^{
+        SetViewLeftUp(leftView, 0, 0);
+    }];
 }
 
 @end
