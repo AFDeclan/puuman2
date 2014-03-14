@@ -71,6 +71,10 @@
 
 - (void)initWithRightView
 {
+    
+    
+    
+    
     _lineChartView  = [[UITableView alloc] initWithFrame:CGRectMake(56, 184, 544, 408)];
    
     [_lineChartView setDataSource:self];
@@ -93,6 +97,9 @@
     [noti_label setText:@"左右滑动切换身高&体重"];
     [noti_label setTextAlignment:NSTextAlignmentCenter];
     [rightView addSubview:noti_label];
+    
+    
+    
 }
 
 - (void)addData

@@ -30,6 +30,7 @@
     NSDate *date;
     AddInfoCalendar *_calendar;
     NSInteger suitMonth;
+    UIView *emptyView;
 }
 - (void)refresh;
 @end

@@ -260,6 +260,7 @@
 		54B753A618D2BEB0002411CF /* AnimateShowLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753A518D2BEB0002411CF /* AnimateShowLabel.m */; };
 		54B753A818D2CF12002411CF /* btn_blue4.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B753A718D2CF12002411CF /* btn_blue4.png */; };
 		54B753AA18D2F8C4002411CF /* pic_ruler_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B753A918D2F8C4002411CF /* pic_ruler_baby.png */; };
+		54B753AD18D2F9E5002411CF /* BabyPuumanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753AC18D2F9E5002411CF /* BabyPuumanView.m */; };
 		54BAD45D18D14B8A003822CC /* BabyInfoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD45C18D14B8A003822CC /* BabyInfoContentView.m */; };
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
@@ -747,6 +748,8 @@
 		54B753A518D2BEB0002411CF /* AnimateShowLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimateShowLabel.m; sourceTree = "<group>"; };
 		54B753A718D2CF12002411CF /* btn_blue4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_blue4.png; sourceTree = "<group>"; };
 		54B753A918D2F8C4002411CF /* pic_ruler_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_ruler_baby.png; sourceTree = "<group>"; };
+		54B753AB18D2F9E5002411CF /* BabyPuumanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPuumanView.h; sourceTree = "<group>"; };
+		54B753AC18D2F9E5002411CF /* BabyPuumanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPuumanView.m; sourceTree = "<group>"; };
 		54BAD45B18D14B8A003822CC /* BabyInfoContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoContentView.h; sourceTree = "<group>"; };
 		54BAD45C18D14B8A003822CC /* BabyInfoContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoContentView.m; sourceTree = "<group>"; };
 		54BAD46218D15087003822CC /* PageControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlButton.h; sourceTree = "<group>"; };
@@ -1341,6 +1344,8 @@
 				54BAD46918D15A73003822CC /* BabyBodyView.m */,
 				54B7539E18D2A7C7002411CF /* BabyVaccineView.h */,
 				54B7539F18D2A7C7002411CF /* BabyVaccineView.m */,
+				54B753AB18D2F9E5002411CF /* BabyPuumanView.h */,
+				54B753AC18D2F9E5002411CF /* BabyPuumanView.m */,
 				54B7539A18D2A75D002411CF /* support */,
 			);
 			name = subView;
@@ -2428,6 +2433,7 @@
 				54ADE09C18C8608700B166C4 /* NewCameraViewController.m in Sources */,
 				543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */,
 				54D14FD918CACC720022E1F4 /* CustomPopViewController.m in Sources */,
+				54B753AD18D2F9E5002411CF /* BabyPuumanView.m in Sources */,
 				541970D818D195C10058FE64 /* LineChartCell.m in Sources */,
 				541970D218D1956D0058FE64 /* LineChart.m in Sources */,
 				543BAECE18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m in Sources */,

@@ -50,7 +50,21 @@
 
 - (void)initWithRightView
 {
-
+    emptyView = [[UIView alloc] init];
+    [emptyView setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:emptyView];
+    
+    UIImageView *iconBg = [[UIImageView alloc] initWithFrame:CGRectMake(12, 0, 112, 112)];
+    [iconBg setImage:[UIImage imageNamed:@"pic_vac_blank.png"]];
+    [emptyView addSubview:iconBg];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 120, 136, 24)];
+    [title setFont:PMFont4];
+    [title setTextColor:PMColor3];
+    [title setText:@"在左侧选择疫苗即可查看详情"];
+    [title setTextAlignment:NSTextAlignmentCenter];
+    [title setBackgroundColor:[UIColor clearColor]];
+    [emptyView addSubview:title];
+    [emptyView setAlpha:0];
     selectVaccine = -1;
     right = NO;
     selectedDateBtn  = [[UIButton alloc] initWithFrame:CGRectMake(0, 48, 336, 48)];
@@ -180,7 +194,7 @@
     if (_calendar) {
         SetViewLeftUp(_calendar, 162, 96);;
     }
-    
+    [emptyView setAlpha:0];
 }
 
 -(void)setHorizontalFrame
@@ -200,14 +214,17 @@
     [self setContentOffset:CGPointMake(0, 0)];
     [maskView setFrame:CGRectMake(0, 0, 864, 576)];
     if (selectVaccine == -1) {
-        [self selectAtIndex:0];
+        [rightView setAlpha:0];
+        [emptyView setAlpha:1];
+        SetViewLeftUp(backBtn, 0, -156);
     }else{
+        [emptyView setAlpha:0];
         [self selectAtIndex:selectVaccine];
     }
     if (_calendar) {
         SetViewLeftUp(_calendar, 66, 96);;
     }
-    
+     [emptyView setFrame:CGRectMake(592, 192, 136, 144)];
 
 }
 
@@ -218,8 +235,8 @@
 
 - (void)selectAtIndex:(NSInteger)index
 {
-  
-    
+    [rightView setAlpha:1];
+     [emptyView setAlpha:0];
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [maskView setAlpha:1];
         [UIView animateWithDuration:0.5 animations:^{
@@ -297,8 +314,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (selectVaccine == -1) {
-        SetViewLeftUp(backBtn, 0, -dataTable.contentOffset.y-30 + 96);
-
+        SetViewLeftUp(backBtn, 0, -156);
     }else{
         SetViewLeftUp(backBtn, 0, -dataTable.contentOffset.y-30 +selectVaccine *96);
 
