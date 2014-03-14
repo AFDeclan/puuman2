@@ -36,6 +36,11 @@
 
 - (void)initContent
 {
+    
+    bg_ruler = [[UIImageView alloc] initWithFrame:CGRectMake(144, 240, 440, 144)];
+    [bg_ruler setImage:[UIImage imageNamed:@"pic_ruler_baby.png"]];
+    [_content addSubview:bg_ruler];
+    
     dateTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 420,640, 48)];
     [dateTextField setBackground:[UIImage imageNamed:@"title2_baby_diary.png"]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -54,12 +59,12 @@
 
     [self addRulerOfHeight];
     [self addRulerOFWeight];
-    heightLabel = [[UILabel alloc] initWithFrame:CGRectMake(276, 300, 80, 24)];
+    heightLabel = [[UILabel alloc] initWithFrame:CGRectMake(288, 300, 80, 24)];
     [heightLabel setFont:PMFont1];
     [heightLabel setTextColor:PMColor1];
     [heightLabel setText:@"无记录"];
     [_content addSubview:heightLabel];
-    weightLabel = [[UILabel alloc] initWithFrame:CGRectMake(532, 300, 80, 24)];
+    weightLabel = [[UILabel alloc] initWithFrame:CGRectMake(544, 300, 80, 24)];
     [_content addSubview:weightLabel];
     [weightLabel setTextColor:PMColor1];
     [weightLabel setFont:PMFont1];

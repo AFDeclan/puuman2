@@ -13,6 +13,8 @@
 
 @interface AddBodyDataViewController : CustomPopViewController<RulerScrollDelegate,AddInfoCalendarDelegate,UIGestureRecognizerDelegate>
 {
+    
+    UIImageView *bg_ruler;
     float height;
     float weight;
     RulerScrollView *rulerOfHeight;
