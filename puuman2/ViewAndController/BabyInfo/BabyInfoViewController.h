@@ -13,6 +13,7 @@
 #import "BabyBodyView.h"
 #import "BabyVaccineView.h"
 #import "BabyPuumanView.h"
+#import "BabyPropView.h"
 
 @interface BabyInfoViewController : UIViewController
 {
@@ -25,6 +26,7 @@
     BabyBodyView *bodyView;
     BabyVaccineView *vaccineView;
     BabyPuumanView *puumanView;
+    BabyPropView *propView;
 }
 
 @end

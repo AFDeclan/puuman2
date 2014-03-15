@@ -170,6 +170,13 @@
 		543BAECE18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAECD18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m */; };
 		543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED018CEC30100ED4672 /* PhotoMoreDiaryCell.m */; };
 		543BAEDA18CF172D00ED4672 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED918CF172D00ED4672 /* VideoViewController.m */; };
+		544419E618D3EAC800FBE69F /* BabyPropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544419E518D3EAC800FBE69F /* BabyPropView.m */; };
+		544419EB18D3ED3E00FBE69F /* PropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544419E818D3ED3E00FBE69F /* PropView.m */; };
+		544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 544419EA18D3ED3E00FBE69F /* PropWare.m */; };
+		544419F018D3EE2D00FBE69F /* pic1_equip_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 544419ED18D3EE2D00FBE69F /* pic1_equip_baby.png */; };
+		544419F118D3EE2D00FBE69F /* pic2_equip_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 544419EE18D3EE2D00FBE69F /* pic2_equip_baby.png */; };
+		544419F218D3EE2D00FBE69F /* pic3_equip_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 544419EF18D3EE2D00FBE69F /* pic3_equip_baby.png */; };
+		544419F418D3F42900FBE69F /* pic_default_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 544419F318D3F42900FBE69F /* pic_default_baby.png */; };
 		5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463755A18C96622004B11EF /* btn_pic_diary.png */; };
 		5463756B18C96B1D004B11EF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756A18C96B1D004B11EF /* LoginViewController.m */; };
 		5463756F18C96E3E004B11EF /* LoginStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756E18C96E3E004B11EF /* LoginStartView.m */; };
@@ -615,6 +622,16 @@
 		543BAED018CEC30100ED4672 /* PhotoMoreDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoMoreDiaryCell.m; sourceTree = "<group>"; };
 		543BAED818CF172D00ED4672 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		543BAED918CF172D00ED4672 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		544419E418D3EAC800FBE69F /* BabyPropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPropView.h; sourceTree = "<group>"; };
+		544419E518D3EAC800FBE69F /* BabyPropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPropView.m; sourceTree = "<group>"; };
+		544419E718D3ED3E00FBE69F /* PropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropView.h; sourceTree = "<group>"; };
+		544419E818D3ED3E00FBE69F /* PropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropView.m; sourceTree = "<group>"; };
+		544419E918D3ED3E00FBE69F /* PropWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropWare.h; sourceTree = "<group>"; };
+		544419EA18D3ED3E00FBE69F /* PropWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropWare.m; sourceTree = "<group>"; };
+		544419ED18D3EE2D00FBE69F /* pic1_equip_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic1_equip_baby.png; sourceTree = "<group>"; };
+		544419EE18D3EE2D00FBE69F /* pic2_equip_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic2_equip_baby.png; sourceTree = "<group>"; };
+		544419EF18D3EE2D00FBE69F /* pic3_equip_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic3_equip_baby.png; sourceTree = "<group>"; };
+		544419F318D3F42900FBE69F /* pic_default_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_default_baby.png; sourceTree = "<group>"; };
 		5463755A18C96622004B11EF /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
 		5463756918C96B1D004B11EF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5463756A18C96B1D004B11EF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -1289,6 +1306,10 @@
 		5403CDF818D04F51004CAE22 /* BabyInfoImages */ = {
 			isa = PBXGroup;
 			children = (
+				544419F318D3F42900FBE69F /* pic_default_baby.png */,
+				544419ED18D3EE2D00FBE69F /* pic1_equip_baby.png */,
+				544419EE18D3EE2D00FBE69F /* pic2_equip_baby.png */,
+				544419EF18D3EE2D00FBE69F /* pic3_equip_baby.png */,
 				54B753A918D2F8C4002411CF /* pic_ruler_baby.png */,
 				541970EE18D1BA7E0058FE64 /* dot_gray_baby.png */,
 				541970EC18D1BA730058FE64 /* dot_blue_baby.png */,
@@ -1352,6 +1373,8 @@
 				54B7539F18D2A7C7002411CF /* BabyVaccineView.m */,
 				54B753AB18D2F9E5002411CF /* BabyPuumanView.h */,
 				54B753AC18D2F9E5002411CF /* BabyPuumanView.m */,
+				544419E418D3EAC800FBE69F /* BabyPropView.h */,
+				544419E518D3EAC800FBE69F /* BabyPropView.m */,
 				54B7539A18D2A75D002411CF /* support */,
 			);
 			name = subView;
@@ -1628,6 +1651,10 @@
 				54B753B218D3021E002411CF /* PuumanOutBookCell.m */,
 				541970D918D19CE00058FE64 /* AddBodyDataViewController.h */,
 				541970DA18D19CE00058FE64 /* AddBodyDataViewController.m */,
+				544419E718D3ED3E00FBE69F /* PropView.h */,
+				544419E818D3ED3E00FBE69F /* PropView.m */,
+				544419E918D3ED3E00FBE69F /* PropWare.h */,
+				544419EA18D3ED3E00FBE69F /* PropWare.m */,
 				541970DC18D1A0B70058FE64 /* ruler */,
 				541970B118D18F240058FE64 /* LineCart */,
 			);
@@ -2188,6 +2215,7 @@
 				5463759918C98493004B11EF /* tri_white_left.png in Resources */,
 				541970C418D194070058FE64 /* chart_hei_baby_diary.png in Resources */,
 				5463758F18C98493004B11EF /* tri_blue_diary.png in Resources */,
+				544419F218D3EE2D00FBE69F /* pic3_equip_baby.png in Resources */,
 				54CE116718C1C7BF00966396 /* btn_close2.png in Resources */,
 				5403CD3D18D03D39004CAE22 /* icon16_weather_diary@2x.png in Resources */,
 				5403CD4618D03D39004CAE22 /* icon3_weather_diary.png in Resources */,
@@ -2252,6 +2280,7 @@
 				54F1D10518C48B340005CDD9 /* bg_prompt.png in Resources */,
 				54F1D13218C48FA50005CDD9 /* btn_play_diary.png in Resources */,
 				54D1500118CAEFD70022E1F4 /* paper_top_diary.png in Resources */,
+				544419F018D3EE2D00FBE69F /* pic1_equip_baby.png in Resources */,
 				54ADE0AA18C861B700B166C4 /* btn_audio_newdiary.png in Resources */,
 				5403CE2918D04F5E004CAE22 /* btn_pre2_baby.png in Resources */,
 				5403CD4318D03D39004CAE22 /* icon1_weather_diary@2x.png in Resources */,
@@ -2270,6 +2299,7 @@
 				541970AA18D188F40058FE64 /* pic_body_blank.png in Resources */,
 				5403CE2818D04F5E004CAE22 /* btn_pre1_baby.png in Resources */,
 				5403CD3118D03D39004CAE22 /* icon10_weather_diary@2x.png in Resources */,
+				544419F418D3F42900FBE69F /* pic_default_baby.png in Resources */,
 				5463759A18C98493004B11EF /* tri_white_right.png in Resources */,
 				54F1D13A18C48FA50005CDD9 /* icon_stop2_diary.png in Resources */,
 				54D14FFC18CAEFD70022E1F4 /* line2_diary.png in Resources */,
@@ -2304,6 +2334,7 @@
 				5403CD3818D03D39004CAE22 /* icon14_weather_diary.png in Resources */,
 				54ADE0AB18C861B700B166C4 /* btn_audio2_newdiary.png in Resources */,
 				14B8DF3118BC37A30047C6B3 /* sampleDiary_auphoto.mp3 in Resources */,
+				544419F118D3EE2D00FBE69F /* pic2_equip_baby.png in Resources */,
 				54CE116218C1C7BF00966396 /* block4_btn.png in Resources */,
 				5403CD5F18D03DEF004CAE22 /* block2_h_diary.png in Resources */,
 				5403CE2018D04F5E004CAE22 /* btn_bank2_baby.png in Resources */,
@@ -2424,6 +2455,7 @@
 				54CE10F818C1842C00966396 /* UIImage+CroppedImage.m in Sources */,
 				54CE10F618C1842C00966396 /* TextLayoutLabel.m in Sources */,
 				54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */,
+				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
 				5403CE4818D051A2004CAE22 /* BabyInfoView.m in Sources */,
 				14B8DF2218BC37A30047C6B3 /* TaskUploader.m in Sources */,
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
@@ -2457,6 +2489,7 @@
 				54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */,
 				54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */,
 				14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */,
+				544419EB18D3ED3E00FBE69F /* PropView.m in Sources */,
 				54CE10F918C1842C00966396 /* UIImage+Scale.m in Sources */,
 				5403CC7218D03B7D004CAE22 /* InviteView.m in Sources */,
 				54BAD45D18D14B8A003822CC /* BabyInfoContentView.m in Sources */,
@@ -2482,6 +2515,7 @@
 				14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */,
 				549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */,
 				54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */,
+				544419E618D3EAC800FBE69F /* BabyPropView.m in Sources */,
 				546375CE18C9D011004B11EF /* ProtocalPuumanViewController.m in Sources */,
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
 				54CE112518C1BC6D00966396 /* DiaryViewController.m in Sources */,

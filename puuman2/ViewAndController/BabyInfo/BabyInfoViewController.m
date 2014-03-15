@@ -137,6 +137,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (puumanView) {
                 [puumanView setAlpha:0];
             }
+            if (propView) {
+                [propView setAlpha:0];
+            }
             
         }
             break;
@@ -157,12 +160,22 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (puumanView) {
                 [puumanView setAlpha:0];
             }
+            if (propView) {
+                [propView setAlpha:0];
+            }
             
         }
             break;
         case kPropButton:
         {
-            
+            if (!propView) {
+                propView  = [[BabyPropView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+                [propView setBackgroundColor:[UIColor clearColor]];
+                [self.view addSubview:propView];
+            }else{
+                [propView refresh];
+            }
+            [propView setAlpha:1];
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
@@ -190,25 +203,30 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (vaccineView) {
                 [vaccineView setAlpha:0];
             }
+            if (propView) {
+                [propView setAlpha:0];
+            }
         }
             break;
         case kBpreButton:
         {
-            if (bodyView) {
-                [bodyView setAlpha:0];
+
+            if (puumanView) {
+                [puumanView setAlpha:0];
             }
-            if (vaccineView) {
-                [vaccineView setAlpha:0];
+            if (propView) {
+                [propView setAlpha:0];
             }
         }
             break;
         case kPreButton:
         {
-            if (bodyView) {
-                [bodyView setAlpha:0];
+
+            if (puumanView) {
+                [puumanView setAlpha:0];
             }
-            if (vaccineView) {
-                [vaccineView setAlpha:0];
+            if (propView) {
+                [propView setAlpha:0];
             }
         }
             break;
@@ -232,7 +250,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
     if (puumanView) {
         [puumanView setVerticalFrame];
     }
-    
+    if (propView) {
+        [propView setVerticalFrame];
+    }
     SetViewLeftUp(controlBtnsView, 688, 176);
     SetViewLeftUp(modifyBtn, 640, 40);
     SetViewLeftUp(babyInfoView, 114, 16);
@@ -252,6 +272,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
     }
     if (puumanView) {
         [puumanView setHorizontalFrame];
+    }
+    if (propView) {
+        [propView setHorizontalFrame];
     }
     SetViewLeftUp(controlBtnsView, 944, 176);
     SetViewLeftUp(modifyBtn, 896, 40);

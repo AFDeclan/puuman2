@@ -100,6 +100,7 @@
     
     backBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 336, 48, 156)];
     [backBtn addTarget:self action:@selector(backToMainTable)  forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_right.png"] andButtonType:kButtonTypeSix];
     [rightView addSubview:backBtn];
     
     maskView = [[UIView alloc] init];
@@ -208,7 +209,7 @@
     SetViewLeftUp(alreadyBtn, 320, 480);
     SetViewLeftUp(notBtn, 320, 520);
     [detail setFrame:CGRectMake(48, 178, 336, 288)];
-    [backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_left.png"] andButtonType:kButtonTypeSix];
+    //[backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_left.png"] andButtonType:kButtonTypeSix];
     [backBtn setEnabled:NO];
     SetViewLeftUp(backBtn, 0, 200);
     [self setContentOffset:CGPointMake(0, 0)];
@@ -245,7 +246,7 @@
             [maskView setAlpha:0];
         }];
         SetViewLeftUp(backBtn, 0, 336);
-        [backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_right.png"] andButtonType:kButtonTypeSix];
+    
         [backBtn setEnabled:YES];
     }else{
        
