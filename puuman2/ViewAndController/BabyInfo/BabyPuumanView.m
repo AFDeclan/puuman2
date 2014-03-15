@@ -13,6 +13,7 @@
 #import "PuumanOutBookCell.h"
 #import "MainTabBarController.h"
 #import "UIView+AFAnimation.h"
+#import "PuumanRulesViewController.h"
 
 
 @implementation BabyPuumanView
@@ -138,6 +139,11 @@
 
 - (void)showRules
 {
+    PuumanRulesViewController *infoVC  = [[PuumanRulesViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:infoVC.view];
+    [infoVC setTitle:@"积累规则" withIcon:nil];
+    [infoVC setControlBtnType:kOnlyCloseButton];
+    [infoVC show];
 
 }
 
