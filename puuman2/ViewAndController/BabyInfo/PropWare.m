@@ -22,7 +22,7 @@
     if (self) {
        
         w_Pic = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
-        [w_Pic setImage:[UIImage imageNamed:@"pic_default_baby.png"]];
+        [w_Pic setImage:[UIImage imageNamed:@"pic_default_baby_ware.png"]];
         [w_Pic setBackgroundColor:[UIColor clearColor]];
         [self addSubview:w_Pic];
         w_Name = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, 80, 28)];

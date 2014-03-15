@@ -109,39 +109,33 @@
 {
     if (scrollView == _scrollView) {
         CGPoint pos= _scrollView.contentOffset;
-            NSLog(@"%f",pos.x/416);
+        float nowX = pos.x/416;
+        float indexX = (int)(pos.x/416);
+        selectedIndex = pos.x/416 +1;
+        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:(nowX-indexX)*0.5];
+        [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0.5-(nowX-indexX)*0.5];
         pos.x = pos.x*200/416;
-    
         [_showColumnView setContentOffset:pos];
+        if (selectedIndex == 0) {
+            [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0];
+        }
+        if (selectedIndex == [_photoPaths count]) {
+             [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0];
+        }
+        
     }
-    
-    if (scrollView == _showColumnView) {
-        float x = scrollView.contentOffset.x;
-        int index =2+ (x-100)/200;
-        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0.5];
-        selectedIndex = index;
-        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0];
-    }
-  
+      
     
 }
 
 - (void)scrollViewDidEndDecelerating:(UIColumnView *)scrollView
 {
-     if (scrollView == _scrollView) {
-         CGPoint pos= _scrollView.contentOffset;
-         pos.x = pos.x*200/416;
-         [_showColumnView setContentOffset:pos];
-     }
+
 }
 
 - (void)scrollViewDidEndDragging:(UIColumnView *)scrollView willDecelerate:(BOOL)decelerate;
 {
-     if (scrollView == _scrollView) {
-         CGPoint pos= _scrollView.contentOffset;
-         pos.x = pos.x*200/416;
-         [_showColumnView setContentOffset:pos];
-     }
+
 }
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
