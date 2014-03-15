@@ -16,6 +16,7 @@
 #import "BabyPropView.h"
 #import "BabyPreView.h"
 
+
 @interface BabyInfoViewController : UIViewController
 {
 
@@ -29,7 +30,7 @@
     BabyPuumanView *puumanView;
     BabyPropView *propView;
     BabyPreView *preView;
-    
+    BabyInfoButtonType selectType;
 }
 
 @end

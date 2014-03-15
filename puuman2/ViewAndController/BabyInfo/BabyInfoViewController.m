@@ -229,9 +229,12 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
            
             }else{
                 [preView setColumnImgBMode:YES];
-                [preView refresh];
+                if (selectType != kPreButton) {
+                    [preView scrollToToday];
+                }
+                
             }
-            [preView setColumnImgBMode:YES];
+         
             [preView setAlpha:1];
             
             if (puumanView) {
@@ -253,7 +256,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
                 [preView scrollToToday];
             }else{
                 [preView setColumnImgBMode:NO];
-                
+                if (selectType != kBpreButton ) {
+                    [preView scrollToToday];
+                }
             }
             
             [preView setAlpha:1];
@@ -270,6 +275,8 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
         default:
             break;
     }
+    
+    selectType = sender.type;
 }
 
 

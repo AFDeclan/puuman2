@@ -7,10 +7,12 @@
 //
 
 #import "BabyInfoView.h"
-#import "UserInfo.h"
+
 #import "BabyData.h"
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
+#import "MainTabBarController.h"
+#import "TaskCell.h"
 
 @implementation BabyInfoView
 
@@ -20,6 +22,7 @@
     if (self) {
         // Initialization code
         [self initialization];
+        [UserInfo sharedUserInfo].portraitUploadDelegate = self;
     }
     return self;
 }
@@ -32,7 +35,14 @@
     portraitView = [[AFImageView alloc] initWithFrame:CGRectMake(24, 24, 112, 112)];
     portraitView.layer.cornerRadius = 56;
     portraitView.layer.masksToBounds = YES;
+    portraitView.layer.shadowRadius =0.1;
     [portraitBg addSubview:portraitView];
+    selectPhoto = [[UIButton alloc] initWithFrame:CGRectMake(204, 24, 112, 112)];
+    [selectPhoto setBackgroundColor:[UIColor clearColor]];
+    [selectPhoto addTarget:self action:@selector(selectedPhoto) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:selectPhoto];
+    
+
     
     sexIcon = [[UIImageView alloc] initWithFrame:CGRectMake(156, 40, 24, 24)];
     [sexIcon setBackgroundColor:[UIColor clearColor]];
@@ -75,11 +85,26 @@
     
 }
 
+- (void)selectedPhoto
+{
+    NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
+    [chooseView setDelegate:self];
+    [chooseView setStyle:ConfirmError];
+    [chooseView show];
+    
+}
+
+- (void)selectedPhoto:(UIImage *)img
+{
+    [[UserInfo sharedUserInfo] uploadPortrait:img];
+    
+}
 
 - (void)resetBabyInfo
 {
     BabyData *babyData = [BabyData sharedBabyData];
-    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:@""];
+    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
     info_name.text = [babyData babyName];
     info_age.text = [[NSDate date] ageStrFromDate:[babyData babyBirth]];
     if ([[BabyData sharedBabyData] babyHasBorned])
@@ -101,4 +126,15 @@
     info_usedays.text = [NSString stringWithFormat:@"%d的使用",10];
     info_diaryNum.text = [NSString stringWithFormat:@"%d条日记",15];
 }
+
+- (void)portraitUploadFinish:(BOOL)suc
+{
+    if (suc) {
+        [[TaskCell sharedTaskCell] reloadPortrait];
+         [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+    }
+    
+}
+
+
 @end

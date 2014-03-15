@@ -119,18 +119,17 @@
     [rightView addSubview:ruleBtn];
     [ruleBtn addTarget:self action:@selector(showRules) forControlEvents:UIControlEventTouchUpInside];
     
-    _newAddView = [[UIImageView alloc] initWithFrame:CGRectMake(256, 48, 59, 64)];
-    _newAddView.image = [UIImage imageNamed:@"block_new_bank"];
+    _newAddView = [[UIImageView alloc] initWithFrame:CGRectMake(256, 48, 112, 112)];
+    _newAddView.image = [UIImage imageNamed:@"block_new_puuman.png"];
     
-    _newAddLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 24, 43, 16)];
+    _newAddLabel = [[UILabel alloc] initWithFrame:CGRectMake(28, 40, 72, 24)];
     _newAddLabel.backgroundColor = [UIColor clearColor];
     _newAddLabel.textColor = [UIColor whiteColor];
-    _newAddLabel.font = PMFont2;
-    [_newAddLabel setAlpha:0.5];
-    _newAddLabel.textAlignment = NSTextAlignmentLeft;
+    _newAddLabel.font = PMFont1;
+    _newAddLabel.textAlignment = NSTextAlignmentCenter;
     [_newAddView addSubview:_newAddLabel];
     [rightView addSubview:_newAddView];
-    [_newAddView setAlpha:0];
+    [_newAddView setAlpha:1];
     
     pumanIcon = [[UIImageView alloc] init];
     [pumanIcon setBackgroundColor:[UIColor clearColor]];
@@ -208,6 +207,7 @@
     SetViewLeftUp(_numLabel_record, (608-ViewWidth(_numLabel_record))/2, 423);
     SetViewLeftUp(_numLabel_puuman, (608-ViewWidth(_numLabel_puuman))/2, 234);
     SetViewLeftUp(ruleBtn, 496, 16);
+    SetViewLeftUp(_newAddView, 392, 168);
     [pumanIcon setImage:[UIImage imageNamed:@"pic_puuman1_baby.png"]];
     [pumanIcon setFrame:CGRectMake(112, 646, 384, 213)];
 }
@@ -222,6 +222,7 @@
     SetViewLeftUp(label_puuman, 544, 96);
     SetViewLeftUp(label_record, 544, 320);
     SetViewLeftUp(icon_coin, 496, 128);
+    SetViewLeftUp(_newAddView, 736, 88);
     SetViewLeftUp(_numLabel_record,432+ (432-ViewWidth(_numLabel_record))/2, 346);
     SetViewLeftUp(_numLabel_puuman,432+ (432-ViewWidth(_numLabel_puuman))/2, 146);
     SetViewLeftUp(ruleBtn, 752, 16);
@@ -257,7 +258,7 @@
     CGFloat newAdd = [uInfo pumanQuan] - [[NSUserDefaults standardUserDefaults] doubleForKey:key];
     _newAddLabel.text = [NSString stringWithFormat:@"%.1f", newAdd];
     [[NSUserDefaults standardUserDefaults] setDouble:[uInfo pumanQuan] forKey:key];
-    if (newAdd > 0) _newAddView.alpha = 1; else _newAddView.alpha = 0;
+   // if (newAdd > 0) _newAddView.alpha = 1; else _newAddView.alpha = 0;
 
     
      NSString *bookOut = [NSString stringWithFormat:@"%.1f", [PumanBookModel bookModel].outTotal];

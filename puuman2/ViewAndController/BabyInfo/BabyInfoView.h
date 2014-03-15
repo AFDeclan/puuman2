@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AFImageView.h"
-
-@interface BabyInfoView : UIView
+#import "NewTextPhotoSelectedViewController.h"
+#import "UserInfo.h"
+@interface BabyInfoView : UIView<NewTextSelectPhotoDelegate,UserPortraitUploadDelegate>
 {
     UILabel  *info_name;
     UILabel  *info_age;
@@ -18,6 +19,8 @@
     UILabel  *info_diaryNum;
     UIImageView *sexIcon;
     AFImageView *portraitView;
+    UIButton *selectPhoto;
+   
 }
 
 - (void)resetBabyInfo;

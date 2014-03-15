@@ -60,7 +60,7 @@ const NSTimeInterval AnimatedInterval = 0.3;
 
 - (void)reloadPortrait
 {
-    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:@""];
+    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
 }
 
 - (void)unfold
