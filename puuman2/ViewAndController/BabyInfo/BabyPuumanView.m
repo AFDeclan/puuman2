@@ -12,6 +12,8 @@
 #import "PuumanInBookCell.h"
 #import "PuumanOutBookCell.h"
 #import "MainTabBarController.h"
+#import "UIView+AFAnimation.h"
+
 
 @implementation BabyPuumanView
 
@@ -20,13 +22,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-         SetViewLeftUp(showAndHiddenBtn, 432, 376);
+         SetViewLeftUp(showAndHiddenBtn, 432, 350);
         [self initWithLeftView];
-        if ([MainTabBarController sharedMainViewController].isVertical) {
-            [self setVerticalFrame];
-        }else{
-            [self setHorizontalFrame];
-        }
+        [self initWithRightView];
+    
         
     }
     return self;
@@ -71,6 +70,75 @@
     [outBookTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [outBookTable setShowsHorizontalScrollIndicator:NO];
     [outBookTable setShowsVerticalScrollIndicator:NO];
+    
+    
+}
+
+- (void)initWithRightView
+{
+    icon_coin = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 96, 96)];
+    [icon_coin setImage:[UIImage imageNamed:@"pic_coin_baby.png"]];
+    [rightView addSubview:icon_coin];
+    
+    _numLabel_puuman = [[ADTickerLabel alloc] initWithFrame:CGRectMake(0, 0, 224, 80)];
+    _numLabel_puuman.characterWidth = 40;
+    _numLabel_puuman.notNumCharacterWidth = 24;
+    _numLabel_puuman.font = PMFont(80);
+    _numLabel_puuman.textColor = PMColor6;
+    [rightView addSubview:_numLabel_puuman];
+    [_numLabel_puuman setBackgroundColor:[UIColor clearColor]];
+    _numLabel_record = [[ADTickerLabel alloc] initWithFrame:CGRectMake(0, 0, 224, 64)];
+    _numLabel_record.font = PMFont(64);
+    _numLabel_record.textColor = PMColor6;
+    _numLabel_record.characterWidth = 32;
+    _numLabel_record.notNumCharacterWidth = 20;
+    _numLabel_record.backgroundColor = [UIColor clearColor];
+    [rightView addSubview:_numLabel_record];
+    
+    
+    
+    label_puuman = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 216, 16)];
+    [label_puuman setBackgroundColor:[UIColor clearColor]];
+    [label_puuman setFont:PMFont2];
+    [label_puuman setTextColor:PMColor3];
+    [label_puuman setText:@"您现在拥有扑满金币"];
+    [label_puuman setTextAlignment:NSTextAlignmentCenter];
+    [rightView addSubview:label_puuman];
+    
+    label_record = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 216, 16)];
+    [label_record setBackgroundColor:[UIColor clearColor]];
+    [label_record setFont:PMFont2];
+    [label_record setTextColor:PMColor3];
+    [label_record setTextAlignment:NSTextAlignmentCenter];
+    [label_record setText:@"已经兑现的数额为"];
+    [rightView addSubview:label_record];
+    ruleBtn = [[ColorButton alloc] init];
+    [ruleBtn initWithTitle:@"积累规则" andButtonType:kGrayLeft];
+    [ruleBtn setBackgroundColor:[UIColor clearColor]];
+    [rightView addSubview:ruleBtn];
+    [ruleBtn addTarget:self action:@selector(showRules) forControlEvents:UIControlEventTouchUpInside];
+    
+    _newAddView = [[UIImageView alloc] initWithFrame:CGRectMake(256, 48, 59, 64)];
+    _newAddView.image = [UIImage imageNamed:@"block_new_bank"];
+    
+    _newAddLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 24, 43, 16)];
+    _newAddLabel.backgroundColor = [UIColor clearColor];
+    _newAddLabel.textColor = [UIColor whiteColor];
+    _newAddLabel.font = PMFont2;
+    [_newAddLabel setAlpha:0.5];
+    _newAddLabel.textAlignment = NSTextAlignmentLeft;
+    [_newAddView addSubview:_newAddLabel];
+    [rightView addSubview:_newAddView];
+    [_newAddView setAlpha:0];
+    
+    pumanIcon = [[UIImageView alloc] init];
+    [pumanIcon setBackgroundColor:[UIColor clearColor]];
+    [rightView addSubview:pumanIcon];
+}
+
+- (void)showRules
+{
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -128,8 +196,14 @@
    [showAndHiddenBtn setAlpha:1];
     [inBookTable setFrame:CGRectMake(0, 64, 216, 768)];
     [outBookTable setFrame:CGRectMake(216, 64, 216, 768)];
-
-    
+    SetViewLeftUp(label_puuman, 196, 176);
+    SetViewLeftUp(label_record, 196, 395);
+    SetViewLeftUp(icon_coin, 156, 208);
+    SetViewLeftUp(_numLabel_record, (608-ViewWidth(_numLabel_record))/2, 423);
+    SetViewLeftUp(_numLabel_puuman, (608-ViewWidth(_numLabel_puuman))/2, 234);
+    SetViewLeftUp(ruleBtn, 496, 16);
+    [pumanIcon setImage:[UIImage imageNamed:@"pic_puuman1_baby.png"]];
+    [pumanIcon setFrame:CGRectMake(112, 646, 384, 213)];
 }
 
 -(void)setHorizontalFrame
@@ -139,8 +213,15 @@
     [showAndHiddenBtn setAlpha:0];
     [inBookTable setFrame:CGRectMake(0, 64, 216, 512)];
     [outBookTable setFrame:CGRectMake(216, 64, 216, 512)];
-   
-    
+    SetViewLeftUp(label_puuman, 544, 96);
+    SetViewLeftUp(label_record, 544, 320);
+    SetViewLeftUp(icon_coin, 496, 128);
+    SetViewLeftUp(_numLabel_record,432+ (432-ViewWidth(_numLabel_record))/2, 346);
+    SetViewLeftUp(_numLabel_puuman,432+ (432-ViewWidth(_numLabel_puuman))/2, 146);
+    SetViewLeftUp(ruleBtn, 752, 16);
+    [pumanIcon setImage:[UIImage imageNamed:@"pic_puuman2_baby.png"]];
+    [pumanIcon setFrame:CGRectMake(544, 478, 216, 132)];
+
 }
 
 - (void)fold
@@ -159,5 +240,36 @@
         SetViewLeftUp(leftView, 0, 0);
     }];
 }
+
+- (void)setNums
+{
+
+    _numLabel_puuman.text = @"";
+    _numLabel_record.text = @"";
+    UserInfo *uInfo = [UserInfo sharedUserInfo];
+    NSString *key = [NSString stringWithFormat:@"%@_%d", kUserDefaultKey_PumanCntShowed, uInfo.BID];
+    CGFloat newAdd = [uInfo pumanQuan] - [[NSUserDefaults standardUserDefaults] doubleForKey:key];
+    _newAddLabel.text = [NSString stringWithFormat:@"%.1f", newAdd];
+    [[NSUserDefaults standardUserDefaults] setDouble:[uInfo pumanQuan] forKey:key];
+    if (newAdd > 0) _newAddView.alpha = 1; else _newAddView.alpha = 0;
+
+    
+     NSString *bookOut = [NSString stringWithFormat:@"%.1f", [PumanBookModel bookModel].outTotal];
+    _numLabel_record.text = bookOut;
+    [[NSUserDefaults standardUserDefaults] setDouble:[uInfo pumanQuan] forKey:key];
+
+    NSString *puuman = [NSString stringWithFormat:@"%.1f", uInfo.pumanQuan];
+    [_numLabel_puuman setText:puuman];
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
+    }
+    
+    [pumanIcon showInFrom:kAFAnimationBottom inView:rightView withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:nil];
+
+    
+}
+
 
 @end

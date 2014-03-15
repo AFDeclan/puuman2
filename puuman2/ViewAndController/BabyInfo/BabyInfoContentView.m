@@ -55,14 +55,14 @@
 -(void)setVerticalFrame
 {
     
-    [self setFrame:CGRectMake(80, 176, 608, 832)];
-    [rightView setFrame:CGRectMake(0, 0, 608, 832)];
+    [self setFrame:CGRectMake(80, 176, 608, 848)];
+    [rightView setFrame:CGRectMake(0, 0, 608, 848)];
 }
 
 -(void)setHorizontalFrame
 {
-    [self setFrame:CGRectMake(80, 176, 864, 576)];
-    [rightView setFrame:CGRectMake(0, 0, 864, 576)];
+    [self setFrame:CGRectMake(80, 176, 864, 592)];
+    [rightView setFrame:CGRectMake(0, 0, 864, 592)];
 }
 
 

@@ -197,6 +197,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
                 [puumanView refresh];
             }
             [puumanView setAlpha:1];
+            [puumanView setNums];
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
