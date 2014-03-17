@@ -262,13 +262,29 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
                 [psdCV show];
             }
             
-        }else if (section == 2){
+        }else if(section == 1){
+            if (row == 0) {
+                
+            }else if (row == 1){
+            
+            }else{
+            
+            }
+        
+        }else {
             if (row == 0) {
                 SettingAdviceViewController *adCV = [[SettingAdviceViewController alloc] initWithNibName:nil bundle:nil];
                 [self.view addSubview:adCV.view];
                 [adCV setTitle:cellTitles[2][0] withIcon:nil];
                 [adCV setControlBtnType:kCloseAndFinishButton];
                 [adCV show];
+            }else if (row == 1){
+                NSString* url = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", APPID];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+            }else{
+                //跳转页面
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://puuman.cn/FAQ.html"]];
+
             }
         }
     }
