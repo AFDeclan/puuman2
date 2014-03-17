@@ -17,7 +17,7 @@
     MainTabBarButton *babyInfoBtn;
     MainTabBarButton *socialBtn;
     MainTabBarButton *shopBtn;
-    UIButton *settingBtn;
+    MainTabBarButton *settingBtn;
     MainTabBarButton *selectedBtn;
     UIImageView *bg_Btn;
     BOOL animating;

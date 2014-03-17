@@ -61,8 +61,10 @@
     [selectedBoard addSubview:shopBtn];
     [shopBtn setSelected:NO];
     selectedBtn = diaryBtn;
-    settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 688, 64, 80)];
-    [settingBtn setImage:[UIImage imageNamed:@"btn_set2_diary.png"] forState:UIControlStateNormal];
+    
+    settingBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0, 688, 64, 80)];
+    settingBtn.normalImage = [UIImage imageNamed:@"btn_set2_diary.png"];
+    [settingBtn setSelected:NO];
     [settingBtn addTarget:self action:@selector(settingBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:settingBtn];
 }

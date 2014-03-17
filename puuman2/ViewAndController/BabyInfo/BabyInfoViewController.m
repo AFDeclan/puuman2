@@ -38,21 +38,14 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self initialization];
-      [self.view setBackgroundColor:[UIColor clearColor]];
-    if([MainTabBarController sharedMainViewController].isVertical)
-    {
-        [self setVerticalFrame];
-    }else
-    {
-        [self setHorizontalFrame];
-    }
-	// Do any additional setup after loading the view.
+   	// Do any additional setup after loading the view.
    
 }
 
+
 - (void)viewWillAppear:(BOOL)animated
 {
+     [self refresh];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
@@ -126,10 +119,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (!bodyView) {
                 bodyView = [[BabyBodyView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
                 [bodyView setBackgroundColor:[UIColor clearColor]];
-                [self.view addSubview:bodyView];
-            }else{
                
             }
+             [self.view addSubview:bodyView];
             [bodyView setAlpha:1];
             if (vaccineView) {
                 [vaccineView setAlpha:0];
@@ -148,12 +140,10 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (!vaccineView) {
                 vaccineView = [[BabyVaccineView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
                 [vaccineView setBackgroundColor:[UIColor clearColor]];
-                [self.view addSubview:vaccineView];
-            }else{
                
             }
             [vaccineView setAlpha:1];
-            
+             [self.view addSubview:vaccineView];
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
@@ -171,10 +161,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (!propView) {
                 propView  = [[BabyPropView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
                 [propView setBackgroundColor:[UIColor clearColor]];
-                [self.view addSubview:propView];
-            }else{
-               
+              
             }
+              [self.view addSubview:propView];
             [propView setAlpha:1];
             if (bodyView) {
                 [bodyView setAlpha:0];
@@ -197,10 +186,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (!puumanView) {
                 puumanView  = [[BabyPuumanView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
                 [puumanView setBackgroundColor:[UIColor clearColor]];
-                [self.view addSubview:puumanView];
-            }else{
-              
+                
             }
+            [self.view addSubview:puumanView];
             [puumanView setAlpha:1];
             [puumanView setNums];
             if (bodyView) {
@@ -223,7 +211,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (!preView) {
                 preView  = [[BabyPreView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
                 [preView setBackgroundColor:[UIColor clearColor]];
-                [self.view addSubview:preView];
+                
                 [preView setColumnImgBMode:YES];
                 [preView scrollToToday];
            
@@ -234,7 +222,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
                 }
                 
             }
-         
+            [self.view addSubview:preView];
             [preView setAlpha:1];
             
             if (puumanView) {
@@ -251,7 +239,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             if (!preView) {
                 preView  = [[BabyPreView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
                 [preView setBackgroundColor:[UIColor clearColor]];
-                [self.view addSubview:preView];
+                
                 [preView setColumnImgBMode:NO];
                 [preView scrollToToday];
             }else{
@@ -260,7 +248,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
                     [preView scrollToToday];
                 }
             }
-            
+            [self.view addSubview:preView];
             [preView setAlpha:1];
             
             if (puumanView) {
@@ -354,10 +342,34 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
 
 - (void)updateBabyDate
 {
-    [babyInfoView resetBabyInfo];
+    [self refresh];
+}
+
+- (void)refresh
+{
+    selectType = kPreButton;
+    for (UIView *view in self.view.subviews) {
+        [view removeFromSuperview];
+    }
+    [self initialization];
+    [self.view setBackgroundColor:[UIColor clearColor]];
+    if([MainTabBarController sharedMainViewController].isVertical)
+    {
+        [self setVerticalFrame];
+    }else
+    {
+        [self setHorizontalFrame];
+    }
     if (bodyView) {
         [bodyView refresh];
     }
+    if (vaccineView) {
+        [vaccineView refresh];
+    }
+    if (puumanView) {
+        [puumanView refresh];
+    }
+   
 }
 
 @end

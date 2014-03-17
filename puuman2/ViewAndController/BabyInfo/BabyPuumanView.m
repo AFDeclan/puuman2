@@ -129,7 +129,7 @@
     _newAddLabel.textAlignment = NSTextAlignmentCenter;
     [_newAddView addSubview:_newAddLabel];
     [rightView addSubview:_newAddView];
-    [_newAddView setAlpha:1];
+   
     
     pumanIcon = [[UIImageView alloc] init];
     [pumanIcon setBackgroundColor:[UIColor clearColor]];
@@ -258,7 +258,7 @@
     CGFloat newAdd = [uInfo pumanQuan] - [[NSUserDefaults standardUserDefaults] doubleForKey:key];
     _newAddLabel.text = [NSString stringWithFormat:@"%.1f", newAdd];
     [[NSUserDefaults standardUserDefaults] setDouble:[uInfo pumanQuan] forKey:key];
-   // if (newAdd > 0) _newAddView.alpha = 1; else _newAddView.alpha = 0;
+    if (newAdd > 0) _newAddView.alpha = 1; else _newAddView.alpha = 0;
 
     
      NSString *bookOut = [NSString stringWithFormat:@"%.1f", [PumanBookModel bookModel].outTotal];

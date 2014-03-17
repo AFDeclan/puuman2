@@ -184,8 +184,6 @@
 		54441A0518D461C300FBE69F /* btn_babyinfo3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54441A0418D461C300FBE69F /* btn_babyinfo3_diary.png */; };
 		54441A0718D462DE00FBE69F /* block_new_puuman.png in Resources */ = {isa = PBXBuildFile; fileRef = 54441A0618D462DE00FBE69F /* block_new_puuman.png */; };
 		5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463755A18C96622004B11EF /* btn_pic_diary.png */; };
-		5463756B18C96B1D004B11EF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756A18C96B1D004B11EF /* LoginViewController.m */; };
-		5463756F18C96E3E004B11EF /* LoginStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463756E18C96E3E004B11EF /* LoginStartView.m */; };
 		5463757C18C98476004B11EF /* btn_back_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463757618C98476004B11EF /* btn_back_login.png */; };
 		5463757D18C98476004B11EF /* btn_next_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463757718C98476004B11EF /* btn_next_login.png */; };
 		5463757E18C98476004B11EF /* icon_dad_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463757818C98476004B11EF /* icon_dad_diary.png */; };
@@ -205,21 +203,10 @@
 		5463759918C98493004B11EF /* tri_white_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463758C18C98493004B11EF /* tri_white_left.png */; };
 		5463759A18C98493004B11EF /* tri_white_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463758D18C98493004B11EF /* tri_white_right.png */; };
 		5463759B18C98493004B11EF /* tri_white_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463758E18C98493004B11EF /* tri_white_up.png */; };
-		5463759E18C98E5B004B11EF /* LoginEndView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463759D18C98E5B004B11EF /* LoginEndView.m */; };
-		546375A118C98E67004B11EF /* LoginPregnancyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375A018C98E67004B11EF /* LoginPregnancyView.m */; };
-		546375A418C98E6E004B11EF /* LoginBirthRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375A318C98E6E004B11EF /* LoginBirthRegisterView.m */; };
-		546375A818C99E6B004B11EF /* SelectCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375A718C99E6B004B11EF /* SelectCalendarView.m */; };
-		546375AB18C99E78004B11EF /* DateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375AA18C99E78004B11EF /* DateButton.m */; };
-		546375AF18C99E94004B11EF /* SelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375AE18C99E94004B11EF /* SelectButton.m */; };
-		546375B218C99F1F004B11EF /* BirthCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375B118C99F1F004B11EF /* BirthCalendar.m */; };
 		546375B918C9A2C2004B11EF /* icon_female_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 546375B718C9A2C2004B11EF /* icon_female_baby.png */; };
 		546375BA18C9A2C2004B11EF /* icon_male_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 546375B818C9A2C2004B11EF /* icon_male_baby.png */; };
 		546375BC18C9AB36004B11EF /* tri_login_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 546375BB18C9AB36004B11EF /* tri_login_diary.png */; };
-		546375BF18C9AE1D004B11EF /* PregnancyCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375BE18C9AE1D004B11EF /* PregnancyCalendar.m */; };
 		546375C118C9B347004B11EF /* pic_puuman_login_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 546375C018C9B347004B11EF /* pic_puuman_login_diary.png */; };
-		546375C518C9B5D5004B11EF /* ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375C418C9B5D5004B11EF /* ColorButton.m */; };
-		546375C818C9C251004B11EF /* LoginCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375C718C9C251004B11EF /* LoginCodeView.m */; };
-		546375CE18C9D011004B11EF /* ProtocalPuumanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546375CD18C9D011004B11EF /* ProtocalPuumanViewController.m */; };
 		5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */; };
 		5474A47E18C5B7100073B2FE /* AFTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A47D18C5B7100073B2FE /* AFTextImgButton.m */; };
 		5474A48018C5C0630073B2FE /* btn_finish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5474A47F18C5C0630073B2FE /* btn_finish2.png */; };
@@ -262,12 +249,38 @@
 		54ADE0B118C861B700B166C4 /* btn_text2_newdiary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE0A818C861B700B166C4 /* btn_text2_newdiary.png */; };
 		54ADE0B218C861B700B166C4 /* btn_video_newdiary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE0A918C861B700B166C4 /* btn_video_newdiary.png */; };
 		54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE0B718C87E9C00B166C4 /* NewCameraShowPhotosViewController.m */; };
+		54AFBBC018D6938600861A69 /* BirthCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBA718D6938600861A69 /* BirthCalendar.m */; };
+		54AFBBC118D6938600861A69 /* ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBA918D6938600861A69 /* ColorButton.m */; };
+		54AFBBC218D6938600861A69 /* DateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBAB18D6938600861A69 /* DateButton.m */; };
+		54AFBBC318D6938600861A69 /* LoginBirthRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBAD18D6938600861A69 /* LoginBirthRegisterView.m */; };
+		54AFBBC418D6938600861A69 /* LoginCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBAF18D6938600861A69 /* LoginCodeView.m */; };
+		54AFBBC518D6938600861A69 /* LoginEndView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBB118D6938600861A69 /* LoginEndView.m */; };
+		54AFBBC618D6938600861A69 /* LoginPregnancyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBB318D6938600861A69 /* LoginPregnancyView.m */; };
+		54AFBBC718D6938600861A69 /* LoginStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBB518D6938600861A69 /* LoginStartView.m */; };
+		54AFBBC818D6938600861A69 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBB718D6938600861A69 /* LoginViewController.m */; };
+		54AFBBC918D6938600861A69 /* PregnancyCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBB918D6938600861A69 /* PregnancyCalendar.m */; };
+		54AFBBCA18D6938600861A69 /* ProtocalPuumanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBBB18D6938600861A69 /* ProtocalPuumanViewController.m */; };
+		54AFBBCB18D6938600861A69 /* SelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBBD18D6938600861A69 /* SelectButton.m */; };
+		54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBBF18D6938600861A69 /* SelectCalendarView.m */; };
+		54AFBBD018D6946900861A69 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBCF18D6946900861A69 /* SettingViewController.m */; };
 		54B4EB2D18C576E5004489DA /* AFAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2418C576E5004489DA /* AFAnimationManager.m */; };
 		54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2818C576E5004489DA /* NSObject+AFUtils.m */; };
 		54B4EB3018C576E5004489DA /* PopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2A18C576E5004489DA /* PopViewController.m */; };
 		54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB2C18C576E5004489DA /* UIView+AFAnimation.m */; };
 		54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB3818C57C1D004489DA /* CustomTextField.m */; };
 		54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */; };
+		54B6F40818D6A5030055FC72 /* btn_back_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40118D6A5030055FC72 /* btn_back_set.png */; };
+		54B6F40918D6A5030055FC72 /* icon_admin_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40218D6A5030055FC72 /* icon_admin_set.png */; };
+		54B6F40A18D6A5030055FC72 /* icon_check_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40318D6A5030055FC72 /* icon_check_set.png */; };
+		54B6F40B18D6A5030055FC72 /* icon_cross_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40418D6A5030055FC72 /* icon_cross_set.png */; };
+		54B6F40C18D6A5030055FC72 /* icon_safe_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40518D6A5030055FC72 /* icon_safe_set.png */; };
+		54B6F40D18D6A5030055FC72 /* icon_sug_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40618D6A5030055FC72 /* icon_sug_set.png */; };
+		54B6F40E18D6A5030055FC72 /* line_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40718D6A5030055FC72 /* line_set.png */; };
+		54B6F41118D6B0590055FC72 /* SettingBindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B6F41018D6B0590055FC72 /* SettingBindViewController.m */; };
+		54B6F41B18D6C32C0055FC72 /* SettingBindCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B6F41A18D6C32C0055FC72 /* SettingBindCellView.m */; };
+		54B6F41E18D6C8640055FC72 /* ReSendButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B6F41D18D6C8640055FC72 /* ReSendButton.m */; };
+		54B6F42118D6D72E0055FC72 /* SettingPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B6F42018D6D72E0055FC72 /* SettingPassWordViewController.m */; };
+		54B6F42418D6E33E0055FC72 /* SettingAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B6F42318D6E33E0055FC72 /* SettingAdviceViewController.m */; };
 		54B753A018D2A7C7002411CF /* BabyVaccineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B7539F18D2A7C7002411CF /* BabyVaccineView.m */; };
 		54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753A218D2A8EB002411CF /* VaccineInfoTableViewCell.m */; };
 		54B753A618D2BEB0002411CF /* AnimateShowLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753A518D2BEB0002411CF /* AnimateShowLabel.m */; };
@@ -647,10 +660,6 @@
 		54441A0418D461C300FBE69F /* btn_babyinfo3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_babyinfo3_diary.png; sourceTree = "<group>"; };
 		54441A0618D462DE00FBE69F /* block_new_puuman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_new_puuman.png; sourceTree = "<group>"; };
 		5463755A18C96622004B11EF /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
-		5463756918C96B1D004B11EF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		5463756A18C96B1D004B11EF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		5463756D18C96E3E004B11EF /* LoginStartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginStartView.h; sourceTree = "<group>"; };
-		5463756E18C96E3E004B11EF /* LoginStartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginStartView.m; sourceTree = "<group>"; };
 		5463757618C98476004B11EF /* btn_back_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_login.png; sourceTree = "<group>"; };
 		5463757718C98476004B11EF /* btn_next_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_next_login.png; sourceTree = "<group>"; };
 		5463757818C98476004B11EF /* icon_dad_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_dad_diary.png; sourceTree = "<group>"; };
@@ -670,32 +679,10 @@
 		5463758C18C98493004B11EF /* tri_white_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_white_left.png; sourceTree = "<group>"; };
 		5463758D18C98493004B11EF /* tri_white_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_white_right.png; sourceTree = "<group>"; };
 		5463758E18C98493004B11EF /* tri_white_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_white_up.png; sourceTree = "<group>"; };
-		5463759C18C98E5B004B11EF /* LoginEndView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginEndView.h; sourceTree = "<group>"; };
-		5463759D18C98E5B004B11EF /* LoginEndView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginEndView.m; sourceTree = "<group>"; };
-		5463759F18C98E67004B11EF /* LoginPregnancyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPregnancyView.h; sourceTree = "<group>"; };
-		546375A018C98E67004B11EF /* LoginPregnancyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPregnancyView.m; sourceTree = "<group>"; };
-		546375A218C98E6E004B11EF /* LoginBirthRegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginBirthRegisterView.h; sourceTree = "<group>"; };
-		546375A318C98E6E004B11EF /* LoginBirthRegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginBirthRegisterView.m; sourceTree = "<group>"; };
-		546375A618C99E6B004B11EF /* SelectCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCalendarView.h; sourceTree = "<group>"; };
-		546375A718C99E6B004B11EF /* SelectCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCalendarView.m; sourceTree = "<group>"; };
-		546375A918C99E78004B11EF /* DateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateButton.h; sourceTree = "<group>"; };
-		546375AA18C99E78004B11EF /* DateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateButton.m; sourceTree = "<group>"; };
-		546375AD18C99E94004B11EF /* SelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectButton.h; sourceTree = "<group>"; };
-		546375AE18C99E94004B11EF /* SelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectButton.m; sourceTree = "<group>"; };
-		546375B018C99F1F004B11EF /* BirthCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthCalendar.h; sourceTree = "<group>"; };
-		546375B118C99F1F004B11EF /* BirthCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthCalendar.m; sourceTree = "<group>"; };
 		546375B718C9A2C2004B11EF /* icon_female_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_female_baby.png; sourceTree = "<group>"; };
 		546375B818C9A2C2004B11EF /* icon_male_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_male_baby.png; sourceTree = "<group>"; };
 		546375BB18C9AB36004B11EF /* tri_login_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_login_diary.png; sourceTree = "<group>"; };
-		546375BD18C9AE1D004B11EF /* PregnancyCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PregnancyCalendar.h; sourceTree = "<group>"; };
-		546375BE18C9AE1D004B11EF /* PregnancyCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PregnancyCalendar.m; sourceTree = "<group>"; };
 		546375C018C9B347004B11EF /* pic_puuman_login_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_puuman_login_diary.png; sourceTree = "<group>"; };
-		546375C318C9B5D5004B11EF /* ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorButton.h; sourceTree = "<group>"; };
-		546375C418C9B5D5004B11EF /* ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorButton.m; sourceTree = "<group>"; };
-		546375C618C9C251004B11EF /* LoginCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCodeView.h; sourceTree = "<group>"; };
-		546375C718C9C251004B11EF /* LoginCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCodeView.m; sourceTree = "<group>"; };
-		546375CC18C9D011004B11EF /* ProtocalPuumanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocalPuumanViewController.h; sourceTree = "<group>"; };
-		546375CD18C9D011004B11EF /* ProtocalPuumanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocalPuumanViewController.m; sourceTree = "<group>"; };
 		5473686118C1F4F3009688F5 /* libPods-XMLReader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XMLReader.a"; path = "Pods/build/Release-iphoneos/libPods-XMLReader.a"; sourceTree = "<group>"; };
 		5473686318C1F4FB009688F5 /* libPods-Reachability.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Reachability.a"; path = "Pods/build/Release-iphoneos/libPods-Reachability.a"; sourceTree = "<group>"; };
 		5474A47518C5A40A0073B2FE /* NewTextPhotoSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTextPhotoSelectedViewController.h; sourceTree = "<group>"; };
@@ -761,6 +748,34 @@
 		54ADE0A918C861B700B166C4 /* btn_video_newdiary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_video_newdiary.png; sourceTree = "<group>"; };
 		54ADE0B618C87E9C00B166C4 /* NewCameraShowPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCameraShowPhotosViewController.h; sourceTree = "<group>"; };
 		54ADE0B718C87E9C00B166C4 /* NewCameraShowPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCameraShowPhotosViewController.m; sourceTree = "<group>"; };
+		54AFBBA618D6938600861A69 /* BirthCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BirthCalendar.h; path = Login/BirthCalendar.h; sourceTree = "<group>"; };
+		54AFBBA718D6938600861A69 /* BirthCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BirthCalendar.m; path = Login/BirthCalendar.m; sourceTree = "<group>"; };
+		54AFBBA818D6938600861A69 /* ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorButton.h; path = Login/ColorButton.h; sourceTree = "<group>"; };
+		54AFBBA918D6938600861A69 /* ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorButton.m; path = Login/ColorButton.m; sourceTree = "<group>"; };
+		54AFBBAA18D6938600861A69 /* DateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateButton.h; path = Login/DateButton.h; sourceTree = "<group>"; };
+		54AFBBAB18D6938600861A69 /* DateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateButton.m; path = Login/DateButton.m; sourceTree = "<group>"; };
+		54AFBBAC18D6938600861A69 /* LoginBirthRegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginBirthRegisterView.h; path = Login/LoginBirthRegisterView.h; sourceTree = "<group>"; };
+		54AFBBAD18D6938600861A69 /* LoginBirthRegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginBirthRegisterView.m; path = Login/LoginBirthRegisterView.m; sourceTree = "<group>"; };
+		54AFBBAE18D6938600861A69 /* LoginCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginCodeView.h; path = Login/LoginCodeView.h; sourceTree = "<group>"; };
+		54AFBBAF18D6938600861A69 /* LoginCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginCodeView.m; path = Login/LoginCodeView.m; sourceTree = "<group>"; };
+		54AFBBB018D6938600861A69 /* LoginEndView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginEndView.h; path = Login/LoginEndView.h; sourceTree = "<group>"; };
+		54AFBBB118D6938600861A69 /* LoginEndView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginEndView.m; path = Login/LoginEndView.m; sourceTree = "<group>"; };
+		54AFBBB218D6938600861A69 /* LoginPregnancyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginPregnancyView.h; path = Login/LoginPregnancyView.h; sourceTree = "<group>"; };
+		54AFBBB318D6938600861A69 /* LoginPregnancyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginPregnancyView.m; path = Login/LoginPregnancyView.m; sourceTree = "<group>"; };
+		54AFBBB418D6938600861A69 /* LoginStartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginStartView.h; path = Login/LoginStartView.h; sourceTree = "<group>"; };
+		54AFBBB518D6938600861A69 /* LoginStartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginStartView.m; path = Login/LoginStartView.m; sourceTree = "<group>"; };
+		54AFBBB618D6938600861A69 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		54AFBBB718D6938600861A69 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		54AFBBB818D6938600861A69 /* PregnancyCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PregnancyCalendar.h; path = Login/PregnancyCalendar.h; sourceTree = "<group>"; };
+		54AFBBB918D6938600861A69 /* PregnancyCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PregnancyCalendar.m; path = Login/PregnancyCalendar.m; sourceTree = "<group>"; };
+		54AFBBBA18D6938600861A69 /* ProtocalPuumanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProtocalPuumanViewController.h; path = Login/ProtocalPuumanViewController.h; sourceTree = "<group>"; };
+		54AFBBBB18D6938600861A69 /* ProtocalPuumanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProtocalPuumanViewController.m; path = Login/ProtocalPuumanViewController.m; sourceTree = "<group>"; };
+		54AFBBBC18D6938600861A69 /* SelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectButton.h; path = Login/SelectButton.h; sourceTree = "<group>"; };
+		54AFBBBD18D6938600861A69 /* SelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectButton.m; path = Login/SelectButton.m; sourceTree = "<group>"; };
+		54AFBBBE18D6938600861A69 /* SelectCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCalendarView.h; path = Login/SelectCalendarView.h; sourceTree = "<group>"; };
+		54AFBBBF18D6938600861A69 /* SelectCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCalendarView.m; path = Login/SelectCalendarView.m; sourceTree = "<group>"; };
+		54AFBBCE18D6946900861A69 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		54AFBBCF18D6946900861A69 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		54B4EB2318C576E5004489DA /* AFAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimationManager.h; sourceTree = "<group>"; };
 		54B4EB2418C576E5004489DA /* AFAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimationManager.m; sourceTree = "<group>"; };
 		54B4EB2718C576E5004489DA /* NSObject+AFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AFUtils.h"; sourceTree = "<group>"; };
@@ -773,6 +788,23 @@
 		54B4EB3818C57C1D004489DA /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		54B4EB4018C58D9E004489DA /* CustomAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertViewController.h; sourceTree = "<group>"; };
 		54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertViewController.m; sourceTree = "<group>"; };
+		54B6F40118D6A5030055FC72 /* btn_back_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_set.png; sourceTree = "<group>"; };
+		54B6F40218D6A5030055FC72 /* icon_admin_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_admin_set.png; sourceTree = "<group>"; };
+		54B6F40318D6A5030055FC72 /* icon_check_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_check_set.png; sourceTree = "<group>"; };
+		54B6F40418D6A5030055FC72 /* icon_cross_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cross_set.png; sourceTree = "<group>"; };
+		54B6F40518D6A5030055FC72 /* icon_safe_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_safe_set.png; sourceTree = "<group>"; };
+		54B6F40618D6A5030055FC72 /* icon_sug_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sug_set.png; sourceTree = "<group>"; };
+		54B6F40718D6A5030055FC72 /* line_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line_set.png; sourceTree = "<group>"; };
+		54B6F40F18D6B0590055FC72 /* SettingBindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBindViewController.h; sourceTree = "<group>"; };
+		54B6F41018D6B0590055FC72 /* SettingBindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBindViewController.m; sourceTree = "<group>"; };
+		54B6F41918D6C32C0055FC72 /* SettingBindCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBindCellView.h; sourceTree = "<group>"; };
+		54B6F41A18D6C32C0055FC72 /* SettingBindCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBindCellView.m; sourceTree = "<group>"; };
+		54B6F41C18D6C8640055FC72 /* ReSendButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReSendButton.h; sourceTree = "<group>"; };
+		54B6F41D18D6C8640055FC72 /* ReSendButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReSendButton.m; sourceTree = "<group>"; };
+		54B6F41F18D6D72E0055FC72 /* SettingPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPassWordViewController.h; sourceTree = "<group>"; };
+		54B6F42018D6D72E0055FC72 /* SettingPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPassWordViewController.m; sourceTree = "<group>"; };
+		54B6F42218D6E33E0055FC72 /* SettingAdviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingAdviceViewController.h; sourceTree = "<group>"; };
+		54B6F42318D6E33E0055FC72 /* SettingAdviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingAdviceViewController.m; sourceTree = "<group>"; };
 		54B7539E18D2A7C7002411CF /* BabyVaccineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyVaccineView.h; sourceTree = "<group>"; };
 		54B7539F18D2A7C7002411CF /* BabyVaccineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyVaccineView.m; sourceTree = "<group>"; };
 		54B753A118D2A8EB002411CF /* VaccineInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaccineInfoTableViewCell.h; sourceTree = "<group>"; };
@@ -1434,35 +1466,24 @@
 			name = ruler;
 			sourceTree = "<group>";
 		};
-		5463755C18C96859004B11EF /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				5463756918C96B1D004B11EF /* LoginViewController.h */,
-				5463756A18C96B1D004B11EF /* LoginViewController.m */,
-				5463756C18C96E2D004B11EF /* LoginView */,
-			);
-			name = Login;
-			sourceTree = "<group>";
-		};
 		5463756C18C96E2D004B11EF /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
-				546375CC18C9D011004B11EF /* ProtocalPuumanViewController.h */,
-				546375CD18C9D011004B11EF /* ProtocalPuumanViewController.m */,
-				5463756D18C96E3E004B11EF /* LoginStartView.h */,
-				5463756E18C96E3E004B11EF /* LoginStartView.m */,
-				5463759C18C98E5B004B11EF /* LoginEndView.h */,
-				5463759D18C98E5B004B11EF /* LoginEndView.m */,
-				5463759F18C98E67004B11EF /* LoginPregnancyView.h */,
-				546375A018C98E67004B11EF /* LoginPregnancyView.m */,
-				546375A218C98E6E004B11EF /* LoginBirthRegisterView.h */,
-				546375A318C98E6E004B11EF /* LoginBirthRegisterView.m */,
-				546375C618C9C251004B11EF /* LoginCodeView.h */,
-				546375C718C9C251004B11EF /* LoginCodeView.m */,
-				546375C218C9B5A3004B11EF /* Loginbutton */,
-				546375A518C99E4E004B11EF /* calendar */,
+				54AFBBBA18D6938600861A69 /* ProtocalPuumanViewController.h */,
+				54AFBBBB18D6938600861A69 /* ProtocalPuumanViewController.m */,
+				54AFBBAC18D6938600861A69 /* LoginBirthRegisterView.h */,
+				54AFBBAD18D6938600861A69 /* LoginBirthRegisterView.m */,
+				54AFBBAE18D6938600861A69 /* LoginCodeView.h */,
+				54AFBBAF18D6938600861A69 /* LoginCodeView.m */,
+				54AFBBB018D6938600861A69 /* LoginEndView.h */,
+				54AFBBB118D6938600861A69 /* LoginEndView.m */,
+				54AFBBB218D6938600861A69 /* LoginPregnancyView.h */,
+				54AFBBB318D6938600861A69 /* LoginPregnancyView.m */,
+				54AFBBB418D6938600861A69 /* LoginStartView.h */,
+				54AFBBB518D6938600861A69 /* LoginStartView.m */,
 			);
 			name = LoginView;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		5463757518C98476004B11EF /* LoginImages */ = {
@@ -1485,35 +1506,29 @@
 		546375A518C99E4E004B11EF /* calendar */ = {
 			isa = PBXGroup;
 			children = (
-				546375A618C99E6B004B11EF /* SelectCalendarView.h */,
-				546375A718C99E6B004B11EF /* SelectCalendarView.m */,
-				546375B018C99F1F004B11EF /* BirthCalendar.h */,
-				546375B118C99F1F004B11EF /* BirthCalendar.m */,
-				546375BD18C9AE1D004B11EF /* PregnancyCalendar.h */,
-				546375BE18C9AE1D004B11EF /* PregnancyCalendar.m */,
-				546375AC18C99E7F004B11EF /* support */,
+				54AFBBBE18D6938600861A69 /* SelectCalendarView.h */,
+				54AFBBBF18D6938600861A69 /* SelectCalendarView.m */,
+				54AFBBB818D6938600861A69 /* PregnancyCalendar.h */,
+				54AFBBB918D6938600861A69 /* PregnancyCalendar.m */,
+				54AFBBA618D6938600861A69 /* BirthCalendar.h */,
+				54AFBBA718D6938600861A69 /* BirthCalendar.m */,
 			);
 			name = calendar;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		546375AC18C99E7F004B11EF /* support */ = {
 			isa = PBXGroup;
 			children = (
-				546375AD18C99E94004B11EF /* SelectButton.h */,
-				546375AE18C99E94004B11EF /* SelectButton.m */,
-				546375A918C99E78004B11EF /* DateButton.h */,
-				546375AA18C99E78004B11EF /* DateButton.m */,
+				54AFBBA818D6938600861A69 /* ColorButton.h */,
+				54AFBBA918D6938600861A69 /* ColorButton.m */,
+				54AFBBBC18D6938600861A69 /* SelectButton.h */,
+				54AFBBBD18D6938600861A69 /* SelectButton.m */,
+				54AFBBAA18D6938600861A69 /* DateButton.h */,
+				54AFBBAB18D6938600861A69 /* DateButton.m */,
 			);
 			name = support;
-			sourceTree = "<group>";
-		};
-		546375C218C9B5A3004B11EF /* Loginbutton */ = {
-			isa = PBXGroup;
-			children = (
-				546375C318C9B5D5004B11EF /* ColorButton.h */,
-				546375C418C9B5D5004B11EF /* ColorButton.m */,
-			);
-			name = Loginbutton;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		5474A47818C5B0860073B2FE /* AFButton */ = {
@@ -1575,6 +1590,34 @@
 				54ADE07C18C85D1C00B166C4 /* btn2_video_diary.png */,
 			);
 			name = NewButton;
+			sourceTree = "<group>";
+		};
+		54AFBBA518D6938600861A69 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				54AFBBB618D6938600861A69 /* LoginViewController.h */,
+				54AFBBB718D6938600861A69 /* LoginViewController.m */,
+				5463756C18C96E2D004B11EF /* LoginView */,
+				546375A518C99E4E004B11EF /* calendar */,
+				546375AC18C99E7F004B11EF /* support */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		54AFBBCD18D6941200861A69 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				54AFBBCE18D6946900861A69 /* SettingViewController.h */,
+				54AFBBCF18D6946900861A69 /* SettingViewController.m */,
+				54B6F40F18D6B0590055FC72 /* SettingBindViewController.h */,
+				54B6F41018D6B0590055FC72 /* SettingBindViewController.m */,
+				54B6F41F18D6D72E0055FC72 /* SettingPassWordViewController.h */,
+				54B6F42018D6D72E0055FC72 /* SettingPassWordViewController.m */,
+				54B6F42218D6E33E0055FC72 /* SettingAdviceViewController.h */,
+				54B6F42318D6E33E0055FC72 /* SettingAdviceViewController.m */,
+				54B6F41218D6C0800055FC72 /* support */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		54B1FBDF18C6BF4700529B2C /* support */ = {
@@ -1646,6 +1689,31 @@
 				5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */,
 			);
 			name = alertView;
+			sourceTree = "<group>";
+		};
+		54B6F40018D6A4FB0055FC72 /* SettingImages */ = {
+			isa = PBXGroup;
+			children = (
+				54B6F40118D6A5030055FC72 /* btn_back_set.png */,
+				54B6F40218D6A5030055FC72 /* icon_admin_set.png */,
+				54B6F40318D6A5030055FC72 /* icon_check_set.png */,
+				54B6F40418D6A5030055FC72 /* icon_cross_set.png */,
+				54B6F40518D6A5030055FC72 /* icon_safe_set.png */,
+				54B6F40618D6A5030055FC72 /* icon_sug_set.png */,
+				54B6F40718D6A5030055FC72 /* line_set.png */,
+			);
+			path = SettingImages;
+			sourceTree = "<group>";
+		};
+		54B6F41218D6C0800055FC72 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				54B6F41918D6C32C0055FC72 /* SettingBindCellView.h */,
+				54B6F41A18D6C32C0055FC72 /* SettingBindCellView.m */,
+				54B6F41C18D6C8640055FC72 /* ReSendButton.h */,
+				54B6F41D18D6C8640055FC72 /* ReSendButton.m */,
+			);
+			name = support;
 			sourceTree = "<group>";
 		};
 		54B7539A18D2A75D002411CF /* support */ = {
@@ -1825,7 +1893,8 @@
 		54CE111418C1BC6D00966396 /* ViewAndController */ = {
 			isa = PBXGroup;
 			children = (
-				5463755C18C96859004B11EF /* Login */,
+				54AFBBCD18D6941200861A69 /* Setting */,
+				54AFBBA518D6938600861A69 /* Login */,
 				54CE111B18C1BC6D00966396 /* MainTabBar */,
 				54CE111518C1BC6D00966396 /* BabyInfo */,
 				54CE111818C1BC6D00966396 /* Diary */,
@@ -1943,6 +2012,7 @@
 		54CE117118C1C84000966396 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				54B6F40018D6A4FB0055FC72 /* SettingImages */,
 				5403CDF818D04F51004CAE22 /* BabyInfoImages */,
 				5463757518C98476004B11EF /* LoginImages */,
 				54CE117618C1C8C100966396 /* MainTabBarImages */,
@@ -2252,6 +2322,7 @@
 				54F1D13718C48FA50005CDD9 /* dot_number_diary.png in Resources */,
 				5403CD3218D03D39004CAE22 /* icon11_weather_diary.png in Resources */,
 				5403CE2418D04F5E004CAE22 /* btn_Bpre2_baby.png in Resources */,
+				54B6F40918D6A5030055FC72 /* icon_admin_set.png in Resources */,
 				54CE116A18C1C7BF00966396 /* btn_gray1.png in Resources */,
 				5403CD3918D03D39004CAE22 /* icon14_weather_diary@2x.png in Resources */,
 				541970ED18D1BA730058FE64 /* dot_blue_baby.png in Resources */,
@@ -2265,6 +2336,7 @@
 				54F1D13B18C48FA50005CDD9 /* icon_text2_diary.png in Resources */,
 				5403CD3B18D03D39004CAE22 /* icon15_weather_diary@2x.png in Resources */,
 				5403CE2618D04F5E004CAE22 /* btn_equip1_baby.png in Resources */,
+				54B6F40E18D6A5030055FC72 /* line_set.png in Resources */,
 				5403CD3618D03D39004CAE22 /* icon13_weather_diary.png in Resources */,
 				54CE118318C1C8DC00966396 /* bg_h.png in Resources */,
 				5403CE4218D04F5E004CAE22 /* pic_coin_baby.png in Resources */,
@@ -2277,6 +2349,7 @@
 				546375BA18C9A2C2004B11EF /* icon_male_baby.png in Resources */,
 				54CE118D18C1C8DC00966396 /* btn_shop1_diary.png in Resources */,
 				5403CE3D18D04F5E004CAE22 /* line2_baby.png in Resources */,
+				54B6F40A18D6A5030055FC72 /* icon_check_set.png in Resources */,
 				5403CD4F18D03D39004CAE22 /* icon7_weather_diary@2x.png in Resources */,
 				54F1D12A18C48FA50005CDD9 /* block_photo__h_diary.png in Resources */,
 				54D1500218CAEFD70022E1F4 /* pic_timeline_diary.png in Resources */,
@@ -2316,6 +2389,7 @@
 				54F1D12E18C48FA50005CDD9 /* btn_delete3_diary.png in Resources */,
 				5463759718C98493004B11EF /* tri_gray_up.png in Resources */,
 				5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */,
+				54B6F40818D6A5030055FC72 /* btn_back_set.png in Resources */,
 				5403CD4518D03D39004CAE22 /* icon2_weather_diary@2x.png in Resources */,
 				5463759118C98493004B11EF /* tri_blue_left.png in Resources */,
 				5403CE2B18D04F5E004CAE22 /* btn_vac2_baby.png in Resources */,
@@ -2348,6 +2422,7 @@
 				54F1D10618C48B340005CDD9 /* bg_subpage.png in Resources */,
 				54ADE08118C85D1C00B166C4 /* btn2_text_diary.png in Resources */,
 				54CE116818C1C7BF00966396 /* btn_finish1.png in Resources */,
+				54B6F40D18D6A5030055FC72 /* icon_sug_set.png in Resources */,
 				54F1D13918C48FA50005CDD9 /* icon_input_diary.png in Resources */,
 				5403CE4018D04F5E004CAE22 /* paper_baby.png in Resources */,
 				5403CE2C18D04F5E004CAE22 /* circle_photo_baby.png in Resources */,
@@ -2364,6 +2439,7 @@
 				54CE116218C1C7BF00966396 /* block4_btn.png in Resources */,
 				5403CD5F18D03DEF004CAE22 /* block2_h_diary.png in Resources */,
 				5403CE2018D04F5E004CAE22 /* btn_bank2_baby.png in Resources */,
+				54B6F40B18D6A5030055FC72 /* icon_cross_set.png in Resources */,
 				5403CD5C18D03DBD004CAE22 /* icon_text_h_diary.png in Resources */,
 				54CE10EF18C1842C00966396 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				54CE10EA18C1842C00966396 /* SinaWeibo.bundle in Resources */,
@@ -2378,6 +2454,7 @@
 				54CE118A18C1C8DC00966396 /* btn_happen2_diary.png in Resources */,
 				54ADE07F18C85D1C00B166C4 /* btn2_camera_diary.png in Resources */,
 				54CE118718C1C8DC00966396 /* btn_diary1_diary.png in Resources */,
+				54B6F40C18D6A5030055FC72 /* icon_safe_set.png in Resources */,
 				54CE118918C1C8DC00966396 /* btn_happen1_diary.png in Resources */,
 				5463759218C98493004B11EF /* tri_blue_right.png in Resources */,
 				54D1500018CAEFD70022E1F4 /* paper_task2_diary.png in Resources */,
@@ -2466,15 +2543,13 @@
 			files = (
 				547F9B4E18D15B7E00486337 /* BabyBodyView.m in Sources */,
 				5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */,
-				546375A818C99E6B004B11EF /* SelectCalendarView.m in Sources */,
 				14B8DF2B18BC37A30047C6B3 /* Ware.m in Sources */,
-				5463756F18C96E3E004B11EF /* LoginStartView.m in Sources */,
 				54A8F44D18CD712100D0D523 /* TextDiaryCell.m in Sources */,
 				541970D318D1956D0058FE64 /* StandardLine.m in Sources */,
 				54A8F46118CDCAE900D0D523 /* CameraAudioViewController.m in Sources */,
-				5463756B18C96B1D004B11EF /* LoginViewController.m in Sources */,
 				54CE10F318C1842C00966396 /* MJRefreshConst.m in Sources */,
 				544419FF18D41D2D00FBE69F /* BabyPreView.m in Sources */,
+				54AFBBC818D6938600861A69 /* LoginViewController.m in Sources */,
 				54A9288418C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m in Sources */,
 				14B8DF2D18BC37A30047C6B3 /* RegisterForm.m in Sources */,
 				5403CC7418D03B7D004CAE22 /* DynamicView.m in Sources */,
@@ -2483,28 +2558,30 @@
 				54CE10F618C1842C00966396 /* TextLayoutLabel.m in Sources */,
 				54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */,
 				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
+				54B6F42418D6E33E0055FC72 /* SettingAdviceViewController.m in Sources */,
 				5403CE4818D051A2004CAE22 /* BabyInfoView.m in Sources */,
 				14B8DF2218BC37A30047C6B3 /* TaskUploader.m in Sources */,
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				54D14FDC18CAEACC0022E1F4 /* DiaryTableViewController.m in Sources */,
 				54B753B018D3020B002411CF /* PuumanInBookCell.m in Sources */,
-				546375C518C9B5D5004B11EF /* ColorButton.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
+				54AFBBC418D6938600861A69 /* LoginCodeView.m in Sources */,
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
 				54CE10F418C1842C00966396 /* MJRefreshFooterView.m in Sources */,
 				14B8DF5218BC37A40047C6B3 /* FileUploader.m in Sources */,
-				546375A418C98E6E004B11EF /* LoginBirthRegisterView.m in Sources */,
 				14B8DF2918BC37A30047C6B3 /* ShopClassModel.m in Sources */,
 				14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */,
 				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
 				54A8F45E18CDC9A000D0D523 /* AudioViewController.m in Sources */,
-				5463759E18C98E5B004B11EF /* LoginEndView.m in Sources */,
+				54AFBBC518D6938600861A69 /* LoginEndView.m in Sources */,
 				54ADE09C18C8608700B166C4 /* NewCameraViewController.m in Sources */,
 				543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */,
 				544419F918D40EE800FBE69F /* PuumanRulesViewController.m in Sources */,
 				54D14FD918CACC720022E1F4 /* CustomPopViewController.m in Sources */,
+				54AFBBCB18D6938600861A69 /* SelectButton.m in Sources */,
 				54B753AD18D2F9E5002411CF /* BabyPuumanView.m in Sources */,
+				54AFBBC718D6938600861A69 /* LoginStartView.m in Sources */,
 				541970D818D195C10058FE64 /* LineChartCell.m in Sources */,
 				541970D218D1956D0058FE64 /* LineChart.m in Sources */,
 				543BAECE18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m in Sources */,
@@ -2519,17 +2596,22 @@
 				14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */,
 				544419EB18D3ED3E00FBE69F /* PropView.m in Sources */,
 				54CE10F918C1842C00966396 /* UIImage+Scale.m in Sources */,
+				54B6F41B18D6C32C0055FC72 /* SettingBindCellView.m in Sources */,
 				5403CC7218D03B7D004CAE22 /* InviteView.m in Sources */,
 				54BAD45D18D14B8A003822CC /* BabyInfoContentView.m in Sources */,
+				54AFBBC018D6938600861A69 /* BirthCalendar.m in Sources */,
 				541970E718D1A1C00058FE64 /* RulerView.m in Sources */,
 				54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */,
+				54AFBBD018D6946900861A69 /* SettingViewController.m in Sources */,
 				541970EB18D1A3710058FE64 /* AddInfoCalendar.m in Sources */,
+				54AFBBC318D6938600861A69 /* LoginBirthRegisterView.m in Sources */,
 				14B8DF2818BC37A30047C6B3 /* RecomWare.m in Sources */,
 				54CE10E518C1842C00966396 /* AFIconButton.m in Sources */,
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
 				543BAEDA18CF172D00ED4672 /* VideoViewController.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
+				54B6F42118D6D72E0055FC72 /* SettingPassWordViewController.m in Sources */,
 				54CE10E618C1842C00966396 /* AFImageButton.m in Sources */,
 				5403CC6518D03B68004CAE22 /* JoinView.m in Sources */,
 				54B753B318D3021E002411CF /* PuumanOutBookCell.m in Sources */,
@@ -2544,8 +2626,8 @@
 				549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */,
 				54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */,
 				544419E618D3EAC800FBE69F /* BabyPropView.m in Sources */,
-				546375CE18C9D011004B11EF /* ProtocalPuumanViewController.m in Sources */,
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
+				54AFBBCA18D6938600861A69 /* ProtocalPuumanViewController.m in Sources */,
 				54CE112518C1BC6D00966396 /* DiaryViewController.m in Sources */,
 				54CE112418C1BC6D00966396 /* BabyInfoViewController.m in Sources */,
 				14B8DF2718BC37A30047C6B3 /* RecomModel.m in Sources */,
@@ -2559,27 +2641,29 @@
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,
 				5403CE4E18D06E87004CAE22 /* BabyInfoButton.m in Sources */,
 				54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */,
-				546375BF18C9AE1D004B11EF /* PregnancyCalendar.m in Sources */,
 				14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */,
+				54B6F41118D6B0590055FC72 /* SettingBindViewController.m in Sources */,
 				547F9B5118D162A600486337 /* BodyInfoTableViewCell.m in Sources */,
 				54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */,
-				546375AF18C99E94004B11EF /* SelectButton.m in Sources */,
 				54CE112818C1BC6D00966396 /* ShopViewController.m in Sources */,
+				54AFBBC618D6938600861A69 /* LoginPregnancyView.m in Sources */,
 				54A8F45718CDC22C00D0D523 /* AuPhotoDiaryCell.m in Sources */,
 				5403CC7518D03B7D004CAE22 /* DiaryShowCell.m in Sources */,
 				54CE10E418C1842C00966396 /* AFButton.m in Sources */,
 				54ADE09B18C8608700B166C4 /* NewCameraControlView.m in Sources */,
+				54AFBBC218D6938600861A69 /* DateButton.m in Sources */,
 				54B753A018D2A7C7002411CF /* BabyVaccineView.m in Sources */,
 				54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */,
+				54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */,
+				54AFBBC118D6938600861A69 /* ColorButton.m in Sources */,
+				54AFBBC918D6938600861A69 /* PregnancyCalendar.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
 				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
 				54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */,
 				541970D418D1956D0058FE64 /* InfoView.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
-				546375C818C9C251004B11EF /* LoginCodeView.m in Sources */,
 				54ADE09A18C8608700B166C4 /* NewAudioRecordView.m in Sources */,
 				54CE10ED18C1842C00966396 /* SinaWeiboRequest.m in Sources */,
-				546375A118C98E67004B11EF /* LoginPregnancyView.m in Sources */,
 				5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */,
 				54CE10E118C1842C00966396 /* AFDataStore.m in Sources */,
 				54CE10F018C1842C00966396 /* ADTickerLabel.m in Sources */,
@@ -2593,15 +2677,14 @@
 				148D79EF18B8A71A001B4FA7 /* main.m in Sources */,
 				54ADE09918C8608700B166C4 /* NewAudioProgressView.m in Sources */,
 				14B8DF2418BC37A30047C6B3 /* PumanBookModel.m in Sources */,
+				54B6F41E18D6C8640055FC72 /* ReSendButton.m in Sources */,
 				54CE10E718C1842C00966396 /* AFImageView.m in Sources */,
 				54D1501218CAF7B50022E1F4 /* TaskTitleView.m in Sources */,
 				54CE119318C1CD7C00966396 /* MainTabBarButton.m in Sources */,
-				546375AB18C99E78004B11EF /* DateButton.m in Sources */,
 				54B753A618D2BEB0002411CF /* AnimateShowLabel.m in Sources */,
 				54BAD46418D15087003822CC /* PageControlButton.m in Sources */,
 				54CE10E018C1842C00966396 /* AFDataDownloader.m in Sources */,
 				54CE10F718C1842C00966396 /* UIColumnView.m in Sources */,
-				546375B218C99F1F004B11EF /* BirthCalendar.m in Sources */,
 				54A8F43F18CD593700D0D523 /* DiaryCell.m in Sources */,
 				5403CE4B18D06A83004CAE22 /* AFImgButton.m in Sources */,
 			);

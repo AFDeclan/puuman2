@@ -46,7 +46,7 @@
             break;
         case kRedLeftDown:
             [self setTitleLabelColor:[UIColor whiteColor]];
-            [backgroundImgView setImage:[UIImage imageNamed:@"btn_red1.png"]];
+            [backgroundImgView setImage:[UIImage imageNamed:@"btn_red.png"]];
             break;
         case kBlueLeft:
             [self setTitleLabelColor:[UIColor whiteColor]];

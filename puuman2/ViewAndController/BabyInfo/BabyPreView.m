@@ -235,6 +235,7 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
 - (void)refresh
 {
 
+    
 }
 
 - (void)setColumnImgBMode:(BOOL)columnImgBMode

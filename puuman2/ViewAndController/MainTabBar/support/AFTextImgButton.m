@@ -115,6 +115,21 @@
             [self adjustLayout];
         }
             break;
+        case kButtonTypeEight:
+        {
+            [_iconView setFrame:CGRectMake(8, (ViewHeight(self)-12)/2, 12, 12)];
+            [_titleLabel setFont:PMFont3];
+            [self setBackgroundColor:[UIColor clearColor]];
+           [self adjustLayoutLeft];
+        }
+            break;
+        case kButtonTypeNine:
+        {
+            [_iconView setFrame:CGRectMake(0, 0, 37, 18)];
+            [_titleLabel setFont:PMFont1];
+            [self adjustLayout];
+        }
+            break;
         default:
             break;
     }
@@ -131,6 +146,20 @@
     } else {
         CGFloat contentWidth = ViewWidth(_titleLabel);
         CGFloat x = ViewWidth(self) - contentWidth -8;
+        CGFloat y = ViewHeight(self)/2;
+        SetViewLeftCenter(_titleLabel, x, y);
+    }
+}
+
+- (void)adjustLayoutLeft
+{
+    [_titleLabel adjustSize];
+    if (_iconView.image) {
+        CGFloat x = 8+ViewWidth(_iconView)+2;
+        CGFloat y = ViewHeight(self)/2;
+        SetViewLeftCenter(_titleLabel, x, y);
+    } else {
+        CGFloat x = 8;
         CGFloat y = ViewHeight(self)/2;
         SetViewLeftCenter(_titleLabel, x, y);
     }

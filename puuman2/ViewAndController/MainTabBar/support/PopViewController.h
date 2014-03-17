@@ -19,6 +19,7 @@ typedef enum
     UIView *bgView;
     UIView *_content;
 }
+- (void)initialization;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 - (void)dismiss;

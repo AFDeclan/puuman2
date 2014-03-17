@@ -13,6 +13,8 @@
 #import "PumanBookModel.h"
 #import "CartModel.h"
 #import "SocialNetwork.h"
+#import "SettingViewController.h"
+
 
 @interface MainTabBarController ()
 
@@ -175,7 +177,10 @@ static MainTabBarController *instance;
 
 - (void)showSettingView
 {
-
+    SettingViewController *settingVC = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
+    [settingVC show];
+    [self.view addSubview:settingVC.view];
+    
 }
 
 @end
