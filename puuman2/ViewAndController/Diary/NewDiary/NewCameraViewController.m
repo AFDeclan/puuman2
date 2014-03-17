@@ -304,24 +304,34 @@
     }else if (CFStringCompare ((CFStringRef) mediaType, kUTTypeMovie, 0)
               == kCFCompareEqualTo) {
         movieUrl = [info objectForKey:UIImagePickerControllerMediaURL];
-        moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:movieUrl];
+        moviePlayer = [[VideoPlayerController alloc] initWithContentURL:movieUrl];
         [moviePlayer prepareToPlay];
+        [moviePlayer setDelegate:self];
         [moviePlayer setShouldAutoplay:NO];
         if ([MainTabBarController sharedMainViewController].isVertical) {
-            [moviePlayer.view setFrame:CGRectMake(0, 0, 768, 1024)];
+            [moviePlayer setVerticalFrame];
         }else{
-            [moviePlayer.view setFrame:CGRectMake(0, 0, 1024, 768)];
+            [moviePlayer setHorizontalFrame];
         }
         
         [moviePlayer setFullscreen:NO];
-        [moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
+        [moviePlayer setControlStyle:MPMovieControlStyleNone];
         [self.view addSubview:moviePlayer.view ];
-        [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:moviePlayer ];
-
+        
+        
     }
 }
 
+- (void)videoFinished
+{
+    [self finishBtnPressed];
+}
 
+- (void)videoClosed{
+    [moviePlayer.view removeFromSuperview];
+    [controlView setVideoBackControl];
+    [timeView showTimeWithSecond:0];
+}
 
 - (void)saveWithImg:(UIImage *)img
 {
@@ -329,10 +339,7 @@
     [photoPath addObject:path];
 }
 
-- (void)moviePlayerPlaybackDidFinish:(NSNotification*)notification
-{
-    [self finishBtnPressed];
-}
+
 
 - (void)setTaskInfo:(NSDictionary *)taskInfo
 {
@@ -349,6 +356,7 @@
         [controlView addPhoto:[photosArr objectAtIndex:num-1] andNum:num];
     }else{
         [controlView addPhoto:nil andNum:0];
+        
     }
     
 }

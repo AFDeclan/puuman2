@@ -50,7 +50,7 @@
 }
 - (void)showTimeWithSecond:(NSInteger)time
 {
-   
+    videoTime = time;
     int min = time/60;
     int sec = time%60;
     if (min<10) {

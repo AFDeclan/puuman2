@@ -16,7 +16,7 @@
     UIView *imgBox;
     UIButton *takePicBtn;
     UIImageView *imageView;
-    UITextView *textView;
+    UITextView *_textView;
     UIButton *delBtn;
     UIImage *photo;
 }

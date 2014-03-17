@@ -157,6 +157,7 @@
         [audioBtn setAlpha:0];
     }else if (num == 0){
         [sampleBtn setAlpha:0];
+        [modelChangeBtn setAlpha:1];
     }
     
 
@@ -272,18 +273,14 @@
     [playCameraBtn setAlpha:1];
 }
 
-- (void)setVideoShowModelwithNewVideo:(BOOL)newVideo
+- (void)setVideoBackControl
 {
     [sampleBtn setAlpha:0];
     [audioBtn setAlpha:0];
-    [modelChangeBtn setAlpha:0];
-    [frontRareChangeBtn setAlpha:0];
-    if (newVideo) {
-        [closeBtn setAlpha:1];
-    }else{
-        [closeBtn setAlpha:0];
-    }
-    
+    [modelChangeBtn setAlpha:1];
+    [frontRareChangeBtn setAlpha:1];
+    [playCameraBtn setEnabled:YES];
+
 }
 
 @end

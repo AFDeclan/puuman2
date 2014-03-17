@@ -183,6 +183,13 @@
     [cell buildCellViewWithIndexRow:indexPath.row abbreviated:(selectedPath == nil || [indexPath compare:selectedPath] != NSOrderedSame)];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor: [UIColor clearColor]];
+    if ( [indexPath row] == [[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]-1 || [indexPath row] == [[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]-2 ) {
+        [cell setControlCanHidden:NO];
+    }else{
+        [cell setControlCanHidden:YES];
+    }
+
+   
     
 //    int rowMax = 0;
 //    int rowMin = 0;
@@ -363,7 +370,6 @@
             [((DiaryCell *)_activeCell) delBtnReset];
             _activeCell = nil;
         }
-        
     }
 
 }

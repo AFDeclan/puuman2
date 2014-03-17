@@ -36,7 +36,7 @@
 - (void)setHorizontalFrame;
 - (void)addPhoto:(UIImage *)photo andNum:(int)num;
 - (void)enableControl;
-- (void)setVideoShowModelwithNewVideo:(BOOL)newVideo;
+- (void)setVideoBackControl;
 
 @end
 @protocol CameraControlDelegate <NSObject>

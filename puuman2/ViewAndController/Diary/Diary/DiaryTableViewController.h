@@ -21,6 +21,7 @@
 {
     NSIndexPath *selectedPath;
     DiaryCell *_activeCell;
+    
 }
 
 - (void)tapWithPoint:(CGPoint)pos;

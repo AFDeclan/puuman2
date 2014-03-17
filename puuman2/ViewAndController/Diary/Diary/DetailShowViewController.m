@@ -84,11 +84,17 @@
 {
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:path]];
     [moviePlayer prepareToPlay];
-    
     [moviePlayer setShouldAutoplay:NO];
     [moviePlayer setFullscreen:NO];
     [moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
     [_content addSubview:moviePlayer.view];
+    for (UIView *view in [[[[moviePlayer.view viewWithTag:0] viewWithTag:0] viewWithTag:0] subviews]) {
+//        if ([view isKindOfClass:[UILabel class]]) {
+//            NSLog(@"%@",view.tag);
+//        }
+        NSLog(@"%@",[view class]);
+    }
+    [moviePlayer.view  viewWithTag:0];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(movieFinishedCallback)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification

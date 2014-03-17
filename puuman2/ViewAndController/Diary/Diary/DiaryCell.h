@@ -51,6 +51,7 @@ typedef enum{
 @property (strong, nonatomic)UIScrollView *delScrollView;
 @property (retain,nonatomic) NSDictionary* diaryInfo;
 @property (strong,nonatomic) NSIndexPath *indexPath;
+@property (assign,nonatomic) BOOL controlCanHidden;
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
 - (void)share:(id)sender;
 - (void)delBtnReset;

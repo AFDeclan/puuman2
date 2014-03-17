@@ -13,8 +13,9 @@
 #import "TimeView.h"
 #import "NewCameraShowPhotosViewController.h"
 #import "CameraAudioViewController.h"
+#import "VideoPlayerController.h"
 
-@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate>
+@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate,VideoPlayerDelegate>
 {
     NewCameraControlView *controlView;
     UIImagePickerController *cameraUI;
@@ -23,7 +24,7 @@
     NSMutableDictionary *photosStatus;
     NSMutableArray *photos;
     NSURL *movieUrl;
-    MPMoviePlayerController *moviePlayer;
+    VideoPlayerController *moviePlayer;
     TimeView *timeView;
     NSURL *audioFileUrl;
     CameraAudioViewController *audioView;

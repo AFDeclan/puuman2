@@ -169,7 +169,6 @@
 		543BAEC518CEBE9E00ED4672 /* bg_title_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 543BAEC418CEBE9E00ED4672 /* bg_title_diary.png */; };
 		543BAECE18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAECD18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m */; };
 		543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED018CEC30100ED4672 /* PhotoMoreDiaryCell.m */; };
-		543BAEDA18CF172D00ED4672 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAED918CF172D00ED4672 /* VideoViewController.m */; };
 		544419E618D3EAC800FBE69F /* BabyPropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544419E518D3EAC800FBE69F /* BabyPropView.m */; };
 		544419EB18D3ED3E00FBE69F /* PropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544419E818D3ED3E00FBE69F /* PropView.m */; };
 		544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */ = {isa = PBXBuildFile; fileRef = 544419EA18D3ED3E00FBE69F /* PropWare.m */; };
@@ -281,6 +280,7 @@
 		54B6F41E18D6C8640055FC72 /* ReSendButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B6F41D18D6C8640055FC72 /* ReSendButton.m */; };
 		54B6F42118D6D72E0055FC72 /* SettingPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B6F42018D6D72E0055FC72 /* SettingPassWordViewController.m */; };
 		54B6F42418D6E33E0055FC72 /* SettingAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B6F42318D6E33E0055FC72 /* SettingAdviceViewController.m */; };
+		54B6F42718D6EAF00055FC72 /* VideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B6F42618D6EAF00055FC72 /* VideoPlayerController.m */; };
 		54B753A018D2A7C7002411CF /* BabyVaccineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B7539F18D2A7C7002411CF /* BabyVaccineView.m */; };
 		54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753A218D2A8EB002411CF /* VaccineInfoTableViewCell.m */; };
 		54B753A618D2BEB0002411CF /* AnimateShowLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753A518D2BEB0002411CF /* AnimateShowLabel.m */; };
@@ -639,8 +639,6 @@
 		543BAECD18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSingleDiaryCell.m; sourceTree = "<group>"; };
 		543BAECF18CEC30100ED4672 /* PhotoMoreDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoMoreDiaryCell.h; sourceTree = "<group>"; };
 		543BAED018CEC30100ED4672 /* PhotoMoreDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoMoreDiaryCell.m; sourceTree = "<group>"; };
-		543BAED818CF172D00ED4672 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
-		543BAED918CF172D00ED4672 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		544419E418D3EAC800FBE69F /* BabyPropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPropView.h; sourceTree = "<group>"; };
 		544419E518D3EAC800FBE69F /* BabyPropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPropView.m; sourceTree = "<group>"; };
 		544419E718D3ED3E00FBE69F /* PropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropView.h; sourceTree = "<group>"; };
@@ -805,6 +803,8 @@
 		54B6F42018D6D72E0055FC72 /* SettingPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPassWordViewController.m; sourceTree = "<group>"; };
 		54B6F42218D6E33E0055FC72 /* SettingAdviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingAdviceViewController.h; sourceTree = "<group>"; };
 		54B6F42318D6E33E0055FC72 /* SettingAdviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingAdviceViewController.m; sourceTree = "<group>"; };
+		54B6F42518D6EAF00055FC72 /* VideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayerController.h; sourceTree = "<group>"; };
+		54B6F42618D6EAF00055FC72 /* VideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerController.m; sourceTree = "<group>"; };
 		54B7539E18D2A7C7002411CF /* BabyVaccineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyVaccineView.h; sourceTree = "<group>"; };
 		54B7539F18D2A7C7002411CF /* BabyVaccineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyVaccineView.m; sourceTree = "<group>"; };
 		54B753A118D2A8EB002411CF /* VaccineInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaccineInfoTableViewCell.h; sourceTree = "<group>"; };
@@ -1641,8 +1641,8 @@
 				54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */,
 				54A9288118C95D0200C9D366 /* NewDiaryDeleteCell.h */,
 				54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */,
-				543BAED818CF172D00ED4672 /* VideoViewController.h */,
-				543BAED918CF172D00ED4672 /* VideoViewController.m */,
+				54B6F42518D6EAF00055FC72 /* VideoPlayerController.h */,
+				54B6F42618D6EAF00055FC72 /* VideoPlayerController.m */,
 				54ADE09518C8608700B166C4 /* TimeView.h */,
 				54ADE09618C8608700B166C4 /* TimeView.m */,
 			);
@@ -2609,7 +2609,6 @@
 				54CE10E518C1842C00966396 /* AFIconButton.m in Sources */,
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
-				543BAEDA18CF172D00ED4672 /* VideoViewController.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54B6F42118D6D72E0055FC72 /* SettingPassWordViewController.m in Sources */,
 				54CE10E618C1842C00966396 /* AFImageButton.m in Sources */,
@@ -2622,6 +2621,7 @@
 				541970E818D1A1C00058FE64 /* RulerScrollView.m in Sources */,
 				54CE10F218C1842C00966396 /* MJRefreshBaseView.m in Sources */,
 				54CE10EC18C1842C00966396 /* SinaWeiboAuthorizeView.m in Sources */,
+				54B6F42718D6EAF00055FC72 /* VideoPlayerController.m in Sources */,
 				14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */,
 				549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */,
 				54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */,

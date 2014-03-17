@@ -22,12 +22,14 @@
 @synthesize delBtn = _delBtn;
 @synthesize delScrollView = _delScrollView;
 @synthesize diaryType = _diaryType;
+@synthesize controlCanHidden = _controlCanHidden;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
          delConfirm = NO;
+        _controlCanHidden = YES;
          bg =[[UIView alloc] init];
         [bg setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:bg];
@@ -308,14 +310,24 @@
 
 - (void)CellVisibled:(NSNotification *)notification
 {
+
     float tableY  = [[notification object] floatValue];
+    
+    
+    
     if ([MainTabBarController sharedMainViewController].isVertical) {
+        if (self.frame.origin.y < 512) {
+            _controlCanHidden = NO;
+        }
         if (self.frame.origin.y < tableY+512 && self.frame.origin.y + self.frame.size.height > tableY+512) {
             [self showAndHideControlBtnWithHidden:NO];
         }else{
             [self showAndHideControlBtnWithHidden:YES];
         }
     }else{
+        if (self.frame.origin.y < 384) {
+            _controlCanHidden = NO;
+        }
         if (self.frame.origin.y < tableY+384 && self.frame.origin.y + self.frame.size.height > tableY+384) {
             [self showAndHideControlBtnWithHidden:NO];
         }else{
@@ -323,20 +335,22 @@
         }
     }
    
-    NSLog(@"%f %d",self.frame.origin.y,self.indexPath.row);
 }
 
 - (void)showAndHideControlBtnWithHidden:(BOOL)isHidden;
 {
 
     if (isHidden) {
-        [_delBtn setAlpha:0];
-
-        [_shareBtn setAlpha:0];
+        if (_controlCanHidden) {
+            [_delBtn setAlpha:0];
+            
+            [_shareBtn setAlpha:0];
+        }
+    
 
     }else{
         if (delCanShow) {
-                 [_delBtn setAlpha:1];
+             [_delBtn setAlpha:1];
         }
         if (shareCanShow) {
              [_shareBtn setAlpha:1];

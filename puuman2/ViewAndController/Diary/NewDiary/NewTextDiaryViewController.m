@@ -47,7 +47,7 @@
     
     takePicBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
     [takePicBtn setImage:[UIImage imageNamed:@"btn_pic_diary.png"] forState:UIControlStateNormal];
-    [takePicBtn addTarget:self action:@selector(selectedPhoto) forControlEvents:UIControlEventTouchUpInside];
+    [takePicBtn addTarget:self action:@selector(selectedPhotoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [titleTextField setRightViewMode:UITextFieldViewModeAlways];
     [titleTextField setRightView:takePicBtn];
     
@@ -64,17 +64,19 @@
     [delBtn addTarget:self action:@selector(deletePhoto) forControlEvents:UIControlEventTouchUpInside];
     [imgBox addSubview:delBtn];
     
-    textView = [[UITextView alloc] initWithFrame:CGRectMake(32, 176, 640, 360)]; //512
-    [textView setFont:PMFont2];
-    [textView setDelegate:self];
-    [textView setTextColor:PMColor1];
-    [textView setBackgroundColor:[UIColor clearColor]];
-    [_content addSubview:textView];
+    _textView = [[UITextView alloc] initWithFrame:CGRectMake(32, 176, 640, 360)]; //512
+    [_textView setFont:PMFont2];
+    [_textView setDelegate:self];
+    [_textView setTextColor:PMColor1];
+    [_textView setBackgroundColor:[UIColor clearColor]];
+    [_content addSubview:_textView];
+    
     
 }
 
-- (void)selectedPhoto
+- (void)selectedPhotoBtnPressed
 {
+    [_textView resignFirstResponder];
     NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
     [self.view addSubview:chooseView.view];
     [chooseView setDelegate:self];
@@ -86,10 +88,12 @@
 - (void)selectedPhoto:(UIImage *)img
 {
     photo = img;
+    [_finishBtn setAlpha:1];
+    [_finishBtn setEnabled:YES];
     img = [UIImage croppedImage:img WithHeight:224 andWidth:224];
     [imageView setImage:img];
     [imgBox setAlpha:1];
-    [textView setFrame:CGRectMake(32, 176, 512, 360)];
+    [_textView setFrame:CGRectMake(32, 176, 512, 360)];
 }
 
 - (void)deletePhoto
@@ -97,7 +101,7 @@
     photo = nil;
     [imageView setImage:nil];
     [imgBox setAlpha:0];
-    [textView setFrame:CGRectMake(32, 176, 640, 360)];
+    [_textView setFrame:CGRectMake(32, 176, 640, 360)];
     
 
 }
@@ -110,12 +114,12 @@
 
 - (void)finishBtnPressed
 {
-    if ([textView.text isEqualToString:@""]) {
+    if ([_textView.text isEqualToString:@""]) {
         if (photo) {
             [DiaryFileManager savePhotos:[NSArray arrayWithObject:photo] withAudio:nil withTitle:titleTextField.text andTaskInfo:nil];
         }
     }else{
-        [DiaryFileManager saveText:textView.text withPhoto:photo withTitle:titleTextField.text andTaskInfo:_taskInfo];
+        [DiaryFileManager saveText:_textView.text withPhoto:photo withTitle:titleTextField.text andTaskInfo:_taskInfo];
     }
 
     
@@ -124,44 +128,59 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-//    if (!img) {
-//        
-//        if (range.length == 1) {
-//            if ([textView.text length]==1) {
-//                if (!img) {
-//                    [_finishBtn setAlpha:0.5];
-//                    [_finishBtn setEnabled:NO];
-//                }
-//            }else
-//            {
-//                [_finishBtn setAlpha:1];
-//                [_finishBtn setEnabled:YES];
-//            }
-//        }else{
-//            if ([text isEqualToString:@""]) {
-//                if (!img) {
-//                    [_finishBtn setAlpha:0.5];
-//                    [_finishBtn setEnabled:NO];
-//                }
-//            }else{
-//                [_finishBtn setAlpha:1];
-//                [_finishBtn setEnabled:YES];
-//            }
-//            
-//        }
-//    }
+    if (!photo) {
+        
+        if (range.length == 1) {
+            if ([textView.text length]==1) {
+               
+                    [_finishBtn setAlpha:0.5];
+                    [_finishBtn setEnabled:NO];
+                
+            }else
+            {
+                [_finishBtn setAlpha:1];
+                [_finishBtn setEnabled:YES];
+            }
+        }else{
+            if ([text isEqualToString:@""]) {
+              
+                    [_finishBtn setAlpha:0.5];
+                    [_finishBtn setEnabled:NO];
+                
+            }else{
+                [_finishBtn setAlpha:1];
+                [_finishBtn setEnabled:YES];
+            }
+            
+        }
+    }
     return YES;
 }
 
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-//{
-////    if (range.length == 0) {
-////        if ([textField.text length] >=15) {
-////            NSString *str = [textField.text substringToIndex:15];
-////            textField.text =str;
-////        }
-////    }
-//    return YES;
-//}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (range.length == 0) {
+        if ([textField.text length] >=15) {
+            NSString *str = [textField.text substringToIndex:15];
+            textField.text =str;
+        }
+    }
+    return YES;
+}
 
+- (void)show{
+    
+    [bgView setAlpha:0];
+    [UIView animateWithDuration:0.4 animations:^{
+        [bgView setAlpha:0.3];
+    }];
+    [_content showInFrom:kAFAnimationTop inView:self.view withFade:YES duration:0.5 delegate:self startSelector:@selector(showStart) stopSelector:nil];
+    [_finishBtn setAlpha:0.5];
+    [_finishBtn setEnabled:NO];
+}
+
+ -(void)showStart
+{
+    [_textView becomeFirstResponder];
+}
 @end
