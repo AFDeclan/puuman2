@@ -16,6 +16,7 @@
 #import "ErrorLog.h"
 #import "TaskUploader.h"
 #import "DiaryFileManager.h"
+#import "DiaryCell.h"
 
 static DiaryModel * instance;
 
@@ -307,6 +308,8 @@ static DiaryModel * instance;
     
     return YES;
 }
+
+
 
 //获取某日期的日记  未测试！
 - (NSUInteger)indexForDiaryNearDate:(NSDate *)date filtered:(NSUInteger)filter
