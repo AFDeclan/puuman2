@@ -23,7 +23,7 @@
 static MainTabBarController *instance;
 @implementation MainTabBarController
 @synthesize isVertical = _isVertical;
-
+@synthesize refresh_HV = _refresh_HV;
 + (MainTabBarController *)sharedMainViewController
 {
     if (!instance)
@@ -124,20 +124,23 @@ static MainTabBarController *instance;
     if (interfaceOrientation == UIDeviceOrientationPortrait || interfaceOrientation == UIDeviceOrientationPortraitUpsideDown) {
         //翻转为竖屏时
         [self setVerticalFrame];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Vertical object:nil];
+       
         
         
     }else if (interfaceOrientation==UIDeviceOrientationLandscapeLeft || interfaceOrientation == UIDeviceOrientationLandscapeRight) {
         //翻转为横屏时
         
         [self setHorizontalFrame];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Horizontal object:nil];
+        
     }
 }
 
 -(void)setVerticalFrame
 {
-    _isVertical = YES;
+    if (!_isVertical) {
+        _isVertical = YES;
+         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Vertical object:nil];
+    }
     [tabBar setVerticalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_V]];
     [bgImgView setFrame:CGRectMake(0, 0, 768, 1024)];
@@ -146,7 +149,11 @@ static MainTabBarController *instance;
 
 -(void)setHorizontalFrame
 {
-    _isVertical = NO;
+   
+    if (_isVertical) {
+         _isVertical = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Horizontal object:nil];
+    }
     [tabBar setHorizontalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 768)];
@@ -166,9 +173,8 @@ static MainTabBarController *instance;
 - (void)userChanged
 {
 
-    [self setSelectedIndex:1];
     if (loginViewC) {
-         [loginViewC loginSucceed];
+        [loginViewC loginSucceed];
     }
    
     [[BabyData sharedBabyData] reloadData];
@@ -178,9 +184,9 @@ static MainTabBarController *instance;
     [SocialNetwork initSocialNetwork];
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
-  
-    [[DiaryViewController alloc] refresh];
-    
+    [self setSelectedIndex:1];
+
+   
 }
 
 - (void)showSettingView

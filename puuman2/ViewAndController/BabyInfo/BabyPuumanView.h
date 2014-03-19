@@ -26,6 +26,10 @@
     UIImageView *_newAddView;
     UILabel *_newAddLabel;
     UIImageView *pumanIcon;
+    UIView *emptyInView;
+    UIView *emptyoutView;
+    
+    
 }
 - (void)refresh;
 - (void)setNums;

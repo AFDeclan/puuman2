@@ -153,6 +153,8 @@
             [_closeBtn setAlpha:1];
         }else{
             [self initStarLoginView];
+            [_closeBtn setAlpha:1];
+
         }
     }else{
         [self initStarLoginView];
@@ -196,7 +198,16 @@
             [birth resigntextField];
             if ([[UserInfo sharedUserInfo] logined])
             {
-                [super closeBtnPressed];
+               
+                if ([[BabyData sharedBabyData] babyHasBorned]) {
+                     [super closeBtnPressed];
+                }else{
+                    [_finishBtn setAlpha:0];
+                    [_closeBtn setAlpha:1];
+                    loginView = kLoginStartView;
+                    [changeView scrollRectToVisible:startView.frame animated:YES];
+                }
+                
             }else{
                 [_finishBtn setAlpha:0];
                 [_closeBtn setAlpha:0];

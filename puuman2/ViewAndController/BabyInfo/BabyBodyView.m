@@ -52,8 +52,10 @@
     [leftView addSubview:emptyView];
     
     UIImageView *iconBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 88, 80)];
+    [iconBg setImage:[UIImage imageNamed:@"pic_body_blank.png"]];
     [iconBg setBackgroundColor:PMColor5];
     [emptyView addSubview:iconBg];
+    
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 88, 88, 24)];
     [title setFont:PMFont4];
     [title setTextColor:PMColor7];

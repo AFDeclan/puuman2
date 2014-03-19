@@ -72,6 +72,57 @@
     [outBookTable setShowsHorizontalScrollIndicator:NO];
     [outBookTable setShowsVerticalScrollIndicator:NO];
     
+    emptyInView = [[UIView alloc] initWithFrame:CGRectMake(52, 256, 112, 92)];
+    [emptyInView setBackgroundColor:[UIColor clearColor]];
+    [leftView addSubview:emptyInView];
+    
+    UIImageView *iconInBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 32)];
+    [iconInBg setImage:[UIImage imageNamed:@"pic1_bank_blank.png"]];
+    [iconInBg setBackgroundColor:PMColor5];
+    [emptyInView addSubview:iconInBg];
+    
+    UILabel *title_in = [[UILabel alloc] initWithFrame:CGRectMake(0, 48, 112, 24)];
+    [title_in setFont:PMFont4];
+    [title_in setTextColor:PMColor7];
+    [title_in setText:@"啊哦，还没有金币入库~"];
+    [title_in setTextAlignment:NSTextAlignmentCenter];
+    [title_in setBackgroundColor:[UIColor clearColor]];
+    [emptyInView addSubview:title_in];
+    UILabel *title_in2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, 112, 24)];
+    [title_in2 setFont:PMFont4];
+    [title_in2 setTextColor:PMColor7];
+    [title_in2 setText:@"写日记就可以赚扑满金币"];
+    [title_in2 setTextAlignment:NSTextAlignmentCenter];
+    [title_in2 setBackgroundColor:[UIColor clearColor]];
+    [emptyInView addSubview:title_in2];
+    if ([[PumanBookModel bookModel].inBooks count] > 0) {
+        [emptyInView setAlpha:0];
+    }else{
+        [emptyInView setAlpha:1];
+    }
+
+    emptyoutView = [[UIView alloc] initWithFrame:CGRectMake(268, 256, 112, 92)];
+    [emptyoutView setBackgroundColor:[UIColor clearColor]];
+    [leftView addSubview:emptyoutView];
+    
+    UIImageView *iconOutBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 32)];
+    [iconOutBg setImage:[UIImage imageNamed:@"pic2_bank_blank.png"]];
+    [iconOutBg setBackgroundColor:PMColor5];
+    [emptyoutView addSubview:iconOutBg];
+    
+    UILabel *title_out = [[UILabel alloc] initWithFrame:CGRectMake(0, 48, 88, 24)];
+    [title_out setFont:PMFont4];
+    [title_out setTextColor:PMColor3];
+    [title_out setText:@"啊哦，还没有金币兑现~"];
+    [title_out setTextAlignment:NSTextAlignmentCenter];
+    [title_out setBackgroundColor:[UIColor clearColor]];
+    [emptyoutView addSubview:title_out];
+    if ([[PumanBookModel bookModel].outBooks count] > 0) {
+        [emptyoutView setAlpha:0];
+    }else{
+        [emptyoutView setAlpha:1];
+    }
+
     
 }
 

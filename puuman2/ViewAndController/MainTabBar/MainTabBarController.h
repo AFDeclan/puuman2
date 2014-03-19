@@ -23,7 +23,7 @@
 }
 
 @property(assign,nonatomic) BOOL isVertical;
-
+@property(assign,nonatomic) BOOL refresh_HV;
 + (MainTabBarController *)sharedMainViewController;
 
 @end
