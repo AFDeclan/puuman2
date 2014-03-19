@@ -235,6 +235,7 @@
 		5447C4B418D98F1700187BE6 /* PartnerDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5447C4B318D98F1700187BE6 /* PartnerDataView.m */; };
 		5447C4B718D98F5C00187BE6 /* PartnerChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5447C4B618D98F5C00187BE6 /* PartnerChatView.m */; };
 		5447C4BB18D99A3100187BE6 /* TopicSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5447C4BA18D99A3100187BE6 /* TopicSelectButton.m */; };
+		5447C4BE18D9A7B900187BE6 /* TopicShowedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5447C4BD18D9A7B900187BE6 /* TopicShowedCell.m */; };
 		545EB7E718D7E6BD00D8EB7F /* CalenderControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7E618D7E6BD00D8EB7F /* CalenderControlView.m */; };
 		545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7EC18D7ECCF00D8EB7F /* CalendarView.m */; };
 		545EB7F318D7F22900D8EB7F /* AgeCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7F218D7F22900D8EB7F /* AgeCalendarView.m */; };
@@ -773,6 +774,8 @@
 		5447C4B618D98F5C00187BE6 /* PartnerChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerChatView.m; sourceTree = "<group>"; };
 		5447C4B918D99A3100187BE6 /* TopicSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicSelectButton.h; sourceTree = "<group>"; };
 		5447C4BA18D99A3100187BE6 /* TopicSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicSelectButton.m; sourceTree = "<group>"; };
+		5447C4BC18D9A7B900187BE6 /* TopicShowedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicShowedCell.h; sourceTree = "<group>"; };
+		5447C4BD18D9A7B900187BE6 /* TopicShowedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicShowedCell.m; sourceTree = "<group>"; };
 		545EB7E518D7E6BD00D8EB7F /* CalenderControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderControlView.h; sourceTree = "<group>"; };
 		545EB7E618D7E6BD00D8EB7F /* CalenderControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderControlView.m; sourceTree = "<group>"; };
 		545EB7EB18D7ECCF00D8EB7F /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
@@ -1684,6 +1687,8 @@
 			children = (
 				5447C4B918D99A3100187BE6 /* TopicSelectButton.h */,
 				5447C4BA18D99A3100187BE6 /* TopicSelectButton.m */,
+				5447C4BC18D9A7B900187BE6 /* TopicShowedCell.h */,
+				5447C4BD18D9A7B900187BE6 /* TopicShowedCell.m */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -2919,6 +2924,7 @@
 				54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */,
 				541970D118D1956D0058FE64 /* LineChartView.m in Sources */,
 				54ADE09F18C8608700B166C4 /* NewTextDiaryViewController.m in Sources */,
+				5447C4BE18D9A7B900187BE6 /* TopicShowedCell.m in Sources */,
 				5447C4AE18D98ED600187BE6 /* AllTopicView.m in Sources */,
 				543BAEC118CEBA1800ED4672 /* VideoDiaryCell.m in Sources */,
 				14B8DF5518BC37A40047C6B3 /* UserNameCheck.m in Sources */,

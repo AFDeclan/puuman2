@@ -198,12 +198,12 @@
 {
     if (topicView) {
         [topicView setFrame:CGRectMake(80, 80, 864, 688)];
-        [topicView setVerticalFrame];
+        [topicView setHorizontalFrame];
     }
     
     if (partnerView) {
         [topicView setFrame:CGRectMake(80, 80, 864, 688)];
-        [partnerView setVerticalFrame];
+        [partnerView setHorizontalFrame];
     }
     [bg_topImageView setFrame:CGRectMake(80, 16, 928, 64)];
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_h_shop.png"]];
