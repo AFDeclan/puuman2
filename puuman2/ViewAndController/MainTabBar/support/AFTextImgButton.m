@@ -13,10 +13,13 @@
 
 @implementation AFTextImgButton
 @synthesize buttonType = _buttonType;
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+       
         // Initialization code
         backgroundImgView  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         [self addSubview:backgroundImgView];
@@ -129,10 +132,16 @@
             [_titleLabel setFont:PMFont1];
             [self adjustLayout];
         }
+        
             break;
         default:
             break;
     }
+}
+
+- (void)adjustLayoutVertical
+{
+
 }
 
 - (void)adjustLayoutRight
@@ -179,5 +188,8 @@
 {
     [mark setAlpha:0];
 }
+
+
+
 
 @end

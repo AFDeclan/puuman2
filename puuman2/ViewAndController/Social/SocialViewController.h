@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ColorButton.h"
+#import "AFImgButton.h"
+#import "TopicView.h"
+#import "PartnerView.h"
 
 @interface SocialViewController : UIViewController
-
+{
+    UIImageView *bg_topImageView;
+    UIImageView *bg_rightImageView;
+    ColorButton *leftBtn;
+    ColorButton *rightBtn;
+    AFImgButton *topicBtn;
+    AFImgButton *partnerBtn;
+    TopicView *topicView;
+    PartnerView *partnerView;
+    BOOL selectedTopic;
+}
 @end

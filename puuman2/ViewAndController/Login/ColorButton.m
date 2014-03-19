@@ -27,6 +27,7 @@
 
 - (void)initWithTitle:(NSString *)str  andButtonType:(ColorBtnType)type
 {
+    
     [self initWithTitle:str andIcon:nil andButtonType:type];
 }
 
