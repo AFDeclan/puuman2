@@ -148,15 +148,16 @@
         {
             [self initBirthRegisterView];
             [changeView setContentOffset:CGPointMake(kLoginsubViewWidth, 0)];
-            [_finishBtn setAlpha:1];
-            [_closeBtn setAlpha:0];
+            [_finishBtn setAlpha:0.5];
+            [_finishBtn setEnabled:NO];
+            [_closeBtn setAlpha:1];
         }else{
             [self initStarLoginView];
         }
     }else{
         [self initStarLoginView];
     }
-    [self initStarLoginView];
+   
     modifyMode = [UserInfo sharedUserInfo].logined;
     if (modifyMode)
     {
@@ -164,9 +165,9 @@
         [self setTitle:@"完善您的信息" withIcon:nil];
         [_finishBtn setImage:[UIImage imageNamed:@"btn_finish1.png"] forState:UIControlStateNormal];
         [_closeBtn setImage:[UIImage imageNamed:@"btn_close1.png"] forState:UIControlStateNormal];
-        [_closeBtn setAlpha:1];
+        
     }
-    }
+}
 
 
 
@@ -191,16 +192,19 @@
             break;
         case kLoginBirthRegisterView:
         {
-            [_finishBtn setAlpha:0];
+           
+            [birth resigntextField];
             if ([[UserInfo sharedUserInfo] logined])
             {
-                [_closeBtn setAlpha:1];
+                [super closeBtnPressed];
             }else{
+                [_finishBtn setAlpha:0];
                 [_closeBtn setAlpha:0];
+                loginView = kLoginStartView;
+                [changeView scrollRectToVisible:startView.frame animated:YES];
             }
-            loginView = kLoginStartView;
-            [changeView scrollRectToVisible:startView.frame animated:YES];
-            [birth resigntextField];
+           
+            
         }
             break;
         case kLoginPregnancyRegisterView:
@@ -246,6 +250,7 @@
         {
             [super  closeBtnPressed];
         }
+            break;
         default:
         {
             [_finishBtn setAlpha:0];
@@ -281,8 +286,9 @@
 //                        [CustomAlertViewController showAlertWithTitle:@"宝宝信息修改成功！~" andContrlType:kNoneButton];
                        // [[DiaryViewController sharedDiaryViewController] diaryTableReload];
                        // [[TaskModel sharedTaskModel] updateTasks];
-                        [self dismiss];
-                        
+                       // [self dismiss];
+                        [super finishBtnPressed];
+                        // [MyNotiCenter postNotificationName:Noti_BabyDataUpdated object:nil];
                     }
                     else
                     {
@@ -324,8 +330,8 @@
 //                            
 //                            [self dismiss];
 //                        }];
-                        [MyNotiCenter postNotificationName:Noti_BabyDataUpdated object:nil];
-                        [super finishBtnPressed];
+                        
+                        [self hidden];
                     }
                     else
                     {
@@ -348,6 +354,24 @@
         default:
             break;
     }
+}
+
+
+
+- (void)hidden
+{
+    [UIView animateWithDuration:0.4 animations:^{
+        [bgView setAlpha:0];
+    }];
+    [_content hiddenOutTo:kAFAnimationTop inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
+    
+}
+
+- (void)finishOut
+{
+    [MyNotiCenter postNotificationName:Noti_BabyDataUpdated object:nil];
+    [super dismiss];
+    [self.view removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning
@@ -435,7 +459,7 @@
         [birth setDelegate:self];
         
     }
-    
+    loginView =kLoginBirthRegisterView;
     [birth setAlpha:1];
     [loadView setAlpha:0];
     [pregnancy setAlpha:0];

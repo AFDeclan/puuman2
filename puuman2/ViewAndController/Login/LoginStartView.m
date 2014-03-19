@@ -78,13 +78,14 @@
         [father setTitleLabelColor:PMColor1];
         [father addTarget:self action:@selector(fatherSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:father];
+        AFTextImgButton *goLoginViewButton=[[AFTextImgButton alloc] initWithFrame:CGRectMake(80, 424, 544, 40)];
+        [goLoginViewButton setTitle:@"我已经有账号或邀请码" andImg:[UIImage imageNamed:@"tri_white_right.png"] andButtonType:kButtonTypeFour];
+        [goLoginViewButton setTitleLabelColor:[UIColor whiteColor]];
+        [goLoginViewButton addTarget:self action:@selector(goLoginloadView:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:goLoginViewButton];
+
     }
 
-    AFTextImgButton *goLoginViewButton=[[AFTextImgButton alloc] initWithFrame:CGRectMake(80, 424, 544, 40)];
-    [goLoginViewButton setTitle:@"我已经有账号或邀请码" andImg:[UIImage imageNamed:@"tri_white_right.png"] andButtonType:kButtonTypeFour];
-    [goLoginViewButton setTitleLabelColor:[UIColor whiteColor]];
-    [goLoginViewButton addTarget:self action:@selector(goLoginloadView:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:goLoginViewButton];
     
 }
 

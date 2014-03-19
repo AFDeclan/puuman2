@@ -108,17 +108,18 @@
     info_name.text = [babyData babyName];
     info_age.text = [[NSDate date] ageStrFromDate:[babyData babyBirth]];
     if ([[BabyData sharedBabyData] babyHasBorned])
-    {
-        [sexIcon setImage:nil];
-        [info_name setFrame:CGRectMake(0, 40, 180, 24)];
-    }else{
-        [info_name setFrame:CGRectMake(0, 40, 152, 24)];
-        if ( [babyData babyIsBoy]) {
+    {[info_name setFrame:CGRectMake(0, 40, 152, 24)];
+        if ([babyData babyIsBoy]) {
             [sexIcon setImage:[UIImage imageNamed:@"icon_male_baby.png"]];
         }else
         {
             [sexIcon setImage:[UIImage imageNamed:@"icon_female_baby.png"]];
         }
+
+        
+    }else{
+        [sexIcon setImage:nil];
+        [info_name setFrame:CGRectMake(0, 40, 180, 24)];
     }
     NSString *birthStr = [DateFormatter stringFromDate:[babyData babyBirth]];
     NSString *constellationStr = [[babyData babyBirth] constellation];

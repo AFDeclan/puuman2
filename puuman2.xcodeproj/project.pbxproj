@@ -182,6 +182,10 @@
 		54441A0318D43D9F00FBE69F /* dot3_baby_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54441A0218D43D9F00FBE69F /* dot3_baby_diary.png */; };
 		54441A0518D461C300FBE69F /* btn_babyinfo3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54441A0418D461C300FBE69F /* btn_babyinfo3_diary.png */; };
 		54441A0718D462DE00FBE69F /* block_new_puuman.png in Resources */ = {isa = PBXBuildFile; fileRef = 54441A0618D462DE00FBE69F /* block_new_puuman.png */; };
+		545EB7E718D7E6BD00D8EB7F /* CalenderControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7E618D7E6BD00D8EB7F /* CalenderControlView.m */; };
+		545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7EC18D7ECCF00D8EB7F /* CalendarView.m */; };
+		545EB7F318D7F22900D8EB7F /* AgeCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7F218D7F22900D8EB7F /* AgeCalendarView.m */; };
+		545EB7F618D7F33F00D8EB7F /* AgeCalenderTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7F518D7F33F00D8EB7F /* AgeCalenderTitleButton.m */; };
 		5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463755A18C96622004B11EF /* btn_pic_diary.png */; };
 		5463757C18C98476004B11EF /* btn_back_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463757618C98476004B11EF /* btn_back_login.png */; };
 		5463757D18C98476004B11EF /* btn_next_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463757718C98476004B11EF /* btn_next_login.png */; };
@@ -202,8 +206,6 @@
 		5463759918C98493004B11EF /* tri_white_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463758C18C98493004B11EF /* tri_white_left.png */; };
 		5463759A18C98493004B11EF /* tri_white_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463758D18C98493004B11EF /* tri_white_right.png */; };
 		5463759B18C98493004B11EF /* tri_white_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463758E18C98493004B11EF /* tri_white_up.png */; };
-		546375B918C9A2C2004B11EF /* icon_female_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 546375B718C9A2C2004B11EF /* icon_female_baby.png */; };
-		546375BA18C9A2C2004B11EF /* icon_male_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 546375B818C9A2C2004B11EF /* icon_male_baby.png */; };
 		546375BC18C9AB36004B11EF /* tri_login_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 546375BB18C9AB36004B11EF /* tri_login_diary.png */; };
 		546375C118C9B347004B11EF /* pic_puuman_login_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 546375C018C9B347004B11EF /* pic_puuman_login_diary.png */; };
 		5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */; };
@@ -292,6 +294,7 @@
 		54BAD45D18D14B8A003822CC /* BabyInfoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD45C18D14B8A003822CC /* BabyInfoContentView.m */; };
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
+		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
 		54CE10E018C1842C00966396 /* AFDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A018C1842C00966396 /* AFDataDownloader.m */; };
 		54CE10E118C1842C00966396 /* AFDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A218C1842C00966396 /* AFDataStore.m */; };
 		54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A518C1842C00966396 /* AFBaseRequest.m */; };
@@ -657,6 +660,14 @@
 		54441A0218D43D9F00FBE69F /* dot3_baby_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot3_baby_diary.png; sourceTree = "<group>"; };
 		54441A0418D461C300FBE69F /* btn_babyinfo3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_babyinfo3_diary.png; sourceTree = "<group>"; };
 		54441A0618D462DE00FBE69F /* block_new_puuman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_new_puuman.png; sourceTree = "<group>"; };
+		545EB7E518D7E6BD00D8EB7F /* CalenderControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderControlView.h; sourceTree = "<group>"; };
+		545EB7E618D7E6BD00D8EB7F /* CalenderControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderControlView.m; sourceTree = "<group>"; };
+		545EB7EB18D7ECCF00D8EB7F /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
+		545EB7EC18D7ECCF00D8EB7F /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
+		545EB7F118D7F22900D8EB7F /* AgeCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalendarView.h; sourceTree = "<group>"; };
+		545EB7F218D7F22900D8EB7F /* AgeCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalendarView.m; sourceTree = "<group>"; };
+		545EB7F418D7F33F00D8EB7F /* AgeCalenderTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalenderTitleButton.h; sourceTree = "<group>"; };
+		545EB7F518D7F33F00D8EB7F /* AgeCalenderTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalenderTitleButton.m; sourceTree = "<group>"; };
 		5463755A18C96622004B11EF /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
 		5463757618C98476004B11EF /* btn_back_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_login.png; sourceTree = "<group>"; };
 		5463757718C98476004B11EF /* btn_next_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_next_login.png; sourceTree = "<group>"; };
@@ -677,8 +688,6 @@
 		5463758C18C98493004B11EF /* tri_white_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_white_left.png; sourceTree = "<group>"; };
 		5463758D18C98493004B11EF /* tri_white_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_white_right.png; sourceTree = "<group>"; };
 		5463758E18C98493004B11EF /* tri_white_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_white_up.png; sourceTree = "<group>"; };
-		546375B718C9A2C2004B11EF /* icon_female_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_female_baby.png; sourceTree = "<group>"; };
-		546375B818C9A2C2004B11EF /* icon_male_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_male_baby.png; sourceTree = "<group>"; };
 		546375BB18C9AB36004B11EF /* tri_login_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_login_diary.png; sourceTree = "<group>"; };
 		546375C018C9B347004B11EF /* pic_puuman_login_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_puuman_login_diary.png; sourceTree = "<group>"; };
 		5473686118C1F4F3009688F5 /* libPods-XMLReader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XMLReader.a"; path = "Pods/build/Release-iphoneos/libPods-XMLReader.a"; sourceTree = "<group>"; };
@@ -827,6 +836,8 @@
 		54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoPageControlButton.m; sourceTree = "<group>"; };
 		54BAD46818D15A73003822CC /* BabyBodyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyBodyView.h; sourceTree = "<group>"; };
 		54BAD46918D15A73003822CC /* BabyBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBodyView.m; sourceTree = "<group>"; };
+		54BB09E618D9494C00F805DD /* SkipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkipViewController.h; sourceTree = "<group>"; };
+		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
 		54CE109D18C1842C00966396 /* AFNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetwork.h; sourceTree = "<group>"; };
 		54CE109F18C1842C00966396 /* AFDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDataDownloader.h; sourceTree = "<group>"; };
 		54CE10A018C1842C00966396 /* AFDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDataDownloader.m; sourceTree = "<group>"; };
@@ -1466,6 +1477,21 @@
 			name = ruler;
 			sourceTree = "<group>";
 		};
+		545EB7E418D7E66D00D8EB7F /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				545EB7E518D7E6BD00D8EB7F /* CalenderControlView.h */,
+				545EB7E618D7E6BD00D8EB7F /* CalenderControlView.m */,
+				545EB7EB18D7ECCF00D8EB7F /* CalendarView.h */,
+				545EB7EC18D7ECCF00D8EB7F /* CalendarView.m */,
+				545EB7F118D7F22900D8EB7F /* AgeCalendarView.h */,
+				545EB7F218D7F22900D8EB7F /* AgeCalendarView.m */,
+				545EB7F418D7F33F00D8EB7F /* AgeCalenderTitleButton.h */,
+				545EB7F518D7F33F00D8EB7F /* AgeCalenderTitleButton.m */,
+			);
+			name = Calender;
+			sourceTree = "<group>";
+		};
 		5463756C18C96E2D004B11EF /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1489,8 +1515,6 @@
 		5463757518C98476004B11EF /* LoginImages */ = {
 			isa = PBXGroup;
 			children = (
-				546375B718C9A2C2004B11EF /* icon_female_baby.png */,
-				546375B818C9A2C2004B11EF /* icon_male_baby.png */,
 				5463757618C98476004B11EF /* btn_back_login.png */,
 				5463757718C98476004B11EF /* btn_next_login.png */,
 				5463757818C98476004B11EF /* icon_dad_diary.png */,
@@ -1937,6 +1961,8 @@
 				54CE119218C1CD7C00966396 /* MainTabBarButton.m */,
 				54CE111E18C1BC6D00966396 /* MainTabBarController.h */,
 				54CE111F18C1BC6D00966396 /* MainTabBarController.m */,
+				54BB09E618D9494C00F805DD /* SkipViewController.h */,
+				54BB09E718D9494C00F805DD /* SkipViewController.m */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
@@ -2125,6 +2151,7 @@
 		54F1D10C18C48DCA0005CDD9 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				545EB7E418D7E66D00D8EB7F /* Calender */,
 				5403CC6218D03B53004CAE22 /* Join */,
 				54D14FDA18CAEACC0022E1F4 /* DiaryTableViewController.h */,
 				54D14FDB18CAEACC0022E1F4 /* DiaryTableViewController.m */,
@@ -2346,7 +2373,6 @@
 				14B8DF2518BC37A30047C6B3 /* Readme.rtf in Resources */,
 				54CE116418C1C7BF00966396 /* btn_blue2.png in Resources */,
 				54F1D13018C48FA50005CDD9 /* btn_photo2_diary.png in Resources */,
-				546375BA18C9A2C2004B11EF /* icon_male_baby.png in Resources */,
 				54CE118D18C1C8DC00966396 /* btn_shop1_diary.png in Resources */,
 				5403CE3D18D04F5E004CAE22 /* line2_baby.png in Resources */,
 				54B6F40A18D6A5030055FC72 /* icon_check_set.png in Resources */,
@@ -2365,7 +2391,6 @@
 				549B62CB18CABEAB00AFEEAB /* circle_status.png in Resources */,
 				5403CE3918D04F5E004CAE22 /* icon_vac2_baby.png in Resources */,
 				54F1D10A18C48B8B0005CDD9 /* icon_info_diary.png in Resources */,
-				546375B918C9A2C2004B11EF /* icon_female_baby.png in Resources */,
 				5463759618C98493004B11EF /* tri_gray_right.png in Resources */,
 				54441A0318D43D9F00FBE69F /* dot3_baby_diary.png in Resources */,
 				54D14FF718CAEFD70022E1F4 /* icon_audio_diary.png in Resources */,
@@ -2573,6 +2598,7 @@
 				14B8DF2918BC37A30047C6B3 /* ShopClassModel.m in Sources */,
 				14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */,
 				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
+				545EB7F318D7F22900D8EB7F /* AgeCalendarView.m in Sources */,
 				54A8F45E18CDC9A000D0D523 /* AudioViewController.m in Sources */,
 				54AFBBC518D6938600861A69 /* LoginEndView.m in Sources */,
 				54ADE09C18C8608700B166C4 /* NewCameraViewController.m in Sources */,
@@ -2595,6 +2621,7 @@
 				54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */,
 				14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */,
 				544419EB18D3ED3E00FBE69F /* PropView.m in Sources */,
+				54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */,
 				54CE10F918C1842C00966396 /* UIImage+Scale.m in Sources */,
 				54B6F41B18D6C32C0055FC72 /* SettingBindCellView.m in Sources */,
 				5403CC7218D03B7D004CAE22 /* InviteView.m in Sources */,
@@ -2607,6 +2634,7 @@
 				54AFBBC318D6938600861A69 /* LoginBirthRegisterView.m in Sources */,
 				14B8DF2818BC37A30047C6B3 /* RecomWare.m in Sources */,
 				54CE10E518C1842C00966396 /* AFIconButton.m in Sources */,
+				545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */,
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
@@ -2656,6 +2684,7 @@
 				54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */,
 				54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */,
 				54AFBBC118D6938600861A69 /* ColorButton.m in Sources */,
+				545EB7E718D7E6BD00D8EB7F /* CalenderControlView.m in Sources */,
 				54AFBBC918D6938600861A69 /* PregnancyCalendar.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
 				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
@@ -2670,6 +2699,7 @@
 				14B8DF2C18BC37A30047C6B3 /* BabyData.m in Sources */,
 				543BAEBE18CEB4EB00ED4672 /* AudioDiaryCell.m in Sources */,
 				541970DB18D19CE00058FE64 /* AddBodyDataViewController.m in Sources */,
+				545EB7F618D7F33F00D8EB7F /* AgeCalenderTitleButton.m in Sources */,
 				54CE10E818C1842C00966396 /* AFPageControl.m in Sources */,
 				54CE112718C1BC6D00966396 /* MainTabBarController.m in Sources */,
 				54CE10EB18C1842C00966396 /* SinaWeibo.m in Sources */,

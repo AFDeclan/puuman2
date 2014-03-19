@@ -12,6 +12,8 @@
 #import "ShopViewController.h"
 #import "BabyInfoViewController.h"
 #import "SocialViewController.h"
+#import "SkipViewController.h"
+
 #import "Models.h"
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
@@ -34,11 +36,13 @@
     BabyInfoViewController *babyInfoVC = [[BabyInfoViewController alloc] init];
     SocialViewController *socialVC = [[SocialViewController alloc] init];
     ShopViewController *shopVC = [[ShopViewController alloc] init];
-   
+    SkipViewController *skipVC = [[SkipViewController alloc] init];
+    [_rootTabBarC addChildViewController:skipVC];
     [_rootTabBarC addChildViewController:diaryVC];
     [_rootTabBarC addChildViewController:babyInfoVC];
     [_rootTabBarC addChildViewController:socialVC];
     [_rootTabBarC addChildViewController:shopVC];
+   
     self.window.rootViewController = _rootTabBarC;
     
 }

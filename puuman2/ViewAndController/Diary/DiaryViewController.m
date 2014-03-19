@@ -47,7 +47,7 @@ static DiaryViewController * instance;
 
 - (void)initContent
 {
-    [self initActiveView];
+
     diaryTableVC = [[DiaryTableViewController alloc] init];
     [self.view addSubview:diaryTableVC.view];
 
@@ -87,6 +87,10 @@ static DiaryViewController * instance;
     [partingLineOne setBackgroundColor:[UIColor clearColor]];
     [activeNewestView addSubview:partingLineOne];
     
+    calenderView = [[CalenderControlView alloc] initWithFrame:CGRectMake(0, 290, 240, 340)];
+    [calenderView setBackgroundColor:[UIColor clearColor]];
+    [activeNewestView addSubview:calenderView];
+    
 
 }
 
@@ -94,15 +98,11 @@ static DiaryViewController * instance;
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor clearColor]];
+    [self initActiveView];
     [self initContent];
+    
 	// Do any additional setup after loading the view.
-    if([MainTabBarController sharedMainViewController].isVertical)
-    {
-        [self setVerticalFrame];
-    }else
-    {
-        [self setHorizontalFrame];
-    }
+
 
     UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
     [gestureRecognizer setDelegate:self];
@@ -111,6 +111,14 @@ static DiaryViewController * instance;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if([MainTabBarController sharedMainViewController].isVertical)
+    {
+        [self setVerticalFrame];
+    }else
+    {
+        [self setHorizontalFrame];
+    }
+    [self refresh];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
@@ -268,7 +276,18 @@ static DiaryViewController * instance;
             
         }
     }
+   SetViewLeftUp(activeNewestView, 768, -30);
+    [self performSelectorOnMainThread:@selector(animateWithActiveView) withObject:nil waitUntilDone:0];
+}
 
+- (void)animateWithActiveView
+{
+   
+    [UIView animateWithDuration:1 animations:^{
+        SetViewLeftUp(activeNewestView, 768, 0);
+    }completion:^(BOOL finished) {
+        [calenderView show];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -510,6 +529,20 @@ static DiaryViewController * instance;
     
     
 
+}
+
+- (void)showDiaryAtIndex:(NSInteger) index
+{
+    
+    [diaryTableVC.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:1] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+
+
+- (void)refresh
+{
+    [diaryTableVC.tableView reloadData];
+    [calenderView show];
+    [joinView refreshStaus];
 }
 
 @end

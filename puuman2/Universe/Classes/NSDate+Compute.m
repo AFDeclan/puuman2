@@ -110,7 +110,7 @@
     day = [tempDate daysToDate:self];
     NSArray *age = [NSArray arrayWithObjects: [NSString stringWithFormat:@"%d", year],
                     [NSString stringWithFormat:@"%d", month],
-                    [NSString stringWithFormat:@"%d", day], nil];
+                    [NSString stringWithFormat:@"%d", day+1], nil];
     return age;
 }
 

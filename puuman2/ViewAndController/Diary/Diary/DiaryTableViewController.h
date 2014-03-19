@@ -17,6 +17,7 @@
 #import "PhotoMoreDiaryCell.h"
 
 
+
 @interface DiaryTableViewController : UITableViewController<TaskClickDelegate,TextDiaryDelegate>
 {
     NSIndexPath *selectedPath;

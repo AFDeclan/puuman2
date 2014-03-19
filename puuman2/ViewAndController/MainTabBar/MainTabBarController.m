@@ -14,6 +14,7 @@
 #import "CartModel.h"
 #import "SocialNetwork.h"
 #import "SettingViewController.h"
+#import "DiaryViewController.h"
 
 
 @interface MainTabBarController ()
@@ -39,6 +40,7 @@ static MainTabBarController *instance;
         [self setDelegate:self];
         _isVertical = YES;
         [MyNotiCenter addObserver:self selector:@selector(userChanged) name:Noti_UserLogined object:nil];
+         [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
     }
     return self;
 }
@@ -78,7 +80,10 @@ static MainTabBarController *instance;
 
  -(void)selectedWithTag:(NSInteger)tag
 {
-    [self setSelectedIndex:tag-1];
+    if (tag == 1) {
+        [[DiaryViewController alloc] refresh];
+    }
+    [self setSelectedIndex:tag];
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,6 +154,7 @@ static MainTabBarController *instance;
 
 - (void)showLoginView
 {
+    [self setSelectedIndex:0];
     loginViewC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
     [self.view addSubview:loginViewC.view];
     [loginViewC setControlBtnType:kCloseAndFinishButton];
@@ -159,6 +165,8 @@ static MainTabBarController *instance;
 
 - (void)userChanged
 {
+
+    [self setSelectedIndex:1];
     if (loginViewC) {
          [loginViewC loginSucceed];
     }
@@ -169,10 +177,10 @@ static MainTabBarController *instance;
     [[CartModel sharedCart] update:NO];
     [SocialNetwork initSocialNetwork];
     [[DiaryModel sharedDiaryModel] reloadData];
-    PostNotification(Noti_ReloadDiaryTable, nil);
-    //    [[JoinView sharedJoinView] refreshStaus];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
-
+  
+    [[DiaryViewController alloc] refresh];
+    
 }
 
 - (void)showSettingView

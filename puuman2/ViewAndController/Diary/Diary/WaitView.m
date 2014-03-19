@@ -50,7 +50,7 @@
     }
     [titleLabel setText:[NSString stringWithFormat:@"已经邀请了%@",nameStr]];
     [self addSubview:titleLabel];
-    detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 32, 208, 40)];
+    detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, 208, 40)];
     [detailLabel setNumberOfLines:2];
     [detailLabel setTextColor:PMColor3];
     [detailLabel setBackgroundColor:[UIColor clearColor]];

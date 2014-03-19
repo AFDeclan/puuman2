@@ -88,13 +88,15 @@
         {
             [self selectDate:[[BabyData sharedBabyData] babyBirth]];
             if ([[BabyData sharedBabyData] babyIsBoy]) {
-                babyType = kGenderGirl;
-                [girl selected];
-                [boy unSelected];
-            }else{
                 babyType = kGenderBoy;
                 [boy selected];
                 [girl unSelected];
+            }else{
+                
+                
+                babyType = kGenderGirl;
+                [girl selected];
+                [boy unSelected];
             }
         }
         

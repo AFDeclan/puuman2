@@ -61,7 +61,7 @@
     
 
    
-        diaryTable = [[UITableView alloc] initWithFrame:CGRectMake(16, 32, 208, 194)];
+        diaryTable = [[UITableView alloc] initWithFrame:CGRectMake(16, 16, 208, 194)];
         [diaryTable setShowsHorizontalScrollIndicator:NO];
         [diaryTable setShowsVerticalScrollIndicator:NO];
         [diaryTable setBackgroundColor:[UIColor clearColor]];

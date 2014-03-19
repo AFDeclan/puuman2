@@ -10,6 +10,7 @@
 #import "DiaryNewButton.h"
 #import "DiaryTableViewController.h"
 #import "JoinView.h"
+#import "CalenderControlView.h"
 
 @interface DiaryViewController : UIViewController<UIGestureRecognizerDelegate>
 {
@@ -18,16 +19,18 @@
     BOOL isFirst;
     NSTimer *timer;
     JoinView *joinView;
+    CalenderControlView *calenderView;
     UIView *activeNewestView;
     DiaryTableViewController *diaryTableVC;
 }
 @property (assign,nonatomic) BOOL cameraModel;
 + (DiaryViewController *)sharedDiaryViewController;
+- (void)showDiaryAtIndex:(NSInteger) index;
 - (void)hideNewDiaryBtns;
 - (void)showNewDiaryBtns;
 - (void)showNewDiaryBtnPressed;
 - (void)hideNewDiaryBtnPressed;
 - (void)showNewDiaryViewWithType:(NewButtonType)type withTaskInfo:(NSDictionary *)info;
 - (void)setTaskInfo:(NSDictionary *)taskInfo;
-
+- (void)refresh;
 @end

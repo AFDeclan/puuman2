@@ -65,6 +65,7 @@ static JoinView * instance;
 }
 - (void)refreshStaus
 {
+    
     switch ([UserInfo sharedUserInfo].inviteState) {
         case noInvite:
             [self initInviteView];
@@ -78,7 +79,7 @@ static JoinView * instance;
         default:
             break;
     }
-  
+
 }
 - (void)initInviteView
 {
