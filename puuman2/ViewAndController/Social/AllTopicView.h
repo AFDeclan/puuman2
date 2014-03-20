@@ -9,16 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "TopicSelectButton.h"
 #import "ColorButton.h"
-#import "UIColumnView.h"
 #import "TopicShowedCell.h"
 
-@interface AllTopicView : UIView<UIColumnViewDataSource,UIColumnViewDelegate>
+@interface AllTopicView : UIView
 {
     TopicSelectButton *leftBtn;
     TopicSelectButton *rightBtn;
     ColorButton *rewardBtn;
     ColorButton *participateBtn;
-    UIColumnView *_showColumnView;
+    
     
 }
 - (void)setVerticalFrame;

@@ -127,9 +127,6 @@
         text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     else text = @"";
     if (text == nil) text = @"";
-    if ([text length] == 1) {
-        text = [text stringByAppendingString:@" "];
-    }
     CGFloat dh = [_contentLabel setText:text abbreviated:abbr];
     frame.size.height = dh;
     [_contentLabel setFrame:frame];
@@ -218,9 +215,6 @@
         text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     else text = @"";
     if (text == nil) text = @"";
-    if ([text length] == 1) {
-        text = [text stringByAppendingString:@" "];
-    }
     CGFloat dh = [textLayoutLabel setText:text abbreviated:abbr];
 
 

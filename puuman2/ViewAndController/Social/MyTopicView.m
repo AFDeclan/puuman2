@@ -17,6 +17,8 @@
     if (self) {
         // Initialization code
         [self setBackgroundColor:PMColor2];
+    
+        
     }
     return self;
 }

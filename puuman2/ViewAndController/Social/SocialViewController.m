@@ -28,7 +28,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-   
+    if([MainTabBarController sharedMainViewController].isVertical)
+    {
+        [self setVerticalFrame];
+    }else
+    {
+        [self setHorizontalFrame];
+    }
+    [self refresh];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
@@ -50,13 +57,7 @@
     [self.view setBackgroundColor:[UIColor clearColor]];
 	// Do any additional setup after loading the view.
     [self initialization];
-    if([MainTabBarController sharedMainViewController].isVertical)
-    {
-        [self setVerticalFrame];
-    }else
-    {
-        [self setHorizontalFrame];
-    }
+   
 }
 
 - (void)initialization
@@ -98,8 +99,8 @@
     [rightBtn initWithTitle:@"我参与的" andButtonType:kBlueRight];
    
     if (!topicView) {
-        topicView = [[TopicView alloc] initWithFrame:CGRectZero];
-        [topicView setBackgroundColor:[UIColor whiteColor]];
+        topicView = [[TopicView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
+    
         [self.view addSubview:topicView];
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
@@ -129,8 +130,7 @@
     [rightBtn initWithTitle:@"闲聊" andButtonType:kBlueRight];
     
     if (!partnerView) {
-        partnerView = [[PartnerView alloc] initWithFrame:CGRectZero];
-        [partnerView setBackgroundColor:[UIColor whiteColor]];
+        partnerView = [[PartnerView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
         [self.view addSubview:partnerView];
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
@@ -202,7 +202,7 @@
     }
     
     if (partnerView) {
-        [topicView setFrame:CGRectMake(80, 80, 864, 688)];
+        [partnerView setFrame:CGRectMake(80, 80, 864, 688)];
         [partnerView setHorizontalFrame];
     }
     [bg_topImageView setFrame:CGRectMake(80, 16, 928, 64)];
@@ -219,6 +219,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)refresh
+{
+
 }
 
 

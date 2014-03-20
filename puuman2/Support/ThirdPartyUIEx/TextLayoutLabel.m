@@ -57,6 +57,9 @@
 
 - (CGFloat) setText:(NSString *)text abbreviated:(BOOL)abbr
 {
+    if ([text length] == 1) {
+        text = [text stringByAppendingString:@" "];
+    }
     [super setText:text];
     CGFloat extendedHeight;
     NSArray *linesTotal;

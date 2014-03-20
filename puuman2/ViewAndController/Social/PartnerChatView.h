@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AdaptiveLabel.h"
+#import "TextLayoutLabel.h"
 
-@interface PartnerChatView : UIView
+@interface PartnerChatView : UIView<UITableViewDataSource,UITableViewDelegate>
 {
+    UIView *bgHeadView;
+    UIImageView *icon_head;
+    UITableView *chatTable;
+    UILabel *noti_label;
+    UILabel *info_title;
 
 }
 - (void)setVerticalFrame;

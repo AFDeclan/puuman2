@@ -23,5 +23,10 @@
     TopicView *topicView;
     PartnerView *partnerView;
     BOOL selectedTopic;
+    
+    
+    
 }
+
+
 @end

@@ -15,6 +15,7 @@
     UIScrollView *_scrollView;
     UILabel *_infoLabel;
     AFImageView *_infoImgView;
+    
 }
 @property (assign, nonatomic) NSDictionary *taskInfo;
 @end

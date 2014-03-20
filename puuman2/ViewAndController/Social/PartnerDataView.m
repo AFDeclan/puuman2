@@ -16,7 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setBackgroundColor:PMColor3];
+      //  [self setBackgroundColor:PMColor3];
     }
     return self;
 }

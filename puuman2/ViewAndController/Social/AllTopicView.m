@@ -17,8 +17,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setBackgroundColor:[UIColor clearColor]];
-        [self initialization];
+      //  [self setBackgroundColor:[UIColor clearColor]];
+       // [self initialization];
     }
     return self;
 }
@@ -39,26 +39,19 @@
     [participateBtn initWithTitle:@"参与" andIcon:[UIImage imageNamed:@"icon_join_topic.png"] andButtonType:kBlueLeftDown];
     [participateBtn addTarget:self action:@selector(participate) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:participateBtn];
-    _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(128, 0, 608, 144)];
-    [_showColumnView setBackgroundColor:[UIColor clearColor]];
-    [_showColumnView setViewDelegate:self];
-    [_showColumnView setViewDataSource:self];
-    [_showColumnView setPagingEnabled:NO];
-    [_showColumnView setScrollEnabled:NO];
-    [self addSubview:_showColumnView];
-    [_showColumnView setContentOffset:CGPointMake(608*4, 0)];
+   
     
 }
 
 - (void)preTopic
 {
-   CGPoint point = _showColumnView.contentOffset;
+  
     
 }
 
 - (void)nextTopic
 {
-    CGPoint point = _showColumnView.contentOffset;
+   
 }
 
 - (void)setVerticalFrame
@@ -86,42 +79,5 @@
 }
 
 
-#pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
-- (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
-{
-
-    
-}
-
-
-
-- (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
-{
-    
-    return 608;
-    
-}
-
-- (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
-{
-    
-    return 10;
-    
-}
-
-
-
-- (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
-{
-    
-        NSString * cellIdentifier = @"topicShowedCell";
-        TopicShowedCell *cell = (TopicShowedCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (cell == nil)
-        {
-            cell = [[TopicShowedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            
-        }
-        return cell;
-}
 
 @end
