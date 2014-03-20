@@ -52,6 +52,10 @@
 #define kUrl_SubmitPayback @"http://1.server4puman.sinaapp.com/Payback/submitPayBack.php"
 //feedback
 #define kUrl_PostFeedback @"http://1.server4puman.sinaapp.com/feedBack.php"
+//forum
+#define kUrl_GetTopicReply  @"http://2.server4puman.sinaapp.com/forum/topic_replies"
+#define kUrl_GetActiveTopics  @"http://2.server4puman.sinaapp.com/forum/topic_active"
+#define kUrl_GetTopic  @"http://2.server4puman.sinaapp.com/forum/topic_no"
 
 #define _puman_feedback_identifier_prefix @"_puman_"
 #define _puman_feedbackFailed_identifier_prefix @"_pumanFail_"

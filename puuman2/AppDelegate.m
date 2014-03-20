@@ -9,9 +9,11 @@
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
 #import "DiaryViewController.h"
-#import "PuumanViewController.h"
+//#import "PuumanViewController.h"
 #import "ShopViewController.h"
-
+#import "BabyInfoViewController.h"
+#import "SocialViewController.h"
+#import "Models.h"
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
 
@@ -21,20 +23,68 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self initWithContent];
+    [self initialUmeng];
     [self.window makeKeyAndVisible];
     return YES;
 }
 
 - (void)initWithContent
 {
-    MainTabBarController *tabbarC = [[MainTabBarController alloc] init];
-    DiaryViewController *diaryVC = [[DiaryViewController alloc] init];
-    PuumanViewController *puumanVC = [[PuumanViewController alloc] init];
+    _rootTabBarC = [MainTabBarController sharedMainViewController];
+    DiaryViewController *diaryVC = [DiaryViewController sharedDiaryViewController];
+    BabyInfoViewController *babyInfoVC = [[BabyInfoViewController alloc] init];
+    SocialViewController *socialVC = [[SocialViewController alloc] init];
     ShopViewController *shopVC = [[ShopViewController alloc] init];
-    [tabbarC addChildViewController:diaryVC];
-    [tabbarC addChildViewController:puumanVC];
-    [tabbarC addChildViewController:shopVC];
-    self.window.rootViewController = tabbarC;
+   
+    [_rootTabBarC addChildViewController:diaryVC];
+    [_rootTabBarC addChildViewController:babyInfoVC];
+    [_rootTabBarC addChildViewController:socialVC];
+    [_rootTabBarC addChildViewController:shopVC];
+    self.window.rootViewController = _rootTabBarC;
+    
+}
+
+#pragma mark - Refresh Net
+- (void)refreshNet
+{
+    [[TaskModel sharedTaskModel] updateTasks];
+    [[CartModel sharedCart] update:YES];
+    [[UserInfo sharedUserInfo] updateUserInfo];
+    [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
+    [MobClick updateOnlineConfig];
+    [MobClick checkUpdateWithDelegate:self selector:@selector(appUpdate:)];
+    PostNotification(Noti_Refresh, nil);
+}
+
+#pragma mark - Umeng and Update
+
+- (void)initialUmeng
+{
+    //Umeng
+    [MobClick startWithAppkey:umeng_appkey reportPolicy:(ReportPolicy) BATCH channelId:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onlineConfigCallBack:) name:UMOnlineConfigDidFinishedNotification object:nil];
+    
+}
+
+- (void)onlineConfigCallBack:(NSNotification *)notification {
+    NSLog(@"online config has fininshed and params = %@", notification.userInfo);
+    NSString *noti = [notification.userInfo valueForKey:@"notification"];
+    if (noti && ![noti isEqualToString:@"none"])
+    {
+    }
+}
+
+- (void)appUpdate:(NSDictionary *)appInfo
+{
+    if ([[appInfo valueForKey:@"update"] boolValue])
+    {
+        NSString *newVersion = [appInfo valueForKey:@"version"];
+        NSString *hint = [NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。", newVersion];
+        NSString *trackViewUrl = [appInfo valueForKey:@"path"];
+//        [CustomAlertView showInView:nil content:hint confirmHandler:^{
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+//        }];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
