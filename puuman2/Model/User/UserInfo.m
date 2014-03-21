@@ -428,17 +428,14 @@ static UserInfo *instance = nil;
     _pwd_md5 = [dic objectForKey:@"UPwd"];
     tp = [dic objectForKey:@"hasMeta"];
     NSMutableDictionary* mm = nil;
-    if( tp != nil && [tp isEqualToString:@"yes"] ){
-        tp = [dic objectForKey:@"Metas"];
-        if( tp != nil ){
-            mm = [[NSMutableDictionary alloc] init];
-            NSMutableArray* tparr = [NSMutableArray arrayWithArray:tp];
-            for( int i = 0 ; i < [tparr count] ; i++ ){
-                NSMutableDictionary* tpdic = [NSMutableDictionary dictionaryWithDictionary:[tparr objectAtIndex:i]];
-                [mm setObject:[tpdic objectForKey:@"UMVal"] forKey:[tpdic objectForKey:@"UMKey"]];
-            }
-        }else
-            mm = nil;
+    tp = [dic objectForKey:@"Metas"];
+    if( tp != nil ){
+        mm = [[NSMutableDictionary alloc] init];
+        NSMutableArray* tparr = [NSMutableArray arrayWithArray:tp];
+        for( int i = 0 ; i < [tparr count] ; i++ ){
+            NSMutableDictionary* tpdic = [NSMutableDictionary dictionaryWithDictionary:[tparr objectAtIndex:i]];
+            [mm setObject:[tpdic objectForKey:@"UMVal"] forKey:[tpdic objectForKey:@"UMKey"]];
+        }
     }else
         mm = nil;
     _meta = mm;

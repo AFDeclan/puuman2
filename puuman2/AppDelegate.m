@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
 #import "DiaryViewController.h"
+//#import "PuumanViewController.h"
 #import "ShopViewController.h"
 #import "BabyInfoViewController.h"
 #import "SocialViewController.h"

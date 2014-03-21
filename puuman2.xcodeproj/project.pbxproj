@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		147756F918D7F49E00E08BD0 /* Forum.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756F818D7F49E00E08BD0 /* Forum.m */; };
+		147756FC18D7F4AA00E08BD0 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756FB18D7F4AA00E08BD0 /* Topic.m */; };
+		147756FF18D7F4B800E08BD0 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756FE18D7F4B800E08BD0 /* Reply.m */; };
 		148D79E318B8A71A001B4FA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E218B8A71A001B4FA7 /* Foundation.framework */; };
 		148D79E518B8A71A001B4FA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E418B8A71A001B4FA7 /* CoreGraphics.framework */; };
 		148D79E718B8A71A001B4FA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E618B8A71A001B4FA7 /* UIKit.framework */; };
@@ -487,6 +490,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		147756F718D7F49E00E08BD0 /* Forum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forum.h; sourceTree = "<group>"; };
+		147756F818D7F49E00E08BD0 /* Forum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forum.m; sourceTree = "<group>"; };
+		147756FA18D7F4AA00E08BD0 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
+		147756FB18D7F4AA00E08BD0 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
+		147756FD18D7F4B800E08BD0 /* Reply.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reply.h; sourceTree = "<group>"; };
+		147756FE18D7F4B800E08BD0 /* Reply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reply.m; sourceTree = "<group>"; };
 		148D79DF18B8A71A001B4FA7 /* puuman2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = puuman2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148D79E218B8A71A001B4FA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		148D79E418B8A71A001B4FA7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1179,6 +1188,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		147756F618D7F47F00E08BD0 /* Forum */ = {
+			isa = PBXGroup;
+			children = (
+				147756F718D7F49E00E08BD0 /* Forum.h */,
+				147756F818D7F49E00E08BD0 /* Forum.m */,
+				147756FA18D7F4AA00E08BD0 /* Topic.h */,
+				147756FB18D7F4AA00E08BD0 /* Topic.m */,
+				147756FD18D7F4B800E08BD0 /* Reply.h */,
+				147756FE18D7F4B800E08BD0 /* Reply.m */,
+			);
+			path = Forum;
+			sourceTree = "<group>";
+		};
 		148D79D618B8A71A001B4FA7 = {
 			isa = PBXGroup;
 			children = (
@@ -1267,6 +1289,7 @@
 		14B8DE9118BC37A30047C6B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				147756F618D7F47F00E08BD0 /* Forum */,
 				14B8DE9218BC37A30047C6B3 /* Diary */,
 				14B8DE9D18BC37A30047C6B3 /* Models.h */,
 				14B8DE9E18BC37A30047C6B3 /* Network */,
@@ -2897,6 +2920,7 @@
 				5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */,
 				54AFAA8E18DAA4220067B8C1 /* RewardViewController.m in Sources */,
 				14B8DF2B18BC37A30047C6B3 /* Ware.m in Sources */,
+				147756F918D7F49E00E08BD0 /* Forum.m in Sources */,
 				54A8F44D18CD712100D0D523 /* TextDiaryCell.m in Sources */,
 				541970D318D1956D0058FE64 /* StandardLine.m in Sources */,
 				54A8F46118CDCAE900D0D523 /* CameraAudioViewController.m in Sources */,
@@ -2907,6 +2931,7 @@
 				14B8DF2D18BC37A30047C6B3 /* RegisterForm.m in Sources */,
 				5447C4BB18D99A3100187BE6 /* TopicSelectButton.m in Sources */,
 				5403CC7418D03B7D004CAE22 /* DynamicView.m in Sources */,
+				147756FF18D7F4B800E08BD0 /* Reply.m in Sources */,
 				541970D518D1956D0058FE64 /* UIKit+DrawingHelpers.m in Sources */,
 				54CE10F818C1842C00966396 /* UIImage+CroppedImage.m in Sources */,
 				54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */,
@@ -2946,6 +2971,7 @@
 				541970D818D195C10058FE64 /* LineChartCell.m in Sources */,
 				541970D218D1956D0058FE64 /* LineChart.m in Sources */,
 				543BAECE18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m in Sources */,
+				147756FC18D7F4AA00E08BD0 /* Topic.m in Sources */,
 				54D1500D18CAF4EB0022E1F4 /* TaskCell.m in Sources */,
 				54CE10E318C1842C00966396 /* NSString+VersionCompare.m in Sources */,
 				54ADE09818C8608700B166C4 /* NewAudioPlayView.m in Sources */,
