@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AdaptiveLabel.h"
 #import "TextLayoutLabel.h"
+#import "ChatInputViewController.h"
+
 
 @interface PartnerChatView : UIView<UITableViewDataSource,UITableViewDelegate>
 {
@@ -17,8 +19,10 @@
     UITableView *chatTable;
     UILabel *noti_label;
     UILabel *info_title;
-
+    ChatInputViewController *inputVC;
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
+- (void)showInputView;
+- (void)hiddenInputView;
 @end

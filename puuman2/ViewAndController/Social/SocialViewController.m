@@ -40,15 +40,21 @@
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
-    
+      
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
+  
     
 }
+
+
+
+
 
 - (void)viewDidLoad
 {
@@ -87,6 +93,9 @@
     [self topicBtnPressed];
     
 
+
+    
+    
 }
 
 
@@ -114,6 +123,7 @@
         [topicView setAlpha:1];
         if (partnerView) {
             [partnerView setAlpha:0];
+            [partnerView hiddnInputView];
         }
     }];
     
@@ -191,6 +201,7 @@
     SetViewLeftUp(partnerBtn, 688, 176);
     SetViewLeftUp(leftBtn, 272, 28);
     SetViewLeftUp(rightBtn, 384, 28);
+ 
 }
 
 //横屏
@@ -213,6 +224,7 @@
     SetViewLeftUp(partnerBtn, 944, 176);
     SetViewLeftUp(leftBtn, 400, 28);
     SetViewLeftUp(rightBtn, 512, 28);
+
 }
 
 - (void)didReceiveMemoryWarning

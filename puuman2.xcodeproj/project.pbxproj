@@ -313,7 +313,7 @@
 		54AFAA9118DAC3BF0067B8C1 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA9018DAC3BF0067B8C1 /* AdaptiveLabel.m */; };
 		54AFAA9418DACD6D0067B8C1 /* ChatTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA9318DACD6D0067B8C1 /* ChatTableCell.m */; };
 		54AFAA9618DAD6F30067B8C1 /* pic_talk_fri.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AFAA9518DAD6F30067B8C1 /* pic_talk_fri.png */; };
-		54AFAA9918DAF21B0067B8C1 /* InputChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA9818DAF21B0067B8C1 /* InputChatView.m */; };
+		54AFAA9C18DAF9F40067B8C1 /* TopicTitleShowScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA9B18DAF9F40067B8C1 /* TopicTitleShowScrollView.m */; };
 		54AFBBC018D6938600861A69 /* BirthCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBA718D6938600861A69 /* BirthCalendar.m */; };
 		54AFBBC118D6938600861A69 /* ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBA918D6938600861A69 /* ColorButton.m */; };
 		54AFBBC218D6938600861A69 /* DateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBAB18D6938600861A69 /* DateButton.m */; };
@@ -359,6 +359,7 @@
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
+		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
 		54CE10E018C1842C00966396 /* AFDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A018C1842C00966396 /* AFDataDownloader.m */; };
 		54CE10E118C1842C00966396 /* AFDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A218C1842C00966396 /* AFDataStore.m */; };
 		54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A518C1842C00966396 /* AFBaseRequest.m */; };
@@ -451,6 +452,7 @@
 		54D1500D18CAF4EB0022E1F4 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1500818CAF4EB0022E1F4 /* TaskCell.m */; };
 		54D1501218CAF7B50022E1F4 /* TaskTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1501118CAF7B50022E1F4 /* TaskTitleView.m */; };
 		54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1501418CB1EB00022E1F4 /* TaskInfoViewController.m */; };
+		54EB7A7118DBD6EF00D119A2 /* ChatInputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB7A7018DBD6EF00D119A2 /* ChatInputTextView.m */; };
 		54F1D10518C48B340005CDD9 /* bg_prompt.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10118C48B340005CDD9 /* bg_prompt.png */; };
 		54F1D10618C48B340005CDD9 /* bg_subpage.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10218C48B340005CDD9 /* bg_subpage.png */; };
 		54F1D12A18C48FA50005CDD9 /* block_photo__h_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11818C48FA50005CDD9 /* block_photo__h_diary.png */; };
@@ -897,8 +899,8 @@
 		54AFAA9218DACD6D0067B8C1 /* ChatTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableCell.h; sourceTree = "<group>"; };
 		54AFAA9318DACD6D0067B8C1 /* ChatTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableCell.m; sourceTree = "<group>"; };
 		54AFAA9518DAD6F30067B8C1 /* pic_talk_fri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_talk_fri.png; sourceTree = "<group>"; };
-		54AFAA9718DAF21B0067B8C1 /* InputChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputChatView.h; sourceTree = "<group>"; };
-		54AFAA9818DAF21B0067B8C1 /* InputChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputChatView.m; sourceTree = "<group>"; };
+		54AFAA9A18DAF9F40067B8C1 /* TopicTitleShowScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTitleShowScrollView.h; sourceTree = "<group>"; };
+		54AFAA9B18DAF9F40067B8C1 /* TopicTitleShowScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicTitleShowScrollView.m; sourceTree = "<group>"; };
 		54AFBBA618D6938600861A69 /* BirthCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BirthCalendar.h; path = Login/BirthCalendar.h; sourceTree = "<group>"; };
 		54AFBBA718D6938600861A69 /* BirthCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BirthCalendar.m; path = Login/BirthCalendar.m; sourceTree = "<group>"; };
 		54AFBBA818D6938600861A69 /* ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorButton.h; path = Login/ColorButton.h; sourceTree = "<group>"; };
@@ -982,6 +984,8 @@
 		54BAD46918D15A73003822CC /* BabyBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBodyView.m; sourceTree = "<group>"; };
 		54BB09E618D9494C00F805DD /* SkipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkipViewController.h; sourceTree = "<group>"; };
 		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
+		54C8D56018DBE1B80013FD03 /* ChatInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputViewController.h; sourceTree = "<group>"; };
+		54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputViewController.m; sourceTree = "<group>"; };
 		54CE109D18C1842C00966396 /* AFNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetwork.h; sourceTree = "<group>"; };
 		54CE109F18C1842C00966396 /* AFDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDataDownloader.h; sourceTree = "<group>"; };
 		54CE10A018C1842C00966396 /* AFDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDataDownloader.m; sourceTree = "<group>"; };
@@ -1115,6 +1119,8 @@
 		54D1501118CAF7B50022E1F4 /* TaskTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTitleView.m; sourceTree = "<group>"; };
 		54D1501318CB1EB00022E1F4 /* TaskInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskInfoViewController.h; sourceTree = "<group>"; };
 		54D1501418CB1EB00022E1F4 /* TaskInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskInfoViewController.m; sourceTree = "<group>"; };
+		54EB7A6F18DBD6EF00D119A2 /* ChatInputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputTextView.h; sourceTree = "<group>"; };
+		54EB7A7018DBD6EF00D119A2 /* ChatInputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputTextView.m; sourceTree = "<group>"; };
 		54F1D10118C48B340005CDD9 /* bg_prompt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_prompt.png; sourceTree = "<group>"; };
 		54F1D10218C48B340005CDD9 /* bg_subpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_subpage.png; sourceTree = "<group>"; };
 		54F1D11818C48FA50005CDD9 /* block_photo__h_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo__h_diary.png; sourceTree = "<group>"; };
@@ -1705,8 +1711,8 @@
 				5447C4B318D98F1700187BE6 /* PartnerDataView.m */,
 				5447C4B518D98F5C00187BE6 /* PartnerChatView.h */,
 				5447C4B618D98F5C00187BE6 /* PartnerChatView.m */,
-				54AFAA9718DAF21B0067B8C1 /* InputChatView.h */,
-				54AFAA9818DAF21B0067B8C1 /* InputChatView.m */,
+				54C8D56018DBE1B80013FD03 /* ChatInputViewController.h */,
+				54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */,
 				5447C4B818D9999900187BE6 /* subView */,
 			);
 			name = contentView;
@@ -1715,6 +1721,8 @@
 		5447C4B818D9999900187BE6 /* subView */ = {
 			isa = PBXGroup;
 			children = (
+				54AFAA9A18DAF9F40067B8C1 /* TopicTitleShowScrollView.h */,
+				54AFAA9B18DAF9F40067B8C1 /* TopicTitleShowScrollView.m */,
 				5447C4B918D99A3100187BE6 /* TopicSelectButton.h */,
 				5447C4BA18D99A3100187BE6 /* TopicSelectButton.m */,
 				5447C4BC18D9A7B900187BE6 /* TopicShowedCell.h */,
@@ -1723,6 +1731,8 @@
 				54AFAA9018DAC3BF0067B8C1 /* AdaptiveLabel.m */,
 				54AFAA9218DACD6D0067B8C1 /* ChatTableCell.h */,
 				54AFAA9318DACD6D0067B8C1 /* ChatTableCell.m */,
+				54EB7A6F18DBD6EF00D119A2 /* ChatInputTextView.h */,
+				54EB7A7018DBD6EF00D119A2 /* ChatInputTextView.m */,
 				54AFAA7A18DA889C0067B8C1 /* popView */,
 			);
 			name = subView;
@@ -2926,6 +2936,7 @@
 				54ADE09C18C8608700B166C4 /* NewCameraViewController.m in Sources */,
 				543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */,
 				5447C4B118D98EED00187BE6 /* MyTopicView.m in Sources */,
+				54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */,
 				544419F918D40EE800FBE69F /* PuumanRulesViewController.m in Sources */,
 				54D14FD918CACC720022E1F4 /* CustomPopViewController.m in Sources */,
 				54AFBBCB18D6938600861A69 /* SelectButton.m in Sources */,
@@ -2960,6 +2971,7 @@
 				14B8DF2818BC37A30047C6B3 /* RecomWare.m in Sources */,
 				54CE10E518C1842C00966396 /* AFIconButton.m in Sources */,
 				545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */,
+				54AFAA9C18DAF9F40067B8C1 /* TopicTitleShowScrollView.m in Sources */,
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
@@ -2990,6 +3002,7 @@
 				54AFAA9418DACD6D0067B8C1 /* ChatTableCell.m in Sources */,
 				14B8DF2718BC37A30047C6B3 /* RecomModel.m in Sources */,
 				54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */,
+				54EB7A7118DBD6EF00D119A2 /* ChatInputTextView.m in Sources */,
 				54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */,
 				541970D118D1956D0058FE64 /* LineChartView.m in Sources */,
 				54ADE09F18C8608700B166C4 /* NewTextDiaryViewController.m in Sources */,
@@ -3016,7 +3029,6 @@
 				54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */,
 				54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */,
 				54AFBBC118D6938600861A69 /* ColorButton.m in Sources */,
-				54AFAA9918DAF21B0067B8C1 /* InputChatView.m in Sources */,
 				545EB7E718D7E6BD00D8EB7F /* CalenderControlView.m in Sources */,
 				54AFBBC918D6938600861A69 /* PregnancyCalendar.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,

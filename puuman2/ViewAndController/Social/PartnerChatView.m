@@ -10,6 +10,7 @@
 #import "ColorsAndFonts.h"
 #import "ChatTableCell.h"
 #import "UniverseConstant.h"
+#import "MainTabBarController.h"
 
 @implementation PartnerChatView
 
@@ -60,11 +61,14 @@
     [noti_label setTextColor:PMColor3];
     [noti_label setBackgroundColor:[UIColor clearColor]];
     [self addSubview:noti_label];
+ 
     
+
 }
 
 - (void)setVerticalFrame
 {
+    
     [bgHeadView setFrame:CGRectMake(0, 0, 608, 48)];
     [chatTable setFrame:CGRectMake(0, 0, 608, 832)];
     [chatTable reloadData];
@@ -72,6 +76,7 @@
 
 - (void)setHorizontalFrame
 {
+
     [bgHeadView setFrame:CGRectMake(0, 0, 864, 48)];
     [chatTable setFrame:CGRectMake(0, 0, 864, 576)];
     [chatTable reloadData];
@@ -132,5 +137,18 @@
  
 }
 
+- (void)showInputView
+{
+    inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
+    [inputVC show];
+}
 
+- (void)hiddenInputView
+{
+    if (inputVC) {
+        [inputVC hidden];
+    }
+    
+}
 @end

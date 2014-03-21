@@ -1,5 +1,5 @@
 //
-//  InputChatView.h
+//  TopicTitleShowScrollView.h
 //  puuman2
 //
 //  Created by Ra.（祁文龙） on 14-3-20.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InputChatView : UIView
+@interface TopicTitleShowScrollView : UIScrollView
 {
 
 }

@@ -64,6 +64,7 @@
         [partnerData setAlpha:1];
         if (partnerChat) {
             [partnerChat setAlpha:0];
+            [partnerChat hiddenInputView];
         }
     }];
 }
@@ -80,6 +81,7 @@
         }
     }
     [partnerChat setAlpha:0];
+    [partnerChat showInputView];
     [UIView animateWithDuration:0.5 animations:^{
         [partnerChat setAlpha:1];
         if (partnerData) {
@@ -87,5 +89,10 @@
         }
     }];
 }
-
+- (void)hiddnInputView
+{
+    if (partnerChat) {
+        [partnerChat hiddenInputView];
+    }
+}
 @end
