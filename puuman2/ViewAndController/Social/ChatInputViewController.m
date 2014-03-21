@@ -99,13 +99,26 @@
     input_now = NO;
 
     NSTimeInterval animationDuration = [[[notif userInfo] valueForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    
+    
     [UIView animateWithDuration:animationDuration animations:^{
         if ([MainTabBarController sharedMainViewController].isVertical) {
+            
             SetViewLeftUp(_content, 0, 1024-ViewHeight(_content));
         }else{
             SetViewLeftUp(_content, 0, 768-ViewHeight(_content));
         }
         [bgView setAlpha:0];
+    }completion:^(BOOL finished) {
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            self.view.frame = CGRectMake(0, 1024-ViewHeight(_content), 768, ViewHeight(_content));
+           
+        }else{
+            self.view.frame = CGRectMake(0, 768-ViewHeight(_content), 1024,  ViewHeight(_content));
+           
+        }
+         SetViewLeftUp(_content, 0, 0);
     }];
 }
 

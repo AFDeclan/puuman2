@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Topic.h"
 
 @interface TopicTitleCell : UITableViewCell
+{
+    UIImageView *bgImageView;
+    UILabel *info_title;
+    UILabel *info_num;
+}
 
+-(void)setTitleViewWithTopic:(Topic *)topic;
 @end

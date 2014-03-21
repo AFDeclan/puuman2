@@ -361,7 +361,6 @@
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
-		54C8D56518DC228D0013FD03 /* TopicTitleUnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56418DC228D0013FD03 /* TopicTitleUnitView.m */; };
 		54C8D56818DC26A20013FD03 /* TopicTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56718DC26A20013FD03 /* TopicTitleView.m */; };
 		54C8D56B18DC2E840013FD03 /* TopicTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56A18DC2E840013FD03 /* TopicTitleCell.m */; };
 		54C8D56E18DC3B220013FD03 /* SortTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56D18DC3B220013FD03 /* SortTableViewController.m */; };
@@ -994,8 +993,6 @@
 		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
 		54C8D56018DBE1B80013FD03 /* ChatInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputViewController.h; sourceTree = "<group>"; };
 		54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputViewController.m; sourceTree = "<group>"; };
-		54C8D56318DC228D0013FD03 /* TopicTitleUnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTitleUnitView.h; sourceTree = "<group>"; };
-		54C8D56418DC228D0013FD03 /* TopicTitleUnitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicTitleUnitView.m; sourceTree = "<group>"; };
 		54C8D56618DC26A20013FD03 /* TopicTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTitleView.h; sourceTree = "<group>"; };
 		54C8D56718DC26A20013FD03 /* TopicTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicTitleView.m; sourceTree = "<group>"; };
 		54C8D56918DC2E840013FD03 /* TopicTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTitleCell.h; sourceTree = "<group>"; };
@@ -1759,8 +1756,6 @@
 				54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */,
 				5447C4B918D99A3100187BE6 /* TopicSelectButton.h */,
 				5447C4BA18D99A3100187BE6 /* TopicSelectButton.m */,
-				54C8D56318DC228D0013FD03 /* TopicTitleUnitView.h */,
-				54C8D56418DC228D0013FD03 /* TopicTitleUnitView.m */,
 				54C8D56618DC26A20013FD03 /* TopicTitleView.h */,
 				54C8D56718DC26A20013FD03 /* TopicTitleView.m */,
 				54C8D56918DC2E840013FD03 /* TopicTitleCell.h */,
@@ -3013,7 +3008,6 @@
 				54CE10E518C1842C00966396 /* AFIconButton.m in Sources */,
 				545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */,
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
-				54C8D56518DC228D0013FD03 /* TopicTitleUnitView.m in Sources */,
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54B6F42118D6D72E0055FC72 /* SettingPassWordViewController.m in Sources */,
