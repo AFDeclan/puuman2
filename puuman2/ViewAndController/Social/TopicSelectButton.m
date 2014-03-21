@@ -48,4 +48,6 @@
     [label_noti setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:label_noti];
 }
+
+
 @end

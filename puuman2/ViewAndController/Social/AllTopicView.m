@@ -39,8 +39,11 @@
     [participateBtn initWithTitle:@"参与" andIcon:[UIImage imageNamed:@"icon_join_topic.png"] andButtonType:kBlueLeftDown];
     [participateBtn addTarget:self action:@selector(participate) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:participateBtn];
-   
-    
+
+    topicAllVC = [[TopicAllTableViewController alloc] initWithNibName:nil bundle:nil];
+    [topicAllVC.view setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:topicAllVC.view];
+  
 }
 
 - (void)preTopic
@@ -59,6 +62,8 @@
     SetViewLeftUp(rightBtn, 480, 0);
     SetViewLeftUp(rewardBtn, 496, 152);
     SetViewLeftUp(participateBtn, 496, 192);
+    [topicAllVC setVerticalFrame];
+    
 }
 
 - (void)setHorizontalFrame
@@ -66,6 +71,7 @@
     SetViewLeftUp(rightBtn, 736, 0);
     SetViewLeftUp(rewardBtn, 752, 168);
     SetViewLeftUp(participateBtn, 752, 208);
+    [topicAllVC setHorizontalFrame];
 }
 
 - (void)reward

@@ -28,6 +28,7 @@ typedef enum
     TextImgBtnType btnType;
     UIImageView *mark;
     UIImageView *backgroundImgView;
+    NSString *_title;
 }
 - (void)selected;
 - (void)unSelected;

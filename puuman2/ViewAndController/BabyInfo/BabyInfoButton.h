@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "AFImgButton.h"
+#import "AFSelecedTextImgButton.h"
 typedef enum
 {
     kBodyButton,
@@ -16,7 +16,7 @@ typedef enum
     kBpreButton,
     kPreButton
 }BabyInfoButtonType;
-@interface BabyInfoButton : AFImgButton
+@interface BabyInfoButton : AFSelecedTextImgButton
 @property(assign,nonatomic)BabyInfoButtonType type;
 
 @end

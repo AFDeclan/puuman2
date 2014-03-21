@@ -16,5 +16,5 @@
     UILabel *label_noti;
 }
 
-
+//-(void)setTopicWithTopic:()
 @end

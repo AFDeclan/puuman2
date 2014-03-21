@@ -1,18 +1,20 @@
 //
-//  TopicShowedCell.h
+//  TopicTitleUnitView.h
 //  puuman2
 //
-//  Created by Ra.（祁文龙） on 14-3-19.
+//  Created by Ra.（祁文龙） on 14-3-21.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "Topic.h"
 
-@interface TopicShowedCell : UITableViewCell
+@interface TopicTitleUnitView : UIView
 {
     UIImageView *bgImageView;
     UILabel *info_title;
     UILabel *info_num;
-    
 }
+
+-(void)setTitleViewWithTopic:(Topic *)topic;
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ColorButton.h"
-#import "AFImgButton.h"
+#import "AFSelecedTextImgButton.h"
 #import "TopicView.h"
 #import "PartnerView.h"
 
@@ -19,14 +19,12 @@
     UIImageView *bg_rightImageView;
     ColorButton *leftBtn;
     ColorButton *rightBtn;
-    AFImgButton *topicBtn;
-    AFImgButton *partnerBtn;
+    AFSelecedTextImgButton *topicBtn;
+    AFSelecedTextImgButton *partnerBtn;
     TopicView *topicView;
     PartnerView *partnerView;
     BOOL selectedTopic;
-    
-    
-    
+
 }
 
 

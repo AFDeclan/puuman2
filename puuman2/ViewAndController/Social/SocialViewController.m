@@ -83,12 +83,12 @@
     rightBtn = [[ColorButton alloc] init];
     [rightBtn addTarget:self action:@selector(rightBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rightBtn];
-    topicBtn = [[AFImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
+    topicBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
     [topicBtn setSelectedImg:[UIImage imageNamed:@"btn_topic1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"btn_topic2_topic.png"]];
     [topicBtn addTarget:self action:@selector(topicBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:topicBtn];
     
-    partnerBtn = [[AFImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
+    partnerBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
     [partnerBtn setSelectedImg:[UIImage imageNamed:@"btn_partner1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"btn_partner2_topic.png"]];
     [partnerBtn addTarget:self action:@selector(partnerBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:partnerBtn];
@@ -237,7 +237,8 @@
 
 -(void)refresh
 {
-
+    [self topicBtnPressed];
+    
 }
 
 

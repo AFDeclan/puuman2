@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TopicSelectButton.h"
 #import "ColorButton.h"
-#import "TopicShowedCell.h"
+#import "TopicAllTableViewController.h"
+
 
 @interface AllTopicView : UIView
 {
@@ -17,7 +18,7 @@
     TopicSelectButton *rightBtn;
     ColorButton *rewardBtn;
     ColorButton *participateBtn;
-    
+    TopicAllTableViewController *topicAllVC;
     
 }
 - (void)setVerticalFrame;
