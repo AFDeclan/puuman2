@@ -18,6 +18,8 @@
 @property (retain, nonatomic, readonly) NSString * RTitle;
 @property (retain, nonatomic, readonly) NSDate * RCreateTime;
 
+@property (retain, nonatomic, readonly) NSString *headimgUrl;
+
 @property (retain, nonatomic, readonly) NSArray * textUrls;
 @property (retain, nonatomic, readonly) NSArray * photoUrls;
 

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
+#import "UniverseConstant.h"
 #import "Reply.h"
 #import "DateFormatter.h"
 #import "Forum.h"
@@ -20,6 +21,8 @@
 @synthesize photoUrls = _photoUrls;
 @synthesize data = _data;
 
+@synthesize headimgUrl = _headimgUrl;
+
 - (void)setData:(NSDictionary *)data
 {
     _data = data;
@@ -29,6 +32,7 @@
             _TID = [val integerValue];
         } else if ([key isEqualToString:@"UID"]) {
             _UID = [val integerValue];
+            _headimgUrl = [NSString stringWithFormat:@"%@?authCode=%@&UID=%d", kUrl_Headimg, [MobClick getConfigParams:umeng_onlineConfig_authKey], _UID];
         } else if ([key isEqualToString:@"RTitle"]) {
             _RTitle = val;
         } else if ([key isEqualToString:@"RCreateTime"]) {
