@@ -32,6 +32,7 @@
 
 //sync
 - (BOOL)uploadFile:(NSString *)filePath toDir:(NSString *)dir fileRename:(NSString *)name;
+- (BOOL)uploadDataSync:(NSData *)data toDir:(NSString *)dir fileName:(NSString *)name;
 
 //async
 - (void)uploadData:(NSData *)data toDir:(NSString *)dir fileName:(NSString *)name;

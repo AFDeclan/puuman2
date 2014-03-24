@@ -8,9 +8,7 @@
 
 #import "Reply.h"
 #import "DateFormatter.h"
-
-#define Reply_Content_Text      @"text"
-#define Reply_Content_Photo     @"photo"
+#import "Forum.h"
 
 @implementation Reply
 

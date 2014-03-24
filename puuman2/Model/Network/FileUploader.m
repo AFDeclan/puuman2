@@ -55,7 +55,27 @@ static NSMutableArray *instanceList;
     [request setDidFinishSelector:@selector(getUploadResult:)];
     [request setDidFailSelector:@selector(getErr:)];
     [request startAsynchronous];
+}
 
+- (BOOL)uploadDataSync:(NSData *)data toDir:(NSString *)dir fileName:(NSString *)name
+{
+    [self retainSelf];
+    _targetUrl = [NSString stringWithFormat:@"http://puman.oss.aliyuncs.com/%@/%@", dir, name];
+    NSString *urlHostString = @"http://6.pumantest.sinaapp.com";
+    NSString *urlSubpageString = @"/upload.php";
+    NSString *urlString = [urlHostString stringByAppendingString:urlSubpageString];
+    NSURL *myurl = [NSURL URLWithString:urlString];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:myurl];
+    //设置表单提交项
+    [request setData:data forKey:@"file"];
+    [request setPostValue:[MobClick getConfigParams:umeng_onlineConfig_authKey] forKey:@"authCode"];
+    [request setPostValue:dir forKey:@"dir"];
+    [request setPostValue:name forKey:@"filename"];
+    [request setDelegate:self];
+    [request setDidFinishSelector:@selector(getUploadResult:)];
+    [request setDidFailSelector:@selector(getErr:)];
+    [request startSynchronous];
+    if ([request error]) return NO; else return YES;
 }
 
 - (BOOL)uploadFile:(NSString *)filePath toDir:(NSString *)dir fileRename:(NSString *)name;
