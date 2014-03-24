@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "PumanRequest.h"
 
+#define Reply_Content_Text      @"text"
+#define Reply_Content_Photo     @"photo"
+
 @class Topic;
+@class ReplyForUpload;
 
 @protocol ForumDelegate <NSObject>
 
@@ -33,11 +37,18 @@
 //更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
 - (void)topicRepliesLoadFailed:(Topic *)topic;
 
+//回复上传成功
+- (void)topicReplyUploaded:(ReplyForUpload *)reply;
+
+//回复上传失败
+- (void)topicReplyUploadFailed:(ReplyForUpload *)reply;
+
 @end
 
 @interface Forum : NSObject <AFRequestDelegate>
 {
     NSMutableSet * _requests;
+    NSMutableSet * _repliesForUpload;
 }
 
 //当期话题
@@ -60,10 +71,14 @@
 //按期号获取，若已获取过则直接返回，否则返回nil，异步等待回调。
 - (Topic *)getTopic:(NSInteger)TNo;
 
-
+//新建一个自动引用和释放的ReplyForUpload对象
+- (ReplyForUpload *)createReplyForUpload;
+   
 #pragma mark --------------interface end-------------------
-//Topic类回调方法，对外部不开放。
+//Topic类、ReplyForUpload类回调方法，对外部不开放。
 - (void)repliesLoaded:(Topic *)topic;
 - (void)repliesFailed:(Topic *)topic;
+- (void)replyUploaded:(ReplyForUpload *)reply;
+- (void)replyUploadFailed:(ReplyForUpload *)reply;
 
 @end

@@ -5,10 +5,11 @@
 //  Created by Declan on 14-3-18.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
-
+#import "UniverseConstant.h"
 #import "Forum.h"
 #import "Topic.h"
-#import "UniverseConstant.h"
+#import "Reply.h"
+#import "ReplyForUpload.h"
 
 static Forum * instance;
 
@@ -32,6 +33,7 @@ static Forum * instance;
     if (self = [super init]) {
         _topics = [[NSMutableDictionary alloc] init];
         _requests = [[NSMutableSet alloc] init];
+        _repliesForUpload = [[NSMutableSet alloc] init];
     }
     return self;
 }
@@ -71,6 +73,13 @@ static Forum * instance;
     [req setResEncoding:PumanRequestRes_JsonEncoding];
     [req postAsynchronous];
     return nil;
+}
+
+- (ReplyForUpload *)createReplyForUpload
+{
+    ReplyForUpload *re = [[ReplyForUpload alloc] init];
+    [_repliesForUpload addObject:re];
+    return re;
 }
 
 #pragma mark - Request Call Back
@@ -143,7 +152,7 @@ static Forum * instance;
     }
 }
 
-#pragma mark - Topic Recall
+#pragma mark - Recall
 
 - (void)repliesLoaded:(Topic *)topic
 {
@@ -153,6 +162,18 @@ static Forum * instance;
 - (void)repliesFailed:(Topic *)topic
 {
     [self informDelegates:@selector(topicRepliesLoadFailed:) withObject:topic];
+}
+
+- (void)replyUploaded:(ReplyForUpload *)reply
+{
+    [self informDelegates:@selector(topicReplyUploaded:) withObject:reply];
+    [_repliesForUpload removeObject:reply];
+}
+
+- (void)replyUploadFailed:(ReplyForUpload *)reply
+{
+    [self informDelegates:@selector(topicReplyUploadFailed:) withObject:reply];
+    [_repliesForUpload removeObject:reply];
 }
 
 

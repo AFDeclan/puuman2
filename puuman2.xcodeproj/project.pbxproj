@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		146A2C6E18DD810E0038A850 /* ReplyForUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C6D18DD810E0038A850 /* ReplyForUpload.m */; };
+		146A2C7218DD8D1C0038A850 /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C7118DD8D1C0038A850 /* FileUploader.m */; };
 		147756F918D7F49E00E08BD0 /* Forum.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756F818D7F49E00E08BD0 /* Forum.m */; };
 		147756FC18D7F4AA00E08BD0 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756FB18D7F4AA00E08BD0 /* Topic.m */; };
 		147756FF18D7F4B800E08BD0 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756FE18D7F4B800E08BD0 /* Reply.m */; };
@@ -46,7 +48,6 @@
 		14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF0718BC37A30047C6B3 /* CATransition+Custom.m */; };
 		14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF0918BC37A30047C6B3 /* DateFormatter.m */; };
 		14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF0B18BC37A30047C6B3 /* ErrorLog.m */; };
-		14B8DF5218BC37A40047C6B3 /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF0D18BC37A30047C6B3 /* FileUploader.m */; };
 		14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF0F18BC37A30047C6B3 /* MD5.m */; };
 		14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF1118BC37A30047C6B3 /* NSDate+Compute.m */; };
 		14B8DF5518BC37A40047C6B3 /* UserNameCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF1318BC37A30047C6B3 /* UserNameCheck.m */; };
@@ -491,6 +492,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		146A2C6C18DD810E0038A850 /* ReplyForUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyForUpload.h; sourceTree = "<group>"; };
+		146A2C6D18DD810E0038A850 /* ReplyForUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyForUpload.m; sourceTree = "<group>"; };
+		146A2C7018DD8D1C0038A850 /* FileUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUploader.h; sourceTree = "<group>"; };
+		146A2C7118DD8D1C0038A850 /* FileUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUploader.m; sourceTree = "<group>"; };
 		147756F718D7F49E00E08BD0 /* Forum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forum.h; sourceTree = "<group>"; };
 		147756F818D7F49E00E08BD0 /* Forum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forum.m; sourceTree = "<group>"; };
 		147756FA18D7F4AA00E08BD0 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
@@ -557,8 +562,6 @@
 		14B8DF0918BC37A30047C6B3 /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormatter.m; sourceTree = "<group>"; };
 		14B8DF0A18BC37A30047C6B3 /* ErrorLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorLog.h; sourceTree = "<group>"; };
 		14B8DF0B18BC37A30047C6B3 /* ErrorLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorLog.m; sourceTree = "<group>"; };
-		14B8DF0C18BC37A30047C6B3 /* FileUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUploader.h; sourceTree = "<group>"; };
-		14B8DF0D18BC37A30047C6B3 /* FileUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUploader.m; sourceTree = "<group>"; };
 		14B8DF0E18BC37A30047C6B3 /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5.h; sourceTree = "<group>"; };
 		14B8DF0F18BC37A30047C6B3 /* MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5.m; sourceTree = "<group>"; };
 		14B8DF1018BC37A30047C6B3 /* NSDate+Compute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Compute.h"; sourceTree = "<group>"; };
@@ -1200,6 +1203,8 @@
 				147756FB18D7F4AA00E08BD0 /* Topic.m */,
 				147756FD18D7F4B800E08BD0 /* Reply.h */,
 				147756FE18D7F4B800E08BD0 /* Reply.m */,
+				146A2C6C18DD810E0038A850 /* ReplyForUpload.h */,
+				146A2C6D18DD810E0038A850 /* ReplyForUpload.m */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -1322,6 +1327,8 @@
 		14B8DE9E18BC37A30047C6B3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				146A2C7018DD8D1C0038A850 /* FileUploader.h */,
+				146A2C7118DD8D1C0038A850 /* FileUploader.m */,
 				14B8DE9F18BC37A30047C6B3 /* PumanRequest.h */,
 				14B8DEA018BC37A30047C6B3 /* PumanRequest.m */,
 			);
@@ -1431,8 +1438,6 @@
 				14B8DF0918BC37A30047C6B3 /* DateFormatter.m */,
 				14B8DF0A18BC37A30047C6B3 /* ErrorLog.h */,
 				14B8DF0B18BC37A30047C6B3 /* ErrorLog.m */,
-				14B8DF0C18BC37A30047C6B3 /* FileUploader.h */,
-				14B8DF0D18BC37A30047C6B3 /* FileUploader.m */,
 				14B8DF0E18BC37A30047C6B3 /* MD5.h */,
 				14B8DF0F18BC37A30047C6B3 /* MD5.m */,
 				14B8DF1018BC37A30047C6B3 /* NSDate+Compute.h */,
@@ -2955,7 +2960,6 @@
 				54AFBBC418D6938600861A69 /* LoginCodeView.m in Sources */,
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
 				54CE10F418C1842C00966396 /* MJRefreshFooterView.m in Sources */,
-				14B8DF5218BC37A40047C6B3 /* FileUploader.m in Sources */,
 				14B8DF2918BC37A30047C6B3 /* ShopClassModel.m in Sources */,
 				14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */,
 				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
@@ -3093,6 +3097,7 @@
 				54BAD46418D15087003822CC /* PageControlButton.m in Sources */,
 				54CE10E018C1842C00966396 /* AFDataDownloader.m in Sources */,
 				54CE10F718C1842C00966396 /* UIColumnView.m in Sources */,
+				146A2C6E18DD810E0038A850 /* ReplyForUpload.m in Sources */,
 				54A8F43F18CD593700D0D523 /* DiaryCell.m in Sources */,
 				5403CE4B18D06A83004CAE22 /* AFSelecedTextImgButton.m in Sources */,
 			);
