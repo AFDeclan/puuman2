@@ -52,7 +52,7 @@
 
 - (void)setVerticalFrame
 {
-    [self.view setFrame:CGRectMake(0, 144, 608, 800)];
+    
 }
 
 - (void)setHorizontalFrame

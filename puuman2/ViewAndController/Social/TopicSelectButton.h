@@ -16,5 +16,7 @@
     UILabel *label_noti;
 }
 
-//-(void)setTopicWithTopic:()
+- (void)setTitle:(NSString *)title;
+- (void)setDirection:(BOOL)isRight;
+- (void)setNoti:(NSString *)noti;
 @end

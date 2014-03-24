@@ -7,20 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopicSelectButton.h"
-#import "ColorButton.h"
-#import "TopicAllTableViewController.h"
+#import "UIColumnView.h"
+#import "TopicContentCell.h"
 
+@interface AllTopicView : UIView<UIColumnViewDataSource, UIColumnViewDelegate>
 
-@interface AllTopicView : UIView
 {
-    TopicSelectButton *leftBtn;
-    TopicSelectButton *rightBtn;
-    ColorButton *rewardBtn;
-    ColorButton *participateBtn;
-    TopicAllTableViewController *topicAllVC;
+
+     UIColumnView *_showColumnView;
     
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
+
 @end
