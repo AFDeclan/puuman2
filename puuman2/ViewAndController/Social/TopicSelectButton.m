@@ -41,13 +41,34 @@
     [label_title setTextColor:PMColor2];
     [label_title setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:label_title];
-    label_noti = [[UILabel alloc] initWithFrame:CGRectMake(24, 96, 80, 28)];
+    label_noti = [[UILabel alloc] initWithFrame:CGRectMake(24, 112, 80, 28)];
     [label_noti setBackgroundColor:[UIColor clearColor]];
     [label_noti setFont:PMFont2];
-    [label_noti setTextColor:PMColor4];
+    [label_noti setTextColor:[UIColor whiteColor]];
     [label_noti setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:label_noti];
 }
 
+- (void)setDirection:(BOOL)isRight
+{
+    if (isRight) {
+        [icon_left setAlpha:0];
+        [icon_right setAlpha:1];
+    }else{
+        [icon_left setAlpha:1];
+        [icon_right setAlpha:0];
+    }
+}
+
+- (void)setTitle:(NSString *)title
+{
+    [label_title setText:title];
+    
+}
+
+- (void)setNoti:(NSString *)noti
+{
+    [label_noti setText:noti];
+}
 
 @end

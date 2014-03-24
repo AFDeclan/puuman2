@@ -8,6 +8,8 @@
 
 #import "RewardViewController.h"
 #import "RecommentPartnerTableViewCell.h"
+#import "RankTableViewCell.h"
+#import "RewardTableViewCell.h"
 
 @interface RewardViewController ()
 
@@ -20,15 +22,22 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self initContent];
     }
     return self;
 }
 
 -(void)initContent
 {
+    noti_label  = [[UILabel alloc] initWithFrame:CGRectMake(492, 388, 168, 32)];
+    [noti_label setTextColor:PMColor3];
+    [noti_label setFont:PMFont3];
+    [noti_label setNumberOfLines:2];
+    [noti_label setText:@"点赞和被点赞、留言和被留言数相加计入统计"];
+    [noti_label setBackgroundColor:[UIColor clearColor]];
+    [_content addSubview:noti_label];
     
-    rewardTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 168, 384, 436)];
-    [rewardTable setBackgroundColor:PMColor5];
+    rewardTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 112, 384, 436)];
     [rewardTable setDelegate:self];
     [rewardTable setDataSource:self];
     [rewardTable setSeparatorColor:[UIColor clearColor]];
@@ -36,8 +45,9 @@
     [rewardTable setShowsHorizontalScrollIndicator:NO];
     [rewardTable setShowsVerticalScrollIndicator:NO];
     [_content addSubview:rewardTable];
-    rankTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 168, 192, 436)];
-    [rankTable setBackgroundColor:PMColor5];
+    
+    
+    rankTable = [[UITableView alloc] initWithFrame:CGRectMake(480, 112, 192, 240)];
     [rankTable setDelegate:self];
     [rankTable setDataSource:self];
     [rankTable setSeparatorColor:[UIColor clearColor]];
@@ -88,26 +98,44 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    if (rankTable == tableView) {
+        return 3;
+    }else{
+        return 4;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    if (tableView == rankTable) {
+        NSString  *identity = @"rankCell";
+        RankTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:identity];
+        if (!cell){
+            cell = [[RankTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+            
+        }
+        
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell setBackgroundColor:[UIColor clearColor]];
+        return cell;
+    }else{
+        NSString  *identity = @"rewardCell";
+        RewardTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:identity];
+        if (!cell){
+            cell = [[RewardTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+            
+        }
+        [cell setRow:[indexPath row]];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell setBackgroundColor:[UIColor clearColor]];
+        return cell;
+    }
     
-    
-//    NSString  *identity = @"talkPopCell";
-//    RecommentPartnerTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:identity];
-//    if (!cell){
-//        cell = [[RecommentPartnerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
-//        
-//    }
-//    
-//    
-//    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    [cell setBackgroundColor:[UIColor clearColor]];
-//    return cell;
-    return nil;
+
+ 
+ 
     
     
 }
@@ -115,13 +143,43 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return 0;
+    if (tableView == rankTable) {
+        return 80;
+    }else{
+        if ([indexPath row] == 0) {
+            return 160;
+        }else{
+            return 96;
+        }
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0;
+    if (tableView == rankTable) {
+           return 24;
+    }else{
+        return 0;
+    }
+ 
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 192, 24)];
+    [view setBackgroundColor:[UIColor clearColor]];
+    UILabel *rank_title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 192, 12)];
+    [rank_title setTextColor:PMColor6];
+    [rank_title setFont:PMFont3];
+    [rank_title setText:@"实时排名"];
+    [rank_title setBackgroundColor:[UIColor clearColor]];
+    [rank_title setTextAlignment:NSTextAlignmentCenter];
+    [view addSubview:rank_title];
+    UIImageView *partLine  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 22, 192, 2)];
+    [partLine setImage:[UIImage imageNamed:@"line_topic.png"]];
+    [partLine setAlpha:0.5];
+    [view addSubview:partLine];
+    return view;
+}
 
 @end

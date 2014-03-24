@@ -54,7 +54,7 @@
 #define kUrl_PostFeedback @"http://1.server4puman.sinaapp.com/feedBack.php"
 //forum
 #define kUrl_GetTopicReply  @"http://2.server4puman.sinaapp.com/forum/topic_replies"
-#define kUrl_GetActiveTopics  @"http://2.server4puman.sinaapp.com/forum/topic_active"
+#define kUrl_GetActiveTopics  @"http://2.server4puman.sinaapp.com/forum/topics_active"
 #define kUrl_GetTopic  @"http://2.server4puman.sinaapp.com/forum/topic_no"
 #define kUrl_UploadTopicReply  @"http://2.server4puman.sinaapp.com/forum/upload_reply"
 

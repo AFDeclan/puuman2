@@ -13,9 +13,10 @@
 #import "TopicAllTableViewController.h"
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
+#import "Forum.h"
 
 
-
+@protocol TopicContentCellDelegate;
 @interface TopicContentCell : UITableViewCell
 {
     UIImageView *bgImageView;
@@ -30,7 +31,15 @@
     TopicAllTableViewController *topicAllVC;
     BOOL currentTopicOrAfter;
     TopicStatus status;
+   
 }
+@property(nonatomic,assign)id<TopicContentCellDelegate>delegate;
+-(void)setInfoViewWithTopic:(Topic *)topic;
+@end
 
--(void)setTitleViewWithTopic:(Topic *)topic;
+@protocol TopicContentCellDelegate <NSObject>
+
+- (void)nextTopic;
+- (void)preTopic;
+
 @end

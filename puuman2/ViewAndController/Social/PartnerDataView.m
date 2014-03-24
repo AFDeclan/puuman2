@@ -21,6 +21,10 @@
     return self;
 }
 
+- (void)initPortraitsView
+{
+
+}
 - (void)setVerticalFrame
 {
     

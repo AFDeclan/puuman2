@@ -1,29 +1,27 @@
 //
-//  TopicAllTableViewController.m
+//  MyTopicViewController.m
 //  puuman2
 //
-//  Created by Ra.（祁文龙） on 14-3-21.
+//  Created by Ra.（祁文龙） on 14-3-24.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "TopicAllTableViewController.h"
-#import "TopicCell.h"
+#import "MyTopicViewController.h"
+#import "VotingCell.h"
 
-@interface TopicAllTableViewController ()
+@interface MyTopicViewController ()
 
 @end
 
-@implementation TopicAllTableViewController
+@implementation MyTopicViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-
-        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多喜欢" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新参与" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-        [self leftSortSelected];
+        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多投票" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新发起" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+         [self leftSortSelected];
        
     }
     return self;
@@ -33,8 +31,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-   
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,27 +46,30 @@
 {
     
     // Return the number of rows in the section.
-    return 10;
-  
+    
+    return 5;
+   
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        static NSString *identifier = @"TopicCell";
-        TopicCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (!cell) {
-            cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        }
-        return cell;
+    static NSString *identifier = @"TopicCell";
+    VotingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[VotingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
     
-  
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+   
     return 304;
-    
+  
     
 }
 
@@ -90,13 +89,4 @@
 }
 
 
-- (void)setVerticalFrame
-{
-    
-}
-
-- (void)setHorizontalFrame
-{
-  
-}
 @end

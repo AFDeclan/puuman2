@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyTopicViewController.h"
 
 @interface MyTopicView : UIView
 {
-
+    MyTopicViewController *topicAllVC;
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

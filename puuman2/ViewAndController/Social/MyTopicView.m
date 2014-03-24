@@ -8,6 +8,7 @@
 
 #import "MyTopicView.h"
 #import "ColorsAndFonts.h"
+#import "MainTabBarController.h"
 
 @implementation MyTopicView
 
@@ -16,21 +17,29 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setBackgroundColor:PMColor2];
-    
-        
+        [self setBackgroundColor:[UIColor clearColor]];
+        topicAllVC = [[MyTopicViewController alloc] initWithNibName:nil bundle:nil];
+        [topicAllVC.view setBackgroundColor:[UIColor clearColor]];
+        [self addSubview:topicAllVC.view];
+        if([MainTabBarController sharedMainViewController].isVertical)
+        {
+            [self setVerticalFrame];
+        }else
+        {
+            [self setHorizontalFrame];
+        }
     }
     return self;
 }
 
 - (void)setVerticalFrame
 {
-    
+    [topicAllVC.view setFrame:CGRectMake(0, 0, 608, 800)];
 }
 
 - (void)setHorizontalFrame
 {
-    
+    [topicAllVC.view setFrame:CGRectMake(128, 0, 608, 800)];
 }
 
 @end

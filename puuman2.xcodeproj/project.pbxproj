@@ -168,6 +168,13 @@
 		541970EB18D1A3710058FE64 /* AddInfoCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 541970EA18D1A3710058FE64 /* AddInfoCalendar.m */; };
 		541970ED18D1BA730058FE64 /* dot_blue_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 541970EC18D1BA730058FE64 /* dot_blue_baby.png */; };
 		541970EF18D1BA7E0058FE64 /* dot_gray_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 541970EE18D1BA7E0058FE64 /* dot_gray_baby.png */; };
+		5421666918E00DAF005875F8 /* PartnerPortraitDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5421666818E00DAF005875F8 /* PartnerPortraitDataViewCell.m */; };
+		5421666C18E02113005875F8 /* RankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5421666B18E02113005875F8 /* RankTableViewCell.m */; };
+		5421666F18E025EB005875F8 /* RewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5421666E18E025EB005875F8 /* RewardTableViewCell.m */; };
+		5421667218E02692005875F8 /* RewardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5421667118E02692005875F8 /* RewardView.m */; };
+		5421667618E032B5005875F8 /* VotingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5421667518E032B5005875F8 /* VotingCell.m */; };
+		5421667B18E0331A005875F8 /* BasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5421667A18E0331A005875F8 /* BasicInfoView.m */; };
+		5421667E18E03811005875F8 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5421667D18E03811005875F8 /* MyTopicViewController.m */; };
 		543BAEBE18CEB4EB00ED4672 /* AudioDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */; };
 		543BAEC118CEBA1800ED4672 /* VideoDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 543BAEC018CEBA1800ED4672 /* VideoDiaryCell.m */; };
 		543BAEC518CEBE9E00ED4672 /* bg_title_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 543BAEC418CEBE9E00ED4672 /* bg_title_diary.png */; };
@@ -307,6 +314,8 @@
 		54ADE0B118C861B700B166C4 /* btn_text2_newdiary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE0A818C861B700B166C4 /* btn_text2_newdiary.png */; };
 		54ADE0B218C861B700B166C4 /* btn_video_newdiary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE0A918C861B700B166C4 /* btn_video_newdiary.png */; };
 		54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE0B718C87E9C00B166C4 /* NewCameraShowPhotosViewController.m */; };
+		54AE788218DFF87100AE558C /* TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AE788118DFF87100AE558C /* TopicCell.m */; };
+		54AE788618E00BD200AE558C /* PartnerDataTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AE788518E00BD200AE558C /* PartnerDataTitleView.m */; };
 		54AFAA7E18DA896B0067B8C1 /* AllWordsPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA7D18DA896B0067B8C1 /* AllWordsPopViewController.m */; };
 		54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA8018DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m */; };
 		54AFAA8418DA94610067B8C1 /* CreateTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA8318DA94600067B8C1 /* CreateTopicViewController.m */; };
@@ -711,6 +720,20 @@
 		541970EA18D1A3710058FE64 /* AddInfoCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInfoCalendar.m; sourceTree = "<group>"; };
 		541970EC18D1BA730058FE64 /* dot_blue_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_blue_baby.png; sourceTree = "<group>"; };
 		541970EE18D1BA7E0058FE64 /* dot_gray_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_gray_baby.png; sourceTree = "<group>"; };
+		5421666718E00DAF005875F8 /* PartnerPortraitDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerPortraitDataViewCell.h; sourceTree = "<group>"; };
+		5421666818E00DAF005875F8 /* PartnerPortraitDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerPortraitDataViewCell.m; sourceTree = "<group>"; };
+		5421666A18E02113005875F8 /* RankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankTableViewCell.h; sourceTree = "<group>"; };
+		5421666B18E02113005875F8 /* RankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankTableViewCell.m; sourceTree = "<group>"; };
+		5421666D18E025EB005875F8 /* RewardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardTableViewCell.h; sourceTree = "<group>"; };
+		5421666E18E025EB005875F8 /* RewardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTableViewCell.m; sourceTree = "<group>"; };
+		5421667018E02692005875F8 /* RewardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardView.h; sourceTree = "<group>"; };
+		5421667118E02692005875F8 /* RewardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardView.m; sourceTree = "<group>"; };
+		5421667418E032B5005875F8 /* VotingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotingCell.h; sourceTree = "<group>"; };
+		5421667518E032B5005875F8 /* VotingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotingCell.m; sourceTree = "<group>"; };
+		5421667918E0331A005875F8 /* BasicInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoView.h; sourceTree = "<group>"; };
+		5421667A18E0331A005875F8 /* BasicInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoView.m; sourceTree = "<group>"; };
+		5421667C18E03811005875F8 /* MyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTopicViewController.h; sourceTree = "<group>"; };
+		5421667D18E03811005875F8 /* MyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTopicViewController.m; sourceTree = "<group>"; };
 		543BAEBC18CEB4EB00ED4672 /* AudioDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDiaryCell.h; sourceTree = "<group>"; };
 		543BAEBD18CEB4EB00ED4672 /* AudioDiaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDiaryCell.m; sourceTree = "<group>"; };
 		543BAEBF18CEBA1700ED4672 /* VideoDiaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDiaryCell.h; sourceTree = "<group>"; };
@@ -893,6 +916,10 @@
 		54ADE0A918C861B700B166C4 /* btn_video_newdiary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_video_newdiary.png; sourceTree = "<group>"; };
 		54ADE0B618C87E9C00B166C4 /* NewCameraShowPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCameraShowPhotosViewController.h; sourceTree = "<group>"; };
 		54ADE0B718C87E9C00B166C4 /* NewCameraShowPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCameraShowPhotosViewController.m; sourceTree = "<group>"; };
+		54AE788018DFF87100AE558C /* TopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCell.h; sourceTree = "<group>"; };
+		54AE788118DFF87100AE558C /* TopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCell.m; sourceTree = "<group>"; };
+		54AE788418E00BD200AE558C /* PartnerDataTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerDataTitleView.h; sourceTree = "<group>"; };
+		54AE788518E00BD200AE558C /* PartnerDataTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerDataTitleView.m; sourceTree = "<group>"; };
 		54AFAA7C18DA896B0067B8C1 /* AllWordsPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllWordsPopViewController.h; sourceTree = "<group>"; };
 		54AFAA7D18DA896B0067B8C1 /* AllWordsPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllWordsPopViewController.m; sourceTree = "<group>"; };
 		54AFAA7F18DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllWordsPopTalkTableViewCell.h; sourceTree = "<group>"; };
@@ -1657,6 +1684,31 @@
 			name = ruler;
 			sourceTree = "<group>";
 		};
+		5421666618E00D60005875F8 /* support */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = support;
+			sourceTree = "<group>";
+		};
+		5421667318E03281005875F8 /* VotingCell */ = {
+			isa = PBXGroup;
+			children = (
+				5421667418E032B5005875F8 /* VotingCell.h */,
+				5421667518E032B5005875F8 /* VotingCell.m */,
+			);
+			name = VotingCell;
+			sourceTree = "<group>";
+		};
+		5421667718E032F5005875F8 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				5421667918E0331A005875F8 /* BasicInfoView.h */,
+				5421667A18E0331A005875F8 /* BasicInfoView.m */,
+			);
+			name = support;
+			sourceTree = "<group>";
+		};
 		5447C44518D9785100187BE6 /* SocialImages */ = {
 			isa = PBXGroup;
 			children = (
@@ -1754,6 +1806,8 @@
 			children = (
 				54C8D56C18DC3B220013FD03 /* SortTableViewController.h */,
 				54C8D56D18DC3B220013FD03 /* SortTableViewController.m */,
+				5421667C18E03811005875F8 /* MyTopicViewController.h */,
+				5421667D18E03811005875F8 /* MyTopicViewController.m */,
 				54C8D57218DC44EF0013FD03 /* TopicAllTableViewController.h */,
 				54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */,
 				5447C4B918D99A3100187BE6 /* TopicSelectButton.h */,
@@ -1766,6 +1820,10 @@
 				54AFAA9318DACD6D0067B8C1 /* ChatTableCell.m */,
 				54EB7A6F18DBD6EF00D119A2 /* ChatInputTextView.h */,
 				54EB7A7018DBD6EF00D119A2 /* ChatInputTextView.m */,
+				5421667718E032F5005875F8 /* support */,
+				5421667318E03281005875F8 /* VotingCell */,
+				54AE788318E00B9100AE558C /* DataView */,
+				54AE787F18DFF83D00AE558C /* TopicCell */,
 				54AFAA7A18DA889C0067B8C1 /* popView */,
 			);
 			name = subView;
@@ -1910,6 +1968,27 @@
 			name = NewButton;
 			sourceTree = "<group>";
 		};
+		54AE787F18DFF83D00AE558C /* TopicCell */ = {
+			isa = PBXGroup;
+			children = (
+				54AE788018DFF87100AE558C /* TopicCell.h */,
+				54AE788118DFF87100AE558C /* TopicCell.m */,
+			);
+			name = TopicCell;
+			sourceTree = "<group>";
+		};
+		54AE788318E00B9100AE558C /* DataView */ = {
+			isa = PBXGroup;
+			children = (
+				54AE788418E00BD200AE558C /* PartnerDataTitleView.h */,
+				54AE788518E00BD200AE558C /* PartnerDataTitleView.m */,
+				5421666718E00DAF005875F8 /* PartnerPortraitDataViewCell.h */,
+				5421666818E00DAF005875F8 /* PartnerPortraitDataViewCell.m */,
+				5421666618E00D60005875F8 /* support */,
+			);
+			name = DataView;
+			sourceTree = "<group>";
+		};
 		54AFAA7A18DA889C0067B8C1 /* popView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1933,6 +2012,12 @@
 				54AFAA8018DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m */,
 				54AFAA8918DA9E750067B8C1 /* RecommentPartnerTableViewCell.h */,
 				54AFAA8A18DA9E750067B8C1 /* RecommentPartnerTableViewCell.m */,
+				5421666A18E02113005875F8 /* RankTableViewCell.h */,
+				5421666B18E02113005875F8 /* RankTableViewCell.m */,
+				5421666D18E025EB005875F8 /* RewardTableViewCell.h */,
+				5421666E18E025EB005875F8 /* RewardTableViewCell.m */,
+				5421667018E02692005875F8 /* RewardView.h */,
+				5421667118E02692005875F8 /* RewardView.m */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -2931,6 +3016,7 @@
 				54AFAA8E18DAA4220067B8C1 /* RewardViewController.m in Sources */,
 				14B8DF2B18BC37A30047C6B3 /* Ware.m in Sources */,
 				147756F918D7F49E00E08BD0 /* Forum.m in Sources */,
+				5421666C18E02113005875F8 /* RankTableViewCell.m in Sources */,
 				54A8F44D18CD712100D0D523 /* TextDiaryCell.m in Sources */,
 				541970D318D1956D0058FE64 /* StandardLine.m in Sources */,
 				54A8F46118CDCAE900D0D523 /* CameraAudioViewController.m in Sources */,
@@ -2944,8 +3030,10 @@
 				147756FF18D7F4B800E08BD0 /* Reply.m in Sources */,
 				541970D518D1956D0058FE64 /* UIKit+DrawingHelpers.m in Sources */,
 				54CE10F818C1842C00966396 /* UIImage+CroppedImage.m in Sources */,
+				5421666918E00DAF005875F8 /* PartnerPortraitDataViewCell.m in Sources */,
 				54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */,
 				54CE10F618C1842C00966396 /* TextLayoutLabel.m in Sources */,
+				5421667618E032B5005875F8 /* VotingCell.m in Sources */,
 				54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */,
 				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
 				54B6F42418D6E33E0055FC72 /* SettingAdviceViewController.m in Sources */,
@@ -2969,6 +3057,7 @@
 				54AFBBC518D6938600861A69 /* LoginEndView.m in Sources */,
 				54ADE09C18C8608700B166C4 /* NewCameraViewController.m in Sources */,
 				543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */,
+				146A2C7218DD8D1C0038A850 /* FileUploader.m in Sources */,
 				5447C4B118D98EED00187BE6 /* MyTopicView.m in Sources */,
 				54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */,
 				544419F918D40EE800FBE69F /* PuumanRulesViewController.m in Sources */,
@@ -2987,10 +3076,12 @@
 				54CE10E918C1842C00966396 /* UILabel+AdjustSize.m in Sources */,
 				54ADE09718C8608700B166C4 /* NewAudioDiaryViewController.m in Sources */,
 				54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */,
+				54AE788618E00BD200AE558C /* PartnerDataTitleView.m in Sources */,
 				54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */,
 				54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */,
 				14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */,
 				544419EB18D3ED3E00FBE69F /* PropView.m in Sources */,
+				5421667E18E03811005875F8 /* MyTopicViewController.m in Sources */,
 				54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */,
 				54CE10F918C1842C00966396 /* UIImage+Scale.m in Sources */,
 				54B6F41B18D6C32C0055FC72 /* SettingBindCellView.m in Sources */,
@@ -2999,6 +3090,7 @@
 				54AFBBC018D6938600861A69 /* BirthCalendar.m in Sources */,
 				541970E718D1A1C00058FE64 /* RulerView.m in Sources */,
 				54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */,
+				5421667B18E0331A005875F8 /* BasicInfoView.m in Sources */,
 				54AFBBD018D6946900861A69 /* SettingViewController.m in Sources */,
 				541970EB18D1A3710058FE64 /* AddInfoCalendar.m in Sources */,
 				54AFAA8B18DA9E750067B8C1 /* RecommentPartnerTableViewCell.m in Sources */,
@@ -3038,6 +3130,7 @@
 				14B8DF2718BC37A30047C6B3 /* RecomModel.m in Sources */,
 				54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */,
 				54EB7A7118DBD6EF00D119A2 /* ChatInputTextView.m in Sources */,
+				5421666F18E025EB005875F8 /* RewardTableViewCell.m in Sources */,
 				54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */,
 				541970D118D1956D0058FE64 /* LineChartView.m in Sources */,
 				54ADE09F18C8608700B166C4 /* NewTextDiaryViewController.m in Sources */,
@@ -3074,6 +3167,7 @@
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
 				54ADE09A18C8608700B166C4 /* NewAudioRecordView.m in Sources */,
 				54CE10ED18C1842C00966396 /* SinaWeiboRequest.m in Sources */,
+				54AE788218DFF87100AE558C /* TopicCell.m in Sources */,
 				5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */,
 				54CE10E118C1842C00966396 /* AFDataStore.m in Sources */,
 				54CE10F018C1842C00966396 /* ADTickerLabel.m in Sources */,
@@ -3090,6 +3184,7 @@
 				54ADE09918C8608700B166C4 /* NewAudioProgressView.m in Sources */,
 				14B8DF2418BC37A30047C6B3 /* PumanBookModel.m in Sources */,
 				54B6F41E18D6C8640055FC72 /* ReSendButton.m in Sources */,
+				5421667218E02692005875F8 /* RewardView.m in Sources */,
 				54CE10E718C1842C00966396 /* AFImageView.m in Sources */,
 				54D1501218CAF7B50022E1F4 /* TaskTitleView.m in Sources */,
 				54CE119318C1CD7C00966396 /* MainTabBarButton.m in Sources */,

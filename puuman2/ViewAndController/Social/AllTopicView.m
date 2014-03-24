@@ -16,6 +16,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [[Forum sharedInstance] addDelegateObject:self];
+        [[Forum sharedInstance] getActiveTopics];
         [self setBackgroundColor:[UIColor clearColor]];
         [self initialization];
     }
@@ -24,6 +26,7 @@
 
 - (void)initialization
 {
+    
     _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
     [_showColumnView setViewDelegate:self];
@@ -32,11 +35,24 @@
     [_showColumnView setScrollEnabled:YES];
     [self addSubview:_showColumnView];
 
+   
     
   
 }
 
+- (void)activeTopicsReceived
+{
 
+     topic =  [[Forum sharedInstance] onTopic];
+    [_showColumnView reloadData];
+    
+}
+
+- (void)activeTopicsFailed
+{
+   
+    
+}
 
 - (void)setVerticalFrame
 {
@@ -73,7 +89,7 @@
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
     
-    return 2;
+    return topic.TNo;
     
 }
 
@@ -85,13 +101,23 @@
     if (cell == nil)
     {
         cell = [[TopicContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        [cell setDelegate:self];
     }
-    
+    [cell setInfoViewWithTopic:topic];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
     
 }
 
 
+- (void)nextTopic
+{
+    [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x + self.frame.size.width, 0) animated:YES];
+}
+
+- (void)preTopic
+{
+    [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x - self.frame.size.width, 0) animated:YES];
+}
 
 @end

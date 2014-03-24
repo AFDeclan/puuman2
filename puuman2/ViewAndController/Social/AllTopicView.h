@@ -9,14 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "UIColumnView.h"
 #import "TopicContentCell.h"
+#import "Forum.h"
 
-@interface AllTopicView : UIView<UIColumnViewDataSource, UIColumnViewDelegate>
+@interface AllTopicView : UIView<UIColumnViewDataSource, UIColumnViewDelegate,ForumDelegate,TopicContentCellDelegate>
 
 {
 
      UIColumnView *_showColumnView;
-    
+     Topic *topic;
 }
+
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 

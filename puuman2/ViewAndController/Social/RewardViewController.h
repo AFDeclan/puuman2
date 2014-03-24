@@ -15,5 +15,7 @@
     ColorButton *createBtn;
     UITableView *rewardTable;
     UITableView *rankTable;
+    
+    UILabel *noti_label;
 }
 @end
