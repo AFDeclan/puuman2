@@ -31,11 +31,18 @@ typedef enum
     UIImageView *backgroundImgView;
     NSString *_title;
 }
-- (void)selected;
-- (void)unSelected;
+
+
 @property (nonatomic, assign)  UIColor *titleLabelColor;
 
 - (void)setTitle:(NSString *)title andImg:(UIImage *)image andButtonType:(TextImgBtnType)type;
-
-
+- (void)selected;
+- (void)unSelected;
+- (void)setIconFrame:(CGRect )rect;
+- (void)resetImage:(UIImage *)image;
+- (void)adjustLayout;
+- (void)adjustLayoutImgRight;
+- (void)adjustLayoutRight;
+- (void)adjustLayoutLeft;
+- (void)setTitleFont:(UIFont *)font;
 @end

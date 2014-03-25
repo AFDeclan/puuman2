@@ -80,7 +80,7 @@
     if (_voting) {
         return 108;
     }else{
-        return 304;
+        return 312;
     }
    
     

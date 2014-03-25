@@ -30,7 +30,7 @@
 {
     talkTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(48, 112, 528, 48)];
     talkTextField.placeholder = @"在此发表您的留言";
-    [_content addSubview:talksTable];
+    [_content addSubview:talkTextField];
     
     talksTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 168, 528, 436)];
     [talksTable setBackgroundColor:PMColor5];
@@ -45,7 +45,7 @@
     createTalkBtn = [[ColorButton alloc] init];
     [createTalkBtn initWithTitle:@"留言" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
     [_content addSubview:createTalkBtn];
-    SetViewLeftUp(_content, 592, 232);
+    SetViewLeftUp(createTalkBtn, 592, 112);
 }
 
 

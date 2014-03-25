@@ -9,15 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "AFImageView.h"
 #import "BasicInfoView.h"
+#import "Reply.h"
+#import "AFSelecedTextImgButton.h"
 
 @interface TopicCell : UITableViewCell
 {
     BasicInfoView *infoView;
-     UILabel *info_time;
+    UILabel *info_time;
     UIView *headerView;
     UIView *contentView;
     UIView *footerView;
- 
+    AFSelecedTextImgButton *likeBtn;
+    AFTextImgButton *replayBtn;
+    UILabel *relayExample;
+    AFTextImgButton *scanMoreReplay;
+    
 }
 
++ (CGFloat)heightForReplay:(Reply *)replay;
 @end

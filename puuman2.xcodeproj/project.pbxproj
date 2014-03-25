@@ -300,6 +300,9 @@
 		54ADB1CD18E159DC00FCCC83 /* PropWareDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1CC18E159DC00FCCC83 /* PropWareDataView.m */; };
 		54ADB1CE18E16CD700FCCC83 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C0B69F18E1158C00BC308E /* Comment.m */; };
 		54ADB1D118E17D2F00FCCC83 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D018E17D2F00FCCC83 /* MyTopicViewController.m */; };
+		54ADB1D418E1860200FCCC83 /* TextTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D318E1860200FCCC83 /* TextTopicCell.m */; };
+		54ADB1D718E1861700FCCC83 /* PhotoTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D618E1861700FCCC83 /* PhotoTopicCell.m */; };
+		54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */; };
 		54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */; };
 		54ADE07D18C85D1C00B166C4 /* btn_more_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE07718C85D1C00B166C4 /* btn_more_diary.png */; };
 		54ADE07E18C85D1C00B166C4 /* btn2_audio_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE07818C85D1C00B166C4 /* btn2_audio_diary.png */; };
@@ -913,6 +916,12 @@
 		54ADB1CC18E159DC00FCCC83 /* PropWareDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropWareDataView.m; sourceTree = "<group>"; };
 		54ADB1CF18E17D2F00FCCC83 /* MyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTopicViewController.h; sourceTree = "<group>"; };
 		54ADB1D018E17D2F00FCCC83 /* MyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTopicViewController.m; sourceTree = "<group>"; };
+		54ADB1D218E1860200FCCC83 /* TextTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextTopicCell.h; sourceTree = "<group>"; };
+		54ADB1D318E1860200FCCC83 /* TextTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextTopicCell.m; sourceTree = "<group>"; };
+		54ADB1D518E1861700FCCC83 /* PhotoTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTopicCell.h; sourceTree = "<group>"; };
+		54ADB1D618E1861700FCCC83 /* PhotoTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTopicCell.m; sourceTree = "<group>"; };
+		54ADB1D818E1862A00FCCC83 /* AudioTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTopicCell.h; sourceTree = "<group>"; };
+		54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioTopicCell.m; sourceTree = "<group>"; };
 		54ADE07318C85B6B00B166C4 /* DiaryNewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryNewButton.h; sourceTree = "<group>"; };
 		54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryNewButton.m; sourceTree = "<group>"; };
 		54ADE07718C85D1C00B166C4 /* btn_more_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_more_diary.png; sourceTree = "<group>"; };
@@ -2028,6 +2037,12 @@
 			children = (
 				54AE788018DFF87100AE558C /* TopicCell.h */,
 				54AE788118DFF87100AE558C /* TopicCell.m */,
+				54ADB1D218E1860200FCCC83 /* TextTopicCell.h */,
+				54ADB1D318E1860200FCCC83 /* TextTopicCell.m */,
+				54ADB1D518E1861700FCCC83 /* PhotoTopicCell.h */,
+				54ADB1D618E1861700FCCC83 /* PhotoTopicCell.m */,
+				54ADB1D818E1862A00FCCC83 /* AudioTopicCell.h */,
+				54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */,
 			);
 			name = TopicCell;
 			sourceTree = "<group>";
@@ -3112,6 +3127,7 @@
 				54AFAA8818DA9B640067B8C1 /* RecommendPartnerViewController.m in Sources */,
 				545EB7F318D7F22900D8EB7F /* AgeCalendarView.m in Sources */,
 				54A8F45E18CDC9A000D0D523 /* AudioViewController.m in Sources */,
+				54ADB1D718E1861700FCCC83 /* PhotoTopicCell.m in Sources */,
 				54AFBBC518D6938600861A69 /* LoginEndView.m in Sources */,
 				54ADE09C18C8608700B166C4 /* NewCameraViewController.m in Sources */,
 				543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */,
@@ -3168,6 +3184,7 @@
 				54C8D56E18DC3B220013FD03 /* SortTableViewController.m in Sources */,
 				54ADB1CD18E159DC00FCCC83 /* PropWareDataView.m in Sources */,
 				54B753B318D3021E002411CF /* PuumanOutBookCell.m in Sources */,
+				54ADB1D418E1860200FCCC83 /* TextTopicCell.m in Sources */,
 				5403CC7318D03B7D004CAE22 /* WaitView.m in Sources */,
 				54ADE0A018C8608700B166C4 /* TimeView.m in Sources */,
 				54CE10F518C1842C00966396 /* MJRefreshHeaderView.m in Sources */,
@@ -3190,6 +3207,7 @@
 				14B8DF2718BC37A30047C6B3 /* RecomModel.m in Sources */,
 				54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */,
 				54EB7A7118DBD6EF00D119A2 /* ChatInputTextView.m in Sources */,
+				54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */,
 				5421666F18E025EB005875F8 /* RewardTableViewCell.m in Sources */,
 				54ADB1B518E11E0F00FCCC83 /* FiguresHeaderView.m in Sources */,
 				54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */,

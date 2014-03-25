@@ -205,6 +205,8 @@
     [_titleLabel setTextColor:titleLabelColor];
 }
 
+
+
 - (void)selected
 {
     [mark setAlpha:0.3];
@@ -216,6 +218,22 @@
 }
 
 
+- (void)setIconFrame:(CGRect )rect
+{
+    [_iconView setFrame:rect];
+    [self adjustLayout];
+}
+
+- (void)setTitleFont:(UIFont *)font
+{
+    [_titleLabel setFont:font];
+    [self adjustLayout];
+}
+
+- (void)resetImage:(UIImage *)image
+{
+    [_iconView setImage:image];
+}
 
 
 @end

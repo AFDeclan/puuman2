@@ -32,6 +32,7 @@
     selectedImg = imgOne;
     unSelectedImg = imgTwo;
     _selectType = kSelectedImage;
+  
 }
 
 - (void)selected
@@ -43,11 +44,16 @@
             break;
         case kBlueAndClear:
         {
-            [self setTitle:_title andImg:selectedImg andButtonType:btnType];
+            [self resetImage:selectedImg];
             [self setBackgroundColor:PMColor6];
             [_titleLabel setTextColor:[UIColor whiteColor]];
         }
             
+            break;
+        case kNoneClear:
+        {
+            [self resetImage:selectedImg];
+        }
             break;
         default:
             break;
@@ -64,9 +70,14 @@
             break;
         case kBlueAndClear:
         {
-            [self setTitle:_title andImg:unSelectedImg andButtonType:btnType];
-            [self setBackgroundColor:[UIColor clearColor]];
+            [self resetImage:unSelectedImg];
+            [self setBackgroundColor:[UIColor whiteColor]];
             [_titleLabel setTextColor:PMColor6];
+        }
+            break;
+        case kNoneClear:
+        {
+            [self resetImage:unSelectedImg];
         }
             break;
         default:
@@ -80,10 +91,19 @@
 
 - (void)setSelectedImg:(UIImage *)imgOne andUnselectedImg:(UIImage *)imgTwo andTitle:(NSString *)title andButtonType:(TextImgBtnType)type andSelectedType:(SelectedTextImgButton)selectedType
 {
+   
     selectedImg = imgOne;
     unSelectedImg = imgTwo;
     _selectType = selectedType;
     btnType = type;
     _title = title;
+    [self setTitle:_title andImg:selectedImg andButtonType:btnType];
 }
+
+- (void)resetTitle:(NSString *)title
+{
+    [_titleLabel setText:title];
+    [self adjustLayout];
+}
+
 @end
