@@ -10,6 +10,7 @@
 #import "Topic.h"
 #import "Reply.h"
 #import "ReplyForUpload.h"
+#import "UserInfo.h"
 
 static Forum * instance;
 
@@ -26,6 +27,11 @@ static Forum * instance;
         instance = [[Forum alloc] init];
     }
     return instance;
+}
+
++ (void)releaseInstance
+{
+    instance = nil;
 }
 
 - (id)init
@@ -49,6 +55,7 @@ static Forum * instance;
     PumanRequest *req = [[PumanRequest alloc] init];
     [_requests addObject:req];
     [req setUrlStr:kUrl_GetActiveTopics];
+    [req setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
     [req setDelegate:self];
     [req setResEncoding:PumanRequestRes_JsonEncoding];
     [req postAsynchronous];
@@ -78,6 +85,7 @@ static Forum * instance;
 - (ReplyForUpload *)createReplyForUpload
 {
     ReplyForUpload *re = [[ReplyForUpload alloc] init];
+    [re setTID:_onTopic.TID];
     [_repliesForUpload addObject:re];
     return re;
 }
@@ -101,7 +109,7 @@ static Forum * instance;
     } else {
         id retArr = afRequest.resObj;
         if (!retArr || ![retArr isKindOfClass:[NSArray class]]) {
-            [self informDelegates:@selector(activeTopicsFailed)];
+            [self informDelegates:@selector(activeTopicsFailed) withObject:nil];
         } else {
             for (NSDictionary *ret in retArr) {
                 Topic *topic = [[Topic alloc] init];
@@ -113,7 +121,7 @@ static Forum * instance;
                     [_votingTopic addObject:topic];
                 }
             }
-            [self informDelegates:@selector(activeTopicsReceived)];
+            [self informDelegates:@selector(activeTopicsReceived) withObject:nil];
         }
     }
     [_requests removeObject:afRequest];
@@ -134,35 +142,16 @@ static Forum * instance;
     [_delegates removeObject:object];
 }
 
-- (void)informDelegates:(SEL)sel
-{
-    for (id<ForumDelegate> del in _delegates) {
-        if ([del respondsToSelector:sel]) {
-            [del performSelector:sel];
-        }
-    }
-}
-
 - (void)informDelegates:(SEL)sel withObject:(id)obj
 {
-    for (id<ForumDelegate> del in _delegates) {
+    for (NSObject<ForumDelegate> * del in _delegates) {
         if ([del respondsToSelector:sel]) {
-            [del performSelector:sel withObject:obj];
+            [del performSelectorOnMainThread:sel withObject:obj waitUntilDone:YES];
         }
     }
 }
 
 #pragma mark - Recall
-
-- (void)repliesLoaded:(Topic *)topic
-{
-    [self informDelegates:@selector(topicRepliesLoadedMore:) withObject:topic];
-}
-
-- (void)repliesFailed:(Topic *)topic
-{
-    [self informDelegates:@selector(topicRepliesLoadFailed:) withObject:topic];
-}
 
 - (void)replyUploaded:(ReplyForUpload *)reply
 {

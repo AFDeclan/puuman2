@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1455006218E042E100360EDF /* OtherUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455006118E042E100360EDF /* OtherUserInfo.m */; };
 		146A2C6E18DD810E0038A850 /* ReplyForUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C6D18DD810E0038A850 /* ReplyForUpload.m */; };
 		146A2C7218DD8D1C0038A850 /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C7118DD8D1C0038A850 /* FileUploader.m */; };
 		147756F918D7F49E00E08BD0 /* Forum.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756F818D7F49E00E08BD0 /* Forum.m */; };
@@ -55,6 +56,7 @@
 		14B8DF5C18BC3E250047C6B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5B18BC3E250047C6B3 /* QuartzCore.framework */; };
 		14B8DF5E18BC3E340047C6B3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5D18BC3E340047C6B3 /* CoreTelephony.framework */; };
 		14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */; };
+		14C0B6A018E1158C00BC308E /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C0B69F18E1158C00BC308E /* Comment.m */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
 		5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */; };
@@ -510,6 +512,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1455006018E042E100360EDF /* OtherUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherUserInfo.h; sourceTree = "<group>"; };
+		1455006118E042E100360EDF /* OtherUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherUserInfo.m; sourceTree = "<group>"; };
 		146A2C6C18DD810E0038A850 /* ReplyForUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyForUpload.h; sourceTree = "<group>"; };
 		146A2C6D18DD810E0038A850 /* ReplyForUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyForUpload.m; sourceTree = "<group>"; };
 		146A2C7018DD8D1C0038A850 /* FileUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUploader.h; sourceTree = "<group>"; };
@@ -597,6 +601,8 @@
 		14B8DF5B18BC3E250047C6B3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14B8DF5D18BC3E340047C6B3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		14C0B69E18E1158C00BC308E /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		14C0B69F18E1158C00BC308E /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		5403CC5E18D006C7004CAE22 /* DetailShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailShowViewController.h; sourceTree = "<group>"; };
@@ -1259,6 +1265,10 @@
 				147756FE18D7F4B800E08BD0 /* Reply.m */,
 				146A2C6C18DD810E0038A850 /* ReplyForUpload.h */,
 				146A2C6D18DD810E0038A850 /* ReplyForUpload.m */,
+				14C0B69E18E1158C00BC308E /* Comment.h */,
+				14C0B69F18E1158C00BC308E /* Comment.m */,
+				1455006018E042E100360EDF /* OtherUserInfo.h */,
+				1455006118E042E100360EDF /* OtherUserInfo.m */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -3202,6 +3212,7 @@
 				54A8F45718CDC22C00D0D523 /* AuPhotoDiaryCell.m in Sources */,
 				5403CC7518D03B7D004CAE22 /* DiaryShowCell.m in Sources */,
 				54CE10E418C1842C00966396 /* AFButton.m in Sources */,
+				1455006218E042E100360EDF /* OtherUserInfo.m in Sources */,
 				54ADE09B18C8608700B166C4 /* NewCameraControlView.m in Sources */,
 				54AFBBC218D6938600861A69 /* DateButton.m in Sources */,
 				54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */,

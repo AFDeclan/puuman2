@@ -7,20 +7,49 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PumanRequest.h"
 
-@interface Reply : NSObject
+@interface Reply : NSObject <AFRequestDelegate>
 {
-    
+    NSMutableSet *_reqs;
+    NSInteger _coffset;
 }
 
+//回复ID
+@property (assign, nonatomic, readonly) NSInteger RID;
+//话题TID
 @property (assign, nonatomic, readonly) NSInteger TID;
+//作者UID
 @property (assign, nonatomic, readonly) NSInteger UID;
+//标题
 @property (retain, nonatomic, readonly) NSString * RTitle;
+//创建时间
 @property (retain, nonatomic, readonly) NSDate * RCreateTime;
+//评论数量
+@property (assign, nonatomic, readonly) NSInteger RCommentCnt;
+//点赞数量
+@property (assign, nonatomic, readonly) NSInteger RVoteCnt;
+//是否被当前用户点过赞
+@property (assign, nonatomic, readonly) BOOL voted;
 
 @property (retain, nonatomic, readonly) NSArray * textUrls;
 @property (retain, nonatomic, readonly) NSArray * photoUrls;
 
 @property (retain, nonatomic) NSDictionary *data;
+
+//已获取的评论列表
+@property (retain, nonatomic, readonly) NSMutableArray * comments;
+//是否获取了全部的评论列表
+@property (assign, nonatomic, readonly) bool noMore;
+
+//获取更多评论
+- (void)getMoreComments:(NSInteger)cnt;
+
+//发表评论
+- (void)comment:(NSString *)content;
+
+
+//点赞，注意如果voted为YES说明已经赞过，此方法直接返回。
+- (void)vote;
 
 @end

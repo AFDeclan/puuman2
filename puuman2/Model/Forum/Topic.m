@@ -11,6 +11,8 @@
 #import "PumanRequest.h"
 #import "Reply.h"
 #import "UniverseConstant.h"
+#import "UserInfo.h"
+#import "Forum.h"
 
 @implementation Topic
 
@@ -44,6 +46,8 @@
             _TStatus = [val integerValue];
         } else if ([key isEqualToString:@"TCreateTime"]) {
             _TCreateTime = [DateFormatter datetimeFromString:val withFormat:@"yyyy-MM-dd HH:mm:ss"];
+        } else if ([key isEqualToString:@"voted"]) {
+            _voted = [val boolValue];
         } else {
             [_meta setValue:val forKey:key];
         }
@@ -53,7 +57,7 @@
     _noMore = YES;
 }
 
-- (void)getMoreReplies:(NSInteger)cnt;
+- (void)getMoreReplies:(NSInteger)cnt
 {
     if (_request || _noMore) return;
     _request = [[PumanRequest alloc] init];
@@ -61,28 +65,55 @@
     [_request setIntegerParam:_roffset forKey:@"offset"];
     [_request setIntegerParam:cnt forKey:@"limit"];
     [_request setIntegerParam:_TID forKey:@"TID"];
+    [_request setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
     [_request setDelegate:self];
     [_request setResEncoding:PumanRequestRes_JsonEncoding];
     [_request postAsynchronous];
 }
 
+- (void)vote
+{
+    if (_voteReq || _voted) return;
+    _voteReq = [[PumanRequest alloc] init];
+    [_voteReq setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
+    [_voteReq setIntegerParam:_TID forKey:@"TID"];
+    [_voteReq setDelegate:self];
+    [_voteReq postAsynchronous];
+}
+
 - (void)requestEnded:(AFBaseRequest *)afRequest
 {
-    if (afRequest.result == PumanRequest_Succeeded && afRequest.resObj) {
-        NSArray *ret = afRequest.resObj;
-        NSInteger cnt = [ret count];
-        _roffset += cnt;
-        if (cnt < [[afRequest.params valueForKey:@"limit"] integerValue]) _noMore = YES;
-        for (NSDictionary * replyData in ret) {
-            Reply *re = [[Reply alloc] init];
-            [re setData:replyData];
-            [_replies addObject:re];
+    if (afRequest == _request) {
+        if (afRequest.result == PumanRequest_Succeeded && afRequest.resObj) {
+            NSArray *ret = afRequest.resObj;
+            NSInteger cnt = [ret count];
+            _roffset += cnt;
+            if (cnt < [[afRequest.params valueForKey:@"limit"] integerValue]) _noMore = YES;
+            for (NSDictionary * replyData in ret) {
+                Reply *re = [[Reply alloc] init];
+                [re setData:replyData];
+                [_replies addObject:re];
+            }
+            [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadedMore:) withObject:self];
+        } else {
+            if (afRequest.result == 2) {
+                _noMore = YES;
+            }
+            [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
         }
+        _request = nil;
+    } else {
+        if (afRequest.result == PumanRequest_Succeeded) {
+            _voted = YES;
+            [[Forum sharedInstance] informDelegates:@selector(topicVoted:) withObject:self];
+        } else {
+            if (afRequest.result == 1) {
+                _voted = YES;
+            }
+            [[Forum sharedInstance] informDelegates:@selector(topicVoteFailed:) withObject:self];
+        }
+        _voteReq = nil;
     }
-    if (afRequest.result == 2) {
-        _noMore = YES;
-    }
-    _request = nil;
 }
 
 @end
