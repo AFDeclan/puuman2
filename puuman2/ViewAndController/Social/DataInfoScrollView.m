@@ -8,6 +8,7 @@
 
 #import "DataInfoScrollView.h"
 #import "DataDetailInfoCell.h"
+#import "UniverseConstant.h"
 
 @implementation DataInfoScrollView
 
@@ -15,6 +16,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.delegate = self;
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
         dataColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 0, self.frame.size.width-22, 1432)];
@@ -67,5 +69,23 @@
     
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView == self) {
+        NSLog(@"%f",self.contentOffset.y);
+        PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:scrollView.contentOffset.y]);
+    }
+    
+}
 
+- (void)setVerticalFrame
+{
+    PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
+
+}
+- (void)setHorizontalFrame
+{
+    PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
+
+}
 @end

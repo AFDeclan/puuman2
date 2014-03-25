@@ -38,6 +38,7 @@
 - (void)setVerticalFrame
 {
     [dataInfoView setFrame:CGRectMake(0, 168, 608, 776)];
+    [dataInfoView setVerticalFrame];
     SetViewLeftUp(figuresHeader, 0, 0);
     SetViewLeftUp(manageBtn, 496, 8);
 }
@@ -45,6 +46,7 @@
 - (void)setHorizontalFrame
 {
     [dataInfoView setFrame:CGRectMake(128,168, 608, 520)];
+    [dataInfoView setHorizontalFrame];
     SetViewLeftUp(figuresHeader, 128, 0);
     SetViewLeftUp(manageBtn, 752, 84);
 }

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "UIColumnView.h"
-@interface DataInfoScrollView : UIScrollView<UIColumnViewDataSource, UIColumnViewDelegate>
+@interface DataInfoScrollView : UIScrollView<UIColumnViewDataSource, UIColumnViewDelegate,UIScrollViewDelegate>
 {
     UIColumnView *dataColumnView;
 }
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 @end
