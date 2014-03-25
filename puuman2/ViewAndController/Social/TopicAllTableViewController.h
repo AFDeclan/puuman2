@@ -12,6 +12,8 @@
 {
 
 }
+
+@property(nonatomic,assign)BOOL voting;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

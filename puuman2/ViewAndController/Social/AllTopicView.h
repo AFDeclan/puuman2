@@ -16,7 +16,7 @@
 {
 
      UIColumnView *_showColumnView;
-     Topic *topic;
+    
 }
 
 - (void)setVerticalFrame;

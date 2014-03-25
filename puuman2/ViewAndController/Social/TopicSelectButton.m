@@ -60,7 +60,7 @@
     }
 }
 
-- (void)setTitle:(NSString *)title
+- (void)setTitleName:(NSString *)title;
 {
     [label_title setText:title];
     

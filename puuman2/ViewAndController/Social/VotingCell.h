@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BasicInfoView.h"
+#import "ColorButton.h"
 
 @interface VotingCell : UITableViewCell
 {
     BasicInfoView *infoView;
+    UILabel *votingTopic;
+    UILabel *votedNum;
+    ColorButton *voteBtn;
+    UIView *bgView;
 }
 @end

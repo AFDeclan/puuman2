@@ -43,8 +43,8 @@
 - (void)activeTopicsReceived
 {
 
-     topic =  [[Forum sharedInstance] onTopic];
     [_showColumnView reloadData];
+    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*([Forum sharedInstance].onTopic.TNo -1), 0)];
     
 }
 
@@ -88,8 +88,13 @@
 
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
+    if ([[Forum sharedInstance] onTopic]) {
+         return [[Forum sharedInstance] onTopic].TNo+1;
+    }else{
+        return 0;
+    }
     
-    return topic.TNo;
+   
     
 }
 
@@ -103,7 +108,7 @@
         cell = [[TopicContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         [cell setDelegate:self];
     }
-    [cell setInfoViewWithTopic:topic];
+    [cell setInfoViewWithTopicNum:index+1];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
     
@@ -112,7 +117,9 @@
 
 - (void)nextTopic
 {
+
     [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x + self.frame.size.width, 0) animated:YES];
+
 }
 
 - (void)preTopic
@@ -120,4 +127,15 @@
     [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x - self.frame.size.width, 0) animated:YES];
 }
 
+//往期话题获取成功。
+- (void)topicReceived:(Topic *)topic
+{
+
+}
+
+//往期话题获取失败
+- (void)topicFailed:(NSString *)TNo
+{
+
+}
 @end

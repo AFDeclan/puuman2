@@ -18,6 +18,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        [[Forum sharedInstance] addDelegateObject:self];
         [self initialization];
     }
     return self;
@@ -38,6 +39,7 @@
     info_title = [[UILabel alloc] initWithFrame:CGRectMake(208, 48, 320, 28)];
     [info_title setBackgroundColor:[UIColor clearColor]];
     [info_title setFont:PMFont1];
+    [info_title setTextColor:PMColor1];
     [self addSubview:info_title];
     info_num = [[UILabel alloc] initWithFrame:CGRectMake(208, 76, 320, 20)];
     [info_num setBackgroundColor:[UIColor clearColor]];
@@ -63,6 +65,8 @@
     topicAllVC = [[TopicAllTableViewController alloc] initWithNibName:nil bundle:nil];
     [topicAllVC.view setBackgroundColor:[UIColor clearColor]];
     [self addSubview:topicAllVC.view];
+    
+   
     
     leftBtn = [[TopicSelectButton alloc] init];
     [leftBtn addTarget:self action:@selector(preTopic) forControlEvents:UIControlEventTouchUpInside];
@@ -100,11 +104,10 @@
             [participateBtn setAlpha:1];
             [toNewestBtn setAlpha:0];
             [initiateBtn setAlpha:0];
-            [rightBtn setNoti:@"下期话题"];
-            [leftBtn setNoti:@"往期话题"];
             SetViewLeftUp(rewardBtn, 496, 152);
             SetViewLeftUp(participateBtn, 496, 192);
             [topicAllVC.view setFrame:CGRectMake(0, 240, 608, 800)];
+          
             
         }
             break;
@@ -114,8 +117,6 @@
             [participateBtn setAlpha:0];
             [toNewestBtn setAlpha:1];
             [initiateBtn setAlpha:0];
-            [rightBtn setNoti:@"下期话题"];
-            [leftBtn setNoti:@"往期话题"];
             SetViewLeftUp(toNewestBtn, 496, 152);
              [topicAllVC.view setFrame:CGRectMake(0, 200, 608, 800)];
         }
@@ -126,8 +127,6 @@
             [participateBtn setAlpha:0];
             [toNewestBtn setAlpha:0];
             [initiateBtn setAlpha:1];
-            [rightBtn setNoti:@"下期话题"];
-            [leftBtn setNoti:@"往期话题"];
             SetViewLeftUp(initiateBtn, 496, 152);
             [topicAllVC.view setFrame:CGRectMake(0, 200, 608, 800)];
         }
@@ -152,8 +151,7 @@
             [participateBtn setAlpha:1];
             [toNewestBtn setAlpha:0];
             [initiateBtn setAlpha:0];
-            [rightBtn setNoti:@"下期话题"];
-            [leftBtn setNoti:@"往期话题"];
+    
             SetViewLeftUp(rewardBtn, 752, 168);
             SetViewLeftUp(participateBtn, 752, 208);
             
@@ -196,25 +194,78 @@
     
 }
 
--(void)setInfoViewWithTopic:(Topic *)topic
+-(void)setInfoViewWithTopicNum:(NSInteger)topicNum
 {
-    if ([[Forum  sharedInstance] onTopic].TNo == 1) {
+    
+    if (topicNum == 1 ) {
         [leftBtn setAlpha:0];
     }else{
         [leftBtn setAlpha:1];
     }
     
-    if ([[Forum sharedInstance] onTopic].TNo == topic.TNo) {
-      
-    }else{
+ 
     
+    if(topicNum > [[Forum sharedInstance] onTopic].TNo)
+    {
+        status = TopicStatus_Voting;
+        [rightBtn setAlpha:0];
+        [leftBtn setNoti:@""];
+        [leftBtn setTitleName:@"本期话题"];
+        [info_title setText:[NSString stringWithFormat:@"第%d期话题征集中",topicNum]];
+        [info_title setTextColor:PMColor6];
+        [info_num setText:@"发起或投票选出你最喜欢的话题吧！"];
+        [topicAllVC setVoting:YES];
+        
+        
+    }else{
+         [topicAllVC setVoting:NO];
+        [info_title setTextColor:PMColor1];
+         [rightBtn setAlpha:1];
+        if ([[Forum sharedInstance] getTopic:topicNum]) {
+            _topic = [[Forum sharedInstance] getTopic:topicNum];
+            status = _topic.TStatus;
+            [info_num setText:[NSString stringWithFormat:@"已有%d人参与",_topic.TNo]];
+            
+            
+        }
+         [info_title setText:_topic.TTitle];
+        if ([[Forum sharedInstance] onTopic].TNo == topicNum) {
+            [rightBtn setAlpha:1];
+            [rightBtn setNoti:@"下期话题"];
+            [leftBtn setNoti:@"往期话题"];
+            [rightBtn setTitleName:@"征集!"];
+            [leftBtn setTitleName:@"回顾！"];
+            status= TopicStatus_On;
+            [info_title setText:[[Forum sharedInstance] onTopic].TTitle];
+            [info_num setText:[NSString stringWithFormat:@"已有%d人参与",[[Forum sharedInstance] onTopic].TNo]];
+            
+        }else{
+            
+            
+            [info_num setText:[NSString stringWithFormat:@"第%d期",topicNum]];
+            [leftBtn setNoti:@""];
+            [leftBtn setTitleName:[NSString stringWithFormat:@"第%d期",topicNum-1]];
+            [rightBtn setNoti:@""];
+            [rightBtn setTitleName:[NSString stringWithFormat:@"第%d期",topicNum+1]];
+            
+        }
+        
+
+    }
+    if([MainTabBarController sharedMainViewController].isVertical)
+    {
+        [self setVerticalFrame];
+    }else
+    {
+        [self setHorizontalFrame];
     }
     
-    status = topic.TStatus;
-    [info_title setText:topic.TTitle];
-    [info_num setText:[NSString stringWithFormat:@"已有%d人参与",topic.TNo]];
+   
     
 }
+
+
+
 - (void)preTopic
 {
     [_delegate preTopic];
@@ -234,7 +285,11 @@
     [rewardVC setControlBtnType:kOnlyCloseButton];
     [[MainTabBarController sharedMainViewController].view addSubview:rewardVC.view];
     [rewardVC show];
+    
 }
+
+
+
 
 -(void)participate
 {
@@ -247,4 +302,17 @@
  
 
 }
+
+//往期话题获取成功。
+- (void)topicReceived:(Topic *)topic
+{
+     _topic = topic;
+}
+
+//往期话题获取失败
+- (void)topicFailed:(NSString *)TNo
+{
+
+}
+
 @end

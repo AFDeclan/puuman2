@@ -17,7 +17,7 @@
 
 
 @protocol TopicContentCellDelegate;
-@interface TopicContentCell : UITableViewCell
+@interface TopicContentCell : UITableViewCell<ForumDelegate>
 {
     UIImageView *bgImageView;
     UILabel *info_title;
@@ -31,10 +31,11 @@
     TopicAllTableViewController *topicAllVC;
     BOOL currentTopicOrAfter;
     TopicStatus status;
+    Topic *_topic;
    
 }
 @property(nonatomic,assign)id<TopicContentCellDelegate>delegate;
--(void)setInfoViewWithTopic:(Topic *)topic;
+-(void)setInfoViewWithTopicNum:(NSInteger)topicNum;
 @end
 
 @protocol TopicContentCellDelegate <NSObject>
