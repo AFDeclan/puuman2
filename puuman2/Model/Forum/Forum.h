@@ -14,6 +14,7 @@
 
 @class Topic;
 @class ReplyForUpload;
+@class Reply;
 
 @protocol ForumDelegate <NSObject>
 
@@ -37,11 +38,40 @@
 //更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
 - (void)topicRepliesLoadFailed:(Topic *)topic;
 
+//话题投票成功
+- (void)topicVoted:(Topic *)topic;
+
+//话题投票失败，注意根据voted判断是否是因为重复投票
+- (void)topicVoteFailed:(Topic *)topic;
+
 //回复上传成功
 - (void)topicReplyUploaded:(ReplyForUpload *)reply;
 
 //回复上传失败
 - (void)topicReplyUploadFailed:(ReplyForUpload *)reply;
+
+//点赞成功
+- (void)topicReplyVoted:(Reply *)reply;
+
+//点赞失败
+- (void)topicReplyVoteFailed:(Reply *)reply;
+/*
+    注意判断reply.voted，如果为YES，说明是因为重复点赞失败。
+ */
+
+//更多评论加载成功
+- (void)replyCommentsLoadedMore:(Reply *)reply;
+
+//更多评论加载失败 注意根据noMore判断是否是因为全部加载完
+- (void)replyCommentsLoadFailed:(Reply *)reply;
+
+//评论上传成功
+- (void)replyCommentUploaded:(Reply *)reply;
+
+//评论上传失败
+- (void)replyCommentUploadFailed:(Reply *)reply;
+
+
 
 @end
 
@@ -61,6 +91,7 @@
 @property (retain, nonatomic, readonly) NSMutableSet * delegates;
 
 + (Forum *)sharedInstance;
++ (void)releaseInstance;
 
 - (void)addDelegateObject:(id<ForumDelegate>)object;
 - (void)removeDelegateObject:(id<ForumDelegate>)object;
@@ -75,9 +106,8 @@
 - (ReplyForUpload *)createReplyForUpload;
    
 #pragma mark --------------interface end-------------------
-//Topic类、ReplyForUpload类回调方法，对外部不开放。
-- (void)repliesLoaded:(Topic *)topic;
-- (void)repliesFailed:(Topic *)topic;
+//内部回调方法，对外部不开放。
+- (void)informDelegates:(SEL)sel withObject:(id)obj;
 - (void)replyUploaded:(ReplyForUpload *)reply;
 - (void)replyUploadFailed:(ReplyForUpload *)reply;
 
