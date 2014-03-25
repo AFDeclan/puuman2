@@ -17,8 +17,7 @@
     UIView *headerView;
     UIView *contentView;
     UIView *footerView;
-   
-    
+ 
 }
 
 @end
