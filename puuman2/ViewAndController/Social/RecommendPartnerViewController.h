@@ -15,4 +15,7 @@
     ColorButton *changeBtn;
     ColorButton *inviteBtn;
 }
+
+@property(nonatomic,assign)BOOL recommend;
+
 @end

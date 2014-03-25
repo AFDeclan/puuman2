@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AFImageView.h"
 #import "UILabel+AdjustSize.h"
+#import "AFTextImgButton.h"
 
 @interface BasicInfoView : UIView
 {

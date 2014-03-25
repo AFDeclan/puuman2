@@ -57,6 +57,24 @@
     }
 }
 
+- (void)adjustLayoutImgRight
+{
+    [_titleLabel adjustSize];
+    if (_iconView.image) {
+        CGFloat contentWidth = ViewWidth(_iconView) + 2 + ViewWidth(_titleLabel);
+        CGFloat x = ( ViewWidth(self) - contentWidth ) / 2;
+        CGFloat y = ViewHeight(self)/2;
+        SetViewLeftCenter(_titleLabel, x, y);
+        x = x + ViewWidth(_titleLabel) + 2;
+        SetViewLeftCenter(_iconView, x, y);
+    } else {
+        CGFloat contentWidth = ViewWidth(_titleLabel);
+        CGFloat x = ( ViewWidth(self) - contentWidth ) / 2;
+        CGFloat y = ViewHeight(self)/2;
+        SetViewLeftCenter(_titleLabel, x, y);
+    }
+}
+
 - (void)setTitle:(NSString *)title andImg:(UIImage *)image andButtonType:(TextImgBtnType)type;
 {
     [_titleLabel setText:title];
@@ -133,6 +151,14 @@
             [self adjustLayout];
         }
         
+            break;
+        case kButtonTypeTen:
+        {
+            [_iconView setFrame:CGRectMake(0, 0, 16, 16)];
+            [_titleLabel setFont:PMFont2];
+            [self adjustLayoutImgRight];
+        }
+            
             break;
         default:
             break;

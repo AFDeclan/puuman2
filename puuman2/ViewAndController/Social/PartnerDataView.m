@@ -8,6 +8,7 @@
 
 #import "PartnerDataView.h"
 #import "ColorsAndFonts.h"
+#import "UniverseConstant.h"
 
 @implementation PartnerDataView
 
@@ -15,8 +16,17 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-      //  [self setBackgroundColor:PMColor3];
+        figuresHeader = [[FiguresHeaderView alloc] initWithFrame:CGRectMake(0, 0, 608, 168)];
+        [self addSubview:figuresHeader];
+        
+        dataInfoView = [[DataInfoScrollView alloc] initWithFrame:CGRectMake(0, 0, 608, 520)];
+        [dataInfoView setBounces:NO];
+        [dataInfoView setContentSize:CGSizeMake(608, 1432)];
+        [self addSubview:dataInfoView];
+        manageBtn = [[ColorButton alloc] init];
+        [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];
+        [self addSubview:manageBtn];
+      
     }
     return self;
 }
@@ -27,12 +37,16 @@
 }
 - (void)setVerticalFrame
 {
-    
+    [dataInfoView setFrame:CGRectMake(0, 168, 608, 776)];
+    SetViewLeftUp(figuresHeader, 0, 0);
+    SetViewLeftUp(manageBtn, 496, 8);
 }
 
 - (void)setHorizontalFrame
 {
-    
+    [dataInfoView setFrame:CGRectMake(128,168, 608, 520)];
+    SetViewLeftUp(figuresHeader, 128, 0);
+    SetViewLeftUp(manageBtn, 752, 84);
 }
 
 @end

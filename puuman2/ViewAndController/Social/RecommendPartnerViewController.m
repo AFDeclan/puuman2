@@ -14,12 +14,13 @@
 @end
 
 @implementation RecommendPartnerViewController
-
+@synthesize recommend =_recommend;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self initWithContent];
     }
     return self;
 }
@@ -42,9 +43,13 @@
     [_content  addSubview:changeBtn];
     
     inviteBtn = [[ColorButton alloc] init];
-    [inviteBtn  initWithTitle:@"发起" andButtonType:kBlueLeft];
+    [inviteBtn  initWithTitle:@"邀请" andButtonType:kBlueLeft];
     [inviteBtn addTarget:self action:@selector(invite) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:inviteBtn];
+    SetViewLeftUp(changeBtn, 592, 112);
+    SetViewLeftUp(inviteBtn, 592, 152);
+    
+    
 }
 
 - (void)changed
@@ -107,4 +112,15 @@
     return 0;
 }
 
+-(void)setRecommend:(BOOL)recommend
+{
+    _recommend = recommend;
+    if (recommend) {
+        [changeBtn setAlpha:0];
+        [inviteBtn setAlpha:0];
+    }else{
+        [changeBtn setAlpha:1];
+        [inviteBtn setAlpha:1];
+    }
+}
 @end

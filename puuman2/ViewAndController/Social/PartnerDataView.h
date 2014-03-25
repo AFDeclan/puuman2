@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FiguresHeaderView.h"
+#import "DataInfoScrollView.h"
+#import "ColorButton.h"
 
 @interface PartnerDataView : UIView
 {
-    UIView *bgHeadView;
-    UIImageView *icon_head;
-    UITableView *chatTable;
-    UILabel *noti_label;
-    UILabel *info_title;
+    FiguresHeaderView *figuresHeader;
+    DataInfoScrollView *dataInfoView;
+    ColorButton *manageBtn;
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

@@ -1,0 +1,102 @@
+//
+//  FiguresHeaderView.m
+//  puuman2
+//
+//  Created by Ra.（祁文龙） on 14-3-25.
+//  Copyright (c) 2014年 AFITC. All rights reserved.
+//
+
+#import "FiguresHeaderView.h"
+#import "ColorsAndFonts.h"
+#import "FigureHeaderCell.h"
+#import "RecommendPartnerViewController.h"
+#import "MainTabBarController.h"
+
+@implementation FiguresHeaderView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        icon_head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+        [icon_head setImage:[UIImage imageNamed:@"block_name_fri.png"]];
+        [self addSubview:icon_head];
+        
+        
+        info_title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+        [info_title setBackgroundColor:[UIColor clearColor]];
+        [info_title setTextColor:[UIColor whiteColor]];
+        [info_title setFont:PMFont2];
+        [info_title setTextAlignment:NSTextAlignmentCenter];
+        [info_title setText:@"三月宝宝妈妈团"];
+        [icon_head addSubview:info_title];
+        
+        noti_label = [[UILabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
+        [noti_label setText:@"三天前，天天邀请了w 入团"];
+        [noti_label setFont:PMFont2];
+        [noti_label setTextColor:PMColor3];
+        [noti_label setBackgroundColor:[UIColor clearColor]];
+        [self addSubview:noti_label];
+        figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 48, self.frame.size.width-22, 120)];
+        [figuresColumnView setBackgroundColor:[UIColor clearColor]];
+        [figuresColumnView setViewDelegate:self];
+        [figuresColumnView setViewDataSource:self];
+        [figuresColumnView setPagingEnabled:NO];
+        [figuresColumnView setScrollEnabled:YES];
+        [self addSubview:figuresColumnView];
+  
+
+    }
+    return self;
+}
+
+
+#pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
+- (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
+{
+    FigureHeaderCell *cell = (FigureHeaderCell *)[columnView cellForIndex:index];
+    RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
+    [recommend setControlBtnType:kOnlyCloseButton];
+    [recommend setRecommend:cell.recommend];
+    if (cell.recommend) {
+        [recommend setTitle:@"推荐伙伴" withIcon:nil];
+    }else{
+        [recommend setTitle:@"宝宝详情" withIcon:nil];
+    }
+    [[MainTabBarController sharedMainViewController].view addSubview:recommend.view];
+    [recommend show];
+}
+
+
+- (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
+{
+    
+    return 96;
+    
+}
+
+- (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
+{
+    
+    return 6;
+    
+}
+
+- (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
+{
+    
+    NSString * cellIdentifier = @"FigursHeader";
+    FigureHeaderCell *cell = (FigureHeaderCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[FigureHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+       
+    }
+    [cell setRecommend:NO];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    return cell;
+    
+}
+
+
+@end
