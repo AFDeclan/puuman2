@@ -557,4 +557,16 @@ static DiaryViewController * instance;
     
 }
 
+- (void)setImportTotalNum:(NSInteger)num
+{
+    
+    [diaryTableVC setImportTotalNum:num];
+    [diaryTableVC.tableView reloadData];
+}
+
+- (void)refreshTable
+{
+    [diaryTableVC.tableView reloadData];
+}
+
 @end

@@ -34,10 +34,10 @@
 
 - (void)initContentView
 {
-    contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 32)];
-    UIImageView *bgImg =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 32)];
-    [bgImg setBackgroundColor:Color_b4];
-    [contentView addSubview:bgImg];
+    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 32)];
+    UIImageView *bgImg =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 32)];
+    [bgImg setBackgroundColor:PMColor4];
+    [_contentView addSubview:bgImg];
     button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 448, 32)];
     [button setAdjustsImageWhenDisabled:NO];
     [button setBackgroundColor:[UIColor clearColor]];
@@ -45,7 +45,7 @@
     [button setEnabled:NO];
     progress = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 448, 32)];
     [progress setScrollEnabled:NO];
-    [contentView addSubview:progress];
+    [_contentView addSubview:progress];
     [progress setContentSize:CGSizeMake(448*2, 32)];
     UIImageView *bg =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 448, 32)];
     [bg setBackgroundColor:RGBColor(159, 199, 225)];
@@ -53,15 +53,14 @@
     [progress addSubview:bg];
     icon = [[UIImageView alloc] initWithFrame:CGRectMake(6, 6, 24, 24)];
     [icon setImage:[UIImage imageNamed:@"icon1_download_diary.png"]];
-    [contentView addSubview:icon];
+    [_contentView addSubview:icon];
     
     title = [[UILabel alloc] initWithFrame:CGRectMake(96, 10, 224, 12)];
-    [title setTextColor:Color_b3];
-    [title setFont:DefaultFont_Small3];
+    [title setTextColor:PMColor6];
+    [title setFont:PMFont3];
     [title setBackgroundColor:[UIColor clearColor]];
-    [contentView addSubview:title];
-     [contentView addSubview:button];
-    [self addSubview:contentView];
+    [_contentView addSubview:button];
+    [self addSubview:_contentView];
    
 }
 
@@ -114,7 +113,7 @@
 -(void)setBgPointY:(float)pointY;
 {
 
-    [bgView setFrame:CGRectMake(0,pointY, kScreenWidth, 48)];
+    [bgView setFrame:CGRectMake(0,pointY, 320, 48)];
     pointY = pointY+8>0?pointY+8:0;
     [button setFrame:CGRectMake(178, pointY, 448, 32)];
     
@@ -146,7 +145,7 @@
     }else{
         [[DiaryViewController sharedDiaryViewController] setImportTotalNum:0];
         [[ImportStore shareImportStore] addNewDiary];
-        [[DiaryViewController sharedDiaryViewController] importLoaded];
+        [[DiaryViewController sharedDiaryViewController] refreshTable];
         [[ImportStore shareImportStore] reset];
     }
     

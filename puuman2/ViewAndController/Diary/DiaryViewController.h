@@ -34,5 +34,6 @@
 - (void)setTaskInfo:(NSDictionary *)taskInfo;
 - (void)refresh;
 - (void)diaryLoaded;
-
+- (void)refreshTable;
+- (void)setImportTotalNum:(NSInteger)num;
 @end

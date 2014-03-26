@@ -11,7 +11,7 @@
 @interface DiaryHeaderView : UIView
 {
     UIView *bgView;
-    UIView *contentView;
+    UIView *_contentView;
     UILabel *title;
     UIImageView *icon;
     UIButton *button;

@@ -303,6 +303,11 @@
 		54ADB1D418E1860200FCCC83 /* TextTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D318E1860200FCCC83 /* TextTopicCell.m */; };
 		54ADB1D718E1861700FCCC83 /* PhotoTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D618E1861700FCCC83 /* PhotoTopicCell.m */; };
 		54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */; };
+		54ADB1E218E1AA4C00FCCC83 /* ImportTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1DE18E1AA4C00FCCC83 /* ImportTitle.m */; };
+		54ADB1E318E1AA4C00FCCC83 /* ImportImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1E018E1AA4C00FCCC83 /* ImportImgCell.m */; };
+		54ADB1E618E1AC1D00FCCC83 /* AutoImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1E518E1AC1D00FCCC83 /* AutoImportViewController.m */; };
+		54ADB1EC18E1B39000FCCC83 /* DiaryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1EB18E1B39000FCCC83 /* DiaryHeaderView.m */; };
+		54ADB1EF18E1B42200FCCC83 /* ImportStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1EE18E1B42200FCCC83 /* ImportStore.m */; };
 		54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */; };
 		54ADE07D18C85D1C00B166C4 /* btn_more_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE07718C85D1C00B166C4 /* btn_more_diary.png */; };
 		54ADE07E18C85D1C00B166C4 /* btn2_audio_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE07818C85D1C00B166C4 /* btn2_audio_diary.png */; };
@@ -922,6 +927,16 @@
 		54ADB1D618E1861700FCCC83 /* PhotoTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTopicCell.m; sourceTree = "<group>"; };
 		54ADB1D818E1862A00FCCC83 /* AudioTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTopicCell.h; sourceTree = "<group>"; };
 		54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioTopicCell.m; sourceTree = "<group>"; };
+		54ADB1DD18E1AA4C00FCCC83 /* ImportTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportTitle.h; sourceTree = "<group>"; };
+		54ADB1DE18E1AA4C00FCCC83 /* ImportTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportTitle.m; sourceTree = "<group>"; };
+		54ADB1DF18E1AA4C00FCCC83 /* ImportImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportImgCell.h; sourceTree = "<group>"; };
+		54ADB1E018E1AA4C00FCCC83 /* ImportImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportImgCell.m; sourceTree = "<group>"; };
+		54ADB1E418E1AC1D00FCCC83 /* AutoImportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoImportViewController.h; sourceTree = "<group>"; };
+		54ADB1E518E1AC1D00FCCC83 /* AutoImportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoImportViewController.m; sourceTree = "<group>"; };
+		54ADB1EA18E1B39000FCCC83 /* DiaryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryHeaderView.h; sourceTree = "<group>"; };
+		54ADB1EB18E1B39000FCCC83 /* DiaryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryHeaderView.m; sourceTree = "<group>"; };
+		54ADB1ED18E1B42200FCCC83 /* ImportStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportStore.h; sourceTree = "<group>"; };
+		54ADB1EE18E1B42200FCCC83 /* ImportStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportStore.m; sourceTree = "<group>"; };
 		54ADE07318C85B6B00B166C4 /* DiaryNewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryNewButton.h; sourceTree = "<group>"; };
 		54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryNewButton.m; sourceTree = "<group>"; };
 		54ADE07718C85D1C00B166C4 /* btn_more_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_more_diary.png; sourceTree = "<group>"; };
@@ -2123,6 +2138,10 @@
 		54B1FBDF18C6BF4700529B2C /* support */ = {
 			isa = PBXGroup;
 			children = (
+				54ADB1DD18E1AA4C00FCCC83 /* ImportTitle.h */,
+				54ADB1DE18E1AA4C00FCCC83 /* ImportTitle.m */,
+				54ADB1DF18E1AA4C00FCCC83 /* ImportImgCell.h */,
+				54ADB1E018E1AA4C00FCCC83 /* ImportImgCell.m */,
 				54A8F45C18CDC9A000D0D523 /* AudioViewController.h */,
 				54A8F45D18CDC9A000D0D523 /* AudioViewController.m */,
 				54ADE08518C8608700B166C4 /* NewAudioPlayView.h */,
@@ -2419,6 +2438,10 @@
 			children = (
 				54CE111918C1BC6D00966396 /* DiaryViewController.h */,
 				54CE111A18C1BC6D00966396 /* DiaryViewController.m */,
+				54ADB1EA18E1B39000FCCC83 /* DiaryHeaderView.h */,
+				54ADB1EB18E1B39000FCCC83 /* DiaryHeaderView.m */,
+				54ADB1ED18E1B42200FCCC83 /* ImportStore.h */,
+				54ADB1EE18E1B42200FCCC83 /* ImportStore.m */,
 				54ADE07318C85B6B00B166C4 /* DiaryNewButton.h */,
 				54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */,
 				54F1D10C18C48DCA0005CDD9 /* Diary */,
@@ -2641,6 +2664,8 @@
 				54ADE09218C8608700B166C4 /* NewImportDiaryViewController.m */,
 				54ADE09318C8608700B166C4 /* NewTextDiaryViewController.h */,
 				54ADE09418C8608700B166C4 /* NewTextDiaryViewController.m */,
+				54ADB1E418E1AC1D00FCCC83 /* AutoImportViewController.h */,
+				54ADB1E518E1AC1D00FCCC83 /* AutoImportViewController.m */,
 				54B1FBDF18C6BF4700529B2C /* support */,
 			);
 			path = NewDiary;
@@ -3105,6 +3130,7 @@
 				5421666918E00DAF005875F8 /* PartnerPortraitDataViewCell.m in Sources */,
 				54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */,
 				54CE10F618C1842C00966396 /* TextLayoutLabel.m in Sources */,
+				54ADB1E618E1AC1D00FCCC83 /* AutoImportViewController.m in Sources */,
 				5421667618E032B5005875F8 /* VotingCell.m in Sources */,
 				54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */,
 				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
@@ -3125,6 +3151,7 @@
 				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
 				54ADB1BE18E1310900FCCC83 /* DataDetailInfoCell.m in Sources */,
 				54AFAA8818DA9B640067B8C1 /* RecommendPartnerViewController.m in Sources */,
+				54ADB1EC18E1B39000FCCC83 /* DiaryHeaderView.m in Sources */,
 				545EB7F318D7F22900D8EB7F /* AgeCalendarView.m in Sources */,
 				54A8F45E18CDC9A000D0D523 /* AudioViewController.m in Sources */,
 				54ADB1D718E1861700FCCC83 /* PhotoTopicCell.m in Sources */,
@@ -3222,6 +3249,7 @@
 				5403CE4E18D06E87004CAE22 /* BabyInfoButton.m in Sources */,
 				54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */,
 				14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */,
+				54ADB1E218E1AA4C00FCCC83 /* ImportTitle.m in Sources */,
 				54B6F41118D6B0590055FC72 /* SettingBindViewController.m in Sources */,
 				547F9B5118D162A600486337 /* BodyInfoTableViewCell.m in Sources */,
 				54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */,
@@ -3231,6 +3259,7 @@
 				5403CC7518D03B7D004CAE22 /* DiaryShowCell.m in Sources */,
 				54CE10E418C1842C00966396 /* AFButton.m in Sources */,
 				1455006218E042E100360EDF /* OtherUserInfo.m in Sources */,
+				54ADB1EF18E1B42200FCCC83 /* ImportStore.m in Sources */,
 				54ADE09B18C8608700B166C4 /* NewCameraControlView.m in Sources */,
 				54AFBBC218D6938600861A69 /* DateButton.m in Sources */,
 				54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */,
@@ -3243,6 +3272,7 @@
 				54AFBBC918D6938600861A69 /* PregnancyCalendar.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
 				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
+				54ADB1E318E1AA4C00FCCC83 /* ImportImgCell.m in Sources */,
 				54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */,
 				541970D418D1956D0058FE64 /* InfoView.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,

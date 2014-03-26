@@ -15,6 +15,7 @@
 #import "VideoDiaryCell.h"
 #import "PhotoSingleDiaryCell.h"
 #import "PhotoMoreDiaryCell.h"
+#import "DiaryHeaderView.h"
 
 
 
@@ -22,8 +23,12 @@
 {
     NSIndexPath *selectedPath;
     DiaryCell *_activeCell;
-    
+    int importNum;
+    int importTotalNum;
+     DiaryHeaderView *importProgress;
+    DiaryHeaderView *headerview;
 }
-
+- (void)diaryLoaded;
+- (void)setImportTotalNum:(NSInteger)num;
 - (void)tapWithPoint:(CGPoint)pos;
 @end

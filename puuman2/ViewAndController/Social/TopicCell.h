@@ -23,6 +23,7 @@
     AFTextImgButton *replayBtn;
     UILabel *relayExample;
     AFTextImgButton *scanMoreReplay;
+    UILabel *title_label;
     
 }
 

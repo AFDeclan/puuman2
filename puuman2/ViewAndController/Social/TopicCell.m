@@ -56,6 +56,14 @@
     [info_time setBackgroundColor:[UIColor clearColor]];
     [headerView addSubview:info_time];
     
+    title_label = [[UILabel alloc] initWithFrame:CGRectMake(464, 16, 128, 12)];
+    [title_label setTextAlignment:NSTextAlignmentRight];
+    [title_label setTextColor:PMColor1];
+    [title_label setFont:PMFont2];
+    [title_label setText:@"我家宝宝第一次"];
+    [title_label setBackgroundColor:[UIColor clearColor]];
+    [headerView addSubview:title_label];
+
     
     replayBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 304, 40)];
     [replayBtn addTarget:self action:@selector(replayBtnPressed) forControlEvents:UIControlEventTouchUpInside];

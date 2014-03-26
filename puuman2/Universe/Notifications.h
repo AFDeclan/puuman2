@@ -46,5 +46,5 @@
 #define Noti_ReloadDiaryTable                   @"Noti_ReloadDiaryTable"
 #define Noti_HideKeyBoard                       @"Noti_HideKeyBoard"
 #define Noti_PartnerDataViewScrolled            @"Noti_PartnerDataViewScrolled"
-
+#define Noti_Imported                           @"Noti_Imported"
 #endif

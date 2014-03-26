@@ -7,7 +7,10 @@
 //
 
 #import "TopicCell.h"
-
+#import "AdaptiveLabel.h"
 @interface TextTopicCell : TopicCell
-
+{
+    AdaptiveLabel *mainTextView;
+    
+}
 @end

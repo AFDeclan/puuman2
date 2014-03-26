@@ -20,10 +20,15 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        importNum = 0;
+        importTotalNum = 0;
         // Custom initialization
         [MyNotiCenter addObserver:self selector:@selector(reloadTable) name:Noti_ReloadDiaryTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(deleteDiary:) name:Noti_DeleteDiary object:nil];
         [MyNotiCenter addObserver:self selector:@selector(deletBtnShowed:) name:Noti_DelBtnShowed object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(imported) name:Noti_Imported object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(updateDiaryCount) name:Noti_UpdateDiaryStateRefreshed object:nil];
+        
     }
     return self;
 }
@@ -40,6 +45,41 @@
 
 }
 
+- (void)updateDiaryCount
+{
+    //取数据判断是否下载更新
+    if ([DiaryModel sharedDiaryModel].updateCnt >0) {
+        if ([DiaryModel sharedDiaryModel].downloadedCnt == 0) [self  diaryLoading];
+        if (!headerview)
+        {
+            headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+            [headerview setIsDiary:YES];
+        }
+        
+        [headerview diaryLoadedcnt:[[DiaryModel sharedDiaryModel] downloadedCnt] totalCnt:[[DiaryModel sharedDiaryModel] updateCnt]];
+    }
+}
+
+
+- (void)imported
+{
+    if (importTotalNum >0) {
+        if (importNum == 0)[self  diaryLoading];
+        if (!importProgress){
+            importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+            [importProgress setIsDiary:NO];
+        }
+        
+        importNum++;
+        [importProgress diaryLoadedcnt:importNum totalCnt:importTotalNum];
+        
+    }
+}
+
+- (void)diaryLoading;
+{
+    [self reloadTable];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -283,12 +323,58 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+//    if (section == 1) {
+//        int num = 0;
+//        if ([[DiaryModel sharedDiaryModel] updateCnt] > 0) {
+//            num++;
+//        }
+//        if (importTotalNum >0 ) {
+//            num++;
+//        }
+//        return 40*num;
+//    }else{
+//        return 0;
+//    }
     return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return nil;
+    if (section == 1) {
+        int num = 0;
+        if ([[DiaryModel sharedDiaryModel] updateCnt] > 0) {
+            num++;
+        }
+        if (importTotalNum >0 ) {
+            num++;
+        }
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40*num)];
+        
+        if ([[DiaryModel sharedDiaryModel] updateCnt] > 0) {
+            if (!headerview)
+            {
+                
+                headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+                [headerview setIsDiary:YES];
+            }
+            
+            [view addSubview:headerview];
+        }
+        
+        if (importTotalNum >0) {
+            if (!importProgress)
+            {
+                importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, (num-1)*40, 320, 40)];
+                [importProgress setIsDiary:NO];
+            }
+            [view addSubview:importProgress];
+        }
+        
+        return view;
+    }else{
+        return nil;
+    }
+
 }
 
 - (void)foldOrUnfold
@@ -378,5 +464,24 @@
 {
     [MyNotiCenter postNotificationName:Noti_DiaryCellVisible object:[NSNumber numberWithFloat:self.tableView.contentOffset.y]];
 }
+
+- (void)setImportTotalNum:(NSInteger)num
+{
+    importTotalNum = num;
+    if (num == 0) {
+        importNum = 0;
+    }
+}
+
+- (void)diaryLoaded
+{
+    [[DiaryModel sharedDiaryModel] reloadData];
+    [[DiaryModel sharedDiaryModel] resetUpdateDiaryCnt];
+    [self reloadTable];
+    
+    
+}
+
+
 
 @end
