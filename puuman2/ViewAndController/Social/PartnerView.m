@@ -81,7 +81,7 @@
         }
     }
     [partnerChat setAlpha:0];
-    PostNotification(Noti_BottomInputViewShow, nil);
+    PostNotification(Noti_BottomInputViewShow, [NSNumber numberWithBool:NO]);
     [UIView animateWithDuration:0.5 animations:^{
         [partnerChat setAlpha:1];
         if (partnerData) {

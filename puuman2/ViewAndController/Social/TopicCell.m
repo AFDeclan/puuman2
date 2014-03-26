@@ -117,7 +117,7 @@
 - (void)replayBtnPressed
 {
 
-    PostNotification(Noti_BottomInputViewShow, nil);
+    PostNotification(Noti_BottomInputViewShow, [NSNumber numberWithBool:YES]);
     
 }
 

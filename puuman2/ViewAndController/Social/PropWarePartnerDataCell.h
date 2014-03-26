@@ -1,15 +1,14 @@
 //
-//  PropWareDataView.h
+//  PropWarePartnerDataCell.h
 //  puuman2
 //
-//  Created by Ra.（祁文龙） on 14-3-25.
+//  Created by Ra.（祁文龙） on 14-3-26.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "AFImageView.h"
-
-@interface PropWareDataView : UIView
+@interface PropWarePartnerDataCell : UITableViewCell
 {
     AFImageView *propImageView;
     UIView *mask;
@@ -17,6 +16,6 @@
     UILabel *name_label;
     UILabel *status_label;
 }
-
 - (void)setDataWithWareName:(NSString *)wareNmae andStatus:(NSString *)staus andWarePic:(NSString *)pic;
+
 @end

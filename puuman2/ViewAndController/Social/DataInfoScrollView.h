@@ -7,11 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIColumnView.h"
-@interface DataInfoScrollView : UIScrollView<UIColumnViewDataSource, UIColumnViewDelegate,UIScrollViewDelegate>
+#import "BodyPartnerDataView.h"
+#import "PropWarePartnerDataView.h"
+#import "PuumanRankPartnerDataView.h"
+#import "VaccinePartnerDataView.h"
+
+
+
+@interface DataInfoScrollView : UIScrollView<UIScrollViewDelegate>
 {
-    UIColumnView *dataColumnView;
-    
+    BodyPartnerDataView *heightView;
+    BodyPartnerDataView *weightView;
+    VaccinePartnerDataView *vaccineView;
+    PuumanRankPartnerDataView *puumanRankView;
+    PropWarePartnerDataView *propWareView[5];
+
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

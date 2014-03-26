@@ -10,6 +10,8 @@
 #import "ColorsAndFonts.h"
 #import "MainTabBarController.h"
 #import "RewardViewController.h"
+#import "CreateTopicViewController.h"
+
 
 @implementation TopicContentCell
 @synthesize delegate = _delegate;
@@ -60,7 +62,7 @@
     [self addSubview:toNewestBtn];
     initiateBtn = [[ColorButton alloc] init];
     [initiateBtn initWithTitle:@"发起" andIcon:[UIImage imageNamed:@"icon_start_topic.png"] andButtonType:kBlueLeftDown];
-    [initiateBtn addTarget:self action:@selector(currentTopic) forControlEvents:UIControlEventTouchUpInside];
+    [initiateBtn addTarget:self action:@selector(initiate) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:initiateBtn];
     topicAllVC = [[TopicAllTableViewController alloc] initWithNibName:nil bundle:nil];
     [topicAllVC.view setBackgroundColor:[UIColor clearColor]];
@@ -331,7 +333,18 @@
 - (void)currentTopic
 {
  
+    
 
+}
+
+- (void)initiate
+{
+    CreateTopicViewController *initiateVC = [[CreateTopicViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:initiateVC.view];
+    [initiateVC setControlBtnType:kOnlyCloseButton];
+    [initiateVC setTitle:@"发起话题" withIcon:nil];
+    [initiateVC show];
+    
 }
 
 //往期话题获取成功。

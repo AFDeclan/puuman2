@@ -21,8 +21,12 @@
     float minHeight;
     float preheight;
     int addHeightNum;
+    
 }
+@property(assign,nonatomic)BOOL sendIsHidden;
 
--(void)show;
--(void)hidden;
+- (void)show;
+- (void)hidden;
+- (void)reset;
 @end
+

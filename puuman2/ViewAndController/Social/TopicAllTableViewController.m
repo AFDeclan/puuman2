@@ -83,9 +83,6 @@
         return cell;
     }else{
         
-        
-        
-        
         NSString *identifier;
         TopicCell *cell;
         Reply *replay = [replays objectAtIndex:[indexPath row]];

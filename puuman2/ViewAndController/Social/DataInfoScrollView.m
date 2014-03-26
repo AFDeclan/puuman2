@@ -7,7 +7,6 @@
 //
 
 #import "DataInfoScrollView.h"
-#import "DataDetailInfoCell.h"
 #import "UniverseConstant.h"
 
 @implementation DataInfoScrollView
@@ -19,54 +18,52 @@
         self.delegate = self;
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
-        dataColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 0, self.frame.size.width-22, 1432)];
-        [dataColumnView setBackgroundColor:[UIColor clearColor]];
-        [dataColumnView setShowsHorizontalScrollIndicator:NO];
-        [dataColumnView setShowsVerticalScrollIndicator:NO];
-        [dataColumnView setViewDelegate:self];
-        [dataColumnView setViewDataSource:self];
-        [dataColumnView setPagingEnabled:NO];
-        [dataColumnView setScrollEnabled:YES];
-        [self addSubview:dataColumnView];
+        heightView = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, 0, 0, 224)];
+        [self addSubview:heightView];
+        weightView  = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(heightView)+ViewHeight(heightView), 0, 224)];
+        [self addSubview:weightView];
+        
+        for (int i =0; i <5; i++) {
+            propWareView[i] = [[PropWarePartnerDataView alloc] initWithFrame:CGRectMake(0, i*136+ViewY(weightView)+ViewHeight(weightView), 0, 136)];
+            [self addSubview:propWareView[i]];
+        }
+        
+        vaccineView = [[VaccinePartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(propWareView[4])+ViewHeight(propWareView[4]), 0, 112)];
+        [self addSubview:vaccineView];
+
+        puumanRankView = [[PuumanRankPartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(vaccineView)+ViewHeight(vaccineView), 0, 224)];
+        [self addSubview:puumanRankView];
+        
+        
     }
     return self;
 }
 
-#pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
-- (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
-{
-    
-}
 
-
-- (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
+- (void)setVerticalFrame
 {
-    
-    return 96;
-    
-}
-
-- (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
-{
-    
-    return 6;
-    
-}
-
-- (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
-{
-    
-    NSString * cellIdentifier = @"DataCell";
-    DataDetailInfoCell *cell = (DataDetailInfoCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[DataDetailInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        
+    [heightView setVerticalFrame];
+    [weightView setVerticalFrame];
+    [vaccineView setVerticalFrame];
+    [puumanRankView setVerticalFrame];
+    for (int i =0; i <5; i++) {
+        [propWareView[i] setVerticalFrame];
     }
+    PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
 
-    [cell setBackgroundColor:[UIColor clearColor]];
-    return cell;
+}
+- (void)setHorizontalFrame
+{
+    [heightView setHorizontalFrame];
+    [weightView setHorizontalFrame];
+    [vaccineView setHorizontalFrame];
+    [puumanRankView setHorizontalFrame];
+    for (int i =0; i <5; i++) {
+        [propWareView[i] setHorizontalFrame];
+    }
     
+    PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -78,14 +75,4 @@
     
 }
 
-- (void)setVerticalFrame
-{
-    PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
-
-}
-- (void)setHorizontalFrame
-{
-    PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
-
-}
 @end

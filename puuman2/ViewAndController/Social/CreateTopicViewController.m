@@ -8,6 +8,7 @@
 
 #import "CreateTopicViewController.h"
 #import "UniverseConstant.h"
+#import "Forum.h"
 
 @interface CreateTopicViewController ()
 
@@ -36,16 +37,16 @@
     [_content addSubview:inputTextFied];
     
     instructionBtn = [[ColorButton alloc] init];
-    [instructionBtn  initWithTitle:@"说明" andIcon:[UIImage imageNamed:@"icon_info_diary.png"] andButtonType:kGrayLeft];
+    [instructionBtn  initWithTitle:@"说明" andIcon:[UIImage imageNamed:@"icon_info_diary.png"] andButtonType:kGrayLeftUp];
     [instructionBtn addTarget:self action:@selector(instruction) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:instructionBtn];
     createBtn = [[ColorButton alloc] init];
-    [createBtn  initWithTitle:@"发起" andIcon:[UIImage imageNamed:@"icon_start_topic.png"] andButtonType:kBlueLeft];
+    [createBtn  initWithTitle:@"发起" andIcon:[UIImage imageNamed:@"icon_start_topic.png"] andButtonType:kBlueLeftDown];
      [createBtn addTarget:self action:@selector(createTopic) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:createBtn];
     SetViewLeftUp(instructionBtn, 592, 256);
     SetViewLeftUp(createBtn, 592, 296);
-    
+    [inputTextFied becomeFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -64,10 +65,14 @@
 - (void)instruction
 {
 
+    
 }
 
 - (void)createTopic
 {
 
+
+    [super closeBtnPressed];
+    
 }
 @end
