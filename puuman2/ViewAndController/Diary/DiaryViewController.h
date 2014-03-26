@@ -33,4 +33,6 @@
 - (void)showNewDiaryViewWithType:(NewButtonType)type withTaskInfo:(NSDictionary *)info;
 - (void)setTaskInfo:(NSDictionary *)taskInfo;
 - (void)refresh;
+- (void)diaryLoaded;
+
 @end

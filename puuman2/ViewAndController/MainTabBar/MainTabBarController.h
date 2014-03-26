@@ -12,7 +12,7 @@
 #import "UserInfo.h"
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
-
+#import "AutoImportViewController.h"
 
 @interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,MainTabBarDelegate>
 {
@@ -20,10 +20,13 @@
     UIImageView *bgImgView;
     LoginViewController *loginViewC;
     UserInfo *userInfo;
+    AutoImportViewController *improtAutoVC;
 }
 
 @property(assign,nonatomic) BOOL isVertical;
 @property(assign,nonatomic) BOOL refresh_HV;
 + (MainTabBarController *)sharedMainViewController;
-
+- (void)initautoImportView;
+- (void)removeAutoImportView;
+- (void)showAutoImportView;
 @end

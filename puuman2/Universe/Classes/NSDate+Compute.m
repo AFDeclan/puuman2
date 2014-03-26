@@ -170,4 +170,21 @@
     return @"";
 }
 
+- (NSInteger )hoursFromDate:(NSDate *)lastDate
+{
+    return [NSDate hoursFromDate:lastDate toDate:self];
+}
+
++ (NSInteger)hoursFromDate:(NSDate *)startDate toDate:(NSDate *)endDate
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendarUnit units=NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit| NSHourCalendarUnit |NSMinuteCalendarUnit |NSSecondCalendarUnit;
+    NSDateComponents *comp1 = [gregorian components:units fromDate:startDate];
+    NSDateComponents *comp2 = [gregorian components:units fromDate:endDate];
+    startDate = [gregorian dateFromComponents:comp1];
+    endDate = [gregorian dateFromComponents:comp2];;
+    NSDateComponents *components = [gregorian components:NSHourCalendarUnit fromDate:startDate toDate:endDate options:0];
+    return [components hour];
+}
+
 @end

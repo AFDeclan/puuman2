@@ -52,12 +52,13 @@ static MainTabBarController *instance;
     [self.tabBar removeFromSuperview];
     [self initWithTabBar];
     userInfo = [UserInfo sharedUserInfo];
-
+   
     
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+     [self initautoImportView];
     if (![userInfo loginFromUserDefault])
     {
         [self showLoginView];
@@ -196,5 +197,39 @@ static MainTabBarController *instance;
     [self.view addSubview:settingVC.view];
     
 }
+
+- (void)initautoImportView
+{
+    
+    if (improtAutoVC) {
+        improtAutoVC = nil;
+    }
+    improtAutoVC = [[AutoImportViewController alloc] initWithNibName:nil bundle:nil];
+    [improtAutoVC setControlBtnType:kCloseAndFinishButton];
+    [improtAutoVC setTitle:@"您好像拍了新的照片，是否导入？" withIcon:nil];
+    
+}
+
+- (void)showAutoImportView
+{
+    
+    if (improtAutoVC) {
+        [self.view addSubview:improtAutoVC.view];
+        [improtAutoVC show];
+    }
+    
+    
+}
+
+- (void)removeAutoImportView
+{
+    if (improtAutoVC) {
+ 
+        [improtAutoVC.view removeFromSuperview];
+        improtAutoVC = nil;
+    }
+    
+}
+
 
 @end

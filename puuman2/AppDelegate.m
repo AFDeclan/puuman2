@@ -99,12 +99,28 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [[MainTabBarController sharedMainViewController] removeAutoImportView];
+    [userDefaults setObject:[NSDate date] forKey:@"closeDate"];
+    
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (![userDefaults valueForKey:@"autoImport"]) {
+        [userDefaults setObject:@"YES" forKey:@"autoImport"];
+    }
+    if ([[userDefaults valueForKey:@"autoImport"] boolValue]&&[[UserInfo sharedUserInfo] logined]) {
+        [[MainTabBarController sharedMainViewController] initautoImportView];
+        
+    }
+    
+  
+  
+
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 

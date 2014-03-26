@@ -547,4 +547,14 @@ static DiaryViewController * instance;
     [joinView refreshStaus];
 }
 
+- (void)diaryLoaded
+{
+    [[DiaryModel sharedDiaryModel] reloadData];
+    [[DiaryModel sharedDiaryModel] resetUpdateDiaryCnt];
+    [diaryTableVC.tableView reloadData];
+    [[JoinView sharedJoinView] refreshStaus];
+    
+    
+}
+
 @end

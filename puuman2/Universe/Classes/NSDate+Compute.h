@@ -22,6 +22,8 @@
 
 - (NSInteger)monthsToDate:(NSDate *)endDate;
 
+- (NSInteger )hoursFromDate:(NSDate *)lastDate;
+
 - (BOOL)isSameDayWithDate:(NSDate *)date;
 
 //计算年龄，Array{年、月、日} 孕期{周、日}
