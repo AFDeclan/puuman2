@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [self setScrollEnabled:NO];
         title_First = [[UILabel alloc] init];
         title_Second = [[UILabel alloc] init];
         canMove = NO;

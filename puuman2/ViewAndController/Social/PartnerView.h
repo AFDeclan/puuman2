@@ -19,5 +19,5 @@
 - (void)selectedChat;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
-- (void)hiddnInputView;
+
 @end

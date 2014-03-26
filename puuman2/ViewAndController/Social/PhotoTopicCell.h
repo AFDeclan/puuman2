@@ -7,7 +7,11 @@
 //
 
 #import "TopicCell.h"
+#import "UIColumnView.h"
 
-@interface PhotoTopicCell : TopicCell
-
+@interface PhotoTopicCell : TopicCell<UIColumnViewDataSource, UIColumnViewDelegate>
+{
+    NSArray *_photoPaths;
+    UIColumnView *_showColumnView;
+}
 @end

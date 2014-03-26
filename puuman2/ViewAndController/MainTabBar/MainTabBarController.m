@@ -41,6 +41,8 @@ static MainTabBarController *instance;
         _isVertical = YES;
         [MyNotiCenter addObserver:self selector:@selector(userChanged) name:Noti_UserLogined object:nil];
          [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(showBottomInputView) name:Noti_BottomInputViewShow object:nil];
     }
     return self;
 }
@@ -231,5 +233,20 @@ static MainTabBarController *instance;
     
 }
 
+- (void)showBottomInputView
+{
+    
+    inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
+    [inputVC show];
+}
+
+- (void)hiddenBottomInputView
+{
+    
+    if (inputVC) {
+        [inputVC hidden];
+    }
+}
 
 @end

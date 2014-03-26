@@ -59,7 +59,7 @@
 
 - (void)getMoreReplies:(NSInteger)cnt
 {
-    if (_request || _noMore) return;
+  //  if (_request || _noMore) return;
     _request = [[PumanRequest alloc] init];
     [_request setUrlStr:kUrl_GetTopicReply];
     [_request setIntegerParam:_roffset forKey:@"offset"];

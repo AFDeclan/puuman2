@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "UIColumnView.h"
+#import "AnimateShowLabel.h"
 
 @interface FiguresHeaderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate>
 {
     UIImageView *icon_head;
-    UILabel *noti_label;
-    UILabel *info_title;
+    AnimateShowLabel *noti_label;
+    UITextField *info_title;
+    UIButton *modifyBtn;
     UIColumnView *figuresColumnView;
-    
-    
+  
 }
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 @end

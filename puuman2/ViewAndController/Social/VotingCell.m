@@ -23,26 +23,25 @@
         [self.contentView addSubview:infoView];
         [infoView setInfoWithName:@"宝宝" andPortrailPath:[[UserInfo sharedUserInfo] portraitUrl] andRelate:@"哥哥" andIsBoy:YES];
         
-        votingTopic = [[UILabel alloc] initWithFrame:CGRectMake(56, 56, 440, 16)];
-        [votingTopic setBackgroundColor:[UIColor clearColor]];
-        [votingTopic setFont:PMFont2];
-        [votingTopic setTextColor:PMColor1];
-        [votingTopic setTextColor:[UIColor whiteColor]];
-        [votingTopic setTextAlignment:NSTextAlignmentCenter];
-        [self.contentView addSubview:votingTopic];
-        votedNum = [[UILabel alloc] initWithFrame:CGRectMake(392, 16, 200, 16)];
-        [votedNum setBackgroundColor:[UIColor clearColor]];
-        [votedNum setFont:PMFont2];
-        [votedNum setTextColor:PMColor6];
-        [votedNum setTextAlignment:NSTextAlignmentRight];
-        [votedNum setText:@"308票"];
-        [self.contentView addSubview:votedNum];
+        votingTopic_label = [[UILabel alloc] initWithFrame:CGRectMake(56, 56, 440, 16)];
+        [votingTopic_label setBackgroundColor:[UIColor clearColor]];
+        [votingTopic_label setFont:PMFont2];
+        [votingTopic_label setTextColor:PMColor1];
+        [votingTopic_label setTextColor:[UIColor whiteColor]];
+        [votingTopic_label setTextAlignment:NSTextAlignmentCenter];
+        [self.contentView addSubview:votingTopic_label];
+        votedNum_label = [[UILabel alloc] initWithFrame:CGRectMake(392, 16, 200, 16)];
+        [votedNum_label setBackgroundColor:[UIColor clearColor]];
+        [votedNum_label setFont:PMFont2];
+        [votedNum_label setTextColor:PMColor6];
+        [votedNum_label setTextAlignment:NSTextAlignmentRight];
+        [votedNum_label setText:@"308票"];
+        [self.contentView addSubview:votedNum_label];
         voteBtn = [[ColorButton alloc] init];
-        [voteBtn initWithTitle:@"投Ta一票" andButtonType:kGrayLeft];
         SetViewLeftUp(voteBtn, 496, 44);
         [voteBtn addTarget:self action:@selector(voted) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:voteBtn];
-        
+        [[Forum sharedInstance] addDelegateObject:self];
         
     }
     return self;
@@ -55,9 +54,36 @@
     // Configure the view for the selected state
 }
 
-- (void)voted
+- (void)buildWithVoteTopic:(Topic *)voteTopic
 {
-
+    votingTopic = voteTopic;
+    if (voteTopic.voted) {
+        [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
+    }else{
+        [voteBtn initWithTitle:@"投Ta一票" andButtonType:kGrayLeft];
+    }
+    [votingTopic_label setText:votingTopic.TTitle];
+    
+    
+    
 }
 
+- (void)voted
+{
+    [votingTopic voted];
+   
+}
+
+//话题投票成功
+- (void)topicVoted:(Topic *)topic
+{
+    votingTopic = topic;
+    [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
+}
+
+//话题投票失败，注意根据voted判断是否是因为重复投票
+- (void)topicVoteFailed:(Topic *)topic;
+{
+    NSLog(@"投票失败");
+}
 @end

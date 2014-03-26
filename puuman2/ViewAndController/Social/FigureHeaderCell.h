@@ -10,13 +10,15 @@
 #import "AFImageView.h"
 #import "AFTextImgButton.h"
 
+
 @interface FigureHeaderCell : UITableViewCell
 {
     AFImageView *portrait;
     UILabel *info_compare;
     AFTextImgButton *name_sex;
     UIImageView *recommendView;
-    
+    UIButton *manageBtn;
+    UILabel *label_manageStatus;
 }
 @property(nonatomic,assign)BOOL recommend;
 

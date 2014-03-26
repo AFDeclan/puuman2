@@ -7,7 +7,10 @@
 //
 
 #import "TopicCell.h"
+#import "NewAudioPlayView.h"
 
-@interface AudioTopicCell : TopicCell
-
+@interface AudioTopicCell : TopicCell <NewAudioPlayDelegate>
+{
+    NewAudioPlayView *playBtn;
+}
 @end

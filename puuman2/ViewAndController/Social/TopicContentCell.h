@@ -14,7 +14,7 @@
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
 #import "Forum.h"
-
+#import "AFSelecedTextImgButton.h"
 
 @protocol TopicContentCellDelegate;
 @interface TopicContentCell : UITableViewCell<ForumDelegate>
@@ -32,10 +32,14 @@
     BOOL currentTopicOrAfter;
     TopicStatus status;
     Topic *_topic;
-   
+    AFSelecedTextImgButton *left_sortBtn;
+    AFSelecedTextImgButton *right_sortBtn;
+    BOOL leftSelected;
 }
 @property(nonatomic,assign)id<TopicContentCellDelegate>delegate;
 -(void)setInfoViewWithTopicNum:(NSInteger)topicNum;
+- (void)rightSortSelected;
+- (void)leftSortSelected;
 @end
 
 @protocol TopicContentCellDelegate <NSObject>

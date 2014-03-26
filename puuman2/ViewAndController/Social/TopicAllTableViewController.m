@@ -9,6 +9,9 @@
 #import "TopicAllTableViewController.h"
 #import "TopicCell.h"
 #import "VotingCell.h"
+#import "TextTopicCell.h"
+#import "PhotoTopicCell.h"
+#import "ReplyForUpload.h"
 
 @interface TopicAllTableViewController ()
 
@@ -16,12 +19,16 @@
 
 @implementation TopicAllTableViewController
 @synthesize voting = _voting;
+@synthesize topic = _topic;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         _voting = NO;
+        [[Forum sharedInstance] addDelegateObject:self];
+        replays = [[NSMutableArray alloc] init];
+
     }
     return self;
 }
@@ -31,6 +38,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
    
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setShowsHorizontalScrollIndicator:NO];
+    [self.tableView setShowsVerticalScrollIndicator:NO];
+
     
 }
 
@@ -46,8 +59,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    // Return the number of rows in the section.
-    return 10;
+    if (_voting) {
+   
+        return [[Forum sharedInstance].votingTopic count];
+    }else{
+        return [replays count];
+    }
+    
   
 }
 
@@ -59,14 +77,40 @@
         if (!cell) {
             cell = [[VotingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
+        [cell buildWithVoteTopic:[[Forum sharedInstance].votingTopic objectAtIndex:[indexPath row]]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
     }else{
-        static NSString *identifier = @"TopicCell";
-        TopicCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (!cell) {
-            cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        
+        
+        
+        
+        NSString *identifier;
+        TopicCell *cell;
+        Reply *replay = [replays objectAtIndex:[indexPath row]];
+        if ([replay.textUrls count] != 0) {
+            identifier = @"ReplayTextTopicCell";
+            cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (!cell) {
+                cell  =[[TextTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            
+        }else if ([replay.photoUrls count] !=0)
+        {
+            identifier = @"ReplayPhotoTopicCell";
+            cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (!cell) {
+                cell  =[[PhotoTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+        }else{
+            if (!cell) {
+                cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
         }
+        [cell buildWithReply:replay];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
     }
    
@@ -80,45 +124,75 @@
     if (_voting) {
         return 108;
     }else{
-        return 312;
+        
+        return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]]];
     }
    
     
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    
-    return 24;
-}
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0,608, 24)];
-    [view addSubview:left_sortBtn];
-    [view addSubview:right_sortBtn];
-    return view;
-}
+
 
 
 - (void)setVoting:(BOOL)voting
 {
     _voting = voting;
     if (voting) {
-        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多投票" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新发起" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-        
+        [self.tableView reloadData];
+    }
+}
 
-    }else{
-        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多喜欢" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新参与" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+- (void)setTopic:(Topic *)topic
+{
+    
+    
+    if (!_refreshFooter) {
+        _refreshFooter = [[MJRefreshFooterView alloc] init];
+        _refreshFooter.scrollView = self.tableView;
+        [self.tableView addSubview:_refreshFooter];
+        [_refreshFooter setDelegate:self];
+        _refreshFooter.alpha = 1;
+        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+
+        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+            [topic getMoreReplies:5];
+            if (![topic noMore])
+            {
+                [blockRefreshFooter endRefreshing];
+            }
+        };
+        [_refreshFooter beginRefreshing];
+    
 
     }
-    [self leftSortSelected];
+
+}
+
+//更多话题回复加载成功。
+- (void)topicRepliesLoadedMore:(Topic *)topic
+{
+    _topic = topic;
+    replays = topic.replies;
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    [self.tableView reloadData];
+ 
+    
+}
+
+//更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
+- (void)topicRepliesLoadFailed:(Topic *)topic
+{
+    NSLog(@"Replay Failed");
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
     [self.tableView reloadData];
 }
+
+
 
 - (void)setVerticalFrame
 {
@@ -129,4 +203,9 @@
 {
   
 }
+
+
+
+
+
 @end

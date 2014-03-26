@@ -35,7 +35,7 @@
 {
     bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 144)];
     [self addSubview:bgImageView];
-    
+     leftSelected = YES;
     info_title = [[UILabel alloc] initWithFrame:CGRectMake(208, 48, 320, 28)];
     [info_title setBackgroundColor:[UIColor clearColor]];
     [info_title setFont:PMFont1];
@@ -65,8 +65,13 @@
     topicAllVC = [[TopicAllTableViewController alloc] initWithNibName:nil bundle:nil];
     [topicAllVC.view setBackgroundColor:[UIColor clearColor]];
     [self addSubview:topicAllVC.view];
+    right_sortBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(304, 0, 304, 24)];
+    [right_sortBtn addTarget:self action:@selector(rightSortSelected) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:right_sortBtn];
     
-   
+    left_sortBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 304, 24)];
+    [left_sortBtn addTarget:self action:@selector(leftSortSelected) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:left_sortBtn];
     
     leftBtn = [[TopicSelectButton alloc] init];
     [leftBtn addTarget:self action:@selector(preTopic) forControlEvents:UIControlEventTouchUpInside];
@@ -106,9 +111,9 @@
             [initiateBtn setAlpha:0];
             SetViewLeftUp(rewardBtn, 496, 152);
             SetViewLeftUp(participateBtn, 496, 192);
-            [topicAllVC.view setFrame:CGRectMake(0, 240, 608, 800)];
-          
-            
+            [topicAllVC.view setFrame:CGRectMake(0, 264, 608, 688)];
+            SetViewLeftUp(right_sortBtn, 304, 240);
+            SetViewLeftUp(left_sortBtn, 0, 240);
         }
             break;
         case TopicStatus_Past:
@@ -118,7 +123,9 @@
             [toNewestBtn setAlpha:1];
             [initiateBtn setAlpha:0];
             SetViewLeftUp(toNewestBtn, 496, 152);
-             [topicAllVC.view setFrame:CGRectMake(0, 200, 608, 800)];
+             [topicAllVC.view setFrame:CGRectMake(0, 224, 608, 728)];
+            SetViewLeftUp(right_sortBtn, 304, 200);
+            SetViewLeftUp(left_sortBtn, 0, 200);
         }
             break;
         case TopicStatus_Voting:
@@ -128,7 +135,9 @@
             [toNewestBtn setAlpha:0];
             [initiateBtn setAlpha:1];
             SetViewLeftUp(initiateBtn, 496, 152);
-            [topicAllVC.view setFrame:CGRectMake(0, 200, 608, 800)];
+            [topicAllVC.view setFrame:CGRectMake(0, 224, 608, 728)];
+            SetViewLeftUp(right_sortBtn, 304, 200);
+            SetViewLeftUp(left_sortBtn, 0, 200);
         }
             break;
         default:
@@ -189,7 +198,9 @@
 
     self.frame = CGRectMake(0, 0, 864, 688);
     SetViewLeftUp(rightBtn, 736, 0);
-    [topicAllVC.view setFrame:CGRectMake(128, 144, 608, 544)];
+    [topicAllVC.view setFrame:CGRectMake(128, 168, 608, 520)];
+    SetViewLeftUp(right_sortBtn, 432, 144);
+    SetViewLeftUp(left_sortBtn, 128, 144);
     [topicAllVC setHorizontalFrame];
     
 }
@@ -215,9 +226,24 @@
         [info_title setTextColor:PMColor6];
         [info_num setText:@"发起或投票选出你最喜欢的话题吧！"];
         [topicAllVC setVoting:YES];
+        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多投票" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新发起" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+        [self leftSortSelected];
+        if([MainTabBarController sharedMainViewController].isVertical)
+        {
+            [self setVerticalFrame];
+        }else
+        {
+            [self setHorizontalFrame];
+        }
+        
+        
         
         
     }else{
+        
+        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多喜欢" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新参与" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
          [topicAllVC setVoting:NO];
         [info_title setTextColor:PMColor1];
          [rightBtn setAlpha:1];
@@ -225,10 +251,20 @@
             _topic = [[Forum sharedInstance] getTopic:topicNum];
             status = _topic.TStatus;
             [info_num setText:[NSString stringWithFormat:@"已有%d人参与",_topic.TNo]];
-            
+            [info_title setText:_topic.TTitle];
+            [topicAllVC setTopic:_topic];
+            [self leftSortSelected];
+            if([MainTabBarController sharedMainViewController].isVertical)
+            {
+                [self setVerticalFrame];
+            }else
+            {
+                [self setHorizontalFrame];
+            }
             
         }
-         [info_title setText:_topic.TTitle];
+        
+       
         if ([[Forum sharedInstance] onTopic].TNo == topicNum) {
             [rightBtn setAlpha:1];
             [rightBtn setNoti:@"下期话题"];
@@ -249,17 +285,12 @@
             [rightBtn setTitleName:[NSString stringWithFormat:@"第%d期",topicNum+1]];
             
         }
-        
+  
+       
 
     }
-    if([MainTabBarController sharedMainViewController].isVertical)
-    {
-        [self setVerticalFrame];
-    }else
-    {
-        [self setHorizontalFrame];
-    }
-    
+
+
    
     
 }
@@ -306,13 +337,40 @@
 //往期话题获取成功。
 - (void)topicReceived:(Topic *)topic
 {
-     _topic = topic;
+    _topic = topic;
+    status = _topic.TStatus;
+    [info_num setText:[NSString stringWithFormat:@"已有%d人参与",_topic.TNo]];
+    [info_title setText:_topic.TTitle];
+    [topicAllVC setTopic:_topic];
+    [self leftSortSelected];
+    if([MainTabBarController sharedMainViewController].isVertical)
+    {
+        [self setVerticalFrame];
+    }else
+    {
+        [self setHorizontalFrame];
+    }
+    
 }
 
 //往期话题获取失败
 - (void)topicFailed:(NSString *)TNo
 {
 
+}
+
+
+- (void)leftSortSelected
+{
+    
+    [left_sortBtn selected];
+    [right_sortBtn unSelected];
+}
+
+- (void)rightSortSelected
+{
+    [right_sortBtn selected];
+    [left_sortBtn unSelected];
 }
 
 @end

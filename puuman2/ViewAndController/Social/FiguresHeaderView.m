@@ -18,25 +18,54 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+         [MyNotiCenter addObserver:self selector:@selector(showManagerMenu) name:Noti_manangePartnerData object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(hiddenManagerMenu) name:Noti_manangedPartnerData object:nil];
+        
         icon_head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
         [icon_head setImage:[UIImage imageNamed:@"block_name_fri.png"]];
         [self addSubview:icon_head];
         
         
-        info_title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+        info_title = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
         [info_title setBackgroundColor:[UIColor clearColor]];
         [info_title setTextColor:[UIColor whiteColor]];
         [info_title setFont:PMFont2];
         [info_title setTextAlignment:NSTextAlignmentCenter];
         [info_title setText:@"三月宝宝妈妈团"];
         [icon_head addSubview:info_title];
+      
         
-        noti_label = [[UILabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
-        [noti_label setText:@"三天前，天天邀请了w 入团"];
-        [noti_label setFont:PMFont2];
-        [noti_label setTextColor:PMColor3];
+        modifyBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        
+        UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 96, 112)];
+        [modifyBtn addSubview:bgView];
+        [bgView setBackgroundColor:[UIColor blackColor]];
+        [bgView setAlpha:0.5];
+        
+        UIImageView *icon_img = [[ UIImageView alloc] initWithFrame:CGRectMake(24, 36, 48, 48)];
+        [icon_img setImage:[UIImage imageNamed:@"circle_fri.png"]];
+        [bgView addSubview:icon_img];
+        
+       UILabel *label_manageStatus = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
+        [label_manageStatus setTextAlignment:NSTextAlignmentCenter];
+        [label_manageStatus setTextColor:[UIColor whiteColor]];
+        [label_manageStatus setFont:PMFont2];
+        [label_manageStatus setBackgroundColor:[UIColor clearColor]];
+        [label_manageStatus setText:@"修改"];
+        [icon_img  addSubview:label_manageStatus];
+        
+        [modifyBtn setAlpha:0];
+
+        
+        
+        
+        
+        noti_label = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
         [noti_label setBackgroundColor:[UIColor clearColor]];
         [self addSubview:noti_label];
+        
+        
+
         figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 48, self.frame.size.width-22, 120)];
         [figuresColumnView setBackgroundColor:[UIColor clearColor]];
         [figuresColumnView setViewDelegate:self];
@@ -50,6 +79,15 @@
     return self;
 }
 
+- (void)showManagerMenu
+{
+
+}
+
+- (void)hiddenManagerMenu
+{
+
+}
 
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
@@ -98,5 +136,20 @@
     
 }
 
+- (void)setVerticalFrame
+{
+    [noti_label setFrame:CGRectMake(320, 0, 164, 48)];
+    [noti_label animateStop];
+    [noti_label setTitleWithTitleText:@"三天前，天天邀请了w 入团" andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
+    [noti_label animateStart];
+}
+
+- (void)setHorizontalFrame
+{
+    [noti_label setFrame:CGRectMake(320, 0, 276, 48)];
+    [noti_label animateStop];
+    [noti_label setTitleWithTitleText:@"三天前，天天邀请了w 入团" andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
+    [noti_label animateStart];
+}
 
 @end

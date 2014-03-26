@@ -64,7 +64,7 @@
         [partnerData setAlpha:1];
         if (partnerChat) {
             [partnerChat setAlpha:0];
-            [partnerChat hiddenInputView];
+            PostNotification(Noti_BottomInputViewHidden, nil);
         }
     }];
 }
@@ -81,7 +81,7 @@
         }
     }
     [partnerChat setAlpha:0];
-    [partnerChat showInputView];
+    PostNotification(Noti_BottomInputViewShow, nil);
     [UIView animateWithDuration:0.5 animations:^{
         [partnerChat setAlpha:1];
         if (partnerData) {
@@ -89,10 +89,5 @@
         }
     }];
 }
-- (void)hiddnInputView
-{
-    if (partnerChat) {
-        [partnerChat hiddenInputView];
-    }
-}
+
 @end

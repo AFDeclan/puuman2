@@ -25,7 +25,7 @@
     DiaryCell *_activeCell;
     int importNum;
     int importTotalNum;
-     DiaryHeaderView *importProgress;
+    DiaryHeaderView *importProgress;
     DiaryHeaderView *headerview;
 }
 - (void)diaryLoaded;

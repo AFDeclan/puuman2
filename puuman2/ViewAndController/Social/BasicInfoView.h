@@ -17,6 +17,7 @@
     UILabel *info_name;
     UILabel *info_relate;
     UIImageView *icon_sex;
+    
 }
 - (void)setInfoWithName:(NSString *)name andPortrailPath:(NSString*)path andRelate:(NSString *)relate andIsBoy:(BOOL)isBoy;
 @end

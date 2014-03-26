@@ -25,7 +25,7 @@
         [_content addSubview:titleLabel];
         [titleLabel setAlpha:0];
         
-        playBtn = [[NewAudioPlayView alloc] initWithFrame:CGRectMake(216, 24, 96, 96)];
+        playBtn = [[NewAudioPlayView alloc] initWithFrame:CGRectMake(220, 24, 96, 96)];
         [playBtn setDelegate:self];
         [_content addSubview:playBtn];
        

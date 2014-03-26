@@ -11,6 +11,7 @@
 @interface DataInfoScrollView : UIScrollView<UIColumnViewDataSource, UIColumnViewDelegate,UIScrollViewDelegate>
 {
     UIColumnView *dataColumnView;
+    
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

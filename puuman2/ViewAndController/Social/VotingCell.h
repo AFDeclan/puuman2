@@ -9,13 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "BasicInfoView.h"
 #import "ColorButton.h"
+#import "Topic.h"
+#import "Forum.h"
 
-@interface VotingCell : UITableViewCell
+@interface VotingCell : UITableViewCell<ForumDelegate>
 {
     BasicInfoView *infoView;
-    UILabel *votingTopic;
-    UILabel *votedNum;
+    UILabel *votingTopic_label;
+    UILabel *votedNum_label;
     ColorButton *voteBtn;
     UIView *bgView;
+    Topic *votingTopic;
 }
+
+- (void)buildWithVoteTopic:(Topic *)voteTopic;
 @end

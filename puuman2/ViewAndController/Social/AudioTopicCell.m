@@ -15,13 +15,48 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        playBtn = [[NewAudioPlayView alloc] initWithFrame:CGRectMake(272, 20, 96, 96)];
+        [playBtn setDelegate:self];
+        [contentView addSubview:playBtn];
     }
     return self;
 }
 
+- (void)buildWithReply:(Reply *)replay
+{
+
+    NSString *filePath;// = [self.diaryInfo valueForKey:kFilePathName];
+    
+    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+    CGRect frame = contentView.frame;
+    frame.size.height = 156;
+    [contentView setFrame:frame];
+    [super buildWithReply:replay];
+
+}
+
 + (CGFloat)heightForReplay:(Reply *)replay
 {
-    return  312;
+    BOOL hasTitle = YES;
+    if (hasTitle) {
+        return  312;
+    }else{
+        return  284;
+    }
+}
+
+- (void)stopAudio
+{
+    [playBtn stopPlay];
+}
+
+- (void)stopPlay
+{
+    
+}
+- (void)startPlay
+{
+    
 }
 
 @end

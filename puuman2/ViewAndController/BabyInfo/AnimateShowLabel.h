@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AnimateShowLabel : UIView
+@interface AnimateShowLabel : UIScrollView
 {
         UILabel *title_First;
         UILabel *title_Second;

@@ -19,11 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        right_sortBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(304, 0, 304, 24)];
-        [right_sortBtn addTarget:self action:@selector(rightSortSelected) forControlEvents:UIControlEventTouchUpInside];
       
-        left_sortBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 304, 24)];
-        [left_sortBtn addTarget:self action:@selector(leftSortSelected) forControlEvents:UIControlEventTouchUpInside];
 
     }
     return self;
@@ -43,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    leftSelected = YES;
+   
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -89,17 +85,5 @@
     return nil;
 }
 
-- (void)leftSortSelected
-{
-
-    [left_sortBtn selected];
-    [right_sortBtn unSelected];
-}
-
-- (void)rightSortSelected
-{
-    [right_sortBtn selected];
-    [left_sortBtn unSelected];
-}
 
 @end

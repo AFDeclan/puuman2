@@ -7,16 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFSelecedTextImgButton.h"
+
 
 
 @interface SortTableViewController : UITableViewController
 {
 
-    AFSelecedTextImgButton *left_sortBtn;
-    AFSelecedTextImgButton *right_sortBtn;
-    BOOL leftSelected;
 }
-- (void)rightSortSelected;
-- (void)leftSortSelected;
+
 @end

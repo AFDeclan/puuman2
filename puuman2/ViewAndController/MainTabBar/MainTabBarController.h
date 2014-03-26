@@ -10,9 +10,12 @@
 #import "MainTabBar.h"
 #import "LoginViewController.h"
 #import "UserInfo.h"
+#import "AutoImportViewController.h"
+#import "ChatInputViewController.h"
+
+
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
-#import "AutoImportViewController.h"
 
 @interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,MainTabBarDelegate>
 {
@@ -21,6 +24,7 @@
     LoginViewController *loginViewC;
     UserInfo *userInfo;
     AutoImportViewController *improtAutoVC;
+    ChatInputViewController *inputVC;
 }
 
 @property(assign,nonatomic) BOOL isVertical;

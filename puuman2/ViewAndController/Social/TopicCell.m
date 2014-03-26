@@ -11,6 +11,8 @@
 #import "UserInfo.h"
 #import "AllWordsPopViewController.h"
 #import "MainTabBarController.h"
+#import "TextTopicCell.h"
+#import "PhotoTopicCell.h"
 
 @implementation TopicCell
 
@@ -21,11 +23,11 @@
         // Initialization code
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 608, 112)];
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 608, 64)];
         [self.contentView addSubview:headerView];
-        contentView = [[UIView alloc] init];
+        contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, 608, 112)];
         [self.contentView addSubview:contentView];
-        footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 216, 608, 88)];
+        footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 176, 608, 88)];
         [self.contentView addSubview:footerView];
         [self initWithHeaderView];
         [headerView setBackgroundColor:PMColor5];
@@ -37,12 +39,7 @@
 
 - (void)initWithHeaderView
 {
-    UIImageView *partLine_first  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 2)];
-    [partLine_first setImage:[UIImage imageNamed:@"line4_baby.png"]];
-    [footerView addSubview:partLine_first];
-    UIImageView *partLine_second  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 216, 2)];
-    [partLine_second setImage:[UIImage imageNamed:@"line4_baby.png"]];
-    [footerView addSubview:partLine_second];
+    
     infoView = [[BasicInfoView alloc] init];
     [self.contentView addSubview:infoView];
     [infoView setInfoWithName:@"宝宝" andPortrailPath:[[UserInfo sharedUserInfo] portraitUrl] andRelate:@"哥哥" andIsBoy:YES];
@@ -56,13 +53,12 @@
     [info_time setBackgroundColor:[UIColor clearColor]];
     [headerView addSubview:info_time];
     
-    title_label = [[UILabel alloc] initWithFrame:CGRectMake(464, 16, 128, 12)];
+    title_label = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, 128, 16)];
     [title_label setTextAlignment:NSTextAlignmentRight];
     [title_label setTextColor:PMColor1];
     [title_label setFont:PMFont2];
-    [title_label setText:@"我家宝宝第一次"];
     [title_label setBackgroundColor:[UIColor clearColor]];
-    [headerView addSubview:title_label];
+    [contentView addSubview:title_label];
 
     
     replayBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 304, 40)];
@@ -93,6 +89,27 @@
     [scanMoreReplay addTarget:self action:@selector(scanMore) forControlEvents:UIControlEventTouchUpInside];
     [scanMoreReplay setTitleFont:PMFont3];
     [footerView addSubview:scanMoreReplay];
+    UIImageView *partLine_first  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 2)];
+    [partLine_first setImage:[UIImage imageNamed:@"line2_topic.png"]];
+    [footerView addSubview:partLine_first];
+    UIImageView *partLine_second  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 608, 2)];
+    [partLine_second setImage:[UIImage imageNamed:@"line2_topic.png"]];
+    [footerView addSubview:partLine_second];
+
+    
+}
+
+- (void)buildWithReply:(Reply *)replay
+{
+    
+
+    CGRect frame = contentView.frame;
+    if (![replay.RTitle isEqualToString:@""]) {
+        [title_label setText:replay.RTitle];
+        frame.size.height += 28;
+        contentView.frame = frame;
+    }
+    SetViewLeftUp(footerView, 0, ViewY(contentView) +ViewHeight(contentView));
 
     
 }
@@ -100,6 +117,8 @@
 - (void)replayBtnPressed
 {
 
+    PostNotification(Noti_BottomInputViewShow, nil);
+    
 }
 
 - (void)likeBtnPressed
@@ -125,7 +144,19 @@
 
 + (CGFloat)heightForReplay:(Reply *)replay
 {
-    return  312;
+    
+    float h = 64+88;
+    if (![replay.RTitle isEqualToString:@""]) {
+        h += 28;
+    }
+    if ([replay.textUrls count] != 0) {
+        h += [TextTopicCell heightForReplay:replay];
+    }
+    
+    if ([replay.photoUrls count] != 0) {
+        h+= [PhotoTopicCell heightForReplay:replay];
+    }
+    return h;
 }
 
 @end

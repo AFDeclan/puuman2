@@ -11,6 +11,7 @@
 #import "BasicInfoView.h"
 #import "Reply.h"
 #import "AFSelecedTextImgButton.h"
+#import "ChatInputViewController.h"
 
 @interface TopicCell : UITableViewCell
 {
@@ -25,7 +26,8 @@
     AFTextImgButton *scanMoreReplay;
     UILabel *title_label;
     
+    
 }
-
+- (void)buildWithReply:(Reply *)replay;
 + (CGFloat)heightForReplay:(Reply *)replay;
 @end

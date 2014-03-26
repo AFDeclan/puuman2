@@ -139,18 +139,7 @@
  
 }
 
-- (void)showInputView
-{
-    inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
-    [inputVC show];
-}
 
-- (void)hiddenInputView
-{
-    if (inputVC) {
-        [inputVC hidden];
-    }
-    
-}
+
+
 @end

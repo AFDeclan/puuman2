@@ -16,6 +16,7 @@
     FiguresHeaderView *figuresHeader;
     DataInfoScrollView *dataInfoView;
     ColorButton *manageBtn;
+    BOOL manage;
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

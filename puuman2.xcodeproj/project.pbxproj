@@ -58,6 +58,9 @@
 		14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
+		54012DC118E2C09000F11D97 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54012DC018E2C09000F11D97 /* MyTopicViewController.m */; };
+		54012DC418E2C14300F11D97 /* SortTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54012DC318E2C14300F11D97 /* SortTableViewController.m */; };
+		54012DC618E2CB8B00F11D97 /* line2_topic.png in Resources */ = {isa = PBXBuildFile; fileRef = 54012DC518E2CB8B00F11D97 /* line2_topic.png */; };
 		5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */; };
 		5403CC6518D03B68004CAE22 /* JoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC6418D03B68004CAE22 /* JoinView.m */; };
 		5403CC7218D03B7D004CAE22 /* InviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC6818D03B7D004CAE22 /* InviteView.m */; };
@@ -299,7 +302,6 @@
 		54ADB1CA18E1321100FCCC83 /* PuumanRankDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1C918E1321100FCCC83 /* PuumanRankDataView.m */; };
 		54ADB1CD18E159DC00FCCC83 /* PropWareDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1CC18E159DC00FCCC83 /* PropWareDataView.m */; };
 		54ADB1CE18E16CD700FCCC83 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C0B69F18E1158C00BC308E /* Comment.m */; };
-		54ADB1D118E17D2F00FCCC83 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D018E17D2F00FCCC83 /* MyTopicViewController.m */; };
 		54ADB1D418E1860200FCCC83 /* TextTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D318E1860200FCCC83 /* TextTopicCell.m */; };
 		54ADB1D718E1861700FCCC83 /* PhotoTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D618E1861700FCCC83 /* PhotoTopicCell.m */; };
 		54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */; };
@@ -391,7 +393,6 @@
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
 		54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56A18DC2E840013FD03 /* TopicContentCell.m */; };
-		54C8D56E18DC3B220013FD03 /* SortTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56D18DC3B220013FD03 /* SortTableViewController.m */; };
 		54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */; };
 		54CE10E018C1842C00966396 /* AFDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A018C1842C00966396 /* AFDataDownloader.m */; };
 		54CE10E118C1842C00966396 /* AFDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A218C1842C00966396 /* AFDataStore.m */; };
@@ -613,6 +614,11 @@
 		14C0B69F18E1158C00BC308E /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		54012DBF18E2C09000F11D97 /* MyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTopicViewController.h; sourceTree = "<group>"; };
+		54012DC018E2C09000F11D97 /* MyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTopicViewController.m; sourceTree = "<group>"; };
+		54012DC218E2C14300F11D97 /* SortTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortTableViewController.h; sourceTree = "<group>"; };
+		54012DC318E2C14300F11D97 /* SortTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortTableViewController.m; sourceTree = "<group>"; };
+		54012DC518E2CB8B00F11D97 /* line2_topic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line2_topic.png; sourceTree = "<group>"; };
 		5403CC5E18D006C7004CAE22 /* DetailShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailShowViewController.h; sourceTree = "<group>"; };
 		5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailShowViewController.m; sourceTree = "<group>"; };
 		5403CC6318D03B68004CAE22 /* JoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinView.h; sourceTree = "<group>"; };
@@ -919,8 +925,6 @@
 		54ADB1C918E1321100FCCC83 /* PuumanRankDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuumanRankDataView.m; sourceTree = "<group>"; };
 		54ADB1CB18E159DC00FCCC83 /* PropWareDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropWareDataView.h; sourceTree = "<group>"; };
 		54ADB1CC18E159DC00FCCC83 /* PropWareDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropWareDataView.m; sourceTree = "<group>"; };
-		54ADB1CF18E17D2F00FCCC83 /* MyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTopicViewController.h; sourceTree = "<group>"; };
-		54ADB1D018E17D2F00FCCC83 /* MyTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTopicViewController.m; sourceTree = "<group>"; };
 		54ADB1D218E1860200FCCC83 /* TextTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextTopicCell.h; sourceTree = "<group>"; };
 		54ADB1D318E1860200FCCC83 /* TextTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextTopicCell.m; sourceTree = "<group>"; };
 		54ADB1D518E1861700FCCC83 /* PhotoTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTopicCell.h; sourceTree = "<group>"; };
@@ -1081,8 +1085,6 @@
 		54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputViewController.m; sourceTree = "<group>"; };
 		54C8D56918DC2E840013FD03 /* TopicContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicContentCell.h; sourceTree = "<group>"; };
 		54C8D56A18DC2E840013FD03 /* TopicContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicContentCell.m; sourceTree = "<group>"; };
-		54C8D56C18DC3B220013FD03 /* SortTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortTableViewController.h; sourceTree = "<group>"; };
-		54C8D56D18DC3B220013FD03 /* SortTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortTableViewController.m; sourceTree = "<group>"; };
 		54C8D57218DC44EF0013FD03 /* TopicAllTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicAllTableViewController.h; sourceTree = "<group>"; };
 		54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicAllTableViewController.m; sourceTree = "<group>"; };
 		54CE109D18C1842C00966396 /* AFNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetwork.h; sourceTree = "<group>"; };
@@ -1801,6 +1803,7 @@
 			isa = PBXGroup;
 			children = (
 				5447C46B18D97D1100187BE6 /* btn_like1_topic.png */,
+				54012DC518E2CB8B00F11D97 /* line2_topic.png */,
 				5447C46C18D97D1100187BE6 /* btn_like2_topic.png */,
 				5447C46D18D97D1100187BE6 /* btn_like3_topic.png */,
 				5447C46E18D97D1100187BE6 /* btn_partner1_topic.png */,
@@ -1879,10 +1882,10 @@
 		5447C4B818D9999900187BE6 /* subView */ = {
 			isa = PBXGroup;
 			children = (
-				54C8D56C18DC3B220013FD03 /* SortTableViewController.h */,
-				54C8D56D18DC3B220013FD03 /* SortTableViewController.m */,
-				54ADB1CF18E17D2F00FCCC83 /* MyTopicViewController.h */,
-				54ADB1D018E17D2F00FCCC83 /* MyTopicViewController.m */,
+				54012DC218E2C14300F11D97 /* SortTableViewController.h */,
+				54012DC318E2C14300F11D97 /* SortTableViewController.m */,
+				54012DBF18E2C09000F11D97 /* MyTopicViewController.h */,
+				54012DC018E2C09000F11D97 /* MyTopicViewController.m */,
 				54C8D57218DC44EF0013FD03 /* TopicAllTableViewController.h */,
 				54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */,
 				5447C4B918D99A3100187BE6 /* TopicSelectButton.h */,
@@ -2958,6 +2961,7 @@
 				5403CE3E18D04F5E004CAE22 /* line3_baby.png in Resources */,
 				5403CE2D18D04F5E004CAE22 /* circle1_baby.png in Resources */,
 				5403CE3C18D04F5E004CAE22 /* line1_baby.png in Resources */,
+				54012DC618E2CB8B00F11D97 /* line2_topic.png in Resources */,
 				5447C46418D97D0800187BE6 /* pic_coin_fri.png in Resources */,
 				5403CE3518D04F5E004CAE22 /* icon_out_baby.png in Resources */,
 				54D14FF618CAEFD70022E1F4 /* circle_coin_diary.png in Resources */,
@@ -3116,6 +3120,7 @@
 				54ADB1CA18E1321100FCCC83 /* PuumanRankDataView.m in Sources */,
 				54A8F44D18CD712100D0D523 /* TextDiaryCell.m in Sources */,
 				541970D318D1956D0058FE64 /* StandardLine.m in Sources */,
+				54012DC118E2C09000F11D97 /* MyTopicViewController.m in Sources */,
 				54A8F46118CDCAE900D0D523 /* CameraAudioViewController.m in Sources */,
 				54CE10F318C1842C00966396 /* MJRefreshConst.m in Sources */,
 				544419FF18D41D2D00FBE69F /* BabyPreView.m in Sources */,
@@ -3208,7 +3213,6 @@
 				5447C4B718D98F5C00187BE6 /* PartnerChatView.m in Sources */,
 				5403CC6518D03B68004CAE22 /* JoinView.m in Sources */,
 				5447C4B418D98F1700187BE6 /* PartnerDataView.m in Sources */,
-				54C8D56E18DC3B220013FD03 /* SortTableViewController.m in Sources */,
 				54ADB1CD18E159DC00FCCC83 /* PropWareDataView.m in Sources */,
 				54B753B318D3021E002411CF /* PuumanOutBookCell.m in Sources */,
 				54ADB1D418E1860200FCCC83 /* TextTopicCell.m in Sources */,
@@ -3224,6 +3228,7 @@
 				14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */,
 				54AFAA9118DAC3BF0067B8C1 /* AdaptiveLabel.m in Sources */,
 				549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */,
+				54012DC418E2C14300F11D97 /* SortTableViewController.m in Sources */,
 				54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */,
 				544419E618D3EAC800FBE69F /* BabyPropView.m in Sources */,
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
@@ -3285,7 +3290,6 @@
 				5447C4AB18D98AE700187BE6 /* PartnerView.m in Sources */,
 				14B8DF2C18BC37A30047C6B3 /* BabyData.m in Sources */,
 				543BAEBE18CEB4EB00ED4672 /* AudioDiaryCell.m in Sources */,
-				54ADB1D118E17D2F00FCCC83 /* MyTopicViewController.m in Sources */,
 				541970DB18D19CE00058FE64 /* AddBodyDataViewController.m in Sources */,
 				545EB7F618D7F33F00D8EB7F /* AgeCalenderTitleButton.m in Sources */,
 				54CE10E818C1842C00966396 /* AFPageControl.m in Sources */,

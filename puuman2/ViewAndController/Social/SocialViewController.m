@@ -46,7 +46,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     if (partnerView) {
-        [partnerView hiddnInputView];
+       PostNotification(Noti_BottomInputViewHidden, nil);
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
@@ -125,7 +125,7 @@
         [topicView setAlpha:1];
         if (partnerView) {
             [partnerView setAlpha:0];
-            [partnerView hiddnInputView];
+            PostNotification(Noti_BottomInputViewHidden, nil);
         }
     }];
     
