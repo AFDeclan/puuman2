@@ -14,6 +14,7 @@
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
 
+
 @implementation TopicCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -21,7 +22,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        
+        [[Forum sharedInstance] addDelegateObject:self];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 608, 64)];
         [self.contentView addSubview:headerView];
@@ -102,7 +103,7 @@
 - (void)buildWithReply:(Reply *)replay
 {
     
-
+    _replay = replay;
     CGRect frame = contentView.frame;
     if (![replay.RTitle isEqualToString:@""]) {
         [title_label setText:replay.RTitle];
@@ -123,7 +124,12 @@
 
 - (void)likeBtnPressed
 {
-    [likeBtn selected];
+    
+    if (!_replay.voted) {
+        [_replay vote];
+    }
+    
+   
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -157,6 +163,21 @@
         h+= [PhotoTopicCell heightForReplay:replay];
     }
     return h;
+}
+
+//点赞成功
+- (void)topicReplyVoted:(Reply *)reply
+{
+    _replay = reply;
+    [likeBtn selected];
+    
+}
+
+//点赞失败
+- (void)topicReplyVoteFailed:(Reply *)reply
+{
+    _replay = reply;
+
 }
 
 @end

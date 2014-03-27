@@ -135,6 +135,7 @@
                 [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 
                 [self.view removeFromSuperview];
+                [[MainTabBarController sharedMainViewController] hiddenBottomInputView];
             }];
         }
     }];
@@ -224,10 +225,22 @@
 
 -(void)show
 {
-    SetViewLeftUp(_content, 0, 56);
-    [UIView animateWithDuration:0.5 animations:^{
+    
+    if (_sendIsHidden) {
+
         SetViewLeftUp(_content, 0, 0);
-    }];
+        [inputTextView becomeFirstResponder];
+    
+        
+        
+    }else{
+        SetViewLeftUp(_content, 0, 56);
+        [UIView animateWithDuration:0.5 animations:^{
+            SetViewLeftUp(_content, 0, 0);
+        }];
+    }
+    
+ 
 }
 
 -(void)hidden
@@ -286,6 +299,7 @@
     _sendIsHidden = sendIsHidden;
     if (sendIsHidden) {
         [createBtn initWithTitle:@"留言" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
+      
     }else{
         [createBtn initWithTitle:@"发送" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
     }

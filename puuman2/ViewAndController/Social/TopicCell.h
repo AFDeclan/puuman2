@@ -12,8 +12,9 @@
 #import "Reply.h"
 #import "AFSelecedTextImgButton.h"
 #import "ChatInputViewController.h"
+#import "Forum.h"
 
-@interface TopicCell : UITableViewCell
+@interface TopicCell : UITableViewCell<ForumDelegate>
 {
     BasicInfoView *infoView;
     UILabel *info_time;
@@ -25,7 +26,7 @@
     UILabel *relayExample;
     AFTextImgButton *scanMoreReplay;
     UILabel *title_label;
-    
+    Reply *_replay;
     
 }
 - (void)buildWithReply:(Reply *)replay;

@@ -156,6 +156,7 @@
         [partnerView setAlpha:1];
         if (topicView) {
             [topicView setAlpha:0];
+             PostNotification(Noti_BottomInputViewHidden, nil);
         }
     }];
 }

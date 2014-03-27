@@ -33,4 +33,5 @@
 - (void)initautoImportView;
 - (void)removeAutoImportView;
 - (void)showAutoImportView;
+- (void)hiddenBottomInputView;
 @end

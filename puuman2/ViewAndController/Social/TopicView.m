@@ -57,6 +57,7 @@
         [myTopic setAlpha:1];
         if (allTopic) {
             [allTopic setAlpha:0];
+             PostNotification(Noti_BottomInputViewHidden, nil);
         }
     }];
     

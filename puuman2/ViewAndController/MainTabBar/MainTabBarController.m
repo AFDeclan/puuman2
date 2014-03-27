@@ -238,10 +238,10 @@ static MainTabBarController *instance;
     if (!inputVC) {
         inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
         [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
-       
+        [inputVC setSendIsHidden:[[notification object] boolValue]];
+        [inputVC show];
     }
-    [inputVC setSendIsHidden:[[notification object] boolValue]];
-    [inputVC show];
+ 
 }
 
 - (void)hiddenBottomInputView
