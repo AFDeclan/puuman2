@@ -102,20 +102,20 @@
     searchTextField.placeholder = @"搜索商品";
     [searchView addSubview:searchTextField];
     
+    
+    contentShop = [[ShopContentView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
+    [self.view addSubview:contentShop];
+    [self rectWareBtnPressed];
+    
+    
 }
 
 //竖屏
 -(void)setVerticalFrame
 {
-    if (rectView) {
-        [rectView setFrame:CGRectMake(80, 80, 608, 944)];
-        [rectView setVerticalFrame];
-    }
-    
-    if (allView) {
-        [allView setFrame:CGRectMake(80, 80, 608, 944)];
-        [allView setVerticalFrame];
-    }
+    [contentShop setFrame:CGRectMake(80, 80, 608, 944)];
+    [contentShop setVerticalFrame];
+
     [bg_topImageView setFrame:CGRectMake(80, 16, 672, 64)];
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_shop.png"]];
     [bg_rightImageView setFrame:CGRectMake(688, 80, 64, 944)];
@@ -130,15 +130,9 @@
 //横屏
 -(void)setHorizontalFrame
 {
-    if (rectView) {
-        [rectView setFrame:CGRectMake(80, 80, 864, 688)];
-        [rectView setHorizontalFrame];
-    }
+    [contentShop setFrame:CGRectMake(80, 80, 864, 688)];
+    [contentShop setHorizontalFrame];
     
-    if (allView) {
-        [allView setFrame:CGRectMake(80, 80, 864, 688)];
-        [allView setHorizontalFrame];
-    }
     [bg_topImageView setFrame:CGRectMake(80, 16, 928, 64)];
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_h_shop.png"]];
     [bg_rightImageView setFrame:CGRectMake(944, 80, 64, 688)];
@@ -151,55 +145,17 @@
 
 - (void)rectWareBtnPressed
 {
+    [contentShop goToRectShop];
     [rectWareBtn selected];
     [allWareBtn unSelected];
-    if (!rectView) {
-        rectView = [[RectWareView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
-        
-        [self.view addSubview:rectView];
-        if ([MainTabBarController sharedMainViewController].isVertical) {
-            [self setVerticalFrame];
-        }else{
-            [self setHorizontalFrame];
-        }
-    }
-    
-    [rectView setAlpha:0];
-    [UIView animateWithDuration:0.5 animations:^{
-        [rectView setAlpha:1];
-        if (allView) {
-            [allView setAlpha:0];
-           
-        }
-
-    }];
-
+   
 }
 
 - (void)allWareBtnPressed
 {
+    [contentShop goToAllShop];
     [allWareBtn selected];
     [rectWareBtn unSelected];
-    if (!allView) {
-        allView = [[AllWareView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
-        
-        [self.view addSubview:allView];
-        if ([MainTabBarController sharedMainViewController].isVertical) {
-            [self setVerticalFrame];
-        }else{
-            [self setHorizontalFrame];
-        }
-    }
-    
-    [allView setAlpha:0];
-    [UIView animateWithDuration:0.5 animations:^{
-        [allView setAlpha:1];
-        if (rectView) {
-            [rectView setAlpha:0];
-            
-        }
-        
-    }];
 }
 
 -(void)refresh

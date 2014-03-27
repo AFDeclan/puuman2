@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface RectWareView : UIView
+#import "RecomModel.h"
+@interface RectWareView : UIView<UITableViewDataSource,UITableViewDelegate>
+{
+    UITableView *rectTable;
+     RecomModel *_model;
+}
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end
