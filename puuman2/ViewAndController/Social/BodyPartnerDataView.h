@@ -9,5 +9,8 @@
 #import "PartnerDataCellView.h"
 
 @interface BodyPartnerDataView : PartnerDataCellView
+{
 
+}
+@property(nonatomic,assign)BOOL isHeight;
 @end

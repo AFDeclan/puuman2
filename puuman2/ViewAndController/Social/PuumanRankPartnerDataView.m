@@ -41,7 +41,7 @@
         cell = [[PuumanPartnerDataCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
     }
-    
+    [cell setPumanWithNum:200 andRank:1];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
     
@@ -49,7 +49,7 @@
 
 - (void)setVerticalFrame
 {
-    [dataColumnView setFrame:CGRectMake(16, 0, 576, 224)];
+    [dataColumnView setFrame:CGRectMake(22, 0, 576, 224)];
 }
 
 - (void)setHorizontalFrame

@@ -39,7 +39,7 @@
         cell = [[VaccinePartnerDataCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
     }
-    
+    [cell setVaccineDoneNum:2 andShouldDoneNum:3];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
     
@@ -47,7 +47,7 @@
 
 - (void)setVerticalFrame
 {
-     [dataColumnView setFrame:CGRectMake(16, 0, 576, 112)];
+     [dataColumnView setFrame:CGRectMake(22, 0, 576, 112)];
 }
 
 - (void)setHorizontalFrame

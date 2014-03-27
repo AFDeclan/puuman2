@@ -66,7 +66,7 @@
         
         
 
-        figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 48, self.frame.size.width-22, 120)];
+        figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 48, 576, 120)];
         [figuresColumnView setBackgroundColor:[UIColor clearColor]];
         [figuresColumnView setViewDelegate:self];
         [figuresColumnView setViewDataSource:self];

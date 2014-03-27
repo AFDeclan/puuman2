@@ -16,6 +16,8 @@
     UILabel *name_label;
     UILabel *status_label;
 }
+@property (assign,nonatomic)float frameY;
+@property (assign,nonatomic)float frameH;
 - (void)setDataWithWareName:(NSString *)wareNmae andStatus:(NSString *)staus andWarePic:(NSString *)pic;
 
 @end

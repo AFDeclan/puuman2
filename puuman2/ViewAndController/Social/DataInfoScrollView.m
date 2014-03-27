@@ -19,8 +19,10 @@
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
         heightView = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, 0, 0, 224)];
+        [heightView setIsHeight:YES];
         [self addSubview:heightView];
         weightView  = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(heightView)+ViewHeight(heightView), 0, 224)];
+        [weightView setIsHeight:YES];
         [self addSubview:weightView];
         
         for (int i =0; i <5; i++) {

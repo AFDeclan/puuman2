@@ -12,7 +12,8 @@
 #import "MainTabBarController.h"
 
 @implementation PropWarePartnerDataCell
-
+@synthesize frameY = _frameY;
+@synthesize frameH = _frameH;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -90,14 +91,14 @@
     float y = [[notification object] floatValue];
     
     if ([MainTabBarController sharedMainViewController].isVertical) {
-        if (y+448>=self.frame.origin.y  &&  448 + y <= self.frame.size.height+self.frame.origin.y) {
+        if (y+448>=_frameY  &&  448 + y <= _frameH+_frameY) {
             [mask setAlpha:0];
         }else{
             [mask setAlpha:0.3];
         }
         
     }else{
-        if (y+112>=self.frame.origin.y  &&  112 + y <= self.frame.size.height+self.frame.origin.y) {
+        if (y+112>=_frameY  &&  112 + y <= _frameH+_frameY) {
             [mask setAlpha:0];
         }else{
             [mask setAlpha:0.3];

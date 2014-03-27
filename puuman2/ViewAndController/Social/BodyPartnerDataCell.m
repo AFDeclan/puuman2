@@ -18,7 +18,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         histogram = [[UIView alloc] init];
-        [histogram setBackgroundColor:RGBColor(246, 114, 99)];
         [self addSubview:histogram];
         date_info = [[UILabel alloc] initWithFrame:CGRectMake(0, 224-16, 96,16 )];
         [date_info setBackgroundColor:[UIColor clearColor]];
@@ -29,7 +28,6 @@
         
         data_info = [[UILabel alloc] initWithFrame:CGRectMake(0, 224-16, 96,16 )];
         [data_info setBackgroundColor:[UIColor clearColor]];
-        [data_info setTextColor:RGBColor(246, 114, 99)];
         [data_info setFont:PMFont4];
         [data_info setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:data_info];
@@ -41,26 +39,36 @@
     return self;
 }
 
-- (void)setBodyData:(float)body andTheDate:(NSDate *)date andHighest:(float)highest andLowest:(float)lowest;
+- (void)setBodyData:(float)bodyValue andTheDate:(NSDate *)date andHighest:(float)highest andLowest:(float)lowest andIsHeight:(BOOL) height;
 {
     
     
     if (highest == lowest) {
-        [histogram setFrame:CGRectMake(0, self.frame.size.height-200, 96, 200)];
+        [histogram setFrame:CGRectMake(0, 224-200, 96, 200)];
     }else{
-        float h = 50+(body-lowest)*(highest -lowest)/(200-50);
-        [histogram setFrame:CGRectMake(0, self.frame.size.height-h, 96, h)];
+        float h = 50+(bodyValue-lowest)*(highest -lowest)/(200-50);
+        [histogram setFrame:CGRectMake(0, 224-h, 96, h)];
     }
-    if (body == highest) {
+    if (bodyValue == highest) {
         [mask setAlpha:0];
-    }else if(body == lowest){
+    }else if(bodyValue == lowest){
         [mask setAlpha:0.5];
     }else{
         [mask setAlpha:0.3];
     }
-    [data_info setText:[NSString stringWithFormat:@"%0.1fcm",body]];
+    [data_info setText:[NSString stringWithFormat:@"%0.1fcm",bodyValue]];
     [date_info setText:@"比我大2天"];
     SetViewLeftUp(data_info, 0, ViewY(histogram)-16);
+    
+    if (height) {
+        [histogram setBackgroundColor:RGBColor(246, 114, 99)];
+        [data_info setTextColor:RGBColor(246, 114, 99)];
+    }else{
+         [histogram setBackgroundColor:RGBColor(228, 206, 58)];
+        [data_info setTextColor:RGBColor(228, 206, 58)];
+    }
+    
+    
     
     
 }

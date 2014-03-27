@@ -47,10 +47,10 @@
 
 - (void)setHorizontalFrame
 {
-    [dataInfoView setFrame:CGRectMake(128,168, 608, 520)];
+    [dataInfoView setFrame:CGRectMake(0,168, 864, 520)];
     [dataInfoView setHorizontalFrame];
     [figuresHeader setHorizontalFrame];
-    SetViewLeftUp(figuresHeader, 128, 0);
+    SetViewLeftUp(figuresHeader, 130, 0);
     SetViewLeftUp(manageBtn, 752, 84);
 }
 

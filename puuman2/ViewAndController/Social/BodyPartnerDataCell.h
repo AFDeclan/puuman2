@@ -16,5 +16,5 @@
     UIView *mask;
 }
 
-- (void)setBodyData:(float)body andTheDate:(NSDate *)date andHighest:(float)highest andLowest:(float)lowest;
+- (void)setBodyData:(float)bodyValue andTheDate:(NSDate *)date andHighest:(float)highest andLowest:(float)lowest andIsHeight:(BOOL) height;
 @end
