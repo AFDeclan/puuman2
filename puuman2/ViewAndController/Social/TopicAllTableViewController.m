@@ -12,6 +12,7 @@
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
 #import "ReplyForUpload.h"
+#import "UniverseConstant.h"
 
 @interface TopicAllTableViewController ()
 
@@ -28,7 +29,7 @@
         _voting = NO;
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSMutableArray alloc] init];
-
+        [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
     }
     return self;
 }
@@ -46,6 +47,9 @@
 
     
 }
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -189,7 +193,10 @@
     [self.tableView reloadData];
 }
 
-
+- (void)refreshTable
+{
+    [self.tableView  reloadData];
+}
 
 - (void)setVerticalFrame
 {

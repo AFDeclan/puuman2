@@ -20,8 +20,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [[Forum sharedInstance] addDelegateObject:self];
+       
         [self initialization];
+        
     }
     return self;
 }
@@ -209,6 +210,8 @@
 
 -(void)setInfoViewWithTopicNum:(NSInteger)topicNum
 {
+     [[Forum sharedInstance] removeDelegateObject:self];
+     [[Forum sharedInstance] addDelegateObject:self];
     
     if (topicNum == 1 ) {
         [leftBtn setAlpha:0];

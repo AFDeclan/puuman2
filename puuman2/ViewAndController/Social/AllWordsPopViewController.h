@@ -9,11 +9,14 @@
 #import "CustomPopViewController.h"
 #import "CustomTextField.h"
 #import "ColorButton.h"
+#import "Reply.h"
+#import "Forum.h"
 
-@interface AllWordsPopViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate>
+@interface AllWordsPopViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate>
 {
     CustomTextField *talkTextField;
     UITableView *talksTable;
     ColorButton *createTalkBtn;
 }
+@property(retain,nonatomic)Reply *replay;
 @end

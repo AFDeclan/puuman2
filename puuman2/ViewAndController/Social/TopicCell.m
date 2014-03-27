@@ -22,7 +22,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [[Forum sharedInstance] addDelegateObject:self];
+       
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 608, 64)];
         [self.contentView addSubview:headerView];
@@ -40,6 +40,7 @@
 
 - (void)initWithHeaderView
 {
+    
     
     infoView = [[BasicInfoView alloc] init];
     [self.contentView addSubview:infoView];
@@ -102,8 +103,13 @@
 
 - (void)buildWithReply:(Reply *)replay
 {
+     [[Forum sharedInstance] removeDelegateObject:self];
+     [[Forum sharedInstance] addDelegateObject:self];
     
     _replay = replay;
+    if (_replay.voted) {
+        [likeBtn selected];
+    }
     CGRect frame = contentView.frame;
     if (![replay.RTitle isEqualToString:@""]) {
         [title_label setText:replay.RTitle];

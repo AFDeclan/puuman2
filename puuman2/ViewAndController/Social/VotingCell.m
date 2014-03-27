@@ -41,7 +41,7 @@
         SetViewLeftUp(voteBtn, 496, 44);
         [voteBtn addTarget:self action:@selector(voted) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:voteBtn];
-        [[Forum sharedInstance] addDelegateObject:self];
+       
         
     }
     return self;
@@ -56,6 +56,8 @@
 
 - (void)buildWithVoteTopic:(Topic *)voteTopic
 {
+     [[Forum sharedInstance] removeDelegateObject:self];
+     [[Forum sharedInstance] addDelegateObject:self];
     votingTopic = voteTopic;
     if (voteTopic.voted) {
         [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];

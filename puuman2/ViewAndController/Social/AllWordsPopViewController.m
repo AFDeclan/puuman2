@@ -15,7 +15,7 @@
 @end
 
 @implementation AllWordsPopViewController
-
+@synthesize replay =_replay;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -45,6 +45,7 @@
     createTalkBtn = [[ColorButton alloc] init];
     [createTalkBtn initWithTitle:@"留言" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
     [_content addSubview:createTalkBtn];
+    [createTalkBtn addTarget:self action:@selector(replayed) forControlEvents:UIControlEventTouchUpInside];
     SetViewLeftUp(createTalkBtn, 592, 112);
 }
 
@@ -82,7 +83,7 @@
             
     }
         
-        
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
@@ -102,5 +103,45 @@
     return 0;
 }
 
+- (void)replayed
+{
+    [talkTextField resignFirstResponder];
+    [_replay comment:talkTextField.text];
+
+}
+
+- (void)show
+{
+    [[Forum sharedInstance] addDelegateObject:self];
+    [super show];
+}
+
+- (void)closeBtnPressed
+{
+    [[Forum sharedInstance] removeDelegateObject:self];
+    [super closeBtnPressed];
+}
+
+//评论上传成功
+- (void)replyCommentUploaded:(Reply *)reply
+{
+    _replay = reply;
+    [talkTextField setText:@""];
+    [createTalkBtn setEnabled:NO];
+    [talksTable reloadData];
+    PostNotification(Noti_BabyDataUpdated, Noti_RefreshTopicTable);
+}
+
+//评论上传失败
+- (void)replyCommentUploadFailed:(Reply *)reply
+{
+    _replay =reply;
+}
+
+- (void)setReplay:(Reply *)replay
+{
+    _replay =replay;
+    [talksTable reloadData];
+}
 
 @end
