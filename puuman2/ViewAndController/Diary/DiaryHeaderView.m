@@ -32,19 +32,17 @@
 - (void)initialization
 {
     
-    UIImageView *bgImg =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    [bgImg setBackgroundColor:PMColor6];
-    [self addSubview:bgImg];
+    bg_view =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [self addSubview:bg_view];
 
     
     progress = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,self.frame.size.width, self.frame.size.height)];
     [progress setScrollEnabled:NO];
     [self addSubview:progress];
     [progress setContentSize:CGSizeMake(self.frame.size.width*2, self.frame.size.height)];
-    UIImageView *bg =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    [bg setBackgroundColor:PMColor7];
+     bg_progress =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [progress setContentOffset:CGPointMake(self.frame.size.width, 0)];
-    [progress addSubview:bg];
+    [progress addSubview:bg_progress];
     
     button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [button setAdjustsImageWhenDisabled:NO];
@@ -53,7 +51,6 @@
     [button setEnabled:NO];
     
     title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    [title setTextColor:[UIColor whiteColor]];
     [title setFont:PMFont2];
     [title setTextAlignment:NSTextAlignmentCenter];
     [title setBackgroundColor:[UIColor clearColor]];
@@ -95,8 +92,14 @@
 {
     _isDiary = isDiary;
     if (_isDiary) {
+        [bg_progress setBackgroundColor:PMColor7];
+        [bg_view setBackgroundColor:PMColor6];
+        [title setTextColor:[UIColor whiteColor]];
         [title setText:@"正在下载您的日记...... "];
     }else{
+        [bg_progress setBackgroundColor:RGBColor(239, 84, 77)];
+        [bg_view setBackgroundColor:RGBColor(239, 128, 123)];
+        [title setTextColor:[UIColor whiteColor]];
         [title setText:@"正在导入照片...... "];
     }
 }

@@ -10,15 +10,15 @@
 
 @interface DiaryHeaderView : UIView
 {
-    UIView *bgView;
     UILabel *title;
     UIButton *button;
     UIScrollView * progress;
+    UIImageView *bg_view;
+    UIImageView *bg_progress;
     NSTimer  *timer;
     int _totalCnt;
     int _cnt;
     BOOL isFinished;
-   
 }
 @property(assign,nonatomic) BOOL isDiary;
 
