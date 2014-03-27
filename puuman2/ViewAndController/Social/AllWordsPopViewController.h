@@ -12,7 +12,7 @@
 #import "Reply.h"
 #import "Forum.h"
 
-@interface AllWordsPopViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate>
+@interface AllWordsPopViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate,UITextFieldDelegate>
 {
     CustomTextField *talkTextField;
     UITableView *talksTable;

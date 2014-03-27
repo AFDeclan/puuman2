@@ -30,6 +30,7 @@
 {
     talkTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(48, 112, 528, 48)];
     talkTextField.placeholder = @"在此发表您的留言";
+    [talkTextField setDelegate:self];
     [_content addSubview:talkTextField];
     
     talksTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 168, 528, 436)];
@@ -47,6 +48,8 @@
     [_content addSubview:createTalkBtn];
     [createTalkBtn addTarget:self action:@selector(replayed) forControlEvents:UIControlEventTouchUpInside];
     SetViewLeftUp(createTalkBtn, 592, 112);
+    [createTalkBtn setEnabled:NO];
+    [createTalkBtn setAlpha:0.5];
 }
 
 
@@ -128,6 +131,7 @@
     _replay = reply;
     [talkTextField setText:@""];
     [createTalkBtn setEnabled:NO];
+    [createTalkBtn setAlpha:0.5];
     [talksTable reloadData];
     PostNotification(Noti_BabyDataUpdated, Noti_RefreshTopicTable);
 }
@@ -144,4 +148,23 @@
     [talksTable reloadData];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (range.length == 1) {
+        if ([textField.text length]==1) {
+            [createTalkBtn setEnabled:NO];
+            [createTalkBtn setAlpha:0.5];
+            
+        }else{
+            [createTalkBtn setEnabled:YES];
+            [createTalkBtn setAlpha:1];
+            
+        }
+    }else{
+        [createTalkBtn setEnabled:YES];
+        [createTalkBtn setAlpha:1];
+    }
+    
+    return YES;
+}
 @end

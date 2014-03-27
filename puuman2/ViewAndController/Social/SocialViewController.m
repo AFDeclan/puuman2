@@ -45,9 +45,8 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    if (partnerView) {
-       PostNotification(Noti_BottomInputViewHidden, nil);
-    }
+    PostNotification(Noti_BottomInputViewHidden, nil);
+
     [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
   
