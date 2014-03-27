@@ -11,9 +11,7 @@
 @interface DiaryHeaderView : UIView
 {
     UIView *bgView;
-    UIView *_contentView;
     UILabel *title;
-    UIImageView *icon;
     UIButton *button;
     UIScrollView * progress;
     NSTimer  *timer;
@@ -24,7 +22,6 @@
 }
 @property(assign,nonatomic) BOOL isDiary;
 
-- (void)setBgPointY:(float)pointY;
 - (void)diaryLoadedcnt:(int)cnt totalCnt:(int)totalCnt;
 - (void)finished;
 @end

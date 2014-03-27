@@ -52,7 +52,7 @@
         if ([DiaryModel sharedDiaryModel].downloadedCnt == 0) [self  diaryLoading];
         if (!headerview)
         {
-            headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+            headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
             [headerview setIsDiary:YES];
         }
         
@@ -66,7 +66,7 @@
     if (importTotalNum >0) {
         if (importNum == 0)[self  diaryLoading];
         if (!importProgress){
-            importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+            importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
             [importProgress setIsDiary:NO];
         }
         
@@ -323,19 +323,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-//    if (section == 1) {
-//        int num = 0;
-//        if ([[DiaryModel sharedDiaryModel] updateCnt] > 0) {
-//            num++;
-//        }
-//        if (importTotalNum >0 ) {
-//            num++;
-//        }
-//        return 40*num;
-//    }else{
-//        return 0;
-//    }
-    return 0;
+    if (section == 1) {
+        int num = 0;
+        if ([[DiaryModel sharedDiaryModel] updateCnt] > 0) {
+            num++;
+        }
+        if (importTotalNum >0 ) {
+            num++;
+        }
+        return 40*num;
+    }else{
+        return 0;
+    }
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -354,7 +354,7 @@
             if (!headerview)
             {
                 
-                headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+                headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
                 [headerview setIsDiary:YES];
             }
             
@@ -364,7 +364,7 @@
         if (importTotalNum >0) {
             if (!importProgress)
             {
-                importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, (num-1)*40, 320, 40)];
+                importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, (num-1)*40, 672, 40)];
                 [importProgress setIsDiary:NO];
             }
             [view addSubview:importProgress];

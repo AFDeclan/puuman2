@@ -39,12 +39,13 @@
         cell = [[PropWarePartnerDataCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
     }
+    
     [cell setFrameY:self.frame.origin.y];
     [cell setFrameH:self.frame.size.height];
     [cell setDataWithWareName:@"奶粉" andStatus:@"已付" andWarePic:nil];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
-    return nil;
+  
     
 }
 

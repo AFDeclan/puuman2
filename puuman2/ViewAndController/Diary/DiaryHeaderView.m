@@ -20,10 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        UIImageView *triImgView = [[UIImageView alloc] initWithFrame:CGRectMake(48, 0, 1, 40)];
-        triImgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_timeline_diary"]];
-        [self addSubview:triImgView];
-        [self initContentView];
+        [self initialization];
         _isDiary = YES;
         isFinished = NO;
         
@@ -32,35 +29,37 @@
 }
 
 
-- (void)initContentView
+- (void)initialization
 {
-    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 32)];
-    UIImageView *bgImg =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 32)];
-    [bgImg setBackgroundColor:PMColor4];
-    [_contentView addSubview:bgImg];
-    button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 448, 32)];
+    
+    UIImageView *bgImg =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [bgImg setBackgroundColor:PMColor6];
+    [self addSubview:bgImg];
+
+    
+    progress = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,self.frame.size.width, self.frame.size.height)];
+    [progress setScrollEnabled:NO];
+    [self addSubview:progress];
+    [progress setContentSize:CGSizeMake(self.frame.size.width*2, self.frame.size.height)];
+    UIImageView *bg =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [bg setBackgroundColor:PMColor7];
+    [progress setContentOffset:CGPointMake(self.frame.size.width, 0)];
+    [progress addSubview:bg];
+    
+    button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [button setAdjustsImageWhenDisabled:NO];
     [button setBackgroundColor:[UIColor clearColor]];
     [button addTarget:self action:@selector(scan:)  forControlEvents:UIControlEventTouchUpInside];
     [button setEnabled:NO];
-    progress = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 448, 32)];
-    [progress setScrollEnabled:NO];
-    [_contentView addSubview:progress];
-    [progress setContentSize:CGSizeMake(448*2, 32)];
-    UIImageView *bg =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 448, 32)];
-    [bg setBackgroundColor:RGBColor(159, 199, 225)];
-    [progress setContentOffset:CGPointMake(448, 0)];
-    [progress addSubview:bg];
-    icon = [[UIImageView alloc] initWithFrame:CGRectMake(6, 6, 24, 24)];
-    [icon setImage:[UIImage imageNamed:@"icon1_download_diary.png"]];
-    [_contentView addSubview:icon];
     
-    title = [[UILabel alloc] initWithFrame:CGRectMake(96, 10, 224, 12)];
-    [title setTextColor:PMColor6];
-    [title setFont:PMFont3];
+    title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [title setTextColor:[UIColor whiteColor]];
+    [title setFont:PMFont2];
+    [title setTextAlignment:NSTextAlignmentCenter];
     [title setBackgroundColor:[UIColor clearColor]];
-    [_contentView addSubview:button];
-    [self addSubview:_contentView];
+    [button addSubview:title];
+    [self addSubview:button];
+
    
 }
 
@@ -104,26 +103,18 @@
 - (void)refreshProgress
 {
     CGPoint pos = progress.contentOffset;
-    pos.x =448-448*_cnt/_totalCnt;
+    pos.x =self.frame.size.width-self.frame.size.width*_cnt/_totalCnt;
     [UIView animateWithDuration:0.5 animations:^{
         progress.contentOffset = pos;
     }];
 }
 
--(void)setBgPointY:(float)pointY;
-{
 
-    [bgView setFrame:CGRectMake(0,pointY, 320, 48)];
-    pointY = pointY+8>0?pointY+8:0;
-    [button setFrame:CGRectMake(178, pointY, 448, 32)];
-    
-}
 
 - (void)finished
 {
     isFinished = YES;
     if (progress.contentOffset.x  >0) {
-        [icon setImage:[UIImage imageNamed:@"icon2_download_diary.png"]];
         if (_isDiary) {
             [title setText:@"日记下载完成！点击产看查看下吧~"];
         }else{
@@ -154,8 +145,7 @@
 }
 - (void)reset
 {
-      isFinished = NO;
-    [icon setImage:[UIImage imageNamed:@"icon1_download_diary.png"]];
+    isFinished = NO;
     if (_isDiary) {
         [title setText:@"正在下载您的日记...... "];
     }else{
