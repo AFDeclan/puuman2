@@ -23,4 +23,8 @@
     UIView *searchView;
     ShopContentView *contentShop;
 }
+
+- (void)hiddenMenu;
+- (void)skipToAllPage;
+
 @end

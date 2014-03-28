@@ -17,6 +17,8 @@
 
 @implementation ShopViewController
 
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,6 +27,7 @@
     }
     return self;
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -109,6 +112,19 @@
     
     
 }
+
+- (void)skipToAllPage
+{
+    [self allWareBtnPressed];
+}
+
+- (void)hiddenMenu
+{
+
+}
+
+
+
 
 //竖屏
 -(void)setVerticalFrame

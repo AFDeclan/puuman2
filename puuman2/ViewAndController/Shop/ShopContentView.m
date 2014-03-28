@@ -18,9 +18,41 @@
         // Initialization code
         [self setScrollEnabled:NO];
         [self setBackgroundColor:[UIColor whiteColor]];
+        
+        menuMask = [[UIView alloc] init];
+        [menuMask setBackgroundColor:[UIColor clearColor]];
+        [self addSubview:menuMask];
+        
+        showAndHiddenBtn = [[BabyInfoPageControlButton alloc] init];
+        [showAndHiddenBtn addTarget:self action:@selector(showOrHidden) forControlEvents:UIControlEventTouchUpInside];
+        [menuMask addSubview:showAndHiddenBtn];
+        
+        menu  =[[ShopMenuView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
+        [menuMask addSubview:menu];
+        
     }
     return self;
 }
+
+- (void)showOrHidden
+{
+    if (showAndHiddenBtn.isFold) {
+        [self unfold];
+    }else{
+        [self fold];
+    }
+}
+
+- (void)fold
+{
+    [showAndHiddenBtn foldWithDuration:0.5];
+}
+
+- (void)unfold
+{
+    [showAndHiddenBtn unfoldWithDuration:0.5];
+}
+
 
 - (void)goToAllShop
 {
@@ -73,6 +105,10 @@
 
 - (void)setVerticalFrame
 {
+    [menuMask setFrame:CGRectMake(0, 0, 256, 944)];
+    [menu setFrame:CGRectMake(0, 0, 216, 944)];
+    [showAndHiddenBtn setAlpha:1];
+    [menu setVerticalFrame];
     if (rectView) {
         [rectView setFrame:CGRectMake(0, 0, 608, 944)];
         [rectView setVerticalFrame];
@@ -86,6 +122,10 @@
 
 - (void)setHorizontalFrame
 {
+    [menuMask setFrame:CGRectMake(0, 0, 216, 688)];
+    [showAndHiddenBtn setAlpha:0];
+    [menu setFrame:CGRectMake(0, 0, 216, 688)];
+    [menu setHorizontalFrame];
     if (rectView) {
         [rectView setFrame:CGRectMake(216, 0, 648, 688)];
         [rectView setHorizontalFrame];

@@ -7,8 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShopModel.h"
+#import "MJRefreshFooterView.h"
 
-@interface AllWareView : UIView
+typedef enum ShopState {
+    ShopStateNormal,
+    ShopStateFiltered,
+    ShopStateInsurance
+} ShopState;
+
+
+@interface AllWareView : UIView<UITableViewDataSource,UITableViewDelegate,MJRefreshBaseViewDelegate>
+{
+    UITableView *_shopMallTable;
+    ShopState _shopState;
+     MJRefreshFooterView *_refreshFooter;
+}
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

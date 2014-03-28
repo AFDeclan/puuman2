@@ -11,7 +11,7 @@
 @interface RectWareView : UIView<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *rectTable;
-     RecomModel *_model;
+    RecomModel *_model;
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

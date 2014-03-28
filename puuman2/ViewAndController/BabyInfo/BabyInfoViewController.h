@@ -33,5 +33,6 @@
     BabyInfoButtonType selectType;
 }
 
+
 - (void)refresh;
 @end

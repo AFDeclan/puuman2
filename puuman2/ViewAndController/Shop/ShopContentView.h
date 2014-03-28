@@ -9,10 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "AllWareView.h"
 #import "RectWareView.h"
+#import "ShopMenuView.h"
+#import "BabyInfoPageControlButton.h"
+
 @interface ShopContentView : UIScrollView
 {
     RectWareView *rectView;
     AllWareView *allView;
+    UIView *menuMask;
+    ShopMenuView *menu;
+    BabyInfoPageControlButton *showAndHiddenBtn;
 }
 - (void)goToAllShop;
 - (void)goToRectShop;

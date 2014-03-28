@@ -16,6 +16,9 @@
 #define Noti_CartDoneReceived                   @"Noti_CartDoneReceived"
 #define Noti_TutorialFinshed                    @"TUTORIAL_FINISHED"
 #define Noti_ReloadShopMall                     @"Noti_ReloadShopMall"
+#define Noti_HiddenMenu                         @"Noti_HiddenMenu"
+#define Noti_ToAllSHop                           @"Noti_ToAllSHop"
+#define Noti_ReloadRankView                     @"Noti_ReloadRankView"
 #define Noti_ReloadWareFilterView               @"Noti_ReloadWareFilterView"
 
 #define Noti_PumanInBookUpdated                 @"Noti_PumanInBookUpdated"
