@@ -15,6 +15,11 @@ typedef enum TopicStatus {
     TopicStatus_Past = 2,
 } TopicStatus;
 
+typedef enum TopicType {
+    TopicType_Text = 0,
+    TopicType_Photo = 1,
+} TopicType;
+
 @class Reply;
 @class PumanRequest;
 
@@ -28,6 +33,8 @@ typedef enum TopicStatus {
 @property (assign, nonatomic, readonly) NSInteger   TID;
 //话题期号
 @property (assign, nonatomic, readonly) NSInteger   TNo;
+//话题类别
+@property (assign, nonatomic, readonly) TopicType   TType;
 //话题标题
 @property (retain, nonatomic, readonly) NSString *  TTitle;
 //话题详情

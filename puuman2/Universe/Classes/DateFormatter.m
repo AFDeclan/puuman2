@@ -19,6 +19,15 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSString *)timestampStrFromDatetime:(NSDate *)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Harbin"];
+    [formatter setTimeZone:timeZone];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return [formatter stringFromDate:date];
+}
+
 + (NSDate *)datetimeFromString:(NSString *)dateStr
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -34,6 +43,15 @@
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Harbin"];
     [formatter setTimeZone:timeZone];
     [formatter setDateFormat:format];
+    return [formatter dateFromString:dateStr];
+}
+
++ (NSDate *)datetimeFromTimestampStr:(NSString *)dateStr
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Harbin"];
+    [formatter setTimeZone:timeZone];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [formatter dateFromString:dateStr];
 }
 

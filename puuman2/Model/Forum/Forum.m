@@ -82,6 +82,24 @@ static Forum * instance;
     return nil;
 }
 
+- (BOOL)uploadNewTopic:(NSString *)TTitle detail:(NSString *)TDetail type:(TopicType)TType
+{
+    for (PumanRequest *req in _requests) {
+        if ([[req urlStr] isEqualToString:kUrl_UploadTopic])
+            return NO;
+    }
+    PumanRequest *req = [[PumanRequest alloc] init];
+    [_requests addObject:req];
+    [req setUrlStr:kUrl_UploadTopic];
+    [req setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"TUploadUID"];
+    [req setParam:TTitle forKey:@"TTitle"];
+    [req setParam:TDetail forKey:@"TDetail"];
+    [req setIntegerParam:TType forKey:@"TType"];
+    [req setDelegate:self];
+    [req postAsynchronous];
+    return YES;
+}
+
 - (ReplyForUpload *)createReplyForUpload
 {
     ReplyForUpload *re = [[ReplyForUpload alloc] init];
@@ -106,7 +124,7 @@ static Forum * instance;
             [_topics setObject:topic forKey:tnoStr];
             [self informDelegates:@selector(topicReceived:) withObject:topic];
         }
-    } else {
+    } else if ([url isEqualToString:kUrl_GetActiveTopics]) {
         id retArr = afRequest.resObj;
         if (!retArr || ![retArr isKindOfClass:[NSArray class]]) {
             [self informDelegates:@selector(activeTopicsFailed) withObject:nil];
@@ -122,6 +140,12 @@ static Forum * instance;
                 }
             }
             [self informDelegates:@selector(activeTopicsReceived) withObject:nil];
+        }
+    } else if ([url isEqualToString:kUrl_UploadTopic]) {
+        if (afRequest.result == PumanRequest_Succeeded) {
+            [self informDelegates:@selector(topicUploaded) withObject:nil];
+        } else {
+            [self informDelegates:@selector(topicUploadFailed) withObject:nil];
         }
     }
     [_requests removeObject:afRequest];

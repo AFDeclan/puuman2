@@ -18,6 +18,7 @@
 
 @synthesize TID = _TID;
 @synthesize TNo = _TNo;
+@synthesize TType = _TType;
 @synthesize TTitle = _TTitle;
 @synthesize TDetail = _TDetail;
 @synthesize TStatus = _TStatus;
@@ -38,6 +39,8 @@
             _TID = [val integerValue];
         } else if ([key isEqualToString:@"TNo"]) {
             _TNo = [val integerValue];
+        } else if ([key isEqualToString:@"TType"]) {
+            _TType = [val integerValue];
         } else if ([key isEqualToString:@"TTitle"]) {
             _TTitle = val;
         } else if ([key isEqualToString:@"TDetail"]) {
