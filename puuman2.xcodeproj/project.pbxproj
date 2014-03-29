@@ -57,8 +57,12 @@
 		14B8DF5E18BC3E340047C6B3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5D18BC3E340047C6B3 /* CoreTelephony.framework */; };
 		14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */; };
 		14C0B6A018E1158C00BC308E /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C0B69F18E1158C00BC308E /* Comment.m */; };
+		14C7867418E4189C0024CE9F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C7867318E4189C0024CE9F /* Friend.m */; };
+		14C7867718E418A70024CE9F /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C7867618E418A70024CE9F /* Group.m */; };
+		14C7867A18E418C70024CE9F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C7867918E418C70024CE9F /* Member.m */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
+		14F5BC8E18E5794E007D8C4B /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F5BC8D18E5794E007D8C4B /* Action.m */; };
 		5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */; };
 		5403CC6518D03B68004CAE22 /* JoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC6418D03B68004CAE22 /* JoinView.m */; };
 		5403CC7218D03B7D004CAE22 /* InviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC6818D03B7D004CAE22 /* InviteView.m */; };
@@ -516,8 +520,16 @@
 		14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14C0B69E18E1158C00BC308E /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		14C0B69F18E1158C00BC308E /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		14C7867218E4189C0024CE9F /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		14C7867318E4189C0024CE9F /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		14C7867518E418A70024CE9F /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		14C7867618E418A70024CE9F /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		14C7867818E418C70024CE9F /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
+		14C7867918E418C70024CE9F /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		14F5BC8C18E5794E007D8C4B /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		14F5BC8D18E5794E007D8C4B /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
 		5403CC5E18D006C7004CAE22 /* DetailShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailShowViewController.h; sourceTree = "<group>"; };
 		5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailShowViewController.m; sourceTree = "<group>"; };
 		5403CC6318D03B68004CAE22 /* JoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinView.h; sourceTree = "<group>"; };
@@ -1144,6 +1156,7 @@
 		14B8DE9118BC37A30047C6B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				14C7866818E418050024CE9F /* Friend */,
 				147756F618D7F47F00E08BD0 /* Forum */,
 				14B8DE9218BC37A30047C6B3 /* Diary */,
 				14B8DE9D18BC37A30047C6B3 /* Models.h */,
@@ -1302,6 +1315,21 @@
 				54F1D13D18C490A10005CDD9 /* PopUpViewController.m */,
 			);
 			path = UIEx;
+			sourceTree = "<group>";
+		};
+		14C7866818E418050024CE9F /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				14C7867218E4189C0024CE9F /* Friend.h */,
+				14C7867318E4189C0024CE9F /* Friend.m */,
+				14C7867518E418A70024CE9F /* Group.h */,
+				14C7867618E418A70024CE9F /* Group.m */,
+				14C7867818E418C70024CE9F /* Member.h */,
+				14C7867918E418C70024CE9F /* Member.m */,
+				14F5BC8C18E5794E007D8C4B /* Action.h */,
+				14F5BC8D18E5794E007D8C4B /* Action.m */,
+			);
+			path = Friend;
 			sourceTree = "<group>";
 		};
 		5403CC6218D03B53004CAE22 /* Join */ = {
@@ -2591,6 +2619,7 @@
 				54AFBBC818D6938600861A69 /* LoginViewController.m in Sources */,
 				54A9288418C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m in Sources */,
 				14B8DF2D18BC37A30047C6B3 /* RegisterForm.m in Sources */,
+				14C7867418E4189C0024CE9F /* Friend.m in Sources */,
 				5403CC7418D03B7D004CAE22 /* DynamicView.m in Sources */,
 				147756FF18D7F4B800E08BD0 /* Reply.m in Sources */,
 				541970D518D1956D0058FE64 /* UIKit+DrawingHelpers.m in Sources */,
@@ -2607,6 +2636,7 @@
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
 				54AFBBC418D6938600861A69 /* LoginCodeView.m in Sources */,
+				14C7867A18E418C70024CE9F /* Member.m in Sources */,
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
 				54CE10F418C1842C00966396 /* MJRefreshFooterView.m in Sources */,
 				14B8DF2918BC37A30047C6B3 /* ShopClassModel.m in Sources */,
@@ -2634,6 +2664,7 @@
 				54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */,
 				54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */,
 				54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */,
+				14F5BC8E18E5794E007D8C4B /* Action.m in Sources */,
 				14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */,
 				544419EB18D3ED3E00FBE69F /* PropView.m in Sources */,
 				54CE10F918C1842C00966396 /* UIImage+Scale.m in Sources */,
@@ -2699,6 +2730,7 @@
 				54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */,
 				54AFBBC118D6938600861A69 /* ColorButton.m in Sources */,
 				54AFBBC918D6938600861A69 /* PregnancyCalendar.m in Sources */,
+				14C7867718E418A70024CE9F /* Group.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
 				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
 				54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */,

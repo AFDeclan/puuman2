@@ -12,9 +12,13 @@
 
 + (NSString *)stringFromDatetime:(NSDate *)date;
 
++ (NSString *)timestampStrFromDatetime:(NSDate *)date;
+
 + (NSDate *)datetimeFromString:(NSString *)dateStr;
 
 + (NSDate *)datetimeFromString:(NSString *)dateStr withFormat:(NSString *)format;
+
++ (NSDate *)datetimeFromTimestampStr:(NSString *)dateStr;
 
 + (NSString *)stringFromDate:(NSDate *)date;
 

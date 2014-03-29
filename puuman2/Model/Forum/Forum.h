@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PumanRequest.h"
+#import "Topic.h"
 
 #define Reply_Content_Text      @"text"
 #define Reply_Content_Photo     @"photo"
@@ -37,6 +38,12 @@
 
 //更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
 - (void)topicRepliesLoadFailed:(Topic *)topic;
+
+//新话题上传成功
+- (void)topicUploaded;
+
+//新话题上传失败
+- (void)topicUploadFailed;
 
 //话题投票成功
 - (void)topicVoted:(Topic *)topic;
@@ -101,6 +108,9 @@
 
 //按期号获取，若已获取过则直接返回，否则返回nil，异步等待回调。
 - (Topic *)getTopic:(NSInteger)TNo;
+
+//上传新话题 若之前的上传请求未完成则不会上传，返回NO
+- (BOOL)uploadNewTopic:(NSString *)TTitle detail:(NSString *)TDetail type:(TopicType)TType;
 
 //新建一个自动引用和释放的ReplyForUpload对象
 - (ReplyForUpload *)createReplyForUpload;
