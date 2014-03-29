@@ -9,6 +9,7 @@
 #import "ShopAllWareHeaderView.h"
 #import "ColorsAndFonts.h"
 #import "ShopClassModel.h"
+#import "ShopModel.h"
 
 @implementation ShopAllWareHeaderView
 
@@ -44,10 +45,26 @@
     return self;
 }
 
-- (void)setStatusWithKindIndex:(NSInteger)index andUnfold:(BOOL)unfold
+- (void)setStatusWithKindIndex:(NSInteger)index andUnfold:(BOOL)unfold;
 {
     [icon_ware setImage:[ShopClassModel iconForSectionAtIndex:index]];
-    NSString *titleName = [ShopClassModel titleForSectionAtIndex:index];
+    NSString *titleName;
+    if (unfold) {
+        [moreLabel setText:@"返回"];
+        if ([ShopModel sharedInstance].subClassIndex < 0) {
+            
+             titleName = [ShopClassModel titleForSectionAtIndex:[ShopModel sharedInstance].sectionIndex];
+        }else{
+             titleName = [ShopClassModel titleForSectionAtIndex:[ShopModel sharedInstance].sectionIndex andSubType:[ShopModel sharedInstance].subClassIndex];
+        }
+      
+        [icon_tri setImage:[UIImage imageNamed:@"tri_blue_left.png"]];
+    }else{
+        titleName = [ShopClassModel titleForSectionAtIndex:index];
+        [moreLabel setText:@"更多"];
+        [icon_tri setImage:[UIImage imageNamed:@"tri_blue_right.png"]];
+    }
+
     CGSize size = [titleName sizeWithFont:wareLabel.font];
     [wareLabel setText:titleName];
     CGRect nameFrame = wareLabel.frame;
@@ -58,13 +75,7 @@
     partFrame.size.width = moreLabel.frame.origin.x- partFrame.origin.x;
     [partLine setFrame:partFrame];
     
-    if (unfold) {
-        [moreLabel setText:@"返回"];
-        [icon_tri setImage:[UIImage imageNamed:@"tri_blue_left.png"]];
-    }else{
-         [moreLabel setText:@"更多"];
-        [icon_tri setImage:[UIImage imageNamed:@"tri_blue_right.png"]];
-    }
+
     
 }
 

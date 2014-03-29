@@ -17,7 +17,7 @@ typedef enum {
     UIImageView *icon;
     UILabel *title;
     UIImageView *selectedEffect;
-
+    UIColor *_color;
     
 }
 @property (assign,nonatomic)ButtonType state;

@@ -23,6 +23,7 @@
     TypeButton *backBtn;
 }
 
+
 - (void)showShopWithTypeIndex:(NSInteger)typeIndex andSubIndex:(NSInteger)subIndex;
 - (void)selectedParentIndex:(NSInteger)parentIndex andChildIndex:(NSInteger)childIndex;
 @end

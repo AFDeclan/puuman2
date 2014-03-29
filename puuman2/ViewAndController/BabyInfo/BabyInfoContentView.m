@@ -45,11 +45,15 @@
 - (void)fold
 {
     [showAndHiddenBtn foldWithDuration:0.5];
+    
+  
+    
 }
 
 - (void)unfold
 {
     [showAndHiddenBtn unfoldWithDuration:0.5];
+  
 }
 
 -(void)setVerticalFrame

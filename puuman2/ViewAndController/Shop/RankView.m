@@ -25,7 +25,7 @@ static NSString *specialSortTableCellIdentify = @"SpecialSortTableCell";    //æ˜
     if (self) {
         // Initialization code
         [self initialization];
-    //    [MyNotiCenter addObserver:self selector:@selector(sortTableReload) name:Noti_ReloadRankView object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(sortTableReload) name:Noti_ReloadRankView object:nil];
     }
     return self;
 }
@@ -56,11 +56,11 @@ static NSString *specialSortTableCellIdentify = @"SpecialSortTableCell";    //æ˜
 -(void)setVerticalFrame
 {
     
-    [sortTable setFrame:CGRectMake(0,48,self.frame.size.width,self.frame.size.height-48)];
+    [sortTable setFrame:CGRectMake(0,0,self.frame.size.width,self.frame.size.height)];
 }
 -(void)setHorizontalFrame
 {
-    [sortTable setFrame:CGRectMake(0,48,self.frame.size.width,self.frame.size.height-48)];
+    [sortTable setFrame:CGRectMake(0,0,self.frame.size.width,self.frame.size.height)];
 }
 
 #pragma mark - sort table

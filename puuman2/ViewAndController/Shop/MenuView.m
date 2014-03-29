@@ -26,7 +26,7 @@
         parentMenu = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
          [parentMenu setBackgroundColor:[UIColor clearColor]];
         [self addSubview:parentMenu];
-        [self setBackgroundColor:PMColor4];
+        [self setBackgroundColor:PMColor6];
         [self initParentMenu];
         UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 1)];
         [line setImage:[UIImage imageNamed:@"line_shop.png"]];
@@ -43,10 +43,11 @@
         frame.origin.x = (i%2)*MenuBtnWidth;
         frame.origin.y = ((int)(i/2))*MenuBtnHeight;
         _typeBtn[i] = [[TypeButton alloc] initWithFrame:frame];
-        [_typeBtn[i] initWithIconImg:[ShopModel icon2ForSectionAtIndex:i]  andTitle:[ShopModel titleForSectionAtIndex:i] andTitleColor:PMColor1 andTitleFont:PMFont2];
+        [_typeBtn[i] initWithIconImg:[ShopModel icon2ForSectionAtIndex:i]  andTitle:[ShopModel titleForSectionAtIndex:i] andTitleColor:PMColor7 andTitleFont:PMFont3];
         [_typeBtn[i] setBackgroundImage:[UIImage imageNamed:@"btn_h_shop.png"] forState:UIControlStateNormal];
         [_typeBtn[i] setAdjustsImageWhenDisabled:NO];
         [_typeBtn[i] setTypeIndex:i];
+        [_typeBtn[i] setBackgroundColor:PMColor6];
         [_typeBtn[i] addTarget:self action:@selector(typeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [parentMenu addSubview:_typeBtn[i]];
         if ( i == 10 || i == 11 ) {
@@ -131,12 +132,14 @@
             [_subTypeBtn[typeIndex][i] addTarget:self action:@selector(subBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [_subTypeBtn[typeIndex][i] setTypeIndex:typeIndex];
             [_subTypeBtn[typeIndex][i] setSubIndex:i];
+            [_subTypeBtn[typeIndex][i] setBackgroundColor:PMColor6];
         
         [childMenu addSubview:_subTypeBtn[typeIndex][i]];
     }
     if (!backBtn) {
         backBtn = [[TypeButton alloc] initWithFrame:CGRectMake(0, 0, MenuBtnWidth, MenuBtnHeight)];
-        [backBtn initWithIconImg:[UIImage imageNamed:@"icon_back_shop.png"] andTitle:@"返回" andTitleColor:PMColor1 andTitleFont:PMFont2];
+        [backBtn initWithIconImg:[UIImage imageNamed:@"icon_back_shop.png"] andTitle:@"返回" andTitleColor:[UIColor whiteColor] andTitleFont:PMFont3];
+        [backBtn setBackgroundColor:PMColor6];
          [backBtn setBackgroundImage:[UIImage imageNamed:@"btn_h_shop.png"] forState:UIControlStateNormal];
         [backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -198,6 +201,12 @@
 
 - (void)showShopWithTypeIndex:(NSInteger)typeIndex
 {
+
+}
+
+- (void)showShopWithTypeIndex:(NSInteger)typeIndex andSubIndex:(NSInteger)subIndex
+{
+
     if (typeIndex == -1) {
         if (selectedBtn.state == SubShopBtn) {
             [self back:backBtn];
@@ -214,22 +223,16 @@
         [selectedBtn selected];
         [self typeBtnClicked:_typeBtn[typeIndex]];
     }
+    
+   
+
+    
 }
 
-- (void)showShopWithTypeIndex:(NSInteger)typeIndex andSubIndex:(NSInteger)subIndex
-{
-    
-    [self showShopWithTypeIndex:typeIndex];
-    if (selectedSubBtn) {
-        [selectedSubBtn unSelected];
-    }
-    if (subIndex == -1) return;
-    selectedSubBtn = _subTypeBtn[typeIndex][subIndex];
-    [selectedSubBtn selected];
-}
 
 - (void)selectedParentIndex:(NSInteger)parentIndex andChildIndex:(NSInteger)childIndex
 {
+    
     if (selectedBtn) {
         [selectedBtn setIsSelected:NO];
         [selectedBtn unSelected];
@@ -242,7 +245,8 @@
     [ShopModel sharedInstance].sectionIndex = parentIndex;
     [ShopModel sharedInstance].subClassIndex = childIndex;
 
-    [self showShopWithTypeIndex:parentIndex andSubIndex:childIndex];
+   
+     PostNotification(Noti_ToAllSHop, nil);
      PostNotification(Noti_ReloadShopMall, nil);
      PostNotification(Noti_ReloadRankView, nil);
 

@@ -21,17 +21,17 @@
         // Initialization code
         self.isSelected = NO;
         title = [[UILabel alloc] initWithFrame:CGRectMake(0, 26, frame.size.width, 16)];
-        [title setFont:PMFont2];
-        [title setTextColor:PMColor1];
+        [title setFont:PMFont3];
+        [title setTextColor:[UIColor whiteColor]];
         [title setBackgroundColor:[UIColor clearColor]];
         [title setTextAlignment:NSTextAlignmentCenter];
         [title setText:str];
         [self addSubview:title];
-        selectedEffect = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        
-        [selectedEffect setAlpha:0];
-        [selectedEffect setBackgroundColor:PMColor1];
-        [self addSubview:selectedEffect];
+//        selectedEffect = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+//        
+//        [selectedEffect setAlpha:0];
+//        [selectedEffect setBackgroundColor:PMColor1];
+//        [self addSubview:selectedEffect];
         [self setAdjustsImageWhenHighlighted:NO];
     }
     return self;
@@ -39,7 +39,8 @@
 - (void)selected
 {
     [UIView animateWithDuration:0.5 animations:^{
-        [selectedEffect setAlpha:0.5];
+      //  [selectedEffect setAlpha:0.5];
+         [title setTextColor:PMColor7];
     }];
     
 }
@@ -47,7 +48,8 @@
 {
     
     [UIView animateWithDuration:0.5 animations:^{
-        [selectedEffect setAlpha:0];
+       // [selectedEffect setAlpha:0];
+         [title setTextColor:[UIColor whiteColor]];
     }];
     
 }

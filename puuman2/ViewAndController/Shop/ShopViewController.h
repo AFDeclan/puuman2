@@ -12,7 +12,7 @@
 #import "SearchTextField.h"
 #import "ShopContentView.h"
 
-@interface ShopViewController : UIViewController
+@interface ShopViewController : UIViewController<UIGestureRecognizerDelegate>
 {
     UIImageView *bg_topImageView;
     UIImageView *bg_rightImageView;
@@ -24,7 +24,6 @@
     ShopContentView *contentShop;
 }
 
-- (void)hiddenMenu;
-- (void)skipToAllPage;
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ShopContentView.h"
 #import "MainTabBarController.h"
+#import "UniverseConstant.h"
 
 @implementation ShopContentView
 
@@ -22,17 +23,54 @@
         menuMask = [[UIView alloc] init];
         [menuMask setBackgroundColor:[UIColor clearColor]];
         [self addSubview:menuMask];
-        
+        menuShowed = NO;
         showAndHiddenBtn = [[BabyInfoPageControlButton alloc] init];
         [showAndHiddenBtn addTarget:self action:@selector(showOrHidden) forControlEvents:UIControlEventTouchUpInside];
         [menuMask addSubview:showAndHiddenBtn];
-        
+        SetViewLeftUp(showAndHiddenBtn, 216, 452);
         menu  =[[ShopMenuView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
         [menuMask addSubview:menu];
-        
+        UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+        [gestureRecognizer setDelegate:self];
+        [menuMask addGestureRecognizer:gestureRecognizer];
+        [MyNotiCenter addObserver:self selector:@selector(fold) name:Noti_HiddenMenu object:nil];
     }
     return self;
 }
+
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self restartTimer];
+    }else{
+        if (_timerToFoldDrawer) {
+            [_timerToFoldDrawer invalidate];
+            _timerToFoldDrawer = nil;
+        }
+    }
+    return YES;
+}
+
+- (void)restartTimer
+{
+    if (_timerToFoldDrawer) {
+        [_timerToFoldDrawer invalidate];
+        _timerToFoldDrawer = nil;
+    }
+    _timerToFoldDrawer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(fold) userInfo:nil repeats:NO];
+}
+
+
+- (void)hiddenMenuWithTapPoint:(CGPoint)pos;
+{
+    if (menuShowed == YES && !CGRectContainsPoint(menuMask.frame, pos)) {
+      [self fold];
+    }
+    
+    
+}
+
+
 
 - (void)showOrHidden
 {
@@ -45,12 +83,26 @@
 
 - (void)fold
 {
+    menuShowed = NO;
+    if (_timerToFoldDrawer) {
+        [_timerToFoldDrawer invalidate];
+        _timerToFoldDrawer = nil;
+    }
     [showAndHiddenBtn foldWithDuration:0.5];
+    [UIView animateWithDuration:0.5 animations:^{
+        SetViewLeftUp(menuMask, -216, 0);
+    }];
+    
 }
 
 - (void)unfold
 {
+    menuShowed = YES;
+    [self restartTimer];
     [showAndHiddenBtn unfoldWithDuration:0.5];
+    [UIView animateWithDuration:0.5 animations:^{
+        SetViewLeftUp(menuMask, 0, 0);
+    }];
 }
 
 
@@ -60,6 +112,7 @@
         allView = [[AllWareView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
         
         [self addSubview:allView];
+        [self bringSubviewToFront:menuMask];
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
         }else{
@@ -84,6 +137,7 @@
     if (!rectView) {
         rectView = [[RectWareView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         [self addSubview:rectView];
+        [self bringSubviewToFront:menuMask];
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
         }else{
@@ -105,9 +159,10 @@
 
 - (void)setVerticalFrame
 {
-    [menuMask setFrame:CGRectMake(0, 0, 256, 944)];
+    [menuMask setFrame:CGRectMake(-216, 0, 256, 944)];
     [menu setFrame:CGRectMake(0, 0, 216, 944)];
     [showAndHiddenBtn setAlpha:1];
+    [self fold];
     [menu setVerticalFrame];
     if (rectView) {
         [rectView setFrame:CGRectMake(0, 0, 608, 944)];
@@ -134,6 +189,10 @@
     if (allView) {
         [allView setFrame:CGRectMake(216, 0, 648, 688)];
         [allView setHorizontalFrame];
+    }
+    if (_timerToFoldDrawer) {
+        [_timerToFoldDrawer invalidate];
+        _timerToFoldDrawer = nil;
     }
 }
 

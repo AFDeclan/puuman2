@@ -44,7 +44,7 @@
                 [blockRefreshFooter endRefreshing];
             }
         };
-
+        [self reloadShopMall];
      
   
     }
@@ -199,6 +199,7 @@
 
     [headView setStatusWithKindIndex:section andUnfold:_shopState == ShopStateNormal?NO:YES];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(sectionHeaderTapped:)];
+    headView.tag =section;
     [headView addGestureRecognizer:tap];
     return headView;
 }
@@ -229,10 +230,7 @@
     switch (_shopState) {
         case ShopStateNormal:
         {
-            [ShopModel sharedInstance].sectionIndex = section-1;
-//            [menu reloadRankView];
-//            [menu selectedParentIndex: [ShopModel sharedInstance].sectionIndex andChildIndex:[ShopModel sharedInstance].subClassIndex];
-            
+            [ShopModel sharedInstance].sectionIndex = section;
             _shopState = ShopStateFiltered;
             
             
@@ -242,13 +240,14 @@
         {
              _shopState = ShopStateNormal;
             [ShopModel sharedInstance].sectionIndex = -1;
-        //    [menu selectedParentIndex: [ShopModel sharedInstance].sectionIndex andChildIndex:[ShopModel sharedInstance].subClassIndex];
+            
+    
         }
             break;
         default:
             break;
     }
-    [self reloadShopMall];
+    PostNotification(Noti_RefreshMenu, nil);
   
 }
 
@@ -291,5 +290,10 @@
 {
     [_shopMallTable setFrame:CGRectMake(0, 0, 648, 688)];
 }
+
+
+
+
+
 
 @end

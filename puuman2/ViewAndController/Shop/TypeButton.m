@@ -20,17 +20,17 @@
     if (self) {
         // Initialization code
         self.isSelected = NO;
-        icon = [[UIImageView alloc] initWithFrame:CGRectMake((frame.size.width-32)/2, 8,32, 32)];
+        icon = [[UIImageView alloc] initWithFrame:CGRectMake((frame.size.width-24)/2, 12,24, 24)];
         [self addSubview:icon];
-        title = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, frame.size.width, 16)];
+        title = [[UILabel alloc] initWithFrame:CGRectMake(0, 44, frame.size.width, 16)];
         [title setBackgroundColor:[UIColor clearColor]];
         [title setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:title];
-        selectedEffect = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        [selectedEffect setAlpha:0];
-        [selectedEffect setBackgroundColor:PMColor1];
-        [self addSubview:selectedEffect];
-        [self setAdjustsImageWhenHighlighted:NO];
+//        selectedEffect = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+//        [selectedEffect setAlpha:0];
+//        [selectedEffect setBackgroundColor:PMColor1];
+//        [self addSubview:selectedEffect];
+//        [self setAdjustsImageWhenHighlighted:NO];
     }
     return self;
 }
@@ -42,19 +42,22 @@
     [title setFont:font];
     [title setTextColor:color];
     [title setText:str];
+    _color = color;
     
 }
 - (void)selected
 {
     [UIView animateWithDuration:0.5 animations:^{
-         [selectedEffect setAlpha:0.5];
+       //  [selectedEffect setAlpha:0.5];
+         [title setTextColor:PMColor7];
     }];
    
 }
 - (void)unSelected
 {
     [UIView animateWithDuration:0.5 animations:^{
-         [selectedEffect setAlpha:0];
+        // [selectedEffect setAlpha:0];
+         [title setTextColor:_color];
     }];
   
 }

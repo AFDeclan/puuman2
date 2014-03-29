@@ -14,6 +14,7 @@
     RankView  *rankView;
     MenuView  *menuView;
     NSTimer *_timerToFoldDrawer;
+
 }
 
 - (void)updateRankView;

@@ -21,15 +21,23 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+      
         menuView = [[MenuView alloc] initWithFrame:CGRectMake(0,0, 216, 384 )];
         [self addSubview:menuView];
         rankView = [[RankView alloc] initWithFrame:CGRectMake(0,0, 216,304)];
         [self addSubview:rankView];
+        [MyNotiCenter addObserver:self selector:@selector(refreshMenu) name:Noti_RefreshMenu object:nil];
+      
      
     }
     return self;
 }
 
+- (void)refreshMenu
+{
+    [menuView showShopWithTypeIndex:[ShopModel sharedInstance].sectionIndex andSubIndex:[ShopModel sharedInstance].subClassIndex];
+
+}
 
 -(void)setVerticalFrame
 {

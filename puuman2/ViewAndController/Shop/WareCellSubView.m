@@ -11,6 +11,8 @@
 #import "Ware.h"
 #import "AFImageView.h"
 #import "ShopViewController.h"
+#import "SinglepopViewController.h"
+#import "MainTabBarController.h"
 
 @implementation WareCellSubView
 
@@ -127,6 +129,12 @@
     if (_ware)
     {
         //[[ShopViewController sharedShopViewController] showWare:_ware];
+        SinglepopViewController *singGoodVC = [[SinglepopViewController alloc] initWithNibName:nil bundle:nil];
+        [singGoodVC setControlBtnType:kOnlyCloseButton];
+        [singGoodVC setTitle:@"单品信息" withIcon:nil];
+        [singGoodVC setWare:_ware];
+        [[MainTabBarController sharedMainViewController].view addSubview:singGoodVC.view];
+        [singGoodVC show];
     }
 }
 

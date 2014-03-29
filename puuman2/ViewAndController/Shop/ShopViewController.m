@@ -24,6 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [MyNotiCenter addObserver:self selector:@selector(allWareBtnPressed) name:Noti_ToAllSHop object:nil];
     }
     return self;
 }
@@ -62,7 +63,18 @@
 	// Do any additional setup after loading the view.
       [self.view setBackgroundColor:[UIColor clearColor]];
      [self initialization];
+    UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    [gestureRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:gestureRecognizer];
+
 }
+
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    [contentShop hiddenMenuWithTapPoint:[touch locationInView:contentShop]];
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -90,6 +102,7 @@
     
     searchBtn = [[ColorButton alloc] init];
     [searchBtn initWithTitle:@"搜索" andIcon:[UIImage imageNamed:@"icon_search_shop.png"] andButtonType:kBlueLeft];
+    [searchBtn addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:searchBtn];
     
     searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 184, 40)];
@@ -113,15 +126,7 @@
     
 }
 
-- (void)skipToAllPage
-{
-    [self allWareBtnPressed];
-}
 
-- (void)hiddenMenu
-{
-
-}
 
 
 
@@ -172,6 +177,25 @@
     [contentShop goToAllShop];
     [allWareBtn selected];
     [rectWareBtn unSelected];
+}
+
+- (void)search
+{
+    [searchTextField resignFirstResponder];
+    if (![searchTextField.text isEqualToString:@""]) {
+        [ShopModel sharedInstance].searchKey = searchTextField.text;
+        [searchTextField setPlaceholder:searchTextField.text];
+        [searchTextField setText:@""];
+    }else{
+        if (![searchTextField.placeholder isEqualToString:@"搜索商品"]) {
+             [ShopModel sharedInstance].searchKey = searchTextField.placeholder;
+        }else{
+            return;
+        }
+    }
+    PostNotification(Noti_ToAllSHop, nil);
+    PostNotification(Noti_ReloadShopMall, nil);
+    
 }
 
 -(void)refresh

@@ -12,14 +12,17 @@
 #import "ShopMenuView.h"
 #import "BabyInfoPageControlButton.h"
 
-@interface ShopContentView : UIScrollView
+@interface ShopContentView : UIScrollView<UIGestureRecognizerDelegate>
 {
     RectWareView *rectView;
     AllWareView *allView;
     UIView *menuMask;
     ShopMenuView *menu;
     BabyInfoPageControlButton *showAndHiddenBtn;
+     NSTimer *_timerToFoldDrawer;
+    BOOL menuShowed;
 }
+- (void)hiddenMenuWithTapPoint:(CGPoint)pos;
 - (void)goToAllShop;
 - (void)goToRectShop;
 - (void)setVerticalFrame;

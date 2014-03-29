@@ -20,6 +20,8 @@
 #define Noti_ToAllSHop                           @"Noti_ToAllSHop"
 #define Noti_ReloadRankView                     @"Noti_ReloadRankView"
 #define Noti_ReloadWareFilterView               @"Noti_ReloadWareFilterView"
+#define Noti_RefreshMenu                         @"Noti_RefreshMenu"
+
 
 #define Noti_PumanInBookUpdated                 @"Noti_PumanInBookUpdated"
 #define Noti_PumanOutBookUpdated                @"Noti_PumanOutBookUpdated"
