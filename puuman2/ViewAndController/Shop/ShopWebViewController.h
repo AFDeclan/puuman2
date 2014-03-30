@@ -30,6 +30,7 @@
      UIWebView *myWebView;
      NSArray *_shopsInfo;
      NSInteger shopIndex;
+    UIView *bg_content;
     
 }
 - (void)show;

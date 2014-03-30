@@ -34,36 +34,45 @@
 
 - (void)initWithContent
 {
-  [self initCloseBtn];
+    bg_content = [[UIView alloc] initWithFrame:CGRectMake(0, 16, 768, 1008)];
+    [bg_content setBackgroundColor:PMColor5];
+    [_content addSubview:bg_content];
+    [self initCloseBtn];
+    
+    shopImg = [[AFImageView alloc] initWithFrame:CGRectMake(16, 8, 112, 112)];
+    [shopImg setBackgroundColor:PMColor6];
+    [_content addSubview:shopImg];
+
+    
     icon_shoptri = [[UIImageView alloc] initWithFrame:CGRectMake(736, 88, 16, 28)];
     [icon_shoptri setImage:[UIImage imageNamed:@"tri_blue_right.png"]];
     [_content addSubview:icon_shoptri];
     
     otherShopButton  = [[AFTextImgButton alloc] initWithFrame:CGRectMake(640, 88, 96, 28)];
     [otherShopButton setTitle:@"其他商城" andImg:nil  andButtonType:kButtonTypeSix];
+    [otherShopButton setTitleLabelColor:PMColor6];
     [otherShopButton addTarget:self action:@selector(otherShop) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:otherShopButton];
     
    
     
-    backButton  = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
-    [backButton setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
+    backButton  = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(144, 24,32, 32)];
+    [backButton setSelectedImg:[UIImage imageNamed:@"btn_back_br_shop.png"] andUnselectedImg:[UIImage imageNamed:@"btn_back2_br_shop.png"] andTitle:@"" andButtonType:kButtonTypeSeven andSelectedType:kNoneClear];
     [backButton addTarget:self action:@selector(backButtonPush) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backButton];
-    
-    forwardButton = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
-    [forwardButton setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
+    [_content addSubview:backButton];
+    [backButton unSelected];
+    forwardButton = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(192, 24, 32, 32)];
+    [forwardButton setSelectedImg:[UIImage imageNamed:@"btn_back3_br_shop.png"] andUnselectedImg:[UIImage imageNamed:@"btn_back4_br_shop.png"] andTitle:@"" andButtonType:kButtonTypeSeven andSelectedType:kNoneClear];
     [forwardButton addTarget:self action:@selector(forwardButtonPush) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:forwardButton];
-    
-    reloadButton = [[AFTextImgButton alloc] initWithFrame:CGRectMake(640, 88, 96, 28)];
-    [reloadButton setTitle:@"其他商城" andImg:nil  andButtonType:kButtonTypeSix];
+    [_content addSubview:forwardButton];
+    [forwardButton unSelected];
+    reloadButton = [[AFTextImgButton alloc] initWithFrame:CGRectMake(240, 24, 32, 32)];
+    [reloadButton setTitle:@"" andImg:[UIImage imageNamed:@"btn_refresh_br_shop.png"]  andButtonType:kButtonTypeSeven];
+    [reloadButton setIconFrame:CGRectMake(0, 0, 24, 24)];
     [reloadButton addTarget:self action:@selector(reloadButtonPush) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:reloadButton];
     
-   shopImg = [[AFImageView alloc] initWithFrame:CGRectMake(8, 32, 256, 296)];
-    [_content addSubview:shopImg];
-    shareBtn =[[ColorButton alloc] init];
+       shareBtn =[[ColorButton alloc] init];
     [shareBtn initWithTitle:@"分享" andIcon:[UIImage imageNamed:@"btn_share_diary.png"] andButtonType:kGrayLeftUp];
     [shareBtn addTarget:self action:@selector(shareWare) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:shareBtn];
