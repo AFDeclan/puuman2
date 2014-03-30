@@ -22,6 +22,7 @@
     SearchTextField *searchTextField;
     UIView *searchView;
     ShopContentView *contentShop;
+    UIButton *cartBtn;
 }
 
 

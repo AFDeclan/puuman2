@@ -10,6 +10,7 @@
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
 #import "ColorsAndFonts.h"
+#import "ShopCartViewController.h"
 
 @interface ShopViewController ()
 
@@ -62,7 +63,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
       [self.view setBackgroundColor:[UIColor clearColor]];
-     [self initialization];
+    [self initialization];
     UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
     [gestureRecognizer setDelegate:self];
     [self.view addGestureRecognizer:gestureRecognizer];
@@ -122,12 +123,22 @@
     contentShop = [[ShopContentView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
     [self.view addSubview:contentShop];
     [self rectWareBtnPressed];
-    
+    cartBtn  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 56, 72)];
+    [cartBtn setImage:[UIImage imageNamed:@"btn_cart_shop.png"] forState:UIControlStateNormal];
+    [cartBtn addTarget:self action:@selector(showCart) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:cartBtn];
     
 }
 
 
-
+- (void)showCart
+{
+    ShopCartViewController *cartVC =[[ShopCartViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
+    [cartVC setControlBtnType:kOnlyCloseButton];
+    [cartVC setTitle:@"购物车" withIcon:[UIImage imageNamed:@"icon_cart_shop.png"]];
+    [cartVC show];
+}
 
 
 
@@ -145,7 +156,7 @@
     SetViewLeftUp(allWareBtn, 688, 176);
     SetViewLeftUp(searchBtn, 640, 28);
     SetViewLeftUp(searchView, 456, 28);
-
+    SetViewLeftUp(cartBtn, 680, 678);
 }
 
 //横屏
@@ -162,11 +173,12 @@
     SetViewLeftUp(allWareBtn, 944, 176);
     SetViewLeftUp(searchBtn, 896, 28);
     SetViewLeftUp(searchView, 712, 28);
+    SetViewLeftUp(cartBtn, 936, 678);
 }
 
 - (void)rectWareBtnPressed
 {
-    [contentShop goToRectShop];
+   [contentShop goToRectShop];
     [rectWareBtn selected];
     [allWareBtn unSelected];
    

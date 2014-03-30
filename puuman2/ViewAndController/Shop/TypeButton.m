@@ -26,11 +26,11 @@
         [title setBackgroundColor:[UIColor clearColor]];
         [title setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:title];
-//        selectedEffect = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-//        [selectedEffect setAlpha:0];
-//        [selectedEffect setBackgroundColor:PMColor1];
-//        [self addSubview:selectedEffect];
-//        [self setAdjustsImageWhenHighlighted:NO];
+        selectedEffect = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        [selectedEffect setAlpha:0];
+        [selectedEffect setBackgroundColor:PMColor1];
+        [self addSubview:selectedEffect];
+        [self setAdjustsImageWhenHighlighted:NO];
     }
     return self;
 }
@@ -48,7 +48,7 @@
 - (void)selected
 {
     [UIView animateWithDuration:0.5 animations:^{
-       //  [selectedEffect setAlpha:0.5];
+         [selectedEffect setAlpha:0.5];
          [title setTextColor:PMColor7];
     }];
    
@@ -56,7 +56,7 @@
 - (void)unSelected
 {
     [UIView animateWithDuration:0.5 animations:^{
-        // [selectedEffect setAlpha:0];
+         [selectedEffect setAlpha:0];
          [title setTextColor:_color];
     }];
   

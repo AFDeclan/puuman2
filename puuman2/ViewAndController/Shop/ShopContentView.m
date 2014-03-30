@@ -20,6 +20,12 @@
         [self setScrollEnabled:NO];
         [self setBackgroundColor:[UIColor whiteColor]];
         
+        rectView = [[RectWareView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        [self addSubview:rectView];
+        allView = [[AllWareView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
+        [allView setAlpha:0];
+        [self addSubview:allView];
+        
         menuMask = [[UIView alloc] init];
         [menuMask setBackgroundColor:[UIColor clearColor]];
         [self addSubview:menuMask];
@@ -83,15 +89,18 @@
 
 - (void)fold
 {
-    menuShowed = NO;
-    if (_timerToFoldDrawer) {
-        [_timerToFoldDrawer invalidate];
-        _timerToFoldDrawer = nil;
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        menuShowed = NO;
+        if (_timerToFoldDrawer) {
+            [_timerToFoldDrawer invalidate];
+            _timerToFoldDrawer = nil;
+        }
+        [showAndHiddenBtn foldWithDuration:0.5];
+        [UIView animateWithDuration:0.5 animations:^{
+            SetViewLeftUp(menuMask, -216, 0);
+        }];
     }
-    [showAndHiddenBtn foldWithDuration:0.5];
-    [UIView animateWithDuration:0.5 animations:^{
-        SetViewLeftUp(menuMask, -216, 0);
-    }];
+
     
 }
 
@@ -108,17 +117,7 @@
 
 - (void)goToAllShop
 {
-    if (!allView) {
-        allView = [[AllWareView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
-        
-        [self addSubview:allView];
-        [self bringSubviewToFront:menuMask];
-        if ([MainTabBarController sharedMainViewController].isVertical) {
-            [self setVerticalFrame];
-        }else{
-            [self setHorizontalFrame];
-        }
-    }
+
     
     [allView setAlpha:0];
     [UIView animateWithDuration:0.5 animations:^{
@@ -134,16 +133,7 @@
 
 - (void)goToRectShop
 {
-    if (!rectView) {
-        rectView = [[RectWareView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-        [self addSubview:rectView];
-        [self bringSubviewToFront:menuMask];
-        if ([MainTabBarController sharedMainViewController].isVertical) {
-            [self setVerticalFrame];
-        }else{
-            [self setHorizontalFrame];
-        }
-    }
+
     
     [rectView setAlpha:0];
     [UIView animateWithDuration:0.5 animations:^{

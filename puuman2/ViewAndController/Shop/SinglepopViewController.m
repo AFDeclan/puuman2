@@ -9,6 +9,8 @@
 #import "SinglepopViewController.h"
 #import "ColorsAndFonts.h"
 #import "CartModel.h"
+#import "ShopWebViewController.h"
+#import "MainTabBarController.h"
 
 #define ShopNameNum 127
 @interface SinglepopViewController ()
@@ -22,9 +24,19 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        UIView *bgInfoView = [[UIView alloc] initWithFrame:CGRectMake(298, 112, 406, 142)];
+        [bgInfoView setBackgroundColor:PMColor5];
+        [_content addSubview:bgInfoView];
+        
+        
+        UIImageView *rmb_icon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 100, 20, 20)];
+        [rmb_icon setImage:[UIImage imageNamed:@"icon_rmb_shop.png"]];
+        [bgInfoView addSubview:rmb_icon];
+        
         wareImgView = [[AFImageView alloc] initWithFrame:CGRectMake(48, 112, 250, 250)];
         [_content addSubview:wareImgView];
-        _shopsTableView = [[UITableView alloc] initWithFrame:CGRectMake(48, 372, 236, 688)];
+        
+        _shopsTableView = [[UITableView alloc] initWithFrame:CGRectMake(48, 362, 250, 246)];
         [_shopsTableView setDataSource:self];
         [_shopsTableView setDelegate:self];
         [_content addSubview:_shopsTableView];
@@ -34,7 +46,7 @@
         [_shopsTableView setShowsHorizontalScrollIndicator:NO];
         [_shopsTableView setShowsVerticalScrollIndicator:NO];
     
-        _propertyTableView = [[UITableView alloc] initWithFrame:CGRectMake(48, 372, 236, 688)];
+        _propertyTableView = [[UITableView alloc] initWithFrame:CGRectMake(320, 272, 300, 256)];
         [_propertyTableView setDataSource:self];
         [_propertyTableView setDelegate:self];
         [_content addSubview:_propertyTableView];
@@ -69,11 +81,11 @@
         [_content addSubview:wareNameLabel];
     
         shareBtn =[[ColorButton alloc] init];
-        [shareBtn initWithTitle:@"分享" andIcon:[UIImage imageNamed:@""] andButtonType:kGrayLeftUp];
+        [shareBtn initWithTitle:@"分享" andIcon:[UIImage imageNamed:@"btn_share_diary.png"] andButtonType:kGrayLeftUp];
         [shareBtn addTarget:self action:@selector(shareWare) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:shareBtn];
         addBtn = [[ColorButton alloc] init];
-        [addBtn initWithTitle:@"加入购物车" andIcon:[UIImage imageNamed:@""] andButtonType:kBlueLeftDown];
+        [addBtn initWithTitle:@"+加入购物车"  andButtonType:kBlueLeftDown];
         [addBtn addTarget:self action:@selector(addToCart) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:addBtn];
         SetViewLeftUp(shareBtn, 592, 480);
@@ -176,6 +188,19 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        if (tableView == _shopsTableView)
+        {
+            return 64;
+        }
+        else
+        {
+            
+            return 24;
+        }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == _shopsTableView)
@@ -184,12 +209,33 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
         if (cell == nil)
         {
-            cell = [[[NSBundle mainBundle] loadNibNamed:identify owner:self options:nil]lastObject];
+            cell =  [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+            UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(68,0, 96, 64)];
+            labelTitle.font = PMFont3;
+            labelTitle.textColor = [UIColor whiteColor];
+            labelTitle.backgroundColor = [UIColor clearColor];
+            labelTitle.tag = 2;
+            [cell.contentView addSubview:labelTitle];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(154, 0, 80, 64)];
+            [label setTextAlignment:NSTextAlignmentRight];
+            label.font = PMFont3;
+            label.textColor = PMColor7;
+            label.backgroundColor = [UIColor clearColor];
+            label.tag = 3;
+            [cell.contentView addSubview:label];
+            UIImageView *icon_tri = [[UIImageView alloc] initWithFrame:CGRectMake(16, 18, 16, 28)];
+            [icon_tri setImage:[UIImage imageNamed:@"tri_white_left.png"]];
+            [cell.contentView addSubview:icon_tri];
+            UIImageView *icon_part = [[UIImageView alloc] initWithFrame:CGRectMake(0, 62, 250, 2)];
+            [icon_part setImage:[UIImage imageNamed:@"line1_baby.png"]];
+            [cell.contentView addSubview:icon_part];
+
+            
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UILabel *priceLabel = (UILabel *)[cell viewWithTag:1];
-        priceLabel.text = [[_shopsInfo objectAtIndex:indexPath.row] objectForKey:kPriceKey];
-        UILabel *nameLabel = (UILabel *)[cell viewWithTag:2];
+        UILabel *priceLabel = (UILabel *)[cell.contentView viewWithTag:2];
+        priceLabel.text = [NSString stringWithFormat:@"￥%@",[[_shopsInfo objectAtIndex:indexPath.row] objectForKey:kPriceKey]] ;
+        UILabel *nameLabel = (UILabel *)[cell.contentView viewWithTag:3];
         nameLabel.text = [[_shopsInfo objectAtIndex:indexPath.row] objectForKey:kShopNameKey];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -201,20 +247,16 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(16, 18, 16, 28)];
-            [icon setImage:[UIImage imageNamed:@"tri_white_left.png"]];
-            [cell.contentView addSubview:icon];
-            
+   
             UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(68,0, 96, 64)];
-            labelTitle.font = PMFont3;
-            labelTitle.textColor = [UIColor whiteColor];
+            labelTitle.font = PMFont2;
+            labelTitle.textColor = PMColor2;
             labelTitle.backgroundColor = [UIColor clearColor];
             labelTitle.tag = 1;
             [cell.contentView addSubview:labelTitle];
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(170, 0, 80, 64)];
-            label.font = PMFont3;
-            label.textColor = PMColor7;
+            label.font = PMFont2;
+            label.textColor = PMColor2;
             label.backgroundColor = [UIColor clearColor];
             label.tag = 2;
             [cell.contentView addSubview:label];
@@ -235,11 +277,7 @@
         label.text = propertyStr;
         CGSize size = [propertyStr sizeWithFont:label.font];
         label.frame = CGRectMake(32+sizeTitle.width, -4, size.width, 56);
-        
-        
-        if (indexPath.row % 2)
-            cell.contentView.backgroundColor = RGBColor(228, 228, 228);
-        else cell.contentView.backgroundColor = [UIColor clearColor];
+        [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
     }
 }
@@ -359,9 +397,9 @@
 #pragma mark - 浏览器
 - (void)showWebViewWithShopAtIndex:(NSInteger)index
 {
-//    webView = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
-//    [BlurView showViewController:webView withVerticalViewFrame:CGRectMake(0, 0, 768, 1024) andHorizontalViewFrame:CGRectMake(128, 0, 768, 1024)];
-//    [webView setWare:_ware shops:_shopsInfo firstIndex:index];
+    ShopWebViewController  *webVC = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:webVC.view];
+    [webVC show];
 }
 //- (void)showWebView:(NSDictionary *)shopInfo
 //{

@@ -17,10 +17,12 @@
 #define Noti_TutorialFinshed                    @"TUTORIAL_FINISHED"
 #define Noti_ReloadShopMall                     @"Noti_ReloadShopMall"
 #define Noti_HiddenMenu                         @"Noti_HiddenMenu"
-#define Noti_ToAllSHop                           @"Noti_ToAllSHop"
+#define Noti_ToAllSHop                          @"Noti_ToAllSHop"
+#define Noti_CartCellShowDelBtn                 @"Noti_CartCellShowDelBtn"
+#define Noti_DeleteCartWare                     @"Noti_DeleteCartWare"
 #define Noti_ReloadRankView                     @"Noti_ReloadRankView"
 #define Noti_ReloadWareFilterView               @"Noti_ReloadWareFilterView"
-#define Noti_RefreshMenu                         @"Noti_RefreshMenu"
+#define Noti_RefreshMenu                        @"Noti_RefreshMenu"
 
 
 #define Noti_PumanInBookUpdated                 @"Noti_PumanInBookUpdated"
