@@ -68,7 +68,7 @@
     [baseData setValue:nil forKey:@"DetailInfo"];
     NSString *data = [baseData JSONString];
     NSString *replace = [NSString stringWithFormat:@"REPLACE INTO %@ (BID, UIDs, Data, LastActive) VALUES (?, ?, ?, ?)", MemberTableName];
-    if (![_db executeUpdate:replace, mem.BID, uids, data, [NSDate date]]) {
+    if (![_db executeUpdate:replace, [NSNumber numberWithInteger:mem.BID], uids, data, [NSDate date]]) {
         [ErrorLog errorLog:@"Cache member failed!" fromFile:@"MemberCache.m" error:_db.lastError];
     }
 }
