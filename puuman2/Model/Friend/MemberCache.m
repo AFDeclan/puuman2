@@ -55,7 +55,7 @@
 - (void)clear
 {
     NSDate * weekago = [[NSDate date] dateByAddingTimeInterval:-7*24*60*60];
-    NSString *clear = [NSString stringWithFormat:@"DELETE %@ WHERE LastActive < ?", MemberTableName];
+    NSString *clear = [NSString stringWithFormat:@"DELETE FROM %@ WHERE LastActive < ?", MemberTableName];
     if (![_db executeUpdate:clear, weekago]) {
         [ErrorLog errorLog:@"Clear table failed!" fromFile:@"MemberCache.m" error:_db.lastError];
     }

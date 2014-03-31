@@ -59,7 +59,7 @@
     if (![rs next]) return;
     NSDate * latest = [rs dateForColumnIndex:0];
     NSDate * weekago = [latest dateByAddingTimeInterval:-7*24*60*60];
-    NSString *clear = [NSString stringWithFormat:@"DELETE %@ WHERE ACreateTime < ?", ActionTableName];
+    NSString *clear = [NSString stringWithFormat:@"DELETE FROM %@ WHERE ACreateTime < ?", ActionTableName];
     if (![_db executeUpdate:clear, weekago]) {
         [ErrorLog errorLog:@"Clear table failed!" fromFile:@"ActionManager.m" error:_db.lastError];
     }
