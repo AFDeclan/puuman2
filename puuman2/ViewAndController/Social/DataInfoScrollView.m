@@ -19,9 +19,11 @@
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
         heightView = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, 0, 0, 224)];
+        [heightView setBackgroundColor:PMColor5];
         [heightView setIsHeight:YES];
         [self addSubview:heightView];
         weightView  = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(heightView)+ViewHeight(heightView), 0, 224)];
+        [weightView setBackgroundColor:PMColor5];
         [weightView setIsHeight:YES];
         [self addSubview:weightView];
         
@@ -31,6 +33,7 @@
         }
         
         vaccineView = [[VaccinePartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(propWareView[4])+ViewHeight(propWareView[4]), 0, 112)];
+        [vaccineView setBackgroundColor:PMColor5];
         [self addSubview:vaccineView];
 
         puumanRankView = [[PuumanRankPartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(vaccineView)+ViewHeight(vaccineView), 0, 224)];

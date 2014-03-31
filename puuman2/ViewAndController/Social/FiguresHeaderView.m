@@ -56,10 +56,6 @@
         
         [modifyBtn setAlpha:0];
 
-        
-        
-        
-        
         noti_label = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
         [noti_label setBackgroundColor:[UIColor clearColor]];
         [self addSubview:noti_label];
@@ -77,6 +73,12 @@
 
     }
     return self;
+}
+
+- (void)reloadWithGroupInfo:(Group *)group
+{
+
+    
 }
 
 - (void)showManagerMenu

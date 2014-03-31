@@ -16,18 +16,16 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        figuresHeader = [[FiguresHeaderView alloc] initWithFrame:CGRectMake(0, 0, 608, 168)];
-        [self addSubview:figuresHeader];
-        manage = NO;
-        dataInfoView = [[DataInfoScrollView alloc] initWithFrame:CGRectMake(0, 0, 608, 520)];
-        [dataInfoView setBounces:NO];
-        [dataInfoView setContentSize:CGSizeMake(608, 1432)];
-        [self addSubview:dataInfoView];
-        manageBtn = [[ColorButton alloc] init];
-        [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];
-        [manageBtn addTarget:self action:@selector(managePartner) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:manageBtn];
-      
+        
+        [[Friend sharedInstance] getGroupData];
+        [[Friend sharedInstance] addDelegateObject:self];
+        
+//        inGroupView = [[PartnerDataInGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
+//        [self addSubview:inGroupView];
+//        outGroupView = [[PartnerDataOutGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
+//        [self addSubview:inGroupView];
+//        [inGroupView setAlpha:0];
+//        [outGroupView setAlpha:0];
     }
     return self;
 }
@@ -36,33 +34,48 @@
 {
    // UITextView *a;
 }
+
 - (void)setVerticalFrame
 {
-    [dataInfoView setFrame:CGRectMake(0, 168, 608, 776)];
-    [dataInfoView setVerticalFrame];
-    [figuresHeader setVerticalFrame];
-    SetViewLeftUp(figuresHeader, 0, 0);
-    SetViewLeftUp(manageBtn, 496, 8);
+//    if ([[Friend sharedInstance] inGroup])
+//    {
+//            [inGroupView setVerticalFrame];
+//    }else{
+//            [outGroupView setVerticalFrame];
+//    }
+    
 }
 
 - (void)setHorizontalFrame
 {
-    [dataInfoView setFrame:CGRectMake(0,168, 864, 520)];
-    [dataInfoView setHorizontalFrame];
-    [figuresHeader setHorizontalFrame];
-    SetViewLeftUp(figuresHeader, 130, 0);
-    SetViewLeftUp(manageBtn, 752, 84);
+//    if ([[Friend sharedInstance] inGroup])
+//    {
+//        [inGroupView setHorizontalFrame];
+//    }else{
+//        [outGroupView setHorizontalFrame];
+//    }
 }
 
-- (void)managePartner
+//获取小组信息成功
+- (void)groupDataReceived
 {
-    manage = !manage;
-    if (manage) {
-        [manageBtn initWithTitle:@"保存" andButtonType:kGrayLeft];
-        PostNotification(Noti_manangePartnerData, nil);
+    if ([[Friend sharedInstance] inGroup]) {
+        [inGroupView setAlpha:1];
+        [outGroupView setAlpha:0];
+        [inGroupView loadViewInfo];
+        
     }else{
-        [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];
-        PostNotification(Noti_manangedPartnerData, nil);
+        [inGroupView setAlpha:0];
+        [outGroupView setAlpha:1];
+        [outGroupView loadViewInfo];
     }
 }
+
+//获取小组信息失败
+- (void)groupDataFailed
+{
+    NSLog(@"BO");
+}
+
+
 @end

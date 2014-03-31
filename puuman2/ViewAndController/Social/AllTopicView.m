@@ -43,7 +43,7 @@
 - (void)activeTopicsReceived
 {
 
-        NSArray *vote = [Forum sharedInstance].votingTopic;
+    NSArray *vote = [Forum sharedInstance].votingTopic;
     [_showColumnView reloadData];
     [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*([Forum sharedInstance].onTopic.TNo -1), 0)];
     

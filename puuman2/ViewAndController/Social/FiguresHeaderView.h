@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIColumnView.h"
 #import "AnimateShowLabel.h"
+#import "Group.h"
 
 @interface FiguresHeaderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate>
 {
@@ -19,6 +20,7 @@
     UIColumnView *figuresColumnView;
   
 }
+- (void)reloadWithGroupInfo:(Group *)group;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

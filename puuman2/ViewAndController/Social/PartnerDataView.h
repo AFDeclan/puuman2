@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FiguresHeaderView.h"
-#import "DataInfoScrollView.h"
-#import "ColorButton.h"
+#import "Friend.h"
+#import "PartnerDataInGroupView.h"
+#import "PartnerDataOutGroupView.h"
 
-@interface PartnerDataView : UIView
+@interface PartnerDataView : UIView<FriendDelegate>
 {
-    FiguresHeaderView *figuresHeader;
-    DataInfoScrollView *dataInfoView;
-    ColorButton *manageBtn;
-    BOOL manage;
+    PartnerDataInGroupView *inGroupView;
+    PartnerDataOutGroupView *outGroupView;
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

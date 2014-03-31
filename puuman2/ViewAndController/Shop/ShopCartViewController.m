@@ -8,6 +8,7 @@
 
 #import "ShopCartViewController.h"
 #import "CartTableViewCell.h"
+#import "CartModel.h"
 
 @interface ShopCartViewController ()
 
@@ -66,32 +67,34 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 
 {
-    return 1;
+    if (isPaid)
+    {
+        return [[CartModel sharedCart] DoneCount];
+    }else
+    {
+        return [[CartModel sharedCart] UndoCount];
+    }
+    
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (isPaid) {
-        static NSString *identify = @"ShopPaidCell";
-        CartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-        if (cell == nil)
-        {
-            cell =  [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-        }
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [cell setBackgroundColor:[UIColor clearColor]];
-        return cell;
-    }else{
-        static NSString *identify = @"ShopUnPaidCell";
-        CartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-        if (cell == nil)
-        {
-            cell =  [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-        }
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [cell setBackgroundColor:[UIColor clearColor]];
-        return cell;
+  
+    static NSString *identify = @"ShopTableCell";
+    CartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    if (cell == nil)
+    {
+        cell =  [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
+    if (isPaid) {
+        
+    }else{
+    
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,6 +110,7 @@
     [btn_compared setAlpha:0];
     [btn_unpaid unSelected];
     [btn_paid selected];
+    [cartTable reloadData];
 }
 
 - (void)unpaidBtnPressed
@@ -115,6 +119,7 @@
     [btn_paid unSelected];
     isPaid = NO;
     [btn_compared setAlpha:1];
+    [cartTable reloadData];
 
 }
 
