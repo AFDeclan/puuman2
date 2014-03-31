@@ -67,6 +67,7 @@
 #define kUrl_GetGroupData @"http://2.server4puman.sinaapp.com/forum/group_data"
 #define kUrl_UploadAction @"http://2.server4puman.sinaapp.com/forum/upload_action"
 #define kUrl_UpdateAction @"http://2.server4puman.sinaapp.com/forum/update_action"
+#define kUrl_GetMember @"http://2.server4puman.sinaapp.com/forum/get_member"
 
 #define _puman_feedback_identifier_prefix @"_puman_"
 #define _puman_feedbackFailed_identifier_prefix @"_pumanFail_"

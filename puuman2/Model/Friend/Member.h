@@ -14,6 +14,7 @@
 
 @property (assign, nonatomic, readonly) NSInteger GID;
 @property (assign, nonatomic, readonly) NSInteger BID;
+@property (retain, nonatomic, readonly) NSArray * UIDs;
 @property (retain, nonatomic, readonly) NSDate * JoinTime;
 //base info:
 @property (retain, nonatomic, readonly) NSString * BabyNick;

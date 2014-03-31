@@ -9,6 +9,7 @@
 #import "Member.h"
 #import "DateFormatter.h"
 #import "UniverseConstant.h"
+#import "MemberCache.h"
 
 @implementation Member
 
@@ -18,6 +19,7 @@
     _GID = [[data valueForKey:@"GID"] integerValue];
     _BID = [[data valueForKey:@"BID"] integerValue];
     _JoinTime = [DateFormatter datetimeFromTimestampStr:[data valueForKey:@"JoinTime"]];
+    _UIDs = [data valueForKey:@"UIDs"];
     NSDictionary * baseInfo = [data valueForKey:@"BaseInfo"];
     if ([baseInfo isKindOfClass:[NSDictionary class]]) {
         _BabyNick = [baseInfo valueForKey:uMeta_nickName];
@@ -29,6 +31,7 @@
     if ([detailInfo isKindOfClass:[NSDictionary class]]) {
         
     }
+    [[MemberCache sharedInstance] cacheMember:self];
 }
 
 @end

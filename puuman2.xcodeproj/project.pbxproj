@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140F1E6F18E91A0500F57D74 /* MemberCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 140F1E6E18E91A0500F57D74 /* MemberCache.m */; };
 		1411AE1518E6BE0D00AA3FDE /* ActionForUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 1411AE1418E6BE0D00AA3FDE /* ActionForUpload.m */; };
 		1411AE1818E6CEE400AA3FDE /* ActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1411AE1718E6CEE400AA3FDE /* ActionManager.m */; };
 		1455006218E042E100360EDF /* OtherUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455006118E042E100360EDF /* OtherUserInfo.m */; };
@@ -431,6 +432,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140F1E6D18E91A0500F57D74 /* MemberCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberCache.h; sourceTree = "<group>"; };
+		140F1E6E18E91A0500F57D74 /* MemberCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberCache.m; sourceTree = "<group>"; };
 		1411AE1318E6BE0D00AA3FDE /* ActionForUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionForUpload.h; sourceTree = "<group>"; };
 		1411AE1418E6BE0D00AA3FDE /* ActionForUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionForUpload.m; sourceTree = "<group>"; };
 		1411AE1618E6CEE400AA3FDE /* ActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionManager.h; sourceTree = "<group>"; };
@@ -1338,6 +1341,8 @@
 				1411AE1418E6BE0D00AA3FDE /* ActionForUpload.m */,
 				1411AE1618E6CEE400AA3FDE /* ActionManager.h */,
 				1411AE1718E6CEE400AA3FDE /* ActionManager.m */,
+				140F1E6D18E91A0500F57D74 /* MemberCache.h */,
+				140F1E6E18E91A0500F57D74 /* MemberCache.m */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -2644,6 +2649,7 @@
 				54D14FDC18CAEACC0022E1F4 /* DiaryTableViewController.m in Sources */,
 				54B753B018D3020B002411CF /* PuumanInBookCell.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
+				140F1E6F18E91A0500F57D74 /* MemberCache.m in Sources */,
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
 				54AFBBC418D6938600861A69 /* LoginCodeView.m in Sources */,
 				14C7867A18E418C70024CE9F /* Member.m in Sources */,

@@ -25,6 +25,10 @@
 - (void)actionUploadFailed:(ActionForUpload *)action;
 //Group Action 更新成功
 - (void)actionUpdated:(Group *)group;
+//Member数据下载成功
+- (void)memberDownloaded:(Member *)member;
+//Member数据下载失败
+- (void)memberDownloadFailed;
 
 @end
 

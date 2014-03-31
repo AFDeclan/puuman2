@@ -43,7 +43,6 @@ static Friend * instance;
 {
     if (self = [super init]) {
         _dataReady = NO;
-        _actionForUps = [[NSMutableSet alloc] init];
     }
     return self;
 }
