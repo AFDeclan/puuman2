@@ -87,11 +87,7 @@
     {
         cell =  [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-    if (isPaid) {
-        
-    }else{
-    
-    }
+    [cell buildCellWithPaid:isPaid andWareIndex:[indexPath row]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;

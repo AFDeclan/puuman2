@@ -83,6 +83,17 @@
     
 }
 
+
+- (void)buildCellWithPaid:(BOOL)paid andWareIndex:(NSInteger)index
+{
+    isPaid = paid;
+    if (paid) {
+    //_ware = [car]
+    }else{
+    
+    }
+}
+
 - (void)buildCellWithWare:(Ware *)ware  flagCount:(NSInteger)flagCount wareTime:(NSString *)wt
 {
     wareName.text = ware.WName;

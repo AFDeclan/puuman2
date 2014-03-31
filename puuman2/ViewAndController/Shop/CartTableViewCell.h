@@ -25,6 +25,6 @@
     BOOL isPaid;
 }
 @property(nonatomic,assign)BOOL isCompare;
-- (void)buildCellWithWare:(Ware *)ware  flagCount:(NSInteger)flagCount wareTime:(NSString *)wt;
-- (void)setWare:(Ware *)ware price:(float)price wareTime:(NSString *)wt;
+
+- (void)buildCellWithPaid:(BOOL)paid andWareIndex:(NSInteger)index;
 @end
