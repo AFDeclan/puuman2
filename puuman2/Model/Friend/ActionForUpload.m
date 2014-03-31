@@ -8,6 +8,7 @@
 
 #import "ActionForUpload.h"
 #import "UniverseConstant.h"
+#import "Group.h"
 
 @implementation ActionForUpload
 

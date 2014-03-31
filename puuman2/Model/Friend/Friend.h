@@ -11,6 +11,7 @@
 
 @class Group;
 @class ActionForUpload;
+@class Member;
 
 @protocol FriendDelegate <NSObject>
 
