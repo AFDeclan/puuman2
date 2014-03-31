@@ -10,8 +10,9 @@
 #import "AFImageView.h"
 #import "ColorButton.h"
 #import "Ware.h"
+#import "ShopWebViewController.h"
 
-@interface SinglepopViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SinglepopViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,WebViewDelegate>
 {
     Ware *_ware;
     AFImageView *wareImgView;

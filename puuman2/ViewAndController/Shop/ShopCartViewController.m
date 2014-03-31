@@ -29,7 +29,7 @@
 {
     isPaid = NO;
     btn_unpaid = [[ColorButton alloc] init];
-    [btn_unpaid initWithTitle:@"未付款"  andButtonType:kBlueLeftDown];
+    [btn_unpaid initWithTitle:@"未付款"  andButtonType:kBlueLeftUp];
     [btn_unpaid addTarget:self action:@selector(unpaidBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:btn_unpaid];
    
@@ -38,7 +38,7 @@
     [btn_paid addTarget:self action:@selector(paidBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:btn_paid];
     btn_compared= [[ColorButton alloc] init];
-    [btn_compared initWithTitle:@"比一比"  andButtonType:kBlueLeftDown];
+    [btn_compared initWithTitle:@"比一比"  andButtonType:kBlueLeft];
     [btn_compared addTarget:self action:@selector(comparedBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:btn_compared];
     SetViewLeftUp(btn_unpaid, 592, 480);
@@ -53,6 +53,7 @@
     [cartTable setBounces:YES];
     [cartTable setAlpha:1];
     [_content addSubview:cartTable];
+    [self unpaidBtnPressed];
 }
 
 #pragma mark - UITableView Delegate Methods
@@ -104,10 +105,14 @@
 {
     isPaid = YES;
     [btn_compared setAlpha:0];
+    [btn_unpaid unSelected];
+    [btn_paid selected];
 }
 
 - (void)unpaidBtnPressed
 {
+    [btn_unpaid selected];
+    [btn_paid unSelected];
     isPaid = NO;
     [btn_compared setAlpha:1];
 
@@ -131,15 +136,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

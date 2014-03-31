@@ -17,4 +17,5 @@
     UITableView * cartTable;
     BOOL isPaid;
 }
+
 @end

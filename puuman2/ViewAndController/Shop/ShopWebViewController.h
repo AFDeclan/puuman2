@@ -13,7 +13,7 @@
 #import "ColorButton.h"
 #import "AFSelecedTextImgButton.h"
 
-
+@protocol WebViewDelegate;
 @interface ShopWebViewController : PopViewController<UIWebViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UIButton *_closeBtn;
@@ -43,8 +43,15 @@
     UILabel *noti_Name;
     UIActivityIndicatorView *activityIndicatorView;
 }
+@property(assign,nonatomic)id<WebViewDelegate> delegate;
 - (void)show;
 - (void)setWare:(Ware *)ware shops:(NSArray *)shopsInfo firstIndex:(NSInteger)index;
 - (void)setRecWebUrl:(NSString *)urlString  wareName:(NSString *)wName wareId:(NSInteger)WID warePrice:(CGFloat)price shopName:(NSString *)sName shopIndex:(NSInteger)shopIndex imgLink:(NSString *)picLink;
-
 @end
+@protocol WebViewDelegate <NSObject>
+
+@optional
+- (void)cartStatusUpdate;
+@end
+
+

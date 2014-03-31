@@ -9,7 +9,6 @@
 #import "SinglepopViewController.h"
 #import "ColorsAndFonts.h"
 #import "CartModel.h"
-#import "ShopWebViewController.h"
 #import "MainTabBarController.h"
 
 #define ShopNameNum 127
@@ -85,7 +84,7 @@
         [shareBtn addTarget:self action:@selector(shareWare) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:shareBtn];
         addBtn = [[ColorButton alloc] init];
-        [addBtn initWithTitle:@"+加入购物车"  andButtonType:kBlueLeftDown];
+       
         [addBtn addTarget:self action:@selector(addToCart) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:addBtn];
         SetViewLeftUp(shareBtn, 592, 480);
@@ -114,6 +113,17 @@
 - (void)setWare:(Ware *)w
 {
     _ware = w;
+    
+    if ([[CartModel sharedCart] wareIsInCart:_ware])
+    {
+        [addBtn setEnabled:NO];
+        [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeftDown];
+        
+    }else{
+        [addBtn setEnabled:YES];
+        [addBtn initWithTitle:@"+加入购物车"  andButtonType:kBlueLeftDown];
+    }
+    
     //图片
     [wareImgView getImage:w.WPicLink defaultImage:default_ware_image];
     wareNameLabel.textColor = PMColor1;
@@ -401,7 +411,10 @@
     [[MainTabBarController sharedMainViewController].view addSubview:webVC.view];
     [webVC setWare:_ware shops:_shopsInfo firstIndex:index];
     [webVC show];
+    [webVC setDelegate:self];
 }
+
+
 //- (void)showWebView:(NSDictionary *)shopInfo
 //{
 //    NSString *url = [shopInfo valueForKey:kShopLinkKey];
@@ -430,9 +443,11 @@
 
 - (void)addToCart {
     
+    [addBtn setEnabled:NO];
     [MobClick event:umeng_event_click label:@"addToCart_SingleGoodViewController"];
     [[CartModel sharedCart] addWareIntoCart:_ware];
-//    [CustomAlertView showInView:nil content:[NSString stringWithFormat:@"   您将商品 %@ 加入了购物车", _ware.WName]];
+    [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeftDown];
+
 }
 
 - (void)shareWare
@@ -442,7 +457,18 @@
 
 
 
-
+- (void)cartStatusUpdate
+{
+    if ([[CartModel sharedCart] wareIsInCart:_ware])
+    {
+        [addBtn setEnabled:NO];
+        [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeftDown];
+       
+    }else{
+        [addBtn setEnabled:YES];
+        [addBtn initWithTitle:@"+加入购物车"  andButtonType:kBlueLeftDown];
+    }
+}
 
 
 

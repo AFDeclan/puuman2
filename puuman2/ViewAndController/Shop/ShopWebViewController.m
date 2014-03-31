@@ -16,7 +16,7 @@
 @end
 
 @implementation ShopWebViewController
-
+@synthesize delegate = _delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -143,11 +143,10 @@
     [shareBtn addTarget:self action:@selector(shareWare) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:shareBtn];
     addBtn = [[ColorButton alloc] init];
-    [addBtn initWithTitle:@"+加入购物车"  andButtonType:kBlueLeftDown];
     [addBtn addTarget:self action:@selector(addToCart) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:addBtn];
-    SetViewLeftUp(shareBtn, 592, 480);
-    SetViewLeftUp(addBtn, 592, 520);
+    SetViewLeftUp(shareBtn, 640, 656);
+    SetViewLeftUp(addBtn, 640, 696);
     
     _shopsInfo=[[NSArray alloc] init];
     _ware=[[Ware alloc] init];
@@ -160,10 +159,11 @@
 }
 
 - (void)addToCart {
-    
+    [addBtn setEnabled:NO];
     [MobClick event:umeng_event_click label:@"addToCart_SingleGoodViewController"];
     [[CartModel sharedCart] addWareIntoCart:_ware];
-    //    [CustomAlertView showInView:nil content:[NSString stringWithFormat:@"   您将商品 %@ 加入了购物车", _ware.WName]];
+    [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeftDown];
+    [_delegate cartStatusUpdate];
 }
 
 - (void)backButtonPush {
@@ -196,6 +196,17 @@
 - (void)setWare:(Ware *)ware shops:(NSArray *)shopsInfo firstIndex:(NSInteger)index
 {
 
+    
+    if ([[CartModel sharedCart] wareIsInCart:ware])
+    {
+        [addBtn setEnabled:NO];
+        [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeftDown];
+        
+    }else{
+        [addBtn setEnabled:YES];
+        [addBtn initWithTitle:@"+加入购物车"  andButtonType:kBlueLeftDown];
+    }
+    
     [myWebView.scrollView setDelegate:self];
     _ware=ware;
     _shopsInfo=shopsInfo;
