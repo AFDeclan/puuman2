@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AFImageView.h"
 #import "AFTextImgButton.h"
-
+#import "Member.h"
 
 @interface FigureHeaderCell : UITableViewCell
 {
@@ -21,5 +21,5 @@
     UILabel *label_manageStatus;
 }
 @property(nonatomic,assign)BOOL recommend;
-
+- (void)buildWithMemberInfo:(Member *)member;
 @end

@@ -9,6 +9,7 @@
 #import "PartnerDataView.h"
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
+#import "MainTabBarController.h"
 
 @implementation PartnerDataView
 
@@ -23,35 +24,43 @@
         inGroupView = [[PartnerDataInGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
         [self addSubview:inGroupView];
         outGroupView = [[PartnerDataOutGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
-        [self addSubview:inGroupView];
+        [self addSubview:outGroupView];
         [inGroupView setAlpha:0];
         [outGroupView setAlpha:0];
+        
+        [MyNotiCenter addObserver:self selector:@selector(refreshStatus) name:Noti_RefreshInviteStatus object:nil];
     }
     return self;
 }
 
-- (void)initPortraitsView
+- (void)refreshStatus
 {
-   // UITextView *a;
+    [[Friend sharedInstance] getGroupData];
 }
 
 - (void)setVerticalFrame
 {
+    
     if ([[Friend sharedInstance] inGroup])
     {
-            [inGroupView setVerticalFrame];
+        [inGroupView setFrame:CGRectMake(0, 0, 608, 944)];
+        [inGroupView setVerticalFrame];
     }else{
-            [outGroupView setVerticalFrame];
+        [outGroupView setFrame:CGRectMake(0, 0, 608, 944)];
+        [outGroupView setVerticalFrame];
     }
     
 }
 
 - (void)setHorizontalFrame
 {
+    
     if ([[Friend sharedInstance] inGroup])
     {
+        [inGroupView setFrame:CGRectMake(0, 0, 864, 688)];
         [inGroupView setHorizontalFrame];
     }else{
+        [outGroupView setFrame:CGRectMake(0, 0, 864, 688)];
         [outGroupView setHorizontalFrame];
     }
 }
@@ -69,12 +78,17 @@
         [outGroupView setAlpha:1];
         [outGroupView loadViewInfo];
     }
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
+    }
 }
 
 //获取小组信息失败
 - (void)groupDataFailed
 {
-    NSLog(@"BO");
+    
 }
 
 

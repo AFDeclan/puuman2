@@ -10,15 +10,16 @@
 #import "UIColumnView.h"
 #import "AnimateShowLabel.h"
 #import "Group.h"
-
-@interface FiguresHeaderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate>
+#import "Friend.h"
+@interface FiguresHeaderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate,FriendDelegate>
 {
     UIImageView *icon_head;
     AnimateShowLabel *noti_label;
     UITextField *info_title;
     UIButton *modifyBtn;
     UIColumnView *figuresColumnView;
-  
+    Group *myGroup;
+    BOOL canDeleteMember;
 }
 - (void)reloadWithGroupInfo:(Group *)group;
 - (void)setVerticalFrame;

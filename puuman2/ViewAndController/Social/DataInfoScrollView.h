@@ -11,7 +11,7 @@
 #import "PropWarePartnerDataView.h"
 #import "PuumanRankPartnerDataView.h"
 #import "VaccinePartnerDataView.h"
-
+#import "Group.h"
 
 
 @interface DataInfoScrollView : UIScrollView<UIScrollViewDelegate>
@@ -23,6 +23,7 @@
     PropWarePartnerDataView *propWareView[5];
 
 }
+- (void)reloadWithGroupInfo:(Group *)group;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

@@ -10,6 +10,7 @@
 #import "FiguresHeaderView.h"
 #import "DataInfoScrollView.h"
 #import "ColorButton.h"
+#import "Group.h"
 
 @interface PartnerDataInGroupView : UIView
 {
@@ -17,6 +18,7 @@
     DataInfoScrollView *dataInfoView;
     ColorButton *manageBtn;
     BOOL manage;
+    Group *group;
 }
 - (void)loadViewInfo;
 - (void)setVerticalFrame;

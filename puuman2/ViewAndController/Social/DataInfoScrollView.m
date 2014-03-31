@@ -80,4 +80,8 @@
     
 }
 
+- (void)reloadWithGroupInfo:(Group *)group
+{
+
+}
 @end

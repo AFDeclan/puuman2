@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PartnerDataOutGroupView : UIView
+@interface PartnerDataOutGroupView : UIView<UITableViewDataSource,UITableViewDelegate>
 {
-
+    UITableView *inviteGroupsTable;
+    NSArray *dataArr;
 }
 - (void)loadViewInfo;
 - (void)setVerticalFrame;

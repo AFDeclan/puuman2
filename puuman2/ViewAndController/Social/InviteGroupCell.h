@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "UIColumnView.h"
 #import "ColorButton.h"
-
-@interface InviteGroupCell : UITableViewCell<UIColumnViewDataSource, UIColumnViewDelegate>
+#import "Group.h"
+#import "Friend.h"
+@interface InviteGroupCell : UITableViewCell<UIColumnViewDataSource, UIColumnViewDelegate,FriendDelegate>
 {
     UILabel *noti_Title;
     UILabel *date_invite;
     UIColumnView *figuresColumnView;
     ColorButton *addBtn;
+    Group *inviteGroup;
+    NSArray *groupMembers;
+   
 }
+
+- (void)buildCellWithGroup:(Group *)group;
 @end

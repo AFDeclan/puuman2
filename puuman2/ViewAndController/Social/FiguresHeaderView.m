@@ -11,6 +11,10 @@
 #import "FigureHeaderCell.h"
 #import "RecommendPartnerViewController.h"
 #import "MainTabBarController.h"
+#import "ActionForUpload.h"
+#import "UserInfo.h"
+
+
 
 @implementation FiguresHeaderView
 
@@ -18,13 +22,13 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-         [MyNotiCenter addObserver:self selector:@selector(showManagerMenu) name:Noti_manangePartnerData object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(showManagerMenu) name:Noti_manangePartnerData object:nil];
         [MyNotiCenter addObserver:self selector:@selector(hiddenManagerMenu) name:Noti_manangedPartnerData object:nil];
         
         icon_head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
         [icon_head setImage:[UIImage imageNamed:@"block_name_fri.png"]];
         [self addSubview:icon_head];
-        
+        [[Friend sharedInstance] addDelegateObject:self];
         
         info_title = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
         [info_title setBackgroundColor:[UIColor clearColor]];
@@ -77,34 +81,50 @@
 
 - (void)reloadWithGroupInfo:(Group *)group
 {
-
+    myGroup = group;
+    [figuresColumnView reloadData];
     
 }
 
 - (void)showManagerMenu
 {
-
+    canDeleteMember = YES;
 }
 
 - (void)hiddenManagerMenu
 {
-
+    canDeleteMember = NO;
 }
 
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
 {
-    FigureHeaderCell *cell = (FigureHeaderCell *)[columnView cellForIndex:index];
-    RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
-    [recommend setControlBtnType:kOnlyCloseButton];
-    [recommend setRecommend:cell.recommend];
-    if (cell.recommend) {
-        [recommend setTitle:@"推荐伙伴" withIcon:nil];
+ 
+    if (canDeleteMember) {
+        
+         if (((Member *)[myGroup.GMember objectAtIndex:index]).BID != [UserInfo sharedUserInfo].BID) {
+             [[myGroup actionForRemove:index] upload];
+         }else{
+             [[myGroup actionForQuit] upload];
+         }
+    
     }else{
-        [recommend setTitle:@"宝宝详情" withIcon:nil];
+        if (((Member *)[myGroup.GMember objectAtIndex:index]).BID != [UserInfo sharedUserInfo].BID) {
+            FigureHeaderCell *cell = (FigureHeaderCell *)[columnView cellForIndex:index];
+            RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
+            [recommend setControlBtnType:kOnlyCloseButton];
+            [recommend setRecommend:cell.recommend];
+            if (cell.recommend) {
+                [recommend setTitle:@"推荐伙伴" withIcon:nil];
+            }else{
+                [recommend setTitle:@"宝宝详情" withIcon:nil];
+            }
+            [[MainTabBarController sharedMainViewController].view addSubview:recommend.view];
+            [recommend show];
+
+        }
     }
-    [[MainTabBarController sharedMainViewController].view addSubview:recommend.view];
-    [recommend show];
+ 
 }
 
 
@@ -118,7 +138,7 @@
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
     
-    return 6;
+    return [myGroup.GMember count]>6?6 : [myGroup.GMember count];
     
 }
 
@@ -133,6 +153,7 @@
        
     }
     [cell setRecommend:NO];
+    [cell buildWithMemberInfo:[myGroup.GMember objectAtIndex:index]];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
     
@@ -153,5 +174,17 @@
     [noti_label setTitleWithTitleText:@"三天前，天天邀请了w 入团" andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
     [noti_label animateStart];
 }
+
+//Group Action 上传成功
+- (void)actionUploaded:(ActionForUpload *)action
+{
+    PostNotification(Noti_UpdateDiaryStateRefreshed, nil);
+}
+//Group Action 上传失败
+- (void)actionUploadFailed:(ActionForUpload *)action
+{
+
+}
+
 
 @end

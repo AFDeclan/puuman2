@@ -8,6 +8,7 @@
 
 #import "PartnerDataInGroupView.h"
 #import "UniverseConstant.h"
+#import "Friend.h"
 
 @implementation PartnerDataInGroupView
 
@@ -15,6 +16,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         figuresHeader = [[FiguresHeaderView alloc] initWithFrame:CGRectMake(0, 0, 608, 168)];
         [self addSubview:figuresHeader];
         manage = NO;
@@ -63,6 +65,8 @@
 - (void)loadViewInfo
 {
 
+    [figuresHeader reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
+    [dataInfoView reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
     
 }
 
