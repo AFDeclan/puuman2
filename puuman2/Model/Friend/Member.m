@@ -26,6 +26,8 @@
         _BabyBirth = [DateFormatter dateFromString:[baseInfo valueForKey:uMeta_birthDate]];
         _BabyIsBoy = [[baseInfo valueForKey:uMeta_gender] isEqualToString:@"男宝宝"];
         _BabyPortraitUrl = [baseInfo valueForKey:uMeta_portraitUrl];
+        _BabyHeight = [[baseInfo valueForKey:@"BabyHeight"] doubleValue];
+        _BabyWeight = [[baseInfo valueForKey:@"BabyWeight"] doubleValue];
     }
     NSDictionary * detailInfo = [data valueForKey:@"DetailInfo"];
     if ([detailInfo isKindOfClass:[NSDictionary class]]) {

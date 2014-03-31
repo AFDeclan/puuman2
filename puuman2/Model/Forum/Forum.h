@@ -39,6 +39,10 @@
 //更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
 - (void)topicRepliesLoadFailed:(Topic *)topic;
 
+- (void)myRepliesLoadedMore;
+
+- (void)myRepliesLoadFailed;
+
 //新话题上传成功
 - (void)topicUploaded;
 
@@ -86,6 +90,7 @@
 {
     NSMutableSet * _requests;
     NSMutableSet * _repliesForUpload;
+    NSInteger _roffset;
 }
 
 //当期话题
@@ -96,6 +101,10 @@
 @property (nonatomic, retain, readonly) NSMutableDictionary * topics;
 
 @property (retain, nonatomic, readonly) NSMutableSet * delegates;
+
+//我参与的
+@property (retain, nonatomic, readonly) NSMutableArray * myReplies;
+@property (assign, nonatomic, readonly) BOOL noMore;
 
 + (Forum *)sharedInstance;
 + (void)releaseInstance;

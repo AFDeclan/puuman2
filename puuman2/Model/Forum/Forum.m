@@ -40,6 +40,7 @@ static Forum * instance;
         _topics = [[NSMutableDictionary alloc] init];
         _requests = [[NSMutableSet alloc] init];
         _repliesForUpload = [[NSMutableSet alloc] init];
+        _myReplies = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -108,6 +109,23 @@ static Forum * instance;
     return re;
 }
 
+- (void)getMoreMyReplies:(NSInteger)cnt
+{
+    for (PumanRequest *req in _requests) {
+        if ([[req urlStr] isEqualToString:kUrl_GetMyReply])
+            return;
+    }
+    if (_noMore) return;
+    PumanRequest * req = [[PumanRequest alloc] init];
+    [req setUrlStr:kUrl_GetTopicReply];
+    [req setIntegerParam:_roffset forKey:@"offset"];
+    [req setIntegerParam:cnt forKey:@"limit"];
+    [req setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
+    [req setDelegate:self];
+    [req setResEncoding:PumanRequestRes_JsonEncoding];
+    [req postAsynchronous];
+}
+
 #pragma mark - Request Call Back
 
 - (void)requestEnded:(AFBaseRequest *)afRequest
@@ -147,6 +165,25 @@ static Forum * instance;
         } else {
             [self informDelegates:@selector(topicUploadFailed) withObject:nil];
         }
+    } else if ([url isEqualToString:kUrl_GetMyReply]) {
+        if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]]) {
+            NSArray *ret = afRequest.resObj;
+            NSInteger cnt = [ret count];
+            _roffset += cnt;
+            if (cnt < [[afRequest.params valueForKey:@"limit"] integerValue]) _noMore = YES;
+            for (NSDictionary * replyData in ret) {
+                Reply *re = [[Reply alloc] init];
+                [re setData:replyData];
+                [_myReplies addObject:re];
+            }
+            [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadedMore:) withObject:self];
+        } else {
+            if (afRequest.result == 2) {
+                _noMore = YES;
+            }
+            [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
+        }
+
     }
     [_requests removeObject:afRequest];
 }

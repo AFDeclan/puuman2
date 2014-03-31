@@ -76,7 +76,7 @@
 - (void)requestEnded:(AFBaseRequest *)afRequest
 {
     if (afRequest == _request) {
-        if (afRequest.result == PumanRequest_Succeeded && afRequest.resObj) {
+        if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]]) {
             NSArray *ret = afRequest.resObj;
             NSInteger cnt = [ret count];
             _roffset += cnt;
