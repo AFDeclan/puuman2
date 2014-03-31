@@ -20,12 +20,12 @@
         [[Friend sharedInstance] getGroupData];
         [[Friend sharedInstance] addDelegateObject:self];
         
-//        inGroupView = [[PartnerDataInGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
-//        [self addSubview:inGroupView];
-//        outGroupView = [[PartnerDataOutGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
-//        [self addSubview:inGroupView];
-//        [inGroupView setAlpha:0];
-//        [outGroupView setAlpha:0];
+        inGroupView = [[PartnerDataInGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
+        [self addSubview:inGroupView];
+        outGroupView = [[PartnerDataOutGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
+        [self addSubview:inGroupView];
+        [inGroupView setAlpha:0];
+        [outGroupView setAlpha:0];
     }
     return self;
 }
@@ -37,23 +37,23 @@
 
 - (void)setVerticalFrame
 {
-//    if ([[Friend sharedInstance] inGroup])
-//    {
-//            [inGroupView setVerticalFrame];
-//    }else{
-//            [outGroupView setVerticalFrame];
-//    }
+    if ([[Friend sharedInstance] inGroup])
+    {
+            [inGroupView setVerticalFrame];
+    }else{
+            [outGroupView setVerticalFrame];
+    }
     
 }
 
 - (void)setHorizontalFrame
 {
-//    if ([[Friend sharedInstance] inGroup])
-//    {
-//        [inGroupView setHorizontalFrame];
-//    }else{
-//        [outGroupView setHorizontalFrame];
-//    }
+    if ([[Friend sharedInstance] inGroup])
+    {
+        [inGroupView setHorizontalFrame];
+    }else{
+        [outGroupView setHorizontalFrame];
+    }
 }
 
 //获取小组信息成功
