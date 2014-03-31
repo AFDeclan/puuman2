@@ -9,6 +9,7 @@
 #import "ActionForUpload.h"
 #import "UniverseConstant.h"
 #import "Group.h"
+#import "Friend.h"
 
 @implementation ActionForUpload
 
@@ -27,7 +28,11 @@
 
 - (void)requestEnded:(AFBaseRequest *)afRequest
 {
-    
+    if (_req.result == PumanRequest_Succeeded) {
+        [[Friend sharedInstance] informDelegates:@selector(actionUploaded:) withObject:self];
+    } else {
+        [[Friend sharedInstance] informDelegates:@selector(actionUploadFail:) withObject:self];
+    }
 }
 
 @end
