@@ -46,12 +46,13 @@
     return self;
 }
 
+
 - (void)bulidCellWithWareData:(RecomWare *)ware
 {
+ 
     [priceLabel setText:[NSString stringWithFormat:@"%0.2f",ware.RWPrice]];
     [nameLabel setText:ware.RWName];
     [iconWare getImage:ware.RWPicLink defaultImage:default_ware_image];
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -17,5 +17,6 @@
     UILabel *nameLabel;
     
 }
+
 - (void)bulidCellWithWareData:(RecomWare *)ware;
 @end

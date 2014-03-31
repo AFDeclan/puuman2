@@ -74,7 +74,7 @@
         [_content addSubview:_highPriceLabel];
         
       
-        wareNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(316, 128,356,64)];
+        wareNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(328, 128,356,64)];
         wareNameLabel.backgroundColor = [UIColor clearColor];
         wareNameLabel.textColor = PMColor1;
         wareNameLabel.font = PMFont1;
@@ -399,6 +399,7 @@
 {
     ShopWebViewController  *webVC = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:webVC.view];
+    [webVC setWare:_ware shops:_shopsInfo firstIndex:index];
     [webVC show];
 }
 //- (void)showWebView:(NSDictionary *)shopInfo

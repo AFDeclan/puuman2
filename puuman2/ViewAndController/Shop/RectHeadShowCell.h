@@ -20,7 +20,7 @@
     UILabel *wareNameLabel;
     UILabel *warePriceLabel;
     NSArray* wareArray;
-    int selectedIndex;
+    NSInteger selectedIndex;
   
 }
 

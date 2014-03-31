@@ -10,7 +10,8 @@
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
 #import "RecomWare.h"
-
+#import "ShopWebViewController.h"
+#import "MainTabBarController.h"
 
 
 @implementation RectHeadShowCell
@@ -20,6 +21,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        wareArray = [[NSArray alloc] init];
         selectedIndex = 0;
         pointerPic = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, 96, 384)];
         [pointerPic setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -39,6 +41,10 @@
         
         rectWareShowView = [[AFImageView alloc] initWithFrame:CGRectMake(96, 80, 496, 384)];
         [self.contentView addSubview:rectWareShowView];
+        UIGestureRecognizer *pressShowPic = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pressShowPic)];
+        [rectWareShowView setUserInteractionEnabled:YES];
+        [rectWareShowView addGestureRecognizer:pressShowPic];
+
         
         rectInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 320, 496, 64)];
         [rectWareShowView addSubview:rectInfoView];
@@ -157,6 +163,20 @@
 
     
 }
+
+-(void)pressShowPic{
+    
+    if ([wareArray count]> selectedIndex) {
+        RecomWare* showPicWare = [wareArray objectAtIndex:selectedIndex];
+        ShopWebViewController  *webVC = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
+        [[MainTabBarController sharedMainViewController].view addSubview:webVC.view];
+        [webVC setRecWebUrl:showPicWare.RWShopLink wareName:showPicWare.RWName wareId:showPicWare.RWID warePrice:showPicWare.RWPrice shopName:showPicWare.RWShop shopIndex:0 imgLink:showPicWare.RWPicLink];
+        [webVC show];
+    }
+    
+    
+}
+
 
 - (void)setWareNameWithName:(NSString *)name
 {

@@ -26,14 +26,25 @@
     ColorButton *shareBtn;
     ColorButton *addBtn;
     UITableView *_shopsTableView;
-     Ware *_ware;
-     UIWebView *myWebView;
-     NSArray *_shopsInfo;
-     NSInteger shopIndex;
+    Ware *_ware;
+    UIWebView *myWebView;
+    NSArray *_shopsInfo;
+    NSInteger _shopIndex;
     UIView *bg_content;
-    
+    BOOL _expanded;
+    UILabel * _lowPriceLabel;
+    UILabel * _highPriceLabel;
+    UILabel * _wName;
+    UIView *maskWeb;
+    UIView *bg_progress;
+    UIView *_progress;
+    UIImageView *pointImgView;
+    UILabel *noti_Price;
+    UILabel *noti_Name;
+    UIActivityIndicatorView *activityIndicatorView;
 }
 - (void)show;
 - (void)setWare:(Ware *)ware shops:(NSArray *)shopsInfo firstIndex:(NSInteger)index;
+- (void)setRecWebUrl:(NSString *)urlString  wareName:(NSString *)wName wareId:(NSInteger)WID warePrice:(CGFloat)price shopName:(NSString *)sName shopIndex:(NSInteger)shopIndex imgLink:(NSString *)picLink;
 
 @end
