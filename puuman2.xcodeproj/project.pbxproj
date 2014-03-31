@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1411AE1518E6BE0D00AA3FDE /* ActionForUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 1411AE1418E6BE0D00AA3FDE /* ActionForUpload.m */; };
+		1411AE1818E6CEE400AA3FDE /* ActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1411AE1718E6CEE400AA3FDE /* ActionManager.m */; };
 		1455006218E042E100360EDF /* OtherUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455006118E042E100360EDF /* OtherUserInfo.m */; };
 		146A2C6E18DD810E0038A850 /* ReplyForUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C6D18DD810E0038A850 /* ReplyForUpload.m */; };
 		146A2C7218DD8D1C0038A850 /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C7118DD8D1C0038A850 /* FileUploader.m */; };
@@ -429,6 +431,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1411AE1318E6BE0D00AA3FDE /* ActionForUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionForUpload.h; sourceTree = "<group>"; };
+		1411AE1418E6BE0D00AA3FDE /* ActionForUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionForUpload.m; sourceTree = "<group>"; };
+		1411AE1618E6CEE400AA3FDE /* ActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionManager.h; sourceTree = "<group>"; };
+		1411AE1718E6CEE400AA3FDE /* ActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionManager.m; sourceTree = "<group>"; };
 		1455006018E042E100360EDF /* OtherUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherUserInfo.h; sourceTree = "<group>"; };
 		1455006118E042E100360EDF /* OtherUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherUserInfo.m; sourceTree = "<group>"; };
 		146A2C6C18DD810E0038A850 /* ReplyForUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyForUpload.h; sourceTree = "<group>"; };
@@ -1328,6 +1334,10 @@
 				14C7867918E418C70024CE9F /* Member.m */,
 				14F5BC8C18E5794E007D8C4B /* Action.h */,
 				14F5BC8D18E5794E007D8C4B /* Action.m */,
+				1411AE1318E6BE0D00AA3FDE /* ActionForUpload.h */,
+				1411AE1418E6BE0D00AA3FDE /* ActionForUpload.m */,
+				1411AE1618E6CEE400AA3FDE /* ActionManager.h */,
+				1411AE1718E6CEE400AA3FDE /* ActionManager.m */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -2640,6 +2650,7 @@
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
 				54CE10F418C1842C00966396 /* MJRefreshFooterView.m in Sources */,
 				14B8DF2918BC37A30047C6B3 /* ShopClassModel.m in Sources */,
+				1411AE1518E6BE0D00AA3FDE /* ActionForUpload.m in Sources */,
 				14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */,
 				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
 				54A8F45E18CDC9A000D0D523 /* AudioViewController.m in Sources */,
@@ -2689,6 +2700,7 @@
 				5403CC7318D03B7D004CAE22 /* WaitView.m in Sources */,
 				54ADE0A018C8608700B166C4 /* TimeView.m in Sources */,
 				54CE10F518C1842C00966396 /* MJRefreshHeaderView.m in Sources */,
+				1411AE1818E6CEE400AA3FDE /* ActionManager.m in Sources */,
 				54B4EB2D18C576E5004489DA /* AFAnimationManager.m in Sources */,
 				541970E818D1A1C00058FE64 /* RulerScrollView.m in Sources */,
 				54CE10F218C1842C00966396 /* MJRefreshBaseView.m in Sources */,

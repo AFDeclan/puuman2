@@ -10,8 +10,10 @@
 #import "PumanRequest.h"
 #import "UserInfo.h"
 #import "Group.h"
+#import "ActionForUpload.h"
 
 #define Tag_Req_GroupInfo       1
+#define Tag_Req_Invite          2
 
 static Friend * instance;
 
@@ -35,6 +37,15 @@ static Friend * instance;
 + (void)releaseInstance
 {
     instance = nil;
+}
+
+- (id)init
+{
+    if (self = [super init]) {
+        _dataReady = NO;
+        _actionForUps = [[NSMutableSet alloc] init];
+    }
+    return self;
 }
 
 #pragma mark - Delegate
@@ -67,12 +78,27 @@ static Friend * instance;
         if (req.tag == Tag_Req_GroupInfo) return;
     }
     PumanRequest *req = [[PumanRequest alloc] init];
+    req.urlStr = kUrl_GetGroupData;
     [req setIntegerParam:[UserInfo sharedUserInfo].BID forKey:@"BID"];
     [req setResEncoding:PumanRequestRes_JsonEncoding];
     [req setDelegate:self];
     [req setTag:Tag_Req_GroupInfo];
     [_requests addObject:req];
     [req postAsynchronous];
+}
+
+- (void)invite:(NSInteger)bid
+{
+    if (!_dataReady) return;
+    PumanRequest *req = [[PumanRequest alloc] init];
+    req.urlStr = kUrl_UploadAction;
+    if (_inGroup) {
+        [req setIntegerParam:_myGroup.GID forKey:@"GID"];
+    } else {
+        [req setIntegerParam:0 forKey:@"GID"];
+    }
+    [req setIntegerParam:0 forKey:@"AType"];
+
 }
 
 - (void)requestEnded:(AFBaseRequest *)afRequest
@@ -107,9 +133,9 @@ static Friend * instance;
                             [self informDelegates:@selector(groupDataFailed) withObject:nil];
                             return;
                         }
-                        
                     }
                 }
+                _dataReady = YES;
                 [self informDelegates:@selector(groupDataReceived) withObject:nil];
             } else {
                 [self informDelegates:@selector(groupDataFailed) withObject:nil];
@@ -119,6 +145,8 @@ static Friend * instance;
         default:
             break;
     }
+    [_requests removeObject:afRequest];
 }
+
 
 @end
