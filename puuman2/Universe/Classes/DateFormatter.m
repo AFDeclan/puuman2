@@ -48,6 +48,7 @@
 
 + (NSDate *)datetimeFromTimestampStr:(NSString *)dateStr
 {
+    if (!dateStr) return nil;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Harbin"];
     [formatter setTimeZone:timeZone];

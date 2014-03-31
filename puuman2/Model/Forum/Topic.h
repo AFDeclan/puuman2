@@ -39,6 +39,8 @@ typedef enum TopicType {
 @property (retain, nonatomic, readonly) NSString *  TTitle;
 //话题详情
 @property (retain, nonatomic, readonly) NSString *  TDetail;
+//图片Url
+@property (retain, nonatomic, readonly) NSString *  TImgUrl;
 //话题状态
 @property (assign, nonatomic, readonly) TopicStatus TStatus;
 //创建时间

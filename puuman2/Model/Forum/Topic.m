@@ -16,19 +16,6 @@
 
 @implementation Topic
 
-@synthesize TID = _TID;
-@synthesize TNo = _TNo;
-@synthesize TType = _TType;
-@synthesize TTitle = _TTitle;
-@synthesize TDetail = _TDetail;
-@synthesize TStatus = _TStatus;
-@synthesize TCreateTime = _TCreateTime;
-@synthesize meta = _meta;
-@synthesize data = _data;
-
-@synthesize replies = _replies;
-@synthesize noMore = _noMore;
-
 - (void)setData:(NSDictionary *)data
 {
     _data = data;
@@ -45,6 +32,8 @@
             _TTitle = val;
         } else if ([key isEqualToString:@"TDetail"]) {
             _TDetail = val;
+        } else if ([key isEqualToString:@"TImgUrl"]) {
+            _TImgUrl = val;
         } else if ([key isEqualToString:@"TStatus"]) {
             _TStatus = [val integerValue];
         } else if ([key isEqualToString:@"TCreateTime"]) {
