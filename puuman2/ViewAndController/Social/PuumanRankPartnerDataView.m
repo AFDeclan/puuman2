@@ -26,11 +26,6 @@
     
 }
 
-
-
-
-
-
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
     
@@ -45,6 +40,11 @@
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
     
+}
+
+- (void)reloadWithGroupInfo:(Group *)group
+{
+    [super reloadWithGroupInfo:group];
 }
 
 - (void)setVerticalFrame

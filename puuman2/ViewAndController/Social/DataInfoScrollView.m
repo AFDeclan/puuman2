@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.delegate = self;
+        
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
         heightView = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, 0, 0, 224)];
@@ -24,7 +25,7 @@
         [self addSubview:heightView];
         weightView  = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(heightView)+ViewHeight(heightView), 0, 224)];
         [weightView setBackgroundColor:PMColor5];
-        [weightView setIsHeight:YES];
+        [weightView setIsHeight:NO];
         [self addSubview:weightView];
         
         for (int i =0; i <5; i++) {
@@ -82,6 +83,18 @@
 
 - (void)reloadWithGroupInfo:(Group *)group
 {
-
+    [heightView reloadWithGroupInfo:group];
+    [weightView reloadWithGroupInfo:group];
+    [vaccineView reloadWithGroupInfo:group];
+    for (int i = 0; i <5; i ++) {
+        [propWareView[i] reloadWithGroupInfo:group];
+    }
+    [puumanRankView reloadWithGroupInfo:group];
+   
+    
+    
 }
+
+
+
 @end

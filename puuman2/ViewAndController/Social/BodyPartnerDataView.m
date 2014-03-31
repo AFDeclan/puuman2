@@ -27,6 +27,14 @@
     
 }
 
+- (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
+{
+    
+    return [_group.GMember count];
+    
+}
+
+
 
 
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
@@ -39,7 +47,12 @@
         cell = [[BodyPartnerDataCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
     }
-    [cell setBodyData:100 andTheDate:nil andHighest:160 andLowest:40 andIsHeight:_isHeight];
+    if (_isHeight) {
+        [cell setBodyData:((Member *)[_group.GMember objectAtIndex:index]).BabyHeight andTheDate:nil andHighest:max andLowest:min andIsHeight:_isHeight];
+    }else{
+       [cell setBodyData:((Member *)[_group.GMember objectAtIndex:index]).BabyWeight andTheDate:nil andHighest:max andLowest:min andIsHeight:_isHeight];
+    }
+   
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
  
@@ -59,5 +72,36 @@
 {
     _isHeight =isHeight;
     [dataColumnView reloadData];
+}
+
+- (void)reloadWithGroupInfo:(Group *)group
+{
+    [super reloadWithGroupInfo:group];
+    min = 0;
+    max = 0;
+    for (int i = 0; i <[group.GMember count]; i ++) {
+        float  value;
+        if (_isHeight) {
+            value = ((Member *)[group.GMember objectAtIndex:0]).BabyHeight;
+        }else{
+            value = ((Member *)[group.GMember objectAtIndex:0]).BabyWeight;
+        }
+    
+        if (i== 0) {
+            min = value;
+            max =  value;
+        }else{
+        
+            if (value > max) {
+                max = value;
+            }
+            
+            if (value < min) {
+                min = value;
+            }
+        }
+    }
+    [dataColumnView reloadData];
+    
 }
 @end

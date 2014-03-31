@@ -42,6 +42,11 @@
 - (void)setBodyData:(float)bodyValue andTheDate:(NSDate *)date andHighest:(float)highest andLowest:(float)lowest andIsHeight:(BOOL) height;
 {
     
+    if (bodyValue == 0) {
+     
+       [histogram setFrame:CGRectMake(0, 224-200, 96, 0)];
+        return;
+    }
     
     if (highest == lowest) {
         [histogram setFrame:CGRectMake(0, 224-200, 96, 200)];

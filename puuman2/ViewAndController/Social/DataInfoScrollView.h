@@ -21,7 +21,7 @@
     VaccinePartnerDataView *vaccineView;
     PuumanRankPartnerDataView *puumanRankView;
     PropWarePartnerDataView *propWareView[5];
-
+    
 }
 - (void)reloadWithGroupInfo:(Group *)group;
 - (void)setVerticalFrame;

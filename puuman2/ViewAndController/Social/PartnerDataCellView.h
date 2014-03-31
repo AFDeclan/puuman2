@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "UIColumnView.h"
+#import "Group.h"
+#import "Member.h"
+
 @interface PartnerDataCellView : UIView<UIColumnViewDataSource, UIColumnViewDelegate>
 {
     UIColumnView *dataColumnView;
-    
+    Group *_group;
 }
+- (void)reloadWithGroupInfo:(Group *)group;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

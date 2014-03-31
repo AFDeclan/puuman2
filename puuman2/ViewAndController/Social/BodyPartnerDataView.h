@@ -10,7 +10,9 @@
 
 @interface BodyPartnerDataView : PartnerDataCellView
 {
-
+    float max ;
+    float min;
 }
+
 @property(nonatomic,assign)BOOL isHeight;
 @end

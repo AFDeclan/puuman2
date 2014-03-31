@@ -46,7 +46,7 @@
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
     
-    return 6;
+    return 0;
     
 }
 
@@ -68,6 +68,10 @@
 
 }
 
+- (void)reloadWithGroupInfo:(Group *)group
+{
+    _group = group;
+}
 
 
 @end

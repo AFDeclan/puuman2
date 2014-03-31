@@ -49,6 +49,11 @@
     
 }
 
+- (void)reloadWithGroupInfo:(Group *)group
+{
+    [super reloadWithGroupInfo:group];
+}
+
 - (void)setVerticalFrame
 {
       [dataColumnView setFrame:CGRectMake(22, 0, 576, 136)];
