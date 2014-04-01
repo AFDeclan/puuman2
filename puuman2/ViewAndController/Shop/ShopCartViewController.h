@@ -16,6 +16,7 @@
     ColorButton *btn_compared;
     UITableView * cartTable;
     BOOL isPaid;
+    NSInteger unfoldIndex;
 }
 
 @end

@@ -9,6 +9,8 @@
 #import "ShopCartViewController.h"
 #import "CartTableViewCell.h"
 #import "CartModel.h"
+#import "MainTabBarController.h"
+#import "CompareCartViewController.h"
 
 @interface ShopCartViewController ()
 
@@ -22,6 +24,8 @@
     if (self) {
         // Custom initialization
         [self initWithContent];
+        [MyNotiCenter addObserver:self selector:@selector(refreshCartTable) name:Noti_RefreshCartWare object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(unFoldAtIndex:) name:Noti_UnFoldCartWare object:nil];
     }
     return self;
 }
@@ -29,6 +33,7 @@
 - (void)initWithContent
 {
     isPaid = NO;
+    unfoldIndex = -1;
     btn_unpaid = [[ColorButton alloc] init];
     [btn_unpaid initWithTitle:@"未付款"  andButtonType:kBlueLeftUp];
     [btn_unpaid addTarget:self action:@selector(unpaidBtnPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -57,6 +62,11 @@
     [self unpaidBtnPressed];
 }
 
+- (void)refreshCartTable
+{
+    unfoldIndex = -1;
+    [cartTable reloadData];
+}
 #pragma mark - UITableView Delegate Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -87,6 +97,13 @@
     {
         cell =  [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
+    if ([indexPath row] == unfoldIndex) {
+        NSLog(@"%d",unfoldIndex);
+        [cell setUnflod:YES];
+    }else{
+        [cell setUnflod:NO];
+    }
+    
     [cell buildCellWithPaid:isPaid andWareIndex:[indexPath row]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor clearColor]];
@@ -111,6 +128,7 @@
 
 - (void)unpaidBtnPressed
 {
+    
     [btn_unpaid selected];
     [btn_paid unSelected];
     isPaid = NO;
@@ -122,6 +140,12 @@
 - (void)comparedBtnPressed
 {
    
+    CompareCartViewController *cartVC =[[CompareCartViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
+    [cartVC setControlBtnType:kOnlyCloseButton];
+    [cartVC setTitle:@"比一比" withIcon:[UIImage imageNamed:@"icon_cart_shop.png"]];
+    [cartVC show];
+
 }
 
 
@@ -131,11 +155,19 @@
     // Do any additional setup after loading the view.
 }
 
+
+- (void)unFoldAtIndex:(NSNotification *)notification
+{
+
+    unfoldIndex = [[notification object] integerValue];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 @end

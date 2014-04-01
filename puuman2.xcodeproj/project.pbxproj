@@ -346,6 +346,7 @@
 		54AC213018E42F85001C1357 /* RectRankSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC212F18E42F85001C1357 /* RectRankSubCell.m */; };
 		54ACEE8518EA64B80055562B /* Award.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACEE8218EA64B80055562B /* Award.m */; };
 		54ACEE8618EA64B80055562B /* Rank.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACEE8418EA64B80055562B /* Rank.m */; };
+		54ACEE8918EAC2E70055562B /* CompareCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACEE8818EAC2E70055562B /* CompareCartViewController.m */; };
 		54ADB1B518E11E0F00FCCC83 /* FiguresHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1B418E11E0F00FCCC83 /* FiguresHeaderView.m */; };
 		54ADB1B818E1203A00FCCC83 /* FigureHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1B718E1203A00FCCC83 /* FigureHeaderCell.m */; };
 		54ADB1BB18E1303300FCCC83 /* DataInfoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1BA18E1303300FCCC83 /* DataInfoScrollView.m */; };
@@ -1085,6 +1086,8 @@
 		54ACEE8218EA64B80055562B /* Award.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Award.m; sourceTree = "<group>"; };
 		54ACEE8318EA64B80055562B /* Rank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rank.h; sourceTree = "<group>"; };
 		54ACEE8418EA64B80055562B /* Rank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rank.m; sourceTree = "<group>"; };
+		54ACEE8718EAC2E70055562B /* CompareCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompareCartViewController.h; sourceTree = "<group>"; };
+		54ACEE8818EAC2E70055562B /* CompareCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompareCartViewController.m; sourceTree = "<group>"; };
 		54ADB1B318E11E0F00FCCC83 /* FiguresHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiguresHeaderView.h; sourceTree = "<group>"; };
 		54ADB1B418E11E0F00FCCC83 /* FiguresHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiguresHeaderView.m; sourceTree = "<group>"; };
 		54ADB1B618E1203A00FCCC83 /* FigureHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FigureHeaderCell.h; sourceTree = "<group>"; };
@@ -2806,6 +2809,8 @@
 				54D64EEE18E7BA2000B8899D /* ShopWebViewController.m */,
 				54D64EFF18E7E92700B8899D /* ShopCartViewController.h */,
 				54D64F0018E7E92700B8899D /* ShopCartViewController.m */,
+				54ACEE8718EAC2E70055562B /* CompareCartViewController.h */,
+				54ACEE8818EAC2E70055562B /* CompareCartViewController.m */,
 				54D64F0218E7EFAA00B8899D /* subView */,
 			);
 			name = Ware;
@@ -3760,6 +3765,7 @@
 				54D14FDC18CAEACC0022E1F4 /* DiaryTableViewController.m in Sources */,
 				54B753B018D3020B002411CF /* PuumanInBookCell.m in Sources */,
 				54B4685F18E54D7200745F72 /* ExpandableButton.m in Sources */,
+				54ACEE8918EAC2E70055562B /* CompareCartViewController.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				5447C4A818D98AB900187BE6 /* TopicView.m in Sources */,
 				54B4680518E520C500745F72 /* HealthCell.m in Sources */,

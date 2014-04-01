@@ -9,16 +9,18 @@
 #import "CartTableViewCell.h"
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
+#import "CartModel.h"
 
 @implementation CartTableViewCell
 @synthesize  isCompare = _isCompare;
-
+@synthesize unflod =_unflod;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        
+        wareIndex = -1;
+        _isCompare = NO;
         wareImg = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
         [wareImg getImage:@"" defaultImage:@"default_ware_image                                                                                                                           "];
         [self.contentView addSubview:wareImg];
@@ -35,7 +37,7 @@
         wareName.textColor = PMColor1;
         wareName.font = PMFont3;
         [infoScrollView addSubview:wareName];
-        UIImageView *rmb_icon = [[UIImageView alloc] initWithFrame:CGRectMake(12, 48, 12, 12)];
+        rmb_icon = [[UIImageView alloc] initWithFrame:CGRectMake(12, 48, 12, 12)];
         [rmb_icon setImage:[UIImage imageNamed:@"icon_rmb_shop.png"]];
         [infoScrollView addSubview:rmb_icon];
 
@@ -68,7 +70,7 @@
         time_icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
         [time_icon setImage:[UIImage imageNamed:@"icon_time_shop.png"]];
         [infoScrollView addSubview:time_icon];
-       
+       [MyNotiCenter addObserver:self selector:@selector(unFoldAtIndex:) name:Noti_UnFoldCartWare object:nil];
         
     }
     return self;
@@ -86,19 +88,90 @@
 
 - (void)buildCellWithPaid:(BOOL)paid andWareIndex:(NSInteger)index
 {
+    wareIndex = index;
     isPaid = paid;
     if (paid) {
-    //_ware = [car]
+        [rmb_icon setAlpha:0];
+        Ware* w;
+        NSDate* d;
+        
+        w = [[CartModel sharedCart] getDoneWareAtIndex:index];
+        d = [[CartModel sharedCart] getDoneTimeAtIndex:index];
+        
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *comps ;
+        NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |  NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+        if( d == nil )
+            d = [NSDate date];
+        comps = [calendar components:unitFlags fromDate:d];
+        if( w != nil ){
+            NSString *mm = nil, *dd = nil;
+            if( [comps month] < 10 )
+                mm = [NSString stringWithFormat:@"0%1d", [comps month]];
+            else
+                mm = [NSString stringWithFormat:@"%d", [comps month]];
+            
+            if( [comps day] < 10 )
+                dd = [NSString stringWithFormat:@"0%1d", [comps day]];
+            else
+                dd = [NSString stringWithFormat:@"%d", [comps day]];
+            NSString* wt = [NSString stringWithFormat:@"%4d-%@-%@",
+                            [comps year], mm, dd];
+            [self setWare:w  wareTime:wt ];
+        }
+
     }else{
-    
+        [rmb_icon setAlpha:1];
+        Ware* w;
+        NSDate* d;
+        NSInteger flags;
+        
+        w = [[CartModel sharedCart] getUndoWareAtIndex:index];
+        d = [[CartModel sharedCart] getUndoTimeAtIndex:index];
+        
+        
+        flags = [[CartModel sharedCart] flagAtIndex:index];
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *comps ;
+        NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |  NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+        if( d == nil )
+            d = [NSDate date];
+        comps = [calendar components:unitFlags fromDate:d];
+        if( w != nil ){
+            NSString *mm = nil, *dd = nil;
+            if( [comps month] < 10 )
+                mm = [NSString stringWithFormat:@"0%1d", [comps month]];
+            else
+                mm = [NSString stringWithFormat:@"%d", [comps month]];
+            
+            if( [comps day] < 10 )
+                dd = [NSString stringWithFormat:@"0%1d", [comps day]];
+            else
+                dd = [NSString stringWithFormat:@"%d", [comps day]];
+            NSString* wt = [NSString stringWithFormat:@"%4d-%@-%@",
+                            [comps year], mm, dd];
+            [self buildCellWithWare:w  flagCount:flags wareTime:wt ];
+        }
     }
+}
+
+
+- (void)setWare:(Ware *)ware  wareTime:(NSString *)wt
+{
+    _ware = ware;
+    [wareName setText:ware.WName];
+    [wareTime setText:wt];
+    [self setTimeIconLocation];
+    wareShop.text = ware.WShop;
+    [wareImg getImage:ware.WPicLink defaultImage:default_ware_image];
+
 }
 
 - (void)buildCellWithWare:(Ware *)ware  flagCount:(NSInteger)flagCount wareTime:(NSString *)wt
 {
+    _ware = ware;
     wareName.text = ware.WName;
     warePrice.text = [NSString stringWithFormat:@"%.2f~%.2f", ware.WPriceLB, ware.WPriceUB];
-   // wareShop.text = ware.WShop;
     wareTime.text = wt;
     [self setTimeIconLocation];
     [wareImg getImage:ware.WPicLink defaultImage:default_ware_image];
@@ -122,8 +195,8 @@
 
     float x = scrollView.contentOffset.x;
     if (x>=80) {
-       
-     //  PostNotification(Noti_CartCellShowDelBtn, [NSNumber numberWithInteger:self.tag]);
+        _unflod = YES;
+       PostNotification(Noti_UnFoldCartWare, [NSNumber numberWithInteger:wareIndex]);
         scrollView.pagingEnabled=NO;
         if (x>=160) {
             scrollView.contentOffset=CGPointMake(160, 0);
@@ -147,13 +220,46 @@
 - (void)delBtnPressed
 {
     [MobClick event:umeng_event_click label:@"Delete_ShopInfoLeftCell"];
-  //  PostNotification(Noti_DeleteCartWare, [NSNumber numberWithInteger:_ware.WID]);
-
+     [[CartModel sharedCart] deleteWareFromCart:_ware.WID];
+    PostNotification(Noti_RefreshCartWare, nil);
+   
 }
 
 - (void)setIsCompare:(BOOL)isCompare
 {
+    _isCompare = isCompare;
+}
 
+- (void)setUnflod:(BOOL)unflod
+{
+    if (unflod) {
+        [infoScrollView setContentOffset:CGPointMake(79, 0)];
+        infoScrollView.pagingEnabled=YES;
+    }else{
+        [infoScrollView setContentOffset:CGPointMake(0, 0)];
+    }
+}
+
+- (void)unFoldAtIndex:(NSNotification *)notification
+{
+    
+    if (_unflod) {
+        if ( wareIndex !=  [[notification object] integerValue]) {
+
+            [delBtn setEnabled:NO];
+            [UIView animateWithDuration:0.7
+                             animations:^{
+                                 infoScrollView.contentOffset=CGPointMake(0, 0);
+                             }completion:^(BOOL finished) {
+                                 [delBtn setEnabled:YES];
+                                 
+                             } ];
+
+        
+        }
+       
+    }
+    
 }
 
 @end

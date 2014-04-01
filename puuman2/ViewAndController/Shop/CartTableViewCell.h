@@ -23,8 +23,10 @@
     UIImageView *time_icon;
     Ware *_ware;
     BOOL isPaid;
+    UIImageView *rmb_icon;
+    NSInteger wareIndex;
 }
 @property(nonatomic,assign)BOOL isCompare;
-
+@property(nonatomic,assign)BOOL unflod;
 - (void)buildCellWithPaid:(BOOL)paid andWareIndex:(NSInteger)index;
 @end
