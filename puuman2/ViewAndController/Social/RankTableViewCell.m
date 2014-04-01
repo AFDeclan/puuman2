@@ -24,7 +24,6 @@
         portrait.layer.cornerRadius = 20;
         portrait.layer.masksToBounds = YES;
         portrait.layer.shadowRadius =0.1;
-        [portrait getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:@""];
         [self.contentView addSubview:portrait];
         info_name = [[UILabel alloc] init];
         [info_name setTextAlignment:NSTextAlignmentCenter];
@@ -58,6 +57,13 @@
         [self.contentView addSubview:partLine];
     }
     return self;
+}
+
+
+- (void)buildWithRankInfo:(Rank *)rank
+{
+  //  [portrait getImage:[rank rw] defaultImage:@""];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -29,6 +29,8 @@
 
 @property(assign,nonatomic) BOOL isVertical;
 @property(assign,nonatomic) BOOL refresh_HV;
+@property(assign,nonatomic) BOOL isReply;
+
 + (MainTabBarController *)sharedMainViewController;
 - (void)initautoImportView;
 - (void)removeAutoImportView;

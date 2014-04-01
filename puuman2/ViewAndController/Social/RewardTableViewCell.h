@@ -16,5 +16,6 @@
     RewardView *rightReward;
     
 }
+
 @property(nonatomic,assign)NSInteger row;
 @end

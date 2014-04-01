@@ -21,6 +21,8 @@
     UILabel *info_title;
    
 }
+
+
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 

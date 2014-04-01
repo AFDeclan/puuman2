@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AFImageView.h"
+#import "Rank.h"
 
 @interface RankTableViewCell : UITableViewCell
 {
@@ -21,4 +22,7 @@
     UILabel *info_like;
     
 }
+
+- (void)buildWithRankInfo:(Rank *)rank;
+
 @end

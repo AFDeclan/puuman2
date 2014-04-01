@@ -10,6 +10,7 @@
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
 #import "MainTabBarController.h"
+#import "Group.h"
 
 @interface ChatInputViewController ()
 
@@ -17,13 +18,14 @@
 
 @implementation ChatInputViewController
 @synthesize sendIsHidden = _sendIsHidden;
-
+@synthesize actionParent = _actionParent;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
       
+       
         [bgView setAlpha:0];
         input_now = NO;
         _sendIsHidden = NO;
@@ -274,8 +276,10 @@
 - (void)create
 {
     if (_sendIsHidden) {
-         [inputTextView resignFirstResponder];
+        [(Reply *)_actionParent comment:inputTextView.text];
+        [inputTextView resignFirstResponder];
     }else{
+        [(Group *)_actionParent actionForSendMsg:inputTextView.text];
         [self reset];
     }
   
@@ -293,16 +297,43 @@
 
 
 
-- (void)setSendIsHidden:(BOOL)sendIsHidden
+- (void)setSendIsHidden:(BOOL)sendIsHidden 
 {
     
     _sendIsHidden = sendIsHidden;
     if (sendIsHidden) {
+        [[Forum sharedInstance] addDelegateObject:self];
         [createBtn initWithTitle:@"留言" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
       
     }else{
+        [[Friend sharedInstance] addDelegateObject:self];
         [createBtn initWithTitle:@"发送" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
     }
+}
+
+//更多评论加载成功
+- (void)replyCommentsLoadedMore:(Reply *)reply
+{
+    PostNotification(Noti_RefreshTopicTable, nil);
+    [[Forum sharedInstance] removeDelegateObject:self];
+}
+
+//更多评论加载失败 注意根据noMore判断是否是因为全部加载完
+- (void)replyCommentsLoadFailed:(Reply *)reply
+{
+    
+}
+
+//Group Action 上传成功
+- (void)actionUploaded:(ActionForUpload *)action
+{
+    PostNotification(Noti_RefreshChatTable, nil);
+    [[Friend sharedInstance] removeDelegateObject:self];
+}
+//Group Action 上传失败
+- (void)actionUploadFailed:(ActionForUpload *)action
+{
+
 }
 
 @end

@@ -24,6 +24,8 @@ static MainTabBarController *instance;
 @implementation MainTabBarController
 @synthesize isVertical = _isVertical;
 @synthesize refresh_HV = _refresh_HV;
+@synthesize isReply = _isReply;
+
 + (MainTabBarController *)sharedMainViewController
 {
     if (!instance)
@@ -53,6 +55,7 @@ static MainTabBarController *instance;
     [super viewDidLoad];
     [self.tabBar removeFromSuperview];
     [self initWithTabBar];
+    _isReply = YES;
     userInfo = [UserInfo sharedUserInfo];
    
     
@@ -238,7 +241,8 @@ static MainTabBarController *instance;
     if (!inputVC) {
         inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
         [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
-        [inputVC setSendIsHidden:[[notification object] boolValue]];
+        [inputVC setActionParent:[notification object]];
+        [inputVC setSendIsHidden:_isReply];
         [inputVC show];
     }
  
@@ -246,7 +250,6 @@ static MainTabBarController *instance;
 
 - (void)hiddenBottomInputView
 {
-    
     if (inputVC) {
         [inputVC hidden];
         inputVC = nil;

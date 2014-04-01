@@ -23,6 +23,8 @@
     if (self) {
         // Custom initialization
         [self initContent];
+        [[Forum sharedInstance] addDelegateObject:self];
+        [[Forum sharedInstance] getAwardAndRank];
     }
     return self;
 }
@@ -96,9 +98,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (rankTable == tableView) {
-        return 3;
+        return [[[Forum sharedInstance] ranks] count];
     }else{
-        return 4;
+        return [[[Forum sharedInstance] awards] count];
     }
     
 }
@@ -113,7 +115,7 @@
             cell = [[RankTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
             
         }
-        
+        [cell buildWithRankInfo:[[[Forum sharedInstance] ranks] objectAtIndex:[indexPath row]]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -177,6 +179,18 @@
     [partLine setAlpha:0.5];
     [view addSubview:partLine];
     return view;
+}
+
+//奖品与排行
+- (void)rankAwardReceived
+{
+    
+    [rewardTable reloadData];
+    [rankTable reloadData];
+}
+- (void)rankAwardFailed
+{
+
 }
 
 @end

@@ -10,6 +10,8 @@
 #import "RecommentPartnerTableViewCell.h"
 #import "MemberCache.h"
 #import "BabyData.h"
+#import "Group.h"
+#import "ActionForUpload.h"
 
 @interface RecommendPartnerViewController ()
 
@@ -32,9 +34,7 @@
 
 - (void)initWithContent
 {
-    
-    
-    
+
     recommentTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 272, 576, 254)];
     [recommentTable setBackgroundColor:PMColor5];
     [recommentTable setDelegate:self];
@@ -53,6 +53,7 @@
     inviteBtn = [[ColorButton alloc] init];
     [inviteBtn addTarget:self action:@selector(invite) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:inviteBtn];
+    [inviteBtn setAlpha:0];
     SetViewLeftUp(changeBtn, 592, 112);
     SetViewLeftUp(inviteBtn, 592, 152);
     
@@ -93,7 +94,7 @@
 {
     _userInfo = userInfo;
     [[MemberCache sharedInstance] getMemberWithUID:uid];
-    
+   
 }
 
 //Member数据下载成功
@@ -101,7 +102,7 @@
 {
     
     _memberInfo = member;
-    if (member.GID == 0) {
+    if (member.GID == 0 &&_userInfo.GID != 0) {
         [inviteBtn setAlpha:1];
     }else{
         [inviteBtn setAlpha:0];
@@ -113,7 +114,7 @@
         [sex_name setTitle:member.BabyNick andImg:[UIImage imageNamed:@"icon_female_baby.png"] andButtonType:kButtonTypeSeven];
     }
     [portrait getImage:[member BabyPortraitUrl] defaultImage:@""];
-    
+     [recommentTable reloadData];
 }
 
 //Member数据下载失败
@@ -130,8 +131,22 @@
 
 - (void)invite
 {
+     [[Friend sharedInstance] addDelegateObject:self];
+    Group *myGroup = [[Friend sharedInstance] myGroup];
+    [[myGroup actionForInvite:_memberInfo.BID] upload];
     
-    
+}
+
+//Group Action 上传成功
+- (void)actionUploaded:(ActionForUpload *)action
+{
+    [inviteBtn setAlpha:0];
+     [[Friend sharedInstance] removeDelegateObject:self];
+}
+//Group Action 上传失败
+- (void)actionUploadFailed:(ActionForUpload *)action
+{
+
 }
 
 - (void)viewDidLoad

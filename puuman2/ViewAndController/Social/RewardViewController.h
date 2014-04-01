@@ -8,8 +8,10 @@
 
 #import "CustomPopViewController.h"
 #import "ColorButton.h"
+#import "Forum.h"
 
-@interface RewardViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate>
+
+@interface RewardViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate>
 {
     ColorButton *instructionBtn;
     ColorButton *createBtn;
@@ -18,4 +20,6 @@
     
     UILabel *noti_label;
 }
+
+
 @end

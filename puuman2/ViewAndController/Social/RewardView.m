@@ -19,7 +19,7 @@ static NSString *ranks[5] = {@"一等奖",@"二等奖",@"三等奖",@"四等奖"
     if (self) {
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
-        bg_rewardView = [[UIImageView alloc] init];
+        bg_rewardView = [[AFImageView alloc] init];
         [bg_rewardView setAlpha:0.5];
         [bg_rewardView setBackgroundColor:PMColor6];
         [self addSubview:bg_rewardView];
@@ -35,8 +35,9 @@ static NSString *ranks[5] = {@"一等奖",@"二等奖",@"三等奖",@"四等奖"
     return self;
 }
 
-- (void)setRewardWithRanking:(NSInteger)rank andReward:(NSString *)reward
+- (void)setRewardWithRanking:(NSInteger)rank andReward:(NSString *)reward  andBgUrl:(NSString *)url
 {
+    [bg_rewardView getImage:url defaultImage:@""];
     [info_title setTextColor:PMColor2];
     [info_rank setTextColor:PMColor3];
     [info_rank setFont:PMFont2];

@@ -19,6 +19,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [MyNotiCenter addObserver:self selector:@selector(refreshChatTable) name:Noti_RefreshChatTable object:nil];
         [self initialization];
     }
     return self;
@@ -66,6 +67,10 @@
 
 }
 
+- (void)refreshChatTable
+{
+    [chatTable reloadData];
+}
 
 
 - (void)setVerticalFrame

@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFImageView.h"
 
 @interface RewardView : UIView
 {
-    UIImageView *bg_rewardView;
+    AFImageView *bg_rewardView;
     UILabel *info_title;
     UILabel *info_rank;
 }
 
-- (void)setRewardWithRanking:(NSInteger)rank andReward:(NSString *)reward;
+- (void)setRewardWithRanking:(NSInteger)rank andReward:(NSString *)reward andBgUrl:(NSString *)url;
 @end

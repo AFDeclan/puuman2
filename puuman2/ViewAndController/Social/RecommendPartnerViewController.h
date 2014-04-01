@@ -13,6 +13,7 @@
 #import "AFImageView.h"
 #import "AFTextImgButton.h"
 
+
 @interface RecommendPartnerViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,FriendDelegate>
 {
     UITableView *recommentTable;

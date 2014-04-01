@@ -7,6 +7,8 @@
 //
 
 #import "RewardTableViewCell.h"
+#import "Forum.h"
+#import "Award.h"
 
 @implementation RewardTableViewCell
 @synthesize row = _row;
@@ -33,22 +35,24 @@
 - (void)setRow:(NSInteger)row
 {
     _row = row;
-    if (row == 3) {
-        [rightReward setAlpha:1];
-        [leftReward setFrame:CGRectMake(0, 10, 188, 86)];
-        [rightReward setFrame:CGRectMake(196, 10, 188, 86)];
-        [leftReward setRewardWithRanking:4 andReward:@"扑满存钱罐"];
-        [rightReward setRewardWithRanking:5 andReward:@"扑满存钱罐"];
-        
-    }else{
+    Award *myAward =  [[[Forum sharedInstance] awards] objectAtIndex:row];
+    
+//    if (row == 3) {
+//        [rightReward setAlpha:1];
+//        [leftReward setFrame:CGRectMake(0, 10, 188, 86)];
+//        [rightReward setFrame:CGRectMake(196, 10, 188, 86)];
+//        [leftReward setRewardWithRanking:4 andReward:@"扑满存钱罐"];
+//        [rightReward setRewardWithRanking:5 andReward:@"扑满存钱罐"];
+//        
+//    }else{
         [rightReward setAlpha:0];
         if (row == 0) {
               [leftReward setFrame:CGRectMake(0, 0, 384, 160)];
         }else{
               [leftReward setFrame:CGRectMake(0, 10, 384, 86)];
         }
-        [leftReward setRewardWithRanking:row+1 andReward:@"奖品"];
-    }
+        [leftReward setRewardWithRanking:[myAward ALevel] andReward:[myAward AName] andBgUrl:[myAward AImgUrl]];
+  //  }
   
 }
 @end

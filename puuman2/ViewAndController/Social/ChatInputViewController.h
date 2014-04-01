@@ -9,8 +9,12 @@
 #import "PopViewController.h"
 #import "ChatInputTextView.h"
 #import "ColorButton.h"
+#import "Reply.h"
+#import "ReplyForUpload.h"
+#import "Forum.h"
+#import "Friend.h"
 
-@interface ChatInputViewController : PopViewController<UITextViewDelegate>
+@interface ChatInputViewController : PopViewController<UITextViewDelegate,ForumDelegate,FriendDelegate>
 
 {
     ChatInputTextView *inputTextView;
@@ -23,6 +27,7 @@
     int addHeightNum;
     
 }
+@property(retain,nonatomic)id actionParent;
 @property(assign,nonatomic)BOOL sendIsHidden;
 
 - (void)show;

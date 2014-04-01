@@ -62,4 +62,5 @@
 #define Noti_BottomInputViewHidden              @"Noti_BottomInputViewHidden"
 #define Noti_RefreshTopicTable                  @"Noti_RefreshTopicTable"
 #define Noti_RefreshInviteStatus                @"Noti_RefreshInviteStatus"
+#define Noti_RefreshChatTable                   @"Noti_RefreshChatTable"
 #endif
