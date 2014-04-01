@@ -63,6 +63,8 @@
 		14C7867418E4189C0024CE9F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C7867318E4189C0024CE9F /* Friend.m */; };
 		14C7867718E418A70024CE9F /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C7867618E418A70024CE9F /* Group.m */; };
 		14C7867A18E418C70024CE9F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C7867918E418C70024CE9F /* Member.m */; };
+		14DA611418EA5EC200EA3DFB /* Rank.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DA611318EA5EC200EA3DFB /* Rank.m */; };
+		14DA611718EA5F6900EA3DFB /* Award.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DA611618EA5F6900EA3DFB /* Award.m */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
 		14F5BC8E18E5794E007D8C4B /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F5BC8D18E5794E007D8C4B /* Action.m */; };
@@ -535,6 +537,10 @@
 		14C7867618E418A70024CE9F /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		14C7867818E418C70024CE9F /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
 		14C7867918E418C70024CE9F /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
+		14DA611218EA5EC200EA3DFB /* Rank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rank.h; sourceTree = "<group>"; };
+		14DA611318EA5EC200EA3DFB /* Rank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rank.m; sourceTree = "<group>"; };
+		14DA611518EA5F6900EA3DFB /* Award.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Award.h; sourceTree = "<group>"; };
+		14DA611618EA5F6900EA3DFB /* Award.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Award.m; sourceTree = "<group>"; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		14F5BC8C18E5794E007D8C4B /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
@@ -1073,6 +1079,10 @@
 				14C0B69F18E1158C00BC308E /* Comment.m */,
 				1455006018E042E100360EDF /* OtherUserInfo.h */,
 				1455006118E042E100360EDF /* OtherUserInfo.m */,
+				14DA611218EA5EC200EA3DFB /* Rank.h */,
+				14DA611318EA5EC200EA3DFB /* Rank.m */,
+				14DA611518EA5F6900EA3DFB /* Award.h */,
+				14DA611618EA5F6900EA3DFB /* Award.m */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -2667,6 +2677,7 @@
 				544419F918D40EE800FBE69F /* PuumanRulesViewController.m in Sources */,
 				54D14FD918CACC720022E1F4 /* CustomPopViewController.m in Sources */,
 				54AFBBCB18D6938600861A69 /* SelectButton.m in Sources */,
+				14DA611418EA5EC200EA3DFB /* Rank.m in Sources */,
 				54B753AD18D2F9E5002411CF /* BabyPuumanView.m in Sources */,
 				54AFBBC718D6938600861A69 /* LoginStartView.m in Sources */,
 				541970D818D195C10058FE64 /* LineChartCell.m in Sources */,
@@ -2725,6 +2736,7 @@
 				54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */,
 				541970D118D1956D0058FE64 /* LineChartView.m in Sources */,
 				54ADE09F18C8608700B166C4 /* NewTextDiaryViewController.m in Sources */,
+				14DA611718EA5F6900EA3DFB /* Award.m in Sources */,
 				543BAEC118CEBA1800ED4672 /* VideoDiaryCell.m in Sources */,
 				14B8DF5518BC37A40047C6B3 /* UserNameCheck.m in Sources */,
 				14B8DF1E18BC37A30047C6B3 /* DiaryFileManager.m in Sources */,

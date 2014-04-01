@@ -27,4 +27,6 @@
 
 @property (retain, nonatomic) NSDictionary * data;
 
+- (BOOL)belongsTo:(NSInteger)uid;
+
 @end
