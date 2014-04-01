@@ -109,7 +109,7 @@
                 cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
         }
-        [cell buildWithReply:replay];
+         [cell buildWithReply:replay];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;

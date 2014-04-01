@@ -9,6 +9,7 @@
 #import "RecommendPartnerViewController.h"
 #import "RecommentPartnerTableViewCell.h"
 #import "MemberCache.h"
+#import "BabyData.h"
 
 @interface RecommendPartnerViewController ()
 
@@ -21,15 +22,20 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [[Friend sharedInstance] addDelegateObject:self];
+       
         [self initWithContent];
+        [self initInfoView];
+         [[Friend sharedInstance] addDelegateObject:self];
     }
     return self;
 }
 
 - (void)initWithContent
 {
-    recommentTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 112, 576, 414)];
+    
+    
+    
+    recommentTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 272, 576, 254)];
     [recommentTable setBackgroundColor:PMColor5];
     [recommentTable setDelegate:self];
     [recommentTable setDataSource:self];
@@ -45,17 +51,47 @@
     [_content  addSubview:changeBtn];
     
     inviteBtn = [[ColorButton alloc] init];
-    [inviteBtn  initWithTitle:@"邀请" andButtonType:kBlueLeftDown];
     [inviteBtn addTarget:self action:@selector(invite) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:inviteBtn];
     SetViewLeftUp(changeBtn, 592, 112);
     SetViewLeftUp(inviteBtn, 592, 152);
     
     
+    
+   
+    
 }
 
-- (void)buildWithTheUid:(NSInteger)uid
+- (void)initInfoView;
 {
+    portrait =[[AFImageView alloc] initWithFrame:CGRectMake(192, 112, 112, 112)];
+    [portrait setBackgroundColor:[UIColor blackColor]];
+    portrait.layer.cornerRadius = 56;
+    portrait.layer.masksToBounds = YES;
+    portrait.layer.shadowRadius =0.1;
+    [_content addSubview:portrait];
+
+    sex_name = [[AFTextImgButton alloc] initWithFrame:CGRectMake(192, 224, 112, 40)];
+    [_content addSubview:sex_name];
+    [sex_name setTitleLabelColor:PMColor6];
+
+    info_my = [[UILabel alloc] initWithFrame:CGRectMake(432, 240, 144, 32)];
+    [info_my setTextColor:PMColor3];
+    [info_my setFont:PMFont2];
+    [info_my setTextAlignment:NSTextAlignmentCenter];
+    [info_my setBackgroundColor:[UIColor clearColor]];
+    [_content addSubview:info_my];
+    [info_my setText:[NSString stringWithFormat:@"比%@:",[BabyData sharedBabyData].babyName]];
+    
+    UIView *partLine = [[UIView alloc] initWithFrame:CGRectMake(432, 110, 2, 160)];
+    [partLine setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@""]]];
+    [_content addSubview:partLine];
+    
+}
+
+- (void)buildWithTheUid:(NSInteger)uid andUserInfo:(Member *)userInfo
+{
+    _userInfo = userInfo;
     [[MemberCache sharedInstance] getMemberWithUID:uid];
     
 }
@@ -64,6 +100,19 @@
 - (void)memberDownloaded:(Member *)member
 {
     
+    _memberInfo = member;
+    if (member.GID == 0) {
+        [inviteBtn setAlpha:1];
+    }else{
+        [inviteBtn setAlpha:0];
+    }
+    [recommentTable reloadData];
+    if ([member BabyIsBoy]) {
+        [sex_name setTitle:member.BabyNick andImg:[UIImage imageNamed:@"icon_male_baby.png"] andButtonType:kButtonTypeSeven];
+    }else{
+        [sex_name setTitle:member.BabyNick andImg:[UIImage imageNamed:@"icon_female_baby.png"] andButtonType:kButtonTypeSeven];
+    }
+    [portrait getImage:[member BabyPortraitUrl] defaultImage:@""];
     
 }
 
@@ -82,6 +131,7 @@
 - (void)invite
 {
     
+    
 }
 
 - (void)viewDidLoad
@@ -99,22 +149,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
-    NSString  *identity = @"talkPopCell";
+
+    NSString  *identity = @"recommentCell";
     RecommentPartnerTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:identity];
     if (!cell){
         cell = [[RecommentPartnerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
         
     }
+    if ([indexPath row]%2 == 0) {
+        [cell setBackgroundColor:[UIColor whiteColor]];
+    }else{
+        [cell setBackgroundColor:PMColor5];
+    }
     
-    
+    if ([indexPath row] == 0) {
+        [cell buildWithData:[_memberInfo BabyBirth] andUserData:[_userInfo BabyBirth] andDataType:kPartnerBirthday];
+    }else if([indexPath row] == 1) {
+        [cell buildWithData:[NSNumber numberWithFloat:[_memberInfo BabyHeight]]  andUserData:[NSNumber numberWithFloat:[_userInfo BabyHeight]]  andDataType:kPartnerHeight];
+    }else if([indexPath row]== 2){
+        [cell buildWithData:[NSNumber numberWithFloat: [_memberInfo BabyWeight]] andUserData:[NSNumber numberWithFloat: [_memberInfo BabyWeight]]  andDataType:kPartnerWeight];
+    }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
@@ -125,24 +184,37 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    return 0;
+    if ([indexPath row] == 0) {
+         return 96;
+    }else{
+        return 80;
+    }
+   
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0;
-}
+
 
 -(void)setRecommend:(BOOL)recommend
 {
     _recommend = recommend;
     if (recommend) {
-        [changeBtn setAlpha:0];
-        [inviteBtn setAlpha:0];
-    }else{
         [changeBtn setAlpha:1];
+         [inviteBtn  initWithTitle:@"邀请" andButtonType:kBlueLeftDown];
         [inviteBtn setAlpha:1];
+         SetViewLeftUp(inviteBtn, 592, 152);
+    }else{
+        [changeBtn setAlpha:0];
+        [inviteBtn  initWithTitle:@"邀请" andIcon:[UIImage imageNamed:@"icon_invite_topic.png"] andButtonType:kBlueLeft];
+        [inviteBtn setAlpha:1];
+         SetViewLeftUp(inviteBtn, 592, 112);
     }
+}
+
+
+- (void)closeBtnPressed
+{
+    [[Friend sharedInstance] removeDelegateObject:self];
+    [super closeBtnPressed];
+    
 }
 @end

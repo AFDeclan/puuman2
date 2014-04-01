@@ -7,6 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef enum
+{
+    kPartnerBirthday,
+    kPartnerHeight,
+    kPartnerWeight
+    
+}PartnerDataInfoType;
 
 @interface RecommentPartnerTableViewCell : UITableViewCell
 {
@@ -17,5 +24,6 @@
     UIImageView *line;
 }
 
+- (void)buildWithData:(id)data andUserData:(id)userData andDataType:(PartnerDataInfoType )type;
 
 @end

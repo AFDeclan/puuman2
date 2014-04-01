@@ -13,7 +13,6 @@
 #import "MainTabBarController.h"
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
-#import "RecommendPartnerViewController.h"
 #import "UserInfo.h"
 
 @implementation TopicCell
@@ -23,7 +22,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [[Friend sharedInstance] addDelegateObject:self];
+        hasInfoView = NO;
+       
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 608, 64)];
         [self.contentView addSubview:headerView];
@@ -46,7 +46,7 @@
     infoView = [[BasicInfoView alloc] init];
     [self.contentView addSubview:infoView];
     [infoView setInfoWithName:@"宝宝" andPortrailPath:[[UserInfo sharedUserInfo] portraitUrl] andRelate:@"哥哥" andIsBoy:YES];
-    UIButton *info_btn = [[UIButton alloc] initWithFrame:infoView.frame];
+    info_btn = [[UIButton alloc] initWithFrame:infoView.frame];
     [info_btn setBackgroundColor:[UIColor clearColor]];
     [info_btn addTarget:self action:@selector(tapped) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:info_btn];
@@ -107,28 +107,41 @@
 
 - (void)tapped
 {
-    
+    [[Friend sharedInstance] addDelegateObject:self];
     [[MemberCache sharedInstance] getMemberWithUID:[UserInfo sharedUserInfo].UID];
 }
 
 //Member数据下载成功
 - (void)memberDownloaded:(Member *)member
 {
+   // if (![member belongsTo:[UserInfo sharedUserInfo].UID]) {
+    if (!hasInfoView) {
+        RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
+        [recommend setDelegate:self];
+        [recommend setControlBtnType:kOnlyCloseButton];
+        [recommend setRecommend:NO];
+        [recommend setTitle:@"宝宝详情" withIcon:nil];
+        [recommend buildWithTheUid:_replay.UID andUserInfo:member];
+        [[MainTabBarController sharedMainViewController].view addSubview:recommend.view];
+        [recommend show];
+        hasInfoView = YES;
+    }
+          // }
    
-    RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
-    [recommend setControlBtnType:kOnlyCloseButton];
-    [recommend setRecommend:NO];
-    [recommend setTitle:@"宝宝详情" withIcon:nil];
-    [recommend buildWithTheUid:_replay.UID];
-    [[MainTabBarController sharedMainViewController].view addSubview:recommend.view];
-    [recommend show];
+    [[Friend sharedInstance] removeDelegateObject:self];
 
 }
 
 //Member数据下载失败
 - (void)memberDownloadFailed
 {
+    [[Friend sharedInstance] removeDelegateObject:self];
 
+}
+
+- (void)popViewfinished
+{
+    hasInfoView = NO;
 }
 
 - (void)buildWithReply:(Reply *)replay

@@ -15,7 +15,7 @@
 @end
 
 @implementation CustomPopViewController
-
+@synthesize delegate =_delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -158,6 +158,7 @@
 - (void)finishOut
 {
     [super dismiss];
+    [_delegate popViewfinished];
     [self.view removeFromSuperview];
 }
 

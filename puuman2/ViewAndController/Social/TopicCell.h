@@ -15,8 +15,9 @@
 #import "Forum.h"
 #import "MemberCache.h"
 #import "Friend.h"
+#import "RecommendPartnerViewController.h"
 
-@interface TopicCell : UITableViewCell<ForumDelegate,FriendDelegate>
+@interface TopicCell : UITableViewCell<ForumDelegate,FriendDelegate,PopViewDelegate>
 {
     BasicInfoView *infoView;
     UILabel *info_time;
@@ -29,6 +30,8 @@
     AFTextImgButton *scanMoreReplay;
     UILabel *title_label;
     Reply *_replay;
+    UIButton *info_btn;
+    BOOL hasInfoView;
     
 }
 - (void)buildWithReply:(Reply *)replay;
