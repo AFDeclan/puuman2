@@ -13,8 +13,10 @@
 #import "AFSelecedTextImgButton.h"
 #import "ChatInputViewController.h"
 #import "Forum.h"
+#import "MemberCache.h"
+#import "Friend.h"
 
-@interface TopicCell : UITableViewCell<ForumDelegate>
+@interface TopicCell : UITableViewCell<ForumDelegate,FriendDelegate>
 {
     BasicInfoView *infoView;
     UILabel *info_time;

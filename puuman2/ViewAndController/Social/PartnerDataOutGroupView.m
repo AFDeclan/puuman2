@@ -19,15 +19,7 @@
     if (self) {
         // Initialization code
         dataArr = [[NSArray alloc] init];
-        inviteGroupsTable = [[UITableView alloc] initWithFrame:CGRectMake(128, 0, 608, 688)];
-        [inviteGroupsTable setDelegate:self];
-        [inviteGroupsTable setDataSource:self];
-        [inviteGroupsTable setSeparatorColor:[UIColor clearColor]];
-        [inviteGroupsTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        [inviteGroupsTable setShowsHorizontalScrollIndicator:NO];
-        [inviteGroupsTable setShowsVerticalScrollIndicator:NO];
-        [self addSubview:inviteGroupsTable];
-
+        
     }
     return self;
 }
@@ -35,7 +27,19 @@
 - (void)loadViewInfo
 {
     dataArr = [[Friend sharedInstance] invitedGroup];
-   [inviteGroupsTable reloadData];
+    if (inviteGroupsTable) {
+        [inviteGroupsTable removeFromSuperview];
+        inviteGroupsTable = nil;
+    }
+    inviteGroupsTable = [[UITableView alloc] initWithFrame:CGRectMake(128, 0, 608, 688)];
+    [inviteGroupsTable setDelegate:self];
+    [inviteGroupsTable setDataSource:self];
+    [inviteGroupsTable setSeparatorColor:[UIColor clearColor]];
+    [inviteGroupsTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [inviteGroupsTable setShowsHorizontalScrollIndicator:NO];
+    [inviteGroupsTable setShowsVerticalScrollIndicator:NO];
+    [self addSubview:inviteGroupsTable];
+    [inviteGroupsTable reloadData];
    
 }
 

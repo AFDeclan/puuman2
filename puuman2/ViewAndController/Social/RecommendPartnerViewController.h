@@ -8,8 +8,9 @@
 
 #import "CustomPopViewController.h"
 #import "ColorButton.h"
-
-@interface RecommendPartnerViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate>
+#import "Member.h"
+#import "Friend.h"
+@interface RecommendPartnerViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,FriendDelegate>
 {
     UITableView *recommentTable;
     ColorButton *changeBtn;
@@ -17,5 +18,5 @@
 }
 
 @property(nonatomic,assign)BOOL recommend;
-
+- (void)buildWithTheUid:(NSInteger)uid;
 @end

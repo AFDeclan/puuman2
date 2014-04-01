@@ -49,7 +49,7 @@
     [info_num setFont:PMFont2];
     [info_num setTextColor:PMColor3];
     [self addSubview:info_num];
-       rewardBtn = [[ColorButton alloc] init];
+    rewardBtn = [[ColorButton alloc] init];
     [rewardBtn initWithTitle:@"奖励" andIcon:[UIImage imageNamed:@"icon_prize_topic.png"] andButtonType:kGrayLeftUp];
     [rewardBtn addTarget:self action:@selector(reward) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:rewardBtn];

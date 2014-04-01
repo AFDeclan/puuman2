@@ -8,6 +8,7 @@
 
 #import "RecommendPartnerViewController.h"
 #import "RecommentPartnerTableViewCell.h"
+#import "MemberCache.h"
 
 @interface RecommendPartnerViewController ()
 
@@ -20,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[Friend sharedInstance] addDelegateObject:self];
         [self initWithContent];
     }
     return self;
@@ -38,12 +40,12 @@
     [_content addSubview:recommentTable];
     
     changeBtn = [[ColorButton alloc] init];
-    [changeBtn  initWithTitle:@"换一个"  andButtonType:kGrayLeft];
+    [changeBtn  initWithTitle:@"换一个"  andButtonType:kGrayLeftUp];
     [changeBtn addTarget:self action:@selector(changed) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:changeBtn];
     
     inviteBtn = [[ColorButton alloc] init];
-    [inviteBtn  initWithTitle:@"邀请" andButtonType:kBlueLeft];
+    [inviteBtn  initWithTitle:@"邀请" andButtonType:kBlueLeftDown];
     [inviteBtn addTarget:self action:@selector(invite) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:inviteBtn];
     SetViewLeftUp(changeBtn, 592, 112);
@@ -51,6 +53,26 @@
     
     
 }
+
+- (void)buildWithTheUid:(NSInteger)uid
+{
+    [[MemberCache sharedInstance] getMemberWithUID:uid];
+    
+}
+
+//Member数据下载成功
+- (void)memberDownloaded:(Member *)member
+{
+    
+    
+}
+
+//Member数据下载失败
+- (void)memberDownloadFailed
+{
+    
+}
+
 
 - (void)changed
 {

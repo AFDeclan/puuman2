@@ -15,15 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        dataColumnView = [[UIColumnView alloc] init];
-        [dataColumnView setBackgroundColor:[UIColor clearColor]];
-        [dataColumnView setShowsHorizontalScrollIndicator:NO];
-        [dataColumnView setShowsVerticalScrollIndicator:NO];
-        [dataColumnView setViewDelegate:self];
-        [dataColumnView setViewDataSource:self];
-        [dataColumnView setPagingEnabled:NO];
-        [dataColumnView setScrollEnabled:YES];
-        [self addSubview:dataColumnView];
+    
     }
     return self;
 }
@@ -71,6 +63,20 @@
 - (void)reloadWithGroupInfo:(Group *)group
 {
     _group = group;
+    if (dataColumnView) {
+        [dataColumnView removeFromSuperview];
+        dataColumnView = nil;
+    }
+    dataColumnView = [[UIColumnView alloc] init];
+    [dataColumnView setBackgroundColor:[UIColor clearColor]];
+    [dataColumnView setShowsHorizontalScrollIndicator:NO];
+    [dataColumnView setShowsVerticalScrollIndicator:NO];
+    [dataColumnView setViewDelegate:self];
+    [dataColumnView setViewDataSource:self];
+    [dataColumnView setPagingEnabled:NO];
+    [dataColumnView setScrollEnabled:YES];
+    [self addSubview:dataColumnView];
+    
 }
 
 

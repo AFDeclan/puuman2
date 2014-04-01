@@ -13,7 +13,8 @@
 #import "MainTabBarController.h"
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
-
+#import "RecommendPartnerViewController.h"
+#import "UserInfo.h"
 
 @implementation TopicCell
 
@@ -22,7 +23,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-       
+        [[Friend sharedInstance] addDelegateObject:self];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 608, 64)];
         [self.contentView addSubview:headerView];
@@ -45,7 +46,10 @@
     infoView = [[BasicInfoView alloc] init];
     [self.contentView addSubview:infoView];
     [infoView setInfoWithName:@"宝宝" andPortrailPath:[[UserInfo sharedUserInfo] portraitUrl] andRelate:@"哥哥" andIsBoy:YES];
-
+    UIButton *info_btn = [[UIButton alloc] initWithFrame:infoView.frame];
+    [info_btn setBackgroundColor:[UIColor clearColor]];
+    [info_btn addTarget:self action:@selector(tapped) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:info_btn];
 
     info_time = [[UILabel alloc] initWithFrame:CGRectMake(464, 16, 128, 12)];
     [info_time setTextAlignment:NSTextAlignmentRight];
@@ -99,6 +103,32 @@
     [footerView addSubview:partLine_second];
 
     
+}
+
+- (void)tapped
+{
+    
+    [[MemberCache sharedInstance] getMemberWithUID:[UserInfo sharedUserInfo].UID];
+}
+
+//Member数据下载成功
+- (void)memberDownloaded:(Member *)member
+{
+   
+    RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
+    [recommend setControlBtnType:kOnlyCloseButton];
+    [recommend setRecommend:NO];
+    [recommend setTitle:@"宝宝详情" withIcon:nil];
+    [recommend buildWithTheUid:_replay.UID];
+    [[MainTabBarController sharedMainViewController].view addSubview:recommend.view];
+    [recommend show];
+
+}
+
+//Member数据下载失败
+- (void)memberDownloadFailed
+{
+
 }
 
 - (void)buildWithReply:(Reply *)replay

@@ -88,7 +88,7 @@
 //获取小组信息失败
 - (void)groupDataFailed
 {
-    
+   
 }
 
 

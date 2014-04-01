@@ -65,9 +65,10 @@
         
       
         UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 96, 112)];
-        [manageBtn addSubview:bgView];
         [bgView setBackgroundColor:[UIColor blackColor]];
         [bgView setAlpha:0.5];
+        [manageBtn addSubview:bgView];
+      
         
         UIImageView *icon_img = [[ UIImageView alloc] initWithFrame:CGRectMake(24, 36, 48, 48)];
         [icon_img setImage:[UIImage imageNamed:@"circle_fri.png"]];
@@ -80,8 +81,7 @@
         [label_manageStatus setBackgroundColor:[UIColor clearColor]];
         [label_manageStatus setText:@"移除"];
         [icon_img  addSubview:label_manageStatus];
-        
-        [manageBtn setAlpha:0];
+     
         
         
         

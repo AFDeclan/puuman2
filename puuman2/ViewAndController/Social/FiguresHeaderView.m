@@ -66,13 +66,7 @@
         
         
 
-        figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 48, 576, 120)];
-        [figuresColumnView setBackgroundColor:[UIColor clearColor]];
-        [figuresColumnView setViewDelegate:self];
-        [figuresColumnView setViewDataSource:self];
-        [figuresColumnView setPagingEnabled:NO];
-        [figuresColumnView setScrollEnabled:YES];
-        [self addSubview:figuresColumnView];
+   
   
 
     }
@@ -82,6 +76,18 @@
 - (void)reloadWithGroupInfo:(Group *)group
 {
     myGroup = group;
+    if (figuresColumnView) {
+        [figuresColumnView removeFromSuperview];
+        figuresColumnView = nil;
+    }
+    
+    figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 48, 576, 120)];
+    [figuresColumnView setBackgroundColor:[UIColor clearColor]];
+    [figuresColumnView setViewDelegate:self];
+    [figuresColumnView setViewDataSource:self];
+    [figuresColumnView setPagingEnabled:NO];
+    [figuresColumnView setScrollEnabled:YES];
+    [self addSubview:figuresColumnView];
     [figuresColumnView reloadData];
     
 }
@@ -103,7 +109,7 @@
     if (canDeleteMember) {
         
          if (((Member *)[myGroup.GMember objectAtIndex:index]).BID != [UserInfo sharedUserInfo].BID) {
-             [[myGroup actionForRemove:index] upload];
+             [[myGroup actionForRemove:((Member *)[myGroup.GMember objectAtIndex:index]).BID ] upload];
          }else{
              [[myGroup actionForQuit] upload];
          }
@@ -178,7 +184,7 @@
 //Group Action 上传成功
 - (void)actionUploaded:(ActionForUpload *)action
 {
-    PostNotification(Noti_UpdateDiaryStateRefreshed, nil);
+    PostNotification(Noti_RefreshInviteStatus, nil);
 }
 //Group Action 上传失败
 - (void)actionUploadFailed:(ActionForUpload *)action
