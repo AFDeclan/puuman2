@@ -43,6 +43,10 @@
 
 - (void)myRepliesLoadFailed;
 
+//奖品与排行
+- (void)rankAwardReceived;
+- (void)rankAwardFailed;
+
 //新话题上传成功
 - (void)topicUploaded;
 
@@ -100,11 +104,19 @@
 //以期号为索引
 @property (nonatomic, retain, readonly) NSMutableDictionary * topics;
 
-@property (retain, nonatomic, readonly) NSMutableSet * delegates;
-
 //我参与的
 @property (retain, nonatomic, readonly) NSMutableArray * myReplies;
 @property (assign, nonatomic, readonly) BOOL noMore;
+
+//奖品与排行
+//array of Award order by ALevel asc
+@property (retain, nonatomic, readonly) NSMutableArray * awards;
+//array of Rank order by TotalCnt ( CCnt + VCnt) desc
+@property (retain, nonatomic, readonly) NSMutableArray * ranks;
+
+@property (retain, nonatomic, readonly) NSMutableSet * delegates;
+
+
 
 + (Forum *)sharedInstance;
 + (void)releaseInstance;
@@ -117,6 +129,9 @@
 
 //按期号获取，若已获取过则直接返回，否则返回nil，异步等待回调。
 - (Topic *)getTopic:(NSInteger)TNo;
+
+//获取奖品和排行
+- (void)getAwardAndRank;
 
 //上传新话题 若之前的上传请求未完成则不会上传，返回NO
 - (BOOL)uploadNewTopic:(NSString *)TTitle detail:(NSString *)TDetail type:(TopicType)TType;

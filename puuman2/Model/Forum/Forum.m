@@ -11,6 +11,8 @@
 #import "Reply.h"
 #import "ReplyForUpload.h"
 #import "UserInfo.h"
+#import "Rank.h"
+#import "Award.h"
 
 static Forum * instance;
 
@@ -81,6 +83,20 @@ static Forum * instance;
     [req setResEncoding:PumanRequestRes_JsonEncoding];
     [req postAsynchronous];
     return nil;
+}
+
+- (void)getAwardAndRank
+{
+    for (PumanRequest *req in _requests) {
+        if ([[req urlStr] isEqualToString:kUrl_GetAwardRank])
+            return;
+    }
+    PumanRequest *req = [[PumanRequest alloc] init];
+    [_requests addObject:req];
+    [req setUrlStr:kUrl_GetAwardRank];
+    [req setDelegate:self];
+    [req setResEncoding:PumanRequestRes_JsonEncoding];
+    [req postAsynchronous];
 }
 
 - (BOOL)uploadNewTopic:(NSString *)TTitle detail:(NSString *)TDetail type:(TopicType)TType
@@ -183,7 +199,27 @@ static Forum * instance;
             }
             [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
         }
-
+    } else if ([url isEqualToString:kUrl_GetAwardRank]) {
+        if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSDictionary class]]) {
+            NSDictionary * dic = afRequest.resObj;
+            NSArray * ranksData = [dic valueForKey:@"rank"];
+            _ranks = [[NSMutableArray alloc] init];
+            for (NSDictionary *data in ranksData) {
+                Rank * r = [[Rank alloc] init];
+                [r setData:data];
+                [_ranks addObject:r];
+            }
+            NSArray * awardsData = [dic valueForKey:@"award"];
+            _awards = [[NSMutableArray alloc] init];
+            for (NSDictionary * data in awardsData) {
+                Award * a = [[Award alloc] init];
+                [a setData:data];
+                [_awards addObject:a];
+            }
+            [self informDelegates:@selector(rankAwardReceived) withObject:nil];
+        } else {
+            [self informDelegates:@selector(rankAwardFailed) withObject:nil];
+        }
     }
     [_requests removeObject:afRequest];
 }

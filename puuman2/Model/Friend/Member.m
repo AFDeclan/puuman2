@@ -36,4 +36,14 @@
     [[MemberCache sharedInstance] cacheMember:self];
 }
 
+- (BOOL)belongsTo:(NSInteger)uid
+{
+    for (id uidObj in _UIDs) {
+        if (uid == [uidObj integerValue]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

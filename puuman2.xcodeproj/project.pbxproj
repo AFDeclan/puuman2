@@ -1547,6 +1547,10 @@
 				14C0B69F18E1158C00BC308E /* Comment.m */,
 				1455006018E042E100360EDF /* OtherUserInfo.h */,
 				1455006118E042E100360EDF /* OtherUserInfo.m */,
+				14DA611218EA5EC200EA3DFB /* Rank.h */,
+				14DA611318EA5EC200EA3DFB /* Rank.m */,
+				14DA611518EA5F6900EA3DFB /* Award.h */,
+				14DA611618EA5F6900EA3DFB /* Award.m */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -3782,6 +3786,7 @@
 				544419F918D40EE800FBE69F /* PuumanRulesViewController.m in Sources */,
 				54D14FD918CACC720022E1F4 /* CustomPopViewController.m in Sources */,
 				54AFBBCB18D6938600861A69 /* SelectButton.m in Sources */,
+				14DA611418EA5EC200EA3DFB /* Rank.m in Sources */,
 				54B753AD18D2F9E5002411CF /* BabyPuumanView.m in Sources */,
 				54AFAA7E18DA896B0067B8C1 /* AllWordsPopViewController.m in Sources */,
 				54AFBBC718D6938600861A69 /* LoginStartView.m in Sources */,
