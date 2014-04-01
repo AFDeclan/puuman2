@@ -129,8 +129,7 @@ static Friend * instance;
                         if (inviteMem) {
                             [_inviteFrom addObject:inviteMem];
                         } else {
-                            [self informDelegates:@selector(groupDataFailed) withObject:nil];
-                            return;
+                            [_invitedGroup removeObject:inviteGroup];
                         }
                     }
                 }
