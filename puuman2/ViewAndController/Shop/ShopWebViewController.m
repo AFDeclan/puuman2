@@ -215,7 +215,7 @@
    // if (![self keyUrlForPaid])
         [self startTimer:WaitTime];
     [_shopsTableView reloadData];
-    
+    _recShopName = [[_shopsInfo objectAtIndex:_shopIndex] objectForKey:kShopNameKey];
     [self loadWebPageWithString:[[shopsInfo objectAtIndex:index] valueForKey:kShopLinkKey]   WithShop:[[shopsInfo objectAtIndex:index] valueForKey:kShopNameKey] WithWare:ware.WName WID:ware.WID ShopIndex:[[[shopsInfo objectAtIndex:index] valueForKey:kShopIndexKey] integerValue]];
 }
 
@@ -558,7 +558,8 @@
 - (void)showPayBackView
 {
     puumanVC = [[PuumanShopViewController alloc] initWithNibName:nil bundle:nil];
-    [puumanVC setWare:_ware];
+    [puumanVC setWid:_ware.WID];
+    [puumanVC setShop:_recShopName];
     [self.view addSubview:puumanVC.view];
     [puumanVC showPuumanShop];
     
