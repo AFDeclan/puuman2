@@ -20,13 +20,23 @@ typedef enum TopicType {
     TopicType_Photo = 1,
 } TopicType;
 
+//reply 排序方式
+#define TopicReplyOrderModeCnt  2
+typedef enum TopicReplyOrder {
+    TopicReplyOrder_Time = 0,
+    TopicReplyOrder_Vote = 1,
+} TopicReplyOrder;
+
 @class Reply;
 @class PumanRequest;
 
 @interface Topic : NSObject <AFRequestDelegate>
 {
     NSInteger _roffset;
-    PumanRequest *_request, *_voteReq;
+    PumanRequest *_request[TopicReplyOrderModeCnt], *_voteReq;
+    NSMutableArray * _replies[TopicReplyOrderModeCnt];
+    NSArray * _rids[TopicReplyOrderModeCnt];
+    NSMutableDictionary * _downloadedReplies;
 }
 
 //话题ID
@@ -53,11 +63,12 @@ typedef enum TopicType {
 @property (retain, nonatomic) NSDictionary * data;
 
 //已获取的话题回复的列表
-@property (retain, nonatomic, readonly) NSMutableArray * replies;
+- (NSArray *)replies:(TopicReplyOrder)order;
 //是否获取了全部的回复列表
-@property (assign, nonatomic, readonly) bool noMore;
+- (BOOL)noMoreReplies:(TopicReplyOrder)order;
 
-- (void)getMoreReplies:(NSInteger)cnt;
+//获取更多回复
+- (void)getMoreReplies:(NSInteger)cnt orderBy:(TopicReplyOrder)order;
 //只有当TStatus为Voting时有效
 - (void)vote;
 

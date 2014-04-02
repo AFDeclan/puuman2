@@ -21,7 +21,7 @@
     _data = data;
     _meta = [[NSMutableDictionary alloc] init];
     for (NSString *key in [data keyEnumerator]) {
-        NSString *val = [data valueForKey:key];
+        id val = [data valueForKey:key];
         if ([key isEqualToString:@"TID"]) {
             _TID = [val integerValue];
         } else if ([key isEqualToString:@"TNo"]) {
@@ -40,27 +40,64 @@
             _TCreateTime = [DateFormatter datetimeFromString:val withFormat:@"yyyy-MM-dd HH:mm:ss"];
         } else if ([key isEqualToString:@"voted"]) {
             _voted = [val boolValue];
+        } else if ([key isEqualToString:@"RIDs"]) {
+            NSArray *allRids = val;
+            for (int i=0; i<allRids.count; i++) {
+                if (i >= TopicReplyOrderModeCnt) break;
+                _rids[i] = [allRids objectAtIndex:i];
+            }
         } else {
             [_meta setValue:val forKey:key];
         }
     }
-    _replies = [[NSMutableArray alloc] init];
+    for (int i=0; i<TopicReplyOrderModeCnt; i++) {
+        _replies[i] = [[NSMutableArray alloc] init];
+    }
     _roffset = 0;
-    _noMore = YES;
 }
 
-- (void)getMoreReplies:(NSInteger)cnt
+- (void)cacheReply:(Reply *)reply
 {
-    if (_request || _noMore) return;
-    _request = [[PumanRequest alloc] init];
-    [_request setUrlStr:kUrl_GetTopicReply];
-    [_request setIntegerParam:_roffset forKey:@"offset"];
-    [_request setIntegerParam:cnt forKey:@"limit"];
-    [_request setIntegerParam:_TID forKey:@"TID"];
-    [_request setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
-    [_request setDelegate:self];
-    [_request setResEncoding:PumanRequestRes_JsonEncoding];
-    [_request postAsynchronous];
+    if (!_downloadedReplies) {
+        _downloadedReplies = [[NSMutableDictionary alloc] init];
+    }
+    [_downloadedReplies setValue:reply forKey:[NSString stringWithFormat:@"%d", reply.RID]];
+}
+
+- (Reply *)getReply:(NSInteger)rid
+{
+    return [_downloadedReplies valueForKey:[NSString stringWithFormat:@"%d", rid]];
+}
+
+- (BOOL)noMoreReplies:(TopicReplyOrder)order
+{
+    return _replies[order].count == _rids[order].count;
+}
+
+- (void)getMoreReplies:(NSInteger)cnt orderBy:(TopicReplyOrder)order
+{
+    if (_request[order] || [self noMoreReplies:order]) return;
+    _request[order] = [[PumanRequest alloc] init];
+    [_request[order] setUrlStr:kUrl_GetTopicReply];
+    [_request[order] setIntegerParam:order forKey:@"order"];
+    [_request[order] setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
+    NSMutableArray * ridsToGet = [[NSMutableArray alloc] init];
+    for (int i=_replies[order].count; i<_replies[order].count+cnt; i++) {
+        id rid = [_rids[order] objectAtIndex:i];
+        if (![self getReply:[rid integerValue]]) {
+            [ridsToGet addObject:rid];
+        }
+    }
+    [_request[order] setParam:ridsToGet forKey:@"RIDs" usingFormat:AFDataFormat_Json];
+    [_request[order] setDelegate:self];
+    [_request[order] setResEncoding:PumanRequestRes_JsonEncoding];
+    _request[order].tag = order;
+    [_request[order] postAsynchronous];
+}
+
+- (NSArray *)replies:(TopicReplyOrder)order
+{
+    return _replies[order];
 }
 
 - (void)vote
@@ -75,25 +112,27 @@
 
 - (void)requestEnded:(AFBaseRequest *)afRequest
 {
-    if (afRequest == _request) {
+    if ([afRequest.urlStr isEqualToString:kUrl_GetTopicReply]) {
+        NSInteger order = [[afRequest.params objectForKey:@"order"] integerValue];
         if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]]) {
             NSArray *ret = afRequest.resObj;
-            NSInteger cnt = [ret count];
-            _roffset += cnt;
-            if (cnt < [[afRequest.params valueForKey:@"limit"] integerValue]) _noMore = YES;
             for (NSDictionary * replyData in ret) {
                 Reply *re = [[Reply alloc] init];
                 [re setData:replyData];
-                [_replies addObject:re];
+                [self cacheReply:re];
+            }
+            NSInteger cnt = afRequest.tag;
+            for (int i=_replies[order].count; i<_replies[order].count+cnt; i++) {
+                id rid = [_rids[order] objectAtIndex:i];
+                if ([self getReply:[rid integerValue]]) {
+                    [_replies[order] addObject:[self getReply:[rid integerValue]]];
+                }
             }
             [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadedMore:) withObject:self];
         } else {
-            if (afRequest.result == 2) {
-                _noMore = YES;
-            }
             [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
         }
-        _request = nil;
+        _request[order] = nil;
     } else {
         if (afRequest.result == PumanRequest_Succeeded) {
             _voted = YES;
