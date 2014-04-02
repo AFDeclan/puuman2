@@ -25,14 +25,15 @@
         bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 704, 608)];
         [bgImgView setImage:[UIImage imageNamed:@"bg_subpage.png"]];
         [_content addSubview:bgImgView];
+       
+        
+        icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+        [_content addSubview:icon];
         _titleLabel = [[UILabel alloc] init];
         [_titleLabel setTextColor:PMColor6];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_titleLabel setFont:PMFont1];
         [_content addSubview:_titleLabel];
-        
-        icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
-        [_content addSubview:icon];
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
         }else{

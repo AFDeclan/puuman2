@@ -41,6 +41,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
 @synthesize shadowOffset = _shadowOffset;
 @synthesize perminorTickExpression = _perminorTickExpression;
 @synthesize currentValue = _currentValue;
+@synthesize showMinorLabel =_showMinorLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -57,7 +58,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
         _labelFillColor = [UIColor whiteColor];
         _labelStrokeWidth = 1.0;
         _labelFont = PMFont3;
-
+        _showMinorLabel = NO;
         _minorTickColor = [UIColor colorWithWhite:0.158 alpha:1.000];
         _minorTickLength = kTRSDialViewDefaultMinorTickLength;
         _minorTickWidth = KTRSDialViewDefaultMinorTickWidth;
@@ -188,7 +189,19 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
                              withColor:self.minorTickColor
                                  width:self.minorTickWidth
                                 length:self.minorTickLength];
-        
+        if (_showMinorLabel) {
+            int value = (self.frame.size.height-_leadingBottom-y)*self.perminorTickExpression/ self.minorTickDistance + _minimum;
+            
+            point.x -= _minorTickLength;
+            
+            NSString *text = [NSString stringWithFormat:@"%d", value];
+            [self drawLabelWithContext:context
+                               atPoint:point
+                                  text:text
+                             fillColor:self.labelFillColor
+                           strokeColor:self.labelStrokeColor];
+        }
+
         // Restore the context
         CGContextRestoreGState(context);
     }

@@ -12,6 +12,7 @@
 #import "AFImageView.h"
 #import "ColorButton.h"
 #import "AFSelecedTextImgButton.h"
+#import "PuumanShopViewController.h"
 
 @protocol WebViewDelegate;
 @interface ShopWebViewController : PopViewController<UIWebViewDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -42,6 +43,10 @@
     UILabel *noti_Price;
     UILabel *noti_Name;
     UIActivityIndicatorView *activityIndicatorView;
+    BOOL recShop;
+    NSString *_recShopName;
+     NSTimer *_timer;
+    PuumanShopViewController *puumanVC;
 }
 @property(assign,nonatomic)id<WebViewDelegate> delegate;
 - (void)show;

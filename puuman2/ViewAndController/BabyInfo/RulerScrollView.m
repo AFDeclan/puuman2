@@ -10,7 +10,7 @@
 
 @implementation RulerScrollView
 @synthesize currentValue = _currentValue;
-@synthesize delegate;
+@synthesize delegate = _delegate;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -50,8 +50,8 @@
 }
 -(void)tap
 {
-     [delegate beginScrollwithRuler:self];
-     [delegate setCurrentValue:_currentValue andTheRuler:self];
+     [_delegate beginScrollwithRuler:self];
+     [_delegate setCurrentValue:_currentValue andTheRuler:self];
 }
 - (void)setRulerBackgroundColor:(UIColor *)backgroundColor
 {
@@ -136,7 +136,7 @@
     
     rulerscrollView.contentOffset = offset;
    
-    [delegate setCurrentValue:_currentValue andTheRuler:self];
+    [_delegate setCurrentValue:_currentValue andTheRuler:self];
     
 }
 - (void)setleadingOfBottom:(float)leading;
@@ -162,12 +162,13 @@
 {
     CGPoint pos = [scrollView contentOffset];
     _currentValue = max-pos.y/(ruler.minorTickDistance*ruler.minorTicksPerMajorTick);
-    [delegate setCurrentValue:_currentValue andTheRuler:self];
+    [_delegate setCurrentValue:_currentValue andTheRuler:self];
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [delegate beginScrollwithRuler:self];
+    [_delegate beginScrollwithRuler:self];
 }
+
 
 
 

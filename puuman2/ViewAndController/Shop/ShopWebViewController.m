@@ -14,7 +14,7 @@
 @interface ShopWebViewController ()
 
 @end
-
+#define WaitTime 2
 @implementation ShopWebViewController
 @synthesize delegate = _delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -23,6 +23,7 @@
     if (self) {
         // Custom initialization
         _expanded=NO;
+        recShop = NO;
         [self initWithContent];
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
@@ -195,7 +196,7 @@
 
 - (void)setWare:(Ware *)ware shops:(NSArray *)shopsInfo firstIndex:(NSInteger)index
 {
-
+    recShop = NO;
     
     if ([[CartModel sharedCart] wareIsInCart:ware])
     {
@@ -211,8 +212,8 @@
     _ware=ware;
     _shopsInfo=shopsInfo;
     _shopIndex=index;
-//    if (![self keyUrlForPaid])
-//        [self startTimer:WaitTime];
+   // if (![self keyUrlForPaid])
+        [self startTimer:WaitTime];
     [_shopsTableView reloadData];
     
     [self loadWebPageWithString:[[shopsInfo objectAtIndex:index] valueForKey:kShopLinkKey]   WithShop:[[shopsInfo objectAtIndex:index] valueForKey:kShopNameKey] WithWare:ware.WName WID:ware.WID ShopIndex:[[[shopsInfo objectAtIndex:index] valueForKey:kShopIndexKey] integerValue]];
@@ -394,10 +395,10 @@
         row++;
     }
     _shopIndex=row;
-//    [_timer invalidate];
-//    _timer = nil;
-//    if (![self keyUrlForPaid])
-//        [self startTimer:WaitTime];
+    [_timer invalidate];
+    _timer = nil;
+    if (![self keyUrlForPaid])
+        [self startTimer:WaitTime];
     [self loadWebPageWithString:[[_shopsInfo objectAtIndex:row] valueForKey:kShopLinkKey]   WithShop:[[_shopsInfo objectAtIndex:row] valueForKey:kShopNameKey] WithWare:_ware.WName WID:_ware.WID ShopIndex:[[[_shopsInfo objectAtIndex:row] valueForKey:kShopIndexKey] integerValue]];
    
     [self otherShop];
@@ -442,6 +443,20 @@
     [shopImg getImage:_ware.WPicLink defaultImage:default_ware_image];
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSString * url =  request.URL.description;
+    if (![self keyUrlForPaid]) {
+        [self startTimer:WaitTime];
+        return YES;
+    }
+    if ([url rangeOfString:[self keyUrlForPaid]].location != NSNotFound)
+    {
+        [self startTimer:WaitTime];
+    }
+    return YES;
+}
+
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
     [activityIndicatorView startAnimating] ;
@@ -468,6 +483,8 @@
 
 - (void)setRecWebUrl:(NSString *)urlString  wareName:(NSString *)wName wareId:(NSInteger)WID warePrice:(CGFloat)price shopName:(NSString *)sName shopIndex:(NSInteger)shopIndex imgLink:(NSString *)picLink
 {
+    recShop = YES;
+    _recShopName = sName;
     [_shopsTableView setAlpha:0];
     [icon_shoptri setAlpha:0];
     [otherShopButton setAlpha:0];
@@ -485,6 +502,66 @@
     [myWebView loadRequest:request];
     [_wName setText:wName];
     [shopImg getImage:picLink defaultImage:default_ware_image];
+    if (![self keyUrlForPaid])
+        [self startTimer:WaitTime];
+    
+}
+
+
+- (NSString *)keyUrlForPaid
+{
+    if (!recShop) {
+        NSInteger shopIndex = [[[_shopsInfo objectAtIndex:0] valueForKey:kShopIndexKey] integerValue];
+        switch (shopIndex) {
+            case 1:
+                //京东商城
+                return @"pay.jd.com";
+            case 2:
+                //当当
+                return @"payment.dangdang.com";
+            case 3:
+                //亚马逊
+                return @"www.amazon.cn/gp/buy";
+                //        case 4:
+                
+            default:
+                return nil;
+        }
+    }else{
+        
+        
+        if ([_recShopName isEqualToString:@"京东商城"]) {
+            return @"pay.jd.com";
+        }else if ([_recShopName isEqualToString:@"当当"]) {
+            return @"payment.dangdang.com";
+        }else if ([_recShopName isEqualToString:@"亚马逊"]) {
+            return @"www.amazon.cn/gp/buy";
+        }else{
+            return nil;
+            
+        }
+    }
+    
+}
+
+- (void)startTimer:(NSTimeInterval)interval;
+{
+    if (puumanVC) {
+        [puumanVC hidden];
+    }
+
+    if (![UserInfo sharedUserInfo].logined) return;
+    [_timer invalidate];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(showPayBackView) userInfo:nil repeats:NO];
+}
+
+- (void)showPayBackView
+{
+    puumanVC = [[PuumanShopViewController alloc] initWithNibName:nil bundle:nil];
+    [puumanVC setWare:_ware];
+    [self.view addSubview:puumanVC.view];
+    [puumanVC showPuumanShop];
+    
 }
 
 @end

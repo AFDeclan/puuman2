@@ -348,6 +348,8 @@
 		54ACB2D918EBB63600EE5F90 /* pic_com_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ACB2D818EBB63600EE5F90 /* pic_com_shop.png */; };
 		54ACB2DC18EBBFC500EE5F90 /* CompareInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACB2DB18EBBFC500EE5F90 /* CompareInfoTableViewCell.m */; };
 		54ACB2DE18EBE8F400EE5F90 /* icon_flag_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ACB2DD18EBE8F400EE5F90 /* icon_flag_shop.png */; };
+		54ACB2E718EBF12300EE5F90 /* PuumanShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACB2E618EBF12300EE5F90 /* PuumanShopViewController.m */; };
+		54ACB2EA18EC098200EE5F90 /* WarePumanScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACB2E918EC098200EE5F90 /* WarePumanScrollView.m */; };
 		54ACEE8518EA64B80055562B /* Award.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACEE8218EA64B80055562B /* Award.m */; };
 		54ACEE8618EA64B80055562B /* Rank.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACEE8418EA64B80055562B /* Rank.m */; };
 		54ACEE8918EAC2E70055562B /* CompareCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACEE8818EAC2E70055562B /* CompareCartViewController.m */; };
@@ -527,7 +529,6 @@
 		54CE112718C1BC6D00966396 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE111F18C1BC6D00966396 /* MainTabBarController.m */; };
 		54CE112818C1BC6D00966396 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE112218C1BC6D00966396 /* ShopViewController.m */; };
 		54CE115D18C1C7BF00966396 /* bg_prompt.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE114918C1C7BF00966396 /* bg_prompt.png */; };
-		54CE115E18C1C7BF00966396 /* bg_subpage.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE114A18C1C7BF00966396 /* bg_subpage.png */; };
 		54CE115F18C1C7BF00966396 /* block1_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE114B18C1C7BF00966396 /* block1_btn.png */; };
 		54CE116018C1C7BF00966396 /* block2_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE114C18C1C7BF00966396 /* block2_btn.png */; };
 		54CE116118C1C7BF00966396 /* block3_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE114D18C1C7BF00966396 /* block3_btn.png */; };
@@ -1091,6 +1092,10 @@
 		54ACB2DA18EBBFC500EE5F90 /* CompareInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompareInfoTableViewCell.h; sourceTree = "<group>"; };
 		54ACB2DB18EBBFC500EE5F90 /* CompareInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompareInfoTableViewCell.m; sourceTree = "<group>"; };
 		54ACB2DD18EBE8F400EE5F90 /* icon_flag_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_flag_shop.png; sourceTree = "<group>"; };
+		54ACB2E518EBF12300EE5F90 /* PuumanShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuumanShopViewController.h; sourceTree = "<group>"; };
+		54ACB2E618EBF12300EE5F90 /* PuumanShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuumanShopViewController.m; sourceTree = "<group>"; };
+		54ACB2E818EC098200EE5F90 /* WarePumanScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarePumanScrollView.h; sourceTree = "<group>"; };
+		54ACB2E918EC098200EE5F90 /* WarePumanScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarePumanScrollView.m; sourceTree = "<group>"; };
 		54ACEE8118EA64B80055562B /* Award.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Award.h; sourceTree = "<group>"; };
 		54ACEE8218EA64B80055562B /* Award.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Award.m; sourceTree = "<group>"; };
 		54ACEE8318EA64B80055562B /* Rank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rank.h; sourceTree = "<group>"; };
@@ -1411,7 +1416,6 @@
 		54CE112118C1BC6D00966396 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
 		54CE112218C1BC6D00966396 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 		54CE114918C1C7BF00966396 /* bg_prompt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_prompt.png; sourceTree = "<group>"; };
-		54CE114A18C1C7BF00966396 /* bg_subpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_subpage.png; sourceTree = "<group>"; };
 		54CE114B18C1C7BF00966396 /* block1_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block1_btn.png; sourceTree = "<group>"; };
 		54CE114C18C1C7BF00966396 /* block2_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block2_btn.png; sourceTree = "<group>"; };
 		54CE114D18C1C7BF00966396 /* block3_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block3_btn.png; sourceTree = "<group>"; };
@@ -3068,7 +3072,6 @@
 				5463758D18C98493004B11EF /* tri_white_right.png */,
 				5463758E18C98493004B11EF /* tri_white_up.png */,
 				54CE114918C1C7BF00966396 /* bg_prompt.png */,
-				54CE114A18C1C7BF00966396 /* bg_subpage.png */,
 				54CE114B18C1C7BF00966396 /* block1_btn.png */,
 				54CE114C18C1C7BF00966396 /* block2_btn.png */,
 				54CE114D18C1C7BF00966396 /* block3_btn.png */,
@@ -3200,6 +3203,10 @@
 				54D64F0418E7EFC400B8899D /* CartTableViewCell.m */,
 				54ACB2DA18EBBFC500EE5F90 /* CompareInfoTableViewCell.h */,
 				54ACB2DB18EBBFC500EE5F90 /* CompareInfoTableViewCell.m */,
+				54ACB2E518EBF12300EE5F90 /* PuumanShopViewController.h */,
+				54ACB2E618EBF12300EE5F90 /* PuumanShopViewController.m */,
+				54ACB2E818EC098200EE5F90 /* WarePumanScrollView.h */,
+				54ACB2E918EC098200EE5F90 /* WarePumanScrollView.m */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -3548,7 +3555,6 @@
 				5403CE2B18D04F5E004CAE22 /* btn_vac2_baby.png in Resources */,
 				541970AB18D188F40058FE64 /* pic_cart_blank.png in Resources */,
 				541970AE18D188F40058FE64 /* pic_vac_blank.png in Resources */,
-				54CE115E18C1C7BF00966396 /* bg_subpage.png in Resources */,
 				541970AA18D188F40058FE64 /* pic_body_blank.png in Resources */,
 				5447C46218D97D0800187BE6 /* icon_vac_fri.png in Resources */,
 				5403CE2818D04F5E004CAE22 /* btn_pre1_baby.png in Resources */,
@@ -3828,6 +3834,7 @@
 				54CE10E318C1842C00966396 /* NSString+VersionCompare.m in Sources */,
 				54ADE09818C8608700B166C4 /* NewAudioPlayView.m in Sources */,
 				54CE10E918C1842C00966396 /* UILabel+AdjustSize.m in Sources */,
+				54ACB2E718EBF12300EE5F90 /* PuumanShopViewController.m in Sources */,
 				54ADE09718C8608700B166C4 /* NewAudioDiaryViewController.m in Sources */,
 				54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */,
 				54AE788618E00BD200AE558C /* PartnerDataTitleView.m in Sources */,
@@ -3957,6 +3964,7 @@
 				54ADB1E318E1AA4C00FCCC83 /* ImportImgCell.m in Sources */,
 				54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */,
 				541970D418D1956D0058FE64 /* InfoView.m in Sources */,
+				54ACB2EA18EC098200EE5F90 /* WarePumanScrollView.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
 				54ADE09A18C8608700B166C4 /* NewAudioRecordView.m in Sources */,
 				54CE10ED18C1842C00966396 /* SinaWeiboRequest.m in Sources */,

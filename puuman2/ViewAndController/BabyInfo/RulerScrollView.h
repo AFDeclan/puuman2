@@ -46,7 +46,7 @@
 - (void)setDialRangeFrom:(float)from to:(float)to;
 @end
 @protocol RulerScrollDelegate <NSObject>
-
+@optional
 - (void)setCurrentValue:(float)currentNumber andTheRuler:(RulerScrollView *)rulerScroll;
 - (void)beginScrollwithRuler:(RulerScrollView *)rulerScroll;
 @end

@@ -23,6 +23,7 @@
 @property(assign,nonatomic)ControlBtnType controlBtnType;
 - (void)setTitle:(NSString *)title withIcon:(UIImage *)image;
 - (void)show;
+- (void)hidden;
 - (void)finishBtnPressed;
 - (void)closeBtnPressed;
 @end

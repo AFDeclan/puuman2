@@ -13,6 +13,7 @@
 
 }
 - (void)setDialRangeFrom:(float)from to:(float)to;
+@property (assign, nonatomic) BOOL showMinorLabel;
 @property (assign, nonatomic) float leadingTop;
 @property (assign, nonatomic) float leadingBottom;
 @property (assign, readonly, nonatomic) float minimum;
