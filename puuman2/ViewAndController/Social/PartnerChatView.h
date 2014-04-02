@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AdaptiveLabel.h"
 #import "TextLayoutLabel.h"
+#import "Friend.h"
 
 
-
-@interface PartnerChatView : UIView<UITableViewDataSource,UITableViewDelegate>
+@interface PartnerChatView : UIView<UITableViewDataSource,UITableViewDelegate,FriendDelegate>
 {
     UIView *bgHeadView;
     UIImageView *icon_head;
@@ -22,7 +22,7 @@
    
 }
 
-
+- (void)reloadChatData;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 

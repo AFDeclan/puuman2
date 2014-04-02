@@ -61,14 +61,16 @@
     }else{
         [mask setAlpha:0.3];
     }
-    [data_info setText:[NSString stringWithFormat:@"%0.1fcm",bodyValue]];
+    
     [date_info setText:@"比我大2天"];
     SetViewLeftUp(data_info, 0, ViewY(histogram)-16);
     
     if (height) {
+        [data_info setText:[NSString stringWithFormat:@"%0.1fcm",bodyValue]];
         [histogram setBackgroundColor:RGBColor(246, 114, 99)];
         [data_info setTextColor:RGBColor(246, 114, 99)];
     }else{
+        [data_info setText:[NSString stringWithFormat:@"%0.1fkg",bodyValue]];
          [histogram setBackgroundColor:RGBColor(228, 206, 58)];
         [data_info setTextColor:RGBColor(228, 206, 58)];
     }

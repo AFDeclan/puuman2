@@ -69,13 +69,12 @@
     
     replayBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 304, 40)];
     [replayBtn addTarget:self action:@selector(replayBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [replayBtn setTitle:@"333" andImg:[UIImage imageNamed:@"btn_reply1z_topic.png"] andButtonType:kButtonTypeTwo];
-    [replayBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
+
     
     
     likeBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(304, 0, 304, 40)];
     [likeBtn addTarget:self action:@selector(likeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [likeBtn setSelectedImg:[UIImage imageNamed:@"btn_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"btn_like2_topic.png"] andTitle:@"111" andButtonType:kButtonTypeTwo andSelectedType:kNoneClear];
+    [likeBtn setSelectedImg:[UIImage imageNamed:@"btn_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"btn_like2_topic.png"] andTitle:@"" andButtonType:kButtonTypeTwo andSelectedType:kNoneClear];
     [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
     [likeBtn unSelected];
     
@@ -148,7 +147,10 @@
 {
      [[Forum sharedInstance] removeDelegateObject:self];
      [[Forum sharedInstance] addDelegateObject:self];
-    
+    [replayBtn setTitle:[NSString stringWithFormat:@"%d",replay.RCommentCnt] andImg:[UIImage imageNamed:@"btn_reply1z_topic.png"] andButtonType:kButtonTypeTwo];
+    [replayBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
+    [likeBtn resetTitle:[NSString stringWithFormat:@"%d",replay.RVoteCnt]];
+    [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
     _replay = replay;
     if (_replay.voted) {
         [likeBtn selected];
@@ -166,8 +168,8 @@
 
 - (void)replayBtnPressed
 {
-
-    PostNotification(Noti_BottomInputViewShow, [NSNumber numberWithBool:YES]);
+    [[MainTabBarController sharedMainViewController] setIsReply:YES];
+    PostNotification(Noti_BottomInputViewShow, [NSNumber numberWithBool:NO]);
     
 }
 

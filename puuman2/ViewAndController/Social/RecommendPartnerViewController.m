@@ -131,7 +131,7 @@
 
 - (void)invite
 {
-     [[Friend sharedInstance] addDelegateObject:self];
+    [[Friend sharedInstance] addDelegateObject:self];
     Group *myGroup = [[Friend sharedInstance] myGroup];
     [[myGroup actionForInvite:_memberInfo.BID] upload];
     

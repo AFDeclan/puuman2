@@ -81,7 +81,9 @@
         }
     }
     [partnerChat setAlpha:0];
-    PostNotification(Noti_BottomInputViewShow, [NSNumber numberWithBool:NO]);
+    [partnerChat reloadChatData];
+    [[MainTabBarController sharedMainViewController] setIsReply:NO];
+    PostNotification(Noti_BottomInputViewShow, [NSNumber numberWithBool:YES]);
     [UIView animateWithDuration:0.5 animations:^{
         [partnerChat setAlpha:1];
         if (partnerData) {

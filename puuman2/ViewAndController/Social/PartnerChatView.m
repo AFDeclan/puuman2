@@ -11,6 +11,7 @@
 #import "ChatTableCell.h"
 #import "UniverseConstant.h"
 #import "MainTabBarController.h"
+#import "Group.h"
 
 @implementation PartnerChatView
 
@@ -65,6 +66,21 @@
  
     
 
+}
+
+- (void)reloadChatData
+{
+    [[Friend sharedInstance] removeDelegateObject:self];
+    [[Friend sharedInstance] addDelegateObject:self];
+ 
+    [[[Friend sharedInstance] myGroup] startUpdateAction];
+
+}
+
+//Group Action 更新成功
+- (void)actionUpdated:(Group *)group
+{
+    
 }
 
 - (void)refreshChatTable

@@ -29,7 +29,7 @@
     dataArr = [[Friend sharedInstance] invitedGroup];
     if (inviteGroupsTable) {
         [inviteGroupsTable removeFromSuperview];
-        inviteGroupsTable = nil;
+        inviteGroupsTable = nil;                                                                 
     }
     inviteGroupsTable = [[UITableView alloc] initWithFrame:CGRectMake(128, 0, 608, 688)];
     [inviteGroupsTable setDelegate:self];
