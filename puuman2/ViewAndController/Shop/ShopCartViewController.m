@@ -7,7 +7,6 @@
 //
 
 #import "ShopCartViewController.h"
-#import "CartTableViewCell.h"
 #import "CartModel.h"
 #import "MainTabBarController.h"
 #import "CompareCartViewController.h"
@@ -106,8 +105,7 @@
             [cell setUnflod:NO];
         }
     }
- 
-    
+    [cell setDelegate:self];
     [cell buildCellWithPaid:isPaid andWareIndex:[indexPath row]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor clearColor]];
@@ -119,6 +117,16 @@
     return 96;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (isPaid) {
+        Ware* w = [[CartModel sharedCart] getDoneWareAtIndex:[indexPath row]];
+    }else{
+        Ware* w = [[CartModel sharedCart] getUndoWareAtIndex:[indexPath row]];
+    }
+    NSLog(@"Get");
+    
+}
 
 
 - (void)paidBtnPressed

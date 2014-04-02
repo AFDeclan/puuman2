@@ -18,6 +18,7 @@
         BOOL canMove;
 }
 - (void)setTitleWithTitleText:(NSString *)title andTitleColor:(UIColor *)color andTitleFont:(UIFont *)font andMoveSpeed:(float)speed andIsAutomatic:(BOOL)automatic;
+- (void)setTitleTextAlignment:(NSTextAlignment)alignment;
 - (void)animateStart;
 - (void)animateStop;
 - (void)animateRestart;

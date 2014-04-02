@@ -10,8 +10,9 @@
 #import "AFImageView.h"
 #import "ColorButton.h"
 #import "Ware.h"
-
-@interface CompareCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource>
+#import "CartTableViewCell.h"
+#import "AnimateShowLabel.h"
+@interface CompareCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource,CartCellDelegate>
 {
     AFImageView *first_ImgView;
     AFImageView *second_ImgView;
@@ -22,7 +23,23 @@
     ColorButton *second_winBtn;
     Ware * firstWare;
     Ware * secondWare;
-  
+    NSInteger firstIndex;
+    NSInteger secondIndex;
+    
+    AnimateShowLabel *info_firstWareName;
+    AnimateShowLabel *info_secondWareName;
+    AnimateShowLabel *info_firstWarePrice;
+    AnimateShowLabel *info_secondWarePrice;
+    
+    UIView *bg_infoFirst;
+    UIView *bg_infoSecond;
+    
+    NSMutableDictionary *availableCarts;
+    NSMutableArray *_propertyKeys;
+    NSMutableArray *availableKeys;
+    NSMutableArray *_keys;
+    NSArray *_sortedKeys;
+    NSMutableSet *_keyset;
 }
 
 @end

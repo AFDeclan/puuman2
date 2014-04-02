@@ -122,13 +122,11 @@
     }
   
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+
+- (void)setTitleTextAlignment:(NSTextAlignment)alignment
 {
-    // Drawing code
+    [title_First setTextAlignment:alignment];
+    [title_Second setTextAlignment:alignment];
 }
-*/
 
 @end

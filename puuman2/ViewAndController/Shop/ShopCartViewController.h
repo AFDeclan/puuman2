@@ -8,8 +8,8 @@
 
 #import "CustomPopViewController.h"
 #import "ColorButton.h"
-
-@interface ShopCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource>
+#import "CartTableViewCell.h"
+@interface ShopCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource,CartCellDelegate>
 {
     ColorButton *btn_unpaid;
     ColorButton *btn_paid;

@@ -14,12 +14,16 @@
 @implementation CartTableViewCell
 @synthesize  isCompare = _isCompare;
 @synthesize unflod =_unflod;
+@synthesize chooseToCompared = _chooseToCompared;
+@synthesize delegate = _delegate;
+@synthesize indexPath = _indexPath;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        wareIndex = -1;
+               wareIndex = -1;
         _isCompare = NO;
         wareImg = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
         [wareImg getImage:@"" defaultImage:@"default_ware_image                                                                                                                           "];
@@ -70,10 +74,44 @@
         time_icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
         [time_icon setImage:[UIImage imageNamed:@"icon_time_shop.png"]];
         [infoScrollView addSubview:time_icon];
-       [MyNotiCenter addObserver:self selector:@selector(unFoldAtIndex:) name:Noti_UnFoldCartWare object:nil];
+        
+        bg_compareSelected = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 528,80)];
+        [bg_compareSelected setBackgroundColor:[UIColor blackColor]];
+        [bg_compareSelected setAlpha:0];
+        [infoScrollView addSubview:bg_compareSelected];
+        
+        selectedFlag = [[UIImageView alloc] initWithFrame:CGRectMake(468, 16, 48, 48)];
+        [selectedFlag setImage:[UIImage imageNamed:@"icon_check_shop.png"]];
+        [self.contentView addSubview:selectedFlag];
+        [selectedFlag setAlpha:0];
+        [MyNotiCenter addObserver:self selector:@selector(unFoldAtIndex:) name:Noti_UnFoldCartWare object:nil];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectedWare)];
+        [infoScrollView addGestureRecognizer:tap];
+        [self initFlags];
+        
         
     }
     return self;
+}
+
+- (void)initFlags
+{
+    for (int i = 0; i <5; i++) {
+        flag[i] = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_flag_shop.png"]];
+        [flag[i] setFrame:CGRectMake(500 - 16*i, 0, 16, 16)];
+        [self.contentView addSubview:flag[i]];
+        [flag[i] setAlpha:0];
+
+    }
+}
+
+
+
+
+- (void)selectedWare
+{
+  
+    [_delegate tableView:nil didSelectRowAtIndexPath:_indexPath];
 }
 
 - (void)setTimeIconLocation
@@ -173,8 +211,8 @@
 
 - (void)buildCellWithWare:(Ware *)ware  flagCount:(NSInteger)flagCount wareTime:(NSString *)wt
 {
-     [infoScrollView setScrollEnabled:YES];
-     [warePrice setAlpha:1];
+    [infoScrollView setScrollEnabled:YES];
+    [warePrice setAlpha:1];
     [wareShop setAlpha:0];
     _ware = ware;
     wareName.text = ware.WName;
@@ -182,6 +220,15 @@
     wareTime.text = wt;
     [self setTimeIconLocation];
     [wareImg getImage:ware.WPicLink defaultImage:default_ware_image];
+    
+    for (int i = 0; i <5; i ++) {
+        if (i < flagCount) {
+            [flag[i] setAlpha:1];
+        }else{
+            [flag[i] setAlpha:0];
+        }
+    }
+    
 }
 
 - (void)awakeFromNib
@@ -232,9 +279,26 @@
    
 }
 
+- (void)setChooseToCompared:(BOOL)chooseToCompared
+{
+    _chooseToCompared = chooseToCompared;
+    if (chooseToCompared) {
+        [selectedFlag setAlpha:1];
+        [bg_compareSelected setAlpha:0.5];
+    }else{
+        [selectedFlag setAlpha:0];
+        [bg_compareSelected setAlpha:0];
+    }
+}
+
 - (void)setIsCompare:(BOOL)isCompare
 {
     _isCompare = isCompare;
+    if (isCompare) {
+        [infoScrollView setScrollEnabled:NO];
+    }else{
+        [infoScrollView setScrollEnabled:YES];
+    }
 }
 
 - (void)setUnflod:(BOOL)unflod
@@ -268,5 +332,9 @@
     }
     
 }
+
+
+
+
 
 @end
