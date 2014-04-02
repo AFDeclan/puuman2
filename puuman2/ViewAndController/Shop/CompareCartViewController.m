@@ -29,8 +29,7 @@
 
 - (void)initWithContent
 {
-    
-    
+   
     first_ImgView = [[AFImageView alloc] initWithFrame:CGRectMake(136, 112, 192, 192)];
     [_content addSubview:first_ImgView];
     second_ImgView = [[AFImageView alloc] initWithFrame:CGRectMake(424, 112, 192, 192)];
@@ -77,6 +76,7 @@
     SetViewLeftUp(first_winBtn, 592, 520);
 
 }
+
 
 - (void)firstWin
 {
@@ -151,6 +151,8 @@
 
 - (void)show
 {
+    [_closeBtn setImage:[UIImage imageNamed:@"btn_back_login.png"] forState:UIControlStateNormal];
+    
     [bgView setBackgroundColor:[UIColor clearColor]];
     [bgView setAlpha:1];
     [_content showInFrom:kAFAnimationNone inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:nil];

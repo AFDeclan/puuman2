@@ -128,7 +128,7 @@
         
         w = [[CartModel sharedCart] getUndoWareAtIndex:index];
         d = [[CartModel sharedCart] getUndoTimeAtIndex:index];
-        
+       
         
         flags = [[CartModel sharedCart] flagAtIndex:index];
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -158,17 +158,24 @@
 
 - (void)setWare:(Ware *)ware  wareTime:(NSString *)wt
 {
+    [infoScrollView setScrollEnabled:NO];
+    [warePrice setAlpha:0];
+    [wareShop setAlpha:1];
     _ware = ware;
     [wareName setText:ware.WName];
     [wareTime setText:wt];
     [self setTimeIconLocation];
     wareShop.text = ware.WShop;
     [wareImg getImage:ware.WPicLink defaultImage:default_ware_image];
+    
 
 }
 
 - (void)buildCellWithWare:(Ware *)ware  flagCount:(NSInteger)flagCount wareTime:(NSString *)wt
 {
+     [infoScrollView setScrollEnabled:YES];
+     [warePrice setAlpha:1];
+    [wareShop setAlpha:0];
     _ware = ware;
     wareName.text = ware.WName;
     warePrice.text = [NSString stringWithFormat:@"%.2f~%.2f", ware.WPriceLB, ware.WPriceUB];

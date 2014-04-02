@@ -97,12 +97,16 @@
     {
         cell =  [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-    if ([indexPath row] == unfoldIndex) {
-        NSLog(@"%d",unfoldIndex);
-        [cell setUnflod:YES];
+    if (isPaid) {
+         [cell setUnflod:NO];
     }else{
-        [cell setUnflod:NO];
+        if ([indexPath row] == unfoldIndex) {
+            [cell setUnflod:YES];
+        }else{
+            [cell setUnflod:NO];
+        }
     }
+ 
     
     [cell buildCellWithPaid:isPaid andWareIndex:[indexPath row]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -143,7 +147,7 @@
     CompareCartViewController *cartVC =[[CompareCartViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
     [cartVC setControlBtnType:kOnlyCloseButton];
-    [cartVC setTitle:@"比一比" withIcon:[UIImage imageNamed:@"icon_cart_shop.png"]];
+    [cartVC setTitle:@"比一比" withIcon:[UIImage imageNamed:@"icon_compare3_shop.png"]];
     [cartVC show];
 
 }
