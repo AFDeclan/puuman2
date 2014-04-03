@@ -11,8 +11,9 @@
 #import "ColorButton.h"
 #import "Topic.h"
 #import "Forum.h"
+#import "Friend.h"
 
-@interface VotingCell : UITableViewCell<ForumDelegate>
+@interface VotingCell : UITableViewCell<ForumDelegate,FriendDelegate>
 {
     BasicInfoView *infoView;
     UILabel *votingTopic_label;

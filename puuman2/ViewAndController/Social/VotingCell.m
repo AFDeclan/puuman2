@@ -8,6 +8,8 @@
 
 #import "VotingCell.h"
 #import "UserInfo.h"
+#import "MemberCache.h"
+#import "Member.h"
 
 @implementation VotingCell
 
@@ -21,9 +23,7 @@
         [self.contentView addSubview:bgView];
         infoView = [[BasicInfoView alloc] init];
         [self.contentView addSubview:infoView];
-        [infoView setInfoWithName:@"宝宝" andPortrailPath:[[UserInfo sharedUserInfo] portraitUrl] andRelate:@"哥哥" andIsBoy:YES];
-        
-        votingTopic_label = [[UILabel alloc] initWithFrame:CGRectMake(56, 56, 440, 16)];
+               votingTopic_label = [[UILabel alloc] initWithFrame:CGRectMake(56, 56, 440, 16)];
         [votingTopic_label setBackgroundColor:[UIColor clearColor]];
         [votingTopic_label setFont:PMFont2];
         [votingTopic_label setTextColor:PMColor1];
@@ -56,17 +56,19 @@
 {
      [[Forum sharedInstance] removeDelegateObject:self];
      [[Forum sharedInstance] addDelegateObject:self];
+    [[Friend sharedInstance] removeDelegateObject:self];
+    [[Friend sharedInstance] addDelegateObject:self];
+    
     votingTopic = voteTopic;
-   // [votedNum_label setText:[NSString stringWithFormat:@"%d票",voteTopic.]];
+    [[MemberCache sharedInstance] getMemberWithUID:1];
+   [votedNum_label setText:[NSString stringWithFormat:@"%d票",voteTopic.voteCnt]];
     if (voteTopic.voted) {
         [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
     }else{
         [voteBtn initWithTitle:@"投Ta一票" andButtonType:kGrayLeft];
     }
     [votingTopic_label setText:votingTopic.TTitle];
-    
-    
-    
+
 }
 
 - (void)voted
@@ -79,6 +81,7 @@
 - (void)topicVoted:(Topic *)topic
 {
     votingTopic = topic;
+    [votedNum_label setText:[NSString stringWithFormat:@"%d票",topic.voteCnt]];
     [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
 }
 
@@ -87,4 +90,18 @@
 {
     NSLog(@"投票失败");
 }
+
+//Member数据下载成功
+- (void)memberDownloaded:(Member *)member
+{
+    [infoView setInfoWithName:[member BabyNick] andPortrailPath:[member BabyPortraitUrl] andRelate:@"哥哥" andIsBoy:YES];
+
+}
+//Member数据下载失败
+- (void)memberDownloadFailed
+{
+
+}
+
+
 @end
