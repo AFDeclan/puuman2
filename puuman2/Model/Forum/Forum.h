@@ -105,6 +105,7 @@
 
 //我参与的
 @property (retain, nonatomic, readonly) NSMutableArray * myReplies;
+@property (assign, nonatomic, readonly) BOOL noMore;
 
 //奖品与排行
 //array of Award order by ALevel asc
