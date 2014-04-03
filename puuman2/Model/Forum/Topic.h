@@ -57,6 +57,8 @@ typedef enum TopicReplyOrder {
 @property (retain, nonatomic, readonly) NSDate *    TCreateTime;
 //只有当TStatus为Voting时有效，本用户是否已投过
 @property (assign, nonatomic, readonly) BOOL voted;
+//只有当TStatus为Voting时有效，投票总数
+@property (assign, nonatomic, readonly) NSInteger voteCnt;
 //Meta信息
 @property (retain, nonatomic, readonly) NSMutableDictionary *meta;
 
