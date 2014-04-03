@@ -7,7 +7,7 @@
 //
 
 #ifndef AF_AFUICode_h
-#define puuman2_AFUICode_h
+#define AF_AFUICode_h
 
 #define SetViewLeftUp(view, x, y) view.center = CGPointMake(x+view.frame.size.width/2, y+view.frame.size.height/2)
 #define SetViewLeftDown(view, x, y) view.center = CGPointMake(x+view.frame.size.width/2, y-view.frame.size.height/2)
