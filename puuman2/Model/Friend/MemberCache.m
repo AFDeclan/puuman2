@@ -109,8 +109,8 @@
 
 - (Member *)getMemberWithUID:(NSInteger)uid
 {
-    NSString *sql = @"SELECT Data FROM ? WHERE UID LIKE %?%";
-    FMResultSet * rs = [_db executeQuery:sql, MemberTableName, [NSNumber numberWithInteger:uid]];
+    NSString *sql = [NSString stringWithFormat:@"SELECT Data FROM %@ WHERE UID LIKE %%%ld%%", MemberTableName, (long)uid];
+    FMResultSet * rs = [_db executeQuery:sql];
     Member * mem = [self getMemberFromDb:rs];
     if (mem) return mem;
     [self downloadMemberWithUID:uid orBID:0];
