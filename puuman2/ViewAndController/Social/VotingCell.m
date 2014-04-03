@@ -94,7 +94,7 @@
 //Member数据下载成功
 - (void)memberDownloaded:(Member *)member
 {
-    [infoView setInfoWithName:[member BabyNick] andPortrailPath:[member BabyPortraitUrl] andRelate:@"哥哥" andIsBoy:YES];
+    [infoView setInfoWithName:[member BabyNick] andPortrailPath:[member BabyPortraitUrl] andRelate:@"" andIsBoy:[member BabyIsBoy]];
 
 }
 //Member数据下载失败
