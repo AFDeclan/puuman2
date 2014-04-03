@@ -32,6 +32,8 @@
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSArray alloc] init];
         [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(refreshVoteTable) name:Noti_RefreshVoteTabe object:nil];
+
     }
     return self;
 }
@@ -126,6 +128,7 @@
 {
 
     if (_voting) {
+        
         return 108;
     }else{
         
@@ -201,10 +204,27 @@
 
 - (void)refreshTable
 {
-    
     [self.tableView  reloadData];
 }
 
+
+- (void)refreshVoteTable
+{
+    [[Forum sharedInstance] getActiveTopics];
+
+}
+
+//当期话题和投票中话题信息获取成功。
+- (void)activeTopicsReceived
+{
+    [self.tableView  reloadData];
+}
+
+//当期话题和投票中话题信息获取失败。
+- (void)activeTopicsFailed
+{
+    
+}
 - (void)setVerticalFrame
 {
     

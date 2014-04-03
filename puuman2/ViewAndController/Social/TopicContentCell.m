@@ -225,6 +225,7 @@
     {
         status = TopicStatus_Voting;
         [rightBtn setAlpha:0];
+        [topicAllVC setVoting:YES];
         [leftBtn setNoti:@""];
         [leftBtn setTitleName:@"本期话题"];
         [info_title setText:[NSString stringWithFormat:@"第%d期话题征集中",topicNum]];
@@ -246,7 +247,7 @@
         
         
     }else{
-        
+      
         [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多喜欢" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
         [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新参与" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
          [topicAllVC setVoting:NO];

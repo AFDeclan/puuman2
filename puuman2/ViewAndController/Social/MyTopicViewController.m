@@ -76,8 +76,8 @@
             cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
     }
-    [cell setIsMyTopic:YES];
     [cell buildWithReply:replay];
+    [cell setIsMyTopic:YES];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;

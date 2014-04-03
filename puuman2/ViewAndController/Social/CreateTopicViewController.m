@@ -78,6 +78,7 @@
 //新话题上传成功
 - (void)topicUploaded
 {
+    PostNotification(Noti_RefreshVoteTabe, nil);
     [super closeBtnPressed];
 }
 

@@ -86,7 +86,7 @@
 
 - (void)addAction:(Action *)act forGroup:(NSInteger)GID
 {
-    NSString *insert = [NSString stringWithFormat:@"INSERT INTO %@ (AID, GID, AType, ASourceUID, ATargetBID, AMeta, ACreateTime) VALUES(%d, %d, %d, %d, %d, %@, ?)", ActionTableName, act.AID, act.GID, act.AType, act.ASourceUID, act.ATargetBID, act.AMeta];
+    NSString *insert = [NSString stringWithFormat:@"INSERT INTO %@ (AID, GID, AType, ASourceUID, ATargetBID, AMeta, ACreateTime) VALUES(%d, %d, %d, %d, %d, '%@', ?)", ActionTableName, act.AID, act.GID, act.AType, act.ASourceUID, act.ATargetBID, act.AMeta];
     if (![_db executeUpdate:insert, act.ACreateTime]) {
         [ErrorLog errorLog:@"Insert action failed!" fromFile:@"ActionManager.m" error:_db.lastError];
     }
