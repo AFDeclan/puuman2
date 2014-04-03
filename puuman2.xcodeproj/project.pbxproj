@@ -11,7 +11,6 @@
 		146A2C6E18DD810E0038A850 /* ReplyForUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C6D18DD810E0038A850 /* ReplyForUpload.m */; };
 		146A2C7218DD8D1C0038A850 /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C7118DD8D1C0038A850 /* FileUploader.m */; };
 		147756F918D7F49E00E08BD0 /* Forum.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756F818D7F49E00E08BD0 /* Forum.m */; };
-		147756FC18D7F4AA00E08BD0 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756FB18D7F4AA00E08BD0 /* Topic.m */; };
 		147756FF18D7F4B800E08BD0 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756FE18D7F4B800E08BD0 /* Reply.m */; };
 		148D79E318B8A71A001B4FA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E218B8A71A001B4FA7 /* Foundation.framework */; };
 		148D79E518B8A71A001B4FA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E418B8A71A001B4FA7 /* CoreGraphics.framework */; };
@@ -639,8 +638,6 @@
 		146A2C7118DD8D1C0038A850 /* FileUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUploader.m; sourceTree = "<group>"; };
 		147756F718D7F49E00E08BD0 /* Forum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forum.h; sourceTree = "<group>"; };
 		147756F818D7F49E00E08BD0 /* Forum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forum.m; sourceTree = "<group>"; };
-		147756FA18D7F4AA00E08BD0 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
-		147756FB18D7F4AA00E08BD0 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
 		147756FD18D7F4B800E08BD0 /* Reply.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reply.h; sourceTree = "<group>"; };
 		147756FE18D7F4B800E08BD0 /* Reply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reply.m; sourceTree = "<group>"; };
 		148D79DF18B8A71A001B4FA7 /* puuman2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = puuman2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1557,8 +1554,6 @@
 			children = (
 				147756F718D7F49E00E08BD0 /* Forum.h */,
 				147756F818D7F49E00E08BD0 /* Forum.m */,
-				147756FA18D7F4AA00E08BD0 /* Topic.h */,
-				147756FB18D7F4AA00E08BD0 /* Topic.m */,
 				147756FD18D7F4B800E08BD0 /* Reply.h */,
 				147756FE18D7F4B800E08BD0 /* Reply.m */,
 				146A2C6C18DD810E0038A850 /* ReplyForUpload.h */,
@@ -3825,7 +3820,6 @@
 				54AE2BB618E93FEB00D24F92 /* ActionForUpload.m in Sources */,
 				541970D218D1956D0058FE64 /* LineChart.m in Sources */,
 				543BAECE18CEC2CD00ED4672 /* PhotoSingleDiaryCell.m in Sources */,
-				147756FC18D7F4AA00E08BD0 /* Topic.m in Sources */,
 				54D1500D18CAF4EB0022E1F4 /* TaskCell.m in Sources */,
 				54CE10E318C1842C00966396 /* NSString+VersionCompare.m in Sources */,
 				54ADE09818C8608700B166C4 /* NewAudioPlayView.m in Sources */,
