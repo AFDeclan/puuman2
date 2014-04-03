@@ -66,16 +66,38 @@
 
 - (Reply *)getReply:(NSInteger)rid
 {
-  //  if (_request || _noMore) return;
-    _request = [[PumanRequest alloc] init];
-    [_request setUrlStr:kUrl_GetTopicReply];
-    [_request setIntegerParam:_roffset forKey:@"offset"];
-    [_request setIntegerParam:cnt forKey:@"limit"];
-    [_request setIntegerParam:_TID forKey:@"TID"];
-    [_request setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
-    [_request setDelegate:self];
-    [_request setResEncoding:PumanRequestRes_JsonEncoding];
-    [_request postAsynchronous];
+    return [_downloadedReplies valueForKey:[NSString stringWithFormat:@"%d", rid]];
+}
+
+- (BOOL)noMoreReplies:(TopicReplyOrder)order
+{
+    return _replies[order].count == _rids[order].count;
+}
+
+- (void)getMoreReplies:(NSInteger)cnt orderBy:(TopicReplyOrder)order
+{
+    if (_request[order] || [self noMoreReplies:order]) return;
+    _request[order] = [[PumanRequest alloc] init];
+    [_request[order] setUrlStr:kUrl_GetTopicReply];
+    [_request[order] setIntegerParam:order forKey:@"order"];
+    [_request[order] setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
+    NSMutableArray * ridsToGet = [[NSMutableArray alloc] init];
+    for (int i=_replies[order].count; i<_replies[order].count+cnt; i++) {
+        id rid = [_rids[order] objectAtIndex:i];
+        if (![self getReply:[rid integerValue]]) {
+            [ridsToGet addObject:rid];
+        }
+    }
+    [_request[order] setParam:ridsToGet forKey:@"RIDs" usingFormat:AFDataFormat_Json];
+    [_request[order] setDelegate:self];
+    [_request[order] setResEncoding:PumanRequestRes_JsonEncoding];
+    _request[order].tag = order;
+    [_request[order] postAsynchronous];
+}
+
+- (NSArray *)replies:(TopicReplyOrder)order
+{
+    return _replies[order];
 }
 
 - (void)vote
