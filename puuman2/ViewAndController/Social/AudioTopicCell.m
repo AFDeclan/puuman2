@@ -35,7 +35,7 @@
 
 }
 
-+ (CGFloat)heightForReplay:(Reply *)replay
++ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic
 {
     BOOL hasTitle = YES;
     if (hasTitle) {

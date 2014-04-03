@@ -10,7 +10,7 @@
 #import "AdaptiveLabel.h"
 #import "TextLayoutLabel.h"
 #import "Friend.h"
-
+#import "Group.h"
 
 @interface PartnerChatView : UIView<UITableViewDataSource,UITableViewDelegate,FriendDelegate>
 {
@@ -19,7 +19,7 @@
     UITableView *chatTable;
     UILabel *noti_label;
     UILabel *info_title;
-   
+    Group *myGroup;
 }
 
 - (void)reloadChatData;

@@ -75,7 +75,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView == self) {
-        NSLog(@"%f",self.contentOffset.y);
+      
         PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:scrollView.contentOffset.y]);
     }
     

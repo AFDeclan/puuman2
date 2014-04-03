@@ -35,7 +35,6 @@
         [info_title setTextColor:[UIColor whiteColor]];
         [info_title setFont:PMFont2];
         [info_title setTextAlignment:NSTextAlignmentCenter];
-        [info_title setText:@"三月宝宝妈妈团"];
         [icon_head addSubview:info_title];
       
         
@@ -80,7 +79,7 @@
         [figuresColumnView removeFromSuperview];
         figuresColumnView = nil;
     }
-    
+    [info_title setText:group.GName];
     figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 48, 576, 120)];
     [figuresColumnView setBackgroundColor:[UIColor clearColor]];
     [figuresColumnView setViewDelegate:self];
@@ -89,6 +88,11 @@
     [figuresColumnView setScrollEnabled:YES];
     [self addSubview:figuresColumnView];
     [figuresColumnView reloadData];
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
+    }
     
 }
 

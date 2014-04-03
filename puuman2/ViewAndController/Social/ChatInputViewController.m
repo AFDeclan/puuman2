@@ -11,6 +11,7 @@
 #import "UniverseConstant.h"
 #import "MainTabBarController.h"
 #import "Group.h"
+#import "ActionForUpload.h"
 
 @interface ChatInputViewController ()
 
@@ -90,8 +91,8 @@
     CGRect rect = [[notif.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     float keyBoardHeigh = rect.size.height >rect.size.width ?rect.size.width :rect.size.height;
     NSTimeInterval animationDuration = [[[notif userInfo] valueForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    [UIView animateWithDuration:animationDuration animations:^{
-             [bgView setAlpha:0.3];
+    [UIView animateWithDuration:animationDuration*1.1 animations:^{
+        [bgView setAlpha:0.3];
         if ([MainTabBarController sharedMainViewController].isVertical) {
             SetViewLeftUp(_content, 0, 1024-keyBoardHeigh-ViewHeight(_content));
         }else{
@@ -132,12 +133,7 @@
                 [UIView animateWithDuration:animationDuration*ViewHeight(_content)/keyBoardHeigh animations:^{
                 SetViewLeftUp(_content, 0, ViewHeight(_content));
             }completion:^(BOOL finished) {
-                
-                [[NSNotificationCenter defaultCenter] removeObserver:self  name:UIKeyboardWillHideNotification object:nil];
-                [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-
-                [self.view removeFromSuperview];
-                [[MainTabBarController sharedMainViewController] hiddenBottomInputView];
+               
             }];
         }
     }];
@@ -229,13 +225,12 @@
 {
     
     if (_sendIsHidden) {
-
+        [[Forum sharedInstance] addDelegateObject:self];    
         SetViewLeftUp(_content, 0, 0);
         [inputTextView becomeFirstResponder];
-    
-        
         
     }else{
+        [[Friend sharedInstance] addDelegateObject:self];
         SetViewLeftUp(_content, 0, 56);
         [UIView animateWithDuration:0.5 animations:^{
             SetViewLeftUp(_content, 0, 0);
@@ -279,7 +274,7 @@
         [(Reply *)_actionParent comment:inputTextView.text];
         [inputTextView resignFirstResponder];
     }else{
-        [(Group *)_actionParent actionForSendMsg:inputTextView.text];
+        [[(Group *)_actionParent actionForSendMsg:inputTextView.text] upload];
         [self reset];
     }
   
@@ -302,11 +297,10 @@
     
     _sendIsHidden = sendIsHidden;
     if (sendIsHidden) {
-        [[Forum sharedInstance] addDelegateObject:self];
+        
         [createBtn initWithTitle:@"留言" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
       
     }else{
-        [[Friend sharedInstance] addDelegateObject:self];
         [createBtn initWithTitle:@"发送" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
     }
 }
@@ -316,6 +310,11 @@
 {
     PostNotification(Noti_RefreshTopicTable, nil);
     [[Forum sharedInstance] removeDelegateObject:self];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self  name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [self.view removeFromSuperview];
+    [[MainTabBarController sharedMainViewController] hiddenBottomInputView];
 }
 
 //更多评论加载失败 注意根据noMore判断是否是因为全部加载完
@@ -328,7 +327,7 @@
 - (void)actionUploaded:(ActionForUpload *)action
 {
     PostNotification(Noti_RefreshChatTable, nil);
-    [[Friend sharedInstance] removeDelegateObject:self];
+    
 }
 //Group Action 上传失败
 - (void)actionUploadFailed:(ActionForUpload *)action

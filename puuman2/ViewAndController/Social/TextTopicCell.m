@@ -40,13 +40,13 @@
 
 }
 
-+ (CGFloat)heightForReplay:(Reply *)replay
++ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic
 {
     
     AdaptiveLabel *example = [[AdaptiveLabel alloc] initWithFrame:CGRectMake(56, 0, 0, 0)];
     [example setFont:PMFont2];
     [example setTitle:@"补脑片而不能去哦过Neo钱不够日本去玩过 弄吧Nero去吧弄夫妻百日哦该不热波陪你去荣光朴讷荣热哦高非农恶搞不热按哦不能够本二本那个人送饿哦日工农二哥你送哦仍ioerg" withMaxWidth:536];
-    
+
     return  ViewHeight(example)+16;
 }
 

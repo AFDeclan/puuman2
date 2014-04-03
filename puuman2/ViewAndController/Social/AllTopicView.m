@@ -43,7 +43,7 @@
 - (void)activeTopicsReceived
 {
 
-    NSArray *vote = [Forum sharedInstance].votingTopic;
+  
     [_showColumnView reloadData];
     [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*([Forum sharedInstance].onTopic.TNo -1), 0)];
     
@@ -51,8 +51,7 @@
 
 - (void)activeTopicsFailed
 {
-   
-    
+  
 }
 
 - (void)setVerticalFrame
@@ -128,15 +127,5 @@
     [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x - self.frame.size.width, 0) animated:YES];
 }
 
-//往期话题获取成功。
-- (void)topicReceived:(Topic *)topic
-{
 
-}
-
-//往期话题获取失败
-- (void)topicFailed:(NSString *)TNo
-{
-
-}
 @end

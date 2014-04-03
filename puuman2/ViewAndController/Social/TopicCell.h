@@ -32,8 +32,11 @@
     Reply *_replay;
     UIButton *info_btn;
     BOOL hasInfoView;
-    
+    UIView *headTitleView;
+    UILabel *topicNameLabel;
+    UILabel *topicNumLabel;
 }
+@property(nonatomic,assign)BOOL isMyTopic;
 - (void)buildWithReply:(Reply *)replay;
-+ (CGFloat)heightForReplay:(Reply *)replay;
++ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic;
 @end

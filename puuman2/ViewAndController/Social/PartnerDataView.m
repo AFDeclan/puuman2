@@ -88,7 +88,22 @@
 //获取小组信息失败
 - (void)groupDataFailed
 {
-   
+    if ([[Friend sharedInstance] inGroup]) {
+        [inGroupView setAlpha:1];
+        [outGroupView setAlpha:0];
+        [inGroupView loadViewInfo];
+        
+    }else{
+        [inGroupView setAlpha:0];
+        [outGroupView setAlpha:1];
+        [outGroupView loadViewInfo];
+    }
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
+    }
+
 }
 
 

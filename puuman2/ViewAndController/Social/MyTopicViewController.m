@@ -8,6 +8,9 @@
 
 #import "MyTopicViewController.h"
 #import "VotingCell.h"
+#import "TopicCell.h"
+#import "TextTopicCell.h"
+#import "PhotoTopicCell.h"
 
 @interface MyTopicViewController ()
 
@@ -19,9 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-       
-        
-       
+         replays = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -46,28 +47,47 @@
     
     // Return the number of rows in the section.
     
-    return 5;
+    return [replays count];;
    
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"TopicCell";
-    VotingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[VotingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    NSString *identifier;
+    TopicCell *cell;
+    Reply *replay = [replays objectAtIndex:[indexPath row]];
+    if ([replay.textUrls count] != 0) {
+        identifier = @"ReplayTextTopicCell";
+        cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell  =[[TextTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        
+    }else if ([replay.photoUrls count] !=0)
+    {
+        identifier = @"ReplayPhotoTopicCell";
+        cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell  =[[PhotoTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+    }else{
+        if (!cell) {
+            cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
     }
+    [cell setIsMyTopic:YES];
+    [cell buildWithReply:replay];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
-    
-    
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    return 304;
+      return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]] andIsMyTopic:YES];
   
     
 }

@@ -109,7 +109,8 @@
                 cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
         }
-         [cell buildWithReply:replay];
+        [cell setIsMyTopic:NO];
+        [cell buildWithReply:replay];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -126,7 +127,7 @@
         return 108;
     }else{
         
-        return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]]];
+        return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO];
     }
    
     
@@ -195,6 +196,7 @@
 
 - (void)refreshTable
 {
+    
     [self.tableView  reloadData];
 }
 

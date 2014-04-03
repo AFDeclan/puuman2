@@ -9,5 +9,7 @@
 #import "SortTableViewController.h"
 
 @interface MyTopicViewController : SortTableViewController
-
+{
+    NSMutableArray *replays;
+}
 @end

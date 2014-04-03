@@ -38,6 +38,7 @@
     }
     CGRect frame = contentView.frame;
     frame.size.height =128;
+    
     [contentView setFrame:frame];
     [super buildWithReply:replay];
     
@@ -97,7 +98,7 @@
 }
 
 
-+ (CGFloat)heightForReplay:(Reply *)replay
++ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic
 {
  
     return 128;

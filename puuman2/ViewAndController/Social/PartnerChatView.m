@@ -11,7 +11,8 @@
 #import "ChatTableCell.h"
 #import "UniverseConstant.h"
 #import "MainTabBarController.h"
-#import "Group.h"
+#import "Action.h"
+
 
 @implementation PartnerChatView
 
@@ -21,6 +22,7 @@
     if (self) {
         // Initialization code
         [MyNotiCenter addObserver:self selector:@selector(refreshChatTable) name:Noti_RefreshChatTable object:nil];
+    
         [self initialization];
     }
     return self;
@@ -70,21 +72,30 @@
 
 - (void)reloadChatData
 {
-    [[Friend sharedInstance] removeDelegateObject:self];
+    [MyNotiCenter addObserver:self selector:@selector(goOut) name:Noti_BottomInputViewHidden object:nil];
+   
     [[Friend sharedInstance] addDelegateObject:self];
  
     [[[Friend sharedInstance] myGroup] startUpdateAction];
 
 }
 
+- (void)goOut
+{
+        [[Friend sharedInstance] removeDelegateObject:self];
+        [[[Friend sharedInstance] myGroup] stopUpdateAction];
+}
+
 //Group Action 更新成功
 - (void)actionUpdated:(Group *)group
 {
-    
+    myGroup = group;
+    [chatTable reloadData];
 }
 
 - (void)refreshChatTable
 {
+    myGroup = [[Friend sharedInstance] myGroup];
     [chatTable reloadData];
 }
 
@@ -111,7 +122,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 15;
+    return [[myGroup GAction] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,8 +147,12 @@
             cell = [[ChatTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
             
         }
-        
-        [cell buildWidthDetailChat:nil];
+        if ([indexPath row] == 1) {
+              [cell buildWidthDetailChat:[[myGroup GAction] objectAtIndex:[indexPath row]-1] andPreChat:nil];
+        }else{
+            [cell buildWidthDetailChat:[[myGroup GAction] objectAtIndex:[indexPath row]-1] andPreChat:[[myGroup GAction] objectAtIndex:[indexPath row]-2]];
+        }
+      
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -154,7 +169,7 @@
     if ([indexPath row] == 0) {
         return 48;
     }else{
-        return [ChatTableCell heightForChat:nil];
+        return [ChatTableCell heightForChat:[(Action *)[[myGroup GAction] objectAtIndex:[indexPath row] ] AMeta]];
     }
     
  

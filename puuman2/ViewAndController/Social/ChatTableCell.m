@@ -11,6 +11,9 @@
 #import "UniverseConstant.h"
 #import "MainTabBarController.h"
 #import "UserInfo.h"
+#import "NSDate+Compute.h"
+#import "DateFormatter.h"
+
 
 @implementation ChatTableCell
 
@@ -48,30 +51,39 @@
     return self;
 }
 
--(void)buildWidthDetailChat:(NSDictionary *)chatInfo
+-(void)buildWidthDetailChat:(Action *)chatInfo andPreChat:(Action *)preChat
+
 {
-    [portrait getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:@""];
-    
-    BOOL isMine = NO;
-    BOOL hasTime = YES;
-    float disHeight = 0;
-    if (hasTime) {
-        disHeight = 32;
-        [time_label setText:@"3月2日 19:12"];
-        [time_label setAlpha:1];
+    if (preChat) {
+        
     }else{
-        [time_label setAlpha:0];
-        disHeight = 16;
+    
     }
+    member= [[[Friend sharedInstance] myGroup] memberWithBid:chatInfo.ATargetBID];
+    [portrait getImage:[member BabyPortraitUrl] defaultImage:@""];
+   
+    
+    
+  NSInteger minite = [chatInfo.ACreateTime miniteFromDate:preChat.ACreateTime];
+    
+    float disHeight = 0;
+   // if (minite >= 0) {
+        disHeight = 32;
+        [time_label setText:[DateFormatter stringFromDate:chatInfo.ACreateTime] ];
+        [time_label setAlpha:1];
+//    }else{
+//        [time_label setAlpha:0];
+//        disHeight = 16;
+//    }
     
     
     
     
     
     if ([MainTabBarController sharedMainViewController].isVertical) {
-        [detail setTitle:@"补脑片而不能去哦过Neo钱不够日本去玩过 弄吧Nero去吧弄夫妻百日哦该不热波陪你去荣光朴讷荣热哦高非农恶搞不热按哦不能够本二本那个人送饿哦日工农二哥你送哦仍ioerg" withMaxWidth:488];
+        [detail setTitle:chatInfo.AMeta withMaxWidth:488];
         [time_label setFrame:CGRectMake(0, 0, 608, disHeight)];
-        if (isMine) {
+        if (member.BID == [UserInfo sharedUserInfo].BID) {
             [tri setImage:[UIImage imageNamed:@"tri_blue_fri.png"]];
             SetViewLeftUp(portrait, 536, disHeight);
             SetViewLeftUp(tri, 520, disHeight+16);
@@ -88,10 +100,10 @@
         }
         
     }else{
-         [time_label setFrame:CGRectMake(0, 0, 864, disHeight)];
-        [detail setTitle:@"补脑片而不能去哦过Neo钱不够日本去玩过 弄吧Nero去吧弄夫妻百日哦该不热波陪你去荣光朴讷荣热哦高非农恶搞不热按哦不能够本二本那个人送饿哦日工农二哥你送哦仍ioerg" withMaxWidth:488];
+        [time_label setFrame:CGRectMake(0, 0, 864, disHeight)];
+        [detail setTitle:chatInfo.AMeta withMaxWidth:488];
 
-        if (isMine) {
+        if (member.BID == [UserInfo sharedUserInfo].BID) {
             [tri setImage:[UIImage imageNamed:@"tri_blue_fri.png"]];
             SetViewLeftUp(portrait, 792, disHeight);
             SetViewLeftUp(tri, 776, disHeight+16);
@@ -121,7 +133,7 @@
 
 
 
-+ (CGFloat)heightForChat:(NSDictionary *)chatInfo
++ (CGFloat)heightForChat:(NSString *)chat
 {
 
     BOOL hasTime = YES;
@@ -135,7 +147,7 @@
     [label setBackgroundColor:[UIColor redColor]];
     [label setTextColor:PMColor2];
     [label setFont:PMFont2];
-    [label setTitle:@"补脑片而不能去哦过Neo钱不够日本去玩过 弄吧Nero去吧弄夫妻百日哦该不热波陪你去荣光朴讷荣热哦高非农恶搞不热按哦不能够本二本那个人送饿哦日工农二哥你送哦仍ioerg" withMaxWidth:488];
+    [label setTitle:chat withMaxWidth:488];
     float dh =ViewHeight(label);
     dh +=24+disHeight;
     dh = dh>60?dh:60;

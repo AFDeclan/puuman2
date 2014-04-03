@@ -83,7 +83,7 @@
     [partnerChat setAlpha:0];
     [partnerChat reloadChatData];
     [[MainTabBarController sharedMainViewController] setIsReply:NO];
-    PostNotification(Noti_BottomInputViewShow, [NSNumber numberWithBool:YES]);
+    PostNotification(Noti_BottomInputViewShow, [[Friend sharedInstance] myGroup]);
     [UIView animateWithDuration:0.5 animations:^{
         [partnerChat setAlpha:1];
         if (partnerData) {

@@ -63,6 +63,10 @@
 - (void)buildWithRankInfo:(Rank *)rank
 {
   //  [portrait getImage:[rank rw] defaultImage:@""];
+    
+    
+    
+    
 
 }
 

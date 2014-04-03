@@ -10,7 +10,10 @@
 #import "TextLayoutLabel.h"
 #import "AFImageView.h"
 #import "AdaptiveLabel.h"
-
+#import "Action.h"
+#import "Friend.h"
+#import "Group.h"
+#import "Member.h"
 #define kWidthForH 864
 #define kWidthForV 608
 
@@ -21,8 +24,9 @@
     UIView *bgView;
     AdaptiveLabel *detail;
     UILabel *time_label;
+    Member *member;
 }
 
--(void)buildWidthDetailChat:(NSDictionary *)chatInfo;
-+ (CGFloat)heightForChat:(NSDictionary *)chatInfo;
+-(void)buildWidthDetailChat:(Action *)chatInfo andPreChat:(Action *)preChat;
++ (CGFloat)heightForChat:(NSString *)chat;
 @end

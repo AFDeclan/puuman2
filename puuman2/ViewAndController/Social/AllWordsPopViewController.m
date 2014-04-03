@@ -133,7 +133,7 @@
     [createTalkBtn setEnabled:NO];
     [createTalkBtn setAlpha:0.5];
     [talksTable reloadData];
-    PostNotification(Noti_BabyDataUpdated, Noti_RefreshTopicTable);
+    PostNotification(Noti_RefreshTopicTable,nil);
 }
 
 //评论上传失败

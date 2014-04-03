@@ -9,8 +9,9 @@
 #import "CustomPopViewController.h"
 #import "ColorButton.h"
 #import "CustomTextField.h"
+#import "Forum.h"
 
-@interface CreateTopicViewController : CustomPopViewController
+@interface CreateTopicViewController : CustomPopViewController<ForumDelegate>
 {
     ColorButton *instructionBtn;
     ColorButton *createBtn;

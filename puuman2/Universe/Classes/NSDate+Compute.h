@@ -23,6 +23,7 @@
 - (NSInteger)monthsToDate:(NSDate *)endDate;
 
 - (NSInteger )hoursFromDate:(NSDate *)lastDate;
+- (NSInteger)miniteFromDate:(NSDate *)date;
 
 - (BOOL)isSameDayWithDate:(NSDate *)date;
 

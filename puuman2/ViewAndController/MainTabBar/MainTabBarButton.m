@@ -19,6 +19,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        _normalImage = nil;
+        _selectedImage = nil;
         flag = [[UIImageView alloc] initWithFrame:CGRectMake(7, 31, 37, 18)];
         [self addSubview:flag];
     }

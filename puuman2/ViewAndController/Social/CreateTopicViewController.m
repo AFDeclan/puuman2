@@ -22,6 +22,7 @@
     if (self) {
         // Custom initialization
         [self initContent];
+        [[Forum sharedInstance] addDelegateObject:self];
     }
     return self;
 }
@@ -65,15 +66,28 @@
 - (void)instruction
 {
 
-    
 }
 
 - (void)createTopic
 {
+    [[Forum sharedInstance] uploadNewTopic:inputTextFied.text detail:nil type:TopicType_Text];
 
-
-    
-    [super closeBtnPressed];
+   
     
 }
+
+//新话题上传成功
+- (void)topicUploaded
+{
+    [super closeBtnPressed];
+}
+
+//新话题上传失败
+- (void)topicUploadFailed
+{
+    
+}
+
+
+
 @end

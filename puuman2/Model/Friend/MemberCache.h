@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <FMDatabase.h>
 #import "PumanRequest.h"
+#import "Friend.h"
+#import "Member.h"
 
 @class Member;
 @interface MemberCache : NSObject <AFRequestDelegate>
