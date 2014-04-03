@@ -12,6 +12,7 @@
 #import "UniverseConstant.h"
 #import "UILabel+AdjustSize.h"
 #import "Forum.h"
+#import "Member.h"
 
 @implementation RankTableViewCell
 @synthesize row = _row;
