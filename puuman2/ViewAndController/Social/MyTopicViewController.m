@@ -39,7 +39,7 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [[Forum sharedInstance] getMoreMyReplies:5];
+            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:NO];
             if (![[Forum sharedInstance] noMore])
             {
                 [blockRefreshFooter endRefreshing];
@@ -56,7 +56,7 @@
         _refreshHeader.alpha = 1;
         __block MJRefreshHeaderView * blockRefreshFooter = _refreshHeader;
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [[Forum sharedInstance] getMoreMyReplies:5];
+            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:YES];
             if (![[Forum sharedInstance] noMore])
             {
                 [blockRefreshFooter endRefreshing];
