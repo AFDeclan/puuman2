@@ -16,8 +16,10 @@
 - (void)setData:(NSDictionary *)data
 {
     _data = data;
-    _GID = [[data valueForKey:@"GID"] integerValue];
-    _BID = [[data valueForKey:@"BID"] integerValue];
+    id tp = [data valueForKey:@"GID"];
+    if (tp) _GID = [tp integerValue]; else _GID = 0;
+    tp = [data valueForKey:@"BID"];
+    if (tp) _BID = [tp integerValue]; else _BID = 0;
     _JoinTime = [DateFormatter datetimeFromTimestampStr:[data valueForKey:@"JoinTime"]];
     _UIDs = [data valueForKey:@"UIDs"];
     NSDictionary * baseInfo = [data valueForKey:@"BaseInfo"];
@@ -26,8 +28,10 @@
         _BabyBirth = [DateFormatter dateFromString:[baseInfo valueForKey:uMeta_birthDate]];
         _BabyIsBoy = [[baseInfo valueForKey:uMeta_gender] isEqualToString:@"男宝宝"];
         _BabyPortraitUrl = [baseInfo valueForKey:uMeta_portraitUrl];
-        _BabyHeight = [[baseInfo valueForKey:@"BabyHeight"] doubleValue];
-        _BabyWeight = [[baseInfo valueForKey:@"BabyWeight"] doubleValue];
+        tp = [baseInfo valueForKey:@"BabyHeight"];
+        if (tp) _BabyHeight = [tp doubleValue]; else _BabyHeight = 0;
+        tp = [baseInfo valueForKey:@"BabyWeight"];
+        if (tp) _BabyWeight = [tp doubleValue]; else _BabyWeight = 0;
     }
     NSDictionary * detailInfo = [data valueForKey:@"DetailInfo"];
     if ([detailInfo isKindOfClass:[NSDictionary class]]) {
