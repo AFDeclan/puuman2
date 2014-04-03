@@ -9,18 +9,18 @@
 #import "PopViewController.h"
 #import "AFTextImgButton.h"
 typedef   enum {
-    kTypeStyleRight,
-    kTypeStyleError,
-    kTypeStyleNone
-}TypeStyle;
+    kNotiTypeStyleRight,
+    kNotiTypeStyleNone
+}NotiTypeStyle;
 @interface CustomNotiViewController : PopViewController
 {
 
     NSTimer *timer;
     AFTextImgButton *notiView;
+    NotiTypeStyle notiType;
 }
 
-- (void)initWithTitle:(NSString *)title andStyle:(TypeStyle)typeStyle;
-+ (void)showNotiWithTitle:(NSString *)title withTypeStyle:(TypeStyle)style;
+- (void)initWithTitle:(NSString *)title andStyle:(NotiTypeStyle)typeStyle;
++ (void)showNotiWithTitle:(NSString *)title withTypeStyle:(NotiTypeStyle)style;
 
 @end

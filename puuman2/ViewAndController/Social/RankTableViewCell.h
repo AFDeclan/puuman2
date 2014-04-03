@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AFImageView.h"
 #import "Rank.h"
+#import "Friend.h"
+#import "AFTextImgButton.h"
 
-@interface RankTableViewCell : UITableViewCell
+@interface RankTableViewCell : UITableViewCell<FriendDelegate>
 {
     UIImageView *rank_icon;
     AFImageView *portrait;
@@ -20,9 +22,9 @@
     UIImageView *icon_like;
     UILabel *info_reply;
     UILabel *info_like;
-    
+    UILabel *total;
 }
 
-- (void)buildWithRankInfo:(Rank *)rank;
+@property(nonatomic,assign)NSInteger row;
 
 @end

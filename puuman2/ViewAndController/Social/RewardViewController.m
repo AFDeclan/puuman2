@@ -25,6 +25,7 @@
         [self initContent];
         [[Forum sharedInstance] addDelegateObject:self];
         [[Forum sharedInstance] getAwardAndRank];
+        
     }
     return self;
 }
@@ -115,7 +116,7 @@
             cell = [[RankTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
             
         }
-        [cell buildWithRankInfo:[[[Forum sharedInstance] ranks] objectAtIndex:[indexPath row]]];
+        [cell setRow:[indexPath row]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -131,10 +132,6 @@
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
     }
-    
-
- 
- 
     
     
 }

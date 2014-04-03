@@ -21,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        notiType = kNotiTypeStyleNone;
 
     }
     return self;
@@ -34,23 +35,26 @@
 
 - (void)initNoti
 {
+    [_content setFrame:CGRectMake(0, 0, 106, 106)];
     notiView  = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 106, 106)];
     [notiView setBackgroundImage:[UIImage imageNamed:@"circle_status.png"] forState:UIControlStateNormal];
     [notiView setEnabled:NO];
-    [_content setFrame:CGRectMake(0, 0, 106, 106)];
+    [_content addSubview:notiView];
     [bgView setAlpha:0];
+    
+    
+    
+  
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
         [self setHorizontalFrame];
     }
-    }
+}
 
 - (void)hidden
 {
-    [UIView animateWithDuration:0.4 animations:^{
-        [bgView setAlpha:0];
-    }];
+ 
     [_content hiddenOutTo:kAFAnimationNone inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
 }
 
@@ -62,18 +66,15 @@
 
 - (void)setVerticalFrame
 {
-    [super setVerticalFrame];
-    [_content setFrame:CGRectMake(160, 384, 448, 256)];
-    SetViewLeftUp(_content, 331, 459);
-    
+
+    self.view.frame = CGRectMake(331, 459, 106, 106);
+
 }
 
 - (void)setHorizontalFrame
 {
-    [super setHorizontalFrame];
-    [_content setFrame:CGRectMake(288, 256, 448, 256)];
-    SetViewLeftUp(_content, 459, 331);
-    
+  
+    self.view.frame = CGRectMake(459, 331, 106, 106);
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,7 +83,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-+ (void)showNotiWithTitle:(NSString *)title withTypeStyle:(TypeStyle)style
++ (void)showNotiWithTitle:(NSString *)title withTypeStyle:(NotiTypeStyle)style
 {
     CustomNotiViewController *alert  = [[CustomNotiViewController alloc] initWithNibName:nil bundle:nil];
     [alert initWithTitle:title andStyle:style];
@@ -90,18 +91,19 @@
     [alert show];
     
 }
-- (void)initWithTitle:(NSString *)title andStyle:(TypeStyle)typeStyle
+
+- (void)initWithTitle:(NSString *)title andStyle:(NotiTypeStyle)typeStyle
 {
     switch (typeStyle) {
-        case kTypeStyleError:
+        case kNotiTypeStyleRight:
             [notiView setTitle:title andImg:[UIImage imageNamed:@"check_status.png"] andButtonType:kButtonTypeFive];
+            [notiView setBackgroundColor:[UIColor clearColor]];
+            [notiView setTitleLabelColor:[UIColor whiteColor]];
             break;
-        case kTypeStyleRight:
-            [notiView setTitle:title andImg:[UIImage imageNamed:@"check_status.png"] andButtonType:kButtonTypeFive];
-            break;
-        case kTypeStyleNone:
+        case kNotiTypeStyleNone:
             [notiView setTitle:title andImg:nil andButtonType:kButtonTypeTwo];
             [notiView setBackgroundColor:[UIColor clearColor]];
+             [notiView setTitleLabelColor:[UIColor whiteColor]];
             break;
         default:
             break;
@@ -115,9 +117,6 @@
 - (void)show
 {
     [bgView setAlpha:0];
-    [UIView animateWithDuration:0.4 animations:^{
-        [bgView setAlpha:0.3];
-    }];
     [_content showInFrom:kAFAnimationNone inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:nil];
     if (timer) {
         [timer invalidate];

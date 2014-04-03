@@ -21,6 +21,7 @@
         [self addSubview:leftReward];
         rightReward = [[RewardView alloc] init];
         [self addSubview:rightReward];
+        
     }
     return self;
 }
@@ -55,4 +56,7 @@
   //  }
   
 }
+
+
+
 @end

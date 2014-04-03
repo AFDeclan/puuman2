@@ -21,14 +21,16 @@
 @implementation TopicAllTableViewController
 @synthesize voting = _voting;
 @synthesize topic = _topic;
+@synthesize order =_order;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         _voting = NO;
+        _order = TopicReplyOrder_Time;
         [[Forum sharedInstance] addDelegateObject:self];
-        replays = [[NSMutableArray alloc] init];
+        replays = [[NSArray alloc] init];
         [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
     }
     return self;
@@ -149,8 +151,7 @@
 
 - (void)setTopic:(Topic *)topic
 {
-    
-    
+    _topic = topic;
     if (!_refreshFooter) {
         _refreshFooter = [[MJRefreshFooterView alloc] init];
         _refreshFooter.scrollView = self.tableView;
@@ -158,26 +159,30 @@
         [_refreshFooter setDelegate:self];
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
-
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [topic getMoreReplies:5];
-            if (![topic noMore])
+            [_topic getMoreReplies:5 orderBy:_order];
+            if (![_topic noMoreReplies:_order])
             {
                 [blockRefreshFooter endRefreshing];
             }
         };
-        [_refreshFooter beginRefreshing];
-    
 
+        
     }
 
+}
+
+- (void)setOrder:(TopicReplyOrder)order
+{
+    _order = order;
+     [_refreshFooter beginRefreshing];
 }
 
 //更多话题回复加载成功。
 - (void)topicRepliesLoadedMore:(Topic *)topic
 {
     _topic = topic;
-    replays = topic.replies;
+    replays = [topic replies:_order];
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
     [self.tableView reloadData];

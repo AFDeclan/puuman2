@@ -70,9 +70,8 @@
 
 - (void)createTopic
 {
-    [[Forum sharedInstance] uploadNewTopic:inputTextFied.text detail:nil type:TopicType_Text];
-
-   
+    
+    [[Forum sharedInstance] uploadNewTopic:inputTextFied.text detail:@"" type:TopicType_Text];
     
 }
 

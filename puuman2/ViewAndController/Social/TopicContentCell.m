@@ -378,13 +378,14 @@
 
 - (void)leftSortSelected
 {
-    
+    [topicAllVC setOrder:TopicReplyOrder_Time];
     [left_sortBtn selected];
     [right_sortBtn unSelected];
 }
 
 - (void)rightSortSelected
 {
+    [topicAllVC setOrder:TopicReplyOrder_Vote];
     [right_sortBtn selected];
     [left_sortBtn unSelected];
 }

@@ -11,6 +11,7 @@
 #import "Forum.h"
 
 
+
 @interface RewardViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate>
 {
     ColorButton *instructionBtn;
