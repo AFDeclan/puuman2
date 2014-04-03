@@ -53,6 +53,8 @@ typedef enum TopicReplyOrder {
 @property (retain, nonatomic, readonly) NSString *  TImgUrl;
 //话题状态
 @property (assign, nonatomic, readonly) TopicStatus TStatus;
+//发起者UID
+@property (assign, nonatomic, readonly) NSInteger TUploadUID;
 //创建时间
 @property (retain, nonatomic, readonly) NSDate *    TCreateTime;
 //只有当TStatus为Voting时有效，本用户是否已投过

@@ -36,6 +36,8 @@
             _TImgUrl = val;
         } else if ([key isEqualToString:@"TStatus"]) {
             _TStatus = [val integerValue];
+        } else if ([key isEqualToString:@"TUploadUID"]) {
+            _TUploadUID = [val integerValue];
         } else if ([key isEqualToString:@"TCreateTime"]) {
             _TCreateTime = [DateFormatter datetimeFromString:val withFormat:@"yyyy-MM-dd HH:mm:ss"];
         } else if ([key isEqualToString:@"voted"]) {
