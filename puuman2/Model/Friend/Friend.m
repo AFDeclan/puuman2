@@ -113,6 +113,9 @@ static Friend * instance;
                     _myGroup = [[Group alloc] init];
                     [_myGroup setData:[obj objectForKey:@"myGroup"]];
                 } else {
+                    //仅用于发起邀请
+                    _myGroup = [[Group alloc] init];
+                    [_myGroup setData:[NSDictionary dictionaryWithObject:@"0" forKey:@"GID"]];
                     _invitedGroup = [[NSMutableArray alloc] init];
                     _inviteFrom = [[NSMutableArray alloc] init];
                     NSArray *invites = [obj objectForKey:@"invites"];
