@@ -94,7 +94,6 @@
 {
     NSMutableSet * _requests;
     NSMutableSet * _repliesForUpload;
-    NSInteger _roffset;
 }
 
 //当期话题
@@ -106,7 +105,6 @@
 
 //我参与的
 @property (retain, nonatomic, readonly) NSMutableArray * myReplies;
-@property (assign, nonatomic, readonly) BOOL noMore;
 
 //奖品与排行
 //array of Award order by ALevel asc
@@ -129,6 +127,9 @@
 
 //按期号获取，若已获取过则直接返回，否则返回nil，异步等待回调。
 - (Topic *)getTopic:(NSInteger)TNo;
+
+//dir 为YES时为获取更新的回复，获取的结果插在myReplies的头，为NO时为获取更早的回复，获取结果插在myReplies尾。
+- (void)getMoreMyReplies:(NSInteger)cnt newDirect:(BOOL)dir;
 
 //获取奖品和排行
 - (void)getAwardAndRank;

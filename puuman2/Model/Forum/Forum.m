@@ -13,6 +13,7 @@
 #import "UserInfo.h"
 #import "Rank.h"
 #import "Award.h"
+#import "DateFormatter.h"
 
 static Forum * instance;
 
@@ -67,7 +68,7 @@ static Forum * instance;
 
 - (Topic *)getTopic:(NSInteger)TNo
 {
-    Topic * cached = [_topics valueForKey:[NSString stringWithFormat:@"%d", TNo]];
+    Topic * cached = [_topics valueForKey:[NSString stringWithFormat:@"%ld", (long)TNo]];
     if (cached) {
         return cached;
     }
@@ -126,16 +127,22 @@ static Forum * instance;
     return re;
 }
 
-- (void)getMoreMyReplies:(NSInteger)cnt
+- (void)getMoreMyReplies:(NSInteger)cnt newDirect:(BOOL)dir
 {
     for (PumanRequest *req in _requests) {
         if ([[req urlStr] isEqualToString:kUrl_GetMyReply])
             return;
     }
-    if (_noMore) return;
     PumanRequest * req = [[PumanRequest alloc] init];
     [req setUrlStr:kUrl_GetTopicReply];
-    [req setIntegerParam:_roffset forKey:@"offset"];
+    NSDate * boundDate = nil;
+    Reply *boundReply = dir ? [_myReplies firstObject] : [_myReplies lastObject];
+    if (boundReply) {
+        boundDate = boundReply.RCreateTime;
+    }
+    if (boundDate) [req setValue:[DateFormatter timestampStrFromDatetime:boundDate] forKey:@"boundDate"];
+    else [req setValue:@"" forKey:@"boundDate"];
+    [req setIntegerParam:dir forKey:@"dir"];
     [req setIntegerParam:cnt forKey:@"limit"];
     [req setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
     [req setDelegate:self];
@@ -170,7 +177,7 @@ static Forum * instance;
                 [topic setData:ret];
                 if (topic.TStatus == TopicStatus_On) {
                     _onTopic = topic;
-                    [_topics setObject:topic forKey:[NSString stringWithFormat:@"%d", topic.TNo]];
+                    [_topics setObject:topic forKey:[NSString stringWithFormat:@"%ld", (long)topic.TNo]];
                 } else if (topic.TStatus == TopicStatus_Voting) {
                     [_votingTopic addObject:topic];
                 }
@@ -186,19 +193,15 @@ static Forum * instance;
     } else if ([url isEqualToString:kUrl_GetMyReply]) {
         if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]]) {
             NSArray *ret = afRequest.resObj;
-            NSInteger cnt = [ret count];
-            _roffset += cnt;
-            if (cnt < [[afRequest.params valueForKey:@"limit"] integerValue]) _noMore = YES;
+            BOOL dir = [[afRequest.params valueForKey:@"dir"] boolValue];
             for (NSDictionary * replyData in ret) {
                 Reply *re = [[Reply alloc] init];
                 [re setData:replyData];
-                [_myReplies addObject:re];
+                if (dir) [_myReplies insertObject:re atIndex:0];
+                else [_myReplies addObject:re];
             }
             [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadedMore:) withObject:self];
         } else {
-            if (afRequest.result == 2) {
-                _noMore = YES;
-            }
             [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
         }
     } else if ([url isEqualToString:kUrl_GetAwardRank]) {
