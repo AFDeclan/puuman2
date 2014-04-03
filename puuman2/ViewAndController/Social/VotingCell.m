@@ -60,7 +60,7 @@
     [[Friend sharedInstance] addDelegateObject:self];
     
     votingTopic = voteTopic;
-    [[MemberCache sharedInstance] getMemberWithUID:1];
+    [[MemberCache sharedInstance] getMemberWithUID:voteTopic.TUploadUID];
    [votedNum_label setText:[NSString stringWithFormat:@"%d票",voteTopic.voteCnt]];
     if (voteTopic.voted) {
         [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
