@@ -19,15 +19,12 @@
     if (self) {
         
         [[Friend sharedInstance] getGroupData];
-        [[Friend sharedInstance] addDelegateObject:self];
-        
         inGroupView = [[PartnerDataInGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
         [self addSubview:inGroupView];
         outGroupView = [[PartnerDataOutGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
         [self addSubview:outGroupView];
         [inGroupView setAlpha:0];
         [outGroupView setAlpha:0];
-        
         [MyNotiCenter addObserver:self selector:@selector(refreshStatus) name:Noti_RefreshInviteStatus object:nil];
     }
     return self;
@@ -35,6 +32,12 @@
 
 - (void)refreshStatus
 {
+    if ([[Friend sharedInstance] inGroup]) {
+         PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:YES] );
+    }else{
+        PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:NO] );
+    }
+    [[Friend sharedInstance] addDelegateObject:self];
     [[Friend sharedInstance] getGroupData];
 }
 
@@ -72,11 +75,13 @@
         [inGroupView setAlpha:1];
         [outGroupView setAlpha:0];
         [inGroupView loadViewInfo];
+          PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:YES]);
         
     }else{
         [inGroupView setAlpha:0];
         [outGroupView setAlpha:1];
         [outGroupView loadViewInfo];
+          PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:NO] );
     }
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];

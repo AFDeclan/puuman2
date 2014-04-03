@@ -173,6 +173,8 @@
 
 - (void)buildWithReply:(Reply *)replay
 {
+    [topicNumLabel setText:[NSString stringWithFormat:@"底%d期",replay.TID]];
+    [[Forum sharedInstance]getTopic:replay.TID];
      [[Forum sharedInstance] removeDelegateObject:self];
      [[Forum sharedInstance] addDelegateObject:self];
     [replayBtn setTitle:[NSString stringWithFormat:@"%d",replay.RCommentCnt] andImg:[UIImage imageNamed:@"btn_reply1z_topic.png"] andButtonType:kButtonTypeTwo];
@@ -263,5 +265,19 @@
     _replay = reply;
 
 }
+
+
+//更多话题回复加载成功。
+- (void)topicRepliesLoadedMore:(Topic *)topic
+{
+    [topicNameLabel setText:topic.TTitle];
+}
+
+//更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
+- (void)topicRepliesLoadFailed:(Topic *)topic
+{
+
+}
+
 
 @end

@@ -20,6 +20,7 @@
     
 }
 
+- (void)reloadAllTopic;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 

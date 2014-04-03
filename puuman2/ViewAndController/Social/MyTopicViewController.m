@@ -31,6 +31,45 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (!_refreshFooter) {
+        _refreshFooter = [[MJRefreshFooterView alloc] init];
+        _refreshFooter.scrollView = self.tableView;
+        [self.tableView addSubview:_refreshFooter];
+        [_refreshFooter setDelegate:self];
+        _refreshFooter.alpha = 1;
+        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+            [[Forum sharedInstance] getMoreMyReplies:5];
+            if (![[Forum sharedInstance] noMore])
+            {
+                [blockRefreshFooter endRefreshing];
+            }
+        };
+  
+    }
+    
+    if (!_refreshHeader) {
+        _refreshHeader = [[MJRefreshHeaderView alloc] init];
+        _refreshHeader.scrollView = self.tableView;
+        [self.tableView addSubview:_refreshHeader];
+        [_refreshHeader setDelegate:self];
+        _refreshHeader.alpha = 1;
+        __block MJRefreshHeaderView * blockRefreshFooter = _refreshHeader;
+        _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+            [[Forum sharedInstance] getMoreMyReplies:5];
+            if (![[Forum sharedInstance] noMore])
+            {
+                [blockRefreshFooter endRefreshing];
+            }
+        };
+        
+    }
+  
+}
+
+- (void)reloadMyTopic
+{
+    [_refreshHeader beginRefreshing];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,8 +78,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+- (void)setVerticalFrame
+{
+    
+}
 
+- (void)setHorizontalFrame
+{
+
+}
+
+#pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -93,5 +141,14 @@
 }
 
 
+- (void)myRepliesLoadedMore
+{
+    replays = [[Forum sharedInstance] myReplies];
+    [self.tableView reloadData];
+}
+
+- (void)myRepliesLoadFailed
+{
+}
 
 @end

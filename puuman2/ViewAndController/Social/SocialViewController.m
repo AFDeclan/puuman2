@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -40,7 +41,7 @@
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
-      
+    [MyNotiCenter addObserver:self selector:@selector(inOrOutGroup:) name:Noti_InOrOutGroup object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -54,7 +55,16 @@
 }
 
 
-
+- (void)inOrOutGroup:(NSNotification *)notification
+{
+    if ([[notification object] boolValue]) {
+        [leftBtn setAlpha:1];
+        [rightBtn setAlpha:1];
+    }else{
+        [leftBtn setAlpha:0];
+        [rightBtn setAlpha:0];
+    }
+}
 
 
 - (void)viewDidLoad
@@ -102,6 +112,8 @@
 
 - (void)topicBtnPressed
 {
+    [leftBtn setAlpha:1];
+    [rightBtn setAlpha:1];
     selectedTopic = YES;
     [topicBtn selected];
     [partnerBtn unSelected];
@@ -134,6 +146,7 @@
 
 - (void)partnerBtnPressed
 {
+    
     selectedTopic = NO;
     [topicBtn unSelected];
     [partnerBtn selected];
