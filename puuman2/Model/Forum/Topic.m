@@ -101,6 +101,7 @@
             }
             NSInteger cnt = afRequest.tag;
             for (int i=_replies[order].count; i<_replies[order].count+cnt; i++) {
+                if (i >= _rids[order].count) break;
                 id rid = [_rids[order] objectAtIndex:i];
                 if ([self getReply:[rid integerValue]]) {
                     [_replies[order] addObject:[self getReply:[rid integerValue]]];
