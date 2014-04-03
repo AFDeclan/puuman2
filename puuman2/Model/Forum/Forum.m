@@ -164,6 +164,7 @@ static Forum * instance;
         if (!retArr || ![retArr isKindOfClass:[NSArray class]]) {
             [self informDelegates:@selector(activeTopicsFailed) withObject:nil];
         } else {
+            _votingTopic = [[NSMutableArray alloc] init];
             for (NSDictionary *ret in retArr) {
                 Topic *topic = [[Topic alloc] init];
                 [topic setData:ret];
