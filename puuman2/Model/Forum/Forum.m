@@ -45,6 +45,7 @@ static Forum * instance;
         _requests = [[NSMutableSet alloc] init];
         _repliesForUpload = [[NSMutableSet alloc] init];
         _myReplies = [[NSMutableArray alloc] init];
+        _noMore = NO;
     }
     return self;
 }
@@ -194,6 +195,9 @@ static Forum * instance;
         if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]]) {
             NSArray *ret = afRequest.resObj;
             BOOL dir = [[afRequest.params valueForKey:@"dir"] boolValue];
+            if ([ret count] == 0 && !dir) {
+                _noMore = YES;
+            }
             for (NSDictionary * replyData in ret) {
                 Reply *re = [[Reply alloc] init];
                 [re setData:replyData];
