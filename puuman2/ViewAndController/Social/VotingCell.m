@@ -27,15 +27,13 @@
         [votingTopic_label setBackgroundColor:[UIColor clearColor]];
         [votingTopic_label setFont:PMFont2];
         [votingTopic_label setTextColor:PMColor1];
-        [votingTopic_label setTextColor:[UIColor whiteColor]];
-        [votingTopic_label setTextAlignment:NSTextAlignmentCenter];
         [self.contentView addSubview:votingTopic_label];
         votedNum_label = [[UILabel alloc] initWithFrame:CGRectMake(392, 16, 200, 16)];
         [votedNum_label setBackgroundColor:[UIColor clearColor]];
         [votedNum_label setFont:PMFont2];
         [votedNum_label setTextColor:PMColor6];
         [votedNum_label setTextAlignment:NSTextAlignmentRight];
-        [votedNum_label setText:@"308票"];
+
         [self.contentView addSubview:votedNum_label];
         voteBtn = [[ColorButton alloc] init];
         SetViewLeftUp(voteBtn, 496, 44);
@@ -59,6 +57,7 @@
      [[Forum sharedInstance] removeDelegateObject:self];
      [[Forum sharedInstance] addDelegateObject:self];
     votingTopic = voteTopic;
+   // [votedNum_label setText:[NSString stringWithFormat:@"%d票",voteTopic.]];
     if (voteTopic.voted) {
         [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
     }else{
@@ -72,7 +71,7 @@
 
 - (void)voted
 {
-    [votingTopic voted];
+    [votingTopic vote];
    
 }
 
