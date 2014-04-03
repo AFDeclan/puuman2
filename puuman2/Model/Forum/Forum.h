@@ -127,6 +127,8 @@
 //获取当期和投票中话题，异步操作。
 - (void)getActiveTopics;
 
+- (void)getMoreMyReplies:(NSInteger)cnt;
+
 //按期号获取，若已获取过则直接返回，否则返回nil，异步等待回调。
 - (Topic *)getTopic:(NSInteger)TNo;
 
