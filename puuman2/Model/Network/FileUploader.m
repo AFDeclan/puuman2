@@ -98,14 +98,8 @@ static NSMutableArray *instanceList;
     [request setPostValue:dir forKey:@"dir"];
     [request setPostValue:name forKey:@"filename"];
     [request startSynchronous];
-    if ([request error])
-    {
-        PostNotification(Noti_Imported, nil);
-        return NO;
-    }else{
-        PostNotification(Noti_Imported, nil);
-        return YES;
-    }
+    if ([request error]) return NO;
+    else return YES;
 }
 
 - (void)downloadDataFromDir:(NSString *)dir fileName:(NSString *)name

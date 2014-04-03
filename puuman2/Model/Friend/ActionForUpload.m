@@ -23,7 +23,6 @@
     [_req setIntegerParam:self.ASourceUID forKey:@"ASourceUID"];
     [_req setIntegerParam:self.ATargetBID forKey:@"ATargetBID"];
     [_req setParam:self.AMeta forKey:@"AMeta"];
-    [_req setDelegate:self];
     [_req postAsynchronous];
 }
 
