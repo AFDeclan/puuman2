@@ -40,6 +40,7 @@ static Forum * instance;
 {
     if (self = [super init]) {
         _topics = [[NSMutableDictionary alloc] init];
+        _votingTopic = [[NSMutableArray alloc] init];
         _requests = [[NSMutableSet alloc] init];
         _repliesForUpload = [[NSMutableSet alloc] init];
         _myReplies = [[NSMutableArray alloc] init];

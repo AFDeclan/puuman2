@@ -189,8 +189,7 @@
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
     [self.tableView reloadData];
- 
-    
+
 }
 
 //更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
@@ -210,8 +209,8 @@
 
 - (void)refreshVoteTable
 {
+      _voting = YES;
     [[Forum sharedInstance] getActiveTopics];
-
 }
 
 //当期话题和投票中话题信息获取成功。

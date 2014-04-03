@@ -83,17 +83,33 @@
     [_request[order] setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
     NSMutableArray * ridsToGet = [[NSMutableArray alloc] init];
     for (int i=_replies[order].count; i<_replies[order].count+cnt; i++) {
-        if (i >= _rids[order].count) break;
+        if (_rids[order].count <= i) break;
         id rid = [_rids[order] objectAtIndex:i];
         if (![self getReply:[rid integerValue]]) {
             [ridsToGet addObject:rid];
         }
+    }
+    if ([ridsToGet count] == 0) {
+        [self loadMoreReplies:cnt orderBy:order];
+        return;
     }
     [_request[order] setParam:ridsToGet forKey:@"RIDs" usingFormat:AFDataFormat_Json];
     [_request[order] setDelegate:self];
     [_request[order] setResEncoding:PumanRequestRes_JsonEncoding];
     _request[order].tag = order;
     [_request[order] postAsynchronous];
+}
+
+- (void)loadMoreReplies:(NSInteger)cnt orderBy:(TopicReplyOrder)order
+{
+    for (int i=_replies[order].count; i<_replies[order].count+cnt; i++) {
+        if (i >= _rids[order].count) break;
+        id rid = [_rids[order] objectAtIndex:i];
+        if ([self getReply:[rid integerValue]]) {
+            [_replies[order] addObject:[self getReply:[rid integerValue]]];
+        }
+    }
+    [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadedMore:) withObject:self];
 }
 
 - (NSArray *)replies:(TopicReplyOrder)order
@@ -123,13 +139,7 @@
                 [self cacheReply:re];
             }
             NSInteger cnt = afRequest.tag;
-            for (int i=_replies[order].count; i<_replies[order].count+cnt; i++) {
-                id rid = [_rids[order] objectAtIndex:i];
-                if ([self getReply:[rid integerValue]]) {
-                    [_replies[order] addObject:[self getReply:[rid integerValue]]];
-                }
-            }
-            [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadedMore:) withObject:self];
+            [self loadMoreReplies:cnt orderBy:order];
         } else {
             [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
         }

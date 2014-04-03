@@ -225,7 +225,6 @@
     {
         status = TopicStatus_Voting;
         [rightBtn setAlpha:0];
-        [topicAllVC setVoting:YES];
         [leftBtn setNoti:@""];
         [leftBtn setTitleName:@"本期话题"];
         [info_title setText:[NSString stringWithFormat:@"第%d期话题征集中",topicNum]];

@@ -43,7 +43,7 @@
 - (void)activeTopicsReceived
 {
 
-  
+    [[Forum sharedInstance] removeDelegateObject:self];
     [_showColumnView reloadData];
     [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*([Forum sharedInstance].onTopic.TNo -1), 0)];
     
@@ -51,7 +51,7 @@
 
 - (void)activeTopicsFailed
 {
-  
+    [[Forum sharedInstance] removeDelegateObject:self];
 }
 
 - (void)setVerticalFrame
