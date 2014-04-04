@@ -151,7 +151,8 @@
                 for (NSDictionary * commentData in ret) {
                     Comment *co = [[Comment alloc] init];
                     [co setData:commentData];
-                    [_comments addObject:co];
+                    if (dir) [_comments insertObject:co atIndex:0];
+                    else [_comments addObject:co];
                 }
                 [[Forum sharedInstance] informDelegates:@selector(replyCommentsLoadedMore:) withObject:self];
             } else {

@@ -125,6 +125,7 @@
 {
     if (_voteReq || _voted) return;
     _voteReq = [[PumanRequest alloc] init];
+    _voteReq.urlStr = kUrl_VoteTopic;
     [_voteReq setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
     [_voteReq setIntegerParam:_TID forKey:@"TID"];
     [_voteReq setDelegate:self];
