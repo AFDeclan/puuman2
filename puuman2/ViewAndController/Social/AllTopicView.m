@@ -17,7 +17,7 @@
     if (self) {
         // Initialization code
         [[Forum sharedInstance] addDelegateObject:self];
-        [[Forum sharedInstance] getActiveTopics];
+       
         [self setBackgroundColor:[UIColor clearColor]];
         [self initialization];
     }
@@ -38,6 +38,11 @@
    
     
   
+}
+
+- (void)reloadAllTopic
+{
+    [[Forum sharedInstance] getActiveTopics];
 }
 
 - (void)activeTopicsReceived

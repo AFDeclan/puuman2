@@ -301,6 +301,11 @@
 		54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */; };
 		54A9288418C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */; };
 		54AC15CB18ED4C84009CE045 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC15CA18ED4C84009CE045 /* Topic.m */; };
+		54AC1D1918EEA1B2005E2DCE /* BindingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC1D1818EEA1B2005E2DCE /* BindingViewController.m */; };
+		54AC1D1C18EEA30D005E2DCE /* SettingBindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC1D1B18EEA30D005E2DCE /* SettingBindView.m */; };
+		54AC1D2018EEAAD7005E2DCE /* ShareSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC1D1F18EEAAD7005E2DCE /* ShareSelectedViewController.m */; };
+		54AC1D2318EEB542005E2DCE /* btn_share1_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC1D2118EEB542005E2DCE /* btn_share1_diary.png */; };
+		54AC1D2418EEB542005E2DCE /* btn_share2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC1D2218EEB542005E2DCE /* btn_share2_diary.png */; };
 		54AC20E118E3FD30001C1357 /* btn_all1_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC20C418E3FD2F001C1357 /* btn_all1_shop.png */; };
 		54AC20E218E3FD30001C1357 /* btn_all2_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC20C518E3FD2F001C1357 /* btn_all2_shop.png */; };
 		54AC20E318E3FD30001C1357 /* btn_delete_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC20C618E3FD2F001C1357 /* btn_delete_shop.png */; };
@@ -1035,6 +1040,14 @@
 		54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDiaryDeleteTableViewCell.m; sourceTree = "<group>"; };
 		54AC15C918ED4C84009CE045 /* Topic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
 		54AC15CA18ED4C84009CE045 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
+		54AC1D1718EEA1B2005E2DCE /* BindingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingViewController.h; sourceTree = "<group>"; };
+		54AC1D1818EEA1B2005E2DCE /* BindingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingViewController.m; sourceTree = "<group>"; };
+		54AC1D1A18EEA30D005E2DCE /* SettingBindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBindView.h; sourceTree = "<group>"; };
+		54AC1D1B18EEA30D005E2DCE /* SettingBindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBindView.m; sourceTree = "<group>"; };
+		54AC1D1E18EEAAD7005E2DCE /* ShareSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSelectedViewController.h; sourceTree = "<group>"; };
+		54AC1D1F18EEAAD7005E2DCE /* ShareSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSelectedViewController.m; sourceTree = "<group>"; };
+		54AC1D2118EEB542005E2DCE /* btn_share1_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_share1_diary.png; sourceTree = "<group>"; };
+		54AC1D2218EEB542005E2DCE /* btn_share2_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_share2_diary.png; sourceTree = "<group>"; };
 		54AC20C418E3FD2F001C1357 /* btn_all1_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_all1_shop.png; sourceTree = "<group>"; };
 		54AC20C518E3FD2F001C1357 /* btn_all2_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_all2_shop.png; sourceTree = "<group>"; };
 		54AC20C618E3FD2F001C1357 /* btn_delete_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_delete_shop.png; sourceTree = "<group>"; };
@@ -1220,8 +1233,8 @@
 		54AFBBBD18D6938600861A69 /* SelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectButton.m; path = Login/SelectButton.m; sourceTree = "<group>"; };
 		54AFBBBE18D6938600861A69 /* SelectCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCalendarView.h; path = Login/SelectCalendarView.h; sourceTree = "<group>"; };
 		54AFBBBF18D6938600861A69 /* SelectCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCalendarView.m; path = Login/SelectCalendarView.m; sourceTree = "<group>"; };
-		54AFBBCE18D6946900861A69 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		54AFBBCF18D6946900861A69 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		54AFBBCE18D6946900861A69 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Setting/SettingViewController.h; sourceTree = "<group>"; };
+		54AFBBCF18D6946900861A69 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Setting/SettingViewController.m; sourceTree = "<group>"; };
 		54B467FE18E5154C00745F72 /* ShopAllWareHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAllWareHeaderView.h; sourceTree = "<group>"; };
 		54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAllWareHeaderView.m; sourceTree = "<group>"; };
 		54B4680218E520C500745F72 /* HealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthCell.h; sourceTree = "<group>"; };
@@ -2545,14 +2558,14 @@
 		54AFBBCD18D6941200861A69 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				54AFBBCE18D6946900861A69 /* SettingViewController.h */,
-				54AFBBCF18D6946900861A69 /* SettingViewController.m */,
 				54B6F40F18D6B0590055FC72 /* SettingBindViewController.h */,
 				54B6F41018D6B0590055FC72 /* SettingBindViewController.m */,
 				54B6F41F18D6D72E0055FC72 /* SettingPassWordViewController.h */,
 				54B6F42018D6D72E0055FC72 /* SettingPassWordViewController.m */,
 				54B6F42218D6E33E0055FC72 /* SettingAdviceViewController.h */,
 				54B6F42318D6E33E0055FC72 /* SettingAdviceViewController.m */,
+				54AC1D1718EEA1B2005E2DCE /* BindingViewController.h */,
+				54AC1D1818EEA1B2005E2DCE /* BindingViewController.m */,
 				54B6F41218D6C0800055FC72 /* support */,
 			);
 			path = Setting;
@@ -2748,6 +2761,8 @@
 				549B62C618CABC5A00AFEEAB /* CustomNotiViewController.m */,
 				5474A47518C5A40A0073B2FE /* NewTextPhotoSelectedViewController.h */,
 				5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */,
+				54AC1D1E18EEAAD7005E2DCE /* ShareSelectedViewController.h */,
+				54AC1D1F18EEAAD7005E2DCE /* ShareSelectedViewController.m */,
 			);
 			name = alertView;
 			sourceTree = "<group>";
@@ -2769,6 +2784,8 @@
 		54B6F41218D6C0800055FC72 /* support */ = {
 			isa = PBXGroup;
 			children = (
+				54AC1D1A18EEA30D005E2DCE /* SettingBindView.h */,
+				54AC1D1B18EEA30D005E2DCE /* SettingBindView.m */,
 				54B6F41918D6C32C0055FC72 /* SettingBindCellView.h */,
 				54B6F41A18D6C32C0055FC72 /* SettingBindCellView.m */,
 				54B6F41C18D6C8640055FC72 /* ReSendButton.h */,
@@ -2970,6 +2987,8 @@
 		54CE111418C1BC6D00966396 /* ViewAndController */ = {
 			isa = PBXGroup;
 			children = (
+				54AFBBCE18D6946900861A69 /* SettingViewController.h */,
+				54AFBBCF18D6946900861A69 /* SettingViewController.m */,
 				54AFBBCD18D6941200861A69 /* Setting */,
 				54AFBBA518D6938600861A69 /* Login */,
 				54CE111B18C1BC6D00966396 /* MainTabBar */,
@@ -3120,6 +3139,8 @@
 		54CE117618C1C8C100966396 /* MainTabBarImages */ = {
 			isa = PBXGroup;
 			children = (
+				54AC1D2118EEB542005E2DCE /* btn_share1_diary.png */,
+				54AC1D2218EEB542005E2DCE /* btn_share2_diary.png */,
 				54CE118F18C1CA5200966396 /* pic1_circle_diary.png */,
 				54CE117718C1C8DC00966396 /* bg_h.png */,
 				54CE117818C1C8DC00966396 /* bg.png */,
@@ -3414,6 +3435,7 @@
 				54ADE07D18C85D1C00B166C4 /* btn_more_diary.png in Resources */,
 				14B8DF3218BC37A30047C6B3 /* sampleDiary_photo1.jpg in Resources */,
 				5403CE4418D04F5E004CAE22 /* pic_puuman2_baby.png in Resources */,
+				54AC1D2318EEB542005E2DCE /* btn_share1_diary.png in Resources */,
 				54AC212818E4151D001C1357 /* block3_rec_shop.png in Resources */,
 				5447C48D18D97D1100187BE6 /* btn_reply1z_topic.png in Resources */,
 				5403CE3A18D04F5E004CAE22 /* icon_vac3_baby.png in Resources */,
@@ -3517,6 +3539,7 @@
 				54F1D13618C48FA50005CDD9 /* btn_video2_diary.png in Resources */,
 				54CE118618C1C8DC00966396 /* btn_baby2_diary.png in Resources */,
 				148D79F518B8A71A001B4FA7 /* Images.xcassets in Resources */,
+				54AC1D2418EEB542005E2DCE /* btn_share2_diary.png in Resources */,
 				54D14FF318CAEFD70022E1F4 /* btn_delete1_diary.png in Resources */,
 				54AFAA9618DAD6F30067B8C1 /* pic_talk_fri.png in Resources */,
 				5403CD5318D03D39004CAE22 /* icon9_weather_diary@2x.png in Resources */,
@@ -3790,6 +3813,7 @@
 				54B4680518E520C500745F72 /* HealthCell.m in Sources */,
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
 				54AFBBC418D6938600861A69 /* LoginCodeView.m in Sources */,
+				54AC1D1918EEA1B2005E2DCE /* BindingViewController.m in Sources */,
 				54ACEE8618EA64B80055562B /* Rank.m in Sources */,
 				54B4682418E5210900745F72 /* HospitalPrivateView.m in Sources */,
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
@@ -3800,6 +3824,7 @@
 				14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */,
 				54AE2BB518E93FEB00D24F92 /* Action.m in Sources */,
 				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
+				54AC1D2018EEAAD7005E2DCE /* ShareSelectedViewController.m in Sources */,
 				54AC210118E3FE99001C1357 /* RectWareView.m in Sources */,
 				54AFAA8818DA9B640067B8C1 /* RecommendPartnerViewController.m in Sources */,
 				54ADB1EC18E1B39000FCCC83 /* DiaryHeaderView.m in Sources */,
@@ -3947,6 +3972,7 @@
 				54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */,
 				54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */,
 				54B753A018D2A7C7002411CF /* BabyVaccineView.m in Sources */,
+				54AC1D1C18EEA30D005E2DCE /* SettingBindView.m in Sources */,
 				54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */,
 				54AE2BB718E93FEB00D24F92 /* ActionManager.m in Sources */,
 				54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */,

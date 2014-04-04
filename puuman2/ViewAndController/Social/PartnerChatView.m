@@ -56,11 +56,10 @@
     [info_title setTextColor:[UIColor whiteColor]];
     [info_title setFont:PMFont2];
     [info_title setTextAlignment:NSTextAlignmentCenter];
-    [info_title setText:@"三月宝宝妈妈团"];
     [icon_head addSubview:info_title];
     
     noti_label = [[UILabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
-    [noti_label setText:@"三天前，天天邀请了w 入团"];
+    [noti_label setText:@""];
     [noti_label setFont:PMFont2];
     [noti_label setTextColor:PMColor3];
     [noti_label setBackgroundColor:[UIColor clearColor]];
@@ -73,9 +72,8 @@
 - (void)reloadChatData
 {
     [MyNotiCenter addObserver:self selector:@selector(goOut) name:Noti_BottomInputViewHidden object:nil];
-   
+    [[Friend sharedInstance] removeDelegateObject:self];
     [[Friend sharedInstance] addDelegateObject:self];
- 
     [[[Friend sharedInstance] myGroup] startUpdateAction];
 
 }
@@ -90,13 +88,15 @@
 - (void)actionUpdated:(Group *)group
 {
     myGroup = group;
-    [chatTable reloadData];
+    [self reloadChatTable];
+  
 }
 
 - (void)refreshChatTable
 {
+    
     myGroup = [[Friend sharedInstance] myGroup];
-    [chatTable reloadData];
+    [self reloadChatTable];
 }
 
 
@@ -104,16 +104,17 @@
 {
     
     [bgHeadView setFrame:CGRectMake(0, 0, 608, 48)];
-    [chatTable setFrame:CGRectMake(0, 0, 608, 832)];
-    [chatTable reloadData];
+    [chatTable setFrame:CGRectMake(0, 0, 608, 880)];
+    [self reloadChatTable];
 }
 
 - (void)setHorizontalFrame
 {
 
     [bgHeadView setFrame:CGRectMake(0, 0, 864, 48)];
-    [chatTable setFrame:CGRectMake(0, 0, 864, 576)];
-    [chatTable reloadData];
+    [chatTable setFrame:CGRectMake(0, 0, 864, 624)];
+    [self reloadChatTable];
+    
 }
 
 #pragma mark - Table view data source
@@ -175,7 +176,16 @@
  
 }
 
-
-
+- (void)reloadChatTable
+{
+    [info_title setText:myGroup.GName];
+    float height = [chatTable contentSize].height;
+    CGPoint pos = chatTable.contentOffset;
+    [chatTable reloadData];
+    [chatTable setContentOffset:pos];
+    if ([chatTable contentSize].height > height) {
+        [chatTable scrollRectToVisible:CGRectMake(0, [chatTable contentSize].height - self.frame.size.height, self.frame.size.width, self.frame.size.height) animated:YES];
+    }
+}
 
 @end

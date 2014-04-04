@@ -8,6 +8,9 @@
 
 #import "AllWordsPopTalkTableViewCell.h"
 #import "ColorsAndFonts.h"
+#import "MemberCache.h"
+#import "Member.h"
+#import "UniverseConstant.h"
 
 @implementation AllWordsPopTalkTableViewCell
 
@@ -16,55 +19,50 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        
+        [self initContent];
     }
     return self;
 }
 
-- (void)initialization
+- (void)initContent
 {
-    portrait = [[UIImageView alloc] initWithFrame:CGRectMake(8, 10, 40, 40)];
-    portrait.layer.cornerRadius = 48;
-    portrait.layer.masksToBounds = YES;
-    portrait.layer.shadowRadius =0.1;
-    [self.contentView addSubview:portrait];
-    name = [[UILabel alloc] initWithFrame:CGRectMake(56, 16, 0, 16)];
-    [name setFont:PMFont2];
-    [name setTextColor:PMColor2];
-    [name setBackgroundColor:[UIColor clearColor]];
-    [self.contentView addSubview:name];
     
-    status = [[UILabel alloc] initWithFrame:CGRectMake(56, 16, 0, 16)];
-    [status setFont:PMFont3];
-    [status setTextColor:PMColor3];
-    [status setBackgroundColor:[UIColor clearColor]];
-    [self.contentView addSubview:status];
-    icon_sex = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 16, 16)];
-    [self.contentView addSubview:icon_sex];
+    infoView = [[BasicInfoView alloc] init];
+    [self.contentView addSubview:infoView];
     
 }
 
-- (void)setCellWithTalk:(NSDictionary *)talkInfo;
+-(void)buildWithUid:(NSInteger)uid andIndex:(NSInteger)index  andCommmet:(NSString *)comment
 {
-    if (detail) {
-        [detail removeFromSuperview];
+    if (mainTextView) {
+        [mainTextView removeFromSuperview];
     }
-    detail = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(0, 0, 340, 0)];
-    detail.numberOfLines = 0;
-    detail.font = PMFont3;
-    detail.textColor = PMColor2;
-    detail.backgroundColor = [UIColor clearColor];
-    [detail setLinesSpacing:10];
-    [detail setCharacterSpacing:1];
-    [self.contentView addSubview:detail];
-    NSString *text= @"";
-    CGFloat dh = [detail setText:text abbreviated:NO];
-    detail.frame = CGRectMake(168, 16, 340, dh);
+    mainTextView = [[AdaptiveLabel alloc] initWithFrame:CGRectMake(170, 16, 0, 0)];
+    [mainTextView setBackgroundColor:[UIColor clearColor]];
+    [mainTextView setFont:PMFont2];
+    [mainTextView setTextColor:PMColor1];
+    [self.contentView addSubview:mainTextView];
+    [mainTextView setTitle:comment withMaxWidth:340];
+    [mainTextView setText:comment];
+    Member *member =[[MemberCache sharedInstance] getMemberWithUID:uid];
+    if (member) {
+        [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:member.BabyIsBoy];
+    }
+    
+    
+}
 
-    
-    
+- (void)memberDownloaded:(Member *)member
+{
+    [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:member.BabyIsBoy];
 
 }
+//Member数据下载失败
+- (void)memberDownloadFailed
+{
+
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -73,21 +71,16 @@
     // Configure the view for the selected state
 }
 
-+ (CGFloat)heightForTalk:(NSDictionary *)talkInfo
+
++ (CGFloat)heightForComment:(NSString *)comment
 {
 
-    TextLayoutLabel *textLayoutLabel  = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(0, 0, 340, 0)];
-    textLayoutLabel.numberOfLines = 0;
-    textLayoutLabel.font = PMFont3;
-    textLayoutLabel.textColor = PMColor2;
-    textLayoutLabel.backgroundColor = [UIColor clearColor];
-    [textLayoutLabel setLinesSpacing:10];
-    [textLayoutLabel setCharacterSpacing:1];
-    NSString *text= @"";
-    CGFloat dh = [textLayoutLabel setText:text abbreviated:NO];
-    dh +=32;
-    dh = dh>60?dh:60;
-    return dh;
+    AdaptiveLabel *example = [[AdaptiveLabel alloc] initWithFrame:CGRectMake(56, 0, 0, 0)];
+    [example setFont:PMFont2];
+    [example setTitle:comment withMaxWidth:536];
+        
+  
+    return ViewHeight(example)+32 >60?ViewHeight(example)+32:60;
     
 }
 @end

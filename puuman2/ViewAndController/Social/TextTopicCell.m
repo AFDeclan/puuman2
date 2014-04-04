@@ -17,12 +17,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        mainTextView = [[AdaptiveLabel alloc] initWithFrame:CGRectMake(56, 0, 0, 0)];
-        [mainTextView setBackgroundColor:[UIColor clearColor]];
-        [mainTextView setFont:PMFont2];
-        [mainTextView setTextColor:PMColor1];
-        [mainTextView addSubview:mainTextView];
-        [contentView addSubview:mainTextView];
+ 
         
         
     }
@@ -30,9 +25,21 @@
 }
 - (void)buildWithReply:(Reply *)replay
 {
+    if (mainTextView) {
+        [mainTextView removeFromSuperview];
+    }
+    mainTextView = [[AdaptiveLabel alloc] initWithFrame:CGRectMake(56, 0, 0, 0)];
+    [mainTextView setBackgroundColor:[UIColor clearColor]];
+    [mainTextView setFont:PMFont2];
+    [mainTextView setTextColor:PMColor1];
+    [contentView addSubview:mainTextView];
+    if ([replay.textUrls count]>0) {
+        [mainTextView setTitle:[replay.textUrls objectAtIndex:0] withMaxWidth:536];
+    }else{
+        [mainTextView setTitle:@"" withMaxWidth:536];
+
+    }
  
-    [mainTextView setTitle:@"补脑片而不能去哦过Neo钱不够日本去玩过 弄吧Nero去吧弄夫妻百日哦该不热波陪你去荣光朴讷荣热哦高非农恶搞不热按哦不能够本二本那个人送饿哦日工农二哥你送哦仍ioerg" withMaxWidth:536];
-    
     CGRect frame = contentView.frame;
     frame.size.height = ViewHeight(mainTextView)+16;
     [contentView setFrame:frame];
@@ -40,13 +47,17 @@
 
 }
 
-+ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic
++ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type;
 {
     
     AdaptiveLabel *example = [[AdaptiveLabel alloc] initWithFrame:CGRectMake(56, 0, 0, 0)];
     [example setFont:PMFont2];
-    [example setTitle:@"补脑片而不能去哦过Neo钱不够日本去玩过 弄吧Nero去吧弄夫妻百日哦该不热波陪你去荣光朴讷荣热哦高非农恶搞不热按哦不能够本二本那个人送饿哦日工农二哥你送哦仍ioerg" withMaxWidth:536];
-
+    if ([replay.textUrls count]>0) {
+        [example setTitle:[replay.textUrls objectAtIndex:0] withMaxWidth:536];
+ 
+    }else{
+       [example setTitle:@"" withMaxWidth:536];
+    }
     return  ViewHeight(example)+16;
 }
 

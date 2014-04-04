@@ -7,10 +7,18 @@
 //
 
 #import "SortTableViewController.h"
+#import "MJRefreshFooterView.h"
+#import "MJRefreshHeaderView.h"
+#import "Forum.h"
 
-@interface MyTopicViewController : SortTableViewController
+@interface MyTopicViewController : SortTableViewController<ForumDelegate,MJRefreshBaseViewDelegate>
 {
+    MJRefreshFooterView *_refreshFooter;
+    MJRefreshHeaderView *_refreshHeader;
     NSMutableArray *replays;
 }
 
+- (void)reloadMyTopic;
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 @end

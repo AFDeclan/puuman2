@@ -250,7 +250,8 @@ static Forum * instance;
 
 - (void)informDelegates:(SEL)sel withObject:(id)obj
 {
-    for (NSObject<ForumDelegate> * del in _delegates) {
+    NSSet *dels = [_delegates copy];
+    for (NSObject<ForumDelegate> * del in dels) {
         if ([del respondsToSelector:sel]) {
             [del performSelectorOnMainThread:sel withObject:obj waitUntilDone:YES];
         }

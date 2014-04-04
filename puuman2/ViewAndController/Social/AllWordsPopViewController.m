@@ -9,6 +9,7 @@
 #import "AllWordsPopViewController.h"
 #import "ColorsAndFonts.h"
 #import "AllWordsPopTalkTableViewCell.h"
+#import "Comment.h"
 
 @interface AllWordsPopViewController ()
 
@@ -35,6 +36,7 @@
     
     talksTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 168, 528, 436)];
     [talksTable setBackgroundColor:PMColor5];
+    [talksTable setContentSize:CGSizeMake(528, 436)];
     [talksTable setDelegate:self];
     [talksTable setDataSource:self];
     [talksTable setSeparatorColor:[UIColor clearColor]];
@@ -71,7 +73,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [[_replay comments] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,8 +87,10 @@
             cell = [[AllWordsPopTalkTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
             
     }
-        
     
+    Comment *comment =[[_replay comments] objectAtIndex:[indexPath row]];
+    
+    [cell buildWithUid:comment.UID andIndex:[indexPath row] andCommmet: comment.CContent];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
@@ -98,13 +102,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return [AllWordsPopTalkTableViewCell heightForTalk:nil];
+    return [AllWordsPopTalkTableViewCell heightForComment:[[[_replay comments] objectAtIndex:[indexPath row]] CContent]];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0;
-}
 
 - (void)replayed
 {
@@ -115,7 +115,7 @@
 
 - (void)show
 {
-    [[Forum sharedInstance] addDelegateObject:self];
+    
     [super show];
 }
 
@@ -139,12 +139,59 @@
 //评论上传失败
 - (void)replyCommentUploadFailed:(Reply *)reply
 {
-    _replay =reply;
 }
+
+
+//更多评论加载成功
+- (void)replyCommentsLoadedMore:(Reply *)reply
+{
+    _replay = reply;
+    [talksTable reloadData];
+}
+
+//更多评论加载失败 注意根据noMore判断是否是因为全部加载完
+- (void)replyCommentsLoadFailed:(Reply *)reply
+{
+    _replay = reply;
+}
+
 
 - (void)setReplay:(Reply *)replay
 {
     _replay =replay;
+    [[Forum sharedInstance] addDelegateObject:self];
+    if (!_refreshFooter) {
+        _refreshFooter = [[MJRefreshFooterView alloc] init];
+        _refreshFooter.scrollView = talksTable;
+        [talksTable addSubview:_refreshFooter];
+        [_refreshFooter setDelegate:self];
+        _refreshFooter.alpha = 1;
+        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+            [replay getMoreComments:10];
+            if (![replay noMore])
+            {
+                [blockRefreshFooter endRefreshing];
+            }
+        };
+        
+        [_refreshFooter beginRefreshing];
+        
+    }
+    
+    if (replay.TID == [[Forum sharedInstance] onTopic].TID) {
+        [talkTextField setAlpha:YES];
+        [createTalkBtn setAlpha:YES];
+        [talksTable setFrame:CGRectMake(48, 168, 528, 436)];
+         [talksTable setContentSize:CGSizeMake(528, 436)];
+    }else{
+        [talkTextField setAlpha:NO];
+        [createTalkBtn setAlpha:NO];
+        [talksTable setFrame:CGRectMake(48, 112, 528, 492)];
+         [talksTable setContentSize:CGSizeMake(528, 492)];
+    }
+    
+
     [talksTable reloadData];
 }
 

@@ -59,6 +59,7 @@
             [self setHorizontalFrame];
         }
     }
+    [partnerData refreshStatus];
     [partnerData setAlpha:0];
     [UIView animateWithDuration:0.5 animations:^{
         [partnerData setAlpha:1];
