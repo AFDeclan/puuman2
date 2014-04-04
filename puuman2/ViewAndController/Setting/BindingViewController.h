@@ -7,10 +7,18 @@
 //
 
 #import "CustomPopViewController.h"
-#import "SettingBindView.h"
+#import "CustomTextField.h"
+#import "BindAddButton.h"
 
-@interface BindingViewController : CustomPopViewController
+@interface BindingViewController : CustomPopViewController<UITextFieldDelegate>
 {
-    SettingBindView *bindView;
+    CustomTextField * weixin;
+    CustomTextField * weibo;
+    CustomTextField * alipay;
+    BindAddButton *weixin_btn;
+    BindAddButton *weibo_btn;
+    BindAddButton *alipay_btn;
+    UIButton *  _confirmBtn;
+
 }
 @end

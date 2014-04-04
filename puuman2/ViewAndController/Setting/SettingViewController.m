@@ -266,18 +266,17 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
             }
             
         }else if(section == 1){
-            if (row == 0) {
-                BindingViewController *bindVC = [[BindingViewController alloc] initWithNibName:nil bundle:nil];
-                [self.view addSubview:bindVC.view];
-                [bindVC setTitle:cellTitles[0][1] withIcon:nil];
-                [bindVC setControlBtnType:kCloseAndFinishButton];
-                [bindVC show];
-            }else if (row == 1){
-            
-            }else{
-            
-            }
-        
+//            if (row == 0) {
+//                            }else if (row == 1){
+//            
+//            }else{
+//            
+//            }
+            BindingViewController *bindVC = [[BindingViewController alloc] initWithNibName:nil bundle:nil];
+            [self.view addSubview:bindVC.view];
+            [bindVC setTitle:cellTitles[0][1] withIcon:nil];
+            [bindVC setControlBtnType:kCloseAndFinishButton];
+            [bindVC show];
         }else {
             if (row == 0) {
                 SettingAdviceViewController *adCV = [[SettingAdviceViewController alloc] initWithNibName:nil bundle:nil];
@@ -327,5 +326,6 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     }];
     
 }
+
 
 @end

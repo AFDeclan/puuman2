@@ -36,7 +36,6 @@
     
     talksTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 168, 528, 436)];
     [talksTable setBackgroundColor:PMColor5];
-    [talksTable setContentSize:CGSizeMake(528, 436)];
     [talksTable setDelegate:self];
     [talksTable setDataSource:self];
     [talksTable setSeparatorColor:[UIColor clearColor]];
@@ -147,18 +146,32 @@
 {
     _replay = reply;
     [talksTable reloadData];
+    PostNotification(Noti_RefreshTopicTable, nil);
 }
 
 //更多评论加载失败 注意根据noMore判断是否是因为全部加载完
 - (void)replyCommentsLoadFailed:(Reply *)reply
 {
-    _replay = reply;
+   
+     [talksTable reloadData];
 }
 
 
 - (void)setReplay:(Reply *)replay
 {
     _replay =replay;
+    
+    if (replay.TID == [[Forum sharedInstance] onTopic].TID) {
+        [talkTextField setAlpha:YES];
+        [createTalkBtn setAlpha:YES];
+        [talksTable setContentSize:CGSizeMake(528, 436)];
+        [talksTable setFrame:CGRectMake(48, 168, 528, 436)];
+    }else{
+        [talkTextField setAlpha:NO];
+        [createTalkBtn setAlpha:NO];
+        [talksTable setContentSize:CGSizeMake(528, 492)];
+        [talksTable setFrame:CGRectMake(48, 112, 528, 492)];
+    }
     [[Forum sharedInstance] addDelegateObject:self];
     if (!_refreshFooter) {
         _refreshFooter = [[MJRefreshFooterView alloc] init];
@@ -168,7 +181,7 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [replay getMoreComments:10];
+            [_replay getMoreComments:2 newDirect:YES];
             if (![replay noMore])
             {
                 [blockRefreshFooter endRefreshing];
@@ -178,17 +191,21 @@
         [_refreshFooter beginRefreshing];
         
     }
-    
-    if (replay.TID == [[Forum sharedInstance] onTopic].TID) {
-        [talkTextField setAlpha:YES];
-        [createTalkBtn setAlpha:YES];
-        [talksTable setFrame:CGRectMake(48, 168, 528, 436)];
-         [talksTable setContentSize:CGSizeMake(528, 436)];
-    }else{
-        [talkTextField setAlpha:NO];
-        [createTalkBtn setAlpha:NO];
-        [talksTable setFrame:CGRectMake(48, 112, 528, 492)];
-         [talksTable setContentSize:CGSizeMake(528, 492)];
+    if (!_refreshHeader) {
+        _refreshHeader = [[MJRefreshHeaderView alloc] init];
+        _refreshHeader.scrollView = talksTable;
+        [talksTable addSubview:_refreshHeader];
+        [_refreshHeader setDelegate:self];
+        _refreshHeader.alpha = 1;
+        __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
+        _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+            [_replay getMoreComments:2 newDirect:NO];
+            if (![replay noMore])
+            {
+                [blockRefreshHeader endRefreshing];
+            }
+        };
+        
     }
     
 

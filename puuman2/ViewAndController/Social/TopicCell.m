@@ -204,7 +204,7 @@
     
     if ([[_replay comments] count] == 0) {
         if (![_replay noMore]) {
-          //  [_replay getMoreComments:5];
+            [_replay getMoreComments:10 newDirect:YES];
         }
     }else{
         [relayExample setText:[[_replay comments] objectAtIndex:0]];
