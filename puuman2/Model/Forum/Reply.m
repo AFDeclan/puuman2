@@ -58,7 +58,6 @@
             _voted = [val boolValue];
         }
     }
-    _coffset = 0;
     _comments = [[NSMutableArray alloc] init];
 }
 
@@ -78,7 +77,7 @@
     [req postAsynchronous];
 }
 
-- (void)getMoreComments:(NSInteger)cnt
+- (void)getMoreComments:(NSInteger)cnt newDirect:(BOOL)dir
 {
     for (PumanRequest *req in _reqs) {
         if (req.tag == Tag_LoadComment_Req) return;
@@ -88,7 +87,13 @@
     [_reqs addObject:req];
     req.urlStr = kUrl_GetReplyComment;
     [req setIntegerParam:_RID forKey:@"RID"];
-    [req setIntegerParam:_coffset forKey:@"offset"];
+    NSDate * boundDate = nil;
+    Comment *boundComment = dir ? [_comments firstObject] : [_comments lastObject];
+    if (boundComment) {
+        boundDate = boundComment.CCreateTime;
+    }
+    if (boundDate) [req setValue:[DateFormatter timestampStrFromDatetime:boundDate] forKey:@"boundDate"];
+    [req setIntegerParam:dir forKey:@"dir"];
     [req setIntegerParam:cnt forKey:@"limit"];
     [req setResEncoding:PumanRequestRes_JsonEncoding];
     req.delegate = self;
@@ -138,8 +143,8 @@
             if (afRequest.result == PumanRequest_Succeeded && afRequest.resObj) {
                 NSArray *ret = afRequest.resObj;
                 NSInteger cnt = [ret count];
-                _coffset += cnt;
-                if (cnt < [[afRequest.params valueForKey:@"limit"] integerValue]) _noMore = YES;
+                BOOL dir = [[afRequest.params valueForKey:@"dir"] boolValue];
+                if (cnt < [[afRequest.params valueForKey:@"limit"] integerValue] && !dir) _noMore = YES;
                 if (!_comments) {
                     _comments = [[NSMutableArray alloc] init];
                 }
@@ -150,9 +155,6 @@
                 }
                 [[Forum sharedInstance] informDelegates:@selector(replyCommentsLoadedMore:) withObject:self];
             } else {
-                if (afRequest.result == 2) {
-                    _noMore = YES;
-                }
                 [[Forum sharedInstance] informDelegates:@selector(replyCommentsLoadFailed:) withObject:self];
             }
         }

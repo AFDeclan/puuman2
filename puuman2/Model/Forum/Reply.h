@@ -12,7 +12,6 @@
 @interface Reply : NSObject <AFRequestDelegate>
 {
     NSMutableSet *_reqs;
-    NSInteger _coffset;
 }
 
 //回复ID
@@ -39,11 +38,11 @@
 
 //已获取的评论列表
 @property (retain, nonatomic, readonly) NSMutableArray * comments;
-//是否获取了全部的评论列表
+//是否获取了全部的历史评论列表
 @property (assign, nonatomic, readonly) bool noMore;
 
 //获取更多评论
-- (void)getMoreComments:(NSInteger)cnt;
+- (void)getMoreComments:(NSInteger)cnt newDirect:(BOOL)dir;
 
 //发表评论
 - (void)comment:(NSString *)content;
