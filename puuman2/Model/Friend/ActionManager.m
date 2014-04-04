@@ -44,7 +44,7 @@
         [ErrorLog errorLog:@"Could not open db." fromFile:@"ActionManager.m" error:_db.lastError];
     }
     NSString *tableName = ActionTableName;
-    NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (AID INTEGER PRIMARY KEY, GID INTEGER, AType INTEGER, ASouceUID INTEGER, ATargetBID INTEGER, AMeta TEXT, ACreateTime REAL)", tableName];
+    NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (AID INTEGER PRIMARY KEY, GID INTEGER, AType INTEGER, ASourceUID INTEGER, ATargetBID INTEGER, AMeta TEXT, ACreateTime REAL)", tableName];
     if (![_db executeUpdate:sqlCreateTable])
     {
         [ErrorLog errorLog:@"Create table failed!" fromFile:@"ActionManager.m" error:_db.lastError];
@@ -67,7 +67,7 @@
 
 - (NSArray *)actionsForGroup:(NSInteger)GID
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE GID = %d ORDER BY ACreateTime DESC", ActionTableName, GID];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE GID = %d ORDER BY ACreateTime ASC", ActionTableName, GID];
     FMResultSet *rs = [_db executeQuery:sql];
     NSMutableArray *actions = [[NSMutableArray alloc] init];
     while ([rs next]) {

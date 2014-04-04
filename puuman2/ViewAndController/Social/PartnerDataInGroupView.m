@@ -66,7 +66,7 @@
 {
     manage = NO;
     [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];
-    PostNotification(Noti_manangedPartnerData, nil);
+   // PostNotification(Noti_manangedPartnerData, nil);
     [figuresHeader reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
     [dataInfoView reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
     

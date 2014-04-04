@@ -92,6 +92,7 @@
     {
         [self setHorizontalFrame];
     }
+    
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
@@ -282,7 +283,6 @@
             
         }else{
             
-            
             [info_num setText:[NSString stringWithFormat:@"第%d期",topicNum]];
             [leftBtn setNoti:@""];
             [leftBtn setTitleName:[NSString stringWithFormat:@"第%d期",topicNum-1]];
@@ -290,14 +290,8 @@
             [rightBtn setTitleName:[NSString stringWithFormat:@"第%d期",topicNum+1]];
             
         }
-  
-       
-
     }
 
-
-   
-    
 }
 
 
@@ -378,14 +372,14 @@
 
 - (void)leftSortSelected
 {
-    [topicAllVC setOrder:TopicReplyOrder_Time];
+    [topicAllVC setOrder:TopicReplyOrder_Vote];
     [left_sortBtn selected];
     [right_sortBtn unSelected];
 }
 
 - (void)rightSortSelected
 {
-    [topicAllVC setOrder:TopicReplyOrder_Vote];
+    [topicAllVC setOrder:TopicReplyOrder_Time];
     [right_sortBtn selected];
     [left_sortBtn unSelected];
 }

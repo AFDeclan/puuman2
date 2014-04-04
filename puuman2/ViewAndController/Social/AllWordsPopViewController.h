@@ -11,12 +11,15 @@
 #import "ColorButton.h"
 #import "Reply.h"
 #import "Forum.h"
+#import "MJRefreshFooterView.h"
 
-@interface AllWordsPopViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate,UITextFieldDelegate>
+
+@interface AllWordsPopViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate,UITextFieldDelegate,MJRefreshBaseViewDelegate>
 {
     CustomTextField *talkTextField;
     UITableView *talksTable;
     ColorButton *createTalkBtn;
+     MJRefreshFooterView *_refreshFooter;
 }
 @property(retain,nonatomic)Reply *replay;
 @end

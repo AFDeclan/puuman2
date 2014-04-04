@@ -28,7 +28,7 @@
     if (self) {
         // Custom initialization
         _voting = NO;
-        _order = TopicReplyOrder_Time;
+        _order =  TopicReplyOrder_Vote;
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSArray alloc] init];
         [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
@@ -93,15 +93,14 @@
         
         NSString *identifier;
         TopicCell *cell;
-        Reply *replay = [replays objectAtIndex:[indexPath row]];
-        if ([replay.textUrls count] != 0) {
+        if (_topic.TType == TopicType_Text) {
             identifier = @"ReplayTextTopicCell";
             cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (!cell) {
                 cell  =[[TextTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
             
-        }else if ([replay.photoUrls count] !=0)
+        }else if (_topic.TType == TopicType_Photo)
         {
             identifier = @"ReplayPhotoTopicCell";
             cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -113,8 +112,10 @@
                 cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
         }
+        
         [cell setIsMyTopic:NO];
-        [cell buildWithReply:replay];
+        [cell buildWithReply:[replays objectAtIndex:[indexPath row]]];
+
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -132,7 +133,7 @@
         return 108;
     }else{
         
-        return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO];
+        return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType];
     }
    
     
@@ -169,16 +170,29 @@
                 [blockRefreshFooter endRefreshing];
             }
         };
+    
+        [_refreshFooter beginRefreshing];
 
-        
     }
-
+    
+    [self.tableView reloadData];
 }
 
 - (void)setOrder:(TopicReplyOrder)order
 {
     _order = order;
-     [_refreshFooter beginRefreshing];
+   
+    if ([_refreshFooter isRefreshing]) {
+        [_refreshFooter endRefreshing];
+    }
+    
+    if (![_topic noMoreReplies:_order])
+    {
+         [_refreshFooter beginRefreshing];
+    }else{
+        replays = [_topic replies:_order];
+        [self.tableView reloadData];
+    }
 }
 
 //更多话题回复加载成功。

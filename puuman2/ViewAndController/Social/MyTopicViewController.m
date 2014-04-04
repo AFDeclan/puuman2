@@ -135,9 +135,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-      return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]] andIsMyTopic:YES];
-  
-    
+  //  return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]] andIsMyTopic:YES andTopicType:top];
+    return 108;
+
 }
 
 

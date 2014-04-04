@@ -16,6 +16,7 @@
 #import "MemberCache.h"
 #import "Friend.h"
 #import "RecommendPartnerViewController.h"
+#import "Topic.h"
 
 @interface TopicCell : UITableViewCell<ForumDelegate,FriendDelegate,PopViewDelegate>
 {
@@ -24,7 +25,7 @@
     UIView *headerView;
     UIView *contentView;
     UIView *footerView;
-    AFSelecedTextImgButton *likeBtn;
+    AFTextImgButton *likeBtn;
     AFTextImgButton *replayBtn;
     UILabel *relayExample;
     AFTextImgButton *scanMoreReplay;
@@ -35,8 +36,9 @@
     UIView *headTitleView;
     UILabel *topicNameLabel;
     UILabel *topicNumLabel;
+    Member *_member;
 }
 @property(nonatomic,assign)BOOL isMyTopic;
 - (void)buildWithReply:(Reply *)replay;
-+ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic;
++ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type;
 @end

@@ -20,6 +20,7 @@
     BOOL manage;
     Group *group;
 }
+
 - (void)loadViewInfo;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

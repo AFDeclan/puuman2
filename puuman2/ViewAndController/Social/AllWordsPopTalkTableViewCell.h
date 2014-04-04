@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TextLayoutLabel.h"
-
-@interface AllWordsPopTalkTableViewCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate>
+#import "AdaptiveLabel.h"
+#import "BasicInfoView.h"
+#import "Friend.h"
+@interface AllWordsPopTalkTableViewCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate,FriendDelegate>
 {
-    UIImageView *portrait;
-    UILabel *name;
-    UILabel *status;
-    UIImageView *icon_sex;
-    TextLayoutLabel *detail;
+    BasicInfoView *infoView;
+    AdaptiveLabel *mainTextView;
 }
-- (void)setCellWithTalk:(NSDictionary *)talkInfo;
-+ (CGFloat)heightForTalk:(NSDictionary *)talkInfo;
+-(void)buildWithUid:(NSInteger)uid andIndex:(NSInteger)index andCommmet:(NSString *)comment;
++ (CGFloat)heightForComment:(NSString *)comment;
 @end

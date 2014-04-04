@@ -28,15 +28,15 @@
         icon_head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
         [icon_head setImage:[UIImage imageNamed:@"block_name_fri.png"]];
         [self addSubview:icon_head];
-        [[Friend sharedInstance] addDelegateObject:self];
-        
-        info_title = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+      
+        notiStr = @"";
+        info_title = [[UITextField alloc] initWithFrame:CGRectMake(80, 16, 160, 16)];
         [info_title setBackgroundColor:[UIColor clearColor]];
         [info_title setTextColor:[UIColor whiteColor]];
         [info_title setFont:PMFont2];
         [info_title setTextAlignment:NSTextAlignmentCenter];
         [icon_head addSubview:info_title];
-      
+        [info_title setDelegate:self];
         
         modifyBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         
@@ -62,24 +62,39 @@
         noti_label = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
         [noti_label setBackgroundColor:[UIColor clearColor]];
         [self addSubview:noti_label];
+        [MyNotiCenter addObserver:self selector:@selector(removeAllDelegate) name:Noti_RemoveFriendDelegate object:nil];
         
+        modifyNameBtn = [[UIButton alloc] initWithFrame:CGRectMake(80, 0, 160, 48)];
+        [modifyNameBtn setBackgroundColor:[UIColor clearColor]];
+        [modifyNameBtn addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:modifyNameBtn];
         
-
-   
-  
-
     }
     return self;
 }
 
+- (void)showKeyBoard
+{
+    [info_title becomeFirstResponder];
+}
+
+- (void)removeAllDelegate
+{
+    [[Friend sharedInstance] removeDelegateObject:self];
+}
+
 - (void)reloadWithGroupInfo:(Group *)group
 {
+    PostNotification(Noti_RemoveFriendDelegate, nil);
+     [[Friend sharedInstance] addDelegateObject:self];
+   
     myGroup = group;
     if (figuresColumnView) {
         [figuresColumnView removeFromSuperview];
         figuresColumnView = nil;
     }
     [info_title setText:group.GName];
+    oldName = group.GName;
     figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 48, 576, 120)];
     [figuresColumnView setBackgroundColor:[UIColor clearColor]];
     [figuresColumnView setViewDelegate:self];
@@ -98,12 +113,24 @@
 
 - (void)showManagerMenu
 {
+    
     canDeleteMember = YES;
+    [info_title setEnabled:YES];
+    [modifyNameBtn setEnabled:YES];
+    [info_title becomeFirstResponder];
+    [info_title setBackgroundColor:PMColor3];
 }
 
 - (void)hiddenManagerMenu
 {
+    
     canDeleteMember = NO;
+    [info_title setEnabled:NO];
+    [modifyNameBtn setEnabled:NO];
+    [info_title resignFirstResponder];
+    [[myGroup actionForRenameGroup:info_title.text] upload];
+
+    [info_title setBackgroundColor:[UIColor clearColor]];
 }
 
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
@@ -173,7 +200,7 @@
 {
     [noti_label setFrame:CGRectMake(320, 0, 164, 48)];
     [noti_label animateStop];
-    [noti_label setTitleWithTitleText:@"三天前，天天邀请了w 入团" andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
+    [noti_label setTitleWithTitleText:notiStr andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
     [noti_label animateStart];
 }
 
@@ -181,7 +208,7 @@
 {
     [noti_label setFrame:CGRectMake(320, 0, 276, 48)];
     [noti_label animateStop];
-    [noti_label setTitleWithTitleText:@"三天前，天天邀请了w 入团" andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
+    [noti_label setTitleWithTitleText:notiStr andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
     [noti_label animateStart];
 }
 
@@ -196,5 +223,14 @@
 
 }
 
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (range.length == 0) {
+        if ([textField.text length] >=10) {
+            NSString *str = [textField.text substringToIndex:10];
+            textField.text =str;
+        }
+    }
+    return YES;
+}
 @end

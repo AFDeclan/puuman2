@@ -13,6 +13,8 @@
 
 @implementation ActionForUpload
 
+@synthesize ACreateTime = _ACreateTime;
+
 - (void)upload
 {
     if (_req) return;
@@ -23,15 +25,17 @@
     [_req setIntegerParam:self.ASourceUID forKey:@"ASourceUID"];
     [_req setIntegerParam:self.ATargetBID forKey:@"ATargetBID"];
     [_req setParam:self.AMeta forKey:@"AMeta"];
+    [_req setDelegate:self];
     [_req postAsynchronous];
+    _ACreateTime = [NSDate date];
 }
 
 - (void)requestEnded:(AFBaseRequest *)afRequest
 {
     if (_req.result == PumanRequest_Succeeded) {
-        [[Friend sharedInstance] informDelegates:@selector(actionUploaded:) withObject:self];
+        [self.group actionUploadSuc:self];
     } else {
-        [[Friend sharedInstance] informDelegates:@selector(actionUploadFail:) withObject:self];
+        [self.group actionUploadFail:self];
     }
 }
 

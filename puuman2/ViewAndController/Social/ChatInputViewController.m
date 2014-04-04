@@ -72,12 +72,16 @@
 
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(taped)];
         [bgView addGestureRecognizer:tap];
-        
+        [MyNotiCenter addObserver:self selector:@selector(removeAllDelegate) name:Noti_RemoveFriendDelegate object:nil];
         
     }
     return self;
 }
 
+- (void)removeAllDelegate
+{
+    [[Friend sharedInstance] removeDelegateObject:self];
+}
 
 - (void)keyboardWillShow:(NSNotification *)notif
 {
@@ -133,7 +137,8 @@
                 [UIView animateWithDuration:animationDuration*ViewHeight(_content)/keyBoardHeigh animations:^{
                 SetViewLeftUp(_content, 0, ViewHeight(_content));
             }completion:^(BOOL finished) {
-               
+                [[MainTabBarController sharedMainViewController] hiddenBottomInputView];
+
             }];
         }
     }];
@@ -230,6 +235,7 @@
         [inputTextView becomeFirstResponder];
         
     }else{
+         PostNotification(Noti_RemoveFriendDelegate, nil);
         [[Friend sharedInstance] addDelegateObject:self];
         SetViewLeftUp(_content, 0, 56);
         [UIView animateWithDuration:0.5 animations:^{
@@ -247,6 +253,8 @@
     [UIView animateWithDuration:0.5 animations:^{
         SetViewLeftUp(_content, 0, 56);
     }completion:^(BOOL finished) {
+         [[Forum sharedInstance] removeDelegateObject:self];
+        [[Friend sharedInstance] removeDelegateObject:self];
         [self.view removeFromSuperview];
     }];
 }
@@ -309,8 +317,6 @@
 - (void)replyCommentsLoadedMore:(Reply *)reply
 {
     PostNotification(Noti_RefreshTopicTable, nil);
-    [[Forum sharedInstance] removeDelegateObject:self];
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self  name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [self.view removeFromSuperview];

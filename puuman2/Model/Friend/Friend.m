@@ -64,7 +64,8 @@ static Friend * instance;
 
 - (void)informDelegates:(SEL)sel withObject:(id)obj
 {
-    for (NSObject<FriendDelegate> * del in _delegates) {
+    NSSet *dels = [_delegates copy];
+    for (NSObject<FriendDelegate> * del in dels) {
         if ([del respondsToSelector:sel]) {
             [del performSelectorOnMainThread:sel withObject:obj waitUntilDone:YES];
         }

@@ -93,7 +93,11 @@
 - (void)buildWithTheUid:(NSInteger)uid andUserInfo:(Member *)userInfo
 {
     _userInfo = userInfo;
-    [[MemberCache sharedInstance] getMemberWithUID:uid];
+    
+    Member *member = [[MemberCache sharedInstance] getMemberWithUID:uid];
+    if (member) {
+        [self memberDownloaded:member];
+    }
    
 }
 

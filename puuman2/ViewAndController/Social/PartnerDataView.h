@@ -16,6 +16,7 @@
     PartnerDataInGroupView *inGroupView;
     PartnerDataOutGroupView *outGroupView;
 }
+
 - (void)refreshStatus;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

@@ -118,6 +118,7 @@
 - (void)startUpdateAction
 {
     if (_updateTimer) return;
+    [self updateAction];
     _updateTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(updateAction) userInfo:nil repeats:YES];
 }
 
@@ -137,7 +138,7 @@
     _req.resEncoding = PumanRequestRes_JsonEncoding;
     [_req setIntegerParam:_GID forKey:@"GID"];
     NSString *latestUpdate = @"1971-01-01 00:00:00";
-    for (int i=0; i<_GAction.count; i++) {
+    for (int i=_GAction.count-1; i>=0; i--) {
         id act = [_GAction objectAtIndex:i];
         if ([act isMemberOfClass:[Action class]]) {
             Action *action = (Action *)act;
@@ -199,6 +200,7 @@
         default:
             break;
     }
+    [_GAction addObject:action];
     [[Friend sharedInstance] informDelegates:@selector(actionUploaded:) withObject:action];
     [_actionForUps removeObject:action];
 }
