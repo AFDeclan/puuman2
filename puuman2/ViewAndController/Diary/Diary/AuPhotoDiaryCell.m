@@ -13,6 +13,7 @@
 #import "DetailShowViewController.h"
 #import "UIImage+CroppedImage.h"
 #import "DiaryViewController.h"
+#import "ShareSelectedViewController.h"
 
 @implementation AuPhotoDiaryCell
 
@@ -103,6 +104,10 @@
 
 - (void)share:(id)sender
 {
+    
+    [ShareSelectedViewController share];
+    
+    
 //    //子类重载
 //    NSString *text;
 //    NSString *title = [self.diaryInfo valueForKey:kTitleName];

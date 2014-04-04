@@ -14,6 +14,7 @@
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
 #import "UserInfo.h"
+#import "Comment.h"
 
 @implementation TopicCell
 @synthesize isMyTopic = _isMyTopic;
@@ -179,6 +180,7 @@
 - (void)popViewfinished
 {
     hasInfoView = NO;
+    [[Forum sharedInstance] addDelegateObject:self];
 }
 
 - (void)buildWithReply:(Reply *)replay
@@ -275,13 +277,17 @@
 
 - (void)scanMore
 {
+    [[Forum sharedInstance] removeDelegateObject:self];
     AllWordsPopViewController *moreReplayVC  =[[ AllWordsPopViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:moreReplayVC.view];
     [moreReplayVC setControlBtnType:kOnlyCloseButton];
     [moreReplayVC setTitle:@"所有留言"];
     [moreReplayVC setReplay:_replay];
+    [moreReplayVC setDelegate:self];
     [moreReplayVC show];
 }
+
+
 
 + (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type
 {
@@ -357,8 +363,8 @@
 - (void)replyCommentsLoadedMore:(Reply *)reply
 {
     
-    if (![[reply comments] count] == 0) {
-        [relayExample setText:[[reply comments] objectAtIndex:0]];
+    if ([[reply comments] count] != 0) {
+        [relayExample setText:[[[reply comments] objectAtIndex:0] CContent]];
 
     }
 }

@@ -9,6 +9,7 @@
 #import "AllWordsPopViewController.h"
 #import "ColorsAndFonts.h"
 #import "AllWordsPopTalkTableViewCell.h"
+#import "Comment.h"
 
 @interface AllWordsPopViewController ()
 
@@ -35,6 +36,7 @@
     
     talksTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 168, 528, 436)];
     [talksTable setBackgroundColor:PMColor5];
+    [talksTable setContentSize:CGSizeMake(528, 436)];
     [talksTable setDelegate:self];
     [talksTable setDataSource:self];
     [talksTable setSeparatorColor:[UIColor clearColor]];
@@ -85,8 +87,10 @@
             cell = [[AllWordsPopTalkTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
             
     }
-        
-    [cell buildWithUid:_replay.UID andIndex:[indexPath row] andCommmet:[[_replay comments] objectAtIndex:[indexPath row]]];
+    
+    Comment *comment =[[_replay comments] objectAtIndex:[indexPath row]];
+    
+    [cell buildWithUid:comment.UID andIndex:[indexPath row] andCommmet: comment.CContent];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
@@ -98,7 +102,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return [AllWordsPopTalkTableViewCell heightForComment:[[_replay comments] objectAtIndex:[indexPath row]]];
+    return [AllWordsPopTalkTableViewCell heightForComment:[[[_replay comments] objectAtIndex:[indexPath row]] CContent]];
 }
 
 
@@ -141,7 +145,7 @@
 //更多评论加载成功
 - (void)replyCommentsLoadedMore:(Reply *)reply
 {
-    _replay =reply;
+    _replay = reply;
     [talksTable reloadData];
 }
 
@@ -164,7 +168,7 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-           // [replay getMoreComments:5];
+            [replay getMoreComments:10];
             if (![replay noMore])
             {
                 [blockRefreshFooter endRefreshing];
@@ -179,10 +183,12 @@
         [talkTextField setAlpha:YES];
         [createTalkBtn setAlpha:YES];
         [talksTable setFrame:CGRectMake(48, 168, 528, 436)];
+         [talksTable setContentSize:CGSizeMake(528, 436)];
     }else{
         [talkTextField setAlpha:NO];
         [createTalkBtn setAlpha:NO];
         [talksTable setFrame:CGRectMake(48, 112, 528, 492)];
+         [talksTable setContentSize:CGSizeMake(528, 492)];
     }
     
 
