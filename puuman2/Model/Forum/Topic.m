@@ -144,7 +144,7 @@
                 [self cacheReply:re];
             }
             NSInteger cnt = afRequest.tag;
-            [self loadMoreReplies:cnt orderBy:order];
+            [self loadMoreReplies:cnt orderBy:(TopicReplyOrder)order];
         } else {
             [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
         }
@@ -152,6 +152,7 @@
     } else {
         if (afRequest.result == PumanRequest_Succeeded) {
             _voted = YES;
+            _voteCnt ++;
             [[Forum sharedInstance] informDelegates:@selector(topicVoted:) withObject:self];
         } else {
             if (afRequest.result == 1) {

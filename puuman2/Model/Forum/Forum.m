@@ -272,6 +272,4 @@ static Forum * instance;
     [_repliesForUpload removeObject:reply];
 }
 
-
-
 @end
