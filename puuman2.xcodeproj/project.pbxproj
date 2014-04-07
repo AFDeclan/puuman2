@@ -302,10 +302,10 @@
 		54A9288418C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */; };
 		54AC15CB18ED4C84009CE045 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC15CA18ED4C84009CE045 /* Topic.m */; };
 		54AC1D1918EEA1B2005E2DCE /* BindingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC1D1818EEA1B2005E2DCE /* BindingViewController.m */; };
-		54AC1D1C18EEA30D005E2DCE /* SettingBindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC1D1B18EEA30D005E2DCE /* SettingBindView.m */; };
 		54AC1D2018EEAAD7005E2DCE /* ShareSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC1D1F18EEAAD7005E2DCE /* ShareSelectedViewController.m */; };
 		54AC1D2318EEB542005E2DCE /* btn_share1_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC1D2118EEB542005E2DCE /* btn_share1_diary.png */; };
 		54AC1D2418EEB542005E2DCE /* btn_share2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC1D2218EEB542005E2DCE /* btn_share2_diary.png */; };
+		54AC1D2718EEC080005E2DCE /* BindAddButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC1D2618EEC080005E2DCE /* BindAddButton.m */; };
 		54AC20E118E3FD30001C1357 /* btn_all1_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC20C418E3FD2F001C1357 /* btn_all1_shop.png */; };
 		54AC20E218E3FD30001C1357 /* btn_all2_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC20C518E3FD2F001C1357 /* btn_all2_shop.png */; };
 		54AC20E318E3FD30001C1357 /* btn_delete_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC20C618E3FD2F001C1357 /* btn_delete_shop.png */; };
@@ -1042,12 +1042,12 @@
 		54AC15CA18ED4C84009CE045 /* Topic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
 		54AC1D1718EEA1B2005E2DCE /* BindingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingViewController.h; sourceTree = "<group>"; };
 		54AC1D1818EEA1B2005E2DCE /* BindingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingViewController.m; sourceTree = "<group>"; };
-		54AC1D1A18EEA30D005E2DCE /* SettingBindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBindView.h; sourceTree = "<group>"; };
-		54AC1D1B18EEA30D005E2DCE /* SettingBindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBindView.m; sourceTree = "<group>"; };
 		54AC1D1E18EEAAD7005E2DCE /* ShareSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSelectedViewController.h; sourceTree = "<group>"; };
 		54AC1D1F18EEAAD7005E2DCE /* ShareSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSelectedViewController.m; sourceTree = "<group>"; };
 		54AC1D2118EEB542005E2DCE /* btn_share1_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_share1_diary.png; sourceTree = "<group>"; };
 		54AC1D2218EEB542005E2DCE /* btn_share2_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_share2_diary.png; sourceTree = "<group>"; };
+		54AC1D2518EEC080005E2DCE /* BindAddButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindAddButton.h; sourceTree = "<group>"; };
+		54AC1D2618EEC080005E2DCE /* BindAddButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindAddButton.m; sourceTree = "<group>"; };
 		54AC20C418E3FD2F001C1357 /* btn_all1_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_all1_shop.png; sourceTree = "<group>"; };
 		54AC20C518E3FD2F001C1357 /* btn_all2_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_all2_shop.png; sourceTree = "<group>"; };
 		54AC20C618E3FD2F001C1357 /* btn_delete_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_delete_shop.png; sourceTree = "<group>"; };
@@ -2784,12 +2784,12 @@
 		54B6F41218D6C0800055FC72 /* support */ = {
 			isa = PBXGroup;
 			children = (
-				54AC1D1A18EEA30D005E2DCE /* SettingBindView.h */,
-				54AC1D1B18EEA30D005E2DCE /* SettingBindView.m */,
 				54B6F41918D6C32C0055FC72 /* SettingBindCellView.h */,
 				54B6F41A18D6C32C0055FC72 /* SettingBindCellView.m */,
 				54B6F41C18D6C8640055FC72 /* ReSendButton.h */,
 				54B6F41D18D6C8640055FC72 /* ReSendButton.m */,
+				54AC1D2518EEC080005E2DCE /* BindAddButton.h */,
+				54AC1D2618EEC080005E2DCE /* BindAddButton.m */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -3972,7 +3972,6 @@
 				54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */,
 				54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */,
 				54B753A018D2A7C7002411CF /* BabyVaccineView.m in Sources */,
-				54AC1D1C18EEA30D005E2DCE /* SettingBindView.m in Sources */,
 				54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */,
 				54AE2BB718E93FEB00D24F92 /* ActionManager.m in Sources */,
 				54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */,
@@ -3996,6 +3995,7 @@
 				54CE10F018C1842C00966396 /* ADTickerLabel.m in Sources */,
 				54AC210718E4055B001C1357 /* SearchTextField.m in Sources */,
 				5447C4AB18D98AE700187BE6 /* PartnerView.m in Sources */,
+				54AC1D2718EEC080005E2DCE /* BindAddButton.m in Sources */,
 				14B8DF2C18BC37A30047C6B3 /* BabyData.m in Sources */,
 				54D64F0518E7EFC400B8899D /* CartTableViewCell.m in Sources */,
 				543BAEBE18CEB4EB00ED4672 /* AudioDiaryCell.m in Sources */,

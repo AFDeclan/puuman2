@@ -12,6 +12,7 @@
 #import "Reply.h"
 #import "Forum.h"
 #import "MJRefreshFooterView.h"
+#import "MJRefreshHeaderView.h"
 
 
 @interface AllWordsPopViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate,UITextFieldDelegate,MJRefreshBaseViewDelegate>
@@ -19,7 +20,9 @@
     CustomTextField *talkTextField;
     UITableView *talksTable;
     ColorButton *createTalkBtn;
-     MJRefreshFooterView *_refreshFooter;
+    MJRefreshFooterView *_refreshFooter;
+    MJRefreshHeaderView *_refreshHeader;
 }
+
 @property(retain,nonatomic)Reply *replay;
 @end
