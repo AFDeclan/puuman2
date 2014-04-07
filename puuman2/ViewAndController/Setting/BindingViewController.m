@@ -137,7 +137,7 @@
     [[SocialNetwork sharedInstance] loginToSocial:Weixin];
 }
 
-- (void)confirmBtnPressed:(BindAddButton *)sender
+- (void)confirmBtnPressed:(UIButton *)sender
 {
     [MobClick event:umeng_event_click label:@"Confirm_Shop"];
     [alipay resignFirstResponder];

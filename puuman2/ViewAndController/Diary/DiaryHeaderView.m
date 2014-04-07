@@ -65,17 +65,13 @@
     if (!isFinished) {
         _totalCnt = totalCnt;
         _cnt = cnt;
-        NSTimeInterval time = 0;
-        if (_isDiary) {
-            time = 0.5;
-        }else{
-            time = 0.1;
-        }
+
+       
         
         
         if (!timer) {
            
-            timer = [NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(refreshProgress) userInfo:nil repeats:YES];
+            timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshProgress) userInfo:nil repeats:YES];
         }
         if (cnt == totalCnt) {
             [timer invalidate];
@@ -107,9 +103,8 @@
 {
     CGPoint pos = progress.contentOffset;
     pos.x =self.frame.size.width-self.frame.size.width*_cnt/_totalCnt;
-    [UIView animateWithDuration:0.5 animations:^{
-        progress.contentOffset = pos;
-    }];
+    [progress setContentOffset:pos animated:YES];
+
 }
 
 

@@ -272,6 +272,11 @@
 
 - (void)closeBtnPressed
 {
+    
+    if (puumanVC) {
+        [puumanVC hidden];
+    }
+    
     myWebView.delegate = nil;
     [myWebView stopLoading];
     [self hidden];

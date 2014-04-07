@@ -7,14 +7,14 @@
 //
 
 #import "CustomPopViewController.h"
-#import "ImportTitle.h"
+#import "CustomTextField.h"
 #import "UserInfo.h"
 #import "ImportImgCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #define IMPORT_IMAGE_MAX_NUM    50
 @interface AutoImportViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ImporImgDelegate>
 {
-    ImportTitle *titleTield;
+    CustomTextField *titleTield;
     UILabel *notiLabel;
     UIButton *closeBtn;
     UIButton *finishBtn;
@@ -29,6 +29,7 @@
     NSMutableDictionary *photoStatus;
     NSDate *time;
     int selectedNum;
+    NSThread *thread;
 }
 
 @property(nonatomic,assign)BOOL autodDetection;
