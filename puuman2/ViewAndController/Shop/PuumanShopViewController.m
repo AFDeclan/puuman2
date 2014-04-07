@@ -9,6 +9,7 @@
 #import "PuumanShopViewController.h"
 #import "MainTabBarController.h"
 #import "ColorsAndFonts.h"
+#import "BindAlpayViewController.h"
 
 @interface PuumanShopViewController ()
 
@@ -222,12 +223,49 @@
     
 }
 
+- (void)closeBtnPressed
+{
+    showed = NO;
+    [showBtn setEnabled:YES];
+    
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            SetViewLeftUp(_content, 32, 976);
+            [showBtn setAlpha:1];
+            [bgView setAlpha:0];
+        }completion:^(BOOL finished) {
+            SetViewLeftUp(_content, 32, 0);
+            [bgView setFrame:CGRectMake(0, 0, 768, 1024)];
+            self.view.frame = CGRectMake(0, 976, 768, 1024);
+        }];
+    }else{
+        
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            SetViewLeftUp(_content, 160, 720);
+            [showBtn setAlpha:1];
+            [bgView setAlpha:0];
+
+        }completion:^(BOOL finished) {
+            SetViewLeftUp(_content, 160, 0);
+            [bgView setFrame:CGRectMake(0, 0, 1024, 768)];
+            self.view.frame = CGRectMake(0, 720, 1024, 768);
+        }];
+    }
+
+}
+
 - (void)finishBtnPressed
 {
     if ([[[UserInfo sharedUserInfo] alipayAccount] isEqualToString:@""] ||![[UserInfo sharedUserInfo] alipayAccount]) {
-//        WareBingViewController *bing =[[WareBingViewController alloc] initWithNibName:nil bundle:nil];
-//        [self addSubview:bing.view];
-//        return;
+
+        BindAlpayViewController *bindVC = [[BindAlpayViewController alloc] initWithNibName:nil bundle:nil];
+        [bindVC setControlBtnType:kOnlyCloseButton];
+        [bindVC setTitle:@"绑定支付宝" withIcon:nil];
+        [self.view addSubview:bindVC.view];
+        [bindVC show];
     }else{
         [self paid];
     }

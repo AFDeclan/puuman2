@@ -14,6 +14,7 @@
 #import "DateFormatter.h"
 #import "TaskUploader.h"
 #import "DiaryFileManager.h"
+#import "ImportStore.h"
 
 #define PhotoNumPerRow 5
 #define PerImgHeight 128
@@ -31,38 +32,27 @@
     if (self) {
         // Custom initialization
         selectedNum = 0;
-        bgImgView  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 704, 608)];
-        [bgImgView setImage:[UIImage imageNamed:@"paper_autoinput.png"]];
-        [self.view addSubview:bgImgView];
+    
         
-        titleTield = [[ImportTitle alloc] initWithFrame:CGRectMake(32, 112, 480, 48)];
+        titleTield = [[CustomTextField  alloc] initWithFrame:CGRectMake(96, 112, 512, 48)];
         [titleTield setPlaceholder:@"这些照片是......"];
-        [self.view addSubview:titleTield];
+        [_content addSubview:titleTield];
         
         
         time = [NSDate date];
-        closeBtn = [[UIButton alloc] initWithFrame:CGRectMake(632, 24, 48, 48)];
-        [closeBtn setImage:[UIImage imageNamed:@"btn_close_diary.png"] forState:UIControlStateNormal];
-        [closeBtn addTarget:self action:@selector(closeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:closeBtn];
         
-        finishBtn = [[UIButton alloc] initWithFrame:CGRectMake(632, 532, 48, 48)];
-        [finishBtn setImage:[UIImage imageNamed:@"btn_finish_diary.png"] forState:UIControlStateNormal];
-        [finishBtn addTarget:self action:@selector(finishBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:finishBtn];
-        
-        UIImageView *bgAuto = [[UIImageView alloc] initWithFrame:CGRectMake(32, 540, 32, 32)];
+        UIImageView *bgAuto = [[UIImageView alloc] initWithFrame:CGRectMake(96, 540, 32, 32)];
         [bgAuto setImage:[UIImage imageNamed:@"circle_autoinput.png"]];
-        [self.view addSubview:bgAuto];
-        autoBtn = [[UIButton alloc] initWithFrame:CGRectMake(32, 540, 32, 32)];
+        [_content addSubview:bgAuto];
+        autoBtn = [[UIButton alloc] initWithFrame:CGRectMake(96, 540, 32, 32)];
         [autoBtn setImage:[UIImage imageNamed:@"icon_check_autoinput.png"] forState:UIControlStateNormal];
         [autoBtn addTarget:self action:@selector(autoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:autoBtn];
-        autoLabel = [[UILabel alloc] initWithFrame:CGRectMake(72, 545, 208, 24)];
+        [_content addSubview:autoBtn];
+        autoLabel = [[UILabel alloc] initWithFrame:CGRectMake(136, 545, 208, 24)];
         [autoLabel setText:@"下次不需要自动检测"];
         [autoLabel setTextColor:PMColor3];
         [autoLabel setFont:PMFont3];
-        [self.view addSubview:autoLabel];
+        [_content addSubview:autoLabel];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         
         if (![userDefaults valueForKey:@"autoImport"]) {
@@ -76,8 +66,8 @@
             }
         }
         
-        pickerTable = [[UITableView alloc] initWithFrame:CGRectMake(32, 160, 544, 368)];
-        [self.view addSubview:pickerTable];
+        pickerTable = [[UITableView alloc] initWithFrame:CGRectMake(80, 168, 544, 360)];
+        [_content addSubview:pickerTable];
         [pickerTable setDataSource:self];
         [pickerTable setDelegate:self];
         [pickerTable setBackgroundColor:[UIColor clearColor]];
@@ -85,7 +75,7 @@
         [pickerTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         
         UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
-        [self.view addGestureRecognizer:tap];
+        [_content addGestureRecognizer:tap];
         [self preparePhotos];
     }
     return self;
@@ -133,18 +123,30 @@
     }
 }
 
-- (void)closeBtnPressed
-{
-    
-}
+
 
 - (void)finishBtnPressed
 {
-  
     //save the file
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [dateArr count]; i++) {
+        if ([[photoStatus valueForKey:[NSString stringWithFormat:@"%d",i]] boolValue]) {
+            
+            UIImage  *img =[UIImage imageWithCGImage:[[(ALAsset *)[assetsArr objectAtIndex:i] defaultRepresentation] fullScreenImage]];
+            [arr addObject:img];
+        }
+    }
+    [super finishBtnPressed];
+    
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:arr,@"photos",titleTield.text,@"title", nil];
+    [self performSelector:@selector(updatePhotos:) withObject:dic afterDelay:1];
 }
 
-
+- (void)updatePhotos:(NSDictionary *)dic
+{
+    
+    [[ImportStore shareImportStore] initWithImportData:dic];
+}
 
 - (void)preparePhotos
 {
@@ -157,11 +159,11 @@
     lastDate = (NSDate *)[userDefaults valueForKey:@"closeDate"];
     if (lastDate) {
         NSInteger hour = [[NSDate date] hoursFromDate:lastDate];
-       if (hour < 2) {
-            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
-            return;
-        }
-      
+//       if (hour < 2) {
+//            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
+//            return;
+//        }
+        hour = 200;
         __block BOOL foundThePhoto = NO;
         ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
         library = assetLibrary;
@@ -193,14 +195,14 @@
                                        return ;
                                    }
                                    if (group == nil) {
-                                       [[MainTabBarController sharedMainViewController ] removeAutoImportView];
+                                      // [[MainTabBarController sharedMainViewController ] removeAutoImportView];
                                        return;
                                    }
                                    // added fix for camera albums order
                                    NSString *sGroupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
                                    NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
                                    
-                                   if ([[sGroupPropertyName lowercaseString] isEqualToString:@"camera roll"] && nType == ALAssetsGroupSavedPhotos) {
+                                   if ([[sGroupPropertyName lowercaseString] isEqualToString:@"相机胶卷"] && nType == ALAssetsGroupSavedPhotos) {
                                        @autoreleasepool {
                                            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
                                                if (result == nil) {

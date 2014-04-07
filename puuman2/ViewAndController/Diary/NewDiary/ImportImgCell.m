@@ -27,8 +27,8 @@
 {
     imageView  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [imageView setBackgroundColor:[UIColor clearColor]];
-    flag = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 20, self.frame.size.height - 20, 16, 16)];
-    [flag setImage:[UIImage imageNamed:@"icon_check_diary.png"]];
+    flag = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width - 32)/2, (self.frame.size.height - 32)/2, 32, 32)];
+    [flag setImage:[UIImage imageNamed:@"check_diary.png"]];
      selectBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [selectBtn addTarget:self action:@selector(clicked) forControlEvents:UIControlEventTouchUpInside];
     [selectBtn setBackgroundColor:[UIColor clearColor]];
