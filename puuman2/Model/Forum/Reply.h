@@ -41,11 +41,11 @@
 //是否获取了全部的历史评论列表
 @property (assign, nonatomic, readonly) bool noMore;
 
-//获取更多评论
-- (void)getMoreComments:(NSInteger)cnt newDirect:(BOOL)dir;
+//获取更多评论 如果已经在获取不会发起新的请求，返回No
+- (BOOL)getMoreComments:(NSInteger)cnt newDirect:(BOOL)dir;
 
-//发表评论
-- (void)comment:(NSString *)content;
+//发表评论 如果上次评论还在上传，不会发起新的请求，返回No
+- (BOOL)comment:(NSString *)content;
 
 
 //点赞，注意如果voted为YES说明已经赞过，此方法直接返回。
