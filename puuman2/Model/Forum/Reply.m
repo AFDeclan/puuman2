@@ -127,6 +127,7 @@
             switch (afRequest.result) {
                 case PumanRequest_Succeeded:
                     _voted = YES;
+                    _RVoteCnt ++;
                     [[Forum sharedInstance] informDelegates:@selector(topicReplyVoted:) withObject:self];
                     break;
                 case 1:
