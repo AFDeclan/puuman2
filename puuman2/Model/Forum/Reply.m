@@ -77,10 +77,10 @@
     [req postAsynchronous];
 }
 
-- (void)getMoreComments:(NSInteger)cnt newDirect:(BOOL)dir
+- (BOOL)getMoreComments:(NSInteger)cnt newDirect:(BOOL)dir
 {
     for (PumanRequest *req in _reqs) {
-        if (req.tag == Tag_LoadComment_Req) return;
+        if (req.tag == Tag_LoadComment_Req) return NO;
     }
     PumanRequest * req = [[PumanRequest alloc] init];
     req.tag = Tag_LoadComment_Req;
@@ -98,12 +98,13 @@
     [req setResEncoding:PumanRequestRes_JsonEncoding];
     req.delegate = self;
     [req postAsynchronous];
+    return YES;
 }
 
-- (void)comment:(NSString *)content
+- (BOOL)comment:(NSString *)content
 {
     for (PumanRequest *req in _reqs) {
-        if (req.tag == Tag_UploadComment_Req) return;
+        if (req.tag == Tag_UploadComment_Req) return NO;
     }
     PumanRequest * req = [[PumanRequest alloc] init];
     req.tag = Tag_UploadComment_Req;
@@ -115,6 +116,7 @@
     [req setResEncoding:PumanRequestRes_JsonEncoding];
     req.delegate = self;
     [req postAsynchronous];
+    return YES;
 }
 
 - (void)requestEnded:(AFBaseRequest *)afRequest
@@ -151,7 +153,8 @@
                 for (NSDictionary * commentData in ret) {
                     Comment *co = [[Comment alloc] init];
                     [co setData:commentData];
-                    [_comments addObject:co];
+                    if (dir) [_comments insertObject:co atIndex:0];
+                    else [_comments addObject:co];
                 }
                 [[Forum sharedInstance] informDelegates:@selector(replyCommentsLoadedMore:) withObject:self];
             } else {

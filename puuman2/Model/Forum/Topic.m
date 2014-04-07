@@ -125,6 +125,7 @@
 {
     if (_voteReq || _voted) return;
     _voteReq = [[PumanRequest alloc] init];
+    _voteReq.urlStr = kUrl_VoteTopic;
     [_voteReq setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
     [_voteReq setIntegerParam:_TID forKey:@"TID"];
     [_voteReq setDelegate:self];
@@ -143,7 +144,7 @@
                 [self cacheReply:re];
             }
             NSInteger cnt = afRequest.tag;
-            [self loadMoreReplies:cnt orderBy:order];
+            [self loadMoreReplies:cnt orderBy:(TopicReplyOrder)order];
         } else {
             [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
         }
@@ -151,6 +152,7 @@
     } else {
         if (afRequest.result == PumanRequest_Succeeded) {
             _voted = YES;
+            _voteCnt ++;
             [[Forum sharedInstance] informDelegates:@selector(topicVoted:) withObject:self];
         } else {
             if (afRequest.result == 1) {
