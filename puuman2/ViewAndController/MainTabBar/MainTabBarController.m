@@ -190,8 +190,7 @@ static MainTabBarController *instance;
     [SocialNetwork initSocialNetwork];
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
-    [self setSelectedIndex:1];
-
+    [tabBar selectedWithTag:1];
    
 }
 

@@ -319,7 +319,7 @@
 - (void)topicReplyVoted:(Reply *)reply
 {
     _replay = reply;
-  
+
     if (_replay.voted) {
         [likeBtn setEnabled:NO];
         [likeBtn setTitle:[NSString stringWithFormat:@"%d",_replay.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like1_topic.png"] andButtonType:kButtonTypeTwo];
@@ -330,10 +330,7 @@
         [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
     }
 
-    PostNotification(Noti_RefreshTopicTable, nil);
- 
-    
-    
+   
     
 }
 

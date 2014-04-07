@@ -23,6 +23,7 @@
     BOOL animating;
 }
 @property(assign,nonatomic)id<MainTabBarDelegate> delegate;
+- (void)selectedWithTag:(NSInteger)tag;
 -(void)setVerticalFrame;
 -(void)setHorizontalFrame;
 @end

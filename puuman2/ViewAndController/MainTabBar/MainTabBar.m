@@ -107,4 +107,10 @@
     SetViewLeftUp(selectedBoard, 0, 150);
     SetViewLeftUp(settingBtn, 0, 688);
 }
+
+- (void)selectedWithTag:(NSInteger)tag
+{
+    [self clickedBtn:diaryBtn];
+}
+
 @end
