@@ -11,7 +11,9 @@
 #import "MainTabBarController.h"
 #import "RewardViewController.h"
 #import "CreateTopicViewController.h"
-
+#import "NewTextDiaryViewController.h"
+#import "NewCameraViewController.h"
+#import "UniverseConstant.h"
 
 @implementation TopicContentCell
 @synthesize delegate = _delegate;
@@ -323,6 +325,29 @@
 
 -(void)participate
 {
+
+    TopicType type =[[[Forum sharedInstance] onTopic] TType];
+    switch (type) {
+        case TopicType_Photo:
+        {
+            NewCameraViewController  *popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
+            [[MainTabBarController sharedMainViewController] presentModalViewController:popView animated:YES];
+
+        }
+            break;
+        case TopicType_Text:
+        {
+            NewTextDiaryViewController *textVC = [[NewTextDiaryViewController alloc] initWithNibName:nil bundle:nil];
+            [[MainTabBarController sharedMainViewController].view addSubview:textVC.view];
+            [textVC setControlBtnType:kCloseAndFinishButton];
+            [textVC setTitle:@"文本" withIcon:nil];
+            [textVC show];
+        }
+            break;
+        default:
+            break;
+    }
+
 
 }
 

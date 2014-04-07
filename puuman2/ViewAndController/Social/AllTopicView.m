@@ -35,8 +35,6 @@
     [_showColumnView setScrollEnabled:NO];
     [self addSubview:_showColumnView];
 
-   
-    
   
 }
 

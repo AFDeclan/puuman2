@@ -330,7 +330,7 @@
         [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
     }
 
-   
+    PostNotification(Noti_RefreshTopicTable, nil);
  
     
     

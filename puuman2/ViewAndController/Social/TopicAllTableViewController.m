@@ -217,8 +217,12 @@
 
 - (void)refreshTable
 {
+
     [self.tableView  reloadData];
 }
+
+
+
 
 
 - (void)refreshVoteTable
