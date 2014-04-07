@@ -65,10 +65,8 @@
     }
 }
 
-- (NSArray *)actionsForGroup:(NSInteger)GID
+- (NSArray *)actionsFromResultSet:(FMResultSet *)rs
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE GID = %d ORDER BY ACreateTime ASC", ActionTableName, GID];
-    FMResultSet *rs = [_db executeQuery:sql];
     NSMutableArray *actions = [[NSMutableArray alloc] init];
     while ([rs next]) {
         Action * act = [[Action alloc] init];
@@ -84,9 +82,32 @@
     return actions;
 }
 
+- (NSArray *)actionsForGroup:(NSInteger)GID
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE GID = %ld ORDER BY ACreateTime ASC", ActionTableName, (long)GID];
+    FMResultSet *rs = [_db executeQuery:sql];
+    return [self actionsFromResultSet:rs];
+}
+
+- (NSArray *)msgsForGroup:(NSInteger)GID
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE GID = %ld AND AType = %d ORDER BY ACreateTime ASC", ActionTableName, (long)GID, (int)ActionType_Msg];
+    FMResultSet *rs = [_db executeQuery:sql];
+    return [self actionsFromResultSet:rs];
+}
+
+- (Action *)latestActionForGroup:(NSInteger)GID
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE GID = %ld AND AType <> %d ORDER BY ACreateTime DESC LIMIT 1", ActionTableName, (long)GID, (int)ActionType_Msg];
+    FMResultSet *rs = [_db executeQuery:sql];
+    NSArray *actions = [self actionsFromResultSet:rs];
+    if (actions.count > 0) return [actions firstObject];
+    else return nil;
+}
+
 - (void)addAction:(Action *)act forGroup:(NSInteger)GID
 {
-    NSString *insert = [NSString stringWithFormat:@"INSERT INTO %@ (AID, GID, AType, ASourceUID, ATargetBID, AMeta, ACreateTime) VALUES(%d, %d, %d, %d, %d, ?, ?)", ActionTableName, act.AID, act.GID, act.AType, act.ASourceUID, act.ATargetBID];
+    NSString *insert = [NSString stringWithFormat:@"INSERT INTO %@ (AID, GID, AType, ASourceUID, ATargetBID, AMeta, ACreateTime) VALUES(%ld, %ld, %d, %ld, %ld, ?, ?)", ActionTableName, (long)act.AID, (long)act.GID, act.AType, (long)act.ASourceUID, (long)act.ATargetBID];
     if (![_db executeUpdate:insert, act.AMeta, act.ACreateTime]) {
         [ErrorLog errorLog:@"Insert action failed!" fromFile:@"ActionManager.m" error:_db.lastError];
     }

@@ -22,6 +22,8 @@
 
 //从数据库中读取某组的action
 - (NSArray *)actionsForGroup:(NSInteger)GID;
+- (NSArray *)msgsForGroup:(NSInteger)GID;
+- (Action *)latestActionForGroup:(NSInteger)GID;
 
 //写数据库
 - (void)addAction:(Action *)act forGroup:(NSInteger)GID;

@@ -11,6 +11,7 @@
 
 @class ActionForUpload;
 @class Member;
+@class Action;
 
 @interface Group : NSObject <AFRequestDelegate>
 {
@@ -31,6 +32,8 @@
 @property (retain, nonatomic, readonly) NSMutableArray * GMember;
 
 @property (retain, nonatomic, readonly) NSMutableArray * GAction;
+@property (retain, nonatomic, readonly) NSMutableArray * GMsgs;
+@property (retain, nonatomic, readonly) Action * GLatestAction; //非msg类的最新action
 
 @property (retain, nonatomic) NSDictionary * data;
 

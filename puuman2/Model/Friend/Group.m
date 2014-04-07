@@ -33,10 +33,10 @@
             _GMember = [[NSMutableArray alloc] init];
             for (NSDictionary * mdata in msdata) {
                 Member *mem = [[Member alloc] init];
+                [mem setData:mdata];
                 if (mem.BID == [UserInfo sharedUserInfo].BID) {
                     _isMy = YES;
                 }
-                [mem setData:mdata];
                 [_GMember addObject:mem];
             }
         }
@@ -154,6 +154,8 @@
 - (void)loadActions
 {
     _GAction = [[NSMutableArray alloc] initWithArray:[[ActionManager sharedInstance] actionsForGroup:_GID]];
+    _GMsgs = [[NSMutableArray alloc] initWithArray:[[ActionManager sharedInstance] msgsForGroup:_GID]];
+    _GLatestAction = [[ActionManager sharedInstance] latestActionForGroup:_GID];
 }
 
 - (void)requestEnded:(AFBaseRequest *)afRequest
@@ -201,6 +203,11 @@
             break;
     }
     [_GAction addObject:action];
+    if (action.AType == ActionType_Msg) {
+        [_GMsgs addObject:action];
+    } else {
+        _GLatestAction = action;
+    }
     [[Friend sharedInstance] informDelegates:@selector(actionUploaded:) withObject:action];
     [_actionForUps removeObject:action];
 }
