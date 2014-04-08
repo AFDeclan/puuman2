@@ -19,12 +19,14 @@
 
 @implementation NewTextDiaryViewController
 @synthesize taskInfo = _taskInfo;
+@synthesize  isTopic =_isTopic;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
          [self initContent];
     }
     return self;
@@ -116,10 +118,10 @@
 {
     if ([_textView.text isEqualToString:@""]) {
         if (photo) {
-            [DiaryFileManager savePhotos:[NSArray arrayWithObject:photo] withAudio:nil withTitle:titleTextField.text andTaskInfo:nil];
+            [DiaryFileManager savePhotos:[NSArray arrayWithObject:photo] withAudio:nil withTitle:titleTextField.text andTaskInfo:nil andIsTopic:NO];
         }
     }else{
-        [DiaryFileManager saveText:_textView.text withPhoto:photo withTitle:titleTextField.text andTaskInfo:_taskInfo];
+        [DiaryFileManager saveText:_textView.text withPhoto:photo withTitle:titleTextField.text andTaskInfo:_taskInfo andIsTopic:_isTopic];
     }
 
     
@@ -177,6 +179,16 @@
     [_content showInFrom:kAFAnimationTop inView:self.view withFade:YES duration:0.5 delegate:self startSelector:@selector(showStart) stopSelector:nil];
     [_finishBtn setAlpha:0.5];
     [_finishBtn setEnabled:NO];
+}
+
+- (void)setIsTopic:(BOOL)isTopic
+{
+    _isTopic = isTopic;
+    if (isTopic) {
+        [takePicBtn setAlpha:0];
+    }else{
+        [takePicBtn setAlpha:1];
+    }
 }
 
  -(void)showStart

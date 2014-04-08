@@ -80,9 +80,12 @@
 //话题投票成功
 - (void)topicVoted:(Topic *)topic
 {
-    votingTopic = topic;
-    [votedNum_label setText:[NSString stringWithFormat:@"%d票",topic.voteCnt]];
-    [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
+    if (topic != votingTopic) {
+        return;
+    }
+        [votedNum_label setText:[NSString stringWithFormat:@"%d票",topic.voteCnt]];
+        [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
+
 }
 
 //话题投票失败，注意根据voted判断是否是因为重复投票

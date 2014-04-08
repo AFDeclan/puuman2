@@ -30,7 +30,7 @@
     UILabel *relayExample;
     AFTextImgButton *scanMoreReplay;
     UILabel *title_label;
-    Reply *_replay;
+    Reply *_reply;
     UIButton *info_btn;
     BOOL hasInfoView;
     UIView *headTitleView;
@@ -39,6 +39,6 @@
     Member *_member;
 }
 @property(nonatomic,assign)BOOL isMyTopic;
-- (void)buildWithReply:(Reply *)replay;
-+ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type;
+- (void)buildWithReply:(Reply *)reply;
++ (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type;
 @end

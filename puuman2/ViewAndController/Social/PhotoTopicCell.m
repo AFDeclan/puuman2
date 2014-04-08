@@ -9,6 +9,8 @@
 #import "PhotoTopicCell.h"
 #import "DiaryFileManager.h"
 #import "DetailShowViewController.h"
+#import "DiaryFileManager.h"
+
 
 @implementation PhotoTopicCell
 
@@ -29,18 +31,18 @@
     return self;
 }
 
-- (void)buildWithReply:(Reply *)replay
+- (void)buildWithReply:(Reply *)reply
 {
-   // _photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
-    //[_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
-    if ([_photoPaths count] >1) {
+    
+    _photoPaths = [reply photoUrls];
+    if ([_photoPaths count] > 0) {
         [_showColumnView reloadData];
     }
     CGRect frame = contentView.frame;
     frame.size.height =128;
     
     [contentView setFrame:frame];
-    [super buildWithReply:replay];
+    [super buildWithReply:reply];
     
 }
 
@@ -98,7 +100,7 @@
 }
 
 
-+ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type;
++ (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type;
 {
  
     return 128;

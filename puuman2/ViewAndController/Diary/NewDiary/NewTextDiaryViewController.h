@@ -20,5 +20,6 @@
     UIButton *delBtn;
     UIImage *photo;
 }
+@property (assign, nonatomic) BOOL isTopic;
 @property (retain, nonatomic) NSDictionary *taskInfo;
 @end

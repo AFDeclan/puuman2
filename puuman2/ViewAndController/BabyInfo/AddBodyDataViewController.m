@@ -308,7 +308,7 @@
         
     }
     [MyNotiCenter postNotificationName:Noti_BabyDataUpdated object:nil];
-    [DiaryFileManager saveText:content withPhoto:nil withTitle:@"宝宝成长记录" andTaskInfo:nil];
+    [DiaryFileManager saveText:content withPhoto:nil withTitle:@"宝宝成长记录" andTaskInfo:nil andIsTopic:NO];
     [super finishBtnPressed];
 
 }

@@ -133,7 +133,7 @@
         return 108;
     }else{
         
-        return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType];
+        return  [TopicCell heightForReply:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType];
     }
    
     
@@ -217,6 +217,10 @@
 
 - (void)refreshTable
 {
+    if ([replays count] < 5) {
+       [_topic getMoreReplies:5 orderBy:_order];
+    }
+    
     [self.tableView  reloadData];
 }
 

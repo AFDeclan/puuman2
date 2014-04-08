@@ -400,7 +400,7 @@ static DiaryViewController * instance;
             int num  =[userDefaults integerForKey:camerakey];
             [userDefaults setInteger:num+1 forKey:camerakey];
             NewCameraViewController  *popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
-            self.cameraModel = YES;
+            popView.cameraModel = YES;
             [popView setTaskInfo:info];
             [self presentModalViewController:popView animated:YES];
         }
@@ -411,7 +411,7 @@ static DiaryViewController * instance;
             int num  =[userDefaults integerForKey:videokey];
             [userDefaults setInteger:num+1 forKey:videokey];
             NewCameraViewController  *popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
-            self.cameraModel = NO;
+            popView.cameraModel = NO;
             [popView setTaskInfo:info];
             [self presentModalViewController:popView animated:YES];
         }
@@ -566,6 +566,7 @@ static DiaryViewController * instance;
 
 - (void)refreshTable
 {
+    
     [diaryTableVC.tableView reloadData];
 }
 

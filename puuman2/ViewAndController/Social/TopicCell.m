@@ -145,7 +145,7 @@
 - (void)memberDownloaded:(Member *)member
 {
    
-    if (![member belongsTo:_replay.UID]) {
+    if (![member belongsTo:_reply.UID]) {
         
         if (![member belongsTo:[UserInfo sharedUserInfo].UID]) {
             if (!hasInfoView) {
@@ -154,7 +154,7 @@
                 [recommend setControlBtnType:kOnlyCloseButton];
                 [recommend setRecommend:NO];
                 [recommend setTitle:@"宝宝详情" withIcon:nil];
-                [recommend buildWithTheUid:_replay.UID andUserInfo:member];
+                [recommend buildWithTheUid:_reply.UID andUserInfo:member];
                 [[MainTabBarController sharedMainViewController].view addSubview:recommend.view];
                 [recommend show];
                 hasInfoView = YES;
@@ -183,12 +183,12 @@
     [[Forum sharedInstance] addDelegateObject:self];
 }
 
-- (void)buildWithReply:(Reply *)replay
+- (void)buildWithReply:(Reply *)reply
 {
-     _replay = replay;
-    [topicNumLabel setText:[NSString stringWithFormat:@"第%d期",replay.TID]];
+     _reply = reply;
+    [topicNumLabel setText:[NSString stringWithFormat:@"第%d期",reply.TID]];
     
-    _member = [[MemberCache sharedInstance] getMemberWithUID:replay.UID];
+    _member = [[MemberCache sharedInstance] getMemberWithUID:reply.UID];
     if (_member) {
       
         [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:_member.BabyIsBoy];
@@ -202,40 +202,40 @@
     [[Forum sharedInstance] addDelegateObject:self];
    
     
-    if ([[_replay comments] count] == 0) {
-        if (![_replay noMore]) {
-            [_replay getMoreComments:10 newDirect:YES];
+    if ([[_reply comments] count] == 0) {
+        if (![_reply noMore]) {
+            [_reply getMoreComments:10 newDirect:YES];
         }
     }else{
-        [relayExample setText:[[_replay comments] objectAtIndex:0]];
+        [relayExample setText:[[_reply comments] objectAtIndex:0]];
     }
  
     if (_isMyTopic) {
-        [[Forum sharedInstance] getTopic:replay.TID];
+        [[Forum sharedInstance] getTopic:reply.TID];
     }
 
     
-    [replayBtn setTitle:[NSString stringWithFormat:@"%d",replay.RCommentCnt] andImg:[UIImage imageNamed:@"btn_reply1z_topic.png"] andButtonType:kButtonTypeTwo];
+    [replayBtn setTitle:[NSString stringWithFormat:@"%d",reply.RCommentCnt] andImg:[UIImage imageNamed:@"btn_reply1z_topic.png"] andButtonType:kButtonTypeTwo];
     [replayBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
 
     
    
     
     CGRect frame = contentView.frame;
-    if (![replay.RTitle isEqualToString:@""]) {
-        [title_label setText:replay.RTitle];
+    if (![reply.RTitle isEqualToString:@""]) {
+        [title_label setText:reply.RTitle];
         frame.size.height += 28;
         frame.origin.y = ViewHeight(headerView);
         contentView.frame = frame;
     }
-    if (_replay.TID == [[Forum sharedInstance] onTopic].TID){
-        if (_replay.voted) {
+    if (_reply.TID == [[Forum sharedInstance] onTopic].TID){
+        if (_reply.voted) {
             [likeBtn setEnabled:NO];
-            [likeBtn setTitle:[NSString stringWithFormat:@"%d",replay.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like1_topic.png"] andButtonType:kButtonTypeTwo];
+            [likeBtn setTitle:[NSString stringWithFormat:@"%d",reply.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like1_topic.png"] andButtonType:kButtonTypeTwo];
             [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
         }else{
             [likeBtn setEnabled:YES];
-            [likeBtn setTitle:[NSString stringWithFormat:@"%d",replay.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like2_topic.png"] andButtonType:kButtonTypeTwo];
+            [likeBtn setTitle:[NSString stringWithFormat:@"%d",reply.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like2_topic.png"] andButtonType:kButtonTypeTwo];
             [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
         }
 
@@ -252,7 +252,7 @@
 - (void)replayBtnPressed
 {
     [[MainTabBarController sharedMainViewController] setIsReply:YES];
-    PostNotification(Noti_BottomInputViewShow,_replay);
+    PostNotification(Noti_BottomInputViewShow,_reply);
     
 }
 
@@ -261,8 +261,8 @@
 - (void)likeBtnPressed
 {
     
-    if (!_replay.voted) {
-        [_replay vote];
+    if (!_reply.voted) {
+        [_reply vote];
     }
     
    
@@ -282,27 +282,27 @@
     [[MainTabBarController sharedMainViewController].view addSubview:moreReplayVC.view];
     [moreReplayVC setControlBtnType:kOnlyCloseButton];
     [moreReplayVC setTitle:@"所有留言"];
-    [moreReplayVC setReplay:_replay];
+    [moreReplayVC setReplay:_reply];
     [moreReplayVC setDelegate:self];
     [moreReplayVC show];
 }
 
 
 
-+ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type
++ (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type
 {
     
     float h = 64+88 +8;
-    if (![replay.RTitle isEqualToString:@""]) {
+    if (![reply.RTitle isEqualToString:@""]) {
         h += 28;
     }
   
     switch (type) {
         case TopicType_Photo:
-             h += [PhotoTopicCell heightForReplay:replay andIsMyTopic:isMytopic andTopicType:type];
+             h += [PhotoTopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
             break;
         case TopicType_Text:
-            h += [TextTopicCell heightForReplay:replay andIsMyTopic:isMytopic andTopicType:type];
+            h += [TextTopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
             break;
         default:
             break;
@@ -318,15 +318,17 @@
 //点赞成功
 - (void)topicReplyVoted:(Reply *)reply
 {
-    _replay = reply;
 
-    if (_replay.voted) {
+    if (reply != _reply) {
+        return;
+    }
+    if (_reply.voted) {
         [likeBtn setEnabled:NO];
-        [likeBtn setTitle:[NSString stringWithFormat:@"%d",_replay.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like1_topic.png"] andButtonType:kButtonTypeTwo];
+        [likeBtn setTitle:[NSString stringWithFormat:@"%d",_reply.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like1_topic.png"] andButtonType:kButtonTypeTwo];
         [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
     }else{
         [likeBtn setEnabled:YES];
-        [likeBtn setTitle:[NSString stringWithFormat:@"%d",_replay.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like2_topic.png"] andButtonType:kButtonTypeTwo];
+        [likeBtn setTitle:[NSString stringWithFormat:@"%d",_reply.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like2_topic.png"] andButtonType:kButtonTypeTwo];
         [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
     }
 
@@ -337,7 +339,7 @@
 //点赞失败
 - (void)topicReplyVoteFailed:(Reply *)reply
 {
-    _replay = reply;
+    _reply = reply;
 
 }
 

@@ -22,7 +22,7 @@
     NSAssert(self.TID > 0, @"TID未设置！");
     NSAssert(self.RTitle, @"RTitle未设置！");
     NSAssert(self.texts || self.photos, @"内容未设置！");
-    if (!_uploading) [NSThread detachNewThreadSelector:@selector(upload) toTarget:self withObject:nil];
+    if (!_uploading) [NSThread detachNewThreadSelector:@selector(uploadThread) toTarget:self withObject:nil];
 }
 
 - (void)uploadThread
@@ -62,7 +62,7 @@
     [req setParam:self.RTitle forKey:@"RTitle"];
     NSMutableDictionary *content = [[NSMutableDictionary alloc] init];
     [content setValue:textUrls forKey:Reply_Content_Text];
-    [content setValue:photoUrls forKey:Reply_Content_Text];
+    [content setValue:photoUrls forKey:Reply_Content_Photo];
     [req setParam:content forKey:@"RContent" usingFormat:AFDataFormat_Json];
     [req postSynchronous];
     if (req.result != PumanRequest_Succeeded) {

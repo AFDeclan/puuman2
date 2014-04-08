@@ -19,13 +19,15 @@
 
 @implementation NewCameraViewController
 @synthesize taskInfo = _taskInfo;
+@synthesize isTopic = _isTopic;
+@synthesize cameraModel = _cameraModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-       
+        _cameraModel = YES;
     }
     return self;
 }
@@ -50,11 +52,12 @@
     BOOL videoOnly = NO;
     //判断是否是拍照
     
-    if (![DiaryViewController sharedDiaryViewController].cameraModel) {
+    if (!_cameraModel) {
         [controlView setVideoMode:YES];
         videoOnly = YES;
     }else{
         [controlView setVideoMode:NO];
+        
     }
     
     if ([UIImagePickerController isSourceTypeAvailable:
@@ -83,6 +86,14 @@
     [self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation duration:0];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(enableControl) userInfo:nil repeats:NO];
 }
+
+- (void)setCameraModel:(BOOL)cameraModel
+{
+    _cameraModel = cameraModel;
+   
+}
+
+
 - (void)enableControl
 {
     [controlView enableControl];
@@ -161,12 +172,15 @@
      
         
     }else{
-        [DiaryFileManager savePhotoWithPaths:photoPath withAudio:audioFileUrl withTitle:titleStr andTaskInfo:_taskInfo];
+        
+        [DiaryFileManager savePhotoWithPaths:photoPath withAudio:audioFileUrl withTitle:titleStr andTaskInfo:_taskInfo andIsTopic:_isTopic];
        
     }
-    
-    
-    [self cancel];
+    if (!_isTopic) {
+        
+        [self cancel];
+    }
+ 
 }
 
 - (void)cancel{
@@ -322,6 +336,15 @@
     }
 }
 
+- (void)setIsTopic:(BOOL)isTopic
+{
+    _isTopic = isTopic;
+     [[Forum sharedInstance] removeDelegateObject:self];
+     [[Forum sharedInstance] addDelegateObject:self];
+    [controlView setIsTopic:isTopic];
+}
+
+
 - (void)videoFinished
 {
     [self finishBtnPressed];
@@ -370,4 +393,19 @@
 {
     audioFileUrl = audioUrl;
 }
+
+//回复上传成功
+- (void)topicReplyUploaded:(ReplyForUpload *)reply
+{
+    PostNotification(Noti_RefreshTopicTable, nil);
+    [[Forum sharedInstance] removeDelegateObject:self];
+    [self cancel];
+}
+
+//回复上传失败
+- (void)topicReplyUploadFailed:(ReplyForUpload *)reply
+{
+    
+}
+
 @end

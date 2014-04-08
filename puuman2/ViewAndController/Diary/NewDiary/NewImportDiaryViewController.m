@@ -209,7 +209,7 @@
 
 - (void)finishBtnPressed
 {
-    [DiaryFileManager savePhotos:photosArr withAudio:nil withTitle:titleTextField.text andTaskInfo:nil];
+    [DiaryFileManager savePhotos:photosArr withAudio:nil withTitle:titleTextField.text andTaskInfo:nil andIsTopic:NO];
     [super finishBtnPressed];
 }
 @end

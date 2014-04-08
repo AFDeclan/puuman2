@@ -14,8 +14,8 @@
 #import "NewCameraShowPhotosViewController.h"
 #import "CameraAudioViewController.h"
 #import "VideoPlayerController.h"
-
-@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate,VideoPlayerDelegate>
+#import "Forum.h"
+@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate,VideoPlayerDelegate,ForumDelegate>
 {
     NewCameraControlView *controlView;
     UIImagePickerController *cameraUI;
@@ -31,4 +31,6 @@
 }
 
 @property (retain, nonatomic) NSDictionary *taskInfo;
+@property (assign, nonatomic) BOOL isTopic;
+@property (assign, nonatomic) BOOL cameraModel;
 @end

@@ -73,7 +73,6 @@
         {
             [cell setDataViewRectRanks:_model.inUseWares andRectTypeIndex:[indexPath row]];
         }
-        
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.contentView setBackgroundColor:[UIColor whiteColor]];
         return cell;

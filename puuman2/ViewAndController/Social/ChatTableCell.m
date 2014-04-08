@@ -109,7 +109,7 @@
             SetViewLeftUp(tri, 776, disHeight+16);
             [bgView setBackgroundColor:PMColor6];
             [bgView setFrame:CGRectMake(864-88-ViewWidth(detail)-24, disHeight, ViewWidth(detail)+24, ViewHeight(detail)+24)];
-             [detail setTextColor:[UIColor whiteColor]];
+            [detail setTextColor:[UIColor whiteColor]];
         }else{
             [tri setImage:[UIImage imageNamed:@"tri_gray_fri.png"]];
             SetViewLeftUp(portrait, 32, disHeight);

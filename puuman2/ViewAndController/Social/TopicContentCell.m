@@ -331,8 +331,10 @@
         case TopicType_Photo:
         {
             NewCameraViewController  *popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
+            [popView setCameraModel:YES];
             [[MainTabBarController sharedMainViewController] presentModalViewController:popView animated:YES];
-
+            
+            [popView setIsTopic:YES];
         }
             break;
         case TopicType_Text:
@@ -404,9 +406,12 @@
 
 - (void)rightSortSelected
 {
+    
     [topicAllVC setOrder:TopicReplyOrder_Time];
     [right_sortBtn selected];
     [left_sortBtn unSelected];
 }
+
+
 
 @end

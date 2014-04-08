@@ -29,6 +29,8 @@
     BOOL recordingVideo;
     BOOL hasEffect;
 }
+
+@property (assign, nonatomic) BOOL isTopic;
 @property (assign,nonatomic)id<CameraControlDelegate> delegate;
 @property (assign,nonatomic) BOOL videoMode;
 @property (retain, nonatomic) NSDictionary *taskInfo;

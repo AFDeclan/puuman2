@@ -24,11 +24,11 @@
 + (NSString *)fixedFilePath:(NSString *)filePath;
 
 //保存不同类型的日记，若成功返回diaryInfo，否则返回nil
-+ (NSDictionary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo;
-+ (NSDictionary *)savePhotos:(NSArray *)photos withAudio:(NSURL *)audioUrl withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo;
++ (NSDictionary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo andIsTopic:(BOOL)isTopic;
++ (NSDictionary *)savePhotos:(NSArray *)photos withAudio:(NSURL *)audioUrl withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo andIsTopic:(BOOL)isTopic;
 
 //保存已经暂存的图片
-+ (NSDictionary *)savePhotoWithPaths:(NSArray *)photoPaths withAudio:(NSURL *)audioUrl withTitle:(NSString *)title andTaskInfo:(NSDictionary *)taskInfo;
++ (NSDictionary *)savePhotoWithPaths:(NSArray *)photoPaths withAudio:(NSURL *)audioUrl withTitle:(NSString *)title andTaskInfo:(NSDictionary *)taskInfo andIsTopic:(BOOL)isTopic;
 
 + (NSDictionary *)saveVideo:(NSURL *)tempUrl withTitle:(NSString *) title  andTaskInfo:(NSDictionary *)taskInfo;
 + (NSDictionary *)saveAudio:(NSURL *)audioUrl withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo;

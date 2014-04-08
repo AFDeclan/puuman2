@@ -1,3 +1,4 @@
+
 //
 //  FileManager.m
 //  puman
@@ -14,6 +15,8 @@
 #import "DiaryModel.h"
 #import "DateFormatter.h"
 #import "TaskUploader.h"
+#import "Forum.h"
+#import "ReplyForUpload.h"
 
 @implementation DiaryFileManager
 
@@ -152,7 +155,7 @@
     return fixed;
 }
 
-+ (NSDictionary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo
++ (NSDictionary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo andIsTopic:(BOOL)isTopic
 {
     //save the file
     NSString *fileDir = [self fileDirForDiaryType:vType_Text];
@@ -202,60 +205,65 @@
     return diaryInfo;
 }
 
-+ (NSDictionary *)savePhotos:(NSArray *)photos withAudio:(NSURL *)audioUrl withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo
++ (NSDictionary *)savePhotos:(NSArray *)photos withAudio:(NSURL *)audioUrl withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo andIsTopic:(BOOL)isTopic
 {
-    //save the file
-    NSString *fileDir = [self fileDirForDiaryType:vType_Photo];
-    if (!fileDir) return nil;
-    NSDate *curDate = [NSDate date];
-    NSString *fileName = [DateFormatter stringFromDatetime:curDate];
-    NSString *filePathAll = nil;
-    NSError *error;
-    for (int i=0; i<[photos count]; i++)
-    {
-        NSString *filePath = [fileDir stringByAppendingPathComponent:fileName];
-        filePath = [filePath stringByAppendingFormat:@"_%d.jpg", i];
-        NSData *imageData = UIImageJPEGRepresentation(photos[i], 0);
-        if (![imageData writeToFile:filePath atomically:YES])
+
+        //save the file
+        NSString *fileDir = [self fileDirForDiaryType:vType_Photo];
+        if (!fileDir) return nil;
+        NSDate *curDate = [NSDate date];
+        NSString *fileName = [DateFormatter stringFromDatetime:curDate];
+        NSString *filePathAll = nil;
+        NSError *error;
+        for (int i=0; i<[photos count]; i++)
         {
-            [ErrorLog errorLog:@"Save photo failed - 1" fromFile:@"DiaryFileManager.m" error:error];
+            NSString *filePath = [fileDir stringByAppendingPathComponent:fileName];
+            filePath = [filePath stringByAppendingFormat:@"_%d.jpg", i];
+            NSData *imageData = UIImageJPEGRepresentation(photos[i], 0);
+            if (![imageData writeToFile:filePath atomically:YES])
+            {
+                [ErrorLog errorLog:@"Save photo failed - 1" fromFile:@"DiaryFileManager.m" error:error];
+            }
+            if (i == 0) filePathAll = filePath;
+            else filePathAll = [filePathAll stringByAppendingFormat:@"#@#%@", filePath];
         }
-        if (i == 0) filePathAll = filePath;
-        else filePathAll = [filePathAll stringByAppendingFormat:@"#@#%@", filePath];
-    }
-    NSString *type2 = @"", *filePath2 = @"";
-    if (audioUrl)
-    {
-        filePath2 = [fileDir stringByAppendingPathComponent:fileName];
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        if (![fileManager moveItemAtURL:audioUrl toURL:[NSURL fileURLWithPath:filePath2] error:&error])
+        NSString *type2 = @"", *filePath2 = @"";
+        if (audioUrl)
         {
-            [ErrorLog errorLog:@"Save audio failed - 1"fromFile:@"DiaryFileManager.m" error:error];
+            filePath2 = [fileDir stringByAppendingPathComponent:fileName];
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            if (![fileManager moveItemAtURL:audioUrl toURL:[NSURL fileURLWithPath:filePath2] error:&error])
+            {
+                [ErrorLog errorLog:@"Save audio failed - 1"fromFile:@"DiaryFileManager.m" error:error];
+            }
+            else type2 = vType_Audio;
         }
-        else type2 = vType_Audio;
-    }
-    //buildDiaryInfo
+        //buildDiaryInfo
+        
+        if (title == nil) title = @"";
+        NSString *taskDiary = taskInfo? @"YES" : @"";
+        NSDictionary *diaryInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                   title, kTitleName,
+                                   vType_Photo, kTypeName,
+                                   filePathAll, kFilePathName,
+                                   curDate, kDateName,
+                                   type2, kType2Name,
+                                   filePath2, kFilePath2Name,
+                                   taskDiary, kTaskDiary,
+                                   nil];
+        [[DiaryModel sharedDiaryModel] addNewDiary:diaryInfo];
+        [MobClick endEvent:umeng_event_newdiary label:@"PhotoDiary"];
+        TaskUploader *uploader = [TaskUploader uploader];
+        [uploader addNewTaskWithDiaryInfo:diaryInfo taskInfo:taskInfo];
+        return diaryInfo;
     
-    if (title == nil) title = @"";
-     NSString *taskDiary = taskInfo? @"YES" : @"";
-    NSDictionary *diaryInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
-                               title, kTitleName,
-                               vType_Photo, kTypeName,
-                               filePathAll, kFilePathName,
-                               curDate, kDateName,
-                               type2, kType2Name,
-                               filePath2, kFilePath2Name,
-                               taskDiary, kTaskDiary,
-                               nil];
-    [[DiaryModel sharedDiaryModel] addNewDiary:diaryInfo];
-    [MobClick endEvent:umeng_event_newdiary label:@"PhotoDiary"];
-    TaskUploader *uploader = [TaskUploader uploader];
-    [uploader addNewTaskWithDiaryInfo:diaryInfo taskInfo:taskInfo];
-    return diaryInfo;
+
+    
 }
 
-+ (NSDictionary *)savePhotoWithPaths:(NSArray *)photoPaths withAudio:(NSURL *)audioUrl withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo
++ (NSDictionary *)savePhotoWithPaths:(NSArray *)photoPaths withAudio:(NSURL *)audioUrl withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo andIsTopic:(BOOL)isTopic
 {
+   
     //save the file
     NSString *fileDir = [self fileDirForDiaryType:vType_Photo];
     if (!fileDir) return nil;
@@ -264,6 +272,19 @@
     NSString *filePathAll = nil;
     NSError *error;
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (title == nil) title = @"";
+    if (isTopic) {
+        NSMutableArray *photos = [[NSMutableArray alloc] init];
+        for (int i = 0;i < [photoPaths count]; i ++) {
+            NSData *data = [NSData dataWithContentsOfFile:[photoPaths objectAtIndex:i]];
+            [photos addObject:[UIImage imageWithData:data]];
+        }
+        ReplyForUpload *upload = [[Forum sharedInstance] createReplyForUpload];
+        [upload setPhotos:photos];
+        [upload setRTitle:title];
+        [upload upload];
+        
+    }
     for (int i=0; i<[photoPaths count]; i++)
     {
         NSString *filePath = [fileDir stringByAppendingPathComponent:fileName];
@@ -287,22 +308,26 @@
         else type2 = vType_Audio;
     }
     //buildDiaryInfo
-    if (title == nil) title = @"";
-     NSString *taskDiary = taskInfo? @"YES" : @"";
-    NSDictionary *diaryInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
-                               title, kTitleName,
-                               vType_Photo, kTypeName,
-                               filePathAll, kFilePathName,
-                               curDate, kDateName,
-                               type2, kType2Name,
-                               filePath2, kFilePath2Name,
-                               taskDiary, kTaskDiary,
-                               nil];
-    [[DiaryModel sharedDiaryModel] addNewDiary:diaryInfo];
-    [MobClick endEvent:umeng_event_newdiary label:@"PhotoDiary"];
-    TaskUploader *uploader = [TaskUploader uploader];
-    [uploader addNewTaskWithDiaryInfo:diaryInfo taskInfo:taskInfo];
-    return diaryInfo;
+
+    
+    
+        NSString *taskDiary = taskInfo? @"YES" : @"";
+        NSDictionary *diaryInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                   title, kTitleName,
+                                   vType_Photo, kTypeName,
+                                   filePathAll, kFilePathName,
+                                   curDate, kDateName,
+                                   type2, kType2Name,
+                                   filePath2, kFilePath2Name,
+                                   taskDiary, kTaskDiary,
+                                   nil];
+        [[DiaryModel sharedDiaryModel] addNewDiary:diaryInfo];
+        [MobClick endEvent:umeng_event_newdiary label:@"PhotoDiary"];
+        TaskUploader *uploader = [TaskUploader uploader];
+        [uploader addNewTaskWithDiaryInfo:diaryInfo taskInfo:taskInfo];
+        return diaryInfo;
+    
+   
 }
 
 + (NSDictionary *)saveVideo:(NSURL *)tempUrl withTitle:(NSString *) title  andTaskInfo:(NSDictionary *)taskInfo
@@ -390,6 +415,7 @@
     NSDate *curDate = [NSDate date];
     NSString *fileName = [DateFormatter stringFromDatetime:curDate];
     NSString *filePath = [tmpDir stringByAppendingPathComponent:fileName];
+    filePath = [filePath stringByAppendingPathExtension:@"jpg"];
     if (![UIImageJPEGRepresentation(photo, 0) writeToFile:filePath atomically:YES])
     {
         [ErrorLog errorLog:  @"Save tmp photo failed" fromFile:@"DiaryFileManager.m" error:nil];

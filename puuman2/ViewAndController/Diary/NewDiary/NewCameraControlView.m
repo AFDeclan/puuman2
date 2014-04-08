@@ -11,10 +11,11 @@
 #import "UniverseConstant.h"
 #import "UIImage+CroppedImage.h"
 
+
 @implementation NewCameraControlView
 @synthesize delegate = _delegate;
 @synthesize videoMode =_videoMode;
-
+@synthesize isTopic = _isTopic;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -30,6 +31,7 @@
     recordingVideo = NO;
     hasEffect = NO;
     _videoMode = NO;
+    _isTopic = NO;
     controlBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [self addSubview:controlBg];
     
@@ -145,19 +147,25 @@
     [photoNumLabel setText:[NSString stringWithFormat:@"%d",num]];
     if (num == 1)
     {
-        [sampleBtn setAlpha:1];
-        [audioBtn setAlpha:1];
-        
-        if (self.taskInfo && ([[self.taskInfo valueForKey:_task_TaskType] integerValue] == 6 || [[self.taskInfo valueForKey:_task_ID] integerValue] == 2))
-        {   //有声图任务
-           [self recordAudio];
+         [sampleBtn setAlpha:1];
+        if (!_isTopic) {
+            [audioBtn setAlpha:1];
+            
+            if (self.taskInfo && ([[self.taskInfo valueForKey:_task_TaskType] integerValue] == 6 || [[self.taskInfo valueForKey:_task_ID] integerValue] == 2))
+            {   //有声图任务
+                [self recordAudio];
+            }
         }
+        
     }else if (num == 2){
         
         [audioBtn setAlpha:0];
     }else if (num == 0){
         [sampleBtn setAlpha:0];
-        [modelChangeBtn setAlpha:1];
+        if (!_isTopic) {
+             [modelChangeBtn setAlpha:1];
+        }
+       
     }
     
 
@@ -266,7 +274,6 @@
 }
 
 
-
 - (void)cameraEnable
 {
     [playCameraBtn setEnabled:YES];
@@ -282,5 +289,16 @@
     [playCameraBtn setEnabled:YES];
 
 }
+
+- (void)setIsTopic:(BOOL)isTopic
+{
+    _isTopic = isTopic;
+    if (isTopic) {
+         [modelChangeBtn setAlpha:0];
+    }
+   
+    
+}
+
 
 @end

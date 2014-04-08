@@ -64,14 +64,14 @@ static MainTabBarController *instance;
 - (void)viewDidAppear:(BOOL)animated
 {
      [self initautoImportView];
-    if (![userInfo loginFromUserDefault])
-    {
-        [self showLoginView];
+    if (![userInfo logined]) {
+        if (![userInfo loginFromUserDefault])
+        {
+            [self showLoginView];
+        }
+
     }
-    else
-    {
-        
-    }
+  
 }
 
 - (void)initWithTabBar

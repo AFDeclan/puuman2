@@ -22,7 +22,7 @@
     return self;
 }
 
-- (void)buildWithReply:(Reply *)replay
+- (void)buildWithReply:(Reply *)reply
 {
 
     NSString *filePath;// = [self.diaryInfo valueForKey:kFilePathName];
@@ -31,11 +31,11 @@
     CGRect frame = contentView.frame;
     frame.size.height = 156;
     [contentView setFrame:frame];
-    [super buildWithReply:replay];
+    [super buildWithReply:reply];
 
 }
 
-+ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic
++ (CGFloat)heightForReplay:(Reply *)reply andIsMyTopic:(BOOL)isMytopic
 {
     BOOL hasTitle = YES;
     if (hasTitle) {
