@@ -54,6 +54,7 @@
             [self setHorizontalFrame];
         }
     }
+    [myTopic reloadMyTopic];
     [myTopic setAlpha:0];
     [UIView animateWithDuration:0.5 animations:^{
         [myTopic setAlpha:1];

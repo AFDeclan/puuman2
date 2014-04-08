@@ -22,7 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-         replays = [[NSMutableArray alloc] init];
+        
     }
     return self;
 }
@@ -30,46 +30,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    if (!_refreshFooter) {
-        _refreshFooter = [[MJRefreshFooterView alloc] init];
-        _refreshFooter.scrollView = self.tableView;
-        [self.tableView addSubview:_refreshFooter];
-        [_refreshFooter setDelegate:self];
-        _refreshFooter.alpha = 1;
-        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
-        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:NO];
-            if (![[Forum sharedInstance] noMore])
-            {
-                [blockRefreshFooter endRefreshing];
-            }
-        };
-  
-    }
-    
-    if (!_refreshHeader) {
-        _refreshHeader = [[MJRefreshHeaderView alloc] init];
-        _refreshHeader.scrollView = self.tableView;
-        [self.tableView addSubview:_refreshHeader];
-        [_refreshHeader setDelegate:self];
-        _refreshHeader.alpha = 1;
-        __block MJRefreshHeaderView * blockRefreshFooter = _refreshHeader;
-        _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:YES];
-            if (![[Forum sharedInstance] noMore])
-            {
-                [blockRefreshFooter endRefreshing];
-            }
-        };
-        
-    }
+//	// Do any additional setup after loading the view.
+//    if (!_refreshFooter) {
+//        _refreshFooter = [[MJRefreshFooterView alloc] init];
+//        _refreshFooter.scrollView = self.tableView;
+//        [self.tableView addSubview:_refreshFooter];
+//        [_refreshFooter setDelegate:self];
+//        _refreshFooter.alpha = 1;
+//        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+//        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+//            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:NO];
+//            if (![[Forum sharedInstance] noMore])
+//            {
+//                [blockRefreshFooter endRefreshing];
+//            }
+//        };
+//  
+//    }
+//    
+//    if (!_refreshHeader) {
+//        _refreshHeader = [[MJRefreshHeaderView alloc] init];
+//        _refreshHeader.scrollView = self.tableView;
+//        [self.tableView addSubview:_refreshHeader];
+//        [_refreshHeader setDelegate:self];
+//        _refreshHeader.alpha = 1;
+//        __block MJRefreshHeaderView * blockRefreshFooter = _refreshHeader;
+//        _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+//            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:YES];
+//            if (![[Forum sharedInstance] noMore])
+//            {
+//                [blockRefreshFooter endRefreshing];
+//            }
+//        };
+//        
+//    }
   
 }
 
 - (void)reloadMyTopic
 {
-    [_refreshHeader beginRefreshing];
+   // [_refreshHeader beginRefreshing];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,7 +96,7 @@
     
     // Return the number of rows in the section.
     
-    return [replays count];;
+    return [[[Forum sharedInstance] myReplies] count];;
    
     
 }
@@ -104,7 +105,7 @@
 {
     NSString *identifier;
     TopicCell *cell;
-    Reply *replay = [replays objectAtIndex:[indexPath row]];
+    Reply *replay = [[[Forum sharedInstance] myReplies] objectAtIndex:[indexPath row]];
     if ([replay.textUrls count] != 0) {
         identifier = @"ReplayTextTopicCell";
         cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -134,8 +135,8 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-  //  return  [TopicCell heightForReplay:[replays objectAtIndex:[indexPath row]] andIsMyTopic:YES andTopicType:top];
+   // Reply *replay = [[[Forum sharedInstance] myReplies] objectAtIndex:[indexPath row]];
+  // return  [TopicCell heightForReply:replay andIsMyTopic:YES andTopicType:<#(TopicType)#>];
     return 108;
 
 }
@@ -143,7 +144,6 @@
 
 - (void)myRepliesLoadedMore
 {
-    replays = [[Forum sharedInstance] myReplies];
     [self.tableView reloadData];
 }
 

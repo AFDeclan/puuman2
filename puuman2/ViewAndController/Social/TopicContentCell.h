@@ -16,12 +16,12 @@
 #import "Forum.h"
 #import "AFSelecedTextImgButton.h"
 #import "TopicCellSelectedPohosViewController.h"
-
+#import "AFImageView.h"
 
 @protocol TopicContentCellDelegate;
 @interface TopicContentCell : UITableViewCell<ForumDelegate,SelectPhotoDelegate>
 {
-    UIImageView *bgImageView;
+    AFImageView *bgImageView;
     UILabel *info_title;
     UILabel *info_num;
     TopicSelectButton *leftBtn;

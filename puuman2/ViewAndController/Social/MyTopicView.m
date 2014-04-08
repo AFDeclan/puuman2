@@ -32,6 +32,11 @@
     return self;
 }
 
+- (void)reloadMyTopic
+{
+    [topicAllVC reloadMyTopic];
+}
+
 - (void)setVerticalFrame
 {
     [topicAllVC.view setFrame:CGRectMake(0, 0, 608, 800)];

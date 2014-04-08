@@ -64,8 +64,8 @@
     [noti_label setTextColor:PMColor3];
     [noti_label setBackgroundColor:[UIColor clearColor]];
     [self addSubview:noti_label];
- 
-    
+    [self reloadChatData];
+    [self refreshChatTable];
 
 }
 
@@ -80,8 +80,9 @@
 
 - (void)goOut
 {
-        [[Friend sharedInstance] removeDelegateObject:self];
-        [[[Friend sharedInstance] myGroup] stopUpdateAction];
+    [MyNotiCenter removeObserver:self name:Noti_BottomInputViewHidden object:nil];
+    [[Friend sharedInstance] removeDelegateObject:self];
+    [[[Friend sharedInstance] myGroup] stopUpdateAction];
 }
 
 //Group Action 更新成功

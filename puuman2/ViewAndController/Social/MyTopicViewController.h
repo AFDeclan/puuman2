@@ -13,9 +13,9 @@
 
 @interface MyTopicViewController : SortTableViewController<ForumDelegate,MJRefreshBaseViewDelegate>
 {
-    MJRefreshFooterView *_refreshFooter;
-    MJRefreshHeaderView *_refreshHeader;
-    NSMutableArray *replays;
+//    MJRefreshFooterView *_refreshFooter;
+//    MJRefreshHeaderView *_refreshHeader;
+
 }
 
 - (void)reloadMyTopic;

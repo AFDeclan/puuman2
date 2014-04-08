@@ -49,8 +49,8 @@
     socialBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,184, 64, 80)];
     socialBtn.tag = 3;
     [socialBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    socialBtn.normalImage = [UIImage imageNamed:@"btn_happen2_diary.png"];
-    socialBtn.selectedImage = [UIImage imageNamed:@"btn_happen1_diary.png"];
+    socialBtn.normalImage = [UIImage imageNamed:@"btn_look2_diary.png"];
+    socialBtn.selectedImage = [UIImage imageNamed:@"btn_look1_diary.png"];
     [selectedBoard addSubview:socialBtn];
       [socialBtn setSelected:NO];
     shopBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,264, 64, 80)];

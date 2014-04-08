@@ -13,6 +13,8 @@
 {
     MyTopicViewController *topicAllVC;
 }
+
+- (void)reloadMyTopic;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

@@ -104,6 +104,12 @@
     [figuresColumnView setScrollEnabled:YES];
     [self addSubview:figuresColumnView];
     [figuresColumnView reloadData];
+    if ([group GLatestAction]) {
+        notiStr = [[group GLatestAction] AMeta];
+    }
+        
+    
+    
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{

@@ -39,7 +39,7 @@
 
 - (void)initialization
 {
-    bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 144)];
+    bgImageView = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 144)];
     [self addSubview:bgImageView];
      leftSelected = YES;
     info_title = [[UILabel alloc] initWithFrame:CGRectMake(208, 48, 320, 28)];
@@ -108,7 +108,7 @@
     self.frame = CGRectMake(0, 0, 608, 944);
     SetViewLeftUp(rightBtn, 480, 0);
     [topicAllVC setVerticalFrame];
-   
+    SetViewLeftUp(bgImageView, 0, 0);
     switch (status) {
         case TopicStatus_On:
         {
@@ -208,6 +208,7 @@
     [topicAllVC.view setFrame:CGRectMake(128, 168, 608, 520)];
     SetViewLeftUp(right_sortBtn, 432, 144);
     SetViewLeftUp(left_sortBtn, 128, 144);
+    SetViewLeftUp(bgImageView, 128, 0);
     [topicAllVC setHorizontalFrame];
     
 }
@@ -257,7 +258,9 @@
         [info_title setTextColor:PMColor1];
          [rightBtn setAlpha:1];
         if ([[Forum sharedInstance] getTopic:topicNum]) {
+           
             _topic = [[Forum sharedInstance] getTopic:topicNum];
+             [bgImageView getImage:[_topic TImgUrl] defaultImage:nil];
             status = _topic.TStatus;
             [info_num setText:[NSString stringWithFormat:@"已有%d人参与",_topic.TNo]];
             [info_title setText:_topic.TTitle];
@@ -381,7 +384,8 @@
 //往期话题获取成功。
 - (void)topicReceived:(Topic *)topic
 {
-    _topic = topic;
+   
+     [bgImageView getImage:[_topic TImgUrl] defaultImage:nil];
     status = _topic.TStatus;
     [info_num setText:[NSString stringWithFormat:@"已有%d人参与",_topic.TNo]];
     [info_title setText:_topic.TTitle];
