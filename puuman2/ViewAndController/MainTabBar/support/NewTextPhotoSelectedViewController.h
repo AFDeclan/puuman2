@@ -6,15 +6,11 @@
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "CustomAlertViewController.h"
+#import "SelectPhotoImportTypeViewController.h"
 @protocol NewTextSelectPhotoDelegate;
-@interface NewTextPhotoSelectedViewController : CustomAlertViewController<UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface NewTextPhotoSelectedViewController : SelectPhotoImportTypeViewController<UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
 
-    UILabel *takePicLabel;
-    UILabel *importPicLabel;
-    UIButton *takePicBtn;
-    UIButton *importPicBtn;
     UIImagePickerController *imagePickerController;
     UIPopoverController *popover;
     BOOL imagePickerShowed;

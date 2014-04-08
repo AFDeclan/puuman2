@@ -215,6 +215,14 @@
         NSString *fileName = [DateFormatter stringFromDatetime:curDate];
         NSString *filePathAll = nil;
         NSError *error;
+        if (isTopic) {
+      
+            ReplyForUpload *upload = [[Forum sharedInstance] createReplyForUpload];
+            [upload setPhotos:photos];
+            [upload setRTitle:title];
+            [upload upload];
+        
+        }
         for (int i=0; i<[photos count]; i++)
         {
             NSString *filePath = [fileDir stringByAppendingPathComponent:fileName];

@@ -123,7 +123,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[myGroup GAction] count]+1;
+    if (myGroup) {
+        return [[myGroup GAction] count]+1;
+
+    }else{
+        return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -170,7 +175,7 @@
     if ([indexPath row] == 0) {
         return 48;
     }else{
-        return [ChatTableCell heightForChat:[(Action *)[[myGroup GAction] objectAtIndex:[indexPath row] ] AMeta]];
+        return [ChatTableCell heightForChat:[(Action *)[[myGroup GAction] objectAtIndex:[indexPath row]-1 ] AMeta]];
     }
     
  

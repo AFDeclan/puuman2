@@ -503,6 +503,8 @@
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
 		54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56A18DC2E840013FD03 /* TopicContentCell.m */; };
 		54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */; };
+		54CCF1D518F3CC220081C149 /* SelectPhotoImportTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CCF1D418F3CC220081C149 /* SelectPhotoImportTypeViewController.m */; };
+		54CCF1D818F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CCF1D718F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m */; };
 		54CE10E018C1842C00966396 /* AFDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A018C1842C00966396 /* AFDataDownloader.m */; };
 		54CE10E118C1842C00966396 /* AFDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A218C1842C00966396 /* AFDataStore.m */; };
 		54CE10E218C1842C00966396 /* AFBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE10A518C1842C00966396 /* AFBaseRequest.m */; };
@@ -1370,6 +1372,10 @@
 		54C8D56A18DC2E840013FD03 /* TopicContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicContentCell.m; sourceTree = "<group>"; };
 		54C8D57218DC44EF0013FD03 /* TopicAllTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicAllTableViewController.h; sourceTree = "<group>"; };
 		54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicAllTableViewController.m; sourceTree = "<group>"; };
+		54CCF1D318F3CC220081C149 /* SelectPhotoImportTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPhotoImportTypeViewController.h; sourceTree = "<group>"; };
+		54CCF1D418F3CC220081C149 /* SelectPhotoImportTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPhotoImportTypeViewController.m; sourceTree = "<group>"; };
+		54CCF1D618F3CE4A0081C149 /* TopicCellSelectedPohosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCellSelectedPohosViewController.h; sourceTree = "<group>"; };
+		54CCF1D718F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCellSelectedPohosViewController.m; sourceTree = "<group>"; };
 		54CE109D18C1842C00966396 /* AFNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetwork.h; sourceTree = "<group>"; };
 		54CE109F18C1842C00966396 /* AFDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDataDownloader.h; sourceTree = "<group>"; };
 		54CE10A018C1842C00966396 /* AFDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDataDownloader.m; sourceTree = "<group>"; };
@@ -2771,6 +2777,10 @@
 				54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */,
 				549B62C518CABC5A00AFEEAB /* CustomNotiViewController.h */,
 				549B62C618CABC5A00AFEEAB /* CustomNotiViewController.m */,
+				54CCF1D318F3CC220081C149 /* SelectPhotoImportTypeViewController.h */,
+				54CCF1D418F3CC220081C149 /* SelectPhotoImportTypeViewController.m */,
+				54CCF1D618F3CE4A0081C149 /* TopicCellSelectedPohosViewController.h */,
+				54CCF1D718F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m */,
 				5474A47518C5A40A0073B2FE /* NewTextPhotoSelectedViewController.h */,
 				5474A47618C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m */,
 				54AC1D1E18EEAAD7005E2DCE /* ShareSelectedViewController.h */,
@@ -3814,6 +3824,7 @@
 				541970D518D1956D0058FE64 /* UIKit+DrawingHelpers.m in Sources */,
 				54CE10F818C1842C00966396 /* UIImage+CroppedImage.m in Sources */,
 				5421666918E00DAF005875F8 /* PartnerPortraitDataViewCell.m in Sources */,
+				54CCF1D518F3CC220081C149 /* SelectPhotoImportTypeViewController.m in Sources */,
 				54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */,
 				54CE10F618C1842C00966396 /* TextLayoutLabel.m in Sources */,
 				54ADB1E618E1AC1D00FCCC83 /* AutoImportViewController.m in Sources */,
@@ -3857,6 +3868,7 @@
 				543BAED118CEC30100ED4672 /* PhotoMoreDiaryCell.m in Sources */,
 				146A2C7218DD8D1C0038A850 /* FileUploader.m in Sources */,
 				54AC211118E41223001C1357 /* RectHeadShowCell.m in Sources */,
+				54CCF1D818F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m in Sources */,
 				5447C4B118D98EED00187BE6 /* MyTopicView.m in Sources */,
 				54B4682D18E5213700745F72 /* InsuranceCell.m in Sources */,
 				54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */,

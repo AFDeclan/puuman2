@@ -10,12 +10,13 @@
 #import "CustomTextField.h"
 #import "UIColumnView.h"
 #import "NewDiaryDeleteTableViewCell.h"
-
-@interface NewImportDiaryViewController : CustomPopViewController<UIColumnViewDataSource,UIColumnViewDelegate,NewDiaryDeleteTableViewCellDelegate,UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+#import "Forum.h"
+@interface NewImportDiaryViewController : CustomPopViewController<UIColumnViewDataSource,UIColumnViewDelegate,NewDiaryDeleteTableViewCellDelegate,UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ForumDelegate>
 {
     CustomTextField *titleTextField;
     UIColumnView *photosTable;
     NSMutableArray *photosArr;
     UIImagePickerController *imagePickerController;
 }
+@property (assign, nonatomic) BOOL isTopic;
 @end

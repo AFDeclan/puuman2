@@ -15,6 +15,8 @@
 #import "CameraAudioViewController.h"
 #import "VideoPlayerController.h"
 #import "Forum.h"
+
+@protocol CameraViewDelegate;
 @interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate,VideoPlayerDelegate,ForumDelegate>
 {
     NewCameraControlView *controlView;
@@ -29,8 +31,12 @@
     NSURL *audioFileUrl;
     CameraAudioViewController *audioView;
 }
-
+@property(assign,nonatomic) id<CameraViewDelegate> delegate;
 @property (retain, nonatomic) NSDictionary *taskInfo;
 @property (assign, nonatomic) BOOL isTopic;
 @property (assign, nonatomic) BOOL cameraModel;
+@end
+@protocol CameraViewDelegate <NSObject>
+@optional
+- (void)cameraViewHidden;
 @end

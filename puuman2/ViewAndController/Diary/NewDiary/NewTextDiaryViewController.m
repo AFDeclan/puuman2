@@ -26,7 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
+        _isTopic = NO;
          [self initContent];
     }
     return self;
@@ -124,8 +124,10 @@
         [DiaryFileManager saveText:_textView.text withPhoto:photo withTitle:titleTextField.text andTaskInfo:_taskInfo andIsTopic:_isTopic];
     }
 
-    
-    [super finishBtnPressed];
+    if (!_isTopic) {
+         [super finishBtnPressed];
+    }
+   
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -134,27 +136,19 @@
         
         if (range.length == 1) {
             if ([textView.text length]==1) {
-               
-                    [_finishBtn setAlpha:0.5];
-                    [_finishBtn setEnabled:NO];
-                
+                _finishBtn.enabled = NO;
+                _finishBtn.alpha = 0.5;
             }else
             {
-                [_finishBtn setAlpha:1];
-                [_finishBtn setEnabled:YES];
+                _finishBtn.enabled = YES;
+                _finishBtn.alpha = 1;
             }
         }else{
-            if ([text isEqualToString:@""]) {
-              
-                    [_finishBtn setAlpha:0.5];
-                    [_finishBtn setEnabled:NO];
-                
-            }else{
-                [_finishBtn setAlpha:1];
-                [_finishBtn setEnabled:YES];
-            }
             
+            _finishBtn.enabled = YES;
+            _finishBtn.alpha = 1;
         }
+        return YES;
     }
     return YES;
 }
@@ -185,6 +179,8 @@
 {
     _isTopic = isTopic;
     if (isTopic) {
+        [[Forum sharedInstance] removeDelegateObject:self];
+        [[Forum sharedInstance] addDelegateObject:self];
         [takePicBtn setAlpha:0];
     }else{
         [takePicBtn setAlpha:1];
@@ -195,4 +191,19 @@
 {
     [_textView becomeFirstResponder];
 }
+
+//回复上传成功
+- (void)topicReplyUploaded:(ReplyForUpload *)reply
+{
+    PostNotification(Noti_RefreshTopicTable, nil);
+    [[Forum sharedInstance] removeDelegateObject:self];
+    [super finishBtnPressed];
+}
+
+//回复上传失败
+- (void)topicReplyUploadFailed:(ReplyForUpload *)reply
+{
+    
+}
+
 @end

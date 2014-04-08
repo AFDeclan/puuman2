@@ -15,6 +15,7 @@
 #import "NewCameraViewController.h"
 #import "UniverseConstant.h"
 
+
 @implementation TopicContentCell
 @synthesize delegate = _delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -326,15 +327,17 @@
 -(void)participate
 {
 
+    [participateBtn setEnabled:NO];
     TopicType type =[[[Forum sharedInstance] onTopic] TType];
     switch (type) {
         case TopicType_Photo:
         {
-            NewCameraViewController  *popView = [[NewCameraViewController alloc] initWithNibName:nil bundle:nil];
-            [popView setCameraModel:YES];
-            [[MainTabBarController sharedMainViewController] presentModalViewController:popView animated:YES];
-            
-            [popView setIsTopic:YES];
+            TopicCellSelectedPohosViewController *chooseView = [[TopicCellSelectedPohosViewController alloc] initWithNibName:nil bundle:nil];
+            [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
+            [chooseView setStyle:ConfirmError];
+            [chooseView setSelecedDelegate:self];
+            [chooseView show];
+
         }
             break;
         case TopicType_Text:
@@ -353,6 +356,10 @@
 
 }
 
+- (void)selectedViewhidden
+{
+    [participateBtn setEnabled:YES];
+}
 
 - (void)currentTopic
 {

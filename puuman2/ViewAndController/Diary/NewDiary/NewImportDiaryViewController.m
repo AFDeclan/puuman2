@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _isTopic = NO;
         [self initContent];
     }
     return self;
@@ -209,7 +210,37 @@
 
 - (void)finishBtnPressed
 {
-    [DiaryFileManager savePhotos:photosArr withAudio:nil withTitle:titleTextField.text andTaskInfo:nil andIsTopic:NO];
+    [DiaryFileManager savePhotos:photosArr withAudio:nil withTitle:titleTextField.text andTaskInfo:nil andIsTopic:_isTopic];
+    if (!_isTopic) {
+        [super finishBtnPressed];
+
+    }
+}
+
+
+- (void)setIsTopic:(BOOL)isTopic
+{
+    _isTopic = isTopic;
+    if (isTopic) {
+        [[Forum sharedInstance] removeDelegateObject:self];
+        [[Forum sharedInstance] addDelegateObject:self];
+    }
+}
+
+
+
+//回复上传成功
+- (void)topicReplyUploaded:(ReplyForUpload *)reply
+{
+    PostNotification(Noti_RefreshTopicTable, nil);
+    [[Forum sharedInstance] removeDelegateObject:self];
     [super finishBtnPressed];
 }
+
+//回复上传失败
+- (void)topicReplyUploadFailed:(ReplyForUpload *)reply
+{
+    
+}
+
 @end

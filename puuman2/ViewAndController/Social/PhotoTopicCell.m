@@ -10,6 +10,7 @@
 #import "DiaryFileManager.h"
 #import "DetailShowViewController.h"
 #import "DiaryFileManager.h"
+#import "AFImageView.h"
 
 
 @implementation PhotoTopicCell
@@ -19,13 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, 0, 536, 112)];
-        [_showColumnView setBackgroundColor:[UIColor clearColor]];
-        [_showColumnView setViewDelegate:self];
-        [_showColumnView setViewDataSource:self];
-        [_showColumnView setPagingEnabled:NO];
-        [_showColumnView setScrollEnabled:NO];
-        [contentView addSubview:_showColumnView];
+       
 
     }
     return self;
@@ -35,9 +30,17 @@
 {
     
     _photoPaths = [reply photoUrls];
-    if ([_photoPaths count] > 0) {
-        [_showColumnView reloadData];
+    if (_showColumnView) {
+        [_showColumnView removeFromSuperview];
     }
+    _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, 0, 536, 112)];
+    [_showColumnView setBackgroundColor:[UIColor clearColor]];
+    [_showColumnView setViewDelegate:self];
+    [_showColumnView setViewDataSource:self];
+    [_showColumnView setPagingEnabled:NO];
+    [_showColumnView setScrollEnabled:YES];
+    [contentView addSubview:_showColumnView];
+  
     CGRect frame = contentView.frame;
     frame.size.height =128;
     
@@ -77,15 +80,15 @@
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+            AFImageView *imgView = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
             imgView.tag = 11;
             [cell.contentView addSubview:imgView];
         }
-        
-        UIImage *photo = [DiaryFileManager imageForPath:[_photoPaths objectAtIndex:index-1]];
-        // photo = [UIImage croppedImage:photo WithHeight:384 andWidth:384];
-        UIImageView *photoView = (UIImageView *)[cell viewWithTag:11];
-        [photoView setImage:photo];
+    
+   
+
+        AFImageView *photoView = (AFImageView *)[cell viewWithTag:11];
+        [photoView getImage:[_photoPaths objectAtIndex:index] defaultImage:nil];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
         

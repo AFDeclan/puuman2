@@ -67,4 +67,6 @@
 #define Noti_RefreshChatTable                   @"Noti_RefreshChatTable"
 #define Noti_RefreshVoteTabe                    @"Noti_RefreshVoteTabe"
 #define Noti_RemoveFriendDelegate               @"Noti_RemoveFriendDelegate"
+#define Noti_BackFromSelectedView               @"Noti_BackFromSelectedView"
+
 #endif

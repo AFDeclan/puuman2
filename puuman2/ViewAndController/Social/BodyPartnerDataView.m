@@ -50,7 +50,7 @@
     if (_isHeight) {
         [cell setBodyData:((Member *)[_group.GMember objectAtIndex:index]).BabyHeight andTheDate:nil andHighest:max andLowest:min andIsHeight:_isHeight];
     }else{
-       [cell setBodyData:((Member *)[_group.GMember objectAtIndex:index]).BabyWeight andTheDate:nil andHighest:max andLowest:min andIsHeight:_isHeight];
+        [cell setBodyData:((Member *)[_group.GMember objectAtIndex:index]).BabyWeight andTheDate:nil andHighest:max andLowest:min andIsHeight:_isHeight];
     }
    
     [cell setBackgroundColor:[UIColor clearColor]];
@@ -76,15 +76,15 @@
 
 - (void)reloadWithGroupInfo:(Group *)group
 {
-    [super reloadWithGroupInfo:group];
+   
     min = 0;
     max = 0;
     for (int i = 0; i <[group.GMember count]; i ++) {
         float  value;
         if (_isHeight) {
-            value = ((Member *)[group.GMember objectAtIndex:0]).BabyHeight;
+            value = ((Member *)[_group.GMember objectAtIndex:i]).BabyHeight;
         }else{
-            value = ((Member *)[group.GMember objectAtIndex:0]).BabyWeight;
+            value = ((Member *)[_group.GMember objectAtIndex:i]).BabyWeight;
         }
     
         if (i== 0) {
@@ -101,7 +101,7 @@
             }
         }
     }
-    [dataColumnView reloadData];
+    [super reloadWithGroupInfo:group];
     
 }
 @end

@@ -9,8 +9,8 @@
 #import "CustomPopViewController.h"
 #import "CustomTextField.h"
 #import "NewTextPhotoSelectedViewController.h"
-
-@interface NewTextDiaryViewController :CustomPopViewController<NewTextSelectPhotoDelegate,UITextViewDelegate>
+#import "Forum.h"
+@interface NewTextDiaryViewController :CustomPopViewController<NewTextSelectPhotoDelegate,UITextViewDelegate,ForumDelegate>
 {
     CustomTextField *titleTextField;
     UIView *imgBox;

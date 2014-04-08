@@ -118,13 +118,17 @@
     if (isMyTopic) {
         [headerView setFrame:CGRectMake(0, 0, 608, 96)];
         [headTitleView setAlpha:1];
-          SetViewLeftUp(info_time, 464, 48);
+        SetViewLeftUp(info_time, 464, 48);
         SetViewLeftUp(infoView, 0, 32);
+        SetViewLeftUp(contentView, 96, 0);
+        
     }else{
         [headerView setFrame:CGRectMake(0, 0, 608, 64)];
         [headTitleView setAlpha:0];
         SetViewLeftUp(info_time, 464, 16);
         SetViewLeftUp(infoView, 0, 0);
+        SetViewLeftUp(contentView, 0, 64);
+      
     }
 }
 

@@ -21,6 +21,7 @@
 @synthesize taskInfo = _taskInfo;
 @synthesize isTopic = _isTopic;
 @synthesize cameraModel = _cameraModel;
+@synthesize delegate = _delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -177,13 +178,16 @@
        
     }
     if (!_isTopic) {
-        
+        [_delegate cameraViewHidden];
         [self cancel];
     }
  
 }
 
-- (void)cancel{
+- (void)cancel
+{
+    
+ 
     if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)])
     {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -339,8 +343,10 @@
 - (void)setIsTopic:(BOOL)isTopic
 {
     _isTopic = isTopic;
-     [[Forum sharedInstance] removeDelegateObject:self];
-     [[Forum sharedInstance] addDelegateObject:self];
+    if (isTopic) {
+        [[Forum sharedInstance] removeDelegateObject:self];
+        [[Forum sharedInstance] addDelegateObject:self];
+    }
     [controlView setIsTopic:isTopic];
 }
 

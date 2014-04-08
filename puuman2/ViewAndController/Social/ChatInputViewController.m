@@ -54,6 +54,8 @@
         createBtn = [[ColorButton alloc] init];
         [_content addSubview:createBtn];
         [createBtn addTarget:self action:@selector(create) forControlEvents:UIControlEventTouchUpInside];
+        createBtn.enabled = NO;
+        createBtn.alpha = 0.5;
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
         }else{
@@ -226,11 +228,30 @@
 
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if (range.length == 1) {
+        if ([textView.text length]==1) {
+            createBtn.enabled = NO;
+            createBtn.alpha = 0.5;
+        }else
+        {
+            createBtn.enabled = YES;
+            createBtn.alpha = 1;
+        }
+    }else{
+        
+        createBtn.enabled = YES;
+        createBtn.alpha = 1;
+    }
+    return YES;
+}
+
 -(void)show
 {
     
     if (_sendIsHidden) {
-        [[Forum sharedInstance] addDelegateObject:self];    
+        [[Forum sharedInstance] addDelegateObject:self];
         SetViewLeftUp(_content, 0, 0);
         [inputTextView becomeFirstResponder];
         
@@ -272,6 +293,8 @@
     preheight =19;
     maxHeight = 19+6*minHeight;
     input_now = NO;
+    createBtn.enabled = NO;
+    createBtn.alpha = 0.5;
     [inputTextView resignFirstResponder];
 
 }

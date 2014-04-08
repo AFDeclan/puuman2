@@ -37,7 +37,7 @@
         [info_title setTextAlignment:NSTextAlignmentCenter];
         [icon_head addSubview:info_title];
         [info_title setDelegate:self];
-        
+        [info_title setEnabled:NO];
         modifyBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         
         UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 96, 112)];
@@ -80,6 +80,7 @@
 
 - (void)removeAllDelegate
 {
+    
     [[Friend sharedInstance] removeDelegateObject:self];
 }
 
@@ -113,7 +114,7 @@
 
 - (void)showManagerMenu
 {
-    
+    [info_title setEnabled:YES];
     canDeleteMember = YES;
     [info_title setEnabled:YES];
     [modifyNameBtn setEnabled:YES];
@@ -123,7 +124,7 @@
 
 - (void)hiddenManagerMenu
 {
-    
+    [info_title setEnabled:NO];
     canDeleteMember = NO;
     [info_title setEnabled:NO];
     [modifyNameBtn setEnabled:NO];

@@ -15,9 +15,11 @@
 #import "UniverseConstant.h"
 #import "Forum.h"
 #import "AFSelecedTextImgButton.h"
+#import "TopicCellSelectedPohosViewController.h"
+
 
 @protocol TopicContentCellDelegate;
-@interface TopicContentCell : UITableViewCell<ForumDelegate>
+@interface TopicContentCell : UITableViewCell<ForumDelegate,SelectPhotoDelegate>
 {
     UIImageView *bgImageView;
     UILabel *info_title;
