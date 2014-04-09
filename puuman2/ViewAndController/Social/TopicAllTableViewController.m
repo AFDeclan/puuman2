@@ -152,6 +152,26 @@
     _voting = voting;
     if (voting) {
         [self.tableView reloadData];
+        if (!_refreshFooter) {
+            _refreshFooter = [[MJRefreshFooterView alloc] init];
+            _refreshFooter.scrollView = self.tableView;
+            [self.tableView addSubview:_refreshFooter];
+            [_refreshFooter setDelegate:self];
+            _refreshFooter.alpha = 1;
+            __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+            _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+                [_topic getMoreReplies:5 orderBy:_order];
+                if (![_topic noMoreReplies:_order])
+                {
+                    [blockRefreshFooter endRefreshing];
+                }
+            };
+            
+            [_refreshFooter beginRefreshing];
+            
+        }
+
+        
         if (!_refreshHeader) {
             _refreshHeader = [[MJRefreshHeaderView alloc] init];
             _refreshHeader.scrollView = self.tableView;
