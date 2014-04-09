@@ -55,7 +55,8 @@
 //forum
 #define kUrl_GetTopicReply  @"http://2.server4puman.sinaapp.com/forum/topic_replies"
 #define kUrl_GetMyReply  @"http://2.server4puman.sinaapp.com/forum/my_replies"
-#define kUrl_GetActiveTopics  @"http://2.server4puman.sinaapp.com/forum/topics_active"
+#define kUrl_GetActiveTopic  @"http://2.server4puman.sinaapp.com/forum/topic_active"
+#define kUrl_GetVotingTopic  @"http://2.server4puman.sinaapp.com/forum/topics_voting"
 #define kUrl_GetTopic  @"http://2.server4puman.sinaapp.com/forum/topic_no"
 #define kUrl_GetAwardRank  @"http://2.server4puman.sinaapp.com/forum/rank_award"
 #define kUrl_UploadTopic  @"http://2.server4puman.sinaapp.com/forum/upload_topic"

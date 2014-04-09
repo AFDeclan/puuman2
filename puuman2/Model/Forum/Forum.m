@@ -19,11 +19,6 @@ static Forum * instance;
 
 @implementation Forum
 
-@synthesize onTopic = _onTopic;
-@synthesize votingTopic = _votingTopic;
-@synthesize topics = _topics;
-@synthesize delegates = _delegates;
-
 + (Forum *)sharedInstance
 {
     if (!instance) {
@@ -40,8 +35,11 @@ static Forum * instance;
 - (id)init
 {
     if (self = [super init]) {
-        _topics = [[NSMutableDictionary alloc] init];
-        _votingTopic = [[NSMutableArray alloc] init];
+        for (int i=0; i<VotingTopicOrderModeCnt; i++) {
+            _votingTopic[i] = [[NSMutableArray alloc] init];
+        }
+        _topicsForId = [[NSMutableDictionary alloc] init];
+        _topicsForNo = [[NSMutableDictionary alloc] init];
         _requests = [[NSMutableSet alloc] init];
         _repliesForUpload = [[NSMutableSet alloc] init];
         _myReplies = [[NSMutableArray alloc] init];
@@ -52,15 +50,15 @@ static Forum * instance;
 
 #pragma mark - Interface Operation
 
-- (void)getActiveTopics
+- (void)getActiveTopic
 {
     for (PumanRequest *req in _requests) {
-        if ([[req urlStr] isEqualToString:kUrl_GetActiveTopics])
+        if ([[req urlStr] isEqualToString:kUrl_GetActiveTopic])
             return;
     }
     PumanRequest *req = [[PumanRequest alloc] init];
     [_requests addObject:req];
-    [req setUrlStr:kUrl_GetActiveTopics];
+    [req setUrlStr:kUrl_GetActiveTopic];
     [req setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
     [req setDelegate:self];
     [req setResEncoding:PumanRequestRes_JsonEncoding];
@@ -69,7 +67,7 @@ static Forum * instance;
 
 - (Topic *)getTopic:(NSInteger)TNo
 {
-    Topic * cached = [_topics valueForKey:[NSString stringWithFormat:@"%ld", (long)TNo]];
+    Topic * cached = [self topicWithTNo:TNo];
     if (cached) {
         return cached;
     }
@@ -128,11 +126,11 @@ static Forum * instance;
     return re;
 }
 
-- (void)getMoreMyReplies:(NSInteger)cnt newDirect:(BOOL)dir
+- (BOOL)getMoreMyReplies:(NSInteger)cnt newDirect:(BOOL)dir
 {
     for (PumanRequest *req in _requests) {
         if ([[req urlStr] isEqualToString:kUrl_GetMyReply])
-            return;
+            return NO;
     }
     PumanRequest * req = [[PumanRequest alloc] init];
     [req setUrlStr:kUrl_GetTopicReply];
@@ -149,6 +147,34 @@ static Forum * instance;
     [req setDelegate:self];
     [req setResEncoding:PumanRequestRes_JsonEncoding];
     [req postAsynchronous];
+    return YES;
+}
+
+- (BOOL)getMoreVotingTopic:(NSInteger)cnt orderBy:(VotingTopicOrder)order newDirect:(BOOL)dir
+{
+    for (PumanRequest *req in _requests) {
+        if ([[req urlStr] isEqualToString:kUrl_GetVotingTopic])
+            return NO;
+    }
+    PumanRequest * req = [[PumanRequest alloc] init];
+    [req setUrlStr:kUrl_GetVotingTopic];
+    Topic *boundTopic;
+    if (_votingTopic[order].count > 0) {
+        boundTopic = dir ? [_votingTopic[order] firstObject] : [_votingTopic[order] lastObject];
+    }
+    if (boundTopic) {
+        [req setIntegerParam:boundTopic.TID forKey:@"boundTID"];
+    } else {
+        [req setParam:@"" forKey:@"boundTID"];
+    }
+    [req setIntegerParam:dir forKey:@"dir"];
+    [req setIntegerParam:order forKey:@"order"];
+    [req setIntegerParam:cnt forKey:@"limit"];
+    [req setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
+    [req setDelegate:self];
+    [req setResEncoding:PumanRequestRes_JsonEncoding];
+    [req postAsynchronous];
+    return YES;
 }
 
 #pragma mark - Request Call Back
@@ -164,26 +190,19 @@ static Forum * instance;
         } else {
             Topic *topic = [[Topic alloc] init];
             [topic setData:ret];
-            [_topics setObject:topic forKey:tnoStr];
+            [self cacheTopic:topic];
             [self informDelegates:@selector(topicReceived:) withObject:topic];
         }
-    } else if ([url isEqualToString:kUrl_GetActiveTopics]) {
-        id retArr = afRequest.resObj;
-        if (!retArr || ![retArr isKindOfClass:[NSArray class]]) {
-            [self informDelegates:@selector(activeTopicsFailed) withObject:nil];
+    } else if ([url isEqualToString:kUrl_GetActiveTopic]) {
+        id ret = afRequest.resObj;
+        if (!ret || ![ret isKindOfClass:[NSDictionary class]]) {
+            [self informDelegates:@selector(activeTopicFailed) withObject:nil];
         } else {
-            _votingTopic = [[NSMutableArray alloc] init];
-            for (NSDictionary *ret in retArr) {
-                Topic *topic = [[Topic alloc] init];
-                [topic setData:ret];
-                if (topic.TStatus == TopicStatus_On) {
-                    _onTopic = topic;
-                    [_topics setObject:topic forKey:[NSString stringWithFormat:@"%ld", (long)topic.TNo]];
-                } else if (topic.TStatus == TopicStatus_Voting) {
-                    [_votingTopic addObject:topic];
-                }
-            }
-            [self informDelegates:@selector(activeTopicsReceived) withObject:nil];
+            Topic *topic = [[Topic alloc] init];
+            [topic setData:ret];
+            _onTopic = topic;
+            [self cacheTopic:topic];
+            [self informDelegates:@selector(activeTopicReceived) withObject:nil];
         }
     } else if ([url isEqualToString:kUrl_UploadTopic]) {
         if (afRequest.result == PumanRequest_Succeeded) {
@@ -229,6 +248,29 @@ static Forum * instance;
         } else {
             [self informDelegates:@selector(rankAwardFailed) withObject:nil];
         }
+    } else if ([url isEqualToString:kUrl_GetVotingTopic]) {
+        if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]]) {
+            NSArray * arr = afRequest.resObj;
+            BOOL dir = [[afRequest.params valueForKey:@"dir"] boolValue];
+            VotingTopicOrder order = (VotingTopicOrder)[[afRequest.params valueForKey:@"order"] integerValue];
+            for (NSDictionary *data in arr) {
+                Topic *topic = [[Topic alloc] init];
+                [topic setData:data];
+                Topic *cached = [self topicWithTID:topic.TID];
+                if (cached) {
+                    [_votingTopic[order] removeObject:cached];
+                }
+                [self cacheTopic:topic];
+                if (dir) {
+                    [_votingTopic[order] insertObject:topic atIndex:0];
+                } else {
+                    [_votingTopic[order] addObject:topic];
+                }
+            }
+            
+        } else {
+        }
+
     }
     [_requests removeObject:afRequest];
 }
@@ -270,6 +312,24 @@ static Forum * instance;
 {
     [self informDelegates:@selector(topicReplyUploadFailed:) withObject:reply];
     [_repliesForUpload removeObject:reply];
+}
+
+#pragma mark - cache
+
+- (void)cacheTopic:(Topic *)topic
+{
+    [_topicsForNo setObject:topic forKey:[NSString stringWithFormat:@"%ld", (long)topic.TNo]];
+    [_topicsForId setObject:topic forKey:[NSString stringWithFormat:@"%ld", (long)topic.TID]];
+}
+
+- (Topic *)topicWithTID:(NSInteger)tid
+{
+    return [_topicsForId valueForKey:[NSString stringWithFormat:@"%ld", (long)tid]];
+}
+
+- (Topic *)topicWithTNo:(NSInteger)tno
+{
+    return [_topicsForNo valueForKey:[NSString stringWithFormat:@"%ld", (long)tno]];
 }
 
 @end
