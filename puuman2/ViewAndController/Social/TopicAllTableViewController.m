@@ -207,6 +207,9 @@
             [_refreshFooter endRefreshing];
         }
         
+        if ([replays count]>5) {
+            
+        }
         if (![_topic noMoreReplies:_order])
         {
             [_refreshFooter beginRefreshing];
