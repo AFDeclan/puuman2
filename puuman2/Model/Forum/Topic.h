@@ -35,7 +35,6 @@ typedef enum TopicReplyOrder {
     NSInteger _roffset;
     PumanRequest *_request[TopicReplyOrderModeCnt], *_voteReq;
     NSMutableArray * _replies[TopicReplyOrderModeCnt];
-    NSArray * _rids[TopicReplyOrderModeCnt];
     NSMutableDictionary * _downloadedReplies;
 }
 
@@ -68,11 +67,8 @@ typedef enum TopicReplyOrder {
 
 //已获取的话题回复的列表
 - (NSArray *)replies:(TopicReplyOrder)order;
-//是否获取了全部的回复列表
-- (BOOL)noMoreReplies:(TopicReplyOrder)order;
-
 //获取更多回复
-- (void)getMoreReplies:(NSInteger)cnt orderBy:(TopicReplyOrder)order;
+- (BOOL)getMoreReplies:(NSInteger)cnt orderBy:(TopicReplyOrder)order newDirect:(BOOL)dir;
 //只有当TStatus为Voting时有效
 - (void)vote;
 
