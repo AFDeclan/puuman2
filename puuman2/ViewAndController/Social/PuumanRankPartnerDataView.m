@@ -9,6 +9,7 @@
 #import "PuumanRankPartnerDataView.h"
 #import "PuumanPartnerDataCell.h"
 #import "ColorsAndFonts.h"
+#import "Member.h"
 
 @implementation PuumanRankPartnerDataView
 
@@ -45,9 +46,25 @@
     }else{
         [cell setShowLine:YES];
     }
-    [cell setPumanWithNum:200 andRank:1];
+    int rank = 1;
+    CGFloat puuman = ((Member *)[_group.GMember objectAtIndex:index]).BabyPuuman;
+    for (int i =0 ; i < [_group.GMember count]; i++) {
+        if (puuman < ((Member *)[_group.GMember objectAtIndex:i]).BabyPuuman) {
+            rank++;
+        }
+    }
+    
+    
+    [cell setPumanWithNum:((Member *)[_group.GMember objectAtIndex:index]).BabyPuuman andRank:rank];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
+    
+}
+
+- (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
+{
+    
+    return [_group.GMember count];
     
 }
 

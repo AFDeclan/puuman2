@@ -36,6 +36,8 @@
         [headerView setBackgroundColor:PMColor5];
         [contentView setBackgroundColor:PMColor5];
         [footerView setBackgroundColor:PMColor5];
+  //      [MyNotiCenter addObserver:self selector:@selector(removeForumDelegate) name:Noti_ReplyRemoveForumDelgate object:nil];
+        
     }
     return self;
 }
@@ -183,8 +185,9 @@
 
 - (void)popViewfinished
 {
-    hasInfoView = NO;
-    [[Forum sharedInstance] addDelegateObject:self];
+   // hasInfoView = NO;
+    PostNotification(Noti_RefreshTopicTable, nil);
+    //[[Forum sharedInstance] addDelegateObject:self];
 }
 
 - (void)buildWithReply:(Reply *)reply
@@ -206,13 +209,11 @@
     [[Forum sharedInstance] addDelegateObject:self];
    
     
-    if ([[_reply comments] count] == 0) {
-        if (![_reply noMore]) {
-            [_reply getMoreComments:10 newDirect:YES];
-        }
-    }else{
-        [relayExample setText:[[_reply comments] objectAtIndex:0]];
-    }
+//    if ([[_reply comments] count] == 0) {
+//        [_reply getMoreComments:1 newDirect:YES];
+//    }else{
+//        [relayExample setText:[[_reply comments] objectAtIndex:0]];
+//    }
  
     if (_isMyTopic) {
         [[Forum sharedInstance] getTopic:reply.TID];
@@ -258,7 +259,10 @@
     [[MainTabBarController sharedMainViewController] setIsReply:YES];
     PostNotification(Noti_BottomInputViewShow,_reply);
     
+    
 }
+
+
 
 
 
@@ -281,7 +285,7 @@
 
 - (void)scanMore
 {
-    [[Forum sharedInstance] removeDelegateObject:self];
+ //   PostNotification(Noti_ReplyRemoveForumDelgate, nil);
     AllWordsPopViewController *moreReplayVC  =[[ AllWordsPopViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:moreReplayVC.view];
     [moreReplayVC setControlBtnType:kOnlyCloseButton];
@@ -290,6 +294,11 @@
     [moreReplayVC setDelegate:self];
     [moreReplayVC show];
 }
+
+//- (void)removeForumDelegate
+//{
+//    [[Forum sharedInstance] removeDelegateObject:self];
+//}
 
 
 
@@ -343,7 +352,7 @@
 //点赞失败
 - (void)topicReplyVoteFailed:(Reply *)reply
 {
-    _reply = reply;
+   
 
 }
 
@@ -362,21 +371,24 @@
 
 }
 
-//更多评论加载成功
-- (void)replyCommentsLoadedMore:(Reply *)reply
-{
-    
-    if ([[reply comments] count] != 0) {
-        [relayExample setText:[[[reply comments] objectAtIndex:0] CContent]];
-
-    }
-}
-
-//更多评论加载失败 注意根据noMore判断是否是因为全部加载完
-- (void)replyCommentsLoadFailed:(Reply *)reply
-{
-
-}
+////更多评论加载成功
+//- (void)replyCommentsLoadedMore:(Reply *)reply
+//{
+//    
+//    if (_reply == reply) {
+//        if ([[reply comments] count] != 0) {
+//            [relayExample setText:[[[reply comments] objectAtIndex:0] CContent]];
+//            
+//        }
+//    }
+//  
+//}
+//
+////更多评论加载失败 注意根据noMore判断是否是因为全部加载完
+//- (void)replyCommentsLoadFailed:(Reply *)reply
+//{
+//
+//}
 
 
 @end

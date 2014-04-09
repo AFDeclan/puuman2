@@ -43,7 +43,7 @@
 - (void)initContent
 {
     titleTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 112, 640, 48)];
-    titleTextField.placeholder = @"这些照片是……";
+    titleTextField.placeholder = @"请输入标题……";
    // [titleTextField setDelegate:self];
     [_content addSubview:titleTextField];
     

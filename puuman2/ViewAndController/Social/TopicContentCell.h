@@ -17,9 +17,11 @@
 #import "AFSelecedTextImgButton.h"
 #import "TopicCellSelectedPohosViewController.h"
 #import "AFImageView.h"
+#import "NewTextDiaryViewController.h"
+#import "NewCameraViewController.h"
 
 @protocol TopicContentCellDelegate;
-@interface TopicContentCell : UITableViewCell<ForumDelegate,SelectPhotoDelegate>
+@interface TopicContentCell : UITableViewCell<ForumDelegate,SelectPhotoDelegate,PopViewDelegate>
 {
     AFImageView *bgImageView;
     UILabel *info_title;

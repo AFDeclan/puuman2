@@ -11,8 +11,6 @@
 #import "MainTabBarController.h"
 #import "RewardViewController.h"
 #import "CreateTopicViewController.h"
-#import "NewTextDiaryViewController.h"
-#import "NewCameraViewController.h"
 #import "UniverseConstant.h"
 
 
@@ -332,6 +330,7 @@
 
     [participateBtn setEnabled:NO];
     TopicType type =[[[Forum sharedInstance] onTopic] TType];
+    type = TopicType_Text;
     switch (type) {
         case TopicType_Photo:
         {
@@ -349,6 +348,8 @@
             [[MainTabBarController sharedMainViewController].view addSubview:textVC.view];
             [textVC setControlBtnType:kCloseAndFinishButton];
             [textVC setTitle:@"文本" withIcon:nil];
+            [textVC setIsTopic:YES];
+            [textVC setDelegate:self];
             [textVC show];
         }
             break;
@@ -357,6 +358,11 @@
     }
 
 
+}
+
+- (void)popViewfinished
+{
+    [participateBtn setEnabled:YES];
 }
 
 - (void)selectedViewhidden
@@ -411,17 +417,18 @@
 - (void)leftSortSelected
 {
     [topicAllVC setOrder:TopicReplyOrder_Vote];
-    [topicAllVC.tableView reloadData];
     [left_sortBtn selected];
     [right_sortBtn unSelected];
+    [topicAllVC.tableView reloadData];
 }
 
 - (void)rightSortSelected
 {
-    [topicAllVC.tableView reloadData];
+
     [topicAllVC setOrder:TopicReplyOrder_Time];
     [right_sortBtn selected];
     [left_sortBtn unSelected];
+    [topicAllVC.tableView reloadData];
 }
 
 

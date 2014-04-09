@@ -19,6 +19,7 @@
         [self setBackgroundColor:[UIColor whiteColor]];
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
+        [self setPagingEnabled:YES];
         heightView = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, 0, 0, 224)];
         
         [heightView setIsHeight:YES];

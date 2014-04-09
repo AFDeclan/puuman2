@@ -11,6 +11,7 @@
 #import "RankTableViewCell.h"
 #import "RewardTableViewCell.h"
 
+
 @interface RewardViewController ()
 
 @end
@@ -65,8 +66,8 @@
 //    [instructionBtn addTarget:self action:@selector(instruction) forControlEvents:UIControlEventTouchUpInside];
 //    [_content  addSubview:instructionBtn];
     createBtn = [[ColorButton alloc] init];
-    [createBtn  initWithTitle:@"参与" andIcon:[UIImage imageNamed:@"icon_start_topic.png"] andButtonType:kBlueLeftDown];
-    [createBtn addTarget:self action:@selector(createTopic) forControlEvents:UIControlEventTouchUpInside];
+    [createBtn  initWithTitle:@"参与" andIcon:[UIImage imageNamed:@"icon_start_topic.png"] andButtonType:kBlueLeft];
+    [createBtn addTarget:self action:@selector(participate) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:createBtn];
     SetViewLeftUp(instructionBtn, 592, 480);
     SetViewLeftUp(createBtn, 592, 520);
@@ -78,9 +79,46 @@
     
 }
 
-- (void)createTopic
+- (void)participate
 {
-    
+    [createBtn setEnabled:NO];
+    TopicType type =[[[Forum sharedInstance] onTopic] TType];
+    switch (type) {
+        case TopicType_Photo:
+        {
+            TopicCellSelectedPohosViewController *chooseView = [[TopicCellSelectedPohosViewController alloc] initWithNibName:nil bundle:nil];
+            [self.view addSubview:chooseView.view];
+            [chooseView setStyle:ConfirmError];
+            [chooseView setSelecedDelegate:self];
+            [chooseView show];
+            
+        }
+            break;
+        case TopicType_Text:
+        {
+            NewTextDiaryViewController *textVC = [[NewTextDiaryViewController alloc] initWithNibName:nil bundle:nil];
+            [self.view addSubview:textVC.view];
+            [textVC setControlBtnType:kCloseAndFinishButton];
+            [textVC setTitle:@"文本" withIcon:nil];
+            [textVC setIsTopic:YES];
+            [textVC setDelegate:self];
+            [textVC show];
+        }
+            break;
+        default:
+            break;
+    }
+
+}
+
+- (void)popViewfinished
+{
+    [createBtn setEnabled:YES];
+}
+
+- (void)selectedViewhidden
+{
+    [createBtn setEnabled:YES];
 }
 
 - (void)viewDidLoad

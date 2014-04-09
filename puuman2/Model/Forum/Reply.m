@@ -92,7 +92,11 @@
     if (boundComment) {
         boundDate = boundComment.CCreateTime;
     }
-    if (boundDate) [req setValue:[DateFormatter timestampStrFromDatetime:boundDate] forKey:@"boundDate"];
+    if (boundDate) {
+        [req setParam:[DateFormatter timestampStrFromDatetime:boundDate] forKey:@"boundDate"];
+    } else {
+        [req setParam:@"" forKey:@"boundDate"];
+    }
     [req setIntegerParam:dir forKey:@"dir"];
     [req setIntegerParam:cnt forKey:@"limit"];
     [req setResEncoding:PumanRequestRes_JsonEncoding];
