@@ -17,6 +17,7 @@
     MJRefreshFooterView *_refreshFooter;
     MJRefreshHeaderView *_refreshHeader;
     NSArray *replays;
+    NSArray *votings;
 }
 
 @property(nonatomic,assign)BOOL voting;

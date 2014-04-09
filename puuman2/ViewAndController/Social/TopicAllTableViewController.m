@@ -32,7 +32,7 @@
         _voting = NO;
         _voteOrder =  VotingTopicOrder_Vote;
         _replyOrder = TopicReplyOrder_Vote;
-        
+        votings = [[NSArray alloc] init];
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSArray alloc] init];
         [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
@@ -71,8 +71,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return [replays count];
+    if (_voting) {
+        return [votings count];
+ 
+    }else{
+        return [replays count];
+
+    }
 
 }
 
@@ -84,7 +89,7 @@
         if (!cell) {
             cell = [[VotingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
-        [cell buildWithVoteTopic:[replays objectAtIndex:[indexPath row]]];
+        [cell buildWithVoteTopic:[votings objectAtIndex:[indexPath row]]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -146,6 +151,7 @@
 
 - (void)setVoting:(BOOL)voting
 {
+   
     _voting = voting;
     if (voting) {
         [self.tableView reloadData];
@@ -180,8 +186,6 @@
                  [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:YES];
             };
             
-            [_refreshHeader beginRefreshing];
-            
         }
         
 
@@ -190,6 +194,7 @@
 
 - (void)setTopic:(Topic *)topic
 {
+    
     _topic = topic;
     if (!_refreshFooter) {
         _refreshFooter = [[MJRefreshFooterView alloc] init];
@@ -199,8 +204,7 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [_topic getMoreReplies:5 orderBy:_replyOrder];
-            if (![_topic noMoreReplies:_replyOrder])
+            if (! [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ])
             {
                 [blockRefreshFooter endRefreshing];
             }
@@ -208,6 +212,18 @@
     
         [_refreshFooter beginRefreshing];
 
+    }
+    if (!_refreshHeader) {
+        _refreshHeader = [[MJRefreshHeaderView alloc] init];
+        _refreshHeader.scrollView = self.tableView;
+        [self.tableView addSubview:_refreshHeader];
+        [_refreshHeader setDelegate:self];
+        _refreshHeader.alpha = 1;
+        __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
+        _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+            [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:YES ];
+        };
+        
     }
     
     [self.tableView reloadData];
@@ -224,7 +240,7 @@
     replays = [_topic replies:_replyOrder];
     
     if ([replays count] < 5) {
-        if (![_topic noMoreReplies:_replyOrder])
+        if (! [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ])
         {
             [_refreshFooter beginRefreshing];
         }
@@ -239,8 +255,8 @@
     if ([_refreshFooter isRefreshing]) {
         [_refreshFooter endRefreshing];
     }
-    replays = [[Forum sharedInstance] votingTopic:_voteOrder];
-    if ([replays count] <5) {
+    votings = [[Forum sharedInstance] votingTopic:_voteOrder];
+    if ([votings count] <5) {
         if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
         {
             [_refreshFooter endRefreshing];
@@ -251,9 +267,11 @@
 //更多投票中话题获取成功
 - (void)votingTopicLoadedMore
 {
-    replays = [[Forum sharedInstance] votingTopic:_voteOrder];
+    votings = [[Forum sharedInstance] votingTopic:_voteOrder];
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
     [self.tableView reloadData];
 }
 
@@ -262,6 +280,8 @@
 {
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
     [self.tableView reloadData];
 }
 
@@ -273,6 +293,9 @@
     replays = [topic replies:_replyOrder];
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
+
     [self.tableView reloadData];
 
 }
@@ -283,6 +306,8 @@
     NSLog(@"Replay Failed");
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
     [self.tableView reloadData];
 }
 

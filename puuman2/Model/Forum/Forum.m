@@ -86,6 +86,10 @@ static Forum * instance;
     return nil;
 }
 
+- (NSArray *)votingTopic:(VotingTopicOrder)order
+{
+    return _votingTopic[order];
+}
 - (void)getAwardAndRank
 {
     for (PumanRequest *req in _requests) {
@@ -267,8 +271,11 @@ static Forum * instance;
                     [_votingTopic[order] addObject:topic];
                 }
             }
-            
+            [self informDelegates:@selector(votingTopicLoadedMore) withObject:nil];
+
         } else {
+            [self informDelegates:@selector(votingTopicLoadFailed) withObject:nil];
+
         }
 
     }
