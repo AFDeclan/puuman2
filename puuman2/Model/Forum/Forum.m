@@ -142,7 +142,7 @@ static Forum * instance;
         boundDate = boundReply.RCreateTime;
     }
     if (boundDate) [req setValue:[DateFormatter timestampStrFromDatetime:boundDate] forKey:@"boundDate"];
-    else [req setValue:@"" forKey:@"boundDate"];
+    else [req setParam:@"" forKey:@"boundDate"];
     [req setIntegerParam:dir forKey:@"dir"];
     [req setIntegerParam:cnt forKey:@"limit"];
     [req setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];

@@ -36,7 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self.tableView setDelegate:self];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -109,6 +109,33 @@
             break;
     }
 }
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSLog(@"a");
+      PostNotification(Noti_LoadDiaryCellInfo, nil);
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+  
+  
+    if (decelerate) {
+          NSLog(@"b");
+    }else{
+        PostNotification(Noti_LoadDiaryCellInfo, nil);
+
+    }
+
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+
+    NSLog(@"c");
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -198,13 +225,15 @@
                 cell = [tableView dequeueReusableCellWithIdentifier:identity];
                 if (!cell)
                     cell = [[PhotoMoreDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+                  [cell setDiaryType:kdiaryPhotoMoreType];
             }else{
                 identity = vType_Photo_Single;
                 cell = [tableView dequeueReusableCellWithIdentifier:identity];
                 if (!cell)
                     cell = [[PhotoSingleDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+                  [cell setDiaryType:kDiaryPhotoType];
             }
-            [cell setDiaryType:kDiaryPhotoType];
+          
             
         }
     }else if ([type isEqualToString:vType_Text]){
@@ -379,11 +408,14 @@
 
 - (void)foldOrUnfold
 {
+    
     [self reloadTable];
 }
 
 - (void)reloadTable
 {
+    PostNotification(Noti_LoadDiaryCellInfo, nil);
+
     [self.tableView reloadData];
 }
 

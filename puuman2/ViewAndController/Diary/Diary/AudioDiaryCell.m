@@ -51,19 +51,22 @@
    
     //在这里调整控件坐标，填充内容
     //audio player init
-   
-    NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
-    
-    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+
      _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
      [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
-
+- (void)loadInfo
+{
+      [super loadInfo];
+    NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
+    
+    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+}
 
 - (void)stopAudio
 {
- [playBtn stopPlay];
+    [playBtn stopPlay];
 }
 
 - (void)stopPlay

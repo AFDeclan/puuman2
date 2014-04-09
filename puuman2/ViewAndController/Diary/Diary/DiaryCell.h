@@ -25,7 +25,8 @@ typedef enum{
     kDiaryPhotoType,
     kDiaryAudioType,
     kDiaryPhotoAudioType,
-    kDiaryVideoType
+    kDiaryVideoType,
+    kdiaryPhotoMoreType
 } DiaryType;
 
 @interface DiaryCell : UITableViewCell
@@ -52,7 +53,10 @@ typedef enum{
 @property (retain,nonatomic) NSDictionary* diaryInfo;
 @property (strong,nonatomic) NSIndexPath *indexPath;
 @property (assign,nonatomic) BOOL controlCanHidden;
+@property (assign,nonatomic) BOOL abbr;
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
+
+- (void)loadInfo;
 - (void)share:(id)sender;
 - (void)delBtnReset;
 - (void)showAndHideControlBtnWithHidden:(BOOL)isHidden;

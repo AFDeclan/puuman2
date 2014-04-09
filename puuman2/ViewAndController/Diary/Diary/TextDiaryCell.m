@@ -151,6 +151,11 @@
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
+- (void)loadInfo
+{
+    [super loadInfo];
+}
+
 - (void)share:(id)sender
 {
    

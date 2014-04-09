@@ -60,6 +60,7 @@
 
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr
 {
+    
     [_shareBtn setAlpha:1];
     titleLabel.text = [self.diaryInfo valueForKey:kTitleName];
     if ([[self.diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
@@ -68,16 +69,9 @@
         [titleView setAlpha:1];
     }
     //在这里调整控件坐标，填充内容
-    photo = [DiaryFileManager thumbImageForPath:[self.diaryInfo valueForKey:kFilePathName]];
-    photo = [UIImage croppedImage:photo WithHeight:592 andWidth:640];
-    [_photoView setImage:photo];
-    
-    NSString *filePath = [self.diaryInfo valueForKey:kFilePath2Name];
-    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
      _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,488);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 
-   
 }
 
 - (void)stopPlayAudio
@@ -94,7 +88,15 @@
 
 }
 
-
+- (void)loadInfo
+{
+      [super loadInfo];
+    photo = [DiaryFileManager thumbImageForPath:[self.diaryInfo valueForKey:kFilePathName]];
+    photo = [UIImage croppedImage:photo WithHeight:592 andWidth:640];
+    [_photoView setImage:photo];
+    NSString *filePath = [self.diaryInfo valueForKey:kFilePath2Name];
+    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+}
 
 
 - (void)dealloc

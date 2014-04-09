@@ -62,12 +62,18 @@
         [titleView setAlpha:1];
     }
     [_shareBtn setAlpha:0];
-    UIImage *image = [DiaryFileManager imageForVideo:[self.diaryInfo valueForKey:kFilePathName]];
-    image  = [UIImage croppedImage:image WithHeight:832 andWidth:832];
-    [_imgView setImage:image];
+  
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,440);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
     //在这里调整控件坐标，填充内容
+}
+
+- (void)loadInfo
+{
+      [super loadInfo];
+    UIImage *image = [DiaryFileManager imageForVideo:[self.diaryInfo valueForKey:kFilePathName]];
+    image  = [UIImage croppedImage:image WithHeight:832 andWidth:832];
+    [_imgView setImage:image];
 }
 
 - (void)playVideo

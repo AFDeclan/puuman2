@@ -13,8 +13,8 @@
 
 @interface MyTopicViewController : SortTableViewController<ForumDelegate,MJRefreshBaseViewDelegate>
 {
-//    MJRefreshFooterView *_refreshFooter;
-//    MJRefreshHeaderView *_refreshHeader;
+    MJRefreshFooterView *_refreshFooter;
+    MJRefreshHeaderView *_refreshHeader;
 
 }
 

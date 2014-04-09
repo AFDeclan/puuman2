@@ -23,10 +23,13 @@
 @synthesize delScrollView = _delScrollView;
 @synthesize diaryType = _diaryType;
 @synthesize controlCanHidden = _controlCanHidden;
+@synthesize abbr =_abbr;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        [MyNotiCenter addObserver:self selector:@selector(loadInfo) name:Noti_LoadDiaryCellInfo object:nil];
         // Initialization code
          delConfirm = NO;
         _controlCanHidden = YES;
@@ -88,8 +91,16 @@
     return self;
 }
 
+
+- (void)loadInfo
+{
+
+
+}
+
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr
 {
+    _abbr = abbr;
     CGFloat height = kHeaderHeight + kFooterHeight + ViewHeight(_content);
     [self buildParentControl];
     SetViewLeftUp(dividingLine, 0, height-2);
