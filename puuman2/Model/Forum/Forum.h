@@ -21,10 +21,10 @@
 
 @optional
 
-//当期话题和投票中话题信息获取成功。
+//当期话题信息获取成功。
 - (void)activeTopicReceived;
 
-//当期话题和投票中话题信息获取失败。
+//当期话题信息获取失败。
 - (void)activeTopicFailed;
 
 //更多投票中话题获取成功

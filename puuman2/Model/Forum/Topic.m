@@ -65,55 +65,38 @@
     if (!_downloadedReplies) {
         _downloadedReplies = [[NSMutableDictionary alloc] init];
     }
-    [_downloadedReplies setValue:reply forKey:[NSString stringWithFormat:@"%d", reply.RID]];
+    [_downloadedReplies setValue:reply forKey:[NSString stringWithFormat:@"%ld", (long)reply.RID]];
 }
 
 - (Reply *)getReply:(NSInteger)rid
 {
-    return [_downloadedReplies valueForKey:[NSString stringWithFormat:@"%d", rid]];
+    return [_downloadedReplies valueForKey:[NSString stringWithFormat:@"%ld", (long)rid]];
 }
 
-- (BOOL)noMoreReplies:(TopicReplyOrder)order
+- (BOOL)getMoreReplies:(NSInteger)cnt orderBy:(TopicReplyOrder)order newDirect:(BOOL)dir
 {
-    return _replies[order].count == _rids[order].count;
-}
-
-- (void)getMoreReplies:(NSInteger)cnt orderBy:(TopicReplyOrder)order
-{
-    if (_request[order] || [self noMoreReplies:order]) return;
+    if (_request[order]) return NO;
     _request[order] = [[PumanRequest alloc] init];
     [_request[order] setUrlStr:kUrl_GetTopicReply];
     [_request[order] setIntegerParam:order forKey:@"order"];
+    [_request[order] setIntegerParam:dir forKey:@"dir"];
+    [_request[order] setIntegerParam:cnt forKey:@"limit"];
+    [_request[order] setIntegerParam:_TID forKey:@"TID"];
+    Reply *boundReply;
+    if (_replies[order].count > 0) {
+        boundReply = dir ? [_replies[order] firstObject] : [_replies[order] lastObject];
+    }
+    if (boundReply) {
+        [_request[order] setIntegerParam:boundReply.RID forKey:@"boundRID"];
+    } else {
+        [_request[order] setValue:@"" forKey:@"boundRID"];
+    }
     [_request[order] setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
-    NSMutableArray * ridsToGet = [[NSMutableArray alloc] init];
-    for (int i=_replies[order].count; i<_replies[order].count+cnt; i++) {
-        if (_rids[order].count <= i) break;
-        id rid = [_rids[order] objectAtIndex:i];
-        if (![self getReply:[rid integerValue]]) {
-            [ridsToGet addObject:rid];
-        }
-    }
-    if ([ridsToGet count] == 0) {
-        [self loadMoreReplies:cnt orderBy:order];
-        return;
-    }
-    [_request[order] setParam:ridsToGet forKey:@"RIDs" usingFormat:AFDataFormat_Json];
     [_request[order] setDelegate:self];
     [_request[order] setResEncoding:PumanRequestRes_JsonEncoding];
     _request[order].tag = order;
     [_request[order] postAsynchronous];
-}
-
-- (void)loadMoreReplies:(NSInteger)cnt orderBy:(TopicReplyOrder)order
-{
-    for (int i=_replies[order].count; i<_replies[order].count+cnt; i++) {
-        if (i >= _rids[order].count) break;
-        id rid = [_rids[order] objectAtIndex:i];
-        if ([self getReply:[rid integerValue]]) {
-            [_replies[order] addObject:[self getReply:[rid integerValue]]];
-        }
-    }
-    [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadedMore:) withObject:self];
+    return YES;
 }
 
 - (NSArray *)replies:(TopicReplyOrder)order
@@ -138,13 +121,22 @@
         NSInteger order = [[afRequest.params objectForKey:@"order"] integerValue];
         if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]]) {
             NSArray *ret = afRequest.resObj;
+            BOOL dir = [[afRequest.params valueForKey:@"dir"] boolValue];
             for (NSDictionary * replyData in ret) {
                 Reply *re = [[Reply alloc] init];
                 [re setData:replyData];
+                Reply *cached = [self getReply:re.RID];
+                if (cached) {
+                    [_replies[order] removeObject:cached];
+                }
                 [self cacheReply:re];
+                if (dir) {
+                    [_replies[order] insertObject:re atIndex:0];
+                } else {
+                    [_replies[order] addObject:re];
+                }
             }
-            NSInteger cnt = afRequest.tag;
-            [self loadMoreReplies:cnt orderBy:(TopicReplyOrder)order];
+            [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadedMore:) withObject:self];
         } else {
             [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
         }
