@@ -39,6 +39,7 @@
     AFSelecedTextImgButton *left_sortBtn;
     AFSelecedTextImgButton *right_sortBtn;
     BOOL leftSelected;
+    
 }
 @property(nonatomic,assign)id<TopicContentCellDelegate>delegate;
 -(void)setInfoViewWithTopicNum:(NSInteger)topicNum;

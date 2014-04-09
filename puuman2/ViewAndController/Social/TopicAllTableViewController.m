@@ -22,6 +22,7 @@
 @synthesize voting = _voting;
 @synthesize topic = _topic;
 @synthesize order =_order;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,6 +34,7 @@
         replays = [[NSArray alloc] init];
         [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(refreshVoteTable) name:Noti_RefreshVoteTabe object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(refreshCellWithRow:) name:Noti_RefreshTextTopicCell object:nil];
 
     }
     return self;
@@ -112,7 +114,7 @@
                 cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
         }
-        
+         [cell setRow:[indexPath row]];
         [cell setIsMyTopic:NO];
         [cell buildWithReply:[replays objectAtIndex:[indexPath row]]];
 
@@ -150,6 +152,22 @@
     _voting = voting;
     if (voting) {
         [self.tableView reloadData];
+        if (!_refreshHeader) {
+            _refreshHeader = [[MJRefreshHeaderView alloc] init];
+            _refreshHeader.scrollView = self.tableView;
+            [self.tableView addSubview:_refreshHeader];
+            [_refreshHeader setDelegate:self];
+            _refreshHeader.alpha = 1;
+            __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
+            _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+                [self.tableView reloadData];
+            };
+            
+            [_refreshHeader beginRefreshing];
+            
+        }
+        
+
     }
 }
 
@@ -180,19 +198,23 @@
 
 - (void)setOrder:(TopicReplyOrder)order
 {
-    _order = order;
-   
-    if ([_refreshFooter isRefreshing]) {
-        [_refreshFooter endRefreshing];
+    if (_voting) {
+        
+    }else{
+        _order = order;
+        
+        if ([_refreshFooter isRefreshing]) {
+            [_refreshFooter endRefreshing];
+        }
+        
+        if (![_topic noMoreReplies:_order])
+        {
+            [_refreshFooter beginRefreshing];
+        }else{
+            replays = [_topic replies:_order];
+        }
     }
     
-    if (![_topic noMoreReplies:_order])
-    {
-         [_refreshFooter beginRefreshing];
-    }else{
-        replays = [_topic replies:_order];
-        [self.tableView reloadData];
-    }
 }
 
 //更多话题回复加载成功。
@@ -256,7 +278,11 @@
 }
 
 
-
+- (void)refreshCellWithRow:(NSNotification *)notification
+{
+    NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:[[notification object] intValue] inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:reloadIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
 
 
 @end

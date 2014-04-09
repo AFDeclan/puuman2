@@ -70,5 +70,5 @@
 #define Noti_RemoveFriendDelegate               @"Noti_RemoveFriendDelegate"
 #define Noti_BackFromSelectedView               @"Noti_BackFromSelectedView"
 #define Noti_ReplyRemoveForumDelgate            @"Noti_ReplyRemoveForumDelgate"
-
+#define Noti_RefreshTextTopicCell               @"Noti_RefreshTextTopicCell"
 #endif

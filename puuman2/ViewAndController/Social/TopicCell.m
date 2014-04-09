@@ -16,8 +16,10 @@
 #import "UserInfo.h"
 #import "Comment.h"
 
+
 @implementation TopicCell
 @synthesize isMyTopic = _isMyTopic;
+@synthesize row = _row;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -122,7 +124,8 @@
         [headTitleView setAlpha:1];
         SetViewLeftUp(info_time, 464, 48);
         SetViewLeftUp(infoView, 0, 32);
-        SetViewLeftUp(contentView, 96, 0);
+        SetViewLeftUp(contentView, 0, 96);
+      
         
     }else{
         [headerView setFrame:CGRectMake(0, 0, 608, 64)];
@@ -152,8 +155,8 @@
 {
    
     if (![member belongsTo:_reply.UID]) {
-        
-        if (![member belongsTo:[UserInfo sharedUserInfo].UID]) {
+    
+       
             if (!hasInfoView) {
                 RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
                 [recommend setDelegate:self];
@@ -165,12 +168,9 @@
                 [recommend show];
                 hasInfoView = YES;
             }
-        }else{
-            _member = member;
-            [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:member.BabyIsBoy];
-        }
+        
     }else{
-        _member = member;
+    
         [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:member.BabyIsBoy];
 
     }
@@ -179,13 +179,12 @@
 //Member数据下载失败
 - (void)memberDownloadFailed
 {
-    [[Friend sharedInstance] removeDelegateObject:self];
 
 }
 
 - (void)popViewfinished
 {
-   // hasInfoView = NO;
+    hasInfoView = NO;
     PostNotification(Noti_RefreshTopicTable, nil);
     //[[Forum sharedInstance] addDelegateObject:self];
 }
@@ -197,11 +196,11 @@
     
     _member = [[MemberCache sharedInstance] getMemberWithUID:reply.UID];
     if (_member) {
-      
+       
         [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:_member.BabyIsBoy];
-
+       
     }
-   
+     [[Friend sharedInstance] removeDelegateObject:self];
     [[Friend sharedInstance] addDelegateObject:self];
 
     
@@ -216,7 +215,11 @@
 //    }
  
     if (_isMyTopic) {
-        [[Forum sharedInstance] getTopic:reply.TID];
+        Topic *topic =  [[Forum sharedInstance] getTopic:reply.TID];
+        if (topic) {
+            [topicNameLabel setText:topic.TTitle];
+
+        }
     }
 
     
@@ -357,19 +360,21 @@
 }
 
 
-//更多话题回复加载成功。
-- (void)topicRepliesLoadedMore:(Topic *)topic
-{
 
-  
-    [topicNameLabel setText:topic.TTitle];
+//往期话题获取成功。
+- (void)topicReceived:(Topic *)topic
+{
+    if (topic.TID == _reply.TID ) {
+        [topicNameLabel setText:topic.TTitle];
+    }
 }
 
-//更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
-- (void)topicRepliesLoadFailed:(Topic *)topic
+//往期话题获取失败
+- (void)topicFailed:(NSString *)TNo
 {
-
+    
 }
+
 
 ////更多评论加载成功
 //- (void)replyCommentsLoadedMore:(Reply *)reply

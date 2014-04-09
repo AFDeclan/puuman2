@@ -135,13 +135,13 @@ static Forum * instance;
             return;
     }
     PumanRequest * req = [[PumanRequest alloc] init];
-    [req setUrlStr:kUrl_GetTopicReply];
+    [req setUrlStr:kUrl_GetMyReply];
     NSDate * boundDate = nil;
     Reply *boundReply = dir ? [_myReplies firstObject] : [_myReplies lastObject];
     if (boundReply) {
         boundDate = boundReply.RCreateTime;
     }
-    if (boundDate) [req setValue:[DateFormatter timestampStrFromDatetime:boundDate] forKey:@"boundDate"];
+    if (boundDate) [req setParam:[DateFormatter timestampStrFromDatetime:boundDate] forKey:@"boundDate"];
     else [req setParam:@"" forKey:@"boundDate"];
     [req setIntegerParam:dir forKey:@"dir"];
     [req setIntegerParam:cnt forKey:@"limit"];

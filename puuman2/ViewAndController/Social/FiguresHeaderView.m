@@ -13,6 +13,7 @@
 #import "MainTabBarController.h"
 #import "ActionForUpload.h"
 #import "UserInfo.h"
+#import "Action.h"
 
 
 
@@ -68,7 +69,8 @@
         [modifyNameBtn setBackgroundColor:[UIColor clearColor]];
         [modifyNameBtn addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:modifyNameBtn];
-        
+        changed = NO;
+       
     }
     return self;
 }
@@ -88,7 +90,12 @@
 {
     PostNotification(Noti_RemoveFriendDelegate, nil);
      [[Friend sharedInstance] addDelegateObject:self];
-   
+    [info_title setEnabled:NO];
+    canDeleteMember = NO;
+    [info_title setEnabled:NO];
+    [modifyNameBtn setEnabled:NO];
+    [info_title resignFirstResponder];
+     [info_title setBackgroundColor:[UIColor clearColor]];
     myGroup = group;
     if (figuresColumnView) {
         [figuresColumnView removeFromSuperview];
@@ -107,8 +114,6 @@
     if ([group GLatestAction]) {
         notiStr = [[group GLatestAction] AMeta];
     }
-        
-    
     
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
@@ -135,8 +140,11 @@
     [info_title setEnabled:NO];
     [modifyNameBtn setEnabled:NO];
     [info_title resignFirstResponder];
-    [[myGroup actionForRenameGroup:info_title.text] upload];
-
+    if (changed) {
+        [[myGroup actionForRenameGroup:info_title.text] upload];
+    }else{
+        [info_title setText:oldName];
+    }
     [info_title setBackgroundColor:[UIColor clearColor]];
 }
 
@@ -222,7 +230,10 @@
 //Group Action 上传成功
 - (void)actionUploaded:(ActionForUpload *)action
 {
-    PostNotification(Noti_RefreshInviteStatus, nil);
+    [noti_label animateStop];
+    [noti_label setTitleWithTitleText:info_title.text andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
+    [noti_label animateStart];
+   // PostNotification(Noti_RefreshInviteStatus, nil);
 }
 //Group Action 上传失败
 - (void)actionUploadFailed:(ActionForUpload *)action
@@ -232,6 +243,31 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+
+
+    
+    if (range.length == 1)
+    {
+        if ([textField.text length]==1) {
+            changed = NO;
+        }else{
+            NSString *name = [textField.text substringToIndex:[textField.text length]-1];
+            if ([name isEqualToString:oldName]) {
+               changed = NO;
+            }else{
+               changed = YES;
+            }
+            
+        }
+    }else{
+        NSString *name = [textField.text stringByAppendingString:string];
+        if ([name isEqualToString:oldName]) {
+            changed = NO;
+        }else{
+           changed = YES;
+        }
+    }
+    
     if (range.length == 0) {
         if ([textField.text length] >=10) {
             NSString *str = [textField.text substringToIndex:10];
@@ -239,5 +275,7 @@
         }
     }
     return YES;
+    
+    
 }
 @end

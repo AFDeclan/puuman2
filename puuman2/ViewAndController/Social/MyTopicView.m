@@ -19,7 +19,7 @@
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
         topicMyVC = [[MyTopicViewController alloc] initWithNibName:nil bundle:nil];
-        //[topicMyVC.view setBackgroundColor:[UIColor clearColor]];
+       [topicMyVC.view setBackgroundColor:[UIColor clearColor]];
         [self addSubview:topicMyVC.view];
         
         if([MainTabBarController sharedMainViewController].isVertical)
@@ -47,13 +47,13 @@
 - (void)setVerticalFrame
 {
     [topicMyVC setVerticalFrame];
-    [topicMyVC.view setFrame:CGRectMake(0, 0, 608, 800)];
+    [topicMyVC.view setFrame:CGRectMake(0, 0, 608, 944)];
 }
 
 - (void)setHorizontalFrame
 {
      [topicMyVC setHorizontalFrame];
-    [topicMyVC.view setFrame:CGRectMake(128, 0, 608, 800)];
+    [topicMyVC.view setFrame:CGRectMake(128, 0, 608, 688)];
 }
 
 @end

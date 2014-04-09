@@ -335,11 +335,9 @@
         case TopicType_Photo:
         {
             TopicCellSelectedPohosViewController *chooseView = [[TopicCellSelectedPohosViewController alloc] initWithNibName:nil bundle:nil];
-            [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
-            [chooseView setStyle:ConfirmError];
+           [chooseView setStyle:ConfirmError];
             [chooseView setSelecedDelegate:self];
             [chooseView show];
-
         }
             break;
         case TopicType_Text:
@@ -373,7 +371,6 @@
 - (void)currentTopic
 {
  
-    
 
 }
 
@@ -416,19 +413,34 @@
 
 - (void)leftSortSelected
 {
-    [topicAllVC setOrder:TopicReplyOrder_Vote];
-    [left_sortBtn selected];
-    [right_sortBtn unSelected];
-    [topicAllVC.tableView reloadData];
+    if (status == TopicStatus_Voting) {
+         [topicAllVC setOrder:TopicReplyOrder_Vote];
+        [topicAllVC.tableView reloadData];
+       
+    }else{
+        
+        [topicAllVC setOrder:TopicReplyOrder_Vote];
+        [left_sortBtn selected];
+        [right_sortBtn unSelected];
+        [topicAllVC.tableView reloadData];
+    }
+   
 }
 
 - (void)rightSortSelected
 {
+    if (status == TopicStatus_Voting) {
+        [topicAllVC setOrder:TopicReplyOrder_Time];
+        [topicAllVC.tableView reloadData];
+  
 
-    [topicAllVC setOrder:TopicReplyOrder_Time];
-    [right_sortBtn selected];
-    [left_sortBtn unSelected];
-    [topicAllVC.tableView reloadData];
+    }else{
+        [topicAllVC setOrder:TopicReplyOrder_Time];
+        [right_sortBtn selected];
+        [left_sortBtn unSelected];
+        [topicAllVC.tableView reloadData];
+    }
+   
 }
 
 

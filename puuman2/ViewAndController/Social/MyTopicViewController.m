@@ -47,13 +47,13 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:NO];
+            [[Forum sharedInstance] getMoreMyReplies:5 newDirect:NO];
             if (![[Forum sharedInstance] noMore])
             {
                 [blockRefreshFooter endRefreshing];
             }
         };
-        [_refreshFooter beginRefreshing];
+      
     }
     
     if (!_refreshHeader) {
@@ -64,12 +64,12 @@
         _refreshHeader.alpha = 1;
      //   __block MJRefreshHeaderView * blockRefreshFooter = _refreshHeader;
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:YES];
+            [[Forum sharedInstance] getMoreMyReplies:5 newDirect:YES];
 
         };
         
     }
-  
+    [_refreshFooter beginRefreshing];
 }
 
 - (void)reloadMyTopic
@@ -131,31 +131,39 @@
             cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
     }
-    [cell buildWithReply:replay];
+    [cell setRow:[indexPath row]];
     [cell setIsMyTopic:YES];
+    [cell buildWithReply:replay];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell setBackgroundColor:[UIColor blackColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
 
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  //  Reply *replay = [[[Forum sharedInstance] myReplies] objectAtIndex:[indexPath row]];
-  //  return  [TopicCell heightForReply:replay andIsMyTopic:YES andTopicType:[[replay photoUrls] count]>0?TopicType_Photo:TopicType_Text];
-    
-    return 200;
+    Reply *replay = [[[Forum sharedInstance] myReplies] objectAtIndex:[indexPath row]];
+   return  [TopicCell heightForReply:replay andIsMyTopic:YES andTopicType:[[replay photoUrls] count]>0?TopicType_Photo:TopicType_Text];
+  
 }
 
 
 - (void)myRepliesLoadedMore
 {
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
     [self.tableView reloadData];
 }
 
 - (void)myRepliesLoadFailed
 {
-    
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
+    [self.tableView reloadData];
 }
 
 @end

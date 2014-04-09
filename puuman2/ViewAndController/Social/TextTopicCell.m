@@ -23,7 +23,7 @@
     }
     return self;
 }
-- (void)buildWithReply:(Reply *)replay
+- (void)buildWithReply:(Reply *)reply
 {
     if (mainTextView) {
         [mainTextView removeFromSuperview];
@@ -33,31 +33,33 @@
     [mainTextView setFont:PMFont2];
     [mainTextView setTextColor:PMColor1];
     [contentView addSubview:mainTextView];
-    if ([replay.textUrls count]>0) {
-        [mainTextView setTitle:[replay.textUrls objectAtIndex:0] withMaxWidth:536];
-    }else{
-        [mainTextView setTitle:@"" withMaxWidth:536];
-
-    }
- 
+    NSString *filePath = [reply.textUrls objectAtIndex:0];
+    NSString *text;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+        text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    else text = @"";
+    if (text == nil) text = @"";
+    [mainTextView setTitle:text withMaxWidth:536];
     CGRect frame = contentView.frame;
     frame.size.height = ViewHeight(mainTextView)+16;
     [contentView setFrame:frame];
-    [super buildWithReply:replay];
+    [super buildWithReply:reply];
 
 }
-
-+ (CGFloat)heightForReplay:(Reply *)replay andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type;
++ (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type
 {
+    
+    NSString *filePath = [reply.textUrls objectAtIndex:0];
+    NSString *text;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+        text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    else text = @"";
+    if (text == nil) text = @"";
     
     AdaptiveLabel *example = [[AdaptiveLabel alloc] initWithFrame:CGRectMake(56, 0, 0, 0)];
     [example setFont:PMFont2];
-    if ([replay.textUrls count]>0) {
-        [example setTitle:[replay.textUrls objectAtIndex:0] withMaxWidth:536];
- 
-    }else{
-       [example setTitle:@"" withMaxWidth:536];
-    }
+    [example setTitle:text withMaxWidth:536];
+
     return  ViewHeight(example)+16;
 }
 

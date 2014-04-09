@@ -9,17 +9,20 @@
 #import "SortTableViewController.h"
 #import "Topic.h"
 #import "MJRefreshFooterView.h"
+#import "MJRefreshHeaderView.h"
 #import "Forum.h"
 
 @interface TopicAllTableViewController : SortTableViewController<ForumDelegate,MJRefreshBaseViewDelegate>
 {
     MJRefreshFooterView *_refreshFooter;
+    MJRefreshHeaderView *_refreshHeader;
     NSArray *replays;
 }
 
 @property(nonatomic,assign)BOOL voting;
 @property(nonatomic,retain)Topic *topic;
 @property(nonatomic,assign)TopicReplyOrder order;
+- (void)refresh;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

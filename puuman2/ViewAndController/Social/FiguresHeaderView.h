@@ -23,6 +23,8 @@
     UIButton *modifyNameBtn;
     NSString *oldName;
     NSString *notiStr;
+    BOOL changed;
+
 }
 
 - (void)reloadWithGroupInfo:(Group *)group;
