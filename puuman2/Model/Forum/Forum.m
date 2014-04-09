@@ -204,9 +204,9 @@ static Forum * instance;
                 if (dir) [_myReplies insertObject:re atIndex:0];
                 else [_myReplies addObject:re];
             }
-            [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadedMore:) withObject:self];
+            [[Forum sharedInstance] informDelegates:@selector(myRepliesLoadedMore) withObject:nil];
         } else {
-            [[Forum sharedInstance] informDelegates:@selector(topicRepliesLoadFailed:) withObject:self];
+            [[Forum sharedInstance] informDelegates:@selector(myRepliesLoadFailed) withObject:nil];
         }
     } else if ([url isEqualToString:kUrl_GetAwardRank]) {
         if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSDictionary class]]) {
