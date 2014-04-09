@@ -90,7 +90,8 @@
 
 - (void)loadInfo
 {
-      [super loadInfo];
+    [super loadInfo];
+    photo = nil;
     photo = [DiaryFileManager thumbImageForPath:[self.diaryInfo valueForKey:kFilePathName]];
     photo = [UIImage croppedImage:photo WithHeight:592 andWidth:640];
     [_photoView setImage:photo];

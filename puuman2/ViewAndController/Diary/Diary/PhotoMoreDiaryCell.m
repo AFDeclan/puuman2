@@ -64,7 +64,8 @@
 
 - (void)loadInfo
 {
-      [super loadInfo];
+    [super loadInfo];
+    _photoPaths = nil;
     NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
     _photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];

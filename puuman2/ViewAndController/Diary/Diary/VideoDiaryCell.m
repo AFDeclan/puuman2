@@ -70,7 +70,7 @@
 
 - (void)loadInfo
 {
-      [super loadInfo];
+    [super loadInfo];
     UIImage *image = [DiaryFileManager imageForVideo:[self.diaryInfo valueForKey:kFilePathName]];
     image  = [UIImage croppedImage:image WithHeight:832 andWidth:832];
     [_imgView setImage:image];
