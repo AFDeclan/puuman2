@@ -22,10 +22,16 @@
 @optional
 
 //当期话题和投票中话题信息获取成功。
-- (void)activeTopicsReceived;
+- (void)activeTopicReceived;
 
 //当期话题和投票中话题信息获取失败。
-- (void)activeTopicsFailed;
+- (void)activeTopicFailed;
+
+//更多投票中话题获取成功
+- (void)votingTopicLoadedMore;
+
+//更多投票中话题获取失败
+- (void)votingTopicLoadFailed;
 
 //往期话题获取成功。
 - (void)topicReceived:(Topic *)topic;
@@ -86,22 +92,26 @@
 //评论上传失败
 - (void)replyCommentUploadFailed:(Reply *)reply;
 
-
-
 @end
+
+//votingTopic
+#define VotingTopicOrderModeCnt  2
+typedef enum VotingTopicOrder {
+    VotingTopicOrder_Time = 0,
+    VotingTopicOrder_Vote = 1,
+} VotingTopicOrder;
+
 
 @interface Forum : NSObject <AFRequestDelegate>
 {
     NSMutableSet * _requests;
     NSMutableSet * _repliesForUpload;
+    NSMutableArray * _votingTopic[VotingTopicOrderModeCnt];
+    NSMutableDictionary * _topicsForNo, *_topicsForId;
 }
 
 //当期话题
 @property (nonatomic, retain, readonly) Topic * onTopic;
-//投票中的话题
-@property (nonatomic, retain, readonly) NSMutableArray * votingTopic;
-//以期号为索引
-@property (nonatomic, retain, readonly) NSMutableDictionary * topics;
 
 //我参与的
 @property (retain, nonatomic, readonly) NSMutableArray * myReplies;
@@ -123,15 +133,18 @@
 - (void)addDelegateObject:(id<ForumDelegate>)object;
 - (void)removeDelegateObject:(id<ForumDelegate>)object;
 
-//获取当期和投票中话题，异步操作。
-- (void)getActiveTopics;
+//获取当期话题，异步操作。
+- (void)getActiveTopic;
 
+//投票中的话题
+- (NSArray *)votingTopic:(VotingTopicOrder)order;
+- (BOOL)getMoreVotingTopic:(NSInteger)cnt orderBy:(VotingTopicOrder)order newDirect:(BOOL)dir;
 
 //按期号获取，若已获取过则直接返回，否则返回nil，异步等待回调。
 - (Topic *)getTopic:(NSInteger)TNo;
 
 //dir 为YES时为获取更新的回复，获取的结果插在myReplies的头，为NO时为获取更早的回复，获取结果插在myReplies尾。
-- (void)getMoreMyReplies:(NSInteger)cnt newDirect:(BOOL)dir;
+- (BOOL)getMoreMyReplies:(NSInteger)cnt newDirect:(BOOL)dir;
 
 //获取奖品和排行
 - (void)getAwardAndRank;
