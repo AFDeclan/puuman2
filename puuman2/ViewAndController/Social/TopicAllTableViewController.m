@@ -21,7 +21,8 @@
 @implementation TopicAllTableViewController
 @synthesize voting = _voting;
 @synthesize topic = _topic;
-@synthesize order =_order;
+@synthesize replyOrder =_replyOrder;
+@synthesize voteOrder = _voteOrder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +30,9 @@
     if (self) {
         // Custom initialization
         _voting = NO;
-        _order =  TopicReplyOrder_Vote;
+        _voteOrder =  VotingTopicOrder_Vote;
+        _replyOrder = TopicReplyOrder_Vote;
+        
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSArray alloc] init];
         [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
@@ -69,14 +72,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    if (_voting) {
-   
-        return [[Forum sharedInstance].votingTopic count];
-    }else{
-        return [replays count];
-    }
-    
-  
+    return [replays count];
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,7 +84,7 @@
         if (!cell) {
             cell = [[VotingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
-        [cell buildWithVoteTopic:[[Forum sharedInstance].votingTopic objectAtIndex:[indexPath row]]];
+        [cell buildWithVoteTopic:[replays objectAtIndex:[indexPath row]]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -160,8 +157,8 @@
             _refreshFooter.alpha = 1;
             __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
             _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-                [_topic getMoreReplies:5 orderBy:_order];
-                if (![_topic noMoreReplies:_order])
+               
+                if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
                 {
                     [blockRefreshFooter endRefreshing];
                 }
@@ -180,7 +177,7 @@
             _refreshHeader.alpha = 1;
             __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
             _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-                [self.tableView reloadData];
+                 [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:YES];
             };
             
             [_refreshHeader beginRefreshing];
@@ -202,8 +199,8 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [_topic getMoreReplies:5 orderBy:_order];
-            if (![_topic noMoreReplies:_order])
+            [_topic getMoreReplies:5 orderBy:_replyOrder];
+            if (![_topic noMoreReplies:_replyOrder])
             {
                 [blockRefreshFooter endRefreshing];
             }
@@ -216,35 +213,64 @@
     [self.tableView reloadData];
 }
 
-- (void)setOrder:(TopicReplyOrder)order
+
+- (void)setReplyOrder:(TopicReplyOrder)replyOrder
 {
-    if (_voting) {
-        
-    }else{
-        _order = order;
-        
-        if ([_refreshFooter isRefreshing]) {
-            [_refreshFooter endRefreshing];
-        }
-        
-        if ([replays count]>5) {
-            
-        }
-        if (![_topic noMoreReplies:_order])
+    _replyOrder = replyOrder;
+    
+    if ([_refreshFooter isRefreshing]) {
+        [_refreshFooter endRefreshing];
+    }
+    replays = [_topic replies:_replyOrder];
+    
+    if ([replays count] < 5) {
+        if (![_topic noMoreReplies:_replyOrder])
         {
             [_refreshFooter beginRefreshing];
-        }else{
-            replays = [_topic replies:_order];
         }
     }
-    
+   
+
 }
+
+- (void)setVoteOrder:(VotingTopicOrder)voteOrder
+{
+    _voteOrder = voteOrder;
+    if ([_refreshFooter isRefreshing]) {
+        [_refreshFooter endRefreshing];
+    }
+    replays = [[Forum sharedInstance] votingTopic:_voteOrder];
+    if ([replays count] <5) {
+        if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
+        {
+            [_refreshFooter endRefreshing];
+        }
+    }
+}
+
+//更多投票中话题获取成功
+- (void)votingTopicLoadedMore
+{
+    replays = [[Forum sharedInstance] votingTopic:_voteOrder];
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    [self.tableView reloadData];
+}
+
+//更多投票中话题获取失败
+- (void)votingTopicLoadFailed
+{
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    [self.tableView reloadData];
+}
+
 
 //更多话题回复加载成功。
 - (void)topicRepliesLoadedMore:(Topic *)topic
 {
-    _topic = topic;
-    replays = [topic replies:_order];
+    
+    replays = [topic replies:_replyOrder];
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
     [self.tableView reloadData];
@@ -262,10 +288,6 @@
 
 - (void)refreshTable
 {
-    if ([replays count] < 5) {
-       [_topic getMoreReplies:5 orderBy:_order];
-    }
-    
     [self.tableView  reloadData];
 }
 
@@ -276,20 +298,10 @@
 - (void)refreshVoteTable
 {
       _voting = YES;
-    [[Forum sharedInstance] getActiveTopics];
+   
 }
 
-//当期话题和投票中话题信息获取成功。
-- (void)activeTopicsReceived
-{
-    [self.tableView  reloadData];
-}
 
-//当期话题和投票中话题信息获取失败。
-- (void)activeTopicsFailed
-{
-    
-}
 - (void)setVerticalFrame
 {
     

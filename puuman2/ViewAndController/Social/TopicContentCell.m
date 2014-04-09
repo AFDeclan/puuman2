@@ -414,12 +414,12 @@
 - (void)leftSortSelected
 {
     if (status == TopicStatus_Voting) {
-         [topicAllVC setOrder:TopicReplyOrder_Vote];
+        [topicAllVC setVoteOrder:VotingTopicOrder_Vote];
         [topicAllVC.tableView reloadData];
        
     }else{
         
-        [topicAllVC setOrder:TopicReplyOrder_Vote];
+        [topicAllVC setReplyOrder:TopicReplyOrder_Vote];
         [left_sortBtn selected];
         [right_sortBtn unSelected];
         [topicAllVC.tableView reloadData];
@@ -430,12 +430,12 @@
 - (void)rightSortSelected
 {
     if (status == TopicStatus_Voting) {
-        [topicAllVC setOrder:TopicReplyOrder_Time];
+        [topicAllVC setVoteOrder:VotingTopicOrder_Time];
         [topicAllVC.tableView reloadData];
   
 
     }else{
-        [topicAllVC setOrder:TopicReplyOrder_Time];
+        [topicAllVC setReplyOrder:TopicReplyOrder_Time];
         [right_sortBtn selected];
         [left_sortBtn unSelected];
         [topicAllVC.tableView reloadData];

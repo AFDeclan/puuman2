@@ -40,10 +40,10 @@
 
 - (void)reloadAllTopic
 {
-    [[Forum sharedInstance] getActiveTopics];
+    [[Forum sharedInstance] getActiveTopic];
 }
 
-- (void)activeTopicsReceived
+- (void)activeTopicReceived
 {
 
     [[Forum sharedInstance] removeDelegateObject:self];
@@ -52,7 +52,7 @@
     
 }
 
-- (void)activeTopicsFailed
+- (void)activeTopicFailed
 {
     [[Forum sharedInstance] removeDelegateObject:self];
 }

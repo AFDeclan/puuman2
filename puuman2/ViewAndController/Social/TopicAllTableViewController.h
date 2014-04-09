@@ -21,8 +21,9 @@
 
 @property(nonatomic,assign)BOOL voting;
 @property(nonatomic,retain)Topic *topic;
-@property(nonatomic,assign)TopicReplyOrder order;
-- (void)refresh;
+@property(nonatomic,assign)TopicReplyOrder replyOrder;
+@property(nonatomic,assign)VotingTopicOrder voteOrder;
+
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end
