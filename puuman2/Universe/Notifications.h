@@ -13,6 +13,8 @@
 #define NOTIFICATION_Horizontal                 @"NOTIFICATION_Horizontal"
 #define NOTIFICATION_Vertical                   @"NOTIFICATION_Vertical"
 
+
+
 #define Noti_CartDoneReceived                   @"Noti_CartDoneReceived"
 #define Noti_TutorialFinshed                    @"TUTORIAL_FINISHED"
 #define Noti_ReloadShopMall                     @"Noti_ReloadShopMall"
