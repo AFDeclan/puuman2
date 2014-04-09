@@ -37,7 +37,6 @@
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [titleView addSubview:titleLabel];
         [titleView setAlpha:0];
-
     }
     return self;
 }
@@ -59,7 +58,7 @@
     }else{
         [titleView setAlpha:1];
     }
-
+    [_imgView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,440);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
@@ -80,6 +79,8 @@
     UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
     UIImage *image  = [UIImage croppedImage:photo WithHeight:832 andWidth:832];
     [_imgView setImage:image];
+
+    
 }
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;

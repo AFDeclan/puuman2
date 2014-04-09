@@ -19,7 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [MyNotiCenter addObserver:self selector:@selector(scrollViewMoved:) name:Noti_PartnerDataViewScrolled object:nil];
+       // [MyNotiCenter addObserver:self selector:@selector(scrollViewMoved:) name:Noti_PartnerDataViewScrolled object:nil];
         propImageView = [[AFImageView alloc] initWithFrame:CGRectMake(0, 40,96, 96)];
         [propImageView setBackgroundColor:[UIColor clearColor]];
         [self addSubview:propImageView];
@@ -48,6 +48,10 @@
         mask = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 96, 136)];
         [mask setBackgroundColor:[UIColor blackColor]];
         [self addSubview:mask];
+        
+        line = [[UIView alloc]initWithFrame:CGRectMake(94, 0, 2, 136)];
+        [line setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_timeline_diary.png"]]];
+        [self addSubview:line];
     }
     return self;
 }

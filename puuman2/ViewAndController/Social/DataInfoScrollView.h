@@ -18,9 +18,9 @@
 {
     BodyPartnerDataView *heightView;
     BodyPartnerDataView *weightView;
-    VaccinePartnerDataView *vaccineView;
+   // VaccinePartnerDataView *vaccineView;
     PuumanRankPartnerDataView *puumanRankView;
-    PropWarePartnerDataView *propWareView[5];
+   // PropWarePartnerDataView *propWareView[5];
     
 }
 - (void)reloadWithGroupInfo:(Group *)group;

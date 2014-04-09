@@ -24,13 +24,7 @@
         [titleLabel setTextColor:PMColor1];
         [_content addSubview:titleLabel];
         [titleLabel setAlpha:0];
-        _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, 24, 416, 192)];
-        [_showColumnView setBackgroundColor:[UIColor clearColor]];
-        [_showColumnView setViewDelegate:self];
-        [_showColumnView setViewDataSource:self];
-        [_showColumnView setPagingEnabled:NO];
-        [_showColumnView setScrollEnabled:NO];
-        [_content addSubview:_showColumnView];
+       
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(56, 24, 416, 192)];
         [_scrollView setDelegate:self];
         [_scrollView setPagingEnabled:YES];
@@ -57,7 +51,18 @@
     SetViewLeftUp(_showColumnView, 56, height);
     height +=192;
     selectedIndex = 1;
-    
+    _photoPaths = [NSArray arrayWithObjects:@"pic_default_diary.png",@"pic_default_diary.png",@"pic_default_diary.png", nil];
+    if (_showColumnView) {
+        [_showColumnView removeFromSuperview];
+    }
+    _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, 24, 416, 192)];
+    [_showColumnView setBackgroundColor:[UIColor clearColor]];
+    [_showColumnView setViewDelegate:self];
+    [_showColumnView setViewDataSource:self];
+    [_showColumnView setPagingEnabled:NO];
+    [_showColumnView setScrollEnabled:NO];
+    [_content addSubview:_showColumnView];
+    [_content bringSubviewToFront:_scrollView];
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
@@ -65,7 +70,7 @@
 - (void)loadInfo
 {
     [super loadInfo];
-    _photoPaths = nil;
+    
     NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
     _photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
@@ -171,8 +176,13 @@
             [cell.contentView addSubview:mask];
         }
   
+        
+        
         UIImage *photo = [DiaryFileManager imageForPath:[_photoPaths objectAtIndex:index-1]];
        // photo = [UIImage croppedImage:photo WithHeight:384 andWidth:384];
+        if (!photo) {
+            photo = [UIImage imageNamed:[_photoPaths objectAtIndex:index-1]];
+        }
         UIImageView *photoView = (UIImageView *)[cell viewWithTag:11];
         [photoView setImage:photo];
 

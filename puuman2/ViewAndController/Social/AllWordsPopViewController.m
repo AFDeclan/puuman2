@@ -127,7 +127,7 @@
 //评论上传成功
 - (void)replyCommentUploaded:(Reply *)reply
 {
-    _replay = reply;
+   
     [talkTextField setText:@""];
     [createTalkBtn setEnabled:NO];
     [createTalkBtn setAlpha:0.5];
@@ -144,7 +144,7 @@
 //更多评论加载成功
 - (void)replyCommentsLoadedMore:(Reply *)reply
 {
-    _replay = reply;
+    
     [talksTable reloadData];
     PostNotification(Noti_RefreshTopicTable, nil);
 }

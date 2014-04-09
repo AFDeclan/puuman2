@@ -247,7 +247,7 @@
             [self setHorizontalFrame];
         }
         
-        
+        [bgImageView setImage:[UIImage imageNamed:@"pic_future_topic.png"]];
         
         
     }else{
@@ -411,13 +411,14 @@
 - (void)leftSortSelected
 {
     [topicAllVC setOrder:TopicReplyOrder_Vote];
+    [topicAllVC.tableView reloadData];
     [left_sortBtn selected];
     [right_sortBtn unSelected];
 }
 
 - (void)rightSortSelected
 {
-    
+    [topicAllVC.tableView reloadData];
     [topicAllVC setOrder:TopicReplyOrder_Time];
     [right_sortBtn selected];
     [left_sortBtn unSelected];

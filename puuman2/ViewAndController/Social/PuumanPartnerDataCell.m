@@ -11,7 +11,7 @@
 #import "UniverseConstant.h"
 
 @implementation PuumanPartnerDataCell
-
+@synthesize showLine = _showLine;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -24,6 +24,9 @@
         [puuman_label setFont:PMFont1];
         [puuman_label setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:puuman_label];
+        line = [[UIView alloc]initWithFrame:CGRectMake(-1, 0, 2, 224)];
+        [line setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_timeline_diary.png"]]];
+        [self addSubview:line];
     }
     return self;
 }
@@ -57,4 +60,13 @@
     // Configure the view for the selected state
 }
 
+- (void)setShowLine:(BOOL)showLine
+{
+    _showLine = showLine;
+    if (showLine) {
+        [line setAlpha:1];
+    }else{
+        [line setAlpha:0];
+    }
+}
 @end

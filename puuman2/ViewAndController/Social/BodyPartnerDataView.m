@@ -8,6 +8,7 @@
 
 #import "BodyPartnerDataView.h"
 #import "BodyPartnerDataCell.h"
+#import "ColorsAndFonts.h"
 
 @implementation BodyPartnerDataView
 @synthesize isHeight = _isHeight;
@@ -17,6 +18,8 @@
     if (self) {
         // Initialization code
         _isHeight = YES;
+    
+        
     }
     return self;
 }
@@ -52,7 +55,12 @@
     }else{
         [cell setBodyData:((Member *)[_group.GMember objectAtIndex:index]).BabyWeight andTheDate:nil andHighest:max andLowest:min andIsHeight:_isHeight];
     }
-   
+    if (index == 0) {
+        [cell setShowLine:NO];
+    }else{
+        [cell setShowLine:YES];
+    }
+    
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
  
@@ -60,11 +68,13 @@
 
 - (void)setVerticalFrame
 {
+    [bgView setFrame:CGRectMake(0, 0, 608, 224)];
     [dataColumnView setFrame:CGRectMake(22, 0, 576, 224)];
 }
 
 - (void)setHorizontalFrame
 {
+     [bgView setFrame:CGRectMake(0, 0, 864, 224)];
     [dataColumnView setFrame:CGRectMake(152, 0, 576, 224)];
 }
 
@@ -72,6 +82,15 @@
 {
     _isHeight =isHeight;
     [dataColumnView reloadData];
+    if (isHeight) {
+        [icon setImage:[UIImage imageNamed:@"icon_height_topic.png"]];
+        [titleLabel setText:@"身高"];
+       // [self setBackgroundColor:PMColor5];
+    }else{
+        [icon setImage:[UIImage imageNamed:@"icon_weight_topic.png"]];
+        [titleLabel setText:@"体重"];
+       // [self setBackgroundColor:[UIColor clearColor]];
+    }
 }
 
 - (void)reloadWithGroupInfo:(Group *)group

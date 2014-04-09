@@ -23,7 +23,7 @@
 @end
 static NSString *titles[3] = {@"账户安全",@"账户关联",@"建议"};
 static NSString *titleIcons[3] = {@"icon_safe_set.png",@"icon_admin_set.png",@"icon_sug_set.png"};
-static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@"支付宝", @"新浪微博",@"QQ"},{@"发送评价",@"打分",@"帮助"}};
+static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@"绑定账号"},{@"发送评价",@"打分",@"帮助"}};
 
 @implementation SettingViewController
 
@@ -194,6 +194,9 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
 {
     if (section == 0) {
         return 2;
+    }else if (section == 1)
+    {
+        return 1;
     }
     return 3;
 }
@@ -274,7 +277,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
 //            }
             BindingViewController *bindVC = [[BindingViewController alloc] initWithNibName:nil bundle:nil];
             [self.view addSubview:bindVC.view];
-            [bindVC setTitle:cellTitles[0][1] withIcon:nil];
+            [bindVC setTitle:cellTitles[1][0] withIcon:nil];
             [bindVC setControlBtnType:kCloseAndFinishButton];
             [bindVC show];
         }else {

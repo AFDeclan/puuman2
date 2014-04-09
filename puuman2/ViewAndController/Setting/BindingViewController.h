@@ -12,10 +12,10 @@
 
 @interface BindingViewController : CustomPopViewController<UITextFieldDelegate>
 {
-    CustomTextField * weixin;
+    CustomTextField * qq;
     CustomTextField * weibo;
     CustomTextField * alipay;
-    BindAddButton *weixin_btn;
+    BindAddButton *qq_btn;
     BindAddButton *weibo_btn;
     BindAddButton *alipay_btn;
     UIButton *  _confirmBtn;

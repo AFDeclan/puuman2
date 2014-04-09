@@ -45,6 +45,10 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+
+}
 - (void)updateDiaryCount
 {
     //取数据判断是否下载更新
@@ -414,7 +418,7 @@
 
 - (void)reloadTable
 {
-    PostNotification(Noti_LoadDiaryCellInfo, nil);
+   
 
     [self.tableView reloadData];
 }
@@ -471,7 +475,7 @@
 {
     //    [diaryTable reloadData];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 2)] withRowAnimation:UITableViewRowAnimationAutomatic];
-    
+
     
 }
 
@@ -507,6 +511,7 @@
 
 - (void)diaryLoaded
 {
+  
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] resetUpdateDiaryCnt];
     [self reloadTable];

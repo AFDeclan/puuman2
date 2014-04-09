@@ -15,6 +15,7 @@
     UIView *mask_name;
     UILabel *name_label;
     UILabel *status_label;
+    UIView *line;
 }
 @property (assign,nonatomic)float frameY;
 @property (assign,nonatomic)float frameH;

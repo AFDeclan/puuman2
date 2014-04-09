@@ -69,6 +69,7 @@
         [titleView setAlpha:1];
     }
     //在这里调整控件坐标，填充内容
+    [_photoView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
      _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,488);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 
@@ -95,6 +96,10 @@
     photo = [DiaryFileManager thumbImageForPath:[self.diaryInfo valueForKey:kFilePathName]];
     photo = [UIImage croppedImage:photo WithHeight:592 andWidth:640];
     [_photoView setImage:photo];
+    [_photoView setAlpha:0];
+    [UIView animateWithDuration:0.2 animations:^{
+        [_photoView setAlpha:1];
+    }];
     NSString *filePath = [self.diaryInfo valueForKey:kFilePath2Name];
     [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
 }

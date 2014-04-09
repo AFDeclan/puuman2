@@ -36,14 +36,6 @@
         [weibo_noti setBackgroundColor:[UIColor clearColor]];
         [_content addSubview:weibo_noti];
         
-        
-        UILabel  *weixin_noti = [[UILabel alloc] initWithFrame:CGRectMake(36, 304, 288, 24)];
-        [weixin_noti setText:@"微信朋友圈"];
-        [weixin_noti setFont:PMFont2];
-        [weixin_noti setTextColor:PMColor3];
-        [weixin_noti setBackgroundColor:[UIColor clearColor]];
-        [_content addSubview:weixin_noti];
-        
         alipay  = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 146, 640, 48)];
         [alipay setTextAlignment:NSTextAlignmentLeft];
         [alipay setDelegate:self];
@@ -53,14 +45,23 @@
         weibo = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 240, 640, 48)];
         [weibo setTextAlignment:NSTextAlignmentLeft];
         [_content addSubview:weibo];
-        weixin = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 304, 640, 48)];
-        [weixin setTextAlignment:NSTextAlignmentLeft];
-        [_content addSubview:weixin];
+        
+        UILabel  *qq_noti = [[UILabel alloc] initWithFrame:CGRectMake(36, 304, 288, 24)];
+        [qq_noti setText:@"QQ账号"];
+        [qq_noti setFont:PMFont2];
+        [qq_noti setTextColor:PMColor3];
+        [qq_noti setBackgroundColor:[UIColor clearColor]];
+        [_content addSubview:qq_noti];
+
         
         
-       
+        qq = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 336, 640, 48)];
+        [qq setTextAlignment:NSTextAlignmentLeft];
+        [_content addSubview:qq];
+  
         [weibo setEnabled:NO];
-        [weixin setEnabled:NO];
+        [qq setEnabled:NO];
+        
         
         alipay_btn = [[BindAddButton alloc] initWithFrame:CGRectMake(32, 146, 640, 48)];
         [alipay_btn addTarget:self action:@selector(alipayChanged) forControlEvents:UIControlEventTouchUpInside];
@@ -69,9 +70,9 @@
         weibo_btn = [[BindAddButton alloc] initWithFrame:CGRectMake(32, 240, 640, 48)];
         [weibo_btn addTarget:self action:@selector(bindWeibo:) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:weibo_btn];
-     //   weixin_btn = [[BindAddButton alloc] initWithFrame:CGRectMake(32, 304, 640, 48)];
-      //  [weixin_btn addTarget:self action:@selector(bindWeiXin:) forControlEvents:UIControlEventTouchUpInside];
-      //  [_content addSubview:weixin_btn];
+        qq_btn = [[BindAddButton alloc] initWithFrame:CGRectMake(32, 336, 640, 48)];
+        [qq_btn addTarget:self action:@selector(bindQQ:) forControlEvents:UIControlEventTouchUpInside];
+        [_content addSubview:qq_btn];
         _confirmBtn = [[UIButton alloc] initWithFrame:CGRectMake(624, 146, 48, 48)];
         [_confirmBtn setImage:[UIImage imageNamed:@"btn_finish1.png"] forState:UIControlStateNormal];
         [_confirmBtn setAlpha:0];
@@ -79,22 +80,21 @@
         [_content addSubview:_confirmBtn];
         
         NSString *userName = [[SocialNetwork sharedInstance] WeiboUserName];
-        NSString *imgUrl = [[SocialNetwork sharedInstance] WeiboUserImgUrl];
         weibo.text = userName;
-       // [self.sinaImgView getImage:imgUrl defaultImage:nil];
-        if (userName && imgUrl){
+        if (userName){
             [weibo_btn hiddenAdd];
         }else{
             [weibo_btn showAdd];
         }
-         //  [self.setSinaBtn setImage:nil forState:UIControlStateNormal];
+
+        userName = [[SocialNetwork sharedInstance] QQUserName];
+         qq.text = userName;
+        if (userName){
+            [qq_btn hiddenAdd];
+        }else{
+            [qq_btn showAdd];
+        }
         
-      //  userName = [[SocialNetwork sharedInstance] QQUserName];
-       // imgUrl = [[SocialNetwork sharedInstance] QQUserImgUrl];
-       // self.QQLabel.text = userName;
-     //   [self.QQImgView getImage:imgUrl defaultImage:nil];
-     //   if (userName && imgUrl)
-     //       [self.setQQBtn setImage:nil forState:UIControlStateNormal];
         
         NSString *alipayStr = [[UserInfo sharedUserInfo] alipayAccount];
         [alipay setText:alipayStr];
@@ -106,11 +106,42 @@
             [alipay_btn showAdd];
 
         }
-        
+        [MyNotiCenter addObserver:self selector:@selector(socialNetworkLogined:) name:Noti_SocialLoginSucceeded object:nil];
+
 
 
     }
     return self;
+}
+
+- (void)socialNetworkLogined:(NSNotification *)sender
+{
+    switch ((SocialType)[sender.object integerValue]) {
+        case Weibo:
+        {
+            NSString *userName = [[SocialNetwork sharedInstance] WeiboUserName];
+             weibo.text = userName;
+            if (userName){
+                [weibo_btn hiddenAdd];
+            }else{
+                [weibo_btn showAdd];
+            }
+        }
+            break;
+        case QQ:
+        {
+            NSString *userName = [[SocialNetwork sharedInstance] QQUserName];
+            qq.text = userName;
+            if (userName){
+                [qq_btn hiddenAdd];
+            }else{
+                [qq_btn showAdd];
+            }
+
+        }
+        default:
+            break;
+    }
 }
 
 - (void)alipayChanged
@@ -129,12 +160,12 @@
 }
 
 
-- (void)bindWeiXin:(BindAddButton *)sender
+- (void)bindQQ:(BindAddButton *)sender
 {
     [MobClick event:umeng_event_click label:@"bindWeiXin_SettingBindView"];
     [alipay resignFirstResponder];
     [_confirmBtn setAlpha:0];
-    [[SocialNetwork sharedInstance] loginToSocial:Weixin];
+    [[SocialNetwork sharedInstance] loginToSocial:QQ];
 }
 
 - (void)confirmBtnPressed:(UIButton *)sender

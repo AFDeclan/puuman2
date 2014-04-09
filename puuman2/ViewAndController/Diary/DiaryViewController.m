@@ -123,15 +123,22 @@ static DiaryViewController * instance;
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
-    
+    [self performSelector:@selector(loadTable) withObject:nil afterDelay:0];
 }
 
+- (void)loadTable
+{
+    PostNotification(Noti_LoadDiaryCellInfo, nil);
+
+}
 - (void)viewDidDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
     
 }
+
+
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     
@@ -545,6 +552,7 @@ static DiaryViewController * instance;
     [diaryTableVC.tableView setContentOffset:CGPointMake(0, 0)];
     [calenderView show];
     [joinView refreshStaus];
+
 }
 
 - (void)diaryLoaded
