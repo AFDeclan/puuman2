@@ -11,7 +11,7 @@
 
 @interface PhotoTopicCell : TopicCell<UIColumnViewDataSource, UIColumnViewDelegate>
 {
-    NSArray *_photoPaths;
+    NSMutableArray *_photoPaths;
     UIColumnView *_showColumnView;
 }
 @end

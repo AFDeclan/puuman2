@@ -57,17 +57,23 @@
     SetViewLeftUp(_showColumnView, 56, height);
     height +=192;
     selectedIndex = 1;
-    NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
-    _photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
-    [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
-    if ([_photoPaths count] >1) {
-          [_showColumnView reloadData];
-    }
-  
+    
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
+- (void)loadInfo
+{
+    [super loadInfo];
+    _photoPaths = nil;
+    NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
+    _photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+    [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
+    if ([_photoPaths count] >1) {
+        [_showColumnView reloadData];
+    }
+
+}
 
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index

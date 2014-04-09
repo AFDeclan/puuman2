@@ -59,12 +59,20 @@
     }else{
         [titleView setAlpha:1];
     }
+
+    _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,440);
+    [super buildCellViewWithIndexRow:index abbreviated:abbr];
+}
+
+- (void)loadInfo
+{
+      [super loadInfo];
     NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
     NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     for (NSString *photoPath in photoPaths)
     {
         _photoPath = photoPath;
-      
+        
         if (_photoPath != nil) {
             break;
         }
@@ -72,8 +80,6 @@
     UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
     UIImage *image  = [UIImage croppedImage:photo WithHeight:832 andWidth:832];
     [_imgView setImage:image];
-    _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,440);
-    [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;

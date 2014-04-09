@@ -25,7 +25,7 @@
 #define Noti_ReloadWareFilterView               @"Noti_ReloadWareFilterView"
 #define Noti_RefreshMenu                        @"Noti_RefreshMenu"
 
-
+#define Noti_LoadDiaryCellInfo                  @"Noti_LoadDiaryCellInfo"
 #define Noti_PumanInBookUpdated                 @"Noti_PumanInBookUpdated"
 #define Noti_PumanOutBookUpdated                @"Noti_PumanOutBookUpdated"
 #define Noti_SocialLoginSucceeded               @"Noti_SocialLoginSucceeded"
@@ -34,6 +34,7 @@
 #define Noti_BabyInfoUpdated                    @"Noti_BabyInfoUpdated"
 #define Noti_VaccineUpdated                     @"Noti_VaccineUpdated"
 #define Noti_RecomWaresUpdated                  @"Noti_RecomWaresUpdated"
+
 
 #define Noti_ShowAlert                          @"Noti_ShowAlert"
 #define Noti_ShowHud                            @"Noti_ShowHud"
