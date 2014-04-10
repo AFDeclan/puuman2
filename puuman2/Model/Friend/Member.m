@@ -28,6 +28,7 @@
         _BabyBirth = [DateFormatter dateFromString:[baseInfo valueForKey:uMeta_birthDate]];
         _BabyIsBoy = [[baseInfo valueForKey:uMeta_gender] isEqualToString:@"男宝宝"];
         _BabyPortraitUrl = [baseInfo valueForKey:uMeta_portraitUrl];
+        _BabyHasBorn = [[baseInfo valueForKey:uMeta_whetherBirth] isEqualToString:@"生日"];
         tp = [baseInfo valueForKey:@"BabyHeight"];
         if (tp) _BabyHeight = [tp doubleValue]; else _BabyHeight = 0;
         tp = [baseInfo valueForKey:@"BabyWeight"];

@@ -24,6 +24,7 @@
 @property (assign, nonatomic, readonly) CGFloat BabyHeight;
 @property (assign, nonatomic, readonly) CGFloat BabyWeight;
 @property (assign, nonatomic, readonly) CGFloat BabyPuuman;
+@property (assign, nonatomic, readonly) BOOL BabyHasBorn;
 //detail info:
 
 @property (retain, nonatomic) NSDictionary * data;
