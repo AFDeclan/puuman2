@@ -29,24 +29,25 @@
 {
     _uploading = YES;
     FileUploader *uploader = [[FileUploader alloc] init];
-    NSString *dir = [NSString stringWithFormat:@"Forum/TopicReply/%d", self.TID];
+    NSString *dir = [NSString stringWithFormat:@"Forum/TopicReply/%ld", (long)self.TID];
     NSString *namePrefix = [DateFormatter stringFromDatetime:[NSDate date]];
     NSInteger index = 0;
     NSMutableArray * textUrls = [[NSMutableArray alloc] init];
     NSMutableArray * photoUrls = [[NSMutableArray alloc] init];
     for (NSString *text in self.texts) {
-        NSString * name = [NSString stringWithFormat:@"%@_%d.txt", namePrefix, index++];
-        BOOL upRet = [uploader uploadDataSync:[text dataUsingEncoding:NSUTF8StringEncoding] toDir:dir fileName:name];
-        if (upRet) {
-            [textUrls addObject:uploader.targetUrl];
-        } else {
-            [self fail];
-            return;
-        }
+//        NSString * name = [NSString stringWithFormat:@"%@_%d.txt", namePrefix, index++];
+//        BOOL upRet = [uploader uploadDataSync:[text dataUsingEncoding:NSUTF8StringEncoding] toDir:dir fileName:name];
+//        if (upRet) {
+//            [textUrls addObject:uploader.targetUrl];
+//        } else {
+//            [self fail];
+//            return;
+//        }
+        [textUrls addObject:text];
     }
     index = 0;
     for (UIImage *photo in self.photos) {
-        NSString * name = [NSString stringWithFormat:@"%@_%d.jpg", namePrefix, index++];
+        NSString * name = [NSString stringWithFormat:@"%@_%ld.jpg", namePrefix, (long)index++];
         BOOL upRet = [uploader uploadDataSync:UIImageJPEGRepresentation(photo, 0.8) toDir:dir fileName:name];
         if (upRet) {
             [photoUrls addObject:uploader.targetUrl];
