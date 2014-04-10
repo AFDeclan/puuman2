@@ -15,6 +15,8 @@
 #import "PhotoTopicCell.h"
 #import "UserInfo.h"
 #import "Comment.h"
+#import "BabyData.h"
+#import "NSDate+Compute.h"
 
 
 @implementation TopicCell
@@ -155,8 +157,6 @@
 {
    
     if (![member belongsTo:_reply.UID]) {
-    
-       
             if (!hasInfoView) {
                 RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
                 [recommend setDelegate:self];
@@ -168,11 +168,16 @@
                 [recommend show];
                 hasInfoView = YES;
             }
-        
+     
     }else{
-    
-        [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:member.BabyIsBoy];
-
+        
+        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned) {
+            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
+            
+        }else{
+            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"" andIsBoy:_member.BabyIsBoy];
+            
+        }
     }
 }
 
@@ -196,13 +201,16 @@
     
     _member = [[MemberCache sharedInstance] getMemberWithUID:reply.UID];
     if (_member) {
-       
-        [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:_member.BabyIsBoy];
-       
+        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned) {
+            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
+
+        }else{
+            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"" andIsBoy:_member.BabyIsBoy];
+
+        }
     }
      [[Friend sharedInstance] removeDelegateObject:self];
     [[Friend sharedInstance] addDelegateObject:self];
-
     
     [[Forum sharedInstance] removeDelegateObject:self];
     [[Forum sharedInstance] addDelegateObject:self];

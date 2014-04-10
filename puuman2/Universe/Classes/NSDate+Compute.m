@@ -205,4 +205,44 @@
     NSDateComponents *components = [gregorian components:NSMinuteCalendarUnit fromDate:startDate toDate:endDate options:0];
     return [components minute];
 }
+
+
+- (NSString *)relateFromDate:(NSDate *)date andSex:(BOOL)isBoy
+{
+    int ageSelf = [[NSDate date] daysFromDate:self];
+    int ageTarget = [[NSDate date] daysFromDate:date];
+    if (ageTarget >ageSelf) {
+        if (isBoy) {
+            return @"哥哥";
+        }else{
+            return @"姐姐";
+        }
+    }else if(ageSelf == ageTarget){
+        return @"一样大";
+    }else{
+        if (isBoy) {
+            return @"弟弟";
+        }else{
+            return @"妹妹";
+        }
+    }
+    
+    
+}
+
+- (NSString *)compareFromDate:(NSDate *)date
+{
+    
+    int ageSelf = [[NSDate date] daysFromDate:self];
+    int ageTarget = [[NSDate date] daysFromDate:date];
+    if (ageSelf > ageTarget) {
+        return [NSString stringWithFormat:@"比我小%d天",ageSelf - ageTarget];
+    }else if (ageSelf == ageTarget){
+        return @"一样大";
+    }else{
+        return [NSString stringWithFormat:@"比我大%d天",ageTarget - ageSelf];
+    }
+}
+
+
 @end

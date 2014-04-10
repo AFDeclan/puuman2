@@ -180,21 +180,21 @@
         cell = [[RecommentPartnerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
         
     }
-    if ([indexPath row]%2 == 0) {
+    if ([indexPath row]%2 == 1) {
         [cell setBackgroundColor:[UIColor whiteColor]];
     }else{
         [cell setBackgroundColor:PMColor5];
     }
-    
     if ([indexPath row] == 0) {
-        [cell buildWithData:[_memberInfo BabyBirth] andUserData:[_userInfo BabyBirth] andDataType:kPartnerBirthday];
+        [cell buildWithData:_memberInfo andUserData:_userInfo andDataType:kPartnerBirthday];
     }else if([indexPath row] == 1) {
-        [cell buildWithData:[NSNumber numberWithFloat:[_memberInfo BabyHeight]]  andUserData:[NSNumber numberWithFloat:[_userInfo BabyHeight]]  andDataType:kPartnerHeight];
+        [cell buildWithData:_memberInfo  andUserData:_userInfo  andDataType:kPartnerHeight];
     }else if([indexPath row]== 2){
-        [cell buildWithData:[NSNumber numberWithFloat: [_memberInfo BabyWeight]] andUserData:[NSNumber numberWithFloat: [_memberInfo BabyWeight]]  andDataType:kPartnerWeight];
+        [cell buildWithData:_memberInfo andUserData:_memberInfo  andDataType:kPartnerWeight];
     }
+    
+       
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
     
     
