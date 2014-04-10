@@ -190,7 +190,7 @@
     }else if([indexPath row] == 1) {
         [cell buildWithData:_memberInfo  andUserData:_userInfo  andDataType:kPartnerHeight];
     }else if([indexPath row]== 2){
-        [cell buildWithData:_memberInfo andUserData:_memberInfo  andDataType:kPartnerWeight];
+        [cell buildWithData:_memberInfo andUserData:_userInfo  andDataType:kPartnerWeight];
     }
     
        

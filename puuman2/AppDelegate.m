@@ -14,7 +14,7 @@
 #import "BabyInfoViewController.h"
 #import "SocialViewController.h"
 #import "SkipViewController.h"
-
+#import "CustomAlertViewController.h"
 #import "Models.h"
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
@@ -93,9 +93,10 @@
         NSString *newVersion = [appInfo valueForKey:@"version"];
         NSString *hint = [NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。", newVersion];
         NSString *trackViewUrl = [appInfo valueForKey:@"path"];
-//        [CustomAlertView showInView:nil content:hint confirmHandler:^{
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
-//        }];
+        [CustomAlertViewController showAlertWithTitle:hint confirmRightHandler:^{
+   //          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+        }];
+
     }
 }
 

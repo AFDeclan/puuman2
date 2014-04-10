@@ -171,11 +171,11 @@
      
     }else{
         
-        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned) {
-            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
+        if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned && [member BabyHasBorn]) {
+            [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:member.BabyBirth andSex:member.BabyIsBoy] andIsBoy:member.BabyIsBoy];
             
         }else{
-            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"" andIsBoy:_member.BabyIsBoy];
+            [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"" andIsBoy:member.BabyIsBoy];
             
         }
     }
@@ -201,7 +201,7 @@
     
     _member = [[MemberCache sharedInstance] getMemberWithUID:reply.UID];
     if (_member) {
-        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned) {
+        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned &&[_member BabyHasBorn]) {
             [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
 
         }else{

@@ -42,7 +42,7 @@
     [label_second setTextColor:PMColor2];
     [label_second setTextAlignment:NSTextAlignmentCenter];
     [self.contentView addSubview:label_second];
-    label_compare = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 144, 80)];
+    label_compare = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 144, 16)];
     [label_compare setBackgroundColor:[UIColor clearColor]];
     [label_compare setFont:PMFont2];
     [label_compare setTextColor:PMColor1];
@@ -63,27 +63,41 @@
         case kPartnerBirthday:
         {
             [label_first setAlpha:1];
+            [icon setImage:[UIImage imageNamed:@"icon_time2_topic.png"]];
             SetViewLeftUp(icon, 32, 36);
             SetViewLeftUp(label_second, 66, 40);
-            //label_first.text = [[data BabyBirth ]]
+            SetViewLeftUp(label_compare, 432, 40);
+            if ([data BabyHasBorn]) {
+                label_first.text = [[NSDate date] ageStrFromDate:[data BabyBirth]];
+                label_second.text = [[data BabyBirth] constellation];
+                if ([userData BabyHasBorn]) {
+                    label_compare.text = [[userData BabyBirth] compareFromDate:[data BabyBirth]];
+                }
+            }else{
+                label_first.text = @"";
+                label_second.text = @"";
+            }
 
         }
             break;
         case kPartnerHeight:
         {
             SetViewLeftUp(icon, 32, 28);
+            [icon setImage:[UIImage imageNamed:@"icon_height_topic.png"]];
              [label_first setAlpha:0];
               SetViewLeftUp(label_second, 66, 32);
+            SetViewLeftUp(label_compare, 432, 32);
+
             if ([data BabyHeight] != 0) {
-                 [label_second  setText:[NSString stringWithFormat:@"%0.1fkg",[data BabyHeight]]];
+                 [label_second  setText:[NSString stringWithFormat:@"%0.1fcm",[data BabyHeight]]];
                 if ([userData BabyHeight] !=0) {
-                    if ([userData floatValue]>[data floatValue]) {
-                         [label_compare setText:[NSString stringWithFormat:@"低%fcm",[userData BabyHeight]-[data BabyHeight]]];
-                    }else if ([userData floatValue] == [data floatValue])
+                    if ([userData BabyHeight]>[data BabyHeight]) {
+                         [label_compare setText:[NSString stringWithFormat:@"低%0.1fcm",[userData BabyHeight]-[data BabyHeight]]];
+                    }else if ([userData BabyHeight] == [data BabyHeight])
                     {
                         [label_compare setText:@"一样高"];
                     }else{
-                        [label_compare setText:[NSString stringWithFormat:@"高%fcm",[data BabyHeight]-[userData BabyHeight]]];
+                        [label_compare setText:[NSString stringWithFormat:@"高%0.1fcm",[data BabyHeight]-[userData BabyHeight]]];
                     }
                    
                 }else{
@@ -99,8 +113,11 @@
         case kPartnerWeight:
         {
             SetViewLeftUp(icon, 32, 28);
+            [icon setImage:[UIImage imageNamed:@"icon_weight_topic.png"]];
             [label_first setAlpha:0];
             SetViewLeftUp(label_second, 66, 32);
+            SetViewLeftUp(label_compare, 432, 32);
+
             if ([data BabyWeight] != 0) {
                 [label_second  setText:[NSString stringWithFormat:@"%0.1fkg",[data BabyWeight]]];
                 if ([userData BabyWeight] !=0) {

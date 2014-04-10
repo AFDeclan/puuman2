@@ -22,7 +22,7 @@
     if (self) {
         // Custom initialization
         notiType = kNotiTypeStyleNone;
-
+        [self initNoti];
     }
     return self;
 }
@@ -39,17 +39,19 @@
     notiView  = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 106, 106)];
     [notiView setBackgroundImage:[UIImage imageNamed:@"circle_status.png"] forState:UIControlStateNormal];
     [notiView setEnabled:NO];
+    [notiView setBackgroundColor:[UIColor clearColor]];
     [_content addSubview:notiView];
-    [bgView setAlpha:0];
-    
-    
-    
+    [notiView unSelected];
   
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
         [self setHorizontalFrame];
     }
+        [bgView setBackgroundColor:[UIColor clearColor]];
+        [_content setBackgroundColor:[UIColor clearColor]];
+        [self.view setBackgroundColor:[UIColor clearColor]];
+
 }
 
 - (void)hidden
@@ -116,7 +118,9 @@
 
 - (void)show
 {
-    [bgView setAlpha:0];
+    [bgView setBackgroundColor:[UIColor clearColor]];
+    [_content setBackgroundColor:[UIColor clearColor]];
+    [self.view setBackgroundColor:[UIColor clearColor]];
     [_content showInFrom:kAFAnimationNone inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:nil];
     if (timer) {
         [timer invalidate];

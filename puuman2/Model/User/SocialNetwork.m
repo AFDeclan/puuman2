@@ -138,6 +138,7 @@ static SocialNetwork * instance;
     if ([version isEqualToString:@""])
     {
         PostNotification(Noti_ShowAlert, @"分享失败，请确保已安装微信~");
+    
 //        [CustomAlertView showInView:[MainViewController sharedMainViewController].view content:@"分享失败，请确保已安装微信~"];
         return;
     }

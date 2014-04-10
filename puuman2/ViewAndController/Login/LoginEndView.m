@@ -12,7 +12,8 @@
 #import "MainTabBarController.h"
 #import "DateFormatter.h"
 #import "RegisterForm.h"
-
+#import "CustomAlertViewController.h"
+#import "CustomNotiViewController.h"
 
 @implementation LoginEndView
 @synthesize delegate = _delegate;
@@ -169,30 +170,33 @@
         [self resigntextField];
         if (![self passWordIsRight])
         {
-
-          //  [CustomAlertViewController showAlertWithTitle:@"请输入密码" andContrlType:kNoneButton];
+            [CustomAlertViewController showAlertWithTitle:@"请输入正确密码" confirmRightHandler:^{
+            }];
             return;
         }
         enum userActionResult ret = [[RegisterForm sharedForm] registerUserWithInvitationCode:_userField.text password:_pwdField.text];
         switch (ret) {
             case succeeded:
             {
-//                [CustomAlertView showInView:nil content:@"注册成功！欢迎开始您的扑满日记~"confirmHandler:^{
-//                    [[UserInfo sharedUserInfo] login];
-//                }];
+                [CustomAlertViewController showAlertWithTitle:@"注册成功！请及时检查您的邮件来验证您的账号哦~" confirmRightHandler:^{
+                    [[UserInfo sharedUserInfo] login];
+                }];
+
                 break;
             }
             case timeOut:
-              //  [CustomAlertView showInView:nil content:@"您当前的网络链接存在问题，请检查后再试"];
+                 [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleNone];
                 break;
             case dumplicated:
-             //   [CustomAlertView showInView:nil content:@"注册失败，用户已注册！"];
+                 [CustomNotiViewController showNotiWithTitle:@"用户已存在" withTypeStyle:kNotiTypeStyleNone];
                 break;
             case checkFailed:
-             //   [CustomAlertView showInView:nil content:@"注册失败，邀请码有误或已过期！"];
+                [CustomAlertViewController showAlertWithTitle:@"注册失败，邀请码有误或已过期" confirmRightHandler:^{
+                
+                }];
                 break;
             default:
-              //  [CustomAlertView showInView:nil content:@"服务器异常"];
+                [CustomNotiViewController showNotiWithTitle:@"服务器异常" withTypeStyle:kNotiTypeStyleNone];
                 break;
         }
         return;
@@ -219,22 +223,30 @@
         //[MainViewController hideHud];
         switch (result) {
             case succeeded:
-                //[CustomAlertView showInView:nil content:@"登录成功，开始您的扑满日记吧"];
+                [CustomNotiViewController showNotiWithTitle:@"登录成功" withTypeStyle:kNotiTypeStyleNone];
                 break;
             case checkFailed:
-               // [CustomAlertView showInView:nil content:@"登陆失败，用户名或密码错误。"];
+                [CustomAlertViewController showAlertWithTitle:@"登陆失败，用户名或密码错误。" confirmRightHandler:^{
+                   
+                }];
                 break;
             case timeOut:
-              //  [CustomAlertView showInView:nil content:@"登陆失败，请检查联网状态。"];
+                [CustomAlertViewController showAlertWithTitle:@"登陆失败，请检查联网状态。" confirmRightHandler:^{
+                   
+                }];
                 break;
             default:
-            //    [CustomAlertView showInView:nil content:@"服务器异常。"];
+                [CustomAlertViewController showAlertWithTitle:@"服务器异常。" confirmRightHandler:^{
+                }];
                 break;
         }
     }
     else
     {
-      //  [CustomAlertView showInView:nil content:@"账号不存在或密码错误,请检查后登陆"];
+        [CustomAlertViewController showAlertWithTitle:@"账号不存在或密码错误,请检查后登陆" confirmRightHandler:^{
+           
+        }];
+  
     }
     
 }
@@ -342,28 +354,46 @@
         switch (result) {
             case succeeded:
             {
-      //          [CustomAlertView showInView:nil content:@"注册成功！欢迎开始您的扑满日记~"confirmHandler:^{[self loginButtonPressed:nil];}];
+                [CustomAlertViewController showAlertWithTitle:@"注册成功！欢迎开始您的扑满日记~" confirmRightHandler:^{
+                    [self loginButtonPressed:nil];
+                }];
                 break;
             }
             case timeOut:
-        //        [CustomAlertView showInView:nil content:@"您当前的网络链接存在问题，请检查后再试"];
+            {
+                [CustomAlertViewController showAlertWithTitle:@"您当前的网络链接存在问题，请检查后再试" confirmRightHandler:^{
+                    [self loginButtonPressed:nil];
+                }];
                 break;
+            }
             case dumplicated:
-        //        [CustomAlertView showInView:nil content:@"当前邮箱或手机已被注册，请尝试使用其他其他邮箱注册" ];
+            {
+                [CustomAlertViewController showAlertWithTitle:@"当前邮箱或手机已被注册，请尝试使用其他其他邮箱注册" confirmRightHandler:^{
+                    [self loginButtonPressed:nil];
+                }];
                 break;
+            }
             default:
-             //   [CustomAlertView showInView:nil content:@"服务器异常，请稍后再试"];
+            {
+                [CustomAlertViewController showAlertWithTitle:@"服务器异常，请稍后再试" confirmRightHandler:^{
+                    [self loginButtonPressed:nil];
+                }];
                 break;
+            }
         }
     }else
     {
         if (![self usernameIsRight])
         {
-       //     [CustomAlertView showInView:nil content:@"请正确输入邮箱或手机号码"];
+            [CustomAlertViewController showAlertWithTitle:@"请正确输入邮箱或手机号码" confirmRightHandler:^{
+                [self loginButtonPressed:nil];
+            }];
         }
         else
         {
-       //     [CustomAlertView showInView:nil content:@"请输入密码"];
+            [CustomAlertViewController showAlertWithTitle:@"请输入密码" confirmRightHandler:^{
+                [self loginButtonPressed:nil];
+            }];
         }
     }
     

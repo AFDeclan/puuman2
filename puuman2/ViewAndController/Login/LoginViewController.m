@@ -14,6 +14,7 @@
 #import "BabyData.h"
 #import "ProtocalPuumanViewController.h"
 #import "MainTabBarController.h"
+#import "CustomNotiViewController.h"
 
 @interface LoginViewController ()
 
@@ -294,17 +295,12 @@
                         [meta setValue:@"女宝宝" forKey:uMeta_gender];
                     if ([[UserInfo sharedUserInfo] uploadBabyMeta:meta])
                     {
-//                        [CustomAlertViewController showAlertWithTitle:@"宝宝信息修改成功！~" andContrlType:kNoneButton];
-                       // [[DiaryViewController sharedDiaryViewController] diaryTableReload];
-                       // [[TaskModel sharedTaskModel] updateTasks];
-                       // [self dismiss];
+                        [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
                         [super finishBtnPressed];
-                        // [MyNotiCenter postNotificationName:Noti_BabyDataUpdated object:nil];
                     }
                     else
                     {
-                        
-                  //      [CustomAlertView showInView:nil content:@"网络不给力喔~"];
+                         [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleRight];
                     }
                     return;
                 }
@@ -336,17 +332,14 @@
                     [meta setValue:[DateFormatter stringFromDate:[pregnancy birthDate]] forKey:uMeta_birthDate];
                     if ([[UserInfo sharedUserInfo] uploadBabyMeta:meta])
                     {
-                      //  [CustomAlertView showInView:nil content:@"宝宝信息修改成功！~" confirmHandler:^{ [[DiaryViewController sharedDiaryViewController] diaryTableReload];
-//                            [[TaskModel sharedTaskModel] updateTasks];
-//                            
-//                            [self dismiss];
-//                        }];
+
+                         [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
                         
                         [self hidden];
                     }
                     else
                     {
-                       // [CustomAlertView showInView:nil content:@"网络不给力喔~"];
+                         [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleRight];
                     }
                     return;
                 }

@@ -10,6 +10,7 @@
 #import "MainTabBarController.h"
 #import "ColorsAndFonts.h"
 #import "BindAlpayViewController.h"
+#import "CustomAlertViewController.h"
 
 @interface PuumanShopViewController ()
 
@@ -338,7 +339,9 @@
     [ErrorLog requestFailedLog:request fromFile:@"PayBackViewController.m"];
     NSLog(@"\nResponse:%@\nError:%@", [request responseString], [request error]);
     PostNotification(Noti_HideHud, nil);
-    //[CustomAlertView showInView:nil content:@"您的网络存在故障，这次没法用扑满币了诶.."];
+    [CustomAlertViewController showAlertWithTitle:@"您的网络存在故障，这次没法用扑满币了诶.." confirmRightHandler:^{
+        
+    }];
     [self.delegate popViewfinished];
     [self hidden];
 }
@@ -352,7 +355,9 @@
         return;
     }
     //res = [res substringFromIndex:(range.location+range.length)];
-   // [CustomAlertView showInView:nil content:@"已经成功收到您的请求，我们会在订单确认后的第一时间汇款到您指定的支付宝帐户内。敬请查收^^"];
+    [CustomAlertViewController showAlertWithTitle:@"已经成功收到您的请求，我们会在订单确认后汇款到您的支付宝帐户内。敬请查收" confirmRightHandler:^{
+        
+    }];
     [[UserInfo sharedUserInfo] updateUserInfo];
     PostNotification(Noti_HideHud, nil);
     [self.delegate popViewfinished];

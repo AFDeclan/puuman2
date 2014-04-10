@@ -70,21 +70,40 @@
        // [MainViewController hideHud];
         switch (ret) {
             case succeeded:
-               // [CustomAlertView showInView:nil content:@"已向您的邮箱或手机发送重置密码链接，一天内使用有效。"];
+            {
+                [CustomAlertViewController showAlertWithTitle:@"已向您的邮箱或手机发送重置密码链接，一天内使用有效。" confirmRightHandler:^{
+                
+                }];
+            }
                 break;
             case timeOut:
-              //  [CustomAlertView showInView:nil content:@"网络连接超时，请稍后再试"];
+            {
+                [CustomAlertViewController showAlertWithTitle:@"网络连接超时，请稍后再试" confirmRightHandler:^{
+                    
+                }];
+            }
                 break;
             case noSuchUser:
-              //  [CustomAlertView showInView:nil content:@"用户不存在！"];
+            {
+                [CustomAlertViewController showAlertWithTitle:@"用户不存在！" confirmRightHandler:^{
+                    
+                }];
+            }
                 break;
             default:
-               // [CustomAlertView showInView:nil content:@"连接服务器失败，请稍后再试"];
+            {
+                [CustomAlertViewController showAlertWithTitle:@"连接服务器失败，请稍后再试" confirmRightHandler:^{
+                    
+                }];
+            }
+
                 break;
         }
     }else
     {
-       // [CustomAlertView showInView:nil content:@"请正确输入邮箱或手机号码"];
+        [CustomAlertViewController showAlertWithTitle:@"请正确输入邮箱或手机号码" confirmRightHandler:^{
+            
+        }];
     }
 }
 - (BOOL)validateMobile:(NSString *)mobileNum

@@ -10,6 +10,8 @@
 #import "ColorsAndFonts.h"
 #import "UserInfo.h"
 #import "NSDate+Compute.h"
+#import "BabyData.h"
+
 
 @implementation FigureHeaderCell
 @synthesize recommend = _recommend;
@@ -124,7 +126,9 @@
 - (void)buildWithMemberInfo:(Member *)member
 {
     [portrait getImage:member.BabyPortraitUrl defaultImage:@""];
-   //[info_compare setText:[member.BabyBirth ageStrFromDate:[UserInfo]]];
+    if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[member BabyHasBorn]&&[BabyData sharedBabyData].babyHasBorned) {
+        info_compare.text =[[BabyData sharedBabyData].babyBirth compareFromDate:[member BabyBirth]];
+    }
     if (member.BabyIsBoy) {
         [name_sex setTitle:member.BabyNick andImg:[UIImage imageNamed:@"icon_male_topic.png"] andButtonType:kButtonTypeTen];
     }else{
