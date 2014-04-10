@@ -33,11 +33,10 @@
     [mainTextView setFont:PMFont2];
     [mainTextView setTextColor:PMColor1];
     [contentView addSubview:mainTextView];
-    NSString *filePath = [reply.textUrls objectAtIndex:0];
     NSString *text;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-        text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    else text = @"";
+    if ([reply.textUrls count]>0) {
+        text = [reply.textUrls objectAtIndex:0];
+    }
     if (text == nil) text = @"";
     [mainTextView setTitle:text withMaxWidth:536];
     CGRect frame = contentView.frame;
@@ -48,12 +47,11 @@
 }
 + (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type
 {
-    
-    NSString *filePath = [reply.textUrls objectAtIndex:0];
+   
     NSString *text;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-        text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    else text = @"";
+    if ([reply.textUrls count]>0) {
+        text = [reply.textUrls objectAtIndex:0];
+    }
     if (text == nil) text = @"";
     
     AdaptiveLabel *example = [[AdaptiveLabel alloc] initWithFrame:CGRectMake(56, 0, 0, 0)];
