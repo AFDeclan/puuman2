@@ -10,6 +10,7 @@
 #import "ColorsAndFonts.h"
 #import "CartModel.h"
 #import "MainTabBarController.h"
+#import "CustomNotiViewController.h"
 
 #define ShopNameNum 127
 @interface SinglepopViewController ()
@@ -447,6 +448,7 @@
     [MobClick event:umeng_event_click label:@"addToCart_SingleGoodViewController"];
     [[CartModel sharedCart] addWareIntoCart:_ware];
     [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeftDown];
+    [CustomNotiViewController showNotiWithTitle:@"添加成功" withTypeStyle:kNotiTypeStyleRight];
 
 }
 

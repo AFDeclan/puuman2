@@ -10,6 +10,7 @@
 #import "DiaryFileManager.h"
 #import "UIImage+CroppedImage.h"
 #import "DetailShowViewController.h"
+#import "UIImage+Scale.h"
 
 @implementation PhotoMoreDiaryCell
 
@@ -205,6 +206,23 @@
 
     [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1];
     
+}
+
+- (void)share:(id)sender
+{
+    NSString *text;
+    UIImage *img;
+    
+    for (NSString *photoPath in _photoPaths)
+    {
+        UIImage *photo = [DiaryFileManager imageForPath:photoPath];
+        if (photo != nil){
+            photo = [photo scaleToWidth:768];
+            img = [img addImage:photo];
+        }
+    }
+    NSString *title = [self.diaryInfo valueForKey:kTitleName];
+    [ShareSelectedViewController shareText:text title:title image:img];
 }
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;

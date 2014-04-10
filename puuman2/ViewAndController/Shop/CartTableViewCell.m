@@ -10,6 +10,7 @@
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
 #import "CartModel.h"
+#import "CustomNotiViewController.h"
 
 @implementation CartTableViewCell
 @synthesize  isCompare = _isCompare;
@@ -274,7 +275,8 @@
 - (void)delBtnPressed
 {
     [MobClick event:umeng_event_click label:@"Delete_ShopInfoLeftCell"];
-     [[CartModel sharedCart] deleteWareFromCart:_ware.WID];
+    [[CartModel sharedCart] deleteWareFromCart:_ware.WID];
+    [CustomNotiViewController showNotiWithTitle:@"删除成功" withTypeStyle:kNotiTypeStyleRight];
     PostNotification(Noti_RefreshCartWare, nil);
    
 }

@@ -14,6 +14,7 @@
 #import "NewImportDiaryViewController.h"
 #import "NewAudioDiaryViewController.h"
 #import "NewCameraViewController.h"
+#import "CustomAlertViewController.h"
 
 
 NSString * newDiaryBtnImageName[5] = {@"btn_input_newdiary.png",@"btn_text_newdiary.png", @"btn_audio_newdiary.png", @"btn_photo_newdiary.png",@"btn_video_newdiary.png"};
@@ -520,7 +521,10 @@ static DiaryViewController * instance;
                 PostNotification(Noti_HideHud, nil);
                 if (!templateData)
                 {
-                   // [CustomAlertView showInView:nil content:@"照片模板下载失败，请稍后再试。"];
+                    [CustomAlertViewController showAlertWithTitle:@"照片模板下载失败，请稍后再试。" confirmRightHandler:^{
+                        
+                    }];
+                  
                     return;
                 }
                 // UIImage *templateImg = [UIImage imageWithData:templateData];

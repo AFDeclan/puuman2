@@ -11,7 +11,8 @@
 #import "UniverseConstant.h"
 #import "UserNameCheck.h"
 #import "UserInfo.h"
-
+#import "CustomAlertViewController.h"
+#import "CustomNotiViewController.h"
 
 @implementation SettingBindCellView
 
@@ -39,7 +40,7 @@
     [codeLabel setFont:PMFont2];
     [codeLabel setTextColor:PMColor2];
     [codeLabel setBackgroundColor:[UIColor clearColor]];
-    
+    [codeLabel setAlpha:0];
     [self addSubview:codeLabel];
     
     settingButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 544, 48)];
@@ -82,7 +83,9 @@
             [numTextField resignFirstResponder];
             if (buttontype == TypeOfEmail) {
                 if (![UserNameCheck validateEmail:numTextField.text]) {
-                   // [CustomAlertView showInView:nil content:@"该邮箱不存在，请确认输入的邮箱是否正确"];
+                    [CustomAlertViewController showAlertWithTitle:@"该邮箱不存在，请确认输入的邮箱是否正确" confirmRightHandler:^{
+                        
+                    }];
                     return;
                 }else{
                    // PostNotification(Noti_ShowHud, @"向服务器提交中...");
@@ -90,61 +93,85 @@
                   //  PostNotification(Noti_HideHud, nil);
                     switch (result) {
                         case succeeded:
-                            
-                                    [self setCheck:[[UserInfo sharedUserInfo] mailVerified] andType:buttontype withTheNum:numTextField.text];
+                            [self setCheck:[[UserInfo sharedUserInfo] mailVerified] andType:buttontype withTheNum:numTextField.text];
                            
-                            //if (status == Status_Changing)
-                              //  [CustomAlertView showInView:nil content:@"修改成功~"];
-                          //  else
-                              //  [CustomAlertView showInView:nil content:@"添加成功~"];
-                          //  PostNotification(Noti_SettingSafeViewReload, nil);
+                            if (status == Status_Changing){
+                                [CustomNotiViewController showNotiWithTitle:@"修改成功~" withTypeStyle:kNotiTypeStyleRight];
+                            }else{
+                                [CustomNotiViewController showNotiWithTitle:@"添加成功~" withTypeStyle:kNotiTypeStyleRight];
+                            }
+                           //PostNotification(Noti_SettingSafeViewReload, nil);
                             
                             break;
                         case timeOut:
-                         //   [CustomAlertView showInView:nil content:@"您当前的网络链接存在问题，请检查后再试。"];
+                        {
+                            [CustomAlertViewController showAlertWithTitle:@"您当前的网络链接存在问题，请检查后再试。" confirmRightHandler:^{
+                                
+                            }];
+                        }
                             return;
                         case checkFailed:
                             
                             return;
                         case dumplicated:
-                          //  [CustomAlertView showInView:nil content:[NSString stringWithFormat:@"邮箱%@已被关联过！", numTextField.text]];
+                        {
+                            [CustomAlertViewController showAlertWithTitle:[NSString stringWithFormat:@"邮箱%@已被关联过！", numTextField.text] confirmRightHandler:^{
+                                
+                            }];
+                        }
+                        
                             return;
                         default:
-                          //  [CustomAlertView showInView:nil content:@"服务器异常，请稍后再试。"];
+                            [CustomAlertViewController showAlertWithTitle:@"服务器异常，请稍后再试。服务器异常，请稍后再试。" confirmRightHandler:^{
+                                
+                            }];
                             return;
                     }
                 }
             }else{
                 
                 if (![UserNameCheck validateMobile:numTextField.text]) {
-                    
-                   // [CustomAlertView showInView:nil content:@"该手机号码不存在，请确认输入的手机号码是否正确"];
+                    [CustomAlertViewController showAlertWithTitle:@"该手机号码不存在，请确认输入的手机号码是否正确" confirmRightHandler:^{
+                        
+                    }];
+                   
                     return;
                 }else{
-                    PostNotification(Noti_ShowHud, @"向服务器提交中...");
+                  //  PostNotification(Noti_ShowHud, @"向服务器提交中...");
                     enum userActionResult result = [[UserInfo sharedUserInfo] changeMailTo:@"" phoneTo:numTextField.text];
-                    PostNotification(Noti_HideHud, nil);
+                  //  PostNotification(Noti_HideHud, nil);
                     switch (result) {
                         case succeeded:
                              [self setCheck:[[UserInfo sharedUserInfo] phoneVerified] andType:buttontype withTheNum:numTextField.text];
-//                            if (status == Status_Changing)
-//                                [CustomAlertView showInView:nil content:@"修改成功~"];
-//                            else
-//                                [CustomAlertView showInView:nil content:@"添加成功~"];
-//                            PostNotification(Noti_SettingSafeViewReload, nil);
+                            if (status == Status_Changing){
+                                [CustomNotiViewController showNotiWithTitle:@"修改成功~" withTypeStyle:kNotiTypeStyleRight];
+                            }else{
+                                [CustomNotiViewController showNotiWithTitle:@"添加成功~" withTypeStyle:kNotiTypeStyleRight];
+                            }
+                           // PostNotification(Noti_SettingSafeViewReload, nil);
                             break;
                         case timeOut:
-                         //   [CustomAlertView showInView:nil content:@"您当前的网络链接存在问题，请检查后再试。"];
+                        {
+                            [CustomAlertViewController showAlertWithTitle:@"您当前的网络链接存在问题，请检查后再试。" confirmRightHandler:^{
+                                
+                            }];
+                        }
                             return;
                         case checkFailed:
                             
                             
                             return;
                         case dumplicated:
-                           // [CustomAlertView showInView:nil content:[NSString stringWithFormat:@"手机号码%@已被关联过！", numTextField.text]];
+                        {
+                            [CustomAlertViewController showAlertWithTitle:[NSString stringWithFormat:@"手机号码%@已被关联过！", numTextField.text] confirmRightHandler:^{
+                                
+                            }];
+                        }
                             return;
                         default:
-                          //  [CustomAlertView showInView:nil content:@"服务器异常，请稍后再试。"];
+                            [CustomAlertViewController showAlertWithTitle:@"服务器异常，请稍后再试。" confirmRightHandler:^{
+                                
+                            }];
                             return;
                     }
                 }
@@ -153,36 +180,46 @@
             break;
             
         default:
-            //        switch ([[UserInfo sharedUserInfo] verifyPhoneWithCode:numTextField.text]) {
-            //            case succeeded:
-            //                [code setAlpha:1];
-            //                [conformBtn setAlpha:0];
-            //                [_textField setEnabled:NO];
-            //                break;
-            //            case otherError:
-            //                [_textField setText:@""];
-            //                [conformBtn setAlpha:0];
-            //                [CustomAlertView showInView:nil content:@"出现位置问题。"];
-            //                break;
-            //            case timeOut:
-            //                [_textField setText:@""];
-            //                [conformBtn setAlpha:0];
-            //                [CustomAlertView showInView:nil content:@"连接超时，请检查网络后重新发送。"];
-            //                break;
-            //            case checkFailed:
-            //                [_textField setText:@""];
-            //                [conformBtn setAlpha:0];
-            //                [CustomAlertView showInView:nil content:@"验证码错误，请检查后重新输入。"];
-            //                break;
-            //            case noSuchUser:
-            //                [_textField setText:@""];
-            //                [conformBtn setAlpha:0];
-            //                [CustomAlertView showInView:nil content:@"该用户不存在。"];
-            //                break;
-            //
-            //            default:
-            //                break;
-            //        }
+                    switch ([[UserInfo sharedUserInfo] verifyPhoneWithCode:numTextField.text]) {
+                        case succeeded:
+                           [codeLabel setAlpha:1];
+                            [conformBtn setAlpha:0];
+                            [numTextField setEnabled:NO];
+                            break;
+                        case otherError:
+                            [numTextField setText:@""];
+                            [conformBtn setAlpha:0];
+                            [CustomAlertViewController showAlertWithTitle:@"出现位置问题。" confirmRightHandler:^{
+                                
+                            }];
+                            break;
+                        case timeOut:
+                            [numTextField setText:@""];
+                            [conformBtn setAlpha:0];
+                            [CustomAlertViewController showAlertWithTitle:@"连接超时，请检查网络后重新发送。" confirmRightHandler:^{
+                                
+                            }];
+                           
+                            break;
+                        case checkFailed:
+                            [numTextField setText:@""];
+                            [conformBtn setAlpha:0];
+                            [CustomAlertViewController showAlertWithTitle:@"验证码错误，请检查后重新输入。" confirmRightHandler:^{
+                                
+                            }];
+                           
+                            break;
+                        case noSuchUser:
+                            [numTextField setText:@""];
+                            [conformBtn setAlpha:0];
+                            [CustomAlertViewController showAlertWithTitle:@"该用户不存在。" confirmRightHandler:^{
+                                
+                            }];
+                            break;
+            
+                        default:
+                            break;
+                    }
             
             break;
     }
@@ -211,14 +248,26 @@
                // PostNotification(Noti_HideHud, nil);
                 switch (result) {
                     case succeeded:
-                    //    [CustomAlertView showInView:nil content:@"验证邮件已发送~"];
+                    {
+                        [CustomAlertViewController showAlertWithTitle:@"验证邮件已发送~" confirmRightHandler:^{
+                            
+                        }];
+                    }
                         
                         break;
                     case timeOut:
-                      //  [CustomAlertView showInView:nil content:@"您当前的网络链接存在问题，请检查后再试。"];
+                    {
+                        [CustomAlertViewController showAlertWithTitle:@"您当前的网络链接存在问题，请检查后再试。" confirmRightHandler:^{
+                            
+                        }];
+                    }
                         return;
                     default:
-                      //  [CustomAlertView showInView:nil content:@"服务器异常，请稍后再试。"];
+                    {
+                        [CustomAlertViewController showAlertWithTitle:@"服务器异常，请稍后再试。" confirmRightHandler:^{
+                            
+                        }];
+                    }
                         return;
                 }
             }else{
@@ -228,7 +277,10 @@
                 switch (result) {
                     case succeeded:
                     {
-                       // [CustomAlertView showInView:nil content:@"验证短信已发送~"];
+                        
+                        [CustomAlertViewController showAlertWithTitle:@"验证短信已发送~" confirmRightHandler:^{
+                                
+                        }];
                         [settingButton setAlpha:0];
                         [numTextField setEnabled:YES];
                         [numTextField setTextAlignment:NSTextAlignmentCenter];
@@ -240,10 +292,18 @@
                     }
                         break;
                     case timeOut:
-                      //  [CustomAlertView showInView:nil content:@"您当前的网络链接存在问题，请检查后再试。"];
+                    {
+                        [CustomAlertViewController showAlertWithTitle:@"您当前的网络链接存在问题，请检查后再试。" confirmRightHandler:^{
+                            
+                        }];
+                    }
                        return;
                     default:
-                      //  [CustomAlertView showInView:nil content:@"服务器异常，请稍后再试。"];
+                    {
+                        [CustomAlertViewController showAlertWithTitle:@"服务器异常，请稍后再试。" confirmRightHandler:^{
+                            
+                        }];
+                    }
                         return;
                 }
             }

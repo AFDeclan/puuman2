@@ -9,6 +9,9 @@
 #import "SettingPassWordViewController.h"
 #import "ColorsAndFonts.h"
 #import "UserInfo.h"
+#import "CustomNotiViewController.h"
+#import "CustomAlertViewController.h"
+
 
 @interface SettingPassWordViewController ()
 
@@ -223,7 +226,34 @@
 - (void)finishBtnPressed
 {
     
-    [[UserInfo sharedUserInfo] changePwdTo:pwd_new_textfield.text];
+    UserActionResult result = [[UserInfo sharedUserInfo] changePwdTo:pwd_new_textfield.text];
+    switch (result) {
+        case succeeded:
+        {
+            [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
+            break;
+        }
+        case checkFailed:
+        {
+            [CustomNotiViewController showNotiWithTitle:@"修改失败" withTypeStyle:kNotiTypeStyleRight];
+
+        }
+            break;
+        case timeOut:
+        {
+            [CustomAlertViewController showAlertWithTitle:@"网络连接异常，请检查您的网络连接" confirmRightHandler:^{
+                
+            }];
+        }
+            break;
+        default:
+        {
+            [CustomAlertViewController showAlertWithTitle:@"服务器异常" confirmRightHandler:^{
+                
+            }];
+        }
+            break;
+    }
     [super finishBtnPressed];
 }
 

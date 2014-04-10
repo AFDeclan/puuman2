@@ -19,14 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        
-        _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(48, 16, 544, 112)];
-        [_showColumnView setBackgroundColor:[UIColor clearColor]];
-        [_showColumnView setViewDelegate:self];
-        [_showColumnView setViewDataSource:self];
-        [_showColumnView setPagingEnabled:NO];
-        [_showColumnView setScrollEnabled:YES];
-        [self.contentView addSubview:_showColumnView];
+        rectWares = [[NSArray alloc] init];
         icon_FlagView = [[TypeButton alloc] initWithFrame:CGRectMake(0, 0, 64, 74)];
         [icon_FlagView setEnabled:NO];
         [icon_FlagView setAdjustsImageWhenDisabled:NO];
@@ -45,7 +38,17 @@
 - (void)setDataViewRectRanks:(NSArray *)rects andRectTypeIndex:(NSInteger)typeIndex
 {
     rectWares = rects;
-    [_showColumnView reloadData];
+    if (_showColumnView) {
+        [_showColumnView removeFromSuperview];
+    }
+    _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(48, 16, 544, 112)];
+    [_showColumnView setBackgroundColor:[UIColor clearColor]];
+    [_showColumnView setViewDelegate:self];
+    [_showColumnView setViewDataSource:self];
+    [_showColumnView setPagingEnabled:NO];
+    [_showColumnView setScrollEnabled:YES];
+    [self.contentView addSubview:_showColumnView];
+     [self.contentView bringSubviewToFront:icon_FlagView];
     if (typeIndex == 1) {
         [icon_FlagView initWithIconImg:[UIImage imageNamed:@"icon2_rec_shop.png"] andTitle:@"人气商品" andTitleColor:[UIColor whiteColor] andTitleFont:PMFont3];
         [icon_FlagView setBackgroundImage:[UIImage imageNamed:@"block2_rec_shop.png"] forState:UIControlStateNormal];

@@ -19,7 +19,7 @@
     if (self) {
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
-        // _model = [[RecomModel alloc] init];
+         _model = [[RecomModel alloc] init];
         rectTable = [[UITableView alloc] initWithFrame:CGRectMake(8, 0, 592, 904)];
         [rectTable setDataSource:self];
         [rectTable setDelegate:self];
@@ -65,7 +65,7 @@
             
         }
         if ([indexPath row] == 1) {
-            [cell setDataViewRectRanks:_model.hotWares andRectTypeIndex:[indexPath row] ];
+            [cell setDataViewRectRanks:_model.hotWares andRectTypeIndex:[indexPath row]];
         }else if ([indexPath row] == 2)
         {
             [cell setDataViewRectRanks:_model.discountWares andRectTypeIndex:[indexPath row]];

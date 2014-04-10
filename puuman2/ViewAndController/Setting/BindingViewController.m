@@ -9,7 +9,7 @@
 #import "BindingViewController.h"
 #import "SocialNetwork.h"
 #import "UserInfo.h"
-
+#import "CustomAlertViewController.h"
 @interface BindingViewController ()
 
 @end
@@ -179,15 +179,19 @@
   //  [hud show:YES];
     if ([[UserInfo sharedUserInfo] setAlipayAccount:alipay.text])
     {
-      //  NSString *alipay = [[UserInfo sharedUserInfo] alipayAccount];
-       // [CustomAlertView showInView:nil content:[NSString stringWithFormat:@"您的支付宝账号已更新:\n%@", alipay]];
+        NSString *alipayStr = [[UserInfo sharedUserInfo] alipayAccount];
+        [CustomAlertViewController showAlertWithTitle:[NSString stringWithFormat:@"您的支付宝账号已更新:\n%@", alipayStr] confirmRightHandler:^{
+            
+        }];
         [alipay_btn hiddenAdd];
         [_confirmBtn setAlpha:0];
     }
     else
     {
-       // [CustomAlertView showInView:nil content:[NSString stringWithFormat:@"网络不给力喔~更新失败"]];
-        //[self.setAlipayBtn setAlpha:1];
+        [CustomAlertViewController showAlertWithTitle:@"网络不给力喔~更新失败" confirmRightHandler:^{
+            
+        }];
+       
     }
    // [hud removeFromSuperview];
    // hud = nil;

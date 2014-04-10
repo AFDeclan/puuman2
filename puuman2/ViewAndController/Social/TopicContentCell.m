@@ -330,7 +330,6 @@
 
     [participateBtn setEnabled:NO];
     TopicType type =[[[Forum sharedInstance] onTopic] TType];
-    type = TopicType_Text;
     switch (type) {
         case TopicType_Photo:
         {
@@ -415,15 +414,15 @@
 {
     if (status == TopicStatus_Voting) {
         [topicAllVC setVoteOrder:VotingTopicOrder_Vote];
-        [topicAllVC.tableView reloadData];
        
     }else{
         
         [topicAllVC setReplyOrder:TopicReplyOrder_Vote];
-        [left_sortBtn selected];
-        [right_sortBtn unSelected];
-        [topicAllVC.tableView reloadData];
+
     }
+    [left_sortBtn selected];
+    [right_sortBtn unSelected];
+    [topicAllVC.tableView reloadData];
    
 }
 
@@ -431,15 +430,13 @@
 {
     if (status == TopicStatus_Voting) {
         [topicAllVC setVoteOrder:VotingTopicOrder_Time];
-        [topicAllVC.tableView reloadData];
-  
-
     }else{
         [topicAllVC setReplyOrder:TopicReplyOrder_Time];
-        [right_sortBtn selected];
-        [left_sortBtn unSelected];
-        [topicAllVC.tableView reloadData];
+    
     }
+    [right_sortBtn selected];
+    [left_sortBtn unSelected];
+    [topicAllVC.tableView reloadData];
    
 }
 

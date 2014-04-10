@@ -17,6 +17,7 @@
 #import "SettingPassWordViewController.h"
 #import "SettingAdviceViewController.h"
 #import "BindingViewController.h"
+#import "CustomAlertViewController.h"
 
 @interface SettingViewController ()
 
@@ -91,8 +92,12 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
 
 - (void)logOutBtnPressed
 {
-    [[UserInfo sharedUserInfo] logout];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [CustomAlertViewController showAlertWithTitle:@"确定要离开了吗？" confirmHandler:^{
+        [[UserInfo sharedUserInfo] logout];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } cancelHandler:^{
+        
+    }];    
     
 }
 
@@ -111,7 +116,10 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
        // PostNotification(Noti_HideHud, nil);
         if (request.error)
         {
-            //PostNotification(Noti_ShowAlert, @"您当前的网络状态不佳，请在网络通畅的环境中再次尝试");
+            [CustomAlertViewController showAlertWithTitle:@"您当前的网络状态不佳，请在网络通畅的环境中再次尝试" confirmRightHandler:^{
+                
+            }];
+           
         }
         else
         {
@@ -138,18 +146,25 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
                 NSString* currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
                 if( [currentVersion earlierThenVersion:receivedVersion] && ![currentVersion isEqualToString:@""])
                 {
-                   // NSString *hint = [NSString stringWithFormat:@"现在最新的版本是%@，当前您的版本是%@，请前往更新~", receivedVersion, currentVersion];
-                   // [CustomAlertView showInView:nil content:hint confirmHandler:^{
-                   //     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
-                   // }];
+           
+                    [CustomAlertViewController showAlertWithTitle:@"现在最新的版本是%@，当前您的版本是%@，请前往更新~" confirmRightHandler:^{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+                    }];
+                    
+                }else{
+                    [CustomAlertViewController showAlertWithTitle:@"当前已是最新版本~" confirmRightHandler:^{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+                    }];
                 }
-              //  else //[CustomAlertView showInView:nil content:@"当前已是最新版本~"];
             }
         }
     }
     else
     {
-        PostNotification(Noti_ShowAlert, @"您当前的网络状态不佳，请在网络通畅的环境中再次尝试");
+   
+        [CustomAlertViewController showAlertWithTitle:@"您当前的网络状态不佳，请在网络通畅的环境中再次尝试" confirmRightHandler:^{
+            
+        }];
     }
     
 }

@@ -83,6 +83,25 @@
     
 }
 
+- (void)share:(id)sender
+{
+    NSString *text = @"";
+    NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
+    NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+    for (NSString *photoPath in photoPaths)
+    {
+        _photoPath = photoPath;
+        
+        if (_photoPath != nil) {
+            break;
+        }
+    }
+    UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
+    NSString *title = [self.diaryInfo valueForKey:kTitleName];
+    [ShareSelectedViewController shareText:text title:title image:photo];
+
+}
+
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
 {
     return 440;

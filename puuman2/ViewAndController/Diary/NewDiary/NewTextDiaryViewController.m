@@ -130,6 +130,27 @@
    
 }
 
+- (void)closeBtnPressed
+{
+    if ([_textView.text isEqualToString:@""]){
+        if (photo) {
+            [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{
+                [super closeBtnPressed];
+            } cancelHandler:^{
+                
+            }];
+        }else{
+            [super closeBtnPressed];
+        }
+    }else{
+        [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{
+            [super closeBtnPressed];
+        } cancelHandler:^{
+            
+        }];
+    }
+}
+
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if (!photo) {

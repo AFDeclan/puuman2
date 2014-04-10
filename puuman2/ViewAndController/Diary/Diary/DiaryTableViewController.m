@@ -8,7 +8,7 @@
 
 #import "DiaryTableViewController.h"
 #import "DiaryModel.h"
-
+#import "CustomNotiViewController.h"
 
 @interface DiaryTableViewController ()
 
@@ -457,7 +457,10 @@
         
         [ErrorLog errorLog:@"Delete diary failed!" fromFile:@"DiaryViewController.m" error:nil];
         NSLog(@"Delete diary failed!");
-    }else [self reloadDiaries];
+    }else{
+        [CustomNotiViewController showNotiWithTitle:@"删除成功" withTypeStyle:kNotiTypeStyleRight];
+        [self reloadDiaries];
+    }
     
 }
 

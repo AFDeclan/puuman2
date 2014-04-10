@@ -14,7 +14,10 @@
     UILabel *weiXinLabel;
     UIButton *weiboBtn;
     UIButton *weiXinBtn;
+    NSString *shareText;
+    NSString *shareTitle;
+    UIImage *shareImg;
 }
 
-+ (void)share;
++ (void)shareText:(NSString *)sharetext_ title:(NSString *)title image:(UIImage *)img;
 @end

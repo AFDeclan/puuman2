@@ -9,7 +9,6 @@
 #import "AuPhotoDiaryCell.h"
 #import "UniverseConstant.h"
 #import "DiaryFileManager.h"
-//#import "CustomAlertView.h"
 #import "DetailShowViewController.h"
 #import "UIImage+CroppedImage.h"
 #import "DiaryViewController.h"
@@ -111,16 +110,14 @@
 }
 
 - (void)share:(id)sender
-{
-    
-    [ShareSelectedViewController share];
-    
-    
-//    //子类重载
-//    NSString *text;
-//    NSString *title = [self.diaryInfo valueForKey:kTitleName];
-//    [[DiaryViewController sharedDiaryViewController] shareDiaryWithText:text title:title image:photo];
-   // [CustomAlertView sharedInView:nil content:@"分享本条日记到......？" shareText:text title:title image:photo];
+{    
+    //子类重载
+    NSString *text = @"";
+    UIImage *img;
+    NSString *path = [self.diaryInfo valueForKey:kFilePathName];
+    img = [DiaryFileManager imageForPath:path];
+    NSString *title = [self.diaryInfo valueForKey:kTitleName];
+    [ShareSelectedViewController shareText:text title:title image:img];
     
 }
 
