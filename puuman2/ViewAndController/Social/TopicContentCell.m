@@ -103,7 +103,7 @@
 
 - (void)setVerticalFrame
 {
-    self.frame = CGRectMake(0, 0, 608, 944);
+    self.frame = CGRectMake((_topicNum-1)*608, 0, 608, 944);
     SetViewLeftUp(rightBtn, 480, 0);
     [topicAllVC setVerticalFrame];
     SetViewLeftUp(bgImageView, 0, 0);
@@ -201,7 +201,7 @@
     }
 
 
-    self.frame = CGRectMake(0, 0, 864, 688);
+    self.frame = CGRectMake((_topicNum-1)*864, 0, 864, 688);
     SetViewLeftUp(rightBtn, 736, 0);
     [topicAllVC.view setFrame:CGRectMake(128, 168, 608, 520)];
     SetViewLeftUp(right_sortBtn, 432, 144);
@@ -213,6 +213,7 @@
 
 -(void)setInfoViewWithTopicNum:(NSInteger)topicNum
 {
+    _topicNum = topicNum;
      [[Forum sharedInstance] removeDelegateObject:self];
      [[Forum sharedInstance] addDelegateObject:self];
     
