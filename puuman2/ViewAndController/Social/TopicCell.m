@@ -15,9 +15,13 @@
 #import "PhotoTopicCell.h"
 #import "UserInfo.h"
 #import "Comment.h"
+#import "BabyData.h"
+#import "NSDate+Compute.h"
+
 
 @implementation TopicCell
 @synthesize isMyTopic = _isMyTopic;
+@synthesize row = _row;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -36,6 +40,8 @@
         [headerView setBackgroundColor:PMColor5];
         [contentView setBackgroundColor:PMColor5];
         [footerView setBackgroundColor:PMColor5];
+  //      [MyNotiCenter addObserver:self selector:@selector(removeForumDelegate) name:Noti_ReplyRemoveForumDelgate object:nil];
+        
     }
     return self;
 }
@@ -120,7 +126,8 @@
         [headTitleView setAlpha:1];
         SetViewLeftUp(info_time, 464, 48);
         SetViewLeftUp(infoView, 0, 32);
-        SetViewLeftUp(contentView, 96, 0);
+        SetViewLeftUp(contentView, 0, 96);
+      
         
     }else{
         [headerView setFrame:CGRectMake(0, 0, 608, 64)];
@@ -150,8 +157,6 @@
 {
    
     if (![member belongsTo:_reply.UID]) {
-        
-        if (![member belongsTo:[UserInfo sharedUserInfo].UID]) {
             if (!hasInfoView) {
                 RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
                 [recommend setDelegate:self];
@@ -163,28 +168,30 @@
                 [recommend show];
                 hasInfoView = YES;
             }
-        }else{
-            _member = member;
-            [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:member.BabyIsBoy];
-        }
+     
     }else{
-        _member = member;
-        [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:member.BabyIsBoy];
-
+        
+        if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned && [member BabyHasBorn]) {
+            [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:member.BabyBirth andSex:member.BabyIsBoy] andIsBoy:member.BabyIsBoy];
+            
+        }else{
+            [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"" andIsBoy:member.BabyIsBoy];
+            
+        }
     }
 }
 
 //Member数据下载失败
 - (void)memberDownloadFailed
 {
-    [[Friend sharedInstance] removeDelegateObject:self];
 
 }
 
 - (void)popViewfinished
 {
     hasInfoView = NO;
-    [[Forum sharedInstance] addDelegateObject:self];
+    PostNotification(Noti_RefreshTopicTable, nil);
+    //[[Forum sharedInstance] addDelegateObject:self];
 }
 
 - (void)buildWithReply:(Reply *)reply
@@ -194,28 +201,33 @@
     
     _member = [[MemberCache sharedInstance] getMemberWithUID:reply.UID];
     if (_member) {
-      
-        [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:_member.BabyIsBoy];
+        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned &&[_member BabyHasBorn]) {
+            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
 
+        }else{
+            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"" andIsBoy:_member.BabyIsBoy];
+
+        }
     }
-   
+     [[Friend sharedInstance] removeDelegateObject:self];
     [[Friend sharedInstance] addDelegateObject:self];
-
     
     [[Forum sharedInstance] removeDelegateObject:self];
     [[Forum sharedInstance] addDelegateObject:self];
    
     
-    if ([[_reply comments] count] == 0) {
-        if (![_reply noMore]) {
-            [_reply getMoreComments:10 newDirect:YES];
-        }
-    }else{
-        [relayExample setText:[[_reply comments] objectAtIndex:0]];
-    }
+//    if ([[_reply comments] count] == 0) {
+//        [_reply getMoreComments:1 newDirect:YES];
+//    }else{
+//        [relayExample setText:[[_reply comments] objectAtIndex:0]];
+//    }
  
     if (_isMyTopic) {
-        [[Forum sharedInstance] getTopic:reply.TID];
+        Topic *topic =  [[Forum sharedInstance] getTopic:reply.TID];
+        if (topic) {
+            [topicNameLabel setText:topic.TTitle];
+
+        }
     }
 
     
@@ -258,7 +270,10 @@
     [[MainTabBarController sharedMainViewController] setIsReply:YES];
     PostNotification(Noti_BottomInputViewShow,_reply);
     
+    
 }
+
+
 
 
 
@@ -281,7 +296,7 @@
 
 - (void)scanMore
 {
-    [[Forum sharedInstance] removeDelegateObject:self];
+ //   PostNotification(Noti_ReplyRemoveForumDelgate, nil);
     AllWordsPopViewController *moreReplayVC  =[[ AllWordsPopViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:moreReplayVC.view];
     [moreReplayVC setControlBtnType:kOnlyCloseButton];
@@ -290,6 +305,11 @@
     [moreReplayVC setDelegate:self];
     [moreReplayVC show];
 }
+
+//- (void)removeForumDelegate
+//{
+//    [[Forum sharedInstance] removeDelegateObject:self];
+//}
 
 
 
@@ -343,40 +363,45 @@
 //点赞失败
 - (void)topicReplyVoteFailed:(Reply *)reply
 {
-    _reply = reply;
+   
 
 }
 
 
-//更多话题回复加载成功。
-- (void)topicRepliesLoadedMore:(Topic *)topic
+
+//往期话题获取成功。
+- (void)topicReceived:(Topic *)topic
 {
-
-  
-    [topicNameLabel setText:topic.TTitle];
-}
-
-//更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
-- (void)topicRepliesLoadFailed:(Topic *)topic
-{
-
-}
-
-//更多评论加载成功
-- (void)replyCommentsLoadedMore:(Reply *)reply
-{
-    
-    if ([[reply comments] count] != 0) {
-        [relayExample setText:[[[reply comments] objectAtIndex:0] CContent]];
-
+    if (topic.TID == _reply.TID ) {
+        [topicNameLabel setText:topic.TTitle];
     }
 }
 
-//更多评论加载失败 注意根据noMore判断是否是因为全部加载完
-- (void)replyCommentsLoadFailed:(Reply *)reply
+//往期话题获取失败
+- (void)topicFailed:(NSString *)TNo
 {
-
+    
 }
+
+
+////更多评论加载成功
+//- (void)replyCommentsLoadedMore:(Reply *)reply
+//{
+//    
+//    if (_reply == reply) {
+//        if ([[reply comments] count] != 0) {
+//            [relayExample setText:[[[reply comments] objectAtIndex:0] CContent]];
+//            
+//        }
+//    }
+//  
+//}
+//
+////更多评论加载失败 注意根据noMore判断是否是因为全部加载完
+//- (void)replyCommentsLoadFailed:(Reply *)reply
+//{
+//
+//}
 
 
 @end

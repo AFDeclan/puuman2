@@ -17,7 +17,7 @@
     if (self) {
         // Initialization code
         [[Forum sharedInstance] addDelegateObject:self];
-       
+        address = 0;
         [self setBackgroundColor:[UIColor clearColor]];
         [self initialization];
     }
@@ -32,7 +32,7 @@
     [_showColumnView setViewDelegate:self];
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:YES];
-    [_showColumnView setScrollEnabled:NO];
+    [_showColumnView setScrollEnabled:YES];
     [self addSubview:_showColumnView];
 
   
@@ -40,36 +40,40 @@
 
 - (void)reloadAllTopic
 {
-    [[Forum sharedInstance] getActiveTopics];
+    [[Forum sharedInstance] getActiveTopic];
 }
 
-- (void)activeTopicsReceived
+- (void)activeTopicReceived
 {
 
     [[Forum sharedInstance] removeDelegateObject:self];
     [_showColumnView reloadData];
-    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*([Forum sharedInstance].onTopic.TNo -1), 0)];
-    
+     address = [Forum sharedInstance].onTopic.TNo;
+    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
+   
 }
 
-- (void)activeTopicsFailed
+- (void)activeTopicFailed
 {
     [[Forum sharedInstance] removeDelegateObject:self];
 }
 
 - (void)setVerticalFrame
 {
-     //[_showColumnView reloadData];
+    
+    
     [_showColumnView setContentSize:CGSizeMake( self.frame.size.width*2, self.frame.size.height)];
     [_showColumnView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+  
+   [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
 }
 
 - (void)setHorizontalFrame
 {
-   // [_showColumnView reloadData];
-     [_showColumnView setContentSize:CGSizeMake( self.frame.size.width*2, self.frame.size.height)];
+  
+    [_showColumnView setContentSize:CGSizeMake( self.frame.size.width*2, self.frame.size.height)];
     [_showColumnView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    
+    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
 }
 
 
@@ -120,13 +124,14 @@
 
 - (void)nextTopic
 {
-
+    address ++;
     [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x + self.frame.size.width, 0) animated:YES];
 
 }
 
 - (void)preTopic
 {
+    address--;
     [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x - self.frame.size.width, 0) animated:YES];
 }
 

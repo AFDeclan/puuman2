@@ -8,7 +8,8 @@
 
 #import "InviteView.h"
 #import "ColorsAndFonts.h"
-//#import "CustomAlertView.h"
+#import "CustomAlertViewController.h"
+#import "CustomNotiViewController.h"
 #import "UserInfo.h"
 #import "BabyData.h"
 #import "JoinView.h"
@@ -102,16 +103,29 @@
             enum userActionResult res = [[UserInfo sharedUserInfo] sendInvitationToMail:mail phoneNum:phoneNum];
             switch (res) {
                 case succeeded:
-                  //  [[JoinView sharedJoinView] refreshStaus];
+                    [CustomNotiViewController showNotiWithTitle:@"发送成功" withTypeStyle:kNotiTypeStyleRight];
+                    [[JoinView sharedJoinView] refreshStaus];
                     break;
                 case timeOut:
-                   // [CustomAlertView showInView:nil content:@"操作失败！网络不给力哦~"];
+                {
+                    [CustomAlertViewController showAlertWithTitle:@"操作失败！网络不给力哦~" confirmRightHandler:^{
+                        
+                    }];
+                }
                     break;
                 case dumplicated:
-                   // [CustomAlertView showInView:nil content:@"操作失败！您邀请的账户已经注册~"];
+                {
+                    [CustomAlertViewController showAlertWithTitle:@"操作失败！您邀请的账户已经注册~" confirmRightHandler:^{
+                        
+                    }];
+                }
                     break;
                 default:
-                   // [CustomAlertView showInView:nil content:@"操作失败！服务器遇到未知错误"];
+                {
+                    [CustomAlertViewController showAlertWithTitle:@"操作失败！服务器遇到未知错误" confirmRightHandler:^{
+                        
+                    }];
+                }
                     break;
             }
             
@@ -119,9 +133,10 @@
             
         }else
         {
-            
-           // [CustomAlertView showInView:nil content:@"请正确输入邮箱或手机号码"];
-            
+            [CustomAlertViewController showAlertWithTitle:@"请正确输入邮箱或手机号码" confirmRightHandler:^{
+                
+            }];
+           
             
         }
  

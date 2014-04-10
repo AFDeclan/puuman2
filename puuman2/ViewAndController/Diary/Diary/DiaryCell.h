@@ -15,7 +15,7 @@
 #import "NSDate+Compute.h"
 #import "UILabel+AdjustSize.h"
 #include "UserInfo.h"
-
+#import "ShareSelectedViewController.h"
 #define kHeaderHeight    36
 #define kFooterHeight    24
 #define ContentWidth  512

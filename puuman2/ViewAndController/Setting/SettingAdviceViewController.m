@@ -9,6 +9,8 @@
 #import "SettingAdviceViewController.h"
 #import "PumanRequest.h"
 #import "UserInfo.h"
+#import "CustomAlertViewController.h"
+#import "CustomNotiViewController.h"
 
 @interface SettingAdviceViewController ()
 
@@ -106,22 +108,27 @@
     PostNotification(Noti_ShowHud, @"正在提交反馈...");
     [request postSynchronous];
     PostNotification(Noti_HideHud, nil);
+    
     switch (request.result) {
         case PumanRequest_Succeeded:
         {
             [_textView resignFirstResponder];
-            
-            PostNotification(Noti_ShowAlert, @"您的联系信息我们已经收到，我们将根据您的需求进行反馈");
+            [CustomNotiViewController showNotiWithTitle:@"提交成功" withTypeStyle:kNotiTypeStyleRight];
             [self recoverSettingView];
             [super finishBtnPressed];
             break;
         }
         case PumanRequest_TimeOut:
-            
-           // PostNotification(Noti_ShowAlert, @"您当前的网络状态不佳，请在网络通畅的环境中再次尝试");
+        {
+            [CustomAlertViewController showAlertWithTitle: @"您当前的网络状态不佳，请在网络通畅的环境中再次尝试" confirmRightHandler:^{
+                
+            }];
+        }
             break;
         default:
-           // PostNotification(Noti_ShowAlert, @"链接异常，请稍后重试");
+            [CustomAlertViewController showAlertWithTitle:  @"链接异常，请稍后重试" confirmRightHandler:^{
+                
+            }];
             break;
     }
 

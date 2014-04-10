@@ -161,7 +161,29 @@
 
 - (void)closeBtnPressed
 {
-    [self cancel];
+    if (controlView.videoMode) {
+        if (movieUrl != nil) {
+            [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{
+                 [self cancel];
+            } cancelHandler:^{
+                
+            }];
+        }else{
+            [self cancel];
+        }
+      
+    }else{
+        if ([photoPath count] >0) {
+            [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{
+                [self cancel];
+            } cancelHandler:^{
+                
+            }];
+        }else{
+            [self cancel];
+        }
+    }
+   
 }
 
 - (void)finishBtnPressed

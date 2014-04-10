@@ -8,9 +8,10 @@
 
 #import "TopicCell.h"
 #import "AdaptiveLabel.h"
-@interface TextTopicCell : TopicCell
+#import "AFDataStore.h"
+@interface TextTopicCell : TopicCell<AFDataStoreDelegate>
 {
     AdaptiveLabel *mainTextView;
-    
+   // NSString *filePath;
 }
 @end

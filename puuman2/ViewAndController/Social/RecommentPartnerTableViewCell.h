@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Member.h"
+
 typedef enum
 {
     kPartnerBirthday,
@@ -22,8 +24,9 @@ typedef enum
     UILabel *label_second;
     UILabel *label_compare;
     UIImageView *line;
+    UIImageView *icon;
 }
 
-- (void)buildWithData:(id)data andUserData:(id)userData andDataType:(PartnerDataInfoType )type;
+- (void)buildWithData:(Member *)data andUserData:(Member *)userData andDataType:(PartnerDataInfoType )type;
 
 @end

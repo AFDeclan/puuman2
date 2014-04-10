@@ -11,11 +11,16 @@
 #import "Group.h"
 #import "Member.h"
 
+
 @interface PartnerDataCellView : UIView<UIColumnViewDataSource, UIColumnViewDelegate>
 {
     UIColumnView *dataColumnView;
     Group *_group;
+    UIImageView *icon;
+    UILabel *titleLabel;
+    UIView *bgView;
 }
+- (void)setbgViewColor:(UIColor *)color;
 - (void)reloadWithGroupInfo:(Group *)group;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

@@ -14,6 +14,7 @@
 #import "NewImportDiaryViewController.h"
 #import "NewAudioDiaryViewController.h"
 #import "NewCameraViewController.h"
+#import "CustomAlertViewController.h"
 
 
 NSString * newDiaryBtnImageName[5] = {@"btn_input_newdiary.png",@"btn_text_newdiary.png", @"btn_audio_newdiary.png", @"btn_photo_newdiary.png",@"btn_video_newdiary.png"};
@@ -123,15 +124,22 @@ static DiaryViewController * instance;
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
-    
+    [self performSelector:@selector(loadTable) withObject:nil afterDelay:0];
 }
 
+- (void)loadTable
+{
+    PostNotification(Noti_LoadDiaryCellInfo, nil);
+
+}
 - (void)viewDidDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
     
 }
+
+
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     
@@ -513,7 +521,10 @@ static DiaryViewController * instance;
                 PostNotification(Noti_HideHud, nil);
                 if (!templateData)
                 {
-                   // [CustomAlertView showInView:nil content:@"照片模板下载失败，请稍后再试。"];
+                    [CustomAlertViewController showAlertWithTitle:@"照片模板下载失败，请稍后再试。" confirmRightHandler:^{
+                        
+                    }];
+                  
                     return;
                 }
                 // UIImage *templateImg = [UIImage imageWithData:templateData];
@@ -545,6 +556,7 @@ static DiaryViewController * instance;
     [diaryTableVC.tableView setContentOffset:CGPointMake(0, 0)];
     [calenderView show];
     [joinView refreshStaus];
+
 }
 
 - (void)diaryLoaded

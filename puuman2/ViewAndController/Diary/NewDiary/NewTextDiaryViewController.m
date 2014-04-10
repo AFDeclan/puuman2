@@ -43,7 +43,7 @@
 - (void)initContent
 {
     titleTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 112, 640, 48)];
-    titleTextField.placeholder = @"这些照片是……";
+    titleTextField.placeholder = @"请输入标题……";
    // [titleTextField setDelegate:self];
     [_content addSubview:titleTextField];
     
@@ -128,6 +128,27 @@
          [super finishBtnPressed];
     }
    
+}
+
+- (void)closeBtnPressed
+{
+    if ([_textView.text isEqualToString:@""]){
+        if (photo) {
+            [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{
+                [super closeBtnPressed];
+            } cancelHandler:^{
+                
+            }];
+        }else{
+            [super closeBtnPressed];
+        }
+    }else{
+        [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{
+            [super closeBtnPressed];
+        } cancelHandler:^{
+            
+        }];
+    }
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text

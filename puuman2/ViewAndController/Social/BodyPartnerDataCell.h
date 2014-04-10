@@ -14,7 +14,9 @@
     UILabel *date_info;
     UILabel *data_info;
     UIView *mask;
+    UIView *line;
 }
 
+@property(nonatomic,assign)BOOL showLine;
 - (void)setBodyData:(float)bodyValue andTheDate:(NSDate *)date andHighest:(float)highest andLowest:(float)lowest andIsHeight:(BOOL) height;
 @end

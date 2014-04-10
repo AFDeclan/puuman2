@@ -48,7 +48,7 @@
             NSArray *allRids = val;
             for (int i=0; i<allRids.count; i++) {
                 if (i >= TopicReplyOrderModeCnt) break;
-                _rids[i] = [allRids objectAtIndex:i];
+                _replies[i] = [allRids objectAtIndex:i];
             }
         } else {
             [_meta setValue:val forKey:key];
@@ -89,7 +89,7 @@
     if (boundReply) {
         [_request[order] setIntegerParam:boundReply.RID forKey:@"boundRID"];
     } else {
-        [_request[order] setValue:@"" forKey:@"boundRID"];
+        [_request[order] setParam:@"" forKey:@"boundRID"];
     }
     [_request[order] setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
     [_request[order] setDelegate:self];

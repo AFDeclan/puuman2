@@ -28,6 +28,7 @@
         [_content addSubview:bgImgView];
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 96, 448, 48)];
         [_titleLabel setTextColor:PMColor2];
+        [_titleLabel setNumberOfLines:2];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_titleLabel setFont:PMFont2];
         [_titleLabel setBackgroundColor:[UIColor clearColor]];

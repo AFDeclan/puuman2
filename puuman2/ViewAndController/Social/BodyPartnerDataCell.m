@@ -12,7 +12,7 @@
 #import "UniverseConstant.h"
 
 @implementation BodyPartnerDataCell
-
+@synthesize showLine = _showLine;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -31,10 +31,14 @@
         [data_info setFont:PMFont4];
         [data_info setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:data_info];
-        
+        [self addSubview:mask];
         mask = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 96, 224)];
         [mask setBackgroundColor:[UIColor whiteColor]];
-        [self addSubview:mask];
+
+        line = [[UIView alloc]initWithFrame:CGRectMake(-1, 0, 2, 224)];
+        [line setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_timeline_diary.png"]]];
+        [self addSubview:line];
+        
     }
     return self;
 }
@@ -62,7 +66,7 @@
         [mask setAlpha:0.3];
     }
     
-    [date_info setText:@"比我大2天"];
+   // [date_info setText:@"比我大2天"];
     SetViewLeftUp(data_info, 0, ViewY(histogram)-16);
     
     if (height) {
@@ -79,6 +83,17 @@
     
     
 }
+
+- (void)setShowLine:(BOOL)showLine
+{
+    _showLine = showLine;
+    if (showLine) {
+        [line setAlpha:1];
+    }else{
+        [line setAlpha:0];
+    }
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

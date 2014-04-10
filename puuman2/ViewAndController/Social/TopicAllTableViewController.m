@@ -21,18 +21,23 @@
 @implementation TopicAllTableViewController
 @synthesize voting = _voting;
 @synthesize topic = _topic;
-@synthesize order =_order;
+@synthesize replyOrder =_replyOrder;
+@synthesize voteOrder = _voteOrder;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         _voting = NO;
-        _order =  TopicReplyOrder_Vote;
+        _voteOrder =  VotingTopicOrder_Vote;
+        _replyOrder = TopicReplyOrder_Vote;
+        votings = [[NSArray alloc] init];
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSArray alloc] init];
         [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(refreshVoteTable) name:Noti_RefreshVoteTabe object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(refreshCellWithRow:) name:Noti_RefreshTextTopicCell object:nil];
 
     }
     return self;
@@ -66,15 +71,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     if (_voting) {
-   
-        return [[Forum sharedInstance].votingTopic count];
+        return [votings count];
+ 
     }else{
         return [replays count];
+
     }
-    
-  
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,7 +89,7 @@
         if (!cell) {
             cell = [[VotingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
-        [cell buildWithVoteTopic:[[Forum sharedInstance].votingTopic objectAtIndex:[indexPath row]]];
+        [cell buildWithVoteTopic:[votings objectAtIndex:[indexPath row]]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -112,7 +116,7 @@
                 cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
         }
-        
+         [cell setRow:[indexPath row]];
         [cell setIsMyTopic:NO];
         [cell buildWithReply:[replays objectAtIndex:[indexPath row]]];
 
@@ -147,14 +151,50 @@
 
 - (void)setVoting:(BOOL)voting
 {
+   
     _voting = voting;
     if (voting) {
         [self.tableView reloadData];
+        if (!_refreshFooter) {
+            _refreshFooter = [[MJRefreshFooterView alloc] init];
+            _refreshFooter.scrollView = self.tableView;
+            [self.tableView addSubview:_refreshFooter];
+            [_refreshFooter setDelegate:self];
+            _refreshFooter.alpha = 1;
+            __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+            _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+               
+                if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
+                {
+                    [blockRefreshFooter endRefreshing];
+                }
+            };
+            
+            [_refreshFooter beginRefreshing];
+            
+        }
+
+        
+        if (!_refreshHeader) {
+            _refreshHeader = [[MJRefreshHeaderView alloc] init];
+            _refreshHeader.scrollView = self.tableView;
+            [self.tableView addSubview:_refreshHeader];
+            [_refreshHeader setDelegate:self];
+            _refreshHeader.alpha = 1;
+            __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
+            _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+                 [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:YES];
+            };
+            
+        }
+        
+
     }
 }
 
 - (void)setTopic:(Topic *)topic
 {
+    
     _topic = topic;
     if (!_refreshFooter) {
         _refreshFooter = [[MJRefreshFooterView alloc] init];
@@ -164,8 +204,7 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [_topic getMoreReplies:5 orderBy:_order];
-            if (![_topic noMoreReplies:_order])
+            if (! [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ])
             {
                 [blockRefreshFooter endRefreshing];
             }
@@ -174,34 +213,89 @@
         [_refreshFooter beginRefreshing];
 
     }
+    if (!_refreshHeader) {
+        _refreshHeader = [[MJRefreshHeaderView alloc] init];
+        _refreshHeader.scrollView = self.tableView;
+        [self.tableView addSubview:_refreshHeader];
+        [_refreshHeader setDelegate:self];
+        _refreshHeader.alpha = 1;
+        __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
+        _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+            [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:YES ];
+        };
+        
+    }
     
     [self.tableView reloadData];
 }
 
-- (void)setOrder:(TopicReplyOrder)order
+
+- (void)setReplyOrder:(TopicReplyOrder)replyOrder
 {
-    _order = order;
-   
+    _replyOrder = replyOrder;
+    
     if ([_refreshFooter isRefreshing]) {
         [_refreshFooter endRefreshing];
     }
+    replays = [_topic replies:_replyOrder];
     
-    if (![_topic noMoreReplies:_order])
-    {
-         [_refreshFooter beginRefreshing];
-    }else{
-        replays = [_topic replies:_order];
-        [self.tableView reloadData];
+    if ([replays count] < 5) {
+        if (! [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ])
+        {
+            [_refreshFooter beginRefreshing];
+        }
+    }
+   
+
+}
+
+- (void)setVoteOrder:(VotingTopicOrder)voteOrder
+{
+    _voteOrder = voteOrder;
+    if ([_refreshFooter isRefreshing]) {
+        [_refreshFooter endRefreshing];
+    }
+    votings = [[Forum sharedInstance] votingTopic:_voteOrder];
+    if ([votings count] <5) {
+        if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
+        {
+            [_refreshFooter endRefreshing];
+        }
     }
 }
+
+//更多投票中话题获取成功
+- (void)votingTopicLoadedMore
+{
+    votings = [[Forum sharedInstance] votingTopic:_voteOrder];
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
+    [self.tableView reloadData];
+}
+
+//更多投票中话题获取失败
+- (void)votingTopicLoadFailed
+{
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
+    [self.tableView reloadData];
+}
+
 
 //更多话题回复加载成功。
 - (void)topicRepliesLoadedMore:(Topic *)topic
 {
-    _topic = topic;
-    replays = [topic replies:_order];
+    
+    replays = [topic replies:_replyOrder];
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
+
     [self.tableView reloadData];
 
 }
@@ -212,15 +306,13 @@
     NSLog(@"Replay Failed");
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
     [self.tableView reloadData];
 }
 
 - (void)refreshTable
 {
-    if ([replays count] < 5) {
-       [_topic getMoreReplies:5 orderBy:_order];
-    }
-    
     [self.tableView  reloadData];
 }
 
@@ -231,20 +323,10 @@
 - (void)refreshVoteTable
 {
       _voting = YES;
-    [[Forum sharedInstance] getActiveTopics];
+   
 }
 
-//当期话题和投票中话题信息获取成功。
-- (void)activeTopicsReceived
-{
-    [self.tableView  reloadData];
-}
 
-//当期话题和投票中话题信息获取失败。
-- (void)activeTopicsFailed
-{
-    
-}
 - (void)setVerticalFrame
 {
     
@@ -256,7 +338,11 @@
 }
 
 
-
+- (void)refreshCellWithRow:(NSNotification *)notification
+{
+    NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:[[notification object] intValue] inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:reloadIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
 
 
 @end

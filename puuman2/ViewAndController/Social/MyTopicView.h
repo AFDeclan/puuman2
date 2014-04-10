@@ -11,7 +11,7 @@
 
 @interface MyTopicView : UIView
 {
-    MyTopicViewController *topicAllVC;
+    MyTopicViewController *topicMyVC;
 }
 
 - (void)reloadMyTopic;

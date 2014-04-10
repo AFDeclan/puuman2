@@ -22,7 +22,7 @@
         manage = NO;
         dataInfoView = [[DataInfoScrollView alloc] initWithFrame:CGRectMake(0, 0, 608, 520)];
         [dataInfoView setBounces:NO];
-        [dataInfoView setContentSize:CGSizeMake(608, 1432)];
+        [dataInfoView setContentSize:CGSizeMake(608, 672)];//1432
         [self addSubview:dataInfoView];
         manageBtn = [[ColorButton alloc] init];
         [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];

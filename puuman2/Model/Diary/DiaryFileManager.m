@@ -158,6 +158,13 @@
 + (NSDictionary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo andIsTopic:(BOOL)isTopic
 {
     //save the file
+    if (isTopic) {
+        ReplyForUpload *upload = [[Forum sharedInstance] createReplyForUpload];
+        [upload setTexts:[NSArray arrayWithObject:text]];
+        [upload setRTitle:title];
+        [upload upload];
+    }
+    
     NSString *fileDir = [self fileDirForDiaryType:vType_Text];
     if (!fileDir) return nil;
     NSDate *curDate = [NSDate date];

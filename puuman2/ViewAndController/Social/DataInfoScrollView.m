@@ -16,30 +16,33 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.delegate = self;
-        
+        [self setBackgroundColor:[UIColor whiteColor]];
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
+        [self setPagingEnabled:YES];
         heightView = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, 0, 0, 224)];
-        [heightView setBackgroundColor:PMColor5];
+        
         [heightView setIsHeight:YES];
         [self addSubview:heightView];
+      
         weightView  = [[BodyPartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(heightView)+ViewHeight(heightView), 0, 224)];
-        [weightView setBackgroundColor:PMColor5];
         [weightView setIsHeight:NO];
         [self addSubview:weightView];
-        
-        for (int i =0; i <5; i++) {
-            propWareView[i] = [[PropWarePartnerDataView alloc] initWithFrame:CGRectMake(0, i*136+ViewY(weightView)+ViewHeight(weightView), 0, 136)];
-            [self addSubview:propWareView[i]];
-        }
-        
-        vaccineView = [[VaccinePartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(propWareView[4])+ViewHeight(propWareView[4]), 0, 112)];
-        [vaccineView setBackgroundColor:PMColor5];
-        [self addSubview:vaccineView];
+        //        for (int i =0; i <5; i++) {
+//            propWareView[i] = [[PropWarePartnerDataView alloc] initWithFrame:CGRectMake(0, i*136+ViewY(weightView)+ViewHeight(weightView), 0, 136)];
+//            [self addSubview:propWareView[i]];
+//        }
+//        
+//        vaccineView = [[VaccinePartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(propWareView[4])+ViewHeight(propWareView[4]), 0, 112)];
+//        [vaccineView setBackgroundColor:PMColor5];
+//        [self addSubview:vaccineView];
 
-        puumanRankView = [[PuumanRankPartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(vaccineView)+ViewHeight(vaccineView), 0, 224)];
+        puumanRankView = [[PuumanRankPartnerDataView alloc] initWithFrame:CGRectMake(0, ViewY(weightView)+ViewHeight(weightView), 0, 224)];
         [self addSubview:puumanRankView];
-        
+       
+        [puumanRankView setbgViewColor:PMColor5];
+        [weightView setbgViewColor:[UIColor whiteColor]];
+        [heightView setbgViewColor:PMColor5];
         
     }
     return self;
@@ -50,25 +53,25 @@
 {
     [heightView setVerticalFrame];
     [weightView setVerticalFrame];
-    [vaccineView setVerticalFrame];
+    //[vaccineView setVerticalFrame];
     [puumanRankView setVerticalFrame];
-    for (int i =0; i <5; i++) {
-        [propWareView[i] setVerticalFrame];
-    }
-    PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
+//    for (int i =0; i <5; i++) {
+//        [propWareView[i] setVerticalFrame];
+//    }
+   // PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
 
 }
 - (void)setHorizontalFrame
 {
     [heightView setHorizontalFrame];
     [weightView setHorizontalFrame];
-    [vaccineView setHorizontalFrame];
+  //  [vaccineView setHorizontalFrame];
     [puumanRankView setHorizontalFrame];
-    for (int i =0; i <5; i++) {
-        [propWareView[i] setHorizontalFrame];
-    }
+//    for (int i =0; i <5; i++) {
+//        [propWareView[i] setHorizontalFrame];
+//    }
     
-    PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
+  //  PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:self.contentOffset.y]);
 
 }
 
@@ -76,7 +79,7 @@
 {
     if (scrollView == self) {
       
-        PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:scrollView.contentOffset.y]);
+     //   PostNotification(Noti_PartnerDataViewScrolled, [NSNumber numberWithFloat:scrollView.contentOffset.y]);
     }
     
 }
@@ -85,13 +88,12 @@
 {
     [heightView reloadWithGroupInfo:group];
     [weightView reloadWithGroupInfo:group];
-    [vaccineView reloadWithGroupInfo:group];
-    for (int i = 0; i <5; i ++) {
-        [propWareView[i] reloadWithGroupInfo:group];
-    }
+   // [vaccineView reloadWithGroupInfo:group];
+//    for (int i = 0; i <5; i ++) {
+//        [propWareView[i] reloadWithGroupInfo:group];
+//    }
     [puumanRankView reloadWithGroupInfo:group];
-   
-    
+
     
 }
 

@@ -11,8 +11,6 @@
 #import "MainTabBarController.h"
 #import "RewardViewController.h"
 #import "CreateTopicViewController.h"
-#import "NewTextDiaryViewController.h"
-#import "NewCameraViewController.h"
 #import "UniverseConstant.h"
 
 
@@ -105,7 +103,7 @@
 
 - (void)setVerticalFrame
 {
-    self.frame = CGRectMake(0, 0, 608, 944);
+    self.frame = CGRectMake((_topicNum-1)*608, 0, 608, 944);
     SetViewLeftUp(rightBtn, 480, 0);
     [topicAllVC setVerticalFrame];
     SetViewLeftUp(bgImageView, 0, 0);
@@ -203,7 +201,7 @@
     }
 
 
-    self.frame = CGRectMake(0, 0, 864, 688);
+    self.frame = CGRectMake((_topicNum-1)*864, 0, 864, 688);
     SetViewLeftUp(rightBtn, 736, 0);
     [topicAllVC.view setFrame:CGRectMake(128, 168, 608, 520)];
     SetViewLeftUp(right_sortBtn, 432, 144);
@@ -215,6 +213,7 @@
 
 -(void)setInfoViewWithTopicNum:(NSInteger)topicNum
 {
+    _topicNum = topicNum;
      [[Forum sharedInstance] removeDelegateObject:self];
      [[Forum sharedInstance] addDelegateObject:self];
     
@@ -247,7 +246,7 @@
             [self setHorizontalFrame];
         }
         
-        
+        [bgImageView setImage:[UIImage imageNamed:@"pic_future_topic.png"]];
         
         
     }else{
@@ -336,11 +335,9 @@
         case TopicType_Photo:
         {
             TopicCellSelectedPohosViewController *chooseView = [[TopicCellSelectedPohosViewController alloc] initWithNibName:nil bundle:nil];
-            [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
-            [chooseView setStyle:ConfirmError];
+           [chooseView setStyle:ConfirmError];
             [chooseView setSelecedDelegate:self];
             [chooseView show];
-
         }
             break;
         case TopicType_Text:
@@ -349,6 +346,8 @@
             [[MainTabBarController sharedMainViewController].view addSubview:textVC.view];
             [textVC setControlBtnType:kCloseAndFinishButton];
             [textVC setTitle:@"文本" withIcon:nil];
+            [textVC setIsTopic:YES];
+            [textVC setDelegate:self];
             [textVC show];
         }
             break;
@@ -359,6 +358,11 @@
 
 }
 
+- (void)popViewfinished
+{
+    [participateBtn setEnabled:YES];
+}
+
 - (void)selectedViewhidden
 {
     [participateBtn setEnabled:YES];
@@ -367,7 +371,6 @@
 - (void)currentTopic
 {
  
-    
 
 }
 
@@ -410,17 +413,32 @@
 
 - (void)leftSortSelected
 {
-    [topicAllVC setOrder:TopicReplyOrder_Vote];
+    if (status == TopicStatus_Voting) {
+        [topicAllVC setVoteOrder:VotingTopicOrder_Vote];
+       
+    }else{
+        
+        [topicAllVC setReplyOrder:TopicReplyOrder_Vote];
+
+    }
     [left_sortBtn selected];
     [right_sortBtn unSelected];
+    [topicAllVC.tableView reloadData];
+   
 }
 
 - (void)rightSortSelected
 {
+    if (status == TopicStatus_Voting) {
+        [topicAllVC setVoteOrder:VotingTopicOrder_Time];
+    }else{
+        [topicAllVC setReplyOrder:TopicReplyOrder_Time];
     
-    [topicAllVC setOrder:TopicReplyOrder_Time];
+    }
     [right_sortBtn selected];
     [left_sortBtn unSelected];
+    [topicAllVC.tableView reloadData];
+   
 }
 
 

@@ -28,5 +28,6 @@
 - (void)closeBtnPressed;
 @end
 @protocol PopViewDelegate <NSObject>
+@optional
 - (void)popViewfinished;
 @end

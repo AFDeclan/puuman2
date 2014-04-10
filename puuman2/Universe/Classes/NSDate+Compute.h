@@ -35,4 +35,7 @@
 //计算星座
 - (NSString *)constellation;
 
+- (NSString *)relateFromDate:(NSDate *)date andSex:(BOOL)isBoy;
+
+- (NSString *)compareFromDate:(NSDate *)date;
 @end

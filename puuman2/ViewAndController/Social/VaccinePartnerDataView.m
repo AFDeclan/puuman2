@@ -52,11 +52,13 @@
 
 - (void)setVerticalFrame
 {
+    [bgView setFrame:CGRectMake(0, 0, 608, 112)];
      [dataColumnView setFrame:CGRectMake(22, 0, 576, 112)];
 }
 
 - (void)setHorizontalFrame
 {
+    [bgView setFrame:CGRectMake(0, 0, 864, 112)];
      [dataColumnView setFrame:CGRectMake(152, 0, 576, 112)];
 }
 @end

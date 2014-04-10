@@ -18,9 +18,10 @@
     if (self) {
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
-        topicAllVC = [[MyTopicViewController alloc] initWithNibName:nil bundle:nil];
-        [topicAllVC.view setBackgroundColor:[UIColor clearColor]];
-        [self addSubview:topicAllVC.view];
+        topicMyVC = [[MyTopicViewController alloc] initWithNibName:nil bundle:nil];
+       [topicMyVC.view setBackgroundColor:[UIColor clearColor]];
+        [self addSubview:topicMyVC.view];
+        
         if([MainTabBarController sharedMainViewController].isVertical)
         {
             [self setVerticalFrame];
@@ -28,23 +29,31 @@
         {
             [self setHorizontalFrame];
         }
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+
     }
     return self;
 }
 
 - (void)reloadMyTopic
 {
-    [topicAllVC reloadMyTopic];
+    [topicMyVC reloadMyTopic];
 }
 
 - (void)setVerticalFrame
 {
-    [topicAllVC.view setFrame:CGRectMake(0, 0, 608, 800)];
+    [topicMyVC setVerticalFrame];
+    [topicMyVC.view setFrame:CGRectMake(0, 0, 608, 944)];
 }
 
 - (void)setHorizontalFrame
 {
-    [topicAllVC.view setFrame:CGRectMake(128, 0, 608, 800)];
+     [topicMyVC setHorizontalFrame];
+    [topicMyVC.view setFrame:CGRectMake(128, 0, 608, 688)];
 }
 
 @end

@@ -13,6 +13,8 @@
 #define NOTIFICATION_Horizontal                 @"NOTIFICATION_Horizontal"
 #define NOTIFICATION_Vertical                   @"NOTIFICATION_Vertical"
 
+
+
 #define Noti_CartDoneReceived                   @"Noti_CartDoneReceived"
 #define Noti_TutorialFinshed                    @"TUTORIAL_FINISHED"
 #define Noti_ReloadShopMall                     @"Noti_ReloadShopMall"
@@ -69,5 +71,6 @@
 #define Noti_RefreshVoteTabe                    @"Noti_RefreshVoteTabe"
 #define Noti_RemoveFriendDelegate               @"Noti_RemoveFriendDelegate"
 #define Noti_BackFromSelectedView               @"Noti_BackFromSelectedView"
-
+#define Noti_ReplyRemoveForumDelgate            @"Noti_ReplyRemoveForumDelgate"
+#define Noti_RefreshTextTopicCell               @"Noti_RefreshTextTopicCell"
 #endif

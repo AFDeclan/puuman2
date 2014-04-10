@@ -39,6 +39,7 @@
     Member *_member;
 }
 @property(nonatomic,assign)BOOL isMyTopic;
+@property(nonatomic,assign)NSInteger row;
 - (void)buildWithReply:(Reply *)reply;
 + (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type;
 @end

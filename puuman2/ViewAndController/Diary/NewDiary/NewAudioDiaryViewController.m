@@ -8,6 +8,7 @@
 
 #import "NewAudioDiaryViewController.h"
 #import "DiaryFileManager.h"
+#import "CustomAlertViewController.h"
 
 @interface NewAudioDiaryViewController ()
 
@@ -34,7 +35,16 @@
 
 - (void)closeBtnPressed
 {
-    [super closeBtnPressed];
+    if ([record recordUrl]) {
+        [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{
+             [super closeBtnPressed];
+        } cancelHandler:^{
+            
+        }];
+    }else{
+        [super closeBtnPressed];
+
+    }
    
 }
 

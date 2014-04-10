@@ -9,6 +9,7 @@
 #import "ShareSelectedViewController.h"
 #import "ColorsAndFonts.h"
 #import "MainTabBarController.h"
+#import "SocialNetwork.h"
 
 @interface ShareSelectedViewController ()
 
@@ -40,7 +41,7 @@
         [_content addSubview:weiboBtn];
         weiXinBtn = [[UIButton alloc] initWithFrame:CGRectMake(270, 112, 56, 56)];
         [weiXinBtn setImage:[UIImage imageNamed:@"btn_share2_diary.png"] forState:UIControlStateNormal];
-        [weiXinBtn addTarget:self action:@selector(importBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+        [weiXinBtn addTarget:self action:@selector(weixinBtnPressed) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:weiXinBtn];
 
     }
@@ -53,19 +54,39 @@
     // Do any additional setup after loading the view.
 }
 
+- (void) setShareText:(NSString *) shareText_
+{
+    shareText = shareText_;
+}
+
+- (void) setShareTitle:(NSString *) shareTitle_
+{
+    shareTitle = shareTitle_;
+}
+
+- (void) setShareImg:(UIImage *) shareImg_
+{
+    shareImg = shareImg_;
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)importBtnPressed
+- (void)weixinBtnPressed
 {
-    
+    [[SocialNetwork sharedInstance] shareText:shareText title:shareTitle image:shareImg toSocial:Weixin];
+
 }
 
 - (void)weiboBtnPressed
 {
+    [[SocialNetwork sharedInstance] shareText:shareText title:shareTitle image:shareImg toSocial:Weibo];
+
+
 }
 
 
@@ -87,10 +108,13 @@
     
 }
 
-+ (void)share
++ (void)shareText:(NSString *)sharetext_ title:(NSString *)title image:(UIImage *)img;
 {
     ShareSelectedViewController *shareVC = [[ShareSelectedViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:shareVC.view];
+    [shareVC setShareText:sharetext_];
+    [shareVC setShareTitle:title];
+    [shareVC setShareImg:img];
     [shareVC setStyle:ConfirmError];
     [shareVC show];
 }

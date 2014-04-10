@@ -11,6 +11,8 @@
 #import "UserInfo.h"
 #import "TaskUploader.h"
 #import "ErrorLog.h"
+#import "CustomAlertViewController.h"
+#import "CustomNotiViewController.h"
 
 #define kWeiXinAppKey    @"wx8bc5e7464037f911"
 
@@ -137,8 +139,9 @@ static SocialNetwork * instance;
     NSLog(@"Weixin version:%@", version);
     if ([version isEqualToString:@""])
     {
-        PostNotification(Noti_ShowAlert, @"分享失败，请确保已安装微信~");
-//        [CustomAlertView showInView:[MainViewController sharedMainViewController].view content:@"分享失败，请确保已安装微信~"];
+        [CustomAlertViewController showAlertWithTitle:@"分享失败，请确保已安装微信~" confirmRightHandler:^{
+        
+    }];
         return;
     }
     SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
@@ -161,12 +164,16 @@ static SocialNetwork * instance;
     
     if ([WXApi sendReq:req])
     {
+       
         NSLog(@"分享到朋友圈成功");
         [self shareSucceeded];
     }
     else
     {
-        PostNotification(Noti_ShowAlert, @"分享到朋友圈失败~微信1.1以上版本才可以喔~");
+       // PostNotification(Noti_ShowAlert, );
+        [CustomAlertViewController showAlertWithTitle:@"分享到朋友圈失败~微信1.1以上版本才可以喔~" confirmRightHandler:^{
+            
+        }];
     }
 
 }
@@ -426,7 +433,9 @@ static SocialNetwork * instance;
 
 - (void)shareSucceeded
 {
-    PostNotification(Noti_ShowAlert, @"分享成功~");
+    
+    [CustomNotiViewController showNotiWithTitle:@"分享成功" withTypeStyle:kNotiTypeStyleRight];
+
 }
 
 

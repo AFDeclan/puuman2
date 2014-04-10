@@ -8,7 +8,6 @@
 
 #import "DynamicView.h"
 #import "ColorsAndFonts.h"
-//#import "CustomAlertView.h"
 #import "UserInfo.h"
 #import "DiaryShowCell.h"
 #import "DiaryModel.h"

@@ -14,7 +14,7 @@
 #import "BabyInfoViewController.h"
 #import "SocialViewController.h"
 #import "SkipViewController.h"
-
+#import "CustomAlertViewController.h"
 #import "Models.h"
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
@@ -26,9 +26,17 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self initWithContent];
     [self initialUmeng];
+    
+    [self initialSocialNetWork];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+- (void)initialSocialNetWork
+{
+    [SocialNetwork initSocialNetwork];
+}
+
 
 - (void)initWithContent
 {
@@ -85,9 +93,10 @@
         NSString *newVersion = [appInfo valueForKey:@"version"];
         NSString *hint = [NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。", newVersion];
         NSString *trackViewUrl = [appInfo valueForKey:@"path"];
-//        [CustomAlertView showInView:nil content:hint confirmHandler:^{
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
-//        }];
+        [CustomAlertViewController showAlertWithTitle:hint confirmRightHandler:^{
+   //          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+        }];
+
     }
 }
 
@@ -134,5 +143,16 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [SocialNetwork handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [SocialNetwork handleOpenURL:url];
+}
+
 
 @end

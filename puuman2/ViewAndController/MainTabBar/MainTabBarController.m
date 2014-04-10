@@ -15,7 +15,7 @@
 #import "SocialNetwork.h"
 #import "SettingViewController.h"
 #import "DiaryViewController.h"
-
+#import "CustomNotiViewController.h"
 
 @interface MainTabBarController ()
 
@@ -45,6 +45,8 @@ static MainTabBarController *instance;
         [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
         [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
         [MyNotiCenter addObserver:self selector:@selector(showBottomInputView:) name:Noti_BottomInputViewShow object:nil];
+
+        
     }
     return self;
 }
@@ -246,6 +248,8 @@ static MainTabBarController *instance;
     }
  
 }
+
+
 
 - (void)hiddenBottomInputView
 {

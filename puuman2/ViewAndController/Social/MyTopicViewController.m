@@ -22,7 +22,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
     }
     return self;
 }
@@ -30,6 +29,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[Forum sharedInstance] removeDelegateObject:self];
+    [[Forum sharedInstance] addDelegateObject:self];
+
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setShowsHorizontalScrollIndicator:NO];
+    [self.tableView setShowsVerticalScrollIndicator:NO];
+    
 //	// Do any additional setup after loading the view.
     if (!_refreshFooter) {
         _refreshFooter = [[MJRefreshFooterView alloc] init];
@@ -39,13 +47,13 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:NO];
-//            if (![[Forum sharedInstance] noMore])
-//            {
-//                [blockRefreshFooter endRefreshing];
-//            }
+            [[Forum sharedInstance] getMoreMyReplies:5 newDirect:NO];
+            if (![[Forum sharedInstance] noMore])
+            {
+                [blockRefreshFooter endRefreshing];
+            }
         };
-  
+      
     }
     
     if (!_refreshHeader) {
@@ -54,23 +62,20 @@
         [self.tableView addSubview:_refreshHeader];
         [_refreshHeader setDelegate:self];
         _refreshHeader.alpha = 1;
-        __block MJRefreshHeaderView * blockRefreshFooter = _refreshHeader;
+     //   __block MJRefreshHeaderView * blockRefreshFooter = _refreshHeader;
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [[Forum sharedInstance] getMoreMyReplies:10 newDirect:YES];
-//            if (![[Forum sharedInstance] noMore])
-//            {
-//                [blockRefreshFooter endRefreshing];
-//            }
+            [[Forum sharedInstance] getMoreMyReplies:5 newDirect:YES];
+
         };
         
     }
-  
+    [_refreshFooter beginRefreshing];
 }
 
 - (void)reloadMyTopic
 {
    // [_refreshHeader beginRefreshing];
-    [self.tableView reloadData];
+  //  [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,8 +100,9 @@
 {
     
     // Return the number of rows in the section.
+  
     
-    return [[[Forum sharedInstance] myReplies] count];;
+    return [[[Forum sharedInstance] myReplies] count];
    
     
 }
@@ -107,7 +113,7 @@
     TopicCell *cell;
     Reply *replay = [[[Forum sharedInstance] myReplies] objectAtIndex:[indexPath row]];
     if ([replay.textUrls count] != 0) {
-        identifier = @"ReplayTextTopicCell";
+        identifier = @"MyTextTopicCell";
         cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
             cell  =[[TextTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -115,7 +121,7 @@
         
     }else if ([replay.photoUrls count] !=0)
     {
-        identifier = @"ReplayPhotoTopicCell";
+        identifier = @"MyPhotoTopicCell";
         cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
             cell  =[[PhotoTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -125,8 +131,9 @@
             cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
     }
-    [cell buildWithReply:replay];
+    [cell setRow:[indexPath row]];
     [cell setIsMyTopic:YES];
+    [cell buildWithReply:replay];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
@@ -136,19 +143,27 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Reply *replay = [[[Forum sharedInstance] myReplies] objectAtIndex:[indexPath row]];
-    return  [TopicCell heightForReply:replay andIsMyTopic:YES andTopicType:[[replay photoUrls] count]>0?TopicType_Photo:TopicType_Text];
-    
-
+   return  [TopicCell heightForReply:replay andIsMyTopic:YES andTopicType:[[replay photoUrls] count]>0?TopicType_Photo:TopicType_Text];
+  
 }
 
 
 - (void)myRepliesLoadedMore
 {
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
     [self.tableView reloadData];
 }
 
 - (void)myRepliesLoadFailed
 {
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
+    [self.tableView reloadData];
 }
 
 @end

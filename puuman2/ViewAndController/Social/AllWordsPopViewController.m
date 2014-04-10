@@ -127,32 +127,38 @@
 //评论上传成功
 - (void)replyCommentUploaded:(Reply *)reply
 {
-    _replay = reply;
+   
     [talkTextField setText:@""];
     [createTalkBtn setEnabled:NO];
     [createTalkBtn setAlpha:0.5];
     [talksTable reloadData];
-    PostNotification(Noti_RefreshTopicTable,nil);
 }
 
 //评论上传失败
 - (void)replyCommentUploadFailed:(Reply *)reply
 {
+    
 }
 
 
 //更多评论加载成功
 - (void)replyCommentsLoadedMore:(Reply *)reply
 {
-    _replay = reply;
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
+   
     [talksTable reloadData];
-    PostNotification(Noti_RefreshTopicTable, nil);
 }
 
 //更多评论加载失败 注意根据noMore判断是否是因为全部加载完
 - (void)replyCommentsLoadFailed:(Reply *)reply
 {
-   
+    if (_refreshFooter.isRefreshing)
+        [_refreshFooter endRefreshing];
+    if (_refreshHeader.isRefreshing)
+        [_refreshHeader endRefreshing];
      [talksTable reloadData];
 }
 
@@ -181,7 +187,7 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [_replay getMoreComments:2 newDirect:YES];
+            [_replay getMoreComments:2 newDirect:NO];
             if (![replay noMore])
             {
                 [blockRefreshFooter endRefreshing];
@@ -199,11 +205,7 @@
         _refreshHeader.alpha = 1;
         __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [_replay getMoreComments:2 newDirect:NO];
-            if (![replay noMore])
-            {
-                [blockRefreshHeader endRefreshing];
-            }
+            [_replay getMoreComments:2 newDirect:YES];
         };
         
     }

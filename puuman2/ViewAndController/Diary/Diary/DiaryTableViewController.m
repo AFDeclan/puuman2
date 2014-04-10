@@ -8,7 +8,7 @@
 
 #import "DiaryTableViewController.h"
 #import "DiaryModel.h"
-
+#import "CustomNotiViewController.h"
 
 @interface DiaryTableViewController ()
 
@@ -45,6 +45,10 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+
+}
 - (void)updateDiaryCount
 {
     //取数据判断是否下载更新
@@ -414,7 +418,7 @@
 
 - (void)reloadTable
 {
-    PostNotification(Noti_LoadDiaryCellInfo, nil);
+   
 
     [self.tableView reloadData];
 }
@@ -453,7 +457,10 @@
         
         [ErrorLog errorLog:@"Delete diary failed!" fromFile:@"DiaryViewController.m" error:nil];
         NSLog(@"Delete diary failed!");
-    }else [self reloadDiaries];
+    }else{
+        [CustomNotiViewController showNotiWithTitle:@"删除成功" withTypeStyle:kNotiTypeStyleRight];
+        [self reloadDiaries];
+    }
     
 }
 
@@ -471,7 +478,7 @@
 {
     //    [diaryTable reloadData];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 2)] withRowAnimation:UITableViewRowAnimationAutomatic];
-    
+
     
 }
 
@@ -507,6 +514,7 @@
 
 - (void)diaryLoaded
 {
+  
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] resetUpdateDiaryCnt];
     [self reloadTable];

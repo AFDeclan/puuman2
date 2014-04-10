@@ -12,7 +12,8 @@
 {
     UIImageView *rank_icon;
     UILabel *puuman_label;
+    UIView *line;
 }
-
+@property(nonatomic,assign)BOOL showLine;
 - (void)setPumanWithNum:(float)puumanNum andRank:(NSInteger)rank;
 @end

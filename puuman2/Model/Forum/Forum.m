@@ -86,6 +86,10 @@ static Forum * instance;
     return nil;
 }
 
+- (NSArray *)votingTopic:(VotingTopicOrder)order
+{
+    return _votingTopic[order];
+}
 - (void)getAwardAndRank
 {
     for (PumanRequest *req in _requests) {
@@ -133,13 +137,13 @@ static Forum * instance;
             return NO;
     }
     PumanRequest * req = [[PumanRequest alloc] init];
-    [req setUrlStr:kUrl_GetTopicReply];
+    [req setUrlStr:kUrl_GetMyReply];
     NSDate * boundDate = nil;
     Reply *boundReply = dir ? [_myReplies firstObject] : [_myReplies lastObject];
     if (boundReply) {
         boundDate = boundReply.RCreateTime;
     }
-    if (boundDate) [req setValue:[DateFormatter timestampStrFromDatetime:boundDate] forKey:@"boundDate"];
+    if (boundDate) [req setParam:[DateFormatter timestampStrFromDatetime:boundDate] forKey:@"boundDate"];
     else [req setParam:@"" forKey:@"boundDate"];
     [req setIntegerParam:dir forKey:@"dir"];
     [req setIntegerParam:cnt forKey:@"limit"];
@@ -267,8 +271,11 @@ static Forum * instance;
                     [_votingTopic[order] addObject:topic];
                 }
             }
-            
+            [self informDelegates:@selector(votingTopicLoadedMore) withObject:nil];
+
         } else {
+            [self informDelegates:@selector(votingTopicLoadFailed) withObject:nil];
+
         }
 
     }

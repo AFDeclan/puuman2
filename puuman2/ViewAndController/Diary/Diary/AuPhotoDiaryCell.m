@@ -9,7 +9,6 @@
 #import "AuPhotoDiaryCell.h"
 #import "UniverseConstant.h"
 #import "DiaryFileManager.h"
-//#import "CustomAlertView.h"
 #import "DetailShowViewController.h"
 #import "UIImage+CroppedImage.h"
 #import "DiaryViewController.h"
@@ -69,6 +68,7 @@
         [titleView setAlpha:1];
     }
     //在这里调整控件坐标，填充内容
+    [_photoView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
      _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,488);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 
@@ -95,6 +95,10 @@
     photo = [DiaryFileManager thumbImageForPath:[self.diaryInfo valueForKey:kFilePathName]];
     photo = [UIImage croppedImage:photo WithHeight:592 andWidth:640];
     [_photoView setImage:photo];
+    [_photoView setAlpha:0];
+    [UIView animateWithDuration:0.2 animations:^{
+        [_photoView setAlpha:1];
+    }];
     NSString *filePath = [self.diaryInfo valueForKey:kFilePath2Name];
     [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
 }
@@ -106,16 +110,14 @@
 }
 
 - (void)share:(id)sender
-{
-    
-    [ShareSelectedViewController share];
-    
-    
-//    //子类重载
-//    NSString *text;
-//    NSString *title = [self.diaryInfo valueForKey:kTitleName];
-//    [[DiaryViewController sharedDiaryViewController] shareDiaryWithText:text title:title image:photo];
-   // [CustomAlertView sharedInView:nil content:@"分享本条日记到......？" shareText:text title:title image:photo];
+{    
+    //子类重载
+    NSString *text = @"";
+    UIImage *img;
+    NSString *path = [self.diaryInfo valueForKey:kFilePathName];
+    img = [DiaryFileManager imageForPath:path];
+    NSString *title = [self.diaryInfo valueForKey:kTitleName];
+    [ShareSelectedViewController shareText:text title:title image:img];
     
 }
 

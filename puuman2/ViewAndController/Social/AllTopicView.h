@@ -15,6 +15,7 @@
 @interface AllTopicView : UIView<UIColumnViewDataSource, UIColumnViewDelegate,ForumDelegate,TopicContentCellDelegate>
 {
      UIColumnView *_showColumnView;
+    int address;
 }
 
 - (void)reloadAllTopic;

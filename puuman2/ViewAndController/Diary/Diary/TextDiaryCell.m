@@ -160,25 +160,24 @@
 {
    
 
-//    //子类重载
-//    NSString *text;
-//    UIImage *img;
-//    NSString *path = [self.diaryInfo objectForKey:kFilePathName] ;
-//    NSString *diaryType2 = [self.diaryInfo valueForKey:kType2Name];
-//    if ([[NSFileManager defaultManager]fileExistsAtPath:path])
-//        text = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-//    else text = @"";
-//    if ([text length] == 1) {
-//        text = [text stringByAppendingString:@" "];
-//    }
-//    if ([diaryType2 isEqualToString:vType_Photo])
-//    {
-//        NSString *photoPath = [self.diaryInfo valueForKey:kFilePath2Name];
-//        img = [[UIImage alloc] initWithContentsOfFile:photoPath];
-//    }
-//    NSString *title = [self.diaryInfo valueForKey:kTitleName];
-//    
-//     [[DiaryViewController sharedDiaryViewController] shareDiaryWithText:text title:title image:img];
+    //子类重载
+    NSString *text;
+    UIImage *img;
+    NSString *path = [self.diaryInfo objectForKey:kFilePathName] ;
+    NSString *diaryType2 = [self.diaryInfo valueForKey:kType2Name];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:path])
+        text = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    else text = @"";
+    if ([text length] == 1) {
+        text = [text stringByAppendingString:@" "];
+    }
+    if ([diaryType2 isEqualToString:vType_Photo])
+    {
+        NSString *photoPath = [self.diaryInfo valueForKey:kFilePath2Name];
+        img = [[UIImage alloc] initWithContentsOfFile:photoPath];
+    }
+    NSString *title = [self.diaryInfo valueForKey:kTitleName];
+    [ShareSelectedViewController shareText:text title:title image:img];
     
     
 }

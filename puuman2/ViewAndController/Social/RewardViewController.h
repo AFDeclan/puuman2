@@ -9,10 +9,11 @@
 #import "CustomPopViewController.h"
 #import "ColorButton.h"
 #import "Forum.h"
+#import "TopicCellSelectedPohosViewController.h"
+#import "NewTextDiaryViewController.h"
+#import "NewCameraViewController.h"
 
-
-
-@interface RewardViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate>
+@interface RewardViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate,SelectPhotoDelegate,PopViewDelegate>
 {
     ColorButton *instructionBtn;
     ColorButton *createBtn;
