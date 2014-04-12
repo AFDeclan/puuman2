@@ -197,6 +197,7 @@
 - (void)buildWithReply:(Reply *)reply
 {
      _reply = reply;
+    [topicNameLabel setBackgroundColor:PMColor2];
     [topicNumLabel setText:[NSString stringWithFormat:@"第%d期",reply.TID]];
     
     _member = [[MemberCache sharedInstance] getMemberWithUID:reply.UID];

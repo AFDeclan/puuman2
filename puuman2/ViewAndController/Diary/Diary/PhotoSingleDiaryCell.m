@@ -27,7 +27,7 @@
         
         UITapGestureRecognizer *tapPhoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto)];
         [_imgView addGestureRecognizer:tapPhoto];
-        titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 416, 80)];
+        titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416-80, 416, 80)];
         [titleView setImage:[UIImage imageNamed:@"bg_title_diary.png"]];
         [titleView setBackgroundColor:[UIColor clearColor]];
         [_imgView addSubview:titleView];
@@ -60,7 +60,7 @@
         [titleView setAlpha:1];
     }
     [_imgView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
-    _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,440);
+    _content.frame = CGRectMake(112, kHeaderHeight, ContentWidth, 440);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 

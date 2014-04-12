@@ -44,6 +44,7 @@ const NSTimeInterval AnimatedInterval = 0.3;
     
     pointView =[[UIImageView alloc] initWithFrame:CGRectMake(596, 48, 28, 16)];
     [pointView setImage:[UIImage imageNamed:@"tri_blue_down.png"]];
+    pointView.alpha = 0;
     [self addSubview:pointView];
     
     controlBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 640, 112)];
@@ -128,10 +129,12 @@ const NSTimeInterval AnimatedInterval = 0.3;
         else {
             title.text = @"未登录";
         }
-        
     }
     else
     {
+        [UIView animateWithDuration:0.3 animations:^{
+            pointView.alpha = 1;
+        }];
         NSDictionary *taskInfo = [model nowTaskAtIndex:_taskIndex];
         title.text = [taskInfo objectForKey:_task_Name];
     }

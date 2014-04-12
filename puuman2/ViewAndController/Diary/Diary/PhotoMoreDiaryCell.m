@@ -51,14 +51,14 @@
         [titleLabel setAlpha:1];
     }
     height +=24;
-    SetViewLeftUp(_showColumnView, 56, height);
-    height +=192;
     selectedIndex = 1;
 //    _photoPaths = [NSArray arrayWithObjects:@"pic_default_diary.png",@"pic_default_diary.png",@"pic_default_diary.png", nil];
     if (_showColumnView) {
         [_showColumnView removeFromSuperview];
     }
-    _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, 24, 416, 192)];
+    _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, height, 416, 192)];
+    SetViewLeftUp(_scrollView, 56, height);
+    height += 192;
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
     [_showColumnView setViewDelegate:self];
     [_showColumnView setViewDataSource:self];
