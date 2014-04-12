@@ -12,8 +12,7 @@
 #import "Device.h"
 #import "DetailShowViewController.h"
 #import "UniverseConstant.h"
-#import "UIImage+CroppedImage.h"
-#import "UIImageView+AnimateFade.h"
+
 
 
 @implementation VideoDiaryCell
@@ -26,7 +25,7 @@
     if (self)
     {
         //在这里初始化控件（可重用的部分）
-        _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
+        _imgView = [[DiaryImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
         [_imgView setBackgroundColor:[UIColor clearColor]];
         _imgView.userInteractionEnabled = YES;
         [_content addSubview:_imgView];
@@ -72,9 +71,8 @@
 - (void)loadInfo
 {
     [super loadInfo];
-    UIImage *image = [DiaryFileManager imageForVideo:[self.diaryInfo valueForKey:kFilePathName]];
-    image  = [UIImage croppedImage:image WithHeight:832 andWidth:832];
-    [_imgView fadeToImage:image];
+    [_imgView setCropSize:CGSizeMake(832, 832)];
+    [_imgView loadVideoImgWithPath:[self.diaryInfo valueForKey:kFilePathName]];
 }
 
 - (void)playVideo

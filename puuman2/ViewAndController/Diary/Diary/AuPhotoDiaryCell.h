@@ -9,11 +9,11 @@
 #import "DiaryCell.h"
 #import "NewAudioPlayView.h"
 
+@class DiaryImageView;
 @interface AuPhotoDiaryCell : DiaryCell <NewAudioPlayDelegate>
 {
-    UIImageView *_photoView;
+    DiaryImageView *_photoView;
     NewAudioPlayView *playBtn;
-    UIImage *photo;
     UIImageView *titleView;
     UILabel *titleLabel;
 }

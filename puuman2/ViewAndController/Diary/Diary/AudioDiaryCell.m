@@ -51,10 +51,11 @@
     //audio player init
 
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
-    [super buildCellViewWithIndexRow:index abbreviated:abbr];
     
     NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
     [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+    
+    [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
 - (void)loadInfo

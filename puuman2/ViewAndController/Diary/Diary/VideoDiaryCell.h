@@ -7,10 +7,11 @@
 //
 
 #import "DiaryCell.h"
+#import "DiaryImageView.h"
 
 @interface VideoDiaryCell : DiaryCell
 {
-    UIImageView *_imgView;
+    DiaryImageView *_imgView;
     UIButton *_playBtn;
     UIImageView *titleView;
     UILabel *titleLabel;

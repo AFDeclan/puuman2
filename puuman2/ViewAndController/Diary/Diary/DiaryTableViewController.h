@@ -17,8 +17,6 @@
 #import "PhotoMoreDiaryCell.h"
 #import "DiaryHeaderView.h"
 
-
-
 @interface DiaryTableViewController : UITableViewController<TaskClickDelegate,TextDiaryDelegate>
 {
     NSIndexPath *selectedPath;
@@ -32,4 +30,6 @@
 - (void)diaryLoaded;
 - (void)setImportTotalNum:(NSInteger)num;
 - (void)tapWithPoint:(CGPoint)pos;
++ (BOOL)needLoadInfo;
+
 @end

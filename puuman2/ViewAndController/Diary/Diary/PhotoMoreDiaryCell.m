@@ -11,7 +11,7 @@
 #import "UIImage+CroppedImage.h"
 #import "DetailShowViewController.h"
 #import "UIImage+Scale.h"
-#import "UIImageView+AnimateFade.h"
+#import "DiaryImageView.h"
 
 
 @implementation PhotoMoreDiaryCell
@@ -152,6 +152,7 @@
 {
 
 }
+
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
     
@@ -172,7 +173,7 @@
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 0, 192, 192)];
+            DiaryImageView *imgView = [[DiaryImageView alloc] initWithFrame:CGRectMake(4, 0, 192, 192)];
             imgView.tag = 11;
             [cell.contentView addSubview:imgView];
             UIImageView *mask = [[UIImageView alloc] initWithFrame:CGRectMake(4, 0, 192, 192)];
@@ -181,13 +182,10 @@
         }
   
         UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
-        UIImageView *photoView = (UIImageView *)[cell viewWithTag:11];
+        DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
         [photoView setImage:photo];
         if (_photoPaths) {
-            photo = [DiaryFileManager thumbImageForPath:[_photoPaths objectAtIndex:index-1]];
-            if (photo) {
-                [photoView performSelector:@selector(fadeToImage:) withObject:photo afterDelay:0.1];
-            }
+            [photoView loadThumbImgWithPath:[_photoPaths objectAtIndex:index-1]];
         }
         UIImageView *mask = (UIImageView *)[cell viewWithTag:12];
         [mask setBackgroundColor:[UIColor whiteColor]];
@@ -225,6 +223,12 @@
     }
     NSString *title = [self.diaryInfo valueForKey:kTitleName];
     [ShareSelectedViewController shareText:text title:title image:img];
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    _photoPaths = nil;
 }
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;

@@ -56,6 +56,7 @@
 		14B8DF5C18BC3E250047C6B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5B18BC3E250047C6B3 /* QuartzCore.framework */; };
 		14B8DF5E18BC3E340047C6B3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5D18BC3E340047C6B3 /* CoreTelephony.framework */; };
 		14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */; };
+		14CC106218F90BC5005B366E /* DiaryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC106118F90BC5005B366E /* DiaryImageView.m */; };
 		14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */; };
 		14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */; };
 		54012DC118E2C09000F11D97 /* MyTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54012DC018E2C09000F11D97 /* MyTopicViewController.m */; };
@@ -735,6 +736,8 @@
 		14B8DF5F18BC3E3F0047C6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14C0B69E18E1158C00BC308E /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		14C0B69F18E1158C00BC308E /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		14CC106018F90BC5005B366E /* DiaryImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryImageView.h; sourceTree = "<group>"; };
+		14CC106118F90BC5005B366E /* DiaryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryImageView.m; sourceTree = "<group>"; };
 		14ED1FEC18BC3E85009CCE4C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		14ED1FEE18BC3E8E009CCE4C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		54012DBF18E2C09000F11D97 /* MyTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTopicViewController.h; sourceTree = "<group>"; };
@@ -2367,6 +2370,8 @@
 			children = (
 				5403CC5E18D006C7004CAE22 /* DetailShowViewController.h */,
 				5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */,
+				14CC106018F90BC5005B366E /* DiaryImageView.h */,
+				14CC106118F90BC5005B366E /* DiaryImageView.m */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -4030,6 +4035,7 @@
 				54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */,
 				541970D418D1956D0058FE64 /* InfoView.m in Sources */,
 				54ACB2EA18EC098200EE5F90 /* WarePumanScrollView.m in Sources */,
+				14CC106218F90BC5005B366E /* DiaryImageView.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
 				54ADE09A18C8608700B166C4 /* NewAudioRecordView.m in Sources */,
 				54CE10ED18C1842C00966396 /* SinaWeiboRequest.m in Sources */,

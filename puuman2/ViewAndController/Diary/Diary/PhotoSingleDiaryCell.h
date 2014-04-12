@@ -7,10 +7,11 @@
 //
 
 #import "DiaryCell.h"
+#import "DiaryImageView.h"
 
 @interface PhotoSingleDiaryCell : DiaryCell
 {
-    UIImageView *_imgView;
+    DiaryImageView *_imgView;
     UIButton *showBtn;
     NSString *_photoPath;
     UIImageView *titleView;

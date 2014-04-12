@@ -14,6 +14,8 @@
 
 @end
 
+static BOOL needLoadInfo = YES;
+
 @implementation DiaryTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -49,6 +51,12 @@
 {
 
 }
+
++ (BOOL)needLoadInfo
+{
+    return needLoadInfo;
+}
+
 - (void)updateDiaryCount
 {
     //取数据判断是否下载更新
@@ -118,18 +126,27 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     PostNotification(Noti_LoadDiaryCellInfo, nil);
+    needLoadInfo = YES;
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    needLoadInfo = YES;
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    dragging = YES;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    dragging = NO;
-    if (!decelerate) {
-        PostNotification(Noti_LoadDiaryCellInfo, nil);
+    needLoadInfo = !decelerate;
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    if (ABS(velocity.y) > 20) {
+        needLoadInfo = NO;
     }
 }
 
@@ -140,12 +157,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [MyNotiCenter postNotificationName:Noti_DiaryCellVisible object:[NSNumber numberWithFloat:self.tableView.contentOffset.y]];
-    static CGPoint offset;
-    if (ABS(scrollView.contentOffset.y - offset.y) > 400 && dragging) {
-//        PostNotification(Noti_LoadDiaryCellInfo, nil);
-        offset = scrollView.contentOffset;
-    }
-
 }
 
 

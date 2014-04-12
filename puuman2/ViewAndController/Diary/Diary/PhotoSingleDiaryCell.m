@@ -20,7 +20,7 @@
     if (self)
     {
         // Initialization code
-        _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
+        _imgView = [[DiaryImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
         [_imgView setBackgroundColor:[UIColor clearColor]];
         _imgView.userInteractionEnabled = YES;
         [_content addSubview:_imgView];
@@ -67,6 +67,7 @@
 - (void)loadInfo
 {
     [super loadInfo];
+    if (_photoPath) return;
     NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
     NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     for (NSString *photoPath in photoPaths)
@@ -77,9 +78,8 @@
             break;
         }
     }
-    UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
-    UIImage *image  = [UIImage croppedImage:photo WithHeight:832 andWidth:832];
-    [_imgView fadeToImage:image];
+    [_imgView setCropSize:CGSizeMake(832, 832)];
+    [_imgView loadImgWithPath:_photoPath];
 }
 
 - (void)share:(id)sender
@@ -99,6 +99,12 @@
     NSString *title = [self.diaryInfo valueForKey:kTitleName];
     [ShareSelectedViewController shareText:text title:title image:photo];
 
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    _photoPath = nil;
 }
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;

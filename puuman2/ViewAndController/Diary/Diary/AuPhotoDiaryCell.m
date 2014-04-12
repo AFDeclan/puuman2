@@ -13,6 +13,7 @@
 #import "UIImage+CroppedImage.h"
 #import "DiaryViewController.h"
 #import "ShareSelectedViewController.h"
+#import "DiaryImageView.h"
 
 @implementation AuPhotoDiaryCell
 
@@ -25,7 +26,7 @@
         //在这里初始化控件（可重用的部分）
         [MyNotiCenter addObserver:self selector:@selector(stopPlayAudio) name:Noti_PauseMultiMedia object:nil];
         
-        _photoView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
+        _photoView = [[DiaryImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
         [_content addSubview:_photoView];
         
         UITapGestureRecognizer *tapPhoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto)];
@@ -70,6 +71,10 @@
     //在这里调整控件坐标，填充内容
     [_photoView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
      _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,488);
+    
+    NSString *filePath = [self.diaryInfo valueForKey:kFilePath2Name];
+    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 
 }
@@ -83,6 +88,7 @@
 {
 
 }
+
 - (void)startPlay
 {
 
@@ -91,16 +97,8 @@
 - (void)loadInfo
 {
     [super loadInfo];
-    if (photo) return;
-    photo = [DiaryFileManager thumbImageForPath:[self.diaryInfo valueForKey:kFilePathName]];
-    photo = [UIImage croppedImage:photo WithHeight:592 andWidth:640];
-    [_photoView setImage:photo];
-    [_photoView setAlpha:0];
-    [UIView animateWithDuration:0.2 animations:^{
-        [_photoView setAlpha:1];
-    }];
-    NSString *filePath = [self.diaryInfo valueForKey:kFilePath2Name];
-    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+    [_photoView setCropSize:CGSizeMake(640, 592)];
+    [_photoView loadThumbImgWithPath:[self.diaryInfo valueForKey:kFilePathName]];
 }
 
 
