@@ -180,13 +180,13 @@
     [audioBtn setEnabled:YES];
     [playCameraBtn setEnabled:YES];
     [sampleBtn setEnabled:YES];
-    [closeBtn setAdjustsImageWhenDisabled:NO];
-    [finishBtn setAdjustsImageWhenDisabled:NO];
-    [frontRareChangeBtn setAdjustsImageWhenDisabled:NO];
-    [modelChangeBtn setAdjustsImageWhenDisabled:NO];
-    [audioBtn setAdjustsImageWhenDisabled:NO];
-    [playCameraBtn setAdjustsImageWhenDisabled:NO];
-    [sampleBtn setAdjustsImageWhenDisabled:NO];
+//    [closeBtn setAdjustsImageWhenDisabled:NO];
+//    [finishBtn setAdjustsImageWhenDisabled:NO];
+//    [frontRareChangeBtn setAdjustsImageWhenDisabled:NO];
+//    [modelChangeBtn setAdjustsImageWhenDisabled:NO];
+//    [audioBtn setAdjustsImageWhenDisabled:NO];
+//    [playCameraBtn setAdjustsImageWhenDisabled:NO];
+//    [sampleBtn setAdjustsImageWhenDisabled:NO];
 }
 
 - (void)startCamera
@@ -287,7 +287,11 @@
     [modelChangeBtn setAlpha:1];
     [frontRareChangeBtn setAlpha:1];
     [playCameraBtn setEnabled:YES];
+}
 
+- (void)setFinishBtnEnabled:(BOOL)enabled
+{
+    [finishBtn setEnabled:enabled];
 }
 
 - (void)setIsTopic:(BOOL)isTopic

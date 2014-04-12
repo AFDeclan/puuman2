@@ -37,7 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     movieUrl = nil;
     titleStr= @"";
     photos = [[NSMutableArray alloc] init];
@@ -192,35 +191,26 @@
         if (movieUrl != nil) {
             [DiaryFileManager saveVideo:movieUrl withTitle:titleStr andTaskInfo:_taskInfo];
         }
-     
-        
     }else{
-        
         [DiaryFileManager savePhotoWithPaths:photoPath withAudio:audioFileUrl withTitle:titleStr andTaskInfo:_taskInfo andIsTopic:_isTopic];
-       
     }
     if (!_isTopic) {
         [_delegate cameraViewHidden];
         [self cancel];
     }
- 
 }
 
 - (void)cancel
 {
-    
- 
     if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)])
     {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     else [self dismissModalViewControllerAnimated:YES];
-    
 }
 
 - (void)frontRareChangeBtnPressed
 {
-    
     if (cameraUI.cameraDevice == UIImagePickerControllerCameraDeviceFront)
         [cameraUI setCameraDevice:UIImagePickerControllerCameraDeviceRear];
     else [cameraUI setCameraDevice:UIImagePickerControllerCameraDeviceFront];
@@ -238,13 +228,10 @@
         [timeView setBackgroundColor:[UIColor whiteColor]];
         [timeView setAlpha:1];
         [timeView showTimeWithSecond:0];
-         [timeView startRecord];
+        [timeView startRecord];
     }
-    
+    [controlView setFinishBtnEnabled:NO];
     [cameraUI startVideoCapture];
-    
-    
-    
 }
 
 - (void)stopVideo
@@ -261,6 +248,7 @@
         [timeView showTimeWithSecond:0];
         [timeView stopRecord];
     }
+    [controlView setFinishBtnEnabled:YES];
     [cameraUI stopVideoCapture];
 }
 
@@ -314,7 +302,6 @@
     }
     [self.view addSubview:audioView.view];
     [audioView show];
-    
 }
 
 - (void) imagePickerController: (UIImagePickerController *) picker
@@ -357,8 +344,6 @@
         [moviePlayer setFullscreen:NO];
         [moviePlayer setControlStyle:MPMovieControlStyleNone];
         [self.view addSubview:moviePlayer.view ];
-        
-        
     }
 }
 
@@ -409,7 +394,6 @@
         [controlView addPhoto:nil andNum:0];
         
     }
-    
 }
 
 - (void)setTitleStr:(NSString *)title

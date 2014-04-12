@@ -34,11 +34,13 @@
 @property (assign,nonatomic)id<CameraControlDelegate> delegate;
 @property (assign,nonatomic) BOOL videoMode;
 @property (retain, nonatomic) NSDictionary *taskInfo;
+
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 - (void)addPhoto:(UIImage *)photo andNum:(int)num;
 - (void)enableControl;
 - (void)setVideoBackControl;
+- (void)setFinishBtnEnabled:(BOOL)enabled;
 
 @end
 @protocol CameraControlDelegate <NSObject>
