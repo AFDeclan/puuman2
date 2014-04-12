@@ -318,7 +318,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
 - (void)back
 {
     canSelected = NO;
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         SetViewLeftUp(_content, -320, 0);
          [bgView setAlpha:0];
     }completion:^(BOOL finished) {
@@ -333,7 +333,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
 {
     SetViewLeftUp(_content, -320, 0);
     canSelected = NO;
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         SetViewLeftUp(_content, 0, 0);
     }completion:^(BOOL finished) {
         canSelected = YES;

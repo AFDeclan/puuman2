@@ -126,8 +126,8 @@
         float nowX = pos.x/416;
         float indexX = (int)(pos.x/416);
         selectedIndex = pos.x/416 +1;
-        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:(nowX-indexX)*0.5];
-        [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0.5-(nowX-indexX)*0.5];
+        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:(nowX-indexX)*0.7];
+        [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0.7-(nowX-indexX)*0.7];
         pos.x = pos.x*200/416;
         [_showColumnView setContentOffset:pos];
         if (selectedIndex == 0) {
@@ -192,7 +192,7 @@
         if (selectedIndex == index) {
             [mask setAlpha:0];
         }else{
-            [mask setAlpha:0.5];
+            [mask setAlpha:0.7];
         }
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;

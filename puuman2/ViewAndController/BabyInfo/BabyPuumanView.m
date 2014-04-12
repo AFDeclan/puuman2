@@ -133,7 +133,7 @@
     [rightView addSubview:icon_coin];
     
     _numLabel_puuman = [[ADTickerLabel alloc] initWithFrame:CGRectMake(0, 0, 224, 80)];
-    _numLabel_puuman.characterWidth = 40;
+    _numLabel_puuman.characterWidth = 42;
     _numLabel_puuman.notNumCharacterWidth = 24;
     _numLabel_puuman.font = PMFont(80);
     _numLabel_puuman.textColor = PMColor6;
@@ -142,7 +142,7 @@
     _numLabel_record = [[ADTickerLabel alloc] initWithFrame:CGRectMake(0, 0, 224, 64)];
     _numLabel_record.font = PMFont(64);
     _numLabel_record.textColor = PMColor6;
-    _numLabel_record.characterWidth = 32;
+    _numLabel_record.characterWidth = 36;
     _numLabel_record.notNumCharacterWidth = 20;
     _numLabel_record.backgroundColor = [UIColor clearColor];
     [rightView addSubview:_numLabel_record];
