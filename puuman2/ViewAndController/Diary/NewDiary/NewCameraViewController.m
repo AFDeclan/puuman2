@@ -167,7 +167,7 @@
                  [self cancel];
             } cancelHandler:^{
                 
-            }];
+            } fromViewController:self];
         }else{
             [self cancel];
         }
@@ -178,7 +178,7 @@
                 [self cancel];
             } cancelHandler:^{
                 
-            }];
+            } fromViewController:self];
         }else{
             [self cancel];
         }

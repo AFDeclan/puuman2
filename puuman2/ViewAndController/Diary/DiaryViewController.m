@@ -149,8 +149,6 @@ static DiaryViewController * instance;
 }
 
 
-
-
 //竖屏
 -(void)setVerticalFrame
 {

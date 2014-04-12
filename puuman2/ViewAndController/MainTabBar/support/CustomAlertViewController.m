@@ -161,36 +161,49 @@
     [self.view removeFromSuperview];
 }
 
-
-+ (void)showAlertWithTitle:(NSString *)title confirmHandler:(CustomAlertViewHandler)confirm cancelHandler:(CustomAlertViewHandler)cancel
++ (void)showAlertWithTitle:(NSString *)title confirmHandler:(CustomAlertViewHandler)confirm cancelHandler:(CustomAlertViewHandler)cancel fromViewController:(UIViewController *)viewController
 {
     CustomAlertViewController *alert  = [[CustomAlertViewController alloc] initWithNibName:nil bundle:nil];
     [alert setStyle:Question];
     alert.confirmHandler = confirm;
     alert.cancelHandler = cancel;
-    [[MainTabBarController sharedMainViewController].view addSubview:alert.view];
+    [viewController.view addSubview:alert.view];
     [alert showWithTitle:title];
-
-
 }
-+ (void)showAlertWithTitle:(NSString *)title confirmErrorHandler:(CustomAlertViewHandler)confirm
+
++ (void)showAlertWithTitle:(NSString *)title confirmErrorHandler:(CustomAlertViewHandler)confirm fromViewController:(UIViewController *)viewController
 {
     CustomAlertViewController *alert  = [[CustomAlertViewController alloc] initWithNibName:nil bundle:nil];
     [alert setStyle:ConfirmError];
     alert.confirmHandler = nil;
     alert.cancelHandler = confirm;
-    [[MainTabBarController sharedMainViewController].view addSubview:alert.view];
+    [viewController.view addSubview:alert.view];
     [alert showWithTitle:title];
-
 }
-+ (void)showAlertWithTitle:(NSString *)title confirmRightHandler:(CustomAlertViewHandler)confirm
+
++ (void)showAlertWithTitle:(NSString *)title confirmRightHandler:(CustomAlertViewHandler)confirm fromViewController:(UIViewController *)viewController
 {
     CustomAlertViewController *alert  = [[CustomAlertViewController alloc] initWithNibName:nil bundle:nil];
     [alert setStyle:ConfirmRight];
     alert.confirmHandler = confirm;
     alert.cancelHandler = nil;
-    [[MainTabBarController sharedMainViewController].view addSubview:alert.view];
+    [viewController.view addSubview:alert.view];
     [alert showWithTitle:title];
+}
 
+
++ (void)showAlertWithTitle:(NSString *)title confirmHandler:(CustomAlertViewHandler)confirm cancelHandler:(CustomAlertViewHandler)cancel
+{
+    [self showAlertWithTitle:title confirmHandler:confirm cancelHandler:cancel fromViewController:[MainTabBarController sharedMainViewController]];
+}
+
++ (void)showAlertWithTitle:(NSString *)title confirmErrorHandler:(CustomAlertViewHandler)confirm
+{
+    [self showAlertWithTitle:title confirmErrorHandler:confirm fromViewController:[MainTabBarController sharedMainViewController]];
+}
+
++ (void)showAlertWithTitle:(NSString *)title confirmRightHandler:(CustomAlertViewHandler)confirm
+{
+    [self showAlertWithTitle:title confirmRightHandler:confirm fromViewController:[MainTabBarController sharedMainViewController]];
 }
 @end

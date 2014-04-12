@@ -30,6 +30,10 @@ typedef enum  {
 + (void)showAlertWithTitle:(NSString *)title confirmErrorHandler:(CustomAlertViewHandler)confirm;
 + (void)showAlertWithTitle:(NSString *)title confirmRightHandler:(CustomAlertViewHandler)confirm;
 
++ (void)showAlertWithTitle:(NSString *)title confirmHandler:(CustomAlertViewHandler)confirm cancelHandler:(CustomAlertViewHandler)cancel fromViewController:(UIViewController *)viewController;
++ (void)showAlertWithTitle:(NSString *)title confirmErrorHandler:(CustomAlertViewHandler)confirm fromViewController:(UIViewController *)viewController;
++ (void)showAlertWithTitle:(NSString *)title confirmRightHandler:(CustomAlertViewHandler)confirm fromViewController:(UIViewController *)viewController;
+
 - (void)showWithTitle:(NSString *)title;
 - (void)show;
 - (void)finishOut;
