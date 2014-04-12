@@ -98,7 +98,6 @@
     float x = _scrollView.contentOffset.x;
     int index =x/416;
     [self showPhotoAtIndex:index+1];
-
 }
 
 - (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
@@ -203,9 +202,7 @@
 
 - (void)showPhotoAtIndex:(NSInteger)index
 {
-
     [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1];
-    
 }
 
 - (void)share:(id)sender

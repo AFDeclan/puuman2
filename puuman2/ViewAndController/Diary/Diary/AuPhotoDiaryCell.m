@@ -129,7 +129,6 @@
 {
     [super prepareForReuse];
     //去除临时控件，准备重用
-    
 }
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr

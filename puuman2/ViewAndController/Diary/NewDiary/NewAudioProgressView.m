@@ -34,11 +34,12 @@
     [self addSubview:progress];
     [self setScrollEnabled:NO];
     
-    label_time = [[UILabel alloc] initWithFrame:CGRectMake(0,self.frame.size.height, self.frame.size.width, 20)];
+    label_time = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 20, self.frame.size.width, 20)];
     [label_time setText:@"00:00"];
     [label_time setFont:PMFont2];
-    [label_time setTextColor:[UIColor whiteColor]];
+    [label_time setTextColor:PMColor6];
     [label_time setTextAlignment:NSTextAlignmentCenter];
+    [label_time setAlpha:0];
     [self addSubview:label_time];
 }
 
@@ -58,12 +59,19 @@
     int min = ((int)currentTime)/60;
     int sec = ((int)currentTime)%60;
     if (sec<10) {
-        [label_time setText:[NSString stringWithFormat:@"0%d:0%d",min,sec]];
+        [label_time setText:[NSString stringWithFormat:@"0%d:0%d", min, sec]];
     }else{
-        [label_time setText:[NSString stringWithFormat:@"0%d:%d",min,sec]];
+        [label_time setText:[NSString stringWithFormat:@"0%d:%d", min, sec]];
     }
-    
-    
+    if (currentTime > 0) {
+        if (label_time.alpha == 0) {
+            [UIView animateWithDuration:0.3 animations:^{
+                label_time.alpha = 1;
+            }];
+        }
+    } else {
+        label_time.alpha = 0;
+    }
 }
 
 @end

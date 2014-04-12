@@ -120,11 +120,10 @@ static DetailShowViewController *detailVC;
     photoPaths = imgPaths;
     photoScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
     photoScroll.contentSize = CGSizeMake(768*[imgPaths count], 1024);
-    photoScroll.pagingEnabled = YES;
     photoScroll.backgroundColor = [UIColor clearColor];
     for (int i=0; i<[photoPaths count]; i++)
     {
-        UIImage *photo =  [DiaryFileManager imageForPath:[photoPaths objectAtIndex:i]];
+        UIImage *photo = [DiaryFileManager imageForPath:[photoPaths objectAtIndex:i]];
         UIImageView *photoView = [[UIImageView alloc] initWithFrame:CGRectMake(i*768, 0, 768, 1024)];
         [photoView setTag:i+1];
         [photoView setContentMode:UIViewContentModeScaleAspectFit];
@@ -137,12 +136,13 @@ static DetailShowViewController *detailVC;
     photoScroll.alpha = 0;
     [self.view addSubview:photoScroll];
     if ([MainTabBarController sharedMainViewController].isVertical) {
-        
         [self setVerticalFrame];
+        [photoScroll setContentOffset:CGPointMake(768*index, 0)];
     }else{
         [self setHorizontalFrame];
+        [photoScroll setContentOffset:CGPointMake(1024*index, 0)];
     }
-    
+    photoScroll.pagingEnabled = YES;
     [UIView animateWithDuration:0.5 animations:^{
         photoScroll.alpha = 1;
     }];

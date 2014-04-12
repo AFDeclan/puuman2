@@ -86,13 +86,7 @@
         AVAudioSession *session = [AVAudioSession sharedInstance];
         NSError *sessionError;
         [session setCategory:AVAudioSessionCategoryPlayback error:&sessionError];
-        if(session == nil)
-        {
-            [ErrorLog errorLog:@"Error creating session" fromFile:@"NewAudioDiaryView.m" error:sessionError];
-            NSLog(@"Error creating session: %@", [sessionError description]);
-        }
-        else
-            [session setActive:YES error:nil];
+        [session setActive:YES error:nil];
         [self startPlay];
     }
 }
@@ -117,6 +111,7 @@
     [player stop];
     [player setCurrentTime:0];
     [_delegate stopPlay];
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
 }
 
 - (void)refreshProgress
