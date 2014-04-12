@@ -11,6 +11,8 @@
 #import "UIImage+CroppedImage.h"
 #import "DetailShowViewController.h"
 #import "UIImage+Scale.h"
+#import "UIImageView+AnimateFade.h"
+
 
 @implementation PhotoMoreDiaryCell
 
@@ -52,7 +54,7 @@
     SetViewLeftUp(_showColumnView, 56, height);
     height +=192;
     selectedIndex = 1;
-    _photoPaths = [NSArray arrayWithObjects:@"pic_default_diary.png",@"pic_default_diary.png",@"pic_default_diary.png", nil];
+//    _photoPaths = [NSArray arrayWithObjects:@"pic_default_diary.png",@"pic_default_diary.png",@"pic_default_diary.png", nil];
     if (_showColumnView) {
         [_showColumnView removeFromSuperview];
     }
@@ -70,8 +72,8 @@
 
 - (void)loadInfo
 {
+    if (_photoPaths) return;
     [super loadInfo];
-    
     NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
     _photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
@@ -101,8 +103,7 @@
 
 - (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
 {
-
-    if (index == 0 || index == [_photoPaths count]+1)  {
+    if (index == 0 || index == [self numberOfColumnsInColumnView:_showColumnView]-1)  {
         return 100;
     }else{
         return 200;
@@ -112,9 +113,11 @@
 
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
-    
-    return [_photoPaths count]+2;
-    
+    if (_photoPaths) {
+        return [_photoPaths count]+2;
+    } else {
+        return 4;
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -152,7 +155,7 @@
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
     
-    if (index == 0 || index == [_photoPaths count]+1) {
+    if (index == 0 || index == [self numberOfColumnsInColumnView:columnView]-1) {
         static NSString *identify = @"EmptyCell";
         UITableViewCell *cell = [columnView dequeueReusableCellWithIdentifier:identify];
         if (cell == nil)
@@ -177,16 +180,15 @@
             [cell.contentView addSubview:mask];
         }
   
-        
-        
-        UIImage *photo = [DiaryFileManager imageForPath:[_photoPaths objectAtIndex:index-1]];
-       // photo = [UIImage croppedImage:photo WithHeight:384 andWidth:384];
-        if (!photo) {
-            photo = [UIImage imageNamed:[_photoPaths objectAtIndex:index-1]];
-        }
+        UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
         UIImageView *photoView = (UIImageView *)[cell viewWithTag:11];
         [photoView setImage:photo];
-
+        if (_photoPaths) {
+            photo = [DiaryFileManager thumbImageForPath:[_photoPaths objectAtIndex:index-1]];
+            if (photo) {
+                [photoView performSelector:@selector(fadeToImage:) withObject:photo afterDelay:0.1];
+            }
+        }
         UIImageView *mask = (UIImageView *)[cell viewWithTag:12];
         [mask setBackgroundColor:[UIColor whiteColor]];
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14150E8318F7BA870069CCD2 /* UIImageView+AnimateFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 14150E8218F7BA870069CCD2 /* UIImageView+AnimateFade.m */; };
 		1455006218E042E100360EDF /* OtherUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455006118E042E100360EDF /* OtherUserInfo.m */; };
 		146A2C6E18DD810E0038A850 /* ReplyForUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C6D18DD810E0038A850 /* ReplyForUpload.m */; };
 		146A2C7218DD8D1C0038A850 /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C7118DD8D1C0038A850 /* FileUploader.m */; };
@@ -643,6 +644,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14150E8118F7BA870069CCD2 /* UIImageView+AnimateFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AnimateFade.h"; sourceTree = "<group>"; };
+		14150E8218F7BA870069CCD2 /* UIImageView+AnimateFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AnimateFade.m"; sourceTree = "<group>"; };
 		1455006018E042E100360EDF /* OtherUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherUserInfo.h; sourceTree = "<group>"; };
 		1455006118E042E100360EDF /* OtherUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherUserInfo.m; sourceTree = "<group>"; };
 		146A2C6C18DD810E0038A850 /* ReplyForUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyForUpload.h; sourceTree = "<group>"; };
@@ -2929,6 +2932,8 @@
 				54CE10B418C1842C00966396 /* AFUICode.h */,
 				54CE10B518C1842C00966396 /* UILabel+AdjustSize.h */,
 				54CE10B618C1842C00966396 /* UILabel+AdjustSize.m */,
+				14150E8118F7BA870069CCD2 /* UIImageView+AnimateFade.h */,
+				14150E8218F7BA870069CCD2 /* UIImageView+AnimateFade.m */,
 			);
 			path = AFUIEx;
 			sourceTree = "<group>";
@@ -3812,6 +3817,7 @@
 				5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */,
 				54B4682218E5210900745F72 /* HospitalHomeView.m in Sources */,
 				54AFAA8E18DAA4220067B8C1 /* RewardViewController.m in Sources */,
+				14150E8318F7BA870069CCD2 /* UIImageView+AnimateFade.m in Sources */,
 				14B8DF2B18BC37A30047C6B3 /* Ware.m in Sources */,
 				54B4681518E520F200745F72 /* TeachedView.m in Sources */,
 				147756F918D7F49E00E08BD0 /* Forum.m in Sources */,
@@ -4213,7 +4219,7 @@
 					/Users/AF_Ra/Documents/puuman2/puuman2/Support/WeiXin,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
+				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4243,7 +4249,7 @@
 					/Users/AF_Ra/Documents/puuman2/puuman2/Support/WeiXin,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
+				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

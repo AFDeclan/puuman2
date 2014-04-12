@@ -13,6 +13,7 @@
 #import "DetailShowViewController.h"
 #import "UniverseConstant.h"
 #import "UIImage+CroppedImage.h"
+#import "UIImageView+AnimateFade.h"
 
 
 @implementation VideoDiaryCell
@@ -73,9 +74,7 @@
     [super loadInfo];
     UIImage *image = [DiaryFileManager imageForVideo:[self.diaryInfo valueForKey:kFilePathName]];
     image  = [UIImage croppedImage:image WithHeight:832 andWidth:832];
-    [_imgView setImage:image];
-    [_imgView setAlpha:0];
- 
+    [_imgView fadeToImage:image];
 }
 
 - (void)playVideo

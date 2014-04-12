@@ -117,27 +117,35 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSLog(@"a");
-      PostNotification(Noti_LoadDiaryCellInfo, nil);
+    PostNotification(Noti_LoadDiaryCellInfo, nil);
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    dragging = YES;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-  
-  
-    if (decelerate) {
-          NSLog(@"b");
-    }else{
+    dragging = NO;
+    if (!decelerate) {
         PostNotification(Noti_LoadDiaryCellInfo, nil);
-
     }
-
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
+}
 
-    NSLog(@"c");
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [MyNotiCenter postNotificationName:Noti_DiaryCellVisible object:[NSNumber numberWithFloat:self.tableView.contentOffset.y]];
+    static CGPoint offset;
+    if (ABS(scrollView.contentOffset.y - offset.y) > 400 && dragging) {
+//        PostNotification(Noti_LoadDiaryCellInfo, nil);
+        offset = scrollView.contentOffset;
+    }
+
 }
 
 
@@ -497,11 +505,6 @@
         }
     }
 
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [MyNotiCenter postNotificationName:Noti_DiaryCellVisible object:[NSNumber numberWithFloat:self.tableView.contentOffset.y]];
 }
 
 - (void)setImportTotalNum:(NSInteger)num

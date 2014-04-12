@@ -174,6 +174,7 @@
                 NSDictionary * data = afRequest.resObj;
                 Comment *co = [[Comment alloc] init];
                 [co setData:data];
+                _RCommentCnt ++;
                 [_comments insertObject:co atIndex:0];
                 [[Forum sharedInstance] informDelegates:@selector(replyCommentUploaded:) withObject:self];
             } else {

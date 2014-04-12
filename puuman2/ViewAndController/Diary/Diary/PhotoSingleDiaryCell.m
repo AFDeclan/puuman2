@@ -10,6 +10,7 @@
 #import "DiaryFileManager.h"
 #import "UIImage+CroppedImage.h"
 #import "DetailShowViewController.h"
+#import "UIImageView+AnimateFade.h"
 
 @implementation PhotoSingleDiaryCell
 
@@ -65,7 +66,7 @@
 
 - (void)loadInfo
 {
-      [super loadInfo];
+    [super loadInfo];
     NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
     NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     for (NSString *photoPath in photoPaths)
@@ -78,9 +79,7 @@
     }
     UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
     UIImage *image  = [UIImage croppedImage:photo WithHeight:832 andWidth:832];
-    [_imgView setImage:image];
-
-    
+    [_imgView fadeToImage:image];
 }
 
 - (void)share:(id)sender

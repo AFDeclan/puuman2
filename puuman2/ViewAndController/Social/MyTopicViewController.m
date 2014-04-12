@@ -112,7 +112,7 @@
     NSString *identifier;
     TopicCell *cell;
     Reply *replay = [[[Forum sharedInstance] myReplies] objectAtIndex:[indexPath row]];
-    if ([replay.textUrls count] != 0) {
+    if ([replay.texts count] != 0) {
         identifier = @"MyTextTopicCell";
         cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
