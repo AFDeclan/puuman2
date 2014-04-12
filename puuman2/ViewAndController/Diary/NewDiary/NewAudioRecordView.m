@@ -146,7 +146,6 @@ const NSTimeInterval MAX_DURATION = 90;
         [audioRecorder stop];
         recordedFile = nil;
     }
-
 }
 
 @end
