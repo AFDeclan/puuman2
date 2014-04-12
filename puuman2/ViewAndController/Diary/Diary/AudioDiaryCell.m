@@ -52,14 +52,15 @@
 
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
-    [self loadInfo];
+    
+    NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
+    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
 }
 
 - (void)loadInfo
 {
     [super loadInfo];
-    NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
-    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+    
 }
 
 - (void)stopAudio

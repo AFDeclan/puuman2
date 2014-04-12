@@ -9,6 +9,7 @@
 #import "NewAudioPlayView.h"
 #include "ColorsAndFonts.h"
 #import "ErrorLog.h"
+#import "UniverseConstant.h"
 
 @implementation NewAudioPlayView
 @synthesize delegate =_delegate;
@@ -98,6 +99,7 @@
 
 - (void)startPlay
 {
+    PostNotification(Noti_PauseMultiMedia, nil);
     [playBg setImage:[UIImage imageNamed:@"btn_stop_diary.png"]];
     [progress setCurrentTime:0];
     [player play];
