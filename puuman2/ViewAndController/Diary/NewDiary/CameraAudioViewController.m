@@ -19,6 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [titleTextField removeFromSuperview];
     }
     return self;
 }
@@ -28,6 +29,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+
 
 - (void)finishBtnPressed
 {
