@@ -26,7 +26,11 @@
         _expanded=NO;
         recShop = NO;
         [self initWithContent];
-
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            [self setVerticalFrame];
+        }else{
+            [self setHorizontalFrame];
+        }
     }
     return self;
 }

@@ -49,7 +49,7 @@ static DetailShowViewController *detailVC;
             [photoView setFrame:CGRectMake(i*768, 0, 768, 1024)];
             [photoView setContentMode:UIViewContentModeScaleAspectFit];
         }
-        [photoScroll setContentOffset:CGPointMake((photoScroll.contentOffset.x)*768/1024, 0)];
+        [photoScroll setContentOffset:CGPointMake(((int)(photoScroll.contentOffset.x/1024))*768, 0)];
         [photoScroll setFrame:CGRectMake(0, 0, 768, 1024)];
         [photoScroll setContentSize:CGSizeMake(768*[photoPaths count], 1024)];
     }
@@ -136,11 +136,15 @@ static DetailShowViewController *detailVC;
     photoScroll.alpha = 0;
     [self.view addSubview:photoScroll];
     if ([MainTabBarController sharedMainViewController].isVertical) {
+        
+
         [self setVerticalFrame];
-        [photoScroll setContentOffset:CGPointMake(768*index, 0)];
-    }else{
-        [self setHorizontalFrame];
         [photoScroll setContentOffset:CGPointMake(1024*index, 0)];
+    }else{
+    
+        [self setHorizontalFrame];
+        [photoScroll setContentOffset:CGPointMake(768*index, 0)];
+   
     }
     photoScroll.pagingEnabled = YES;
     [UIView animateWithDuration:0.5 animations:^{
