@@ -17,8 +17,6 @@
 #import "PhotoMoreDiaryCell.h"
 #import "DiaryHeaderView.h"
 
-
-
 @interface DiaryTableViewController : UITableViewController<TaskClickDelegate,TextDiaryDelegate>
 {
     NSIndexPath *selectedPath;
@@ -27,8 +25,11 @@
     int importTotalNum;
     DiaryHeaderView *importProgress;
     DiaryHeaderView *headerview;
+    BOOL dragging;
 }
 - (void)diaryLoaded;
 - (void)setImportTotalNum:(NSInteger)num;
 - (void)tapWithPoint:(CGPoint)pos;
++ (BOOL)needLoadInfo;
+
 @end

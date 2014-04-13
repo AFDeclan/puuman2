@@ -34,8 +34,8 @@
     [mainTextView setTextColor:PMColor1];
     [contentView addSubview:mainTextView];
     NSString *text;
-    if ([reply.textUrls count]>0) {
-        text = [reply.textUrls objectAtIndex:0];
+    if ([reply.texts count]>0) {
+        text = [reply.texts objectAtIndex:0];
     }
     if (text == nil) text = @"";
     [mainTextView setTitle:text withMaxWidth:536];
@@ -49,8 +49,8 @@
 {
    
     NSString *text;
-    if ([reply.textUrls count]>0) {
-        text = [reply.textUrls objectAtIndex:0];
+    if ([reply.texts count]>0) {
+        text = [reply.texts objectAtIndex:0];
     }
     if (text == nil) text = @"";
     

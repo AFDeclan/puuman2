@@ -65,9 +65,6 @@
     if (!isFinished) {
         _totalCnt = totalCnt;
         _cnt = cnt;
-
-       
-        
         
         if (!timer) {
            

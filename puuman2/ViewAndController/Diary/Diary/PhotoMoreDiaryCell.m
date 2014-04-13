@@ -11,6 +11,8 @@
 #import "UIImage+CroppedImage.h"
 #import "DetailShowViewController.h"
 #import "UIImage+Scale.h"
+#import "DiaryImageView.h"
+
 
 @implementation PhotoMoreDiaryCell
 
@@ -49,14 +51,14 @@
         [titleLabel setAlpha:1];
     }
     height +=24;
-    SetViewLeftUp(_showColumnView, 56, height);
-    height +=192;
     selectedIndex = 1;
-    _photoPaths = [NSArray arrayWithObjects:@"pic_default_diary.png",@"pic_default_diary.png",@"pic_default_diary.png", nil];
+//    _photoPaths = [NSArray arrayWithObjects:@"pic_default_diary.png",@"pic_default_diary.png",@"pic_default_diary.png", nil];
     if (_showColumnView) {
         [_showColumnView removeFromSuperview];
     }
-    _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, 24, 416, 192)];
+    _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, height, 416, 192)];
+    SetViewLeftUp(_scrollView, 56, height);
+    height += 192;
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
     [_showColumnView setViewDelegate:self];
     [_showColumnView setViewDataSource:self];
@@ -70,8 +72,8 @@
 
 - (void)loadInfo
 {
+    if (_photoPaths) return;
     [super loadInfo];
-    
     NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
     _photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
@@ -96,13 +98,11 @@
     float x = _scrollView.contentOffset.x;
     int index =x/416;
     [self showPhotoAtIndex:index+1];
-
 }
 
 - (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
 {
-
-    if (index == 0 || index == [_photoPaths count]+1)  {
+    if (index == 0 || index == [self numberOfColumnsInColumnView:_showColumnView]-1)  {
         return 100;
     }else{
         return 200;
@@ -112,9 +112,11 @@
 
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
-    
-    return [_photoPaths count]+2;
-    
+    if (_photoPaths) {
+        return [_photoPaths count]+2;
+    } else {
+        return 4;
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -124,8 +126,8 @@
         float nowX = pos.x/416;
         float indexX = (int)(pos.x/416);
         selectedIndex = pos.x/416 +1;
-        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:(nowX-indexX)*0.5];
-        [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0.5-(nowX-indexX)*0.5];
+        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:(nowX-indexX)*0.7];
+        [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0.7-(nowX-indexX)*0.7];
         pos.x = pos.x*200/416;
         [_showColumnView setContentOffset:pos];
         if (selectedIndex == 0) {
@@ -149,10 +151,11 @@
 {
 
 }
+
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
     
-    if (index == 0 || index == [_photoPaths count]+1) {
+    if (index == 0 || index == [self numberOfColumnsInColumnView:columnView]-1) {
         static NSString *identify = @"EmptyCell";
         UITableViewCell *cell = [columnView dequeueReusableCellWithIdentifier:identify];
         if (cell == nil)
@@ -169,7 +172,7 @@
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 0, 192, 192)];
+            DiaryImageView *imgView = [[DiaryImageView alloc] initWithFrame:CGRectMake(4, 0, 192, 192)];
             imgView.tag = 11;
             [cell.contentView addSubview:imgView];
             UIImageView *mask = [[UIImageView alloc] initWithFrame:CGRectMake(4, 0, 192, 192)];
@@ -177,23 +180,19 @@
             [cell.contentView addSubview:mask];
         }
   
-        
-        
-        UIImage *photo = [DiaryFileManager imageForPath:[_photoPaths objectAtIndex:index-1]];
-       // photo = [UIImage croppedImage:photo WithHeight:384 andWidth:384];
-        if (!photo) {
-            photo = [UIImage imageNamed:[_photoPaths objectAtIndex:index-1]];
-        }
-        UIImageView *photoView = (UIImageView *)[cell viewWithTag:11];
+        UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
+        DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
         [photoView setImage:photo];
-
+        if (_photoPaths) {
+            [photoView loadThumbImgWithPath:[_photoPaths objectAtIndex:index-1]];
+        }
         UIImageView *mask = (UIImageView *)[cell viewWithTag:12];
         [mask setBackgroundColor:[UIColor whiteColor]];
 
         if (selectedIndex == index) {
             [mask setAlpha:0];
         }else{
-            [mask setAlpha:0.5];
+            [mask setAlpha:0.7];
         }
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -203,9 +202,7 @@
 
 - (void)showPhotoAtIndex:(NSInteger)index
 {
-
     [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1];
-    
 }
 
 - (void)share:(id)sender
@@ -223,6 +220,12 @@
     }
     NSString *title = [self.diaryInfo valueForKey:kTitleName];
     [ShareSelectedViewController shareText:text title:title image:img];
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    _photoPaths = nil;
 }
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;

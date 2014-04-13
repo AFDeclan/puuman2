@@ -14,6 +14,7 @@
 #import "PhotoMoreDiaryCell.h"
 #import "PhotoSingleDiaryCell.h"
 #import "MainTabBarController.h"
+#import "DiaryTableViewController.h"
 
 
 @implementation DiaryCell
@@ -105,6 +106,10 @@
     [self buildParentControl];
     SetViewLeftUp(dividingLine, 0, height-2);
     [bg setFrame:CGRectMake(0, 0, 672, height)];
+    
+    if ([DiaryTableViewController needLoadInfo]) {
+        [self loadInfo];
+    }
 }
 
 - (void)initWithShareAndDelBtn

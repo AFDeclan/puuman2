@@ -31,7 +31,7 @@
 //是否被当前用户点过赞
 @property (assign, nonatomic, readonly) BOOL voted;
 
-@property (retain, nonatomic, readonly) NSArray * textUrls;
+@property (retain, nonatomic, readonly) NSArray * texts;
 @property (retain, nonatomic, readonly) NSArray * photoUrls;
 
 @property (retain, nonatomic) NSDictionary *data;

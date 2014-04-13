@@ -14,6 +14,8 @@
 
 @end
 
+static BOOL needLoadInfo = YES;
+
 @implementation DiaryTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -49,6 +51,12 @@
 {
 
 }
+
++ (BOOL)needLoadInfo
+{
+    return needLoadInfo;
+}
+
 - (void)updateDiaryCount
 {
     //取数据判断是否下载更新
@@ -117,27 +125,38 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSLog(@"a");
-      PostNotification(Noti_LoadDiaryCellInfo, nil);
+    PostNotification(Noti_LoadDiaryCellInfo, nil);
+    needLoadInfo = YES;
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    needLoadInfo = YES;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-  
-  
-    if (decelerate) {
-          NSLog(@"b");
-    }else{
-        PostNotification(Noti_LoadDiaryCellInfo, nil);
+    needLoadInfo = !decelerate;
+}
 
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    if (ABS(velocity.y) > 20) {
+        needLoadInfo = NO;
     }
-
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
+}
 
-    NSLog(@"c");
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [MyNotiCenter postNotificationName:Noti_DiaryCellVisible object:[NSNumber numberWithFloat:self.tableView.contentOffset.y]];
 }
 
 
@@ -497,11 +516,6 @@
         }
     }
 
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [MyNotiCenter postNotificationName:Noti_DiaryCellVisible object:[NSNumber numberWithFloat:self.tableView.contentOffset.y]];
 }
 
 - (void)setImportTotalNum:(NSInteger)num

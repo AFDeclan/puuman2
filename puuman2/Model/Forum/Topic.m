@@ -42,7 +42,7 @@
             _TCreateTime = [DateFormatter datetimeFromString:val withFormat:@"yyyy-MM-dd HH:mm:ss"];
         } else if ([key isEqualToString:@"voted"]) {
             _voted = [val boolValue];
-        } else if ([key isEqualToString:@"VoteCnt"]) {
+        } else if ([key isEqualToString:@"TVoteCnt"]) {
             _voteCnt = [val integerValue];
         } else if ([key isEqualToString:@"RIDs"]) {
             NSArray *allRids = val;

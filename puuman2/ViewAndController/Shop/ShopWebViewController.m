@@ -144,6 +144,8 @@
     [shareBtn initWithTitle:@"分享" andIcon:[UIImage imageNamed:@"btn_share_diary.png"] andButtonType:kGrayLeftUp];
     [shareBtn addTarget:self action:@selector(shareWare) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:shareBtn];
+    shareBtn.alpha = 0;
+    
     addBtn = [[ColorButton alloc] init];
     [addBtn addTarget:self action:@selector(addToCart) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:addBtn];

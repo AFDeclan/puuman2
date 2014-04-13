@@ -28,8 +28,6 @@
         playBtn = [[NewAudioPlayView alloc] initWithFrame:CGRectMake(220, 24, 96, 96)];
         [playBtn setDelegate:self];
         [_content addSubview:playBtn];
-       
-        
     }
     return self;
     
@@ -52,16 +50,18 @@
     //在这里调整控件坐标，填充内容
     //audio player init
 
-     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
-     [super buildCellViewWithIndexRow:index abbreviated:abbr];
+    _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
+    
+    NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
+    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+    
+    [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
 - (void)loadInfo
 {
-      [super loadInfo];
-    NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
+    [super loadInfo];
     
-    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
 }
 
 - (void)stopAudio

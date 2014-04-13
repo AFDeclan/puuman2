@@ -10,6 +10,7 @@
 #import "DiaryFileManager.h"
 #import "UIImage+CroppedImage.h"
 #import "DetailShowViewController.h"
+#import "UIImageView+AnimateFade.h"
 
 @implementation PhotoSingleDiaryCell
 
@@ -19,14 +20,14 @@
     if (self)
     {
         // Initialization code
-        _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
+        _imgView = [[DiaryImageView alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
         [_imgView setBackgroundColor:[UIColor clearColor]];
         _imgView.userInteractionEnabled = YES;
         [_content addSubview:_imgView];
         
         UITapGestureRecognizer *tapPhoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto)];
         [_imgView addGestureRecognizer:tapPhoto];
-        titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 416, 80)];
+        titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416-80, 416, 80)];
         [titleView setImage:[UIImage imageNamed:@"bg_title_diary.png"]];
         [titleView setBackgroundColor:[UIColor clearColor]];
         [_imgView addSubview:titleView];
@@ -59,13 +60,14 @@
         [titleView setAlpha:1];
     }
     [_imgView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
-    _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,440);
+    _content.frame = CGRectMake(112, kHeaderHeight, ContentWidth, 440);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
 - (void)loadInfo
 {
-      [super loadInfo];
+    [super loadInfo];
+    if (_photoPath) return;
     NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
     NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     for (NSString *photoPath in photoPaths)
@@ -76,11 +78,8 @@
             break;
         }
     }
-    UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
-    UIImage *image  = [UIImage croppedImage:photo WithHeight:832 andWidth:832];
-    [_imgView setImage:image];
-
-    
+    [_imgView setCropSize:CGSizeMake(832, 832)];
+    [_imgView loadImgWithPath:_photoPath];
 }
 
 - (void)share:(id)sender
@@ -100,6 +99,12 @@
     NSString *title = [self.diaryInfo valueForKey:kTitleName];
     [ShareSelectedViewController shareText:text title:title image:photo];
 
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    _photoPath = nil;
 }
 
 + (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;

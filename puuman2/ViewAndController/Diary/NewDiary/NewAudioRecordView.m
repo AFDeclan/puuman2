@@ -49,18 +49,6 @@ const NSTimeInterval MAX_DURATION = 90;
 - (void)setRecordSource
 {
     recordedFile = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingString:@"RecordedFile.aac"]];
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    NSError *sessionError;
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
-    if(session == nil)
-    {
-        
-        [ErrorLog errorLog:@"Error creating session" fromFile:@"NewAudioDiaryViewController.m" error:sessionError];
-        NSLog(@"Error creating session: %@", [sessionError description]);
-    }
-    else
-        [session setActive:YES error:nil];
-   
 }
 
 - (void)refreshProgress
@@ -98,6 +86,10 @@ const NSTimeInterval MAX_DURATION = 90;
 
 - (void)startRecord
 {
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    NSError *sessionError;
+    [session setCategory:AVAudioSessionCategoryRecord error:&sessionError];
+    [session setActive:YES error:nil];
     [recordBtn setEnabled:NO];
     [_delegate startRecord];
     [progress setCurrentTime:0];
@@ -124,7 +116,7 @@ const NSTimeInterval MAX_DURATION = 90;
     if ([audioRecorder isRecording]) {
         [audioRecorder stop];
     }
-    
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
 }
 
 - (NSURL *)recordUrl
@@ -146,7 +138,6 @@ const NSTimeInterval MAX_DURATION = 90;
         [audioRecorder stop];
         recordedFile = nil;
     }
-
 }
 
 @end

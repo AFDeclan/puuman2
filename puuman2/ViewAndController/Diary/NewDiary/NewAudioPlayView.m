@@ -9,6 +9,7 @@
 #import "NewAudioPlayView.h"
 #include "ColorsAndFonts.h"
 #import "ErrorLog.h"
+#import "UniverseConstant.h"
 
 @implementation NewAudioPlayView
 @synthesize delegate =_delegate;
@@ -65,7 +66,6 @@
         if ([player isPlaying])
         {
             [self stopPlay];
-            
         }
     }
    
@@ -81,17 +81,19 @@
 {
     if ([player isPlaying])
     {
-         [self stopPlay];
-        
+        [self stopPlay];
     }else{
-       
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        NSError *sessionError;
+        [session setCategory:AVAudioSessionCategoryPlayback error:&sessionError];
+        [session setActive:YES error:nil];
         [self startPlay];
     }
-    
 }
 
 - (void)startPlay
 {
+    PostNotification(Noti_PauseMultiMedia, nil);
     [playBg setImage:[UIImage imageNamed:@"btn_stop_diary.png"]];
     [progress setCurrentTime:0];
     [player play];
@@ -109,6 +111,7 @@
     [player stop];
     [player setCurrentTime:0];
     [_delegate stopPlay];
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
 }
 
 - (void)refreshProgress

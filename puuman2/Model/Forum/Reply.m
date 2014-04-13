@@ -25,7 +25,7 @@
 @synthesize RTitle = _RTitle;
 @synthesize RVoteCnt = _RVoteCnt;
 @synthesize RCreateTime = _RCreateTime;
-@synthesize textUrls = _textUrls;
+@synthesize texts = _texts;
 @synthesize photoUrls = _photoUrls;
 @synthesize voted = _voted;
 @synthesize data = _data;
@@ -52,7 +52,7 @@
         }else if ([key isEqualToString:@"RCreateTime"]) {
             _RCreateTime = [DateFormatter datetimeFromString:val withFormat:@"yyyy-MM-dd HH:mm:ss"];
         } else if ([key isEqualToString:@"RContent"]) {
-            _textUrls = [val valueForKey:Reply_Content_Text];
+            _texts = [val valueForKey:Reply_Content_Text];
             _photoUrls = [val valueForKey:Reply_Content_Photo];
         } else if ([key isEqualToString:@"voted"]) {
             _voted = [val boolValue];
@@ -174,6 +174,7 @@
                 NSDictionary * data = afRequest.resObj;
                 Comment *co = [[Comment alloc] init];
                 [co setData:data];
+                _RCommentCnt ++;
                 [_comments insertObject:co atIndex:0];
                 [[Forum sharedInstance] informDelegates:@selector(replyCommentUploaded:) withObject:self];
             } else {

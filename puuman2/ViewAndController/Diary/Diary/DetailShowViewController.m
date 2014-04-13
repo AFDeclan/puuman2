@@ -14,6 +14,8 @@
 
 @end
 
+static DetailShowViewController *detailVC;
+
 @implementation DetailShowViewController
 @synthesize index = _index;
 @synthesize model = _model;
@@ -37,6 +39,7 @@
 - (void)setVerticalFrame
 {
     [super setVerticalFrame];
+    [_content setFrame:CGRectMake(0, 0, 768, 1024)];
     if (_model == kModelOfVideo) {
          [moviePlayer.view setFrame:CGRectMake(0, 0, 768, 1024)];
     }else if(_model == kModelOfPicMore ||_model == kModelOfPicSingle){
@@ -85,7 +88,7 @@
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:path]];
     [moviePlayer prepareToPlay];
     [moviePlayer setShouldAutoplay:NO];
-    [moviePlayer setFullscreen:NO];
+    [moviePlayer setFullscreen:YES];
     [moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
     [_content addSubview:moviePlayer.view];
     for (UIView *view in [[[[moviePlayer.view viewWithTag:0] viewWithTag:0] viewWithTag:0] subviews]) {
@@ -117,11 +120,10 @@
     photoPaths = imgPaths;
     photoScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
     photoScroll.contentSize = CGSizeMake(768*[imgPaths count], 1024);
-    photoScroll.pagingEnabled = YES;
     photoScroll.backgroundColor = [UIColor clearColor];
     for (int i=0; i<[photoPaths count]; i++)
     {
-        UIImage *photo =  [DiaryFileManager imageForPath:[photoPaths objectAtIndex:i]];
+        UIImage *photo = [DiaryFileManager imageForPath:[photoPaths objectAtIndex:i]];
         UIImageView *photoView = [[UIImageView alloc] initWithFrame:CGRectMake(i*768, 0, 768, 1024)];
         [photoView setTag:i+1];
         [photoView setContentMode:UIViewContentModeScaleAspectFit];
@@ -134,12 +136,13 @@
     photoScroll.alpha = 0;
     [self.view addSubview:photoScroll];
     if ([MainTabBarController sharedMainViewController].isVertical) {
-        
         [self setVerticalFrame];
+        [photoScroll setContentOffset:CGPointMake(768*index, 0)];
     }else{
         [self setHorizontalFrame];
+        [photoScroll setContentOffset:CGPointMake(1024*index, 0)];
     }
-    
+    photoScroll.pagingEnabled = YES;
     [UIView animateWithDuration:0.5 animations:^{
         photoScroll.alpha = 1;
     }];
@@ -154,27 +157,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-+(void)showPhotosPath:(NSArray *)imgPaths atIndex:(NSInteger)index
++ (void)showPhotosPath:(NSArray *)imgPaths atIndex:(NSInteger)index
 {
-    DetailShowViewController *detailVC = [[DetailShowViewController alloc] initWithNibName:nil bundle:nil];
+    detailVC = [[DetailShowViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:detailVC.view];
     detailVC.model = kModelOfPicMore;
     [detailVC showPhotosPath:imgPaths atIndex:index];
     [detailVC show];
 }
 
-+(void)showVideo:(NSString *)path
++ (void)showVideo:(NSString *)path
 {
-    DetailShowViewController *detailVC = [[DetailShowViewController alloc] initWithNibName:nil bundle:nil];
+    detailVC = [[DetailShowViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:detailVC.view];
     detailVC.model = kModelOfVideo;
     [detailVC showVideo:path];
     [detailVC show];
 }
 
-+(void)showPhotoPath:(NSString *)imgPath
++ (void)showPhotoPath:(NSString *)imgPath
 {
-    DetailShowViewController *detailVC = [[DetailShowViewController alloc] initWithNibName:nil bundle:nil];
+    detailVC = [[DetailShowViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:detailVC.view];
     detailVC.model = kModelOfPicSingle;
     [detailVC showPhotoPath:imgPath];
@@ -223,6 +226,7 @@
 {
     [super dismiss];
     [self.view removeFromSuperview];
+    detailVC = nil;
 }
 
 @end

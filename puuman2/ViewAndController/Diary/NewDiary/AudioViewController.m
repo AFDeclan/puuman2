@@ -137,7 +137,6 @@
     }else{
         [record restartRecord];
     }
-    
 }
 
 - (void)startRecord
@@ -155,9 +154,9 @@
     [UIView animateWithDuration:0.5 animations:^{
         [label_stopPlay setAlpha:0];
         [label_play setAlpha:1];
-        
     }];
 }
+
 - (void)startPlay
 {
     [UIView animateWithDuration:0.5 animations:^{
