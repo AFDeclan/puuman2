@@ -223,7 +223,7 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
         AFImageView *photoView = (AFImageView *)[cell viewWithTag:11];
         NSString *imageName = _columnImgBMode ? [NSString stringWithFormat:@"%@%@", columnB,clonumBimages[index -1]] : [NSString stringWithFormat:@"%@%@",columnA,clonumAimages[index-1]];
        
-        [photoView getImage:imageName defaultImage:@"pic_default_baby.png                                                                                                                           "];
+        [photoView getImage:imageName defaultImage:@"pic_default_baby.png"];
         UIImageView *mask = (UIImageView *)[cell viewWithTag:12];
         [mask setBackgroundColor:[UIColor whiteColor]];
         

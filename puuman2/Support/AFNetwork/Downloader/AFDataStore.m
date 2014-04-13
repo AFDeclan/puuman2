@@ -83,6 +83,7 @@ const NSString *createDateColumnName = @"CreateDate";
         [_delegates setObject:[NSMutableArray arrayWithObject:del] forKey:url];
     }
     //if not exceed the maximum length of queue, start donwload
+    
     if ([_pending count] <= _maxConnection && !dl.downloading) {
         [dl downloadAsyncronous];
     }
