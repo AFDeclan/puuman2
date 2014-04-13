@@ -83,6 +83,7 @@
 {
     [createBtn setEnabled:NO];
     TopicType type =[[[Forum sharedInstance] onTopic] TType];
+    
     switch (type) {
         case TopicType_Photo:
         {

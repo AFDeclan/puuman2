@@ -320,7 +320,6 @@
     [rewardVC setControlBtnType:kOnlyCloseButton];
     [[MainTabBarController sharedMainViewController].view addSubview:rewardVC.view];
     [rewardVC show];
-    
 }
 
 
@@ -335,6 +334,7 @@
         case TopicType_Photo:
         {
             TopicCellSelectedPohosViewController *chooseView = [[TopicCellSelectedPohosViewController alloc] initWithNibName:nil bundle:nil];
+            [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
            [chooseView setStyle:ConfirmError];
             [chooseView setSelecedDelegate:self];
             [chooseView show];
