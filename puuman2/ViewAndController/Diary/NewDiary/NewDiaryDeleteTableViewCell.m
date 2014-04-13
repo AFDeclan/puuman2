@@ -7,6 +7,7 @@
 //
 
 #import "NewDiaryDeleteTableViewCell.h"
+#import "UIImage+CroppedImage.h"
 
 @implementation NewDiaryDeleteTableViewCell
 @synthesize index = _index;
@@ -48,6 +49,8 @@
 - (void)setImg:(UIImage *)img
 {
     _img = img;
+    img = [UIImage croppedImage:img WithHeight:224 andWidth:224];
+    
     [imgView setImage:img];
     
 }

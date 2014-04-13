@@ -97,8 +97,9 @@
 - (void)loadInfo
 {
     [super loadInfo];
-    [_photoView setCropSize:CGSizeMake(640, 592)];
+    [_photoView setCropSize:CGSizeMake(416*2, 416*2)];
     [_photoView loadThumbImgWithPath:[self.diaryInfo valueForKey:kFilePathName]];
+    
 }
 
 

@@ -10,6 +10,8 @@
 #import "ColorsAndFonts.h"
 #include "UserInfo.h"
 #import "TaskCell.h"
+#import "UIImage+CroppedImage.h"
+
 const NSTimeInterval AnimatedInterval = 0.3;
 @implementation TaskTitleView
 @synthesize folded = _folded;
@@ -35,6 +37,7 @@ const NSTimeInterval AnimatedInterval = 0.3;
     portraitView.layer.masksToBounds = YES;
     portraitView.layer.shadowRadius =0.1;
     [self addSubview:portraitView];
+    [self reloadPortrait];
     
     title = [[UILabel alloc] initWithFrame:CGRectMake(128, 0, 456, 112)];
     [title setFont:PMFont1];
@@ -62,6 +65,7 @@ const NSTimeInterval AnimatedInterval = 0.3;
 - (void)reloadPortrait
 {
     [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+    portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:192 andWidth:192];
 }
 
 - (void)unfold

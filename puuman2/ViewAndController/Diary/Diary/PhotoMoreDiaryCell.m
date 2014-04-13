@@ -184,6 +184,7 @@
         DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
         [photoView setImage:photo];
         if (_photoPaths) {
+            [photoView setCropSize:CGSizeMake(384, 384)];
             [photoView loadThumbImgWithPath:[_photoPaths objectAtIndex:index-1]];
         }
         UIImageView *mask = (UIImageView *)[cell viewWithTag:12];

@@ -7,6 +7,7 @@
 //
 
 #import "ImportImgCell.h"
+#import "UIImage+CroppedImage.h"
 
 @implementation ImportImgCell
 @synthesize selected =_selected;
@@ -39,6 +40,7 @@
 }
 - (void)setImg:(UIImage *)img
 {
+    img = [UIImage croppedImage:img WithHeight:self.frame.size.height*2 andWidth:self.frame.size.width*2];
     [imageView setImage:img];
 }
 - (void)clicked

@@ -14,6 +14,7 @@
 #import "MainTabBarController.h"
 #import "TaskCell.h"
 #import "DiaryModel.h"
+#import "UIImage+CroppedImage.h"
 
 @implementation BabyInfoView
 
@@ -107,6 +108,7 @@
 {
     BabyData *babyData = [BabyData sharedBabyData];
     [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+     portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
     info_name.text = [babyData babyName];
     info_age.text = [[NSDate date] ageStrFromDate:[babyData babyBirth]];
     if ([[BabyData sharedBabyData] babyHasBorned])
@@ -136,6 +138,7 @@
     if (suc) {
         [[TaskCell sharedTaskCell] reloadPortrait];
          [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+        portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
     }
     
 }
