@@ -7,12 +7,13 @@
 //
 
 #import "BabyInfoView.h"
-
+#import "UserInfo.h"
 #import "BabyData.h"
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
 #import "MainTabBarController.h"
 #import "TaskCell.h"
+#import "DiaryModel.h"
 
 @implementation BabyInfoView
 
@@ -90,6 +91,7 @@
     NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
     [chooseView setDelegate:self];
+    [chooseView setIsMiddle:YES];
     [chooseView setStyle:ConfirmError];
     [chooseView show];
     
@@ -124,8 +126,9 @@
     NSString *birthStr = [DateFormatter stringFromDate:[babyData babyBirth]];
     NSString *constellationStr = [[babyData babyBirth] constellation];
     info_birthday.text = [NSString stringWithFormat:@"%@ %@", birthStr, constellationStr];
-    info_usedays.text = [NSString stringWithFormat:@"%d的使用",10];
-    info_diaryNum.text = [NSString stringWithFormat:@"%d条日记",15];
+    NSDate *beginDate = [UserInfo sharedUserInfo].createTime;
+    info_usedays.text = [NSString stringWithFormat:@"%d天的使用", [[NSDate date] daysFromDate:beginDate]];
+    info_diaryNum.text = [NSString stringWithFormat:@"%d条日记",[[DiaryModel sharedDiaryModel] diaryNotSampleNum]];
 }
 
 - (void)portraitUploadFinish:(BOOL)suc

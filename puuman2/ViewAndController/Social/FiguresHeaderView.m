@@ -233,7 +233,7 @@
     [noti_label animateStop];
     [noti_label setTitleWithTitleText:info_title.text andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
     [noti_label animateStart];
-   // PostNotification(Noti_RefreshInviteStatus, nil);
+    PostNotification(Noti_RefreshInviteStatus, nil);
 }
 //Group Action 上传失败
 - (void)actionUploadFailed:(ActionForUpload *)action

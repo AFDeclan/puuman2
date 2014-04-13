@@ -25,6 +25,7 @@
 
 @property (assign,nonatomic)id<NewAudioRecordDelegate>delegate;
 - (NSURL *)recordUrl;
+- (BOOL)getIsRecorded;
 - (void)restartRecord;
 - (NSTimeInterval)recordTime;
 - (void)removeRecord;

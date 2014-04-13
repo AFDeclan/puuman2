@@ -10,6 +10,7 @@
 #import "CartModel.h"
 #import "MainTabBarController.h"
 #import "CompareCartViewController.h"
+#import "SinglepopViewController.h"
 
 @interface ShopCartViewController ()
 
@@ -58,12 +59,27 @@
     [cartTable setBounces:YES];
     [cartTable setAlpha:1];
     [_content addSubview:cartTable];
+    emptyNotiView = [[UIView alloc] initWithFrame:CGRectMake(216, 256, 224, 144)];
+    [_content addSubview:emptyNotiView];
+    UIImageView  *icon_empty = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 224, 96)];
+    [icon_empty setImage:[UIImage imageNamed:@"pic_cart_blank.png"]];
+    [emptyNotiView addSubview:icon_empty];
+    noti_empty = [[UILabel alloc] initWithFrame:CGRectMake(0, 96, 224, 48)];
+    [noti_empty setFont:PMFont4];
+    [noti_empty setTextColor:PMColor3];
+    [noti_empty setTextAlignment:NSTextAlignmentCenter];
+    [noti_empty setBackgroundColor:[UIColor clearColor]];
+    [emptyNotiView addSubview:noti_empty];
+    
     [self unpaidBtnPressed];
+   
+   
 }
 
 - (void)refreshCartTable
 {
     unfoldIndex = -1;
+    [self emptyWithPaid:isPaid];
     [cartTable reloadData];
 }
 #pragma mark - UITableView Delegate Methods
@@ -120,11 +136,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (isPaid) {
-        Ware* w = [[CartModel sharedCart] getDoneWareAtIndex:[indexPath row]];
+       // Ware* w = [[CartModel sharedCart] getDoneWareAtIndex:[indexPath row]];
     }else{
         Ware* w = [[CartModel sharedCart] getUndoWareAtIndex:[indexPath row]];
+        SinglepopViewController *singGoodVC = [[SinglepopViewController alloc] initWithNibName:nil bundle:nil];
+        [singGoodVC setControlBtnType:kOnlyCloseButton];
+        [singGoodVC setTitle:@"单品信息" withIcon:nil];
+        [singGoodVC setWare:w];
+        [[MainTabBarController sharedMainViewController].view addSubview:singGoodVC.view];
+        [singGoodVC show];
     }
-    NSLog(@"Get");
+    
     
 }
 
@@ -132,10 +154,12 @@
 - (void)paidBtnPressed
 {
     isPaid = YES;
+    [self emptyWithPaid:isPaid];
     [btn_compared setAlpha:0];
     [btn_unpaid unSelected];
     [btn_paid selected];
     [cartTable reloadData];
+    
 }
 
 - (void)unpaidBtnPressed
@@ -144,9 +168,9 @@
     [btn_unpaid selected];
     [btn_paid unSelected];
     isPaid = NO;
-    [btn_compared setAlpha:1];
+    [self emptyWithPaid:isPaid];
     [cartTable reloadData];
-
+   
 }
 
 - (void)comparedBtnPressed
@@ -180,6 +204,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (void)emptyWithPaid:(BOOL)paid
+{
+    
+    if (paid) {
+        if ([[CartModel sharedCart] DoneCount] == 0) {
+            [noti_empty setText: @"您还没有已付款的商品哦~"];
+            [emptyNotiView setAlpha:1];
+        }else{
+          [emptyNotiView setAlpha:0];
+        }
+    }else{
+        if ([[CartModel sharedCart] UndoCount] == 0) {
+            [noti_empty setText:@"还没给宝宝挑选商品哦~"];
+              [emptyNotiView setAlpha:1];
+            [btn_compared setAlpha:0];
+        }else{
+            [emptyNotiView setAlpha:0];
+            [btn_compared setAlpha:1];
+        }
+    }
+}
 
 @end

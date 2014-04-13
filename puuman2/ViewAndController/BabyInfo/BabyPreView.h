@@ -18,6 +18,7 @@
     UIScrollView *_points;
     UIView *bgLine;
     int selectedIndex;
+    UIScrollView *bgScrollView;
 }
 @property (nonatomic,assign)BOOL columnImgBMode;
 - (void)refresh;

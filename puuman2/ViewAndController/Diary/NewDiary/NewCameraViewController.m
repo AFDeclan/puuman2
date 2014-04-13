@@ -29,6 +29,7 @@
     if (self) {
         // Custom initialization
         _cameraModel = YES;
+        isVertical = YES;
     }
     return self;
 }
@@ -148,11 +149,13 @@
     [UIApplication sharedApplication].statusBarHidden = YES;
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
     {
+        isVertical = NO;
         [self setHorizontalFrame];
         PostNotification(NOTIFICATION_Horizontal, nil);
     }
     else
     {
+        isVertical = YES;
         [self setVerticalFrame];
         PostNotification(NOTIFICATION_Vertical, nil);
     }
@@ -287,7 +290,7 @@
     [showView setDelegate:self];
     [showView setTitleStr:titleStr];
     [showView setTitle:@"选择照片" withIcon:nil];
-    [showView setControlBtnType:kOnlyCloseButton];
+    [showView setControlBtnType:kOnlyFinishButton];
     [showView initWithPhotos:photos andphotoPaths:photoPath];
     [showView show];
 }
@@ -299,6 +302,12 @@
         [audioView setControlBtnType:kCloseAndFinishButton];
         [audioView setTitle:@"录声音" withIcon:[UIImage imageNamed:@"icon_audio2_diary.png"]];
         [audioView setDelegate:self];
+    }
+    
+    if (isVertical) {
+        [audioView setVerticalFrame];
+    }else{
+        [audioView setHorizontalFrame];
     }
     [self.view addSubview:audioView.view];
     [audioView show];

@@ -219,6 +219,7 @@
 }
 
 - (void)closeBtnPressed{
+    [titleTextField resignFirstResponder];
     if ([photosArr count]>0) {
         [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{
             [super closeBtnPressed];

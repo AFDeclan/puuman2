@@ -137,12 +137,14 @@
             _passwordLabel.text = @"设置密码";
             _pwdField.secureTextEntry = NO;
             _inviteCodeLabel.text = @"我没有邀请码";
+            [_inviteCodeBtn initWithTitle:@"我没有邀请码" andButtonType:kRedLeftUp];
             [_loginBtn setImage:[UIImage imageNamed:@"btn_reg_login_diary.png"] forState:UIControlStateNormal];
             UILabel *title = (UILabel *)[self viewWithTag:10];
             [title setText:@"用邀请码注册您的扑满日记账号吧！"];
         }
         else
         {
+              [_inviteCodeBtn initWithTitle:@"我有邀请码" andButtonType:kRedLeftUp];
             _userNameLabel.text = @"用户名";
             _userField.placeholder = @"常用邮箱或手机";
             _passwordLabel.text = @"密码";

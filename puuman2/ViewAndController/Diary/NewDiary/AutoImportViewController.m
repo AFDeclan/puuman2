@@ -16,6 +16,7 @@
 #import "DiaryFileManager.h"
 #import "ImportStore.h"
 
+
 #define PhotoNumPerRow 5
 #define PerImgHeight 128
 #define PerImgWidth 96
@@ -124,7 +125,6 @@
 }
 
 
-
 - (void)finishBtnPressed
 {
     //save the file
@@ -163,7 +163,6 @@
             [[MainTabBarController sharedMainViewController ] removeAutoImportView];
             return;
         }
-
         __block BOOL foundThePhoto = NO;
         ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
         library = assetLibrary;

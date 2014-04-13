@@ -17,11 +17,13 @@
 
 @implementation NewTextPhotoSelectedViewController
 @synthesize delegate = _delegate;
+@synthesize isMiddle = _isMiddle;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+            _isMiddle = NO;
         }
     return self;
 }
@@ -31,7 +33,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     imagePickerShowed = NO;
-  
+   
 }
 
 
@@ -54,7 +56,12 @@
         //  [popover setPopoverContentSize:CGSizeMake(10, 10)];
         
         //[self presentModalViewController:imagePickerController animated:YES];
-        [popover presentPopoverFromRect:CGRectMake(654, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
+        if (_isMiddle) {
+            [popover presentPopoverFromRect:CGRectMake(344, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
+        }else{
+           [popover presentPopoverFromRect:CGRectMake(654, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
+        }
+        
     }
 
 }
@@ -77,8 +84,12 @@
         //  [popover setPopoverContentSize:CGSizeMake(10, 10)];
         
         //[self presentModalViewController:imagePickerController animated:YES];
+        if (_isMiddle){
+            [popover presentPopoverFromRect:CGRectMake(472, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
+        }else{
+            [popover presentPopoverFromRect:CGRectMake(782, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
+        }
         
-        [popover presentPopoverFromRect:CGRectMake(782, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
         
         
     }
@@ -140,6 +151,8 @@
     }
     [self hidden];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

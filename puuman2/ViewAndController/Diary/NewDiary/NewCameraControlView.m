@@ -28,6 +28,7 @@
 
 - (void)initialization
 {
+    hidden = NO;
     recordingVideo = NO;
     hasEffect = NO;
     _videoMode = NO;
@@ -200,13 +201,21 @@
             [frontRareChangeBtn setAlpha:0];
             [playCameraBtn setEnabled:NO];
             [_delegate takeVideo];
-            [self performSelector:@selector(canStopVideo) withObject:nil afterDelay:1];
-            
+            if (timer) {
+                [timer invalidate];
+                timer = nil;
+            }
+            timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshStatus) userInfo:nil repeats:YES];
         }else if(hasEffect)
         {
+            if (timer) {
+                [timer invalidate];
+                timer = nil;
+            }
             [_delegate stopVideo];
             recordingVideo = NO;
             hasEffect = NO;
+            [playCameraBtn setAlpha:1];
             [playCameraBtn setEnabled:NO];
         }
         
@@ -220,8 +229,15 @@
     }
 }
 
-- (void)canStopVideo
+- (void)refreshStatus
 {
+    hidden = !hidden;
+    if (hidden) {
+        [playCameraBtn setAlpha:0.5];
+    }else{
+        [playCameraBtn setAlpha:1];
+    }
+    
     hasEffect = YES;
     [playCameraBtn setEnabled:YES];
 }

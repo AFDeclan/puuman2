@@ -93,20 +93,20 @@
 }
 -(IBAction)whereBtnPressed:(UIButton *)sender
 {
-    [MobClick event:umeng_event_click label:@"Where_HealthCell"];
-    questionView = kHealthWhere;
-    
-    //[self backBtnPressed:self.backBtn];
-    [selectedBtn setEnabled:YES];
-    selectedBtn = sender;
-    [sender setEnabled:NO];
-   // [self addSubview:self.whereImgView];
-    [self.whyImgView setAlpha:0.3];
-    //[self.whereImgView setAlpha:1];
-    [self.howImgView setAlpha:0.3];
-    for (UIView *view in [self.content subviews]) {
-        [view removeFromSuperview];
-    }
+//    [MobClick event:umeng_event_click label:@"Where_HealthCell"];
+//    questionView = kHealthWhere;
+//    
+//    //[self backBtnPressed:self.backBtn];
+//    [selectedBtn setEnabled:YES];
+//    selectedBtn = sender;
+//    [sender setEnabled:NO];
+//   // [self addSubview:self.whereImgView];
+//    [self.whyImgView setAlpha:0.3];
+//    //[self.whereImgView setAlpha:1];
+//    [self.howImgView setAlpha:0.3];
+//    for (UIView *view in [self.content subviews]) {
+//        [view removeFromSuperview];
+//    }
 
 
 }

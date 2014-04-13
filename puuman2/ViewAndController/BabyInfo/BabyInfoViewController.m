@@ -10,7 +10,7 @@
 #import "MainTabBarController.h"
 #import "LoginViewController.h"
 #import "BabyData.h"
-
+#import "MainTabBarController.h"
 
  NSString *bornselectedBtnImgs[4] = {@"btn_body1_baby.png",@"btn_vac1_baby.png",@"btn_equip1_baby.png",@"btn_bank1_baby.png"};
  NSString *bornunselectedBtnImgs[4] = {@"btn_body2_baby.png",@"btn_vac2_baby.png",@"btn_equip2_baby.png",@"btn_bank2_baby.png"};
@@ -332,7 +332,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
 - (void)moadifyBabyInfo
 {
     LoginViewController *modifyInfoVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
-    [self.view addSubview:modifyInfoVC.view];
+    [[MainTabBarController sharedMainViewController].view addSubview:modifyInfoVC.view];
     [modifyInfoVC setControlBtnType:kCloseAndFinishButton];
     [modifyInfoVC setTitle:@"欢迎使用扑满日记！" withIcon:nil];
     [modifyInfoVC loginSetting];
@@ -369,7 +369,9 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
     if (puumanView) {
         [puumanView refresh];
     }
-   
+    if (preView) {
+        [preView refresh];
+    }
 }
 
 @end

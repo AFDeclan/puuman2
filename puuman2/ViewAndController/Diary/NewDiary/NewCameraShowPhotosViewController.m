@@ -135,4 +135,10 @@
     [super closeBtnPressed];
     
 }
+
+- (void)finishBtnPressed
+{
+    [_delegate setTitleStr:titleTextField.text];
+    [super finishBtnPressed];
+}
 @end

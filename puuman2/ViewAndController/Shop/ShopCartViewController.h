@@ -17,6 +17,8 @@
     UITableView * cartTable;
     BOOL isPaid;
     NSInteger unfoldIndex;
+    UILabel *noti_empty;
+    UIView *emptyNotiView;
 }
 
 @end

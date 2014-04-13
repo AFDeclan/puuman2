@@ -30,6 +30,7 @@
     TimeView *timeView;
     NSURL *audioFileUrl;
     CameraAudioViewController *audioView;
+   BOOL isVertical;
 }
 @property(assign,nonatomic) id<CameraViewDelegate> delegate;
 @property (retain, nonatomic) NSDictionary *taskInfo;

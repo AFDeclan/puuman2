@@ -82,7 +82,7 @@
     NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
     [self.view addSubview:chooseView.view];
     [chooseView setDelegate:self];
-    [chooseView setStyle:Question];
+    [chooseView setStyle:ConfirmError];
     [chooseView show];
     
 }
@@ -132,6 +132,8 @@
 
 - (void)closeBtnPressed
 {
+    [_textView resignFirstResponder];
+    [titleTextField resignFirstResponder];
     if ([_textView.text isEqualToString:@""]){
         if (photo) {
             [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{

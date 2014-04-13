@@ -10,7 +10,7 @@
 #import "InviteGroupCell.h"
 #import "ColorsAndFonts.h"
 #import "Friend.h"
-
+#import "UniverseConstant.h"
 @implementation PartnerDataOutGroupView
 
 - (id)initWithFrame:(CGRect)frame
@@ -40,17 +40,35 @@
     [inviteGroupsTable setShowsVerticalScrollIndicator:NO];
     [self addSubview:inviteGroupsTable];
     [inviteGroupsTable reloadData];
-   
+    emptyNotiView = [[UIView alloc] initWithFrame:CGRectMake(292, 304, 224, 80)];
+    [self addSubview:emptyNotiView];
+    UIImageView  *icon_empty = [[UIImageView alloc] initWithFrame:CGRectMake(36, 0, 152, 40)];
+    [icon_empty setImage:[UIImage imageNamed:@"pic_diary_blank.png"]];
+    [emptyNotiView addSubview:icon_empty];
+    UILabel *noti_empty = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, 224, 40)];
+    [noti_empty setFont:PMFont2];
+    [noti_empty setTextColor:PMColor2];
+    [noti_empty setTextAlignment:NSTextAlignmentCenter];
+    [noti_empty setBackgroundColor:[UIColor clearColor]];
+    [emptyNotiView addSubview:noti_empty];
+    [noti_empty setText:@"您暂时还没有收到邀请哦~"];
+    if ([dataArr count] == 0) {
+        [emptyNotiView setAlpha:1];
+    }else{
+        [emptyNotiView setAlpha:0];
+    }
 }
 
 - (void)setVerticalFrame
 {
     [inviteGroupsTable setFrame:CGRectMake(0, 0, 608, 944)];
+    SetViewLeftUp(emptyNotiView, 192, 432);
 }
 
 - (void)setHorizontalFrame
 {
     [inviteGroupsTable setFrame:CGRectMake(128, 0, 608, 688)];
+     SetViewLeftUp(emptyNotiView, 320, 304);
 }
 
 #pragma mark - Table view data source

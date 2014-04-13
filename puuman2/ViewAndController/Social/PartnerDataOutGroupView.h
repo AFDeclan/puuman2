@@ -12,6 +12,7 @@
 {
     UITableView *inviteGroupsTable;
     NSArray *dataArr;
+    UIView *emptyNotiView;
 }
 - (void)loadViewInfo;
 - (void)setVerticalFrame;

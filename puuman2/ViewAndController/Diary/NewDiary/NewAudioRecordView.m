@@ -140,4 +140,8 @@ const NSTimeInterval MAX_DURATION = 90;
     }
 }
 
+- (BOOL)getIsRecorded
+{
+    return isRecorded;
+}
 @end

@@ -495,6 +495,75 @@
 		54B753B018D3020B002411CF /* PuumanInBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753AF18D3020B002411CF /* PuumanInBookCell.m */; };
 		54B753B318D3021E002411CF /* PuumanOutBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B753B218D3021E002411CF /* PuumanOutBookCell.m */; };
 		54B867F718E6B81A00BE5335 /* SinglepopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B867F618E6B81A00BE5335 /* SinglepopViewController.m */; };
+		54B97E4418FA2B1E00B6C4C9 /* btn_back2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2618FA2B1E00B6C4C9 /* btn_back2_insure_shop.png */; };
+		54B97E4518FA2B1E00B6C4C9 /* puuman3_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2718FA2B1E00B6C4C9 /* puuman3_insure_shop.png */; };
+		54B97E4618FA2B1E00B6C4C9 /* pic34_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2818FA2B1E00B6C4C9 /* pic34_insure_shop.png */; };
+		54B97E4718FA2B1E00B6C4C9 /* pic39_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2918FA2B1E00B6C4C9 /* pic39_insure_shop.png */; };
+		54B97E4818FA2B1E00B6C4C9 /* pic35_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2A18FA2B1E00B6C4C9 /* pic35_insure_shop.png */; };
+		54B97E4918FA2B1E00B6C4C9 /* pic36_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2B18FA2B1E00B6C4C9 /* pic36_insure_shop.png */; };
+		54B97E4A18FA2B1E00B6C4C9 /* pic37_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2C18FA2B1E00B6C4C9 /* pic37_insure_shop.png */; };
+		54B97E4B18FA2B1E00B6C4C9 /* pic38_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2D18FA2B1E00B6C4C9 /* pic38_insure_shop.png */; };
+		54B97E4C18FA2B1E00B6C4C9 /* pic12_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2E18FA2B1E00B6C4C9 /* pic12_insure_shop.png */; };
+		54B97E4D18FA2B1E00B6C4C9 /* pic7_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2F18FA2B1E00B6C4C9 /* pic7_insure_shop.png */; };
+		54B97E4E18FA2B1E00B6C4C9 /* pic8_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3018FA2B1E00B6C4C9 /* pic8_insure_shop.png */; };
+		54B97E4F18FA2B1E00B6C4C9 /* pic9_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3118FA2B1E00B6C4C9 /* pic9_insure_shop.png */; };
+		54B97E5018FA2B1E00B6C4C9 /* pic10_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3218FA2B1E00B6C4C9 /* pic10_insure_shop.png */; };
+		54B97E5118FA2B1E00B6C4C9 /* pic11_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3318FA2B1E00B6C4C9 /* pic11_insure_shop.png */; };
+		54B97E5218FA2B1E00B6C4C9 /* icon1_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3418FA2B1E00B6C4C9 /* icon1_insure_shop.png */; };
+		54B97E5318FA2B1E00B6C4C9 /* icon2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3518FA2B1E00B6C4C9 /* icon2_insure_shop.png */; };
+		54B97E5418FA2B1E00B6C4C9 /* icon3_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3618FA2B1E00B6C4C9 /* icon3_insure_shop.png */; };
+		54B97E5518FA2B1E00B6C4C9 /* bubble_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3718FA2B1E00B6C4C9 /* bubble_insure_shop.png */; };
+		54B97E5618FA2B1E00B6C4C9 /* btn_back_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3818FA2B1E00B6C4C9 /* btn_back_insure_shop.png */; };
+		54B97E5718FA2B1E00B6C4C9 /* sheep_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3918FA2B1E00B6C4C9 /* sheep_insure_shop.png */; };
+		54B97E5818FA2B1E00B6C4C9 /* pic6_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3A18FA2B1E00B6C4C9 /* pic6_insure_shop.png */; };
+		54B97E5918FA2B1E00B6C4C9 /* block2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3B18FA2B1E00B6C4C9 /* block2_insure_shop.png */; };
+		54B97E5A18FA2B1E00B6C4C9 /* ear_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3C18FA2B1E00B6C4C9 /* ear_insure_shop.png */; };
+		54B97E5B18FA2B1E00B6C4C9 /* ear2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3D18FA2B1E00B6C4C9 /* ear2_insure_shop.png */; };
+		54B97E5C18FA2B1E00B6C4C9 /* pic5_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3E18FA2B1E00B6C4C9 /* pic5_insure_shop.png */; };
+		54B97E5D18FA2B1E00B6C4C9 /* puuman2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E3F18FA2B1E00B6C4C9 /* puuman2_insure_shop.png */; };
+		54B97E5E18FA2B1E00B6C4C9 /* wing1_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E4018FA2B1E00B6C4C9 /* wing1_insure_shop.png */; };
+		54B97E5F18FA2B1E00B6C4C9 /* wing2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E4118FA2B1E00B6C4C9 /* wing2_insure_shop.png */; };
+		54B97E6018FA2B1E00B6C4C9 /* wing3_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E4218FA2B1E00B6C4C9 /* wing3_insure_shop.png */; };
+		54B97E6118FA2B1E00B6C4C9 /* wing4_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E4318FA2B1E00B6C4C9 /* wing4_insure_shop.png */; };
+		54B97E7C18FA572600B6C4C9 /* num1_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6318FA572600B6C4C9 /* num1_insure_shop.png */; };
+		54B97E7D18FA572600B6C4C9 /* num2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6418FA572600B6C4C9 /* num2_insure_shop.png */; };
+		54B97E7E18FA572600B6C4C9 /* num3_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6518FA572600B6C4C9 /* num3_insure_shop.png */; };
+		54B97E7F18FA572600B6C4C9 /* num4_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6618FA572600B6C4C9 /* num4_insure_shop.png */; };
+		54B97E8018FA572600B6C4C9 /* pic29_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6718FA572600B6C4C9 /* pic29_insure_shop.png */; };
+		54B97E8118FA572600B6C4C9 /* pic30_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6818FA572600B6C4C9 /* pic30_insure_shop.png */; };
+		54B97E8218FA572600B6C4C9 /* pic32_insure_shop@.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6918FA572600B6C4C9 /* pic32_insure_shop@.png */; };
+		54B97E8318FA572600B6C4C9 /* pic31_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6A18FA572600B6C4C9 /* pic31_insure_shop.png */; };
+		54B97E8418FA572600B6C4C9 /* pic33_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6B18FA572600B6C4C9 /* pic33_insure_shop.png */; };
+		54B97E8518FA572600B6C4C9 /* pic23_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6C18FA572600B6C4C9 /* pic23_insure_shop.png */; };
+		54B97E8618FA572600B6C4C9 /* pic24_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6D18FA572600B6C4C9 /* pic24_insure_shop.png */; };
+		54B97E8718FA572600B6C4C9 /* pic25_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6E18FA572600B6C4C9 /* pic25_insure_shop.png */; };
+		54B97E8818FA572600B6C4C9 /* pic26_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E6F18FA572600B6C4C9 /* pic26_insure_shop.png */; };
+		54B97E8918FA572600B6C4C9 /* pic27_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7018FA572600B6C4C9 /* pic27_insure_shop.png */; };
+		54B97E8A18FA572600B6C4C9 /* pic28_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7118FA572600B6C4C9 /* pic28_insure_shop.png */; };
+		54B97E8B18FA572600B6C4C9 /* pic17_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7218FA572600B6C4C9 /* pic17_insure_shop.png */; };
+		54B97E8C18FA572600B6C4C9 /* pic18_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7318FA572600B6C4C9 /* pic18_insure_shop.png */; };
+		54B97E8D18FA572600B6C4C9 /* pic19_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7418FA572600B6C4C9 /* pic19_insure_shop.png */; };
+		54B97E8E18FA572600B6C4C9 /* pic20_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7518FA572600B6C4C9 /* pic20_insure_shop.png */; };
+		54B97E8F18FA572600B6C4C9 /* pic21_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7618FA572600B6C4C9 /* pic21_insure_shop.png */; };
+		54B97E9018FA572600B6C4C9 /* pic22_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7718FA572600B6C4C9 /* pic22_insure_shop.png */; };
+		54B97E9118FA572600B6C4C9 /* pic13_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7818FA572600B6C4C9 /* pic13_insure_shop.png */; };
+		54B97E9218FA572600B6C4C9 /* pic14_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7918FA572600B6C4C9 /* pic14_insure_shop.png */; };
+		54B97E9318FA572600B6C4C9 /* pic15_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7A18FA572600B6C4C9 /* pic15_insure_shop.png */; };
+		54B97E9418FA572600B6C4C9 /* pic16_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E7B18FA572600B6C4C9 /* pic16_insure_shop.png */; };
+		54B97E9718FA581D00B6C4C9 /* block_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E9618FA581D00B6C4C9 /* block_insure_shop.png */; };
+		54B97E9B18FA583F00B6C4C9 /* title1_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E9818FA583F00B6C4C9 /* title1_insure_shop.png */; };
+		54B97E9C18FA583F00B6C4C9 /* title2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E9918FA583F00B6C4C9 /* title2_insure_shop.png */; };
+		54B97E9D18FA583F00B6C4C9 /* title3_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E9A18FA583F00B6C4C9 /* title3_insure_shop.png */; };
+		54B97EA318FA586800B6C4C9 /* triangle_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EA018FA586700B6C4C9 /* triangle_insure_shop.png */; };
+		54B97EA518FA586F00B6C4C9 /* bg_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EA418FA586F00B6C4C9 /* bg_insure_shop.png */; };
+		54B97EAB18FA589800B6C4C9 /* pic_insure1_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EA618FA589800B6C4C9 /* pic_insure1_shop.png */; };
+		54B97EAC18FA589800B6C4C9 /* pic_insure2_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EA718FA589800B6C4C9 /* pic_insure2_shop.png */; };
+		54B97EAD18FA589800B6C4C9 /* pic_insure3_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EA818FA589800B6C4C9 /* pic_insure3_shop.png */; };
+		54B97EAE18FA589800B6C4C9 /* pic_insure4_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EA918FA589800B6C4C9 /* pic_insure4_shop.png */; };
+		54B97EAF18FA589800B6C4C9 /* puuman1_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EAA18FA589800B6C4C9 /* puuman1_insure_shop.png */; };
+		54B97EB318FA594B00B6C4C9 /* pic_minan_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EB018FA594B00B6C4C9 /* pic_minan_shop.png */; };
+		54B97EB418FA594B00B6C4C9 /* pic_redefining_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EB118FA594B00B6C4C9 /* pic_redefining_shop.png */; };
+		54B97EB518FA594B00B6C4C9 /* pic_cigna_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EB218FA594B00B6C4C9 /* pic_cigna_shop.png */; };
 		54BAD45D18D14B8A003822CC /* BabyInfoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD45C18D14B8A003822CC /* BabyInfoContentView.m */; };
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
@@ -1358,6 +1427,75 @@
 		54B753B218D3021E002411CF /* PuumanOutBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuumanOutBookCell.m; sourceTree = "<group>"; };
 		54B867F518E6B81A00BE5335 /* SinglepopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglepopViewController.h; sourceTree = "<group>"; };
 		54B867F618E6B81A00BE5335 /* SinglepopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglepopViewController.m; sourceTree = "<group>"; };
+		54B97E2618FA2B1E00B6C4C9 /* btn_back2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back2_insure_shop.png; sourceTree = "<group>"; };
+		54B97E2718FA2B1E00B6C4C9 /* puuman3_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puuman3_insure_shop.png; sourceTree = "<group>"; };
+		54B97E2818FA2B1E00B6C4C9 /* pic34_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic34_insure_shop.png; sourceTree = "<group>"; };
+		54B97E2918FA2B1E00B6C4C9 /* pic39_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic39_insure_shop.png; sourceTree = "<group>"; };
+		54B97E2A18FA2B1E00B6C4C9 /* pic35_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic35_insure_shop.png; sourceTree = "<group>"; };
+		54B97E2B18FA2B1E00B6C4C9 /* pic36_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic36_insure_shop.png; sourceTree = "<group>"; };
+		54B97E2C18FA2B1E00B6C4C9 /* pic37_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic37_insure_shop.png; sourceTree = "<group>"; };
+		54B97E2D18FA2B1E00B6C4C9 /* pic38_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic38_insure_shop.png; sourceTree = "<group>"; };
+		54B97E2E18FA2B1E00B6C4C9 /* pic12_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic12_insure_shop.png; sourceTree = "<group>"; };
+		54B97E2F18FA2B1E00B6C4C9 /* pic7_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic7_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3018FA2B1E00B6C4C9 /* pic8_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic8_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3118FA2B1E00B6C4C9 /* pic9_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic9_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3218FA2B1E00B6C4C9 /* pic10_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic10_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3318FA2B1E00B6C4C9 /* pic11_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic11_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3418FA2B1E00B6C4C9 /* icon1_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3518FA2B1E00B6C4C9 /* icon2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3618FA2B1E00B6C4C9 /* icon3_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3718FA2B1E00B6C4C9 /* bubble_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3818FA2B1E00B6C4C9 /* btn_back_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3918FA2B1E00B6C4C9 /* sheep_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sheep_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3A18FA2B1E00B6C4C9 /* pic6_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic6_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3B18FA2B1E00B6C4C9 /* block2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block2_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3C18FA2B1E00B6C4C9 /* ear_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ear_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3D18FA2B1E00B6C4C9 /* ear2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ear2_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3E18FA2B1E00B6C4C9 /* pic5_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic5_insure_shop.png; sourceTree = "<group>"; };
+		54B97E3F18FA2B1E00B6C4C9 /* puuman2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puuman2_insure_shop.png; sourceTree = "<group>"; };
+		54B97E4018FA2B1E00B6C4C9 /* wing1_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wing1_insure_shop.png; sourceTree = "<group>"; };
+		54B97E4118FA2B1E00B6C4C9 /* wing2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wing2_insure_shop.png; sourceTree = "<group>"; };
+		54B97E4218FA2B1E00B6C4C9 /* wing3_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wing3_insure_shop.png; sourceTree = "<group>"; };
+		54B97E4318FA2B1E00B6C4C9 /* wing4_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wing4_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6318FA572600B6C4C9 /* num1_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = num1_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6418FA572600B6C4C9 /* num2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = num2_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6518FA572600B6C4C9 /* num3_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = num3_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6618FA572600B6C4C9 /* num4_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = num4_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6718FA572600B6C4C9 /* pic29_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic29_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6818FA572600B6C4C9 /* pic30_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic30_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6918FA572600B6C4C9 /* pic32_insure_shop@.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic32_insure_shop@.png"; sourceTree = "<group>"; };
+		54B97E6A18FA572600B6C4C9 /* pic31_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic31_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6B18FA572600B6C4C9 /* pic33_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic33_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6C18FA572600B6C4C9 /* pic23_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic23_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6D18FA572600B6C4C9 /* pic24_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic24_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6E18FA572600B6C4C9 /* pic25_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic25_insure_shop.png; sourceTree = "<group>"; };
+		54B97E6F18FA572600B6C4C9 /* pic26_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic26_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7018FA572600B6C4C9 /* pic27_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic27_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7118FA572600B6C4C9 /* pic28_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic28_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7218FA572600B6C4C9 /* pic17_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic17_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7318FA572600B6C4C9 /* pic18_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic18_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7418FA572600B6C4C9 /* pic19_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic19_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7518FA572600B6C4C9 /* pic20_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic20_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7618FA572600B6C4C9 /* pic21_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic21_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7718FA572600B6C4C9 /* pic22_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic22_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7818FA572600B6C4C9 /* pic13_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic13_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7918FA572600B6C4C9 /* pic14_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic14_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7A18FA572600B6C4C9 /* pic15_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic15_insure_shop.png; sourceTree = "<group>"; };
+		54B97E7B18FA572600B6C4C9 /* pic16_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic16_insure_shop.png; sourceTree = "<group>"; };
+		54B97E9618FA581D00B6C4C9 /* block_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_insure_shop.png; sourceTree = "<group>"; };
+		54B97E9818FA583F00B6C4C9 /* title1_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title1_insure_shop.png; sourceTree = "<group>"; };
+		54B97E9918FA583F00B6C4C9 /* title2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title2_insure_shop.png; sourceTree = "<group>"; };
+		54B97E9A18FA583F00B6C4C9 /* title3_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title3_insure_shop.png; sourceTree = "<group>"; };
+		54B97EA018FA586700B6C4C9 /* triangle_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle_insure_shop.png; sourceTree = "<group>"; };
+		54B97EA418FA586F00B6C4C9 /* bg_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_insure_shop.png; sourceTree = "<group>"; };
+		54B97EA618FA589800B6C4C9 /* pic_insure1_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_insure1_shop.png; sourceTree = "<group>"; };
+		54B97EA718FA589800B6C4C9 /* pic_insure2_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_insure2_shop.png; sourceTree = "<group>"; };
+		54B97EA818FA589800B6C4C9 /* pic_insure3_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_insure3_shop.png; sourceTree = "<group>"; };
+		54B97EA918FA589800B6C4C9 /* pic_insure4_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_insure4_shop.png; sourceTree = "<group>"; };
+		54B97EAA18FA589800B6C4C9 /* puuman1_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puuman1_insure_shop.png; sourceTree = "<group>"; };
+		54B97EB018FA594B00B6C4C9 /* pic_minan_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_minan_shop.png; sourceTree = "<group>"; };
+		54B97EB118FA594B00B6C4C9 /* pic_redefining_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_redefining_shop.png; sourceTree = "<group>"; };
+		54B97EB218FA594B00B6C4C9 /* pic_cigna_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_cigna_shop.png; sourceTree = "<group>"; };
 		54BAD45B18D14B8A003822CC /* BabyInfoContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoContentView.h; sourceTree = "<group>"; };
 		54BAD45C18D14B8A003822CC /* BabyInfoContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoContentView.m; sourceTree = "<group>"; };
 		54BAD46218D15087003822CC /* PageControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlButton.h; sourceTree = "<group>"; };
@@ -2379,6 +2517,7 @@
 		54AC20C318E3FD1F001C1357 /* ShopImages */ = {
 			isa = PBXGroup;
 			children = (
+				54B97E2518FA2B0600B6C4C9 /* hospital */,
 				54ACB2DD18EBE8F400EE5F90 /* icon_flag_shop.png */,
 				54D64EF018E7C38A00B8899D /* WareView */,
 				54D64F0618E8002300B8899D /* icon_time_shop.png */,
@@ -2878,6 +3017,90 @@
 				54D64F0218E7EFAA00B8899D /* subView */,
 			);
 			name = Ware;
+			sourceTree = "<group>";
+		};
+		54B97E2518FA2B0600B6C4C9 /* hospital */ = {
+			isa = PBXGroup;
+			children = (
+				54B97EB018FA594B00B6C4C9 /* pic_minan_shop.png */,
+				54B97EB118FA594B00B6C4C9 /* pic_redefining_shop.png */,
+				54B97EB218FA594B00B6C4C9 /* pic_cigna_shop.png */,
+				54B97EA618FA589800B6C4C9 /* pic_insure1_shop.png */,
+				54B97EA718FA589800B6C4C9 /* pic_insure2_shop.png */,
+				54B97EA818FA589800B6C4C9 /* pic_insure3_shop.png */,
+				54B97EA918FA589800B6C4C9 /* pic_insure4_shop.png */,
+				54B97EAA18FA589800B6C4C9 /* puuman1_insure_shop.png */,
+				54B97EA418FA586F00B6C4C9 /* bg_insure_shop.png */,
+				54B97EA018FA586700B6C4C9 /* triangle_insure_shop.png */,
+				54B97E9818FA583F00B6C4C9 /* title1_insure_shop.png */,
+				54B97E9918FA583F00B6C4C9 /* title2_insure_shop.png */,
+				54B97E9A18FA583F00B6C4C9 /* title3_insure_shop.png */,
+				54B97E9618FA581D00B6C4C9 /* block_insure_shop.png */,
+				54B97E6218FA571A00B6C4C9 /* how */,
+				54B97E2618FA2B1E00B6C4C9 /* btn_back2_insure_shop.png */,
+				54B97E2718FA2B1E00B6C4C9 /* puuman3_insure_shop.png */,
+				54B97E2818FA2B1E00B6C4C9 /* pic34_insure_shop.png */,
+				54B97E2918FA2B1E00B6C4C9 /* pic39_insure_shop.png */,
+				54B97E2A18FA2B1E00B6C4C9 /* pic35_insure_shop.png */,
+				54B97E2B18FA2B1E00B6C4C9 /* pic36_insure_shop.png */,
+				54B97E2C18FA2B1E00B6C4C9 /* pic37_insure_shop.png */,
+				54B97E2D18FA2B1E00B6C4C9 /* pic38_insure_shop.png */,
+				54B97E2E18FA2B1E00B6C4C9 /* pic12_insure_shop.png */,
+				54B97E2F18FA2B1E00B6C4C9 /* pic7_insure_shop.png */,
+				54B97E3018FA2B1E00B6C4C9 /* pic8_insure_shop.png */,
+				54B97E3118FA2B1E00B6C4C9 /* pic9_insure_shop.png */,
+				54B97E3218FA2B1E00B6C4C9 /* pic10_insure_shop.png */,
+				54B97E3318FA2B1E00B6C4C9 /* pic11_insure_shop.png */,
+				54B97E3418FA2B1E00B6C4C9 /* icon1_insure_shop.png */,
+				54B97E3518FA2B1E00B6C4C9 /* icon2_insure_shop.png */,
+				54B97E3618FA2B1E00B6C4C9 /* icon3_insure_shop.png */,
+				54B97E3718FA2B1E00B6C4C9 /* bubble_insure_shop.png */,
+				54B97E3818FA2B1E00B6C4C9 /* btn_back_insure_shop.png */,
+				54B97E3918FA2B1E00B6C4C9 /* sheep_insure_shop.png */,
+				54B97E3A18FA2B1E00B6C4C9 /* pic6_insure_shop.png */,
+				54B97E3B18FA2B1E00B6C4C9 /* block2_insure_shop.png */,
+				54B97E3C18FA2B1E00B6C4C9 /* ear_insure_shop.png */,
+				54B97E3D18FA2B1E00B6C4C9 /* ear2_insure_shop.png */,
+				54B97E3E18FA2B1E00B6C4C9 /* pic5_insure_shop.png */,
+				54B97E3F18FA2B1E00B6C4C9 /* puuman2_insure_shop.png */,
+				54B97E4018FA2B1E00B6C4C9 /* wing1_insure_shop.png */,
+				54B97E4118FA2B1E00B6C4C9 /* wing2_insure_shop.png */,
+				54B97E4218FA2B1E00B6C4C9 /* wing3_insure_shop.png */,
+				54B97E4318FA2B1E00B6C4C9 /* wing4_insure_shop.png */,
+			);
+			name = hospital;
+			sourceTree = "<group>";
+		};
+		54B97E6218FA571A00B6C4C9 /* how */ = {
+			isa = PBXGroup;
+			children = (
+				54B97E6318FA572600B6C4C9 /* num1_insure_shop.png */,
+				54B97E6418FA572600B6C4C9 /* num2_insure_shop.png */,
+				54B97E6518FA572600B6C4C9 /* num3_insure_shop.png */,
+				54B97E6618FA572600B6C4C9 /* num4_insure_shop.png */,
+				54B97E6718FA572600B6C4C9 /* pic29_insure_shop.png */,
+				54B97E6818FA572600B6C4C9 /* pic30_insure_shop.png */,
+				54B97E6918FA572600B6C4C9 /* pic32_insure_shop@.png */,
+				54B97E6A18FA572600B6C4C9 /* pic31_insure_shop.png */,
+				54B97E6B18FA572600B6C4C9 /* pic33_insure_shop.png */,
+				54B97E6C18FA572600B6C4C9 /* pic23_insure_shop.png */,
+				54B97E6D18FA572600B6C4C9 /* pic24_insure_shop.png */,
+				54B97E6E18FA572600B6C4C9 /* pic25_insure_shop.png */,
+				54B97E6F18FA572600B6C4C9 /* pic26_insure_shop.png */,
+				54B97E7018FA572600B6C4C9 /* pic27_insure_shop.png */,
+				54B97E7118FA572600B6C4C9 /* pic28_insure_shop.png */,
+				54B97E7218FA572600B6C4C9 /* pic17_insure_shop.png */,
+				54B97E7318FA572600B6C4C9 /* pic18_insure_shop.png */,
+				54B97E7418FA572600B6C4C9 /* pic19_insure_shop.png */,
+				54B97E7518FA572600B6C4C9 /* pic20_insure_shop.png */,
+				54B97E7618FA572600B6C4C9 /* pic21_insure_shop.png */,
+				54B97E7718FA572600B6C4C9 /* pic22_insure_shop.png */,
+				54B97E7818FA572600B6C4C9 /* pic13_insure_shop.png */,
+				54B97E7918FA572600B6C4C9 /* pic14_insure_shop.png */,
+				54B97E7A18FA572600B6C4C9 /* pic15_insure_shop.png */,
+				54B97E7B18FA572600B6C4C9 /* pic16_insure_shop.png */,
+			);
+			name = how;
 			sourceTree = "<group>";
 		};
 		54CE109C18C1842C00966396 /* AFNetwork */ = {
@@ -3422,10 +3645,13 @@
 			files = (
 				5403CE3318D04F5E004CAE22 /* icon_judge_baby.png in Resources */,
 				14B8DF3318BC37A30047C6B3 /* sampleDiary_photo2.jpg in Resources */,
+				54B97E8418FA572600B6C4C9 /* pic33_insure_shop.png in Resources */,
 				5447C49D18D97D1100187BE6 /* icon_reply_topic.png in Resources */,
 				5447C4A318D97D1100187BE6 /* line_topic.png in Resources */,
 				54441A0118D431B700FBE69F /* pic_default_baby.png in Resources */,
 				5447C46718D97D0800187BE6 /* pic_dais3_fri.png in Resources */,
+				54B97E4418FA2B1E00B6C4C9 /* btn_back2_insure_shop.png in Resources */,
+				54B97E5318FA2B1E00B6C4C9 /* icon2_insure_shop.png in Resources */,
 				54F1D12D18C48FA50005CDD9 /* btn_change_diary.png in Resources */,
 				5403CE1F18D04F5E004CAE22 /* btn_bank1_baby.png in Resources */,
 				54D14FFA18CAEFD70022E1F4 /* icon_text_diary.png in Resources */,
@@ -3433,6 +3659,7 @@
 				5403CD4418D03D39004CAE22 /* icon2_weather_diary.png in Resources */,
 				5447C44C18D9785600187BE6 /* paper_top_h_shop.png in Resources */,
 				54CE116E18C1C7BF00966396 /* btn_red2.png in Resources */,
+				54B97E8E18FA572600B6C4C9 /* pic20_insure_shop.png in Resources */,
 				54AC20F118E3FD30001C1357 /* icon2_father_shop.png in Resources */,
 				54B4684C18E527D700745F72 /* icon_food_shop.png in Resources */,
 				5447C49318D97D1100187BE6 /* icon_invite_topic.png in Resources */,
@@ -3444,10 +3671,12 @@
 				541970C618D1940E0058FE64 /* chart_wei_baby_diary.png in Resources */,
 				5463759418C98493004B11EF /* tri_gray_down.png in Resources */,
 				54AC20EF18E3FD30001C1357 /* icon_compare2_shop.png in Resources */,
+				54B97E8518FA572600B6C4C9 /* pic23_insure_shop.png in Resources */,
 				5403CE4318D04F5E004CAE22 /* pic_puuman1_baby.png in Resources */,
 				541970EF18D1BA7E0058FE64 /* dot_gray_baby.png in Resources */,
 				5403CE3018D04F5E004CAE22 /* icon_female_baby.png in Resources */,
 				5403CE2E18D04F5E004CAE22 /* circle2_baby.png in Resources */,
+				54B97EB418FA594B00B6C4C9 /* pic_redefining_shop.png in Resources */,
 				5447C46618D97D0800187BE6 /* pic_dais2_fri.png in Resources */,
 				54CE116C18C1C7BF00966396 /* btn_gray3.png in Resources */,
 				5463759818C98493004B11EF /* tri_white_down.png in Resources */,
@@ -3458,6 +3687,8 @@
 				14B8DF5618BC37A40047C6B3 /* Readme.rtf in Resources */,
 				54CE116118C1C7BF00966396 /* block3_btn.png in Resources */,
 				54F1D12B18C48FA50005CDD9 /* block_photo_diary.png in Resources */,
+				54B97E9718FA581D00B6C4C9 /* block_insure_shop.png in Resources */,
+				54B97EA518FA586F00B6C4C9 /* bg_insure_shop.png in Resources */,
 				5463759018C98493004B11EF /* tri_blue_down.png in Resources */,
 				5403CE2718D04F5E004CAE22 /* btn_equip2_baby.png in Resources */,
 				5403CD3018D03D39004CAE22 /* icon10_weather_diary.png in Resources */,
@@ -3466,25 +3697,32 @@
 				54ADE08018C85D1C00B166C4 /* btn2_input_diary.png in Resources */,
 				54D64EFE18E7E62F00B8899D /* btn_cart_shop.png in Resources */,
 				549B62CD18CAC79800AFEEAB /* check_status.png in Resources */,
+				54B97E4B18FA2B1E00B6C4C9 /* pic38_insure_shop.png in Resources */,
 				54F1D13518C48FA50005CDD9 /* btn_video_diary.png in Resources */,
 				54B753AA18D2F8C4002411CF /* pic_ruler_baby.png in Resources */,
 				546375BC18C9AB36004B11EF /* tri_login_diary.png in Resources */,
 				5403CD4918D03D39004CAE22 /* icon4_weather_diary@2x.png in Resources */,
+				54B97E8C18FA572600B6C4C9 /* pic18_insure_shop.png in Resources */,
+				54B97E5C18FA2B1E00B6C4C9 /* pic5_insure_shop.png in Resources */,
 				54AC20F718E3FD30001C1357 /* icon_search_shop.png in Resources */,
 				5447C49818D97D1100187BE6 /* icon_no1_topic.png in Resources */,
 				54ADE0B218C861B700B166C4 /* btn_video_newdiary.png in Resources */,
+				54B97E7D18FA572600B6C4C9 /* num2_insure_shop.png in Resources */,
 				5403CD3A18D03D39004CAE22 /* icon15_weather_diary.png in Resources */,
 				54D14FFD18CAEFD70022E1F4 /* paper_bottom_diary.png in Resources */,
 				54CCF1E018F3E7170081C149 /* btn_diary2_diary.png in Resources */,
+				54B97E4518FA2B1E00B6C4C9 /* puuman3_insure_shop.png in Resources */,
 				54F1D13818C48FA50005CDD9 /* icon_audio2_diary.png in Resources */,
 				5403CD4E18D03D39004CAE22 /* icon7_weather_diary.png in Resources */,
 				54ADE07D18C85D1C00B166C4 /* btn_more_diary.png in Resources */,
 				14B8DF3218BC37A30047C6B3 /* sampleDiary_photo1.jpg in Resources */,
 				5403CE4418D04F5E004CAE22 /* pic_puuman2_baby.png in Resources */,
+				54B97E5618FA2B1E00B6C4C9 /* btn_back_insure_shop.png in Resources */,
 				54AC1D2318EEB542005E2DCE /* btn_share1_diary.png in Resources */,
 				54AC212818E4151D001C1357 /* block3_rec_shop.png in Resources */,
 				5447C48D18D97D1100187BE6 /* btn_reply1z_topic.png in Resources */,
 				5403CE3A18D04F5E004CAE22 /* icon_vac3_baby.png in Resources */,
+				54B97E5118FA2B1E00B6C4C9 /* pic11_insure_shop.png in Resources */,
 				546375C118C9B347004B11EF /* pic_puuman_login_diary.png in Resources */,
 				5403CE2A18D04F5E004CAE22 /* btn_vac1_baby.png in Resources */,
 				54D14FFB18CAEFD70022E1F4 /* line1_diary.png in Resources */,
@@ -3495,6 +3733,7 @@
 				5463759918C98493004B11EF /* tri_white_left.png in Resources */,
 				5447C46818D97D0800187BE6 /* pic_default_fri.png in Resources */,
 				541970C418D194070058FE64 /* chart_hei_baby_diary.png in Resources */,
+				54B97EB518FA594B00B6C4C9 /* pic_cigna_shop.png in Resources */,
 				5463758F18C98493004B11EF /* tri_blue_diary.png in Resources */,
 				544419F218D3EE2D00FBE69F /* pic3_equip_baby.png in Resources */,
 				54CE116718C1C7BF00966396 /* btn_close2.png in Resources */,
@@ -3506,11 +3745,16 @@
 				54CE116318C1C7BF00966396 /* btn_blue1.png in Resources */,
 				54ADE0AC18C861B700B166C4 /* btn_input_newdiary.png in Resources */,
 				54ACB2D718EBA3AB00EE5F90 /* icon_compare3_shop.png in Resources */,
+				54B97E9118FA572600B6C4C9 /* pic13_insure_shop.png in Resources */,
 				54AC212618E4151D001C1357 /* block1_rec_shop.png in Resources */,
 				5403CE2118D04F5E004CAE22 /* btn_body1_baby.png in Resources */,
+				54B97E6118FA2B1E00B6C4C9 /* wing4_insure_shop.png in Resources */,
 				54AC20E218E3FD30001C1357 /* btn_all2_shop.png in Resources */,
+				54B97E4818FA2B1E00B6C4C9 /* pic35_insure_shop.png in Resources */,
 				54441A0718D462DE00FBE69F /* block_new_puuman.png in Resources */,
 				54B4684818E527D700745F72 /* icon_abroad_shop.png in Resources */,
+				54B97EAD18FA589800B6C4C9 /* pic_insure3_shop.png in Resources */,
+				54B97E8D18FA572600B6C4C9 /* pic19_insure_shop.png in Resources */,
 				5403CE2318D04F5E004CAE22 /* btn_Bpre1_baby.png in Resources */,
 				54AC20EE18E3FD30001C1357 /* icon_compare1_shop.png in Resources */,
 				54441A0518D461C300FBE69F /* btn_babyinfo3_diary.png in Resources */,
@@ -3519,14 +3763,17 @@
 				5403CE2418D04F5E004CAE22 /* btn_Bpre2_baby.png in Resources */,
 				54B4684D18E527D700745F72 /* icon_health_shop.png in Resources */,
 				54B6F40918D6A5030055FC72 /* icon_admin_set.png in Resources */,
+				54B97E9018FA572600B6C4C9 /* pic22_insure_shop.png in Resources */,
 				54AC211F18E414EA001C1357 /* icon2_rec_shop.png in Resources */,
 				548D3A3618F4E3D1006CC6D6 /* pic_default_diary.png in Resources */,
 				5447C48E18D97D1100187BE6 /* btn_reply2_topic.png in Resources */,
 				54CE116A18C1C7BF00966396 /* btn_gray1.png in Resources */,
+				54B97EAC18FA589800B6C4C9 /* pic_insure2_shop.png in Resources */,
 				54AC20E518E3FD30001C1357 /* btn_rec2_shop.png in Resources */,
 				5403CD3918D03D39004CAE22 /* icon14_weather_diary@2x.png in Resources */,
 				541970ED18D1BA730058FE64 /* dot_blue_baby.png in Resources */,
 				5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */,
+				54B97E5F18FA2B1E00B6C4C9 /* wing2_insure_shop.png in Resources */,
 				5447C46918D97D0800187BE6 /* tri_blue_fri.png in Resources */,
 				54CE116D18C1C7BF00966396 /* btn_red.png in Resources */,
 				14B8DF3018BC37A30047C6B3 /* sampleDiary_auphoto.jpg in Resources */,
@@ -3553,6 +3800,7 @@
 				54AC20E818E3FD30001C1357 /* icon_back_shop.png in Resources */,
 				5474A48418C5C7AE0073B2FE /* btn_input_diary.png in Resources */,
 				54F1D12F18C48FA50005CDD9 /* btn_photo_diary.png in Resources */,
+				54B97E8F18FA572600B6C4C9 /* pic21_insure_shop.png in Resources */,
 				14B8DF2518BC37A30047C6B3 /* Readme.rtf in Resources */,
 				54CE116418C1C7BF00966396 /* btn_blue2.png in Resources */,
 				54F1D13018C48FA50005CDD9 /* btn_photo2_diary.png in Resources */,
@@ -3561,10 +3809,13 @@
 				54AC20F018E3FD30001C1357 /* icon2_diaper_shop.png in Resources */,
 				5403CD4F18D03D39004CAE22 /* icon7_weather_diary@2x.png in Resources */,
 				54F1D12A18C48FA50005CDD9 /* block_photo__h_diary.png in Resources */,
+				54B97E5218FA2B1E00B6C4C9 /* icon1_insure_shop.png in Resources */,
 				54D1500218CAEFD70022E1F4 /* pic_timeline_diary.png in Resources */,
 				148D79ED18B8A71A001B4FA7 /* InfoPlist.strings in Resources */,
 				54CE115F18C1C7BF00966396 /* block1_btn.png in Resources */,
 				54CE116B18C1C7BF00966396 /* btn_gray2.png in Resources */,
+				54B97E5718FA2B1E00B6C4C9 /* sheep_insure_shop.png in Resources */,
+				54B97E5018FA2B1E00B6C4C9 /* pic10_insure_shop.png in Resources */,
 				54CE115D18C1C7BF00966396 /* bg_prompt.png in Resources */,
 				5403CD5D18D03DBD004CAE22 /* input_invite_diary.png in Resources */,
 				54CE116618C1C7BF00966396 /* btn_close1.png in Resources */,
@@ -3573,18 +3824,25 @@
 				5403CD4718D03D39004CAE22 /* icon3_weather_diary@2x.png in Resources */,
 				5403CD3F18D03D39004CAE22 /* icon17_weather_diary@2x.png in Resources */,
 				5463759B18C98493004B11EF /* tri_white_up.png in Resources */,
+				54B97E4E18FA2B1E00B6C4C9 /* pic8_insure_shop.png in Resources */,
 				549B62CB18CABEAB00AFEEAB /* circle_status.png in Resources */,
 				5403CE3918D04F5E004CAE22 /* icon_vac2_baby.png in Resources */,
 				5447C48F18D97D1100187BE6 /* btn_topic1_topic.png in Resources */,
 				5447C48918D97D1100187BE6 /* btn_like2_topic.png in Resources */,
 				5463759618C98493004B11EF /* tri_gray_right.png in Resources */,
+				54B97E8918FA572600B6C4C9 /* pic27_insure_shop.png in Resources */,
+				54B97EAE18FA589800B6C4C9 /* pic_insure4_shop.png in Resources */,
 				54AB6CC918F2BA8D00E4269E /* circle_autoinput.png in Resources */,
 				54CCF1E818F3E7770081C149 /* btn_shop2_diary.png in Resources */,
 				54441A0318D43D9F00FBE69F /* dot3_baby_diary.png in Resources */,
 				54D64EFC18E7C39500B8899D /* btn_refresh_br_shop.png in Resources */,
+				54B97E5518FA2B1E00B6C4C9 /* bubble_insure_shop.png in Resources */,
 				54D14FF718CAEFD70022E1F4 /* icon_audio_diary.png in Resources */,
+				54B97E5D18FA2B1E00B6C4C9 /* puuman2_insure_shop.png in Resources */,
 				5447C49518D97D1100187BE6 /* icon_like1_topic.png in Resources */,
+				54B97E7F18FA572600B6C4C9 /* num4_insure_shop.png in Resources */,
 				5463757D18C98476004B11EF /* btn_next_login.png in Resources */,
+				54B97E8718FA572600B6C4C9 /* pic25_insure_shop.png in Resources */,
 				54F1D13618C48FA50005CDD9 /* btn_video2_diary.png in Resources */,
 				148D79F518B8A71A001B4FA7 /* Images.xcassets in Resources */,
 				54AC1D2418EEB542005E2DCE /* btn_share2_diary.png in Resources */,
@@ -3592,12 +3850,16 @@
 				54AFAA9618DAD6F30067B8C1 /* pic_talk_fri.png in Resources */,
 				5403CD5318D03D39004CAE22 /* icon9_weather_diary@2x.png in Resources */,
 				5403CE2218D04F5E004CAE22 /* btn_body2_baby.png in Resources */,
+				54B97E5818FA2B1E00B6C4C9 /* pic6_insure_shop.png in Resources */,
 				5447C46118D97D0800187BE6 /* icon_height_fri.png in Resources */,
+				54B97E8218FA572600B6C4C9 /* pic32_insure_shop@.png in Resources */,
 				54D64F0718E8002300B8899D /* icon_time_shop.png in Resources */,
 				54F1D10518C48B340005CDD9 /* bg_prompt.png in Resources */,
 				54F1D13218C48FA50005CDD9 /* btn_play_diary.png in Resources */,
+				54B97EAF18FA589800B6C4C9 /* puuman1_insure_shop.png in Resources */,
 				54AC212B18E41AD1001C1357 /* icon_rmb_shop.png in Resources */,
 				54AC211E18E414EA001C1357 /* icon1_rec_shop.png in Resources */,
+				54B97E9218FA572600B6C4C9 /* pic14_insure_shop.png in Resources */,
 				54D1500118CAEFD70022E1F4 /* paper_top_diary.png in Resources */,
 				544419F018D3EE2D00FBE69F /* pic1_equip_baby.png in Resources */,
 				54ADE0AA18C861B700B166C4 /* btn_audio_newdiary.png in Resources */,
@@ -3610,6 +3872,8 @@
 				54D64F0918E8004000B8899D /* icon_delete_shop.png in Resources */,
 				5403CD5B18D03DBD004CAE22 /* icon_audio_h_diary.png in Resources */,
 				54F1D12E18C48FA50005CDD9 /* btn_delete3_diary.png in Resources */,
+				54B97E9D18FA583F00B6C4C9 /* title3_insure_shop.png in Resources */,
+				54B97E5E18FA2B1E00B6C4C9 /* wing1_insure_shop.png in Resources */,
 				5463759718C98493004B11EF /* tri_gray_up.png in Resources */,
 				5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */,
 				54B4684918E527D700745F72 /* icon_bed_shop.png in Resources */,
@@ -3619,6 +3883,7 @@
 				54AB6CCA18F2BA8D00E4269E /* icon_check_autoinput.png in Resources */,
 				5447C45E18D97D0800187BE6 /* block_name_fri.png in Resources */,
 				54B4684A18E527D700745F72 /* icon_clothes_shop.png in Resources */,
+				54B97EAB18FA589800B6C4C9 /* pic_insure1_shop.png in Resources */,
 				54AC20EC18E3FD30001C1357 /* icon_check_shop.png in Resources */,
 				5463759118C98493004B11EF /* tri_blue_left.png in Resources */,
 				5403CE2B18D04F5E004CAE22 /* btn_vac2_baby.png in Resources */,
@@ -3627,6 +3892,7 @@
 				54CCF1DE18F3E7170081C149 /* btn_baby2_diary.png in Resources */,
 				541970AA18D188F40058FE64 /* pic_body_blank.png in Resources */,
 				5447C46218D97D0800187BE6 /* icon_vac_fri.png in Resources */,
+				54B97E8818FA572600B6C4C9 /* pic26_insure_shop.png in Resources */,
 				5403CE2818D04F5E004CAE22 /* btn_pre1_baby.png in Resources */,
 				54B4684E18E527D700745F72 /* icon_hospital_shop.png in Resources */,
 				54B4684618E527D700745F72 /* icon_father_shop.png in Resources */,
@@ -3636,10 +3902,13 @@
 				544419F418D3F42900FBE69F /* pic_default_baby_ware.png in Resources */,
 				54AC20E418E3FD30001C1357 /* btn_rec1_shop.png in Resources */,
 				5463759A18C98493004B11EF /* tri_white_right.png in Resources */,
+				54B97E4918FA2B1E00B6C4C9 /* pic36_insure_shop.png in Resources */,
 				54F1D13A18C48FA50005CDD9 /* icon_stop2_diary.png in Resources */,
+				54B97E5A18FA2B1E00B6C4C9 /* ear_insure_shop.png in Resources */,
 				5447C49418D97D1100187BE6 /* icon_join_topic.png in Resources */,
 				54D14FFC18CAEFD70022E1F4 /* line2_diary.png in Resources */,
 				54AC20E718E3FD30001C1357 /* icon2_abroad_shop.png in Resources */,
+				54B97E4F18FA2B1E00B6C4C9 /* pic9_insure_shop.png in Resources */,
 				54CE10F118C1842C00966396 /* MJRefresh.bundle in Resources */,
 				54CE116918C1C7BF00966396 /* btn_finish2.png in Resources */,
 				5447C46A18D97D0800187BE6 /* tri_gray_fri.png in Resources */,
@@ -3651,7 +3920,9 @@
 				5403CE3218D04F5E004CAE22 /* icon_in_baby.png in Resources */,
 				54AC20E318E3FD30001C1357 /* btn_delete_shop.png in Resources */,
 				54D64EF818E7C39500B8899D /* btn_back3_br_shop.png in Resources */,
+				54B97E8A18FA572600B6C4C9 /* pic28_insure_shop.png in Resources */,
 				5403CE3E18D04F5E004CAE22 /* line3_baby.png in Resources */,
+				54B97E9418FA572600B6C4C9 /* pic16_insure_shop.png in Resources */,
 				5403CE2D18D04F5E004CAE22 /* circle1_baby.png in Resources */,
 				5403CE3C18D04F5E004CAE22 /* line1_baby.png in Resources */,
 				54012DC618E2CB8B00F11D97 /* line2_topic.png in Resources */,
@@ -3661,10 +3932,15 @@
 				54CCF1DD18F3E7170081C149 /* btn_baby1_diary.png in Resources */,
 				54ACB2D918EBB63600EE5F90 /* pic_com_shop.png in Resources */,
 				5403CE3518D04F5E004CAE22 /* icon_out_baby.png in Resources */,
+				54B97EB318FA594B00B6C4C9 /* pic_minan_shop.png in Resources */,
+				54B97E4618FA2B1E00B6C4C9 /* pic34_insure_shop.png in Resources */,
 				54D14FF618CAEFD70022E1F4 /* circle_coin_diary.png in Resources */,
 				5403CE3718D04F5E004CAE22 /* icon_time_baby.png in Resources */,
+				54B97E8B18FA572600B6C4C9 /* pic17_insure_shop.png in Resources */,
 				5403CD4118D03D39004CAE22 /* icon18_weather_diary@2x.png in Resources */,
+				54B97E5B18FA2B1E00B6C4C9 /* ear2_insure_shop.png in Resources */,
 				5447C45F18D97D0800187BE6 /* circle_fri.png in Resources */,
+				54B97E4718FA2B1E00B6C4C9 /* pic39_insure_shop.png in Resources */,
 				54AC212718E4151D001C1357 /* block2_rec_shop.png in Resources */,
 				5463757F18C98476004B11EF /* icon_mom_diary.png in Resources */,
 				541970AD18D188F40058FE64 /* pic_filter_blank.png in Resources */,
@@ -3675,6 +3951,8 @@
 				54B6F40D18D6A5030055FC72 /* icon_sug_set.png in Resources */,
 				54F1D13918C48FA50005CDD9 /* icon_input_diary.png in Resources */,
 				5403CE4018D04F5E004CAE22 /* paper_baby.png in Resources */,
+				54B97E4C18FA2B1E00B6C4C9 /* pic12_insure_shop.png in Resources */,
+				54B97E8018FA572600B6C4C9 /* pic29_insure_shop.png in Resources */,
 				5403CE2C18D04F5E004CAE22 /* circle_photo_baby.png in Resources */,
 				5403CE2F18D04F5E004CAE22 /* dotline_vac_baby.png in Resources */,
 				54CE116518C1C7BF00966396 /* btn_blue3.png in Resources */,
@@ -3689,6 +3967,7 @@
 				54AC20EA18E3FD30001C1357 /* icon2_bottle_shop.png in Resources */,
 				5447C49718D97D1100187BE6 /* icon_male_topic.png in Resources */,
 				14B8DF3118BC37A30047C6B3 /* sampleDiary_auphoto.mp3 in Resources */,
+				54B97E9318FA572600B6C4C9 /* pic15_insure_shop.png in Resources */,
 				54CCF1DF18F3E7170081C149 /* btn_diary1_diary.png in Resources */,
 				544419F118D3EE2D00FBE69F /* pic2_equip_baby.png in Resources */,
 				54CE116218C1C7BF00966396 /* block4_btn.png in Resources */,
@@ -3701,6 +3980,7 @@
 				5447C44B18D9785600187BE6 /* paper_right_shop.png in Resources */,
 				5403CD5C18D03DBD004CAE22 /* icon_text_h_diary.png in Resources */,
 				54CE10EF18C1842C00966396 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				54B97E8318FA572600B6C4C9 /* pic31_insure_shop.png in Resources */,
 				54CE10EA18C1842C00966396 /* SinaWeibo.bundle in Resources */,
 				54CCF1EC18F3E7A80081C149 /* btn_partner2_topic.png in Resources */,
 				5403CD5218D03D39004CAE22 /* icon9_weather_diary.png in Resources */,
@@ -3708,24 +3988,32 @@
 				5403CE2518D04F5E004CAE22 /* btn_circle_baby.png in Resources */,
 				5463759518C98493004B11EF /* tri_gray_left.png in Resources */,
 				54B4685218E527D700745F72 /* icon_wash_shop.png in Resources */,
+				54B97E5418FA2B1E00B6C4C9 /* icon3_insure_shop.png in Resources */,
+				54B97E8118FA572600B6C4C9 /* pic30_insure_shop.png in Resources */,
 				5403CD3318D03D39004CAE22 /* icon11_weather_diary@2x.png in Resources */,
 				54D14FFF18CAEFD70022E1F4 /* paper_task1_diary.png in Resources */,
 				54ADE07E18C85D1C00B166C4 /* btn2_audio_diary.png in Resources */,
 				54ADE07F18C85D1C00B166C4 /* btn2_camera_diary.png in Resources */,
+				54B97E4D18FA2B1E00B6C4C9 /* pic7_insure_shop.png in Resources */,
 				5447C49F18D97D1100187BE6 /* icon_time1_topic.png in Resources */,
 				54B6F40C18D6A5030055FC72 /* icon_safe_set.png in Resources */,
 				54AC20E618E3FD30001C1357 /* frame_search_shop.png in Resources */,
 				5463759218C98493004B11EF /* tri_blue_right.png in Resources */,
 				54D1500018CAEFD70022E1F4 /* paper_task2_diary.png in Resources */,
 				54D64EF718E7C39500B8899D /* btn_back2_br_shop.png in Resources */,
+				54B97E8618FA572600B6C4C9 /* pic24_insure_shop.png in Resources */,
 				5403CD4018D03D39004CAE22 /* icon18_weather_diary.png in Resources */,
+				54B97E4A18FA2B1E00B6C4C9 /* pic37_insure_shop.png in Resources */,
 				5447C49618D97D1100187BE6 /* icon_like2_topic.png in Resources */,
+				54B97E7E18FA572600B6C4C9 /* num3_insure_shop.png in Resources */,
 				5403CD4B18D03D39004CAE22 /* icon5_weather_diary@2x.png in Resources */,
 				54ADE0AE18C861B700B166C4 /* btn_photo_newdiary.png in Resources */,
+				54B97E9C18FA583F00B6C4C9 /* title2_insure_shop.png in Resources */,
 				5403CD4218D03D39004CAE22 /* icon1_weather_diary.png in Resources */,
 				5447C46318D97D0800187BE6 /* icon_weight_fri.png in Resources */,
 				54D14FF918CAEFD70022E1F4 /* icon_info_diary.png in Resources */,
 				5447C4A118D97D1100187BE6 /* icon_vote_topic.png in Resources */,
+				54B97E6018FA2B1E00B6C4C9 /* wing3_insure_shop.png in Resources */,
 				54D14FF518CAEFD70022E1F4 /* btn_share_diary.png in Resources */,
 				54ACB2DE18EBE8F400EE5F90 /* icon_flag_shop.png in Resources */,
 				5403CD4818D03D39004CAE22 /* icon4_weather_diary.png in Resources */,
@@ -3740,6 +4028,7 @@
 				5403CE3818D04F5E004CAE22 /* icon_vac1_baby.png in Resources */,
 				5403CE3118D04F5E004CAE22 /* icon_fix_baby.png in Resources */,
 				54D14FFE18CAEFD70022E1F4 /* paper_diary.png in Resources */,
+				54B97E7C18FA572600B6C4C9 /* num1_insure_shop.png in Resources */,
 				5447C46018D97D0800187BE6 /* icon_bank_fri.png in Resources */,
 				54CE118B18C1C8DC00966396 /* btn_set1_diary.png in Resources */,
 				5463757E18C98476004B11EF /* icon_dad_diary.png in Resources */,
@@ -3753,13 +4042,16 @@
 				54AC20F918E3FD30001C1357 /* icon2_wash_shop.png in Resources */,
 				54D14FF418CAEFD70022E1F4 /* btn_delete2_diary.png in Resources */,
 				54AC212118E414EA001C1357 /* icon4_rec_shop.png in Resources */,
+				54B97EA318FA586800B6C4C9 /* triangle_insure_shop.png in Resources */,
 				5403CE3618D04F5E004CAE22 /* icon_share_baby.png in Resources */,
 				5447C4A418D97D1100187BE6 /* pic_start_topic.png in Resources */,
+				54B97E5918FA2B1E00B6C4C9 /* block2_insure_shop.png in Resources */,
 				5403CD5518D03D84004CAE22 /* btn_invite_diary.png in Resources */,
 				54B4684718E527D700745F72 /* icon_bottle_shop.png in Resources */,
 				5447C49A18D97D1100187BE6 /* icon_no3_topic.png in Resources */,
 				5447C4A018D97D1100187BE6 /* icon_time2_topic.png in Resources */,
 				5447C4A218D97D1100187BE6 /* icon_weight_topic.png in Resources */,
+				54B97E9B18FA583F00B6C4C9 /* title1_insure_shop.png in Resources */,
 				54AC20E118E3FD30001C1357 /* btn_all1_shop.png in Resources */,
 				5403CD5118D03D39004CAE22 /* icon8_weather_diary@2x.png in Resources */,
 				5474A48018C5C0630073B2FE /* btn_finish2.png in Resources */,
@@ -4225,7 +4517,7 @@
 					/Users/AF_Ra/Documents/puuman2/puuman2/Support/WeiXin,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4255,7 +4547,7 @@
 					/Users/AF_Ra/Documents/puuman2/puuman2/Support/WeiXin,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

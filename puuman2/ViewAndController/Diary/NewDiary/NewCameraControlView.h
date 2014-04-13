@@ -28,6 +28,8 @@
     UIImageView *numLabelBgView;
     BOOL recordingVideo;
     BOOL hasEffect;
+    NSTimer *timer;
+    BOOL hidden;
 }
 
 @property (assign, nonatomic) BOOL isTopic;

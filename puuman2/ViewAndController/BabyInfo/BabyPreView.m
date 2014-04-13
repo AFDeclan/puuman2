@@ -44,25 +44,34 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
 - (void)initialization
 {
       selectedIndex = 1;
-    bgLine = [[UIView alloc] initWithFrame:CGRectMake(158, 476, 548, 1)];
+    bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [bgScrollView setScrollEnabled:NO];
+    [bgScrollView setContentSize:CGSizeMake(816, 576)];
+    [rightView addSubview:bgScrollView];
+    
+    
+    bgLine = [[UIView alloc] initWithFrame:CGRectMake(134, 476, 548, 1)];
     [bgLine setBackgroundColor:PMColor3];
-    [rightView addSubview:bgLine];
+    [bgScrollView addSubview:bgLine];
     _columnImgBMode = NO;
    
     
     
-    _titles = [[UIScrollView alloc] initWithFrame:CGRectMake(98, 480, 688, 24)];
-    [rightView addSubview:_titles];
+    _titles = [[UIScrollView alloc] initWithFrame:CGRectMake(74, 480, 688, 24)];
+    [bgScrollView addSubview:_titles];
     
-    _points = [[UIScrollView alloc] initWithFrame:CGRectMake(158, 474, 548, 4)];
+    _points = [[UIScrollView alloc] initWithFrame:CGRectMake(134, 474, 548, 4)];
     [_points setBackgroundColor:[UIColor clearColor]];
-    [rightView addSubview:_points];
+    [bgScrollView addSubview:_points];
     
     _controlView = [[UIScrollView alloc] initWithFrame:CGRectMake(24, 0, 816, 0)];
     [_controlView setDelegate:self];
     [_controlView setPagingEnabled:YES];
     [_controlView setBackgroundColor:[UIColor clearColor]];
-    [rightView addSubview:_controlView];
+    [_controlView setFrame:CGRectMake(0, 0, 816, 576)];
+    [_controlView setContentSize:CGSizeMake( 40*816, 576)];
+
+    [bgScrollView addSubview:_controlView];
     NSArray *ages = [[NSDate date] ageFromDate:[[BabyData sharedBabyData] babyBirth]];
     int age = 0;
     if ([ages count] == 2) {
@@ -201,6 +210,7 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             AFImageView *imgView = [[AFImageView alloc] initWithFrame:CGRectMake(8, 32, 256, 296)];
+             [imgView setImage:[UIImage imageNamed:@"pic_default_baby.png"]];
             imgView.tag = 11;
             [cell.contentView addSubview:imgView];
             UIImageView *mask = [[UIImageView alloc] initWithFrame:CGRectMake(8, 32, 256, 296)];
@@ -212,6 +222,7 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
         // photo = [UIImage croppedImage:photo WithHeight:384 andWidth:384];
         AFImageView *photoView = (AFImageView *)[cell viewWithTag:11];
         NSString *imageName = _columnImgBMode ? [NSString stringWithFormat:@"%@%@", columnB,clonumBimages[index -1]] : [NSString stringWithFormat:@"%@%@",columnA,clonumAimages[index-1]];
+       
         [photoView getImage:imageName defaultImage:@"pic_default_baby.png                                                                                                                           "];
         UIImageView *mask = (UIImageView *)[cell viewWithTag:12];
         [mask setBackgroundColor:[UIColor whiteColor]];
@@ -235,7 +246,11 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
 - (void)refresh
 {
 
-    
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
+    }
 }
 
 - (void)setColumnImgBMode:(BOOL)columnImgBMode
@@ -252,8 +267,8 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:NO];
     [_showColumnView setScrollEnabled:NO];
-    [rightView addSubview:_showColumnView];
-    [rightView bringSubviewToFront:_controlView];
+    [bgScrollView addSubview:_showColumnView];
+    [bgScrollView bringSubviewToFront:_controlView];
     [_controlView setContentOffset:pos];
 }
 
@@ -279,15 +294,18 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
 -(void)setVerticalFrame
 {
     [super setVerticalFrame];
-   
+    [bgScrollView setContentOffset:CGPointMake(128, 0)];
+    [bgScrollView setFrame:CGRectMake(24, 128, 560, 576)];
 
 }
 
 -(void)setHorizontalFrame
 {
     [super setHorizontalFrame];
-    [_controlView setFrame:CGRectMake(24, 0, 816, 576)];
-    [_controlView setContentSize:CGSizeMake( 40*816, 192)];
+    [bgScrollView setContentOffset:CGPointMake(0, 0)];
+
+    [bgScrollView setFrame:CGRectMake(24, 0, 816, 576)];
+    SetViewLeftUp(bgScrollView, 0, 0);
 }
 
 - (void)setColumnLabel:(UILabel *)label withIndex:(NSInteger)index

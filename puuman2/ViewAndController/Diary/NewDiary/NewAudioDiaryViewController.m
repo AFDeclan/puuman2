@@ -35,7 +35,9 @@
 
 - (void)closeBtnPressed
 {
-    if ([record recordUrl]) {
+    
+    [titleTextField resignFirstResponder];
+    if ([record getIsRecorded]) {
         [CustomAlertViewController showAlertWithTitle:@"”确定要放弃本条记录？" confirmHandler:^{
              [super closeBtnPressed];
         } cancelHandler:^{

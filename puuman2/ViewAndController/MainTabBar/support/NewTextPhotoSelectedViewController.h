@@ -8,14 +8,17 @@
 
 #import "SelectPhotoImportTypeViewController.h"
 @protocol NewTextSelectPhotoDelegate;
+
 @interface NewTextPhotoSelectedViewController : SelectPhotoImportTypeViewController<UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
 
     UIImagePickerController *imagePickerController;
     UIPopoverController *popover;
     BOOL imagePickerShowed;
+ 
 }
 @property(nonatomic,assign)id<NewTextSelectPhotoDelegate>delegate;
+@property(nonatomic,assign)BOOL isMiddle;
 @end
 
 @protocol NewTextSelectPhotoDelegate <NSObject>

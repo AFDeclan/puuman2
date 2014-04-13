@@ -34,11 +34,8 @@
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_titleLabel setFont:PMFont1];
         [_content addSubview:_titleLabel];
-        
-        if ([[UIDevice currentDevice] orientation] == ALAssetOrientationUp ||
-            [[UIDevice currentDevice] orientation] == ALAssetOrientationDown ||
-            [[UIDevice currentDevice] orientation] == ALAssetOrientationUpMirrored ||
-            [[UIDevice currentDevice] orientation] == ALAssetOrientationDownMirrored) {
+         
+        if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
         }else{
             [self setHorizontalFrame];
