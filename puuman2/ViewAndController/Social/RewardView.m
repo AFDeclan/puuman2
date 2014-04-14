@@ -21,7 +21,7 @@ static NSString *ranks[5] = {@"一等奖",@"二等奖",@"三等奖",@"四等奖"
         [self setBackgroundColor:[UIColor clearColor]];
         bg_rewardView = [[AFImageView alloc] init];
         [bg_rewardView setAlpha:0.5];
-        [bg_rewardView setBackgroundColor:PMColor6];
+        [bg_rewardView setBackgroundColor:[UIColor clearColor]];
         [self addSubview:bg_rewardView];
         info_title = [[UILabel alloc] initWithFrame:CGRectMake(56, 16, 0, 0)];
         [info_title setBackgroundColor:[UIColor clearColor]];

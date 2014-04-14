@@ -60,6 +60,14 @@
     [rankTable setShowsVerticalScrollIndicator:NO];
     [_content addSubview:rankTable];
     
+    empty_rank  = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 192, 240)];
+    [empty_rank setTextColor:PMColor3];
+    [empty_rank setFont:PMFont3];
+    [empty_rank setNumberOfLines:2];
+    [empty_rank setText:@"等你参与"];
+    [empty_rank setBackgroundColor:[UIColor clearColor]];
+    [rankTable addSubview:empty_rank];
+    [empty_rank setAlpha:0];
     
 //    instructionBtn = [[ColorButton alloc] init];
 //    [instructionBtn  initWithTitle:@"说明" andIcon:[UIImage imageNamed:@"icon_info_diary.png"] andButtonType:kGrayLeftUp];
@@ -138,6 +146,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (rankTable == tableView) {
+        if ([[[Forum sharedInstance] ranks] count] == 0) {
+            [empty_rank setAlpha:1];
+        }else{
+            [empty_rank setAlpha:0];
+        }
         return [[[Forum sharedInstance] ranks] count];
     }else{
         return [[[Forum sharedInstance] awards] count];

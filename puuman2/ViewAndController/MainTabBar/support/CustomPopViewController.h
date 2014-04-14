@@ -10,7 +10,6 @@
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
 
-@protocol PopViewDelegate;
 @interface CustomPopViewController : PopViewController
 {
     UIImageView *bgImgView;
@@ -19,15 +18,11 @@
     UIButton *_closeBtn;
     UIButton *_finishBtn;
 }
-@property(assign,nonatomic) id<PopViewDelegate> delegate;
+
 @property(assign,nonatomic)ControlBtnType controlBtnType;
 - (void)setTitle:(NSString *)title withIcon:(UIImage *)image;
 - (void)show;
 - (void)hidden;
 - (void)finishBtnPressed;
 - (void)closeBtnPressed;
-@end
-@protocol PopViewDelegate <NSObject>
-@optional
-- (void)popViewfinished;
 @end

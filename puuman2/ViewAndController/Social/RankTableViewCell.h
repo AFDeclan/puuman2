@@ -23,6 +23,7 @@
     UILabel *info_reply;
     UILabel *info_like;
     UILabel *total;
+    
 }
 
 @property(nonatomic,assign)NSInteger row;

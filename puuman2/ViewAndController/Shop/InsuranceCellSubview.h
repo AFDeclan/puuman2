@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InsuranceInfoViewController.h"
 
-
-@interface InsuranceCellSubview : UIView
+@interface InsuranceCellSubview : UIView<PopViewDelegate>
 {
     UIImageView *_insuranceImageView;
     UIImageView *_maskView;

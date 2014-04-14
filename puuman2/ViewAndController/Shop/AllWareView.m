@@ -244,6 +244,14 @@
     
         }
             break;
+        case ShopStateInsurance:
+        {
+            _shopState = ShopStateNormal;
+            [ShopModel sharedInstance].sectionIndex = -1;
+          
+            
+        }
+            break;
         default:
             break;
     }

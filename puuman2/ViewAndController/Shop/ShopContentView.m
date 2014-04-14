@@ -117,8 +117,8 @@
 
 - (void)goToAllShop
 {
+   
 
-    
     [allView setAlpha:0];
     [UIView animateWithDuration:0.5 animations:^{
         [allView setAlpha:1];
@@ -134,7 +134,9 @@
 - (void)goToRectShop
 {
 
-    
+    [ShopModel sharedInstance].sectionIndex = -1;
+    [ShopModel sharedInstance].subClassIndex = -1;
+    PostNotification(Noti_RefreshMenu, nil);
     [rectView setAlpha:0];
     [UIView animateWithDuration:0.5 animations:^{
         [rectView setAlpha:1];

@@ -15,7 +15,7 @@
 @interface ShopWebViewController ()
 
 @end
-#define WaitTime 2
+#define WaitTime 20
 @implementation ShopWebViewController
 @synthesize delegate = _delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -216,7 +216,7 @@
     _ware=ware;
     _shopsInfo=shopsInfo;
     _shopIndex=index;
-   // if (![self keyUrlForPaid])
+    if (![self keyUrlForPaid])
         [self startTimer:WaitTime];
     [_shopsTableView reloadData];
     _recShopName = [[_shopsInfo objectAtIndex:_shopIndex] objectForKey:kShopNameKey];
@@ -409,8 +409,8 @@
     if (![self keyUrlForPaid])
         [self startTimer:WaitTime];
     [self loadWebPageWithString:[[_shopsInfo objectAtIndex:row] valueForKey:kShopLinkKey]   WithShop:[[_shopsInfo objectAtIndex:row] valueForKey:kShopNameKey] WithWare:_ware.WName WID:_ware.WID ShopIndex:[[[_shopsInfo objectAtIndex:row] valueForKey:kShopIndexKey] integerValue]];
-   
     [self otherShop];
+    
 }
 
 - (void)loadWebPageWithString:(NSString*)urlString WithShop:(NSString*) shopName WithWare:(NSString*) wareName WID:(NSInteger)wid ShopIndex:(NSInteger)shopIndex

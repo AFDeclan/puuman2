@@ -54,6 +54,8 @@
     name_textfield = [[CustomTextField alloc] initWithFrame:CGRectMake(224, 248,256, 48)];
     [name_textfield setPlaceholder:@"宝宝乳名（可空缺）"];
     name_textfield.delegate = self;
+    name_textfield.keyboardType = UIKeyboardTypeDefault;
+    name_textfield.returnKeyType = UIReturnKeyNext;
     [self addSubview:name_textfield];
     
     birthday = [[CustomTextField alloc] initWithFrame:CGRectMake(224, 312,256, 48)];

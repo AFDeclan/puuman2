@@ -44,6 +44,8 @@
 {
     titleTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 112, 640, 48)];
     titleTextField.placeholder = @"请输入标题……";
+    titleTextField.keyboardType = UIKeyboardTypeDefault;
+    titleTextField.returnKeyType = UIReturnKeyDone;
    // [titleTextField setDelegate:self];
     [_content addSubview:titleTextField];
     
@@ -69,6 +71,8 @@
     _textView = [[UITextView alloc] initWithFrame:CGRectMake(32, 176, 640, 360)]; //512
     [_textView setFont:PMFont2];
     [_textView setDelegate:self];
+    _textView.keyboardType = UIKeyboardTypeDefault;
+    _textView.returnKeyType = UIReturnKeyDefault;
     [_textView setTextColor:PMColor1];
     [_textView setBackgroundColor:[UIColor clearColor]];
     [_content addSubview:_textView];

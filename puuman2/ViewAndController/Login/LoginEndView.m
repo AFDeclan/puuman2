@@ -21,6 +21,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _isEnd = YES;
         [self initialize];
     }
     return self;
@@ -53,6 +54,7 @@
     _passwordLabel=[[UILabel alloc] initWithFrame:CGRectMake(140, 336, 68, 16)];
     [_passwordLabel setFont:PMFont2];
     [_passwordLabel setText:@"密码"];
+   
     [_passwordLabel setTextAlignment:NSTextAlignmentRight];
     [_passwordLabel setTextColor:PMColor1];
     [_passwordLabel setBackgroundColor:[UIColor clearColor]];
@@ -61,9 +63,13 @@
     _userField = [[CustomTextField alloc] initWithFrame:CGRectMake(240, 256,256, 48)];
     [_userField setPlaceholder:@"常用邮箱或手机"];
     [_userField setDelegate:self];
+    _userField.keyboardType = UIKeyboardTypeEmailAddress;
+    _userField.returnKeyType = UIReturnKeyNext;
     [self addSubview:_userField];
     
     _pwdField = [[CustomTextField alloc] initWithFrame:CGRectMake(240, 320, 256, 48)];
+    _pwdField.keyboardType = UIKeyboardTypeDefault;
+    _pwdField.returnKeyType = UIReturnKeyGo;
     [self addSubview:_pwdField];
     
     
@@ -106,6 +112,7 @@
 
 - (void)theViewIsEndView:(BOOL)isEndView
 {
+    _isEnd = isEndView;
     if (isEndView) {
         [_registerBtn setAlpha:1];
         [_loginBtn setAlpha:0];
@@ -138,12 +145,12 @@
             _userNameLabel.text = @"邀请码";
             _userField.placeholder = @"输入您的邀请码";
             _passwordLabel.text = @"设置密码";
-            _pwdField.secureTextEntry = NO;
             _inviteCodeLabel.text = @"我没有邀请码";
             [_inviteCodeBtn initWithTitle:@"我没有邀请码" andButtonType:kRedLeftUp];
             [_loginBtn setImage:[UIImage imageNamed:@"btn_reg_login_diary.png"] forState:UIControlStateNormal];
             UILabel *title = (UILabel *)[self viewWithTag:10];
             [title setText:@"用邀请码注册您的扑满日记账号吧！"];
+          
         }
         else
         {
@@ -151,11 +158,11 @@
             _userNameLabel.text = @"用户名";
             _userField.placeholder = @"常用邮箱或手机";
             _passwordLabel.text = @"密码";
-            _pwdField.secureTextEntry = YES;
             _inviteCodeLabel.text = @"我有邀请码";
             [_loginBtn setImage:[UIImage imageNamed:@"btn2_login_diary.png"] forState:UIControlStateNormal];
             UILabel *title = (UILabel *)[self viewWithTag:10];
             [title setText:@"登陆您的扑满日记账号吧！"];
+        
         }
         [UIView animateWithDuration:0.2 animations:^{self.alpha = 1;}];
     }];
@@ -404,4 +411,19 @@
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == _pwdField) {
+        if (_isEnd) {
+            [self registerButtonPressed:nil];
+        }else{
+            [self loginButtonPressed:nil];
+        }
+    }
+    if (textField == _userField) {
+        [_userField resignFirstResponder];
+        [_pwdField becomeFirstResponder];
+    }
+    return YES;
+}
 @end

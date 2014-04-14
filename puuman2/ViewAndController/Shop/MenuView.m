@@ -213,6 +213,8 @@
         }else{
             [selectedBtn setIsSelected:NO];
             [selectedBtn unSelected];
+            PostNotification(Noti_ReloadShopMall, nil);
+            PostNotification(Noti_ReloadRankView, nil);
         }
     }else{
         if (selectedBtn) {

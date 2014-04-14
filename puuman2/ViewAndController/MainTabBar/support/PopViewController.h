@@ -14,13 +14,19 @@ typedef enum
     kOnlyFinishButton,
     kNoneButton
 }ControlBtnType;
+@protocol PopViewDelegate;
 @interface PopViewController : PopUpViewController
 {
     UIView *bgView;
     UIView *_content;
 }
+@property(assign,nonatomic) id<PopViewDelegate> delegate;
 - (void)initialization;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 - (void)dismiss;
+@end
+@protocol PopViewDelegate <NSObject>
+@optional
+- (void)popViewfinished;
 @end

@@ -181,6 +181,7 @@
    [contentShop goToRectShop];
     [rectWareBtn selected];
     [allWareBtn unSelected];
+    
    
 }
 

@@ -10,7 +10,8 @@
 #import "ColorsAndFonts.h"
 #import "MobClick.h"
 #import "UniverseConstant.h"
-
+#import "MainTabBarController.h"
+#import "UniverseConstant.h"
 
 @implementation HealthCell
 
@@ -39,8 +40,24 @@
         [self whyBtnPressed:self.whyBtn];
     }
     [self setDatawithHospital:kNoneHospital];
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
+    }
    
 }
+
+- (void)setVerticalFrame
+{
+   // SetViewLeftUp(self.contentView, -24, 0);
+}
+
+- (void)setHorizontalFrame
+{
+    //SetViewLeftUp(self.contentView, 0, 0);
+}
+
 -(IBAction)whyBtnPressed:(UIButton *)sender
 {
     [MobClick event:umeng_event_click label:@"Why_HealthCell"];

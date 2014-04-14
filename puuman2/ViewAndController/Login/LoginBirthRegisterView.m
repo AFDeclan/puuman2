@@ -59,6 +59,8 @@
     
     name_textfield = [[CustomTextField alloc] initWithFrame:CGRectMake(224, 248,256, 48)];
     [name_textfield setPlaceholder:@"名字"];
+    name_textfield.keyboardType = UIKeyboardTypeDefault;
+    name_textfield.returnKeyType = UIReturnKeyNext;
     name_textfield.delegate = self;
     [self addSubview:name_textfield];
      boy = [[AFTextImgButton alloc] initWithFrame:CGRectMake(224, 312, 120, 48)];

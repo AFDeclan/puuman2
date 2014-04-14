@@ -9,7 +9,7 @@
 
 #import "InsuranceCellSubview.h"
 #import "ColorsAndFonts.h"
-//#import "InsuranceInfoViewController.h"
+#import "MainTabBarController.h"
 
 @implementation InsuranceCellSubview
 
@@ -58,19 +58,16 @@
 {
     NSString *url = [_insurance valueForKey:@"introduce"];
     if (!url) return;
-//    InsuranceInfoViewController *infoViewCon = [[InsuranceInfoViewController alloc] init];
-//    [BlurView showViewController:infoViewCon withVerticalViewFrame:CGRectMake(0, 0, 768, 1024) andHorizontalViewFrame:CGRectMake(0, 0, 1024, 768)];
-//    [infoViewCon setInfoUrl:url];
+    InsuranceInfoViewController *infoViewCon = [[InsuranceInfoViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:infoViewCon.view];
+    [infoViewCon setInfoUrl:url];
+    [infoViewCon setDelegate:self];
+    [infoViewCon show];
 }
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)popViewfinished
 {
-    // Drawing code
+    
 }
-*/
 
 @end

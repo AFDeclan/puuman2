@@ -69,6 +69,8 @@
      [self addSubview:detailLabel];
      relateNum = [[CustomTextField alloc] initWithFrame:CGRectMake(0, 80, 240, 48)];
      [relateNum setText:@""];
+    relateNum.keyboardType = UIKeyboardTypeDefault;
+    relateNum.returnKeyType = UIReturnKeySend;
      [relateNum setPlaceholder:@"输入对方的邮箱或电话号"];
      [self addSubview:relateNum];
      inviteBtn = [[ColorButton alloc] init];

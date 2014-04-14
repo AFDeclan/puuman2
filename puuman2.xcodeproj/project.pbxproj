@@ -408,6 +408,10 @@
 		54AE2BBB18E93FEB00D24F92 /* MemberCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AE2BB418E93FEB00D24F92 /* MemberCache.m */; };
 		54AE788218DFF87100AE558C /* TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AE788118DFF87100AE558C /* TopicCell.m */; };
 		54AE788618E00BD200AE558C /* PartnerDataTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AE788518E00BD200AE558C /* PartnerDataTitleView.m */; };
+		54AF7DF818FBB3F400FC454C /* InsuranceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AF7DF718FBB3F400FC454C /* InsuranceInfoViewController.m */; };
+		54AF7DFA18FBCD5A00FC454C /* tri_baby_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AF7DF918FBCD5A00FC454C /* tri_baby_diary.png */; };
+		54AF7DFC18FBCD8A00FC454C /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AF7DFB18FBCD8A00FC454C /* left_arrow.png */; };
+		54AF7DFE18FBCD9800FC454C /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AF7DFD18FBCD9800FC454C /* right_arrow.png */; };
 		54AFAA7E18DA896B0067B8C1 /* AllWordsPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA7D18DA896B0067B8C1 /* AllWordsPopViewController.m */; };
 		54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA8018DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m */; };
 		54AFAA8418DA94610067B8C1 /* CreateTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA8318DA94600067B8C1 /* CreateTopicViewController.m */; };
@@ -1278,6 +1282,11 @@
 		54AE788118DFF87100AE558C /* TopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCell.m; sourceTree = "<group>"; };
 		54AE788418E00BD200AE558C /* PartnerDataTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerDataTitleView.h; sourceTree = "<group>"; };
 		54AE788518E00BD200AE558C /* PartnerDataTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerDataTitleView.m; sourceTree = "<group>"; };
+		54AF7DF618FBB3F400FC454C /* InsuranceInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceInfoViewController.h; sourceTree = "<group>"; };
+		54AF7DF718FBB3F400FC454C /* InsuranceInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceInfoViewController.m; sourceTree = "<group>"; };
+		54AF7DF918FBCD5A00FC454C /* tri_baby_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_baby_diary.png; sourceTree = "<group>"; };
+		54AF7DFB18FBCD8A00FC454C /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
+		54AF7DFD18FBCD9800FC454C /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
 		54AFAA7C18DA896B0067B8C1 /* AllWordsPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllWordsPopViewController.h; sourceTree = "<group>"; };
 		54AFAA7D18DA896B0067B8C1 /* AllWordsPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllWordsPopViewController.m; sourceTree = "<group>"; };
 		54AFAA7F18DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllWordsPopTalkTableViewCell.h; sourceTree = "<group>"; };
@@ -2432,6 +2441,9 @@
 		5463757518C98476004B11EF /* LoginImages */ = {
 			isa = PBXGroup;
 			children = (
+				54AF7DFD18FBCD9800FC454C /* right_arrow.png */,
+				54AF7DFB18FBCD8A00FC454C /* left_arrow.png */,
+				54AF7DF918FBCD5A00FC454C /* tri_baby_diary.png */,
 				5463757618C98476004B11EF /* btn_back_login.png */,
 				5463757718C98476004B11EF /* btn_next_login.png */,
 				5463757818C98476004B11EF /* icon_dad_diary.png */,
@@ -2824,6 +2836,8 @@
 		54B4682718E5212A00745F72 /* Insurance */ = {
 			isa = PBXGroup;
 			children = (
+				54AF7DF618FBB3F400FC454C /* InsuranceInfoViewController.h */,
+				54AF7DF718FBB3F400FC454C /* InsuranceInfoViewController.m */,
 				54B4682818E5213700745F72 /* InsuranceCellSubview.h */,
 				54B4682918E5213700745F72 /* InsuranceCellSubview.m */,
 				54B4682A18E5213700745F72 /* InsuranceCell.h */,
@@ -3711,6 +3725,7 @@
 				5403CD3A18D03D39004CAE22 /* icon15_weather_diary.png in Resources */,
 				54D14FFD18CAEFD70022E1F4 /* paper_bottom_diary.png in Resources */,
 				54CCF1E018F3E7170081C149 /* btn_diary2_diary.png in Resources */,
+				54AF7DFE18FBCD9800FC454C /* right_arrow.png in Resources */,
 				54B97E4518FA2B1E00B6C4C9 /* puuman3_insure_shop.png in Resources */,
 				54F1D13818C48FA50005CDD9 /* icon_audio2_diary.png in Resources */,
 				5403CD4E18D03D39004CAE22 /* icon7_weather_diary.png in Resources */,
@@ -3844,6 +3859,7 @@
 				5463757D18C98476004B11EF /* btn_next_login.png in Resources */,
 				54B97E8718FA572600B6C4C9 /* pic25_insure_shop.png in Resources */,
 				54F1D13618C48FA50005CDD9 /* btn_video2_diary.png in Resources */,
+				54AF7DFA18FBCD5A00FC454C /* tri_baby_diary.png in Resources */,
 				148D79F518B8A71A001B4FA7 /* Images.xcassets in Resources */,
 				54AC1D2418EEB542005E2DCE /* btn_share2_diary.png in Resources */,
 				54D14FF318CAEFD70022E1F4 /* btn_delete1_diary.png in Resources */,
@@ -3894,6 +3910,7 @@
 				5447C46218D97D0800187BE6 /* icon_vac_fri.png in Resources */,
 				54B97E8818FA572600B6C4C9 /* pic26_insure_shop.png in Resources */,
 				5403CE2818D04F5E004CAE22 /* btn_pre1_baby.png in Resources */,
+				54AF7DFC18FBCD8A00FC454C /* left_arrow.png in Resources */,
 				54B4684E18E527D700745F72 /* icon_hospital_shop.png in Resources */,
 				54B4684618E527D700745F72 /* icon_father_shop.png in Resources */,
 				54AC20E918E3FD30001C1357 /* icon2_bed_shop.png in Resources */,
@@ -4287,6 +4304,7 @@
 				54B4685C18E54D6200745F72 /* SubTypeButton.m in Sources */,
 				54B4686218E5512300745F72 /* ShopMenuView.m in Sources */,
 				14B8DF1E18BC37A30047C6B3 /* DiaryFileManager.m in Sources */,
+				54AF7DF818FBB3F400FC454C /* InsuranceInfoViewController.m in Sources */,
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,
 				5403CE4E18D06E87004CAE22 /* BabyInfoButton.m in Sources */,
 				54012DF618E3092E00F11D97 /* BodyPartnerDataCell.m in Sources */,

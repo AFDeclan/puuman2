@@ -26,6 +26,7 @@
     BOOL _hasInviteCode;
     UIView *protocolView;
     UIButton *detailBtn;
+    BOOL _isEnd;
 }
 @property (assign,nonatomic) id <EndViewDelegate> delegate;
 - (void)theViewIsEndView:(BOOL)isEndView;
