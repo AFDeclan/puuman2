@@ -23,7 +23,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-         SetViewLeftUp(showAndHiddenBtn, 432, 350);
+       //  SetViewLeftUp(showAndHiddenBtn, 432, 350);
+         [showAndHiddenBtn setAlpha:0];
         [self initWithLeftView];
         [self initWithRightView];
     
@@ -249,7 +250,7 @@
 {
     [super setVerticalFrame];
     [leftView setFrame:CGRectMake(-432, 0, 472, 832)];
-   [showAndHiddenBtn setAlpha:1];
+   //[showAndHiddenBtn setAlpha:1];
     [inBookTable setFrame:CGRectMake(0, 64, 216, 768)];
     [outBookTable setFrame:CGRectMake(216, 64, 216, 768)];
     SetViewLeftUp(label_puuman, 196, 176);
@@ -267,7 +268,7 @@
 {
     [super setHorizontalFrame];
     [leftView setFrame:CGRectMake(0, 0, 432, 576)];
-    [showAndHiddenBtn setAlpha:0];
+    //[showAndHiddenBtn setAlpha:0];
     [inBookTable setFrame:CGRectMake(0, 64, 216, 512)];
     [outBookTable setFrame:CGRectMake(216, 64, 216, 512)];
     SetViewLeftUp(label_puuman, 544, 96);
@@ -284,7 +285,7 @@
 
 - (void)fold
 {
-    [showAndHiddenBtn foldWithDuration:0.3];
+   // [showAndHiddenBtn foldWithDuration:0.3];
     [UIView animateWithDuration:0.3 animations:^{
         SetViewLeftUp(leftView, -432, 0);
     }];
@@ -293,7 +294,7 @@
 
 - (void)unfold
 {
-    [showAndHiddenBtn unfoldWithDuration:0.3];
+   // [showAndHiddenBtn unfoldWithDuration:0.3];
     [UIView animateWithDuration:0.3 animations:^{
         SetViewLeftUp(leftView, 0, 0);
     }];

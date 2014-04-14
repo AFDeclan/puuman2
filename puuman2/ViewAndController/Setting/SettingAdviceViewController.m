@@ -33,6 +33,7 @@
     UILabel *label  =[[UILabel alloc] initWithFrame:CGRectMake(36, 114, 288, 24)];
     [label setFont:PMFont2];
     [label setTextColor:PMColor3];
+    [label setBackgroundColor:[UIColor clearColor]];
     [label setText:@"请在下面输入您对我们的宝贵意见和建议："];
     [_content addSubview:label];
     textBgView  =[[UIImageView alloc] initWithFrame: CGRectMake(32, 146, 640, 160)];

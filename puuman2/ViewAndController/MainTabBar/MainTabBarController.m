@@ -45,7 +45,7 @@ static MainTabBarController *instance;
         [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
         [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
         [MyNotiCenter addObserver:self selector:@selector(showBottomInputView:) name:Noti_BottomInputViewShow object:nil];
-
+        [self.tabBar removeFromSuperview];
         
     }
     return self;
@@ -55,7 +55,11 @@ static MainTabBarController *instance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tabBar removeFromSuperview];
+//    UIView *transitionView = [self.view.subviews firstObject];
+//    for (UIView *view in [self.view subviews]) {
+//        [view removeFromSuperview];
+//    }
+ 
     [self initWithTabBar];
     _isReply = YES;
     userInfo = [UserInfo sharedUserInfo];
@@ -78,10 +82,14 @@ static MainTabBarController *instance;
 
 - (void)initWithTabBar
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES animated:NO];
     tabBar  = [[MainTabBar alloc] initWithFrame:CGRectMake(0, 0, 64, 0)];
     [tabBar setDelegate:self];
     [self.view addSubview:tabBar];
     
+    self.hidesBottomBarWhenPushed = YES;
+    UIView *transitionView = [self.view.subviews firstObject];
+    transitionView.frame = CGRectMake(0, 0, 1024, 1024);
     bgImgView = [[UIImageView alloc] init];
     [self.view insertSubview:bgImgView atIndex:0];
 }
@@ -145,6 +153,7 @@ static MainTabBarController *instance;
 
 -(void)setVerticalFrame
 {
+  
     if (!_isVertical) {
         _isVertical = YES;
          [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Vertical object:nil];
@@ -157,14 +166,13 @@ static MainTabBarController *instance;
 
 -(void)setHorizontalFrame
 {
-   
     if (_isVertical) {
          _isVertical = NO;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Horizontal object:nil];
     }
     [tabBar setHorizontalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
-    [bgImgView setFrame:CGRectMake(0, 0, 1024, 768)];
+    [bgImgView setFrame:CGRectMake(0, 0, 1024, 1024)];
 }
 
 - (void)showLoginView

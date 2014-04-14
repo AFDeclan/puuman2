@@ -31,6 +31,7 @@
         [_content addSubview:icon];
         _titleLabel = [[UILabel alloc] init];
         [_titleLabel setTextColor:PMColor6];
+        [_titleLabel setBackgroundColor:[UIColor clearColor]];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_titleLabel setFont:PMFont1];
         [_content addSubview:_titleLabel];
@@ -51,6 +52,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+
 
 - (void)setVerticalFrame
 {
@@ -140,6 +142,7 @@
 
 - (void)show
 {
+    
     [bgView setAlpha:0];
     [UIView animateWithDuration:0.4 animations:^{
         [bgView setAlpha:0.3];

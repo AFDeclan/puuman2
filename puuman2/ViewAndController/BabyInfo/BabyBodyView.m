@@ -96,6 +96,7 @@
     noti_label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 544, 10)];
     [noti_label setFont:PMFont4];
     [noti_label setTextColor:PMColor3];
+    [noti_label setBackgroundColor:[UIColor clearColor]];
     [noti_label setText:@"左右滑动切换身高&体重"];
     [noti_label setTextAlignment:NSTextAlignmentCenter];
     [rightView addSubview:noti_label];

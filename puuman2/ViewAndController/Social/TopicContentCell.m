@@ -86,6 +86,10 @@
     [self addSubview:rightBtn];
     [rightBtn setDirection:YES];
     status = TopicStatus_On;
+    
+
+    
+    
     if([MainTabBarController sharedMainViewController].isVertical)
     {
         [self setVerticalFrame];
@@ -370,8 +374,7 @@
 
 - (void)currentTopic
 {
- 
-
+    PostNotification(Noti_GoToCurrentTopic, nil);
 }
 
 - (void)initiate

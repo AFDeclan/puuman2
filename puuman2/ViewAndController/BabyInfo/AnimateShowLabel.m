@@ -18,7 +18,9 @@
         // Initialization code
         [self setScrollEnabled:NO];
         title_First = [[UILabel alloc] init];
+        [title_First setBackgroundColor:[UIColor clearColor]];
         title_Second = [[UILabel alloc] init];
+        [title_Second setBackgroundColor:[UIColor clearColor]];
         canMove = NO;
     }
     return self;

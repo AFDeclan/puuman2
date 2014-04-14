@@ -43,6 +43,7 @@
     [title setText:@"请输入宝宝的基本信息"];
     [title setTextAlignment:NSTextAlignmentCenter];
     [title setTextColor:PMColor3];
+    [title setBackgroundColor:[UIColor clearColor]];
     [self addSubview:title];
     
     UIImageView *portrait=[[UIImageView alloc] initWithFrame:CGRectMake(282, 64, 140, 140) ];

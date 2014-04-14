@@ -33,6 +33,7 @@
     [title setText:@"将修改密码的链接网址发送给您"];
     [title setTextAlignment:NSTextAlignmentCenter];
     [title setTextColor:PMColor2];
+    [title setBackgroundColor:[UIColor clearColor]];
     [self addSubview:title];
     UIImageView *icon=[[UIImageView alloc] initWithFrame:CGRectMake(280, 48, 144, 180) ];
     [icon setImage:[UIImage imageNamed:@"pic_puuman_login_diary.png"]];
@@ -42,6 +43,7 @@
     [userLabel setFont:PMFont2];
     [userLabel setText:@"邮箱或手机号"];
     [userLabel setTextAlignment:NSTextAlignmentRight];
+    [userLabel setBackgroundColor:[UIColor clearColor]];
     [userLabel setTextColor:PMColor2];
     [self addSubview:userLabel];
     ColorButton  *send = [[ColorButton alloc] init];

@@ -63,11 +63,13 @@
     [heightLabel setFont:PMFont1];
     [heightLabel setTextColor:PMColor1];
     [heightLabel setText:@"无记录"];
+    [heightLabel setBackgroundColor:[UIColor clearColor]];
     [_content addSubview:heightLabel];
     weightLabel = [[UILabel alloc] initWithFrame:CGRectMake(544, 300, 80, 24)];
     [_content addSubview:weightLabel];
     [weightLabel setTextColor:PMColor1];
     [weightLabel setFont:PMFont1];
+    [weightLabel setBackgroundColor:[UIColor clearColor]];
     [weightLabel setText:@"无记录"];
 }
 

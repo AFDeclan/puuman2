@@ -57,7 +57,9 @@
     SetViewLeftUp(changeBtn, 592, 112);
     SetViewLeftUp(inviteBtn, 592, 152);
     
-    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(432, 112, 2, 492)];
+    [line setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_timeline_diary.png"]]];
+    [_content addSubview:line];
     
    
     
@@ -187,10 +189,13 @@
     }
     if ([indexPath row] == 0) {
         [cell buildWithData:_memberInfo andUserData:_userInfo andDataType:kPartnerBirthday];
+        [cell setBackgroundColor:PMColor5];
     }else if([indexPath row] == 1) {
         [cell buildWithData:_memberInfo  andUserData:_userInfo  andDataType:kPartnerHeight];
+        [cell setBackgroundColor:[UIColor whiteColor]];
     }else if([indexPath row]== 2){
         [cell buildWithData:_memberInfo andUserData:_userInfo  andDataType:kPartnerWeight];
+        [cell setBackgroundColor:PMColor5];
     }
     
        

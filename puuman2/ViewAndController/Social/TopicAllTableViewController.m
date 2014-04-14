@@ -35,6 +35,19 @@
         votings = [[NSArray alloc] init];
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSArray alloc] init];
+        emptyNotiView = [[UIView alloc] initWithFrame:CGRectMake(192, 216, 224, 80)];
+        [self.view addSubview:emptyNotiView];
+        UIImageView  *icon_empty = [[UIImageView alloc] initWithFrame:CGRectMake(36, 0, 152, 40)];
+        [icon_empty setImage:[UIImage imageNamed:@"pic_diary_blank.png"]];
+        [emptyNotiView addSubview:icon_empty];
+        noti_empty = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, 224, 40)];
+        [noti_empty setFont:PMFont2];
+        [noti_empty setTextColor:PMColor2];
+        [noti_empty setNumberOfLines:2];
+        [noti_empty setTextAlignment:NSTextAlignmentCenter];
+        [noti_empty setBackgroundColor:[UIColor clearColor]];
+        [emptyNotiView addSubview:noti_empty];
+      
         [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(refreshVoteTable) name:Noti_RefreshVoteTabe object:nil];
         [MyNotiCenter addObserver:self selector:@selector(refreshCellWithRow:) name:Noti_RefreshTextTopicCell object:nil];
@@ -72,9 +85,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (_voting) {
+        if ([votings count]== 0) {
+            [noti_empty setText:@"还没有人发起话题哦~"];
+            [emptyNotiView setAlpha:1];
+        }else{
+            [emptyNotiView setAlpha:0];
+        }
         return [votings count];
  
     }else{
+        if ([replays count]== 0) {
+            [noti_empty setText:@"还没有人参与话题哦~"];
+
+            [emptyNotiView setAlpha:1];
+        }else{
+            [emptyNotiView setAlpha:0];
+        }
         return [replays count];
 
     }
@@ -225,7 +251,7 @@
         };
         
     }
-    
+   
     [self.tableView reloadData];
 }
 
@@ -329,12 +355,14 @@
 
 - (void)setVerticalFrame
 {
-    
+   
+
+
 }
 
 - (void)setHorizontalFrame
 {
-  
+    
 }
 
 

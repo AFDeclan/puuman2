@@ -42,6 +42,7 @@ const NSTimeInterval AnimatedInterval = 0.3;
     title = [[UILabel alloc] initWithFrame:CGRectMake(128, 0, 456, 112)];
     [title setFont:PMFont1];
     [title setTextColor:PMColor1];
+    [title setBackgroundColor:[UIColor clearColor]];
     [self addSubview:title];
     _taskIndex = 0;
     

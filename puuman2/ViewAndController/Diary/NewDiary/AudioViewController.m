@@ -46,6 +46,7 @@
     [label_start setText:@"点击开始录音"];
     [label_start setFont:PMFont3];
     [label_start setTextColor:PMColor3];
+    [label_start setBackgroundColor:[UIColor clearColor]];
     [label_start setTextAlignment:NSTextAlignmentCenter];
     [_content addSubview:label_start];
     
@@ -53,6 +54,7 @@
     [label_restart setText:@"重新录制"];
     [label_restart setFont:PMFont3];
     [label_restart setTextColor:PMColor3];
+    [label_restart setBackgroundColor:[UIColor clearColor]];
     [label_restart setTextAlignment:NSTextAlignmentCenter];
     [_content addSubview:label_restart];
     
@@ -60,6 +62,7 @@
     [label_stop setText:@"点击停止录音"];
     [label_stop setFont:PMFont3];
     [label_stop setTextColor:PMColor3];
+    [label_stop setBackgroundColor:[UIColor clearColor]];
     [label_stop setTextAlignment:NSTextAlignmentCenter];
     [_content addSubview:label_stop];
     
@@ -67,6 +70,7 @@
     [label_play setText:@"试听"];
     [label_play setFont:PMFont3];
     [label_play setTextColor:PMColor3];
+    [label_play setBackgroundColor:[UIColor clearColor]];
     [label_play setTextAlignment:NSTextAlignmentCenter];
     [_content addSubview:label_play];
     
@@ -76,6 +80,7 @@
     [label_stopPlay setTextColor:PMColor3];
     [label_stopPlay setTextAlignment:NSTextAlignmentCenter];
     [_content addSubview:label_stopPlay];
+    [label_stopPlay setBackgroundColor:[UIColor clearColor]];
     [label_stopPlay setAlpha:0];
     [label_play setAlpha:0];
     [label_stop setAlpha:0];

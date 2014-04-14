@@ -58,6 +58,7 @@ static TaskCell * instance;
     [notiLabel setFont:PMFont3];
     [notiLabel setTextColor:PMColor3];
     [notiLabel setText:@"奖励扑满金币"];
+    [notiLabel setBackgroundColor:[UIColor clearColor]];
     [notiLabel setTextAlignment:NSTextAlignmentCenter];
     [self.contentView addSubview:notiLabel];
     bonusBackView = [[UIImageView alloc] initWithFrame:CGRectMake(576, 120, 64, 64)];

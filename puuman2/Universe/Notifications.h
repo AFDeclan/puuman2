@@ -73,4 +73,5 @@
 #define Noti_BackFromSelectedView               @"Noti_BackFromSelectedView"
 #define Noti_ReplyRemoveForumDelgate            @"Noti_ReplyRemoveForumDelgate"
 #define Noti_RefreshTextTopicCell               @"Noti_RefreshTextTopicCell"
+#define Noti_GoToCurrentTopic                   @"Noti_GoToCurrentTopic"
 #endif

@@ -66,6 +66,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+}
 #pragma mark - Table view data source
 
 
@@ -92,6 +96,7 @@
     [cell buildWithUid:comment.UID andIndex:[indexPath row] andCommmet: comment.CContent];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor clearColor]];
+    
     return cell;
     
     

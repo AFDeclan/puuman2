@@ -56,6 +56,7 @@ static NSString * weekDayStr[7] = {@"日", @"一", @"二", @"三", @"四", @"五
             weekDayLabel.font = PMFont3;
             weekDayLabel.textAlignment = NSTextAlignmentCenter;
             weekDayLabel.textColor = PMColor2;
+            [weekDayLabel setBackgroundColor:[UIColor clearColor]];
             weekDayLabel.text = weekDayStr[i];
             [self addSubview:weekDayLabel];
             x += subDistanceOfX + dayCellWidth;

@@ -18,6 +18,8 @@
     MJRefreshHeaderView *_refreshHeader;
     NSArray *replays;
     NSArray *votings;
+    UIView *emptyNotiView;
+    UILabel *noti_empty;
 }
 
 @property(nonatomic,assign)BOOL voting;

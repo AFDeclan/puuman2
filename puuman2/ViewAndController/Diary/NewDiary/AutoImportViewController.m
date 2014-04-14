@@ -53,6 +53,7 @@
         [autoLabel setText:@"下次不需要自动检测"];
         [autoLabel setTextColor:PMColor3];
         [autoLabel setFont:PMFont3];
+        [autoLabel setBackgroundColor:[UIColor clearColor]];
         [_content addSubview:autoLabel];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         

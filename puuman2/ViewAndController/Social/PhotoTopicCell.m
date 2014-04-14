@@ -88,7 +88,7 @@
    
 
         AFImageView *photoView = (AFImageView *)[cell viewWithTag:11];
-        [photoView getImage:[_photoPaths objectAtIndex:index] defaultImage:nil];
+        [photoView setImage:[DiaryFileManager thumbImageForPath:[_photoPaths objectAtIndex:index]]];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
         

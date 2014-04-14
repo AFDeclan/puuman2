@@ -28,6 +28,7 @@
         [self addSubview:_iconView];
         _titleLabel = [[UILabel alloc] init];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [_titleLabel setBackgroundColor:[UIColor clearColor]];
         [self addSubview:_titleLabel];
         [self setBackgroundColor:[UIColor clearColor]];
         mark  =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
@@ -86,6 +87,7 @@
         {
             [_iconView setFrame:CGRectMake(0, 0, 32, 32)];
             [_titleLabel setFont:PMFont1];
+            
             [self adjustLayout];
         }
             break;

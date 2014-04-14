@@ -28,12 +28,14 @@
         [weiboLabel setText:@"新浪微博"];
         [weiboLabel setTextColor:PMColor2];
         [weiboLabel setFont:PMFont2];
+        [weiboLabel setBackgroundColor:[UIColor clearColor]];
         [_content addSubview:weiboLabel];
         
         weiXinLabel = [[UILabel alloc] initWithFrame:CGRectMake(334, 130, 80, 20)];
         [weiXinLabel setText:@"微信朋友圈"];
         [weiXinLabel setTextColor:PMColor2];
         [weiXinLabel setFont:PMFont2];
+        [weiXinLabel setBackgroundColor:[UIColor clearColor]];
         [_content addSubview:weiXinLabel];
         weiboBtn = [[UIButton alloc] initWithFrame:CGRectMake(78, 112, 56, 56)];
         [weiboBtn setImage:[UIImage imageNamed:@"btn_share1_diary.png"] forState:UIControlStateNormal];

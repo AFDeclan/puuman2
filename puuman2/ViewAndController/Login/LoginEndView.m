@@ -33,6 +33,7 @@
     [title setText:@"注册一个扑满日记账号吧！"];
     [title setTextAlignment:NSTextAlignmentCenter];
     [title setTextColor:PMColor3];
+    [title setBackgroundColor:[UIColor clearColor]];
     title.tag = 10;
     [self addSubview:title];
     
@@ -46,6 +47,7 @@
     [_userNameLabel setText:@"用户名"];
     [_userNameLabel setTextAlignment:NSTextAlignmentRight];
     [_userNameLabel setTextColor:PMColor1];
+    [_userNameLabel setBackgroundColor:[UIColor clearColor]];
     [self addSubview:_userNameLabel];
     
     _passwordLabel=[[UILabel alloc] initWithFrame:CGRectMake(140, 336, 68, 16)];
@@ -53,6 +55,7 @@
     [_passwordLabel setText:@"密码"];
     [_passwordLabel setTextAlignment:NSTextAlignmentRight];
     [_passwordLabel setTextColor:PMColor1];
+    [_passwordLabel setBackgroundColor:[UIColor clearColor]];
     [self addSubview:_passwordLabel];
  
     _userField = [[CustomTextField alloc] initWithFrame:CGRectMake(240, 256,256, 48)];

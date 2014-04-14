@@ -52,6 +52,7 @@
     [label setText:@"按年龄索引"];
     [label setFont:PMFont3];
     [label setTextAlignment:NSTextAlignmentRight];
+    [label setBackgroundColor:[UIColor clearColor]];
     [label setTextColor:PMColor2];
     [selectAgeBtn addSubview:label];
     yearLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 56, 60)];
@@ -85,6 +86,7 @@
     [label setFont:PMFont3];
     [label setTextAlignment:NSTextAlignmentRight];
     [label setTextColor:PMColor2];
+    [label setBackgroundColor:[UIColor clearColor]];
     [selectNomalBtn addSubview:label];
     
     _yearLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 18, 56, 24)];

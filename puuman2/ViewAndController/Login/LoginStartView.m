@@ -35,6 +35,7 @@
     [title setText:@"宝宝现在的状态是？"];
     [title setTextAlignment:NSTextAlignmentCenter];
     [title setTextColor:PMColor3];
+    [title setBackgroundColor:[UIColor clearColor]];
     [self addSubview:title];
     
     goBirthViewButton=[[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 255, 224)];
@@ -64,6 +65,7 @@
         [relate setFont:PMFont2];
         [relate setText:@"您是宝宝的？"];
         [relate setTextAlignment:NSTextAlignmentCenter];
+        [relate setBackgroundColor:[UIColor clearColor]];
         [relate setTextColor:PMColor3];
         [self addSubview:relate];
         

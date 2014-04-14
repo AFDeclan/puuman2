@@ -44,7 +44,7 @@ static NSMutableArray * instances = nil;
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    //[self releaseSelf];
+   [self exit];
 }
 
 - (void)exit

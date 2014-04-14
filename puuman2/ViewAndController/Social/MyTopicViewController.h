@@ -15,7 +15,8 @@
 {
     MJRefreshFooterView *_refreshFooter;
     MJRefreshHeaderView *_refreshHeader;
-
+    UIView *emptyNotiView;
+    UILabel *noti_empty;
 }
 
 - (void)reloadMyTopic;

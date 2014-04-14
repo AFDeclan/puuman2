@@ -66,13 +66,12 @@
     headTitleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 608, 32)];
     [headerView addSubview:headTitleView];
     topicNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, 512, 32)];
-    [topicNameLabel setTextColor:[UIColor whiteColor]];
     [topicNameLabel setFont:PMFont2];
+    [topicNameLabel setTextColor:PMColor2];
     [topicNameLabel setBackgroundColor:[UIColor clearColor]];
     [headTitleView addSubview:topicNameLabel];
     topicNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(534, 0, 64, 32)];
     [topicNumLabel setTextAlignment:NSTextAlignmentRight];
-    [topicNumLabel setTextColor:[UIColor whiteColor]];
     [topicNumLabel setFont:PMFont2];
     [topicNumLabel setBackgroundColor:[UIColor clearColor]];
     [headTitleView addSubview:topicNumLabel];
@@ -103,7 +102,7 @@
     [footerView addSubview:relayExample];
     
     scanMoreReplay = [[AFTextImgButton alloc] initWithFrame:CGRectMake(496, 40, 112, 48)];
-    [scanMoreReplay setTitle:@"查看更多留言" andImg:nil andButtonType:kButtonTypeOne];
+    [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
     [scanMoreReplay setTitleLabelColor:PMColor3];
     [scanMoreReplay addTarget:self action:@selector(scanMore) forControlEvents:UIControlEventTouchUpInside];
     [scanMoreReplay setTitleFont:PMFont3];
@@ -196,8 +195,8 @@
 
 - (void)buildWithReply:(Reply *)reply
 {
+    
      _reply = reply;
-    [topicNameLabel setBackgroundColor:PMColor2];
     [topicNumLabel setText:[NSString stringWithFormat:@"第%d期",reply.TID]];
     
     _member = [[MemberCache sharedInstance] getMemberWithUID:reply.UID];
@@ -227,6 +226,13 @@
         Topic *topic =  [[Forum sharedInstance] getTopic:reply.TID];
         if (topic) {
             [topicNameLabel setText:topic.TTitle];
+            if (topic.TUploadUID == [UserInfo sharedUserInfo].UID) {
+                [headTitleView setBackgroundColor:PMColor6];
+                [topicNumLabel setTextColor:[UIColor whiteColor]];
+            }else{
+                [headTitleView setBackgroundColor:PMColor3];
+                [topicNumLabel setTextColor:PMColor2];
+            }
 
         }
     }
@@ -375,6 +381,13 @@
 {
     if (topic.TID == _reply.TID ) {
         [topicNameLabel setText:topic.TTitle];
+        if (topic.TUploadUID == [UserInfo sharedUserInfo].UID) {
+            [headTitleView setBackgroundColor:PMColor6];
+            [topicNumLabel setTextColor:[UIColor whiteColor]];
+        }else{
+            [headTitleView setBackgroundColor:PMColor3];
+            [topicNumLabel setTextColor:PMColor2];
+        }
     }
 }
 

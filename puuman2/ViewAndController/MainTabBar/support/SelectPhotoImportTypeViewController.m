@@ -28,11 +28,13 @@
         [takePicLabel setText:@"拍照"];
         [takePicLabel setTextColor:PMColor8];
         [takePicLabel setFont:PMFont2];
+        [takePicLabel setBackgroundColor:[UIColor clearColor]];
         [_content addSubview:takePicLabel];
         importPicLabel = [[UILabel alloc] initWithFrame:CGRectMake(334, 130, 48, 20)];
         [importPicLabel setText:@"拍照"];
         [importPicLabel setTextColor:PMColor8];
         [importPicLabel setFont:PMFont2];
+        [importPicLabel setBackgroundColor:[UIColor clearColor]];
         [_content addSubview:importPicLabel];
         [importPicLabel setText:@"导入"];
         takePicBtn = [[UIButton alloc] initWithFrame:CGRectMake(78, 112, 56, 56)];

@@ -38,6 +38,7 @@
     [label_time setText:@"00:00"];
     [label_time setFont:PMFont2];
     [label_time setTextColor:PMColor6];
+    [label_time setBackgroundColor:[UIColor clearColor]];
     [label_time setTextAlignment:NSTextAlignmentCenter];
     [label_time setAlpha:0];
     [self addSubview:label_time];

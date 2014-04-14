@@ -20,6 +20,7 @@
         address = 0;
         [self setBackgroundColor:[UIColor clearColor]];
         [self initialization];
+        [MyNotiCenter addObserver:self selector:@selector(gotoCurrentTopic) name:Noti_GoToCurrentTopic object:nil];
     }
     return self;
 }
@@ -32,7 +33,7 @@
     [_showColumnView setViewDelegate:self];
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:YES];
-    [_showColumnView setScrollEnabled:YES];
+    [_showColumnView setScrollEnabled:NO];
     [self addSubview:_showColumnView];
 
   
@@ -64,8 +65,7 @@
     
     [_showColumnView setContentSize:CGSizeMake( self.frame.size.width*2, self.frame.size.height)];
     [_showColumnView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-  
-   [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
+    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
 }
 
 - (void)setHorizontalFrame
@@ -76,7 +76,11 @@
     [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
 }
 
-
+- (void)gotoCurrentTopic
+{
+    address = [[Forum sharedInstance] onTopic].TNo;
+    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address-1), 0)];
+}
 
 
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
