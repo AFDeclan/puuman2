@@ -99,7 +99,7 @@
 - (void)importViewAppear
 {
     
-    ImportSelectedView *selectView = [[ImportSelectedView alloc] initWithFrame:CGRectMake(28, 312, 648, 256)];
+    ImportSelectedImgView *selectView = [[ImportSelectedImgView alloc] initWithFrame:CGRectMake(28, 312, 648, 256)];
     [selectView setDelegate:self];
     [_content addSubview:selectView];
 

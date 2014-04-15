@@ -11,7 +11,7 @@
 #import "UIColumnView.h"
 #import "NewDiaryDeleteTableViewCell.h"
 #import "Forum.h"
-#import "ImportSelectedView.h"
+#import "ImportSelectedImgView.h"
 
 @interface NewImportDiaryViewController : CustomPopViewController<UIColumnViewDataSource,UIColumnViewDelegate,NewDiaryDeleteTableViewCellDelegate,UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ForumDelegate,UITextFieldDelegate,SelectedImportImgDelegate>
 {
