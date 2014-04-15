@@ -8,22 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-@protocol ImporImgDelegate;
-@interface ImportImgCell : UIView
+@protocol AuToImporImgDelegate;
+@interface AuToImportImgCell : UIView
 {
     UIImageView *imageView;
     UIImageView *flag;
     UIButton *selectBtn;
     
 }
-@property(assign,nonatomic) id<ImporImgDelegate> delegate;
+@property(assign,nonatomic) id<AuToImporImgDelegate> delegate;
 @property(retain,nonatomic) ALAsset *asset;
 @property(assign,nonatomic) BOOL selected;
 @property(assign,nonatomic) NSInteger flagNum;
 - (void)setImg:(UIImage *)img;
 @end
 
-@protocol ImporImgDelegate <NSObject>
+@protocol AuToImporImgDelegate <NSObject>
 
 - (void)clickedWithAdd:(BOOL)add andFlag:(NSInteger)num;
 

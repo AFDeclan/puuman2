@@ -8,7 +8,7 @@
 
 #import "AutoImportViewController.h"
 #import "ColorsAndFonts.h"
-#import "ImportImgCell.h"
+#import "AuToImportImgCell.h"
 #import "NSDate+Compute.h"
 #import "MainTabBarController.h"
 #import "DateFormatter.h"
@@ -298,7 +298,7 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         for (int i = 0; i < PhotoNumPerRow ; i ++) {
             
-            ImportImgCell *imgView = [[ImportImgCell alloc] initWithFrame:CGRectMake((PerImgWidth +8)*i+16, 28, PerImgWidth, PerImgHeight)];
+            AuToImportImgCell *imgView = [[AuToImportImgCell alloc] initWithFrame:CGRectMake((PerImgWidth +8)*i+16, 28, PerImgWidth, PerImgHeight)];
             [cell.contentView addSubview:imgView];
             [imgView setTag:2+i];
             [imgView setDelegate:self];
@@ -306,7 +306,7 @@
     }
     for (int i = 0; i < PhotoNumPerRow ; i ++) {
         
-        ImportImgCell *imgView = (ImportImgCell *)[cell viewWithTag:2+i];
+        AuToImportImgCell *imgView = (AuToImportImgCell *)[cell viewWithTag:2+i];
         [imgView setFlagNum:[indexPath row]*PhotoNumPerRow +i];
         if ([indexPath row]*PhotoNumPerRow +i < [assetsArr count]) {
             [imgView setAlpha:1];

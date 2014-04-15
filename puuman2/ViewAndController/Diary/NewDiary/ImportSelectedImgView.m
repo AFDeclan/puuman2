@@ -1,18 +1,19 @@
 //
-//  importSelectedView.m
+//  ImportSelectedView.m
 //  puuman2
 //
 //  Created by Ra.（祁文龙） on 14-4-14.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "importSelectedView.h"
+#import "ImportSelectedImgView.h"
 
-#define subPhotoNumPerRow 4
-#define perImgHeight 64
-#define perImgWidth 64
-@implementation importSelectedView
 
+#define subPhotoNumPerRow 6
+#define perImgHeight 92
+#define perImgWidth 92
+@implementation ImportSelectedImgView
+@synthesize delegate =_delegate;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -26,7 +27,7 @@
 
 - (void)initialization
 {
-    scrollView =[[UIScrollView  alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    scrollView =[[UIScrollView  alloc] initWithFrame:CGRectMake(32, 0, self.frame.size.width-32, self.frame.size.height)];
     [scrollView setScrollEnabled:NO];
     [scrollView setShowsHorizontalScrollIndicator:NO];
     [scrollView setShowsVerticalScrollIndicator:NO];
@@ -35,7 +36,7 @@
     [scrollView setBackgroundColor:[UIColor clearColor]];
     [self addSubview:scrollView];
     
-    parentTable =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    parentTable =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width-32, self.frame.size.height)];
     [parentTable setDelegate:self];
     [parentTable setDataSource:self];
     [scrollView addSubview:parentTable];
@@ -43,7 +44,7 @@
     [parentTable setSeparatorColor:[UIColor clearColor]];
     [parentTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    childTable =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    childTable =[[UITableView alloc] initWithFrame:CGRectMake(self.frame.size.width-32, 0, self.frame.size.width-32, self.frame.size.height)];
     [childTable setDelegate:self];
     [childTable setDataSource:self];
     [scrollView addSubview:childTable];
@@ -51,9 +52,31 @@
     [childTable setSeparatorColor:[UIColor clearColor]];
     [childTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
+    backBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 96, 32, 64)];
+    [backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_left.png"] andButtonType:kButtonTypeSix];
+    [backBtn addTarget:self action:@selector(backBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:backBtn];
+    [backBtn setAlpha:0];
 }
 
-
+- (void)backBtnPressed
+{
+    [backBtn setAlpha:0];
+    spread = NO;
+    [elcAssets removeAllObjects];
+    [photosAsset removeAllObjects];
+    [childTable removeFromSuperview];
+    childTable = nil;
+    childTable=[[UITableView alloc] initWithFrame:CGRectMake(self.frame.size.width-32, 0, self.frame.size.width-32, self.frame.size.height)];
+    [childTable setDelegate:self];
+    [childTable setDataSource:self];
+    [scrollView addSubview:childTable];
+    [childTable setBackgroundColor:[UIColor clearColor]];
+    [childTable setSeparatorColor:[UIColor clearColor]];
+    [childTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [childTable setAlpha:0];
+    [scrollView scrollRectToVisible:parentTable.frame animated:YES];
+}
 
 
 - (void)preparePhotos
@@ -138,7 +161,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 72;
+    return 100;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,7 +201,7 @@
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             for (int i = 0; i < subPhotoNumPerRow ; i ++) {
                 
-                ImportImgCell *imgView = [[ImportImgCell alloc] initWithFrame:CGRectMake((perImgWidth +8)*i+16, 4, perImgWidth, perImgHeight)];
+                ImportImgView *imgView = [[ImportImgView alloc] initWithFrame:CGRectMake((perImgWidth +8)*i+16, 4, perImgWidth, perImgHeight)];
                 imgView.tag =2+i;
                 [cell.contentView addSubview:imgView];
                 [imgView setDelegate:self];
@@ -187,20 +210,12 @@
         for (int i = 0; i < subPhotoNumPerRow ; i ++)
         {
             
-            ImportImgCell *imgView = (ImportImgCell *)[cell viewWithTag:2+i];
+            ImportImgView *imgView = (ImportImgView *)[cell viewWithTag:2+i];
             imgView.flagNum = [indexPath row]*subPhotoNumPerRow +i;
             if ([indexPath row]*subPhotoNumPerRow +i < [elcAssets count]) {
                 [imgView setImg:[elcAssets objectAtIndex:[indexPath row]*subPhotoNumPerRow +i]];
                 imgView.asset = [photosAsset objectAtIndex:[indexPath row]*subPhotoNumPerRow +i];
                 [imgView setAlpha:1];
-                BOOL selected =[(NSNumber *)[photoStatus valueForKey:[NSString stringWithFormat:@"%d",[indexPath row]*subPhotoNumPerRow +i]] boolValue];
-                if (selected) {
-                    imgView.selected = YES;
-                    [photoStatus setValue:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%d",[indexPath row]*subPhotoNumPerRow +i]];
-                }else{
-                    imgView.selected = NO;
-                    [photoStatus setValue:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",[indexPath row]*subPhotoNumPerRow +i]];
-                }
             }else{
                 [imgView setAlpha:0];
             }
@@ -216,9 +231,8 @@
 
 - (void)spread:(UITapGestureRecognizer *)gestureReconizer
 {
-    [titleTextView resignFirstResponder];
     spread = YES;
-    [title setTitleImg:@"title_input_diary.png" andLeftImg:@"nav_left.png" andRightImg:nil];
+    [backBtn setAlpha:1];
     ALAssetsGroup *subAssetGroup = [assetGroups objectAtIndex:gestureReconizer.view.tag];
     [self setSubAssetGroup:subAssetGroup];
 }
@@ -240,82 +254,25 @@
             [photosAsset addObject:result];
             UIImage *image =[UIImage imageWithCGImage:[result thumbnail]];
             [elcAssets addObject:image];
-            [photoStatus setValue:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",[photosAsset count]-1]];
             if (stop) {
-                [subPickerTable setAlpha:1];
-                [subPickerTable reloadData];
+                [childTable setAlpha:1];
+                [childTable reloadData];
                 //变换
-                [scroll scrollRectToVisible:subPickerTable.frame animated:YES];
+                [scrollView scrollRectToVisible:childTable.frame animated:YES];
             }
         }];
     }
     
 }
 
-- (void)leftBtnPressed
+
+
+- (void)clickedWithAsset:(ALAsset *)asset
 {
-    [title setTitleImg:@"title_input_diary.png" andLeftImg:nil andRightImg:nil];
-    spread = NO;
-    [elcAssets removeAllObjects];
-    [photoStatus removeAllObjects];
-    [photosAsset removeAllObjects];
-    [subPickerTable removeFromSuperview];
-    subPickerTable = nil;
-    subPickerTable=[[UITableView alloc] initWithFrame:CGRectMake(320, 0, 320, kScreenHeight-136)];
-    [subPickerTable setDelegate:self];
-    [subPickerTable setDataSource:self];
-    [scroll addSubview:subPickerTable];
-    [subPickerTable setBackgroundColor:[UIColor clearColor]];
-    [subPickerTable setSeparatorColor:[UIColor clearColor]];
-    [subPickerTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [subPickerTable setAlpha:0];
-    [scroll scrollRectToVisible:pickerTable.frame animated:YES];
-    
+    [_delegate addImg:[UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]]];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [titleTextView resignFirstResponder];
-}
-
-- (void)clickedWithAdd:(BOOL)add withCell:(ImportImgCell *)cell
-{
-    if (selectedNum <5) {
-        if (add) {
-            cell.selected =YES;
-            [photoStatus setValue:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%d",cell.flagNum]];
-            selectedNum ++;
-        }else{
-            cell.selected =NO;
-            [photoStatus setValue:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",cell.flagNum]];
-            selectedNum--;
-        }
-        [finish setEnabled:YES];
-        [finish setAlpha:1];
-        if (selectedNum == 0) {
-            [finish setEnabled:NO];
-            [finish setAlpha:0.5];
-        }
-    }else
-    {
-        if (add) {
-            
-            cell.selected = NO;
-        }else{
-            
-            cell.selected = YES;
-        }
-        PostNotification(Noti_ShowAlert, @"可导入图片已到最大，无法再增加了");
-    }
-    [titleTextView resignFirstResponder];
-    
-}
 
 
 @end

@@ -50,7 +50,6 @@
     photosTable = [[UIColumnView alloc] initWithFrame:CGRectMake(32, 160, 640, 128)];
     [photosTable setBackgroundColor:[UIColor whiteColor]];
     [photosTable setViewDelegate:self];
-    
     [photosTable setViewDataSource:self];
     [_content addSubview:photosTable];
    
@@ -100,39 +99,15 @@
 - (void)importViewAppear
 {
     
-//    if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
-//    if (!imagePickerController) {
-//        imagePickerController = [[UIImagePickerController alloc] init];
-//    }
-//    imagePickerController.delegate = self;
-//	imagePickerController.allowsEditing = NO;
-//    [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-//    [imagePickerController.view setFrame:CGRectMake(0, 0, 648, 256)];
-//    [imagePickerController.view setBackgroundColor:[UIColor clearColor]];
-//    
-//    UIScrollView *frameView = [[UIScrollView alloc] initWithFrame:CGRectMake(28, 312, 648, 256)];
-//    [frameView setScrollEnabled:NO];
-//    
-//    UIViewController *vc = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-//    [vc addChildViewController:imagePickerController];
-//    vc.view.frame =CGRectMake(0, 0, 648, 256);
-//    [frameView addSubview:vc.view];
-//    frameView.layer.cornerRadius = 8.0f;
-//    [frameView setBackgroundColor:[UIColor clearColor]];
-//    [_content addSubview:frameView];
-    [self preparePhotos];
-    
+    ImportSelectedView *selectView = [[ImportSelectedView alloc] initWithFrame:CGRectMake(28, 312, 648, 256)];
+    [selectView setDelegate:self];
+    [_content addSubview:selectView];
+
 }
 
-
-
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+- (void)addImg:(UIImage *)img
 {
-	
-    
-	UIImage *photo = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
-    [photosArr addObject:photo];
+    [photosArr addObject:img];
     CGPoint pos =photosTable.contentOffset;
     [photosTable reloadData];
     photosTable.contentOffset =pos;
@@ -140,7 +115,11 @@
     [photosTable setContentOffset:CGPointMake(posX, 0) animated:YES];
     [_finishBtn setAlpha:1];
     [_finishBtn setEnabled:YES];
+
 }
+
+
+
 
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
@@ -155,7 +134,7 @@
 
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
-    int count = [photosArr count];
+    int count = (int)[photosArr count];
     if (count == 0) {
         [photosTable setAlpha: 0];
     }else{

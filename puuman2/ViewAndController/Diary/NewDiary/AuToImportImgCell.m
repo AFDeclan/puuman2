@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 Declan. All rights reserved.
 //
 
-#import "ImportImgCell.h"
+#import "AuToImportImgCell.h"
 #import "UIImage+CroppedImage.h"
 
-@implementation ImportImgCell
+@implementation AuToImportImgCell
 @synthesize selected =_selected;
 @synthesize asset = _asset;
 @synthesize delegate = _delegate;

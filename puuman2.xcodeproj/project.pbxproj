@@ -311,6 +311,8 @@
 		54AC1D2318EEB542005E2DCE /* btn_share1_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC1D2118EEB542005E2DCE /* btn_share1_diary.png */; };
 		54AC1D2418EEB542005E2DCE /* btn_share2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC1D2218EEB542005E2DCE /* btn_share2_diary.png */; };
 		54AC1D2718EEC080005E2DCE /* BindAddButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC1D2618EEC080005E2DCE /* BindAddButton.m */; };
+		54AC207318FCD14400650F79 /* ImportImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC207218FCD14400650F79 /* ImportImgView.m */; };
+		54AC207918FCDEFE00650F79 /* ImportSelectedImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AC207818FCDEFE00650F79 /* ImportSelectedImgView.m */; };
 		54AC20E118E3FD30001C1357 /* btn_all1_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC20C418E3FD2F001C1357 /* btn_all1_shop.png */; };
 		54AC20E218E3FD30001C1357 /* btn_all2_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC20C518E3FD2F001C1357 /* btn_all2_shop.png */; };
 		54AC20E318E3FD30001C1357 /* btn_delete_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AC20C618E3FD2F001C1357 /* btn_delete_shop.png */; };
@@ -370,7 +372,7 @@
 		54ADB1D418E1860200FCCC83 /* TextTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D318E1860200FCCC83 /* TextTopicCell.m */; };
 		54ADB1D718E1861700FCCC83 /* PhotoTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D618E1861700FCCC83 /* PhotoTopicCell.m */; };
 		54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */; };
-		54ADB1E318E1AA4C00FCCC83 /* ImportImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1E018E1AA4C00FCCC83 /* ImportImgCell.m */; };
+		54ADB1E318E1AA4C00FCCC83 /* AuToImportImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1E018E1AA4C00FCCC83 /* AuToImportImgCell.m */; };
 		54ADB1E618E1AC1D00FCCC83 /* AutoImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1E518E1AC1D00FCCC83 /* AutoImportViewController.m */; };
 		54ADB1EC18E1B39000FCCC83 /* DiaryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1EB18E1B39000FCCC83 /* DiaryHeaderView.m */; };
 		54ADB1EF18E1B42200FCCC83 /* ImportStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1EE18E1B42200FCCC83 /* ImportStore.m */; };
@@ -418,7 +420,6 @@
 		54AF7E0C18FBEBE500FC454C /* btn_stop_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AF7E0B18FBEBE500FC454C /* btn_stop_diary.png */; };
 		54AF7E0E18FBEC5000FC454C /* btn_record_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AF7E0D18FBEC5000FC454C /* btn_record_diary.png */; };
 		54AF7E1018FBEF6800FC454C /* pic_default_topic.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AF7E0F18FBEF6800FC454C /* pic_default_topic.png */; };
-		54AF7E1318FBF71500FC454C /* importSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AF7E1218FBF71500FC454C /* importSelectedView.m */; };
 		54AFAA7E18DA896B0067B8C1 /* AllWordsPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA7D18DA896B0067B8C1 /* AllWordsPopViewController.m */; };
 		54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA8018DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m */; };
 		54AFAA8418DA94610067B8C1 /* CreateTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFAA8318DA94600067B8C1 /* CreateTopicViewController.m */; };
@@ -1145,6 +1146,10 @@
 		54AC1D2218EEB542005E2DCE /* btn_share2_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_share2_diary.png; sourceTree = "<group>"; };
 		54AC1D2518EEC080005E2DCE /* BindAddButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindAddButton.h; sourceTree = "<group>"; };
 		54AC1D2618EEC080005E2DCE /* BindAddButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindAddButton.m; sourceTree = "<group>"; };
+		54AC207118FCD14400650F79 /* ImportImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportImgView.h; sourceTree = "<group>"; };
+		54AC207218FCD14400650F79 /* ImportImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportImgView.m; sourceTree = "<group>"; };
+		54AC207718FCDEFE00650F79 /* ImportSelectedImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportSelectedImgView.h; sourceTree = "<group>"; };
+		54AC207818FCDEFE00650F79 /* ImportSelectedImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportSelectedImgView.m; sourceTree = "<group>"; };
 		54AC20C418E3FD2F001C1357 /* btn_all1_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_all1_shop.png; sourceTree = "<group>"; };
 		54AC20C518E3FD2F001C1357 /* btn_all2_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_all2_shop.png; sourceTree = "<group>"; };
 		54AC20C618E3FD2F001C1357 /* btn_delete_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_delete_shop.png; sourceTree = "<group>"; };
@@ -1223,8 +1228,8 @@
 		54ADB1D618E1861700FCCC83 /* PhotoTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTopicCell.m; sourceTree = "<group>"; };
 		54ADB1D818E1862A00FCCC83 /* AudioTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTopicCell.h; sourceTree = "<group>"; };
 		54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioTopicCell.m; sourceTree = "<group>"; };
-		54ADB1DF18E1AA4C00FCCC83 /* ImportImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportImgCell.h; sourceTree = "<group>"; };
-		54ADB1E018E1AA4C00FCCC83 /* ImportImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportImgCell.m; sourceTree = "<group>"; };
+		54ADB1DF18E1AA4C00FCCC83 /* AuToImportImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuToImportImgCell.h; sourceTree = "<group>"; };
+		54ADB1E018E1AA4C00FCCC83 /* AuToImportImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuToImportImgCell.m; sourceTree = "<group>"; };
 		54ADB1E418E1AC1D00FCCC83 /* AutoImportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoImportViewController.h; sourceTree = "<group>"; };
 		54ADB1E518E1AC1D00FCCC83 /* AutoImportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoImportViewController.m; sourceTree = "<group>"; };
 		54ADB1EA18E1B39000FCCC83 /* DiaryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryHeaderView.h; sourceTree = "<group>"; };
@@ -1296,8 +1301,6 @@
 		54AF7E0B18FBEBE500FC454C /* btn_stop_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_stop_diary.png; sourceTree = "<group>"; };
 		54AF7E0D18FBEC5000FC454C /* btn_record_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_record_diary.png; sourceTree = "<group>"; };
 		54AF7E0F18FBEF6800FC454C /* pic_default_topic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_default_topic.png; sourceTree = "<group>"; };
-		54AF7E1118FBF71500FC454C /* importSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = importSelectedView.h; sourceTree = "<group>"; };
-		54AF7E1218FBF71500FC454C /* importSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = importSelectedView.m; sourceTree = "<group>"; };
 		54AFAA7C18DA896B0067B8C1 /* AllWordsPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllWordsPopViewController.h; sourceTree = "<group>"; };
 		54AFAA7D18DA896B0067B8C1 /* AllWordsPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllWordsPopViewController.m; sourceTree = "<group>"; };
 		54AFAA7F18DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllWordsPopTalkTableViewCell.h; sourceTree = "<group>"; };
@@ -2766,10 +2769,12 @@
 		54B1FBDF18C6BF4700529B2C /* support */ = {
 			isa = PBXGroup;
 			children = (
-				54ADB1DF18E1AA4C00FCCC83 /* ImportImgCell.h */,
-				54ADB1E018E1AA4C00FCCC83 /* ImportImgCell.m */,
-				54AF7E1118FBF71500FC454C /* importSelectedView.h */,
-				54AF7E1218FBF71500FC454C /* importSelectedView.m */,
+				54AC207718FCDEFE00650F79 /* ImportSelectedImgView.h */,
+				54AC207818FCDEFE00650F79 /* ImportSelectedImgView.m */,
+				54ADB1DF18E1AA4C00FCCC83 /* AuToImportImgCell.h */,
+				54ADB1E018E1AA4C00FCCC83 /* AuToImportImgCell.m */,
+				54AC207118FCD14400650F79 /* ImportImgView.h */,
+				54AC207218FCD14400650F79 /* ImportImgView.m */,
 				54A8F45C18CDC9A000D0D523 /* AudioViewController.h */,
 				54A8F45D18CDC9A000D0D523 /* AudioViewController.m */,
 				54ADE08518C8608700B166C4 /* NewAudioPlayView.h */,
@@ -4233,7 +4238,6 @@
 				54AE788618E00BD200AE558C /* PartnerDataTitleView.m in Sources */,
 				54012DE818E3050C00F11D97 /* PropWarePartnerDataView.m in Sources */,
 				54B4685818E54D5A00745F72 /* MenuView.m in Sources */,
-				54AF7E1318FBF71500FC454C /* importSelectedView.m in Sources */,
 				54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */,
 				54B4681418E520F200745F72 /* TeachingView.m in Sources */,
 				54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */,
@@ -4334,6 +4338,7 @@
 				54CE112818C1BC6D00966396 /* ShopViewController.m in Sources */,
 				54B4683418E521CC00745F72 /* WareCellSubView.m in Sources */,
 				54AFBBC618D6938600861A69 /* LoginPregnancyView.m in Sources */,
+				54AC207918FCDEFE00650F79 /* ImportSelectedImgView.m in Sources */,
 				54A8F45718CDC22C00D0D523 /* AuPhotoDiaryCell.m in Sources */,
 				5403CC7518D03B7D004CAE22 /* DiaryShowCell.m in Sources */,
 				54CE10E418C1842C00966396 /* AFButton.m in Sources */,
@@ -4355,7 +4360,7 @@
 				54AFBBC918D6938600861A69 /* PregnancyCalendar.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
 				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
-				54ADB1E318E1AA4C00FCCC83 /* ImportImgCell.m in Sources */,
+				54ADB1E318E1AA4C00FCCC83 /* AuToImportImgCell.m in Sources */,
 				54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */,
 				541970D418D1956D0058FE64 /* InfoView.m in Sources */,
 				54ACB2EA18EC098200EE5F90 /* WarePumanScrollView.m in Sources */,
@@ -4383,6 +4388,7 @@
 				54AB6CCD18F2BAA300E4269E /* BindAlpayViewController.m in Sources */,
 				54B867F718E6B81A00BE5335 /* SinglepopViewController.m in Sources */,
 				5474A47E18C5B7100073B2FE /* AFTextImgButton.m in Sources */,
+				54AC207318FCD14400650F79 /* ImportImgView.m in Sources */,
 				148D79EF18B8A71A001B4FA7 /* main.m in Sources */,
 				54ADE09918C8608700B166C4 /* NewAudioProgressView.m in Sources */,
 				14B8DF2418BC37A30047C6B3 /* PumanBookModel.m in Sources */,
