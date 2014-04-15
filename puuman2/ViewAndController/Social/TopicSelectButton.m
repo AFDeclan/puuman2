@@ -28,7 +28,9 @@
 
 - (void)initialization
 {
-    [self setBackgroundColor:PMColor4];
+    bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [self addSubview:bgView];
+    [bgView setBackgroundColor:PMColor4];
     icon_left = [[UIImageView alloc] initWithFrame:CGRectMake(8, 58, 16, 28)];
     [icon_left setImage:[UIImage imageNamed:@"tri_gray_left.png"]];
     [self addSubview:icon_left];
@@ -71,4 +73,13 @@
     [label_noti setText:noti];
 }
 
+- (void)setVerticalFrame
+{
+    [bgView setAlpha:0.5];
+}
+
+- (void)setHorizontalFrame
+{
+    [bgView setAlpha:1];
+}
 @end

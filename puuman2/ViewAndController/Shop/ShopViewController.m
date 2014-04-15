@@ -117,6 +117,8 @@
     searchTextField = [[SearchTextField alloc] initWithFrame:CGRectMake(0, 0, 184, 40)];
     [searchTextField setBackgroundColor:[UIColor clearColor]];
     searchTextField.placeholder = @"搜索商品";
+    searchTextField.returnKeyType = UIReturnKeySearch;
+    [searchTextField setDelegate:self];
     [searchView addSubview:searchTextField];
     
     
@@ -215,6 +217,13 @@
 {
     [self rectWareBtnPressed];
     
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [self search];
+    return YES;
 }
 
 @end

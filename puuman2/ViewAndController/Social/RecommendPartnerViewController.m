@@ -119,7 +119,7 @@
     }else{
         [sex_name setTitle:member.BabyNick andImg:[UIImage imageNamed:@"icon_female_baby.png"] andButtonType:kButtonTypeSeven];
     }
-    [portrait getImage:[member BabyPortraitUrl] defaultImage:@""];
+    [portrait getImage:[member BabyPortraitUrl] defaultImage:@"pic_default_topic.png"];
      [recommentTable reloadData];
 }
 

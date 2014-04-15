@@ -11,7 +11,7 @@
 #import "UIColumnView.h"
 #import "NewDiaryDeleteTableViewCell.h"
 #import "Forum.h"
-@interface NewImportDiaryViewController : CustomPopViewController<UIColumnViewDataSource,UIColumnViewDelegate,NewDiaryDeleteTableViewCellDelegate,UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ForumDelegate>
+@interface NewImportDiaryViewController : CustomPopViewController<UIColumnViewDataSource,UIColumnViewDelegate,NewDiaryDeleteTableViewCellDelegate,UIPopoverControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ForumDelegate,UITextFieldDelegate>
 {
     CustomTextField *titleTextField;
     UIColumnView *photosTable;

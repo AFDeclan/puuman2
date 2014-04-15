@@ -60,7 +60,7 @@
     
     }
     member= [[[Friend sharedInstance] myGroup] memberWithBid:chatInfo.ATargetBID];
-    [portrait getImage:[member BabyPortraitUrl] defaultImage:@""];
+    [portrait getImage:[member BabyPortraitUrl] defaultImage:@"pic_default_topic.png"];
    
     
     

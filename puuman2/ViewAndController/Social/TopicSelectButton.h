@@ -14,9 +14,11 @@
     UIImageView *icon_right;
     UILabel *label_title;
     UILabel *label_noti;
-    
+    UIImageView *bgView;
 }
 
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 - (void)setTitleName:(NSString *)title;
 - (void)setDirection:(BOOL)isRight;
 - (void)setNoti:(NSString *)noti;

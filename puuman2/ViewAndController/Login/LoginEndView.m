@@ -70,6 +70,7 @@
     _pwdField = [[CustomTextField alloc] initWithFrame:CGRectMake(240, 320, 256, 48)];
     _pwdField.keyboardType = UIKeyboardTypeDefault;
     _pwdField.returnKeyType = UIReturnKeyGo;
+    [_pwdField setDelegate:self];
     [self addSubview:_pwdField];
     
     
@@ -367,44 +368,42 @@
             case succeeded:
             {
                 [CustomAlertViewController showAlertWithTitle:@"注册成功！欢迎开始您的扑满日记~" confirmRightHandler:^{
-                    [self loginButtonPressed:nil];
+                    
                 }];
                 break;
             }
             case timeOut:
             {
                 [CustomAlertViewController showAlertWithTitle:@"您当前的网络链接存在问题，请检查后再试" confirmRightHandler:^{
-                    [self loginButtonPressed:nil];
+                
                 }];
                 break;
             }
             case dumplicated:
             {
                 [CustomAlertViewController showAlertWithTitle:@"当前邮箱或手机已被注册，请尝试使用其他其他邮箱注册" confirmRightHandler:^{
-                    [self loginButtonPressed:nil];
+                  
                 }];
                 break;
             }
             default:
             {
                 [CustomAlertViewController showAlertWithTitle:@"服务器异常，请稍后再试" confirmRightHandler:^{
-                    [self loginButtonPressed:nil];
                 }];
                 break;
             }
         }
-    }else
-    {
+    }else{
         if (![self usernameIsRight])
         {
             [CustomAlertViewController showAlertWithTitle:@"请正确输入邮箱或手机号码" confirmRightHandler:^{
-                [self loginButtonPressed:nil];
+                
             }];
         }
         else
         {
             [CustomAlertViewController showAlertWithTitle:@"请输入密码" confirmRightHandler:^{
-                [self loginButtonPressed:nil];
+               
             }];
         }
     }

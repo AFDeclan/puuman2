@@ -32,6 +32,7 @@
     talkTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(48, 112, 528, 48)];
     talkTextField.placeholder = @"在此发表您的留言";
     [talkTextField setDelegate:self];
+    [talkTextField setReturnKeyType:UIReturnKeyDone];
     [_content addSubview:talkTextField];
     
     talksTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 168, 528, 436)];
@@ -236,6 +237,13 @@
         [createTalkBtn setAlpha:1];
     }
     
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [self replayed];
     return YES;
 }
 @end

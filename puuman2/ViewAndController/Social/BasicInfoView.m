@@ -39,7 +39,6 @@
         info_relate = [[UILabel alloc] initWithFrame:CGRectMake(56, 36, 96, 12)];
         [info_relate setTextColor:PMColor3];
         [info_relate setFont:PMFont3];
-        [info_relate setText:@"哥哥"];
         [info_relate setBackgroundColor:[UIColor clearColor]];
         [self addSubview:info_relate];
 
@@ -51,7 +50,7 @@
 }
 - (void)setInfoWithName:(NSString *)name andPortrailPath:(NSString*)path andRelate:(NSString *)relate andIsBoy:(BOOL)isBoy
 {
-    [portrait getImage:path defaultImage:@""];
+    [portrait getImage:path defaultImage:@"pic_default_topic.png"];
     [info_relate setText:relate];
     [info_name setText:name];
     [info_name adjustSize];

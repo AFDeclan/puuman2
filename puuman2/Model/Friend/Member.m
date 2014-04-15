@@ -19,7 +19,7 @@
     id tp = [data valueForKey:@"GID"];
     if (tp) _GID = [tp integerValue]; else _GID = 0;
     tp = [data valueForKey:@"BID"];
-    if (tp) _BID = [tp integerValue]; else _BID = 0;
+    if ([tp respondsToSelector:@selector(integerValue)]) _BID = [tp integerValue]; else _BID = 0;
     _JoinTime = [DateFormatter datetimeFromTimestampStr:[data valueForKey:@"JoinTime"]];
     _UIDs = [data valueForKey:@"UIDs"];
     NSDictionary * baseInfo = [data valueForKey:@"BaseInfo"];
@@ -30,11 +30,11 @@
         _BabyPortraitUrl = [baseInfo valueForKey:uMeta_portraitUrl];
         _BabyHasBorn = [[baseInfo valueForKey:uMeta_whetherBirth] isEqualToString:@"生日"];
         tp = [baseInfo valueForKey:@"BabyHeight"];
-        if (tp) _BabyHeight = [tp doubleValue]; else _BabyHeight = 0;
+        if ([tp respondsToSelector:@selector(doubleValue)]) _BabyHeight = [tp doubleValue]; else _BabyHeight = 0;
         tp = [baseInfo valueForKey:@"BabyWeight"];
-        if (tp) _BabyWeight = [tp doubleValue]; else _BabyWeight = 0;
+        if ([tp respondsToSelector:@selector(doubleValue)]) _BabyWeight = [tp doubleValue]; else _BabyWeight = 0;
         tp = [baseInfo valueForKey:userInfo_pumanQuan];
-        if (tp) _BabyPuuman = [tp doubleValue]; else _BabyPuuman = 0;
+        if ([tp respondsToSelector:@selector(doubleValue)]) _BabyPuuman = [tp doubleValue]; else _BabyPuuman = 0;
     }
     NSDictionary * detailInfo = [data valueForKey:@"DetailInfo"];
     if ([detailInfo isKindOfClass:[NSDictionary class]]) {

@@ -34,6 +34,9 @@
     photosArr = [[NSMutableArray alloc] init];
     titleTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 112, 640, 48)];
     titleTextField.placeholder = @"这些照片是……";
+    titleTextField.keyboardType = UIKeyboardTypeDefault;
+    titleTextField.returnKeyType = UIReturnKeyDone;
+    [titleTextField setDelegate:self];
     [_content addSubview:titleTextField];
     
     UILabel *notiTitle = [[UILabel alloc] initWithFrame:CGRectMake(32, 160, 640, 128)];
@@ -97,25 +100,31 @@
 - (void)importViewAppear
 {
     
-    if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
-    if (!imagePickerController) {
-        imagePickerController = [[UIImagePickerController alloc] init];
-    }
-    imagePickerController.delegate = self;
-	imagePickerController.allowsEditing = NO;
-    [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    [imagePickerController.view setFrame:CGRectMake(0, 0, 648, 256)];
-    [imagePickerController.view setBackgroundColor:[UIColor clearColor]];
-    
-    UIScrollView *frameView = [[UIScrollView alloc] initWithFrame:CGRectMake(28, 312, 648, 256)];
-    [frameView setScrollEnabled:NO];
-    [frameView addSubview:imagePickerController.view];
-    frameView.layer.cornerRadius = 8.0f;
-    [frameView setBackgroundColor:[UIColor clearColor]];
-    [_content addSubview:frameView];
-    
+//    if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
+//    if (!imagePickerController) {
+//        imagePickerController = [[UIImagePickerController alloc] init];
+//    }
+//    imagePickerController.delegate = self;
+//	imagePickerController.allowsEditing = NO;
+//    [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+//    [imagePickerController.view setFrame:CGRectMake(0, 0, 648, 256)];
+//    [imagePickerController.view setBackgroundColor:[UIColor clearColor]];
+//    
+//    UIScrollView *frameView = [[UIScrollView alloc] initWithFrame:CGRectMake(28, 312, 648, 256)];
+//    [frameView setScrollEnabled:NO];
+//    
+//    UIViewController *vc = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+//    [vc addChildViewController:imagePickerController];
+//    vc.view.frame =CGRectMake(0, 0, 648, 256);
+//    [frameView addSubview:vc.view];
+//    frameView.layer.cornerRadius = 8.0f;
+//    [frameView setBackgroundColor:[UIColor clearColor]];
+//    [_content addSubview:frameView];
+    [self preparePhotos];
     
 }
+
+
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -257,4 +266,11 @@
     
 }
 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
 @end

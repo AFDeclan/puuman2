@@ -12,7 +12,7 @@
 #import "ImportImgCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #define IMPORT_IMAGE_MAX_NUM    50
-@interface AutoImportViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ImporImgDelegate>
+@interface AutoImportViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ImporImgDelegate,UITextFieldDelegate>
 {
     CustomTextField *titleTield;
     UILabel *notiLabel;

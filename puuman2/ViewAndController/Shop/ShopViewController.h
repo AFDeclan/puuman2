@@ -12,7 +12,7 @@
 #import "SearchTextField.h"
 #import "ShopContentView.h"
 
-@interface ShopViewController : UIViewController<UIGestureRecognizerDelegate>
+@interface ShopViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate>
 {
     UIImageView *bg_topImageView;
     UIImageView *bg_rightImageView;

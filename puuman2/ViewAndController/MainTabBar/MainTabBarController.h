@@ -12,12 +12,12 @@
 #import "UserInfo.h"
 #import "AutoImportViewController.h"
 #import "ChatInputViewController.h"
-
+#import "SettingViewController.h"
 
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
 
-@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,MainTabBarDelegate>
+@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,MainTabBarDelegate,UITextViewDelegate,PopViewDelegate>
 {
     MainTabBar *tabBar;
     UIImageView *bgImgView;
@@ -25,6 +25,7 @@
     UserInfo *userInfo;
     AutoImportViewController *improtAutoVC;
     ChatInputViewController *inputVC;
+    SettingViewController *settingVC;
 }
 
 @property(assign,nonatomic) BOOL isVertical;

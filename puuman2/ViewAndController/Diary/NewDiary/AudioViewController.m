@@ -31,6 +31,9 @@
     titleTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 112, 640, 48)];
     titleTextField.placeholder = @"这个声音是......";
     // [titleTextField setDelegate:self];
+    titleTextField.keyboardType = UIKeyboardTypeDefault;
+    titleTextField.returnKeyType = UIReturnKeyDone;
+    [titleTextField setDelegate:self];
     [_content addSubview:titleTextField];
     
     record  = [[NewAudioRecordView alloc] initWithFrame:CGRectMake(240, 240, 224, 224)];
@@ -184,4 +187,10 @@
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
 @end

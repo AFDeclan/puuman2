@@ -37,6 +37,7 @@
 
 - (void)initialization
 {
+    
     bgImageView = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 144)];
     [self addSubview:bgImageView];
      leftSelected = YES;
@@ -107,6 +108,9 @@
 
 - (void)setVerticalFrame
 {
+
+    [rightBtn setVerticalFrame];
+    [leftBtn setVerticalFrame];
     self.frame = CGRectMake((_topicNum-1)*608, 0, 608, 944);
     SetViewLeftUp(rightBtn, 480, 0);
     [topicAllVC setVerticalFrame];
@@ -162,6 +166,8 @@
 
 - (void)setHorizontalFrame
 {
+    [rightBtn setHorizontalFrame];
+    [leftBtn setHorizontalFrame];
     switch (status) {
         case TopicStatus_On:
         {
@@ -269,21 +275,13 @@
             [info_title setText:_topic.TTitle];
             [topicAllVC setTopic:_topic];
             [self leftSortSelected];
-            if([MainTabBarController sharedMainViewController].isVertical)
-            {
-                [self setVerticalFrame];
-            }else
-            {
-                [self setHorizontalFrame];
-            }
+        
             
         }
         
        
         if ([[Forum sharedInstance] onTopic].TNo == topicNum) {
             [rightBtn setAlpha:1];
-            [rightBtn setNoti:@"下期话题"];
-            [leftBtn setNoti:@"往期话题"];
             [rightBtn setTitleName:@"征集!"];
             [leftBtn setTitleName:@"回顾！"];
             status= TopicStatus_On;
@@ -291,13 +289,23 @@
             [info_num setText:[NSString stringWithFormat:@"已有%d人参与",[[Forum sharedInstance] onTopic].TNo]];
             
         }else{
-            
+            [rightBtn setAlpha:1];
+            [rightBtn setNoti:@"下期话题"];
+            [leftBtn setNoti:@"往期话题"];
+              status= TopicStatus_Past;
             [info_num setText:[NSString stringWithFormat:@"第%d期",topicNum]];
             [leftBtn setNoti:@""];
             [leftBtn setTitleName:[NSString stringWithFormat:@"第%d期",topicNum-1]];
             [rightBtn setNoti:@""];
             [rightBtn setTitleName:[NSString stringWithFormat:@"第%d期",topicNum+1]];
             
+        }
+        if([MainTabBarController sharedMainViewController].isVertical)
+        {
+            [self setVerticalFrame];
+        }else
+        {
+            [self setHorizontalFrame];
         }
     }
 

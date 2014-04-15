@@ -11,7 +11,7 @@
 #import "NewDiaryDeleteCell.h"
 
 @protocol NewCameraShowPhotosDelegate;
-@interface NewCameraShowPhotosViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,NewDiaryDeleteCellDelegate>
+@interface NewCameraShowPhotosViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,NewDiaryDeleteCellDelegate,UITextFieldDelegate>
 {
     CustomTextField *titleTextField;
     UITableView *photosTable;

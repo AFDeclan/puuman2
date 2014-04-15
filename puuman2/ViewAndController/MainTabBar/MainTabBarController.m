@@ -201,12 +201,18 @@ static MainTabBarController *instance;
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [tabBar selectedWithTag:1];
+    if (settingVC) {
+        [settingVC back];
+    }
    
 }
 
 - (void)showSettingView
 {
-    SettingViewController *settingVC = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
+    if (settingVC) {
+        [settingVC.view removeFromSuperview];
+    }
+    settingVC = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
     [settingVC show];
     [self.view addSubview:settingVC.view];
     
@@ -238,7 +244,7 @@ static MainTabBarController *instance;
 - (void)removeAutoImportView
 {
     if (improtAutoVC) {
- 
+
         [improtAutoVC.view removeFromSuperview];
         improtAutoVC = nil;
     }
@@ -247,13 +253,14 @@ static MainTabBarController *instance;
 
 - (void)showBottomInputView:(NSNotification *)notification
 {
-    if (!inputVC) {
+  //  if (!inputVC) {
         inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
         [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
         [inputVC setActionParent:[notification object]];
         [inputVC setSendIsHidden:_isReply];
+        [inputVC setDelegate:self];
         [inputVC show];
-    }
+  //  }
  
 }
 
@@ -267,4 +274,9 @@ static MainTabBarController *instance;
     }
 }
 
+- (void)popViewfinished
+{
+    [inputVC.view removeFromSuperview];
+    inputVC = nil;
+}
 @end

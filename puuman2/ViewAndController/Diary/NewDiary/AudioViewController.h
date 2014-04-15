@@ -10,7 +10,7 @@
 #import "CustomTextField.h"
 #import "NewAudioRecordView.h"
 #import "NewAudioPlayView.h"
-@interface AudioViewController : CustomPopViewController<NewAudioRecordDelegate,NewAudioPlayDelegate>
+@interface AudioViewController : CustomPopViewController<NewAudioRecordDelegate,NewAudioPlayDelegate,UITextFieldDelegate>
 
 {
     CustomTextField *titleTextField;

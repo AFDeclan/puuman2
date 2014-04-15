@@ -328,10 +328,11 @@
     
     _sendIsHidden = sendIsHidden;
     if (sendIsHidden) {
-        
+      
         [createBtn initWithTitle:@"留言" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
       
     }else{
+        
         [createBtn initWithTitle:@"发送" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
     }
 }

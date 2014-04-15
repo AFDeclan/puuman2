@@ -47,7 +47,6 @@
 - (void)activeTopicReceived
 {
 
-    [[Forum sharedInstance] removeDelegateObject:self];
     [_showColumnView reloadData];
      address = [Forum sharedInstance].onTopic.TNo;
     [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
@@ -56,7 +55,9 @@
 
 - (void)activeTopicFailed
 {
-    [[Forum sharedInstance] removeDelegateObject:self];
+    [_showColumnView reloadData];
+    address = [Forum sharedInstance].onTopic.TNo;
+    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
 }
 
 - (void)setVerticalFrame
@@ -79,7 +80,7 @@
 - (void)gotoCurrentTopic
 {
     address = [[Forum sharedInstance] onTopic].TNo;
-    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address-1), 0)];
+    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address-1), 0) animated:YES];
 }
 
 

@@ -36,7 +36,11 @@
     
         
         titleTield = [[CustomTextField  alloc] initWithFrame:CGRectMake(96, 112, 512, 48)];
+        titleTield.keyboardType = UIKeyboardTypeDefault;
+        titleTield.returnKeyType = UIReturnKeyDone;
+        [titleTield setDelegate:self];
         [titleTield setPlaceholder:@"这些照片是......"];
+        
         [_content addSubview:titleTield];
         
         
@@ -356,4 +360,10 @@
     [titleTield resignFirstResponder];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
 @end

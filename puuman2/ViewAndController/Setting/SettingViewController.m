@@ -147,7 +147,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
                 if( [currentVersion earlierThenVersion:receivedVersion] && ![currentVersion isEqualToString:@""])
                 {
            
-                    [CustomAlertViewController showAlertWithTitle:@"现在最新的版本是%@，当前您的版本是%@，请前往更新~" confirmRightHandler:^{
+                    [CustomAlertViewController showAlertWithTitle:[NSString stringWithFormat:@"现在最新的版本是%@，当前您的版本是%@，请前往更新~",receivedVersion,currentVersion] confirmRightHandler:^{
                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
                     }];
                     
@@ -344,6 +344,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     }];
     
 }
+
 
 
 @end

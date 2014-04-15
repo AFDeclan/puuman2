@@ -260,4 +260,11 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == name_textfield) {
+        [name_textfield resignFirstResponder];
+    }
+    return YES;
+}
 @end

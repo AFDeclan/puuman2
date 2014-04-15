@@ -33,6 +33,7 @@
     [numTextField setTextAlignment:NSTextAlignmentLeft];
     [numTextField setDelegate:self];
     [numTextField setEnabled:NO];
+    
     [self addSubview:numTextField];
     
     codeLabel = [[UILabel alloc] initWithFrame:CGRectMake(456,0, 64, 48)];
@@ -361,6 +362,15 @@
             }
         }
     }
+    
+    if (btnType == TypeOfEmail) {
+        numTextField.keyboardType = UIKeyboardTypeEmailAddress;
+        numTextField.returnKeyType = UIReturnKeyDone;
+    }else{
+        numTextField.keyboardType = UIKeyboardTypeNumberPad;
+        numTextField.returnKeyType = UIReturnKeyDone;
+    }
+    
     [numTextField setText:num];
 }
 

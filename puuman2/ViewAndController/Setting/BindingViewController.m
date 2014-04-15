@@ -38,6 +38,7 @@
         
         alipay  = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 146, 640, 48)];
         [alipay setTextAlignment:NSTextAlignmentLeft];
+        [alipay setReturnKeyType:UIReturnKeyDone];
         [alipay setDelegate:self];
        
         [_content addSubview:alipay];
@@ -258,5 +259,11 @@
     return YES;
 }
 
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == alipay) {
+        [self confirmBtnPressed:nil];
+    }
+    return YES;
+}
 @end
