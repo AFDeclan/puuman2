@@ -42,7 +42,7 @@
 
         
         titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 416, 80)];
-        [titleView setImage:[UIImage imageNamed:@"bg_title_diary.png"]];
+        [titleView setImage:[UIImage imageNamed:@"bg_title2_diary.png"]];
         [titleView setBackgroundColor:[UIColor clearColor]];
         [_photoView addSubview:titleView];
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 80)];

@@ -152,7 +152,11 @@
     [self hidden];
 }
 
-
+- (void)hidden
+{
+    [_delegate selectedhidden];
+    [super hidden];
+}
 
 - (void)didReceiveMemoryWarning
 {

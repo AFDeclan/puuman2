@@ -82,6 +82,7 @@
 
 - (void)selectedPhotoBtnPressed
 {
+    [takePicBtn setEnabled:NO];
     [_textView resignFirstResponder];
     NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
     [self.view addSubview:chooseView.view];
@@ -90,6 +91,7 @@
     [chooseView show];
     
 }
+
 
 - (void)selectedPhoto:(UIImage *)img
 {
@@ -112,6 +114,11 @@
 
 }
 
+- (void)selectedhidden
+{
+      [takePicBtn setEnabled:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -128,9 +135,9 @@
         [DiaryFileManager saveText:_textView.text withPhoto:photo withTitle:titleTextField.text andTaskInfo:_taskInfo andIsTopic:_isTopic];
     }
 
-    if (!_isTopic) {
+   // if (!_isTopic) {
          [super finishBtnPressed];
-    }
+   // }
    
 }
 
@@ -206,8 +213,6 @@
 {
     _isTopic = isTopic;
     if (isTopic) {
-        [[Forum sharedInstance] removeDelegateObject:self];
-        [[Forum sharedInstance] addDelegateObject:self];
         [takePicBtn setAlpha:0];
     }else{
         [takePicBtn setAlpha:1];
@@ -219,18 +224,6 @@
     [_textView becomeFirstResponder];
 }
 
-//回复上传成功
-- (void)topicReplyUploaded:(ReplyForUpload *)reply
-{
-    PostNotification(Noti_RefreshTopicTable, nil);
-    [[Forum sharedInstance] removeDelegateObject:self];
-    [super finishBtnPressed];
-}
 
-//回复上传失败
-- (void)topicReplyUploadFailed:(ReplyForUpload *)reply
-{
-    
-}
 
 @end

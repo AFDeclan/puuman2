@@ -16,7 +16,7 @@
 @end
 
 @implementation InsuranceInfoViewController
-
+@synthesize delegate = _delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -57,7 +57,7 @@
         _infoImg = [UIImage imageWithData:introImgData];
     else
     {
-       // [MainViewController showHudCanCancel:@"数据加载中..."];
+       [MainTabBarController showHudCanCancel:@"数据加载中..."];
         [MyNotiCenter addObserver:self selector:@selector(remove) name:Noti_HudCanceled object:nil];
     }
     [self showImg];
@@ -65,7 +65,7 @@
 
 - (void)dataDownloadEnded:(NSData *)data forUrl:(NSString *)url
 {
-   // [MainViewController hideHud];
+    [MainTabBarController hideHud];
     if (data)
     {
         _infoImg = [UIImage imageWithData:data];
@@ -135,7 +135,7 @@
 - (void)finishOut
 {
     [super dismiss];
-    [self.delegate popViewfinished];
+    [_delegate popViewfinished];
     [self.view removeFromSuperview];
 }
 

@@ -12,7 +12,7 @@
 
 
 @property (assign,nonatomic)id<CameraAudioDelegate>delegate;
-
+- (void)setRecordUrl:(NSURL *)audioUrl;
 @end
 @protocol CameraAudioDelegate <NSObject>
 - (void)getAudioWithUrl:(NSURL *)audioUrl;

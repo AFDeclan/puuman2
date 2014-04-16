@@ -46,7 +46,6 @@
     [popView setControlBtnType:kCloseAndFinishButton];
     [popView setTitle:@"传照片" withIcon:[UIImage imageNamed:@"icon_input_diary.png"]];
     [popView setIsTopic:YES];
-    [popView setDelegate:self];
     [popView show];
     [self hidden];
     
@@ -66,11 +65,8 @@
 
 - (void)cameraViewHidden
 {
-   [self hidden];
-}
-
-- (void)popViewfinished
-{
     [self hidden];
 }
+
+
 @end

@@ -85,6 +85,8 @@
     bg_rightImageView = [[UIImageView alloc] init];
     [bg_rightImageView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:bg_rightImageView];
+    contnetView = [[SocialContentView alloc] init];
+    [self.view addSubview:contnetView];
     leftBtn = [[ColorButton alloc] init];
     [leftBtn addTarget:self action:@selector(leftBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftBtn];
@@ -119,26 +121,8 @@
     [partnerBtn unSelected];
     [leftBtn initWithTitle:@"所有" andButtonType:kBlueLeft];
     [rightBtn initWithTitle:@"我参与的" andButtonType:kBlueRight];
-   
-    if (!topicView) {
-        topicView = [[TopicView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
-    
-        [self.view addSubview:topicView];
-        if ([MainTabBarController sharedMainViewController].isVertical) {
-            [self setVerticalFrame];
-        }else{
-            [self setHorizontalFrame];
-        }
-    }
     [self leftBtnPressed];
-    [topicView setAlpha:0];
-    [UIView animateWithDuration:0.5 animations:^{
-        [topicView setAlpha:1];
-        if (partnerView) {
-            [partnerView setAlpha:0];
-            PostNotification(Noti_BottomInputViewHidden, nil);
-        }
-    }];
+
     
    
     
@@ -152,25 +136,8 @@
     [partnerBtn selected];
     [leftBtn initWithTitle:@"数据" andButtonType:kBlueLeft];
     [rightBtn initWithTitle:@"闲聊" andButtonType:kBlueRight];
-    
-    if (!partnerView) {
-        partnerView = [[PartnerView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
-        [self.view addSubview:partnerView];
-        if ([MainTabBarController sharedMainViewController].isVertical) {
-            [self setVerticalFrame];
-        }else{
-            [self setHorizontalFrame];
-        }
-    }
     [self leftBtnPressed];
-    [partnerView setAlpha:0];
-    [UIView animateWithDuration:0.5 animations:^{
-        [partnerView setAlpha:1];
-        if (topicView) {
-            [topicView setAlpha:0];
-             PostNotification(Noti_BottomInputViewHidden, nil);
-        }
-    }];
+
 }
 
 - (void)leftBtnPressed
@@ -178,9 +145,9 @@
     [leftBtn selected];
     [rightBtn unSelected];
     if (selectedTopic) {
-        [topicView selectedAll];
+        [contnetView selectWithType:kAllTopicView];
     }else{
-        [partnerView selectedData];
+        [contnetView selectWithType:kPartnerDataView];
     }
 }
 
@@ -189,25 +156,17 @@
     [rightBtn selected];
     [leftBtn unSelected];
     if (selectedTopic) {
-       [topicView selectedMine];
+        [contnetView selectWithType:kMyTopicView];
     }else{
-        [partnerView selectedChat];
+        [contnetView selectWithType:kPartnerChatView];
     }
 }
 //竖屏
 -(void)setVerticalFrame
 {
-    if (topicView) {
-        [topicView setFrame:CGRectMake(80, 80, 608, 944)];
-        [topicView setVerticalFrame];
-    }
-    
-    if (partnerView) {
-        [partnerView setFrame:CGRectMake(80, 80, 608, 944)];
-        [partnerView setVerticalFrame];
-    }
-    
-    
+   
+    [contnetView setFrame:CGRectMake(80, 80, 608, 944)];
+    [contnetView setVerticalFrame];
     [bg_topImageView setFrame:CGRectMake(80, 16, 672, 64)];
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_shop.png"]];
     [bg_rightImageView setFrame:CGRectMake(688, 80, 64, 944)];
@@ -222,15 +181,9 @@
 //横屏
 -(void)setHorizontalFrame
 {
-    if (topicView) {
-        [topicView setFrame:CGRectMake(80, 80, 864, 688)];
-        [topicView setHorizontalFrame];
-    }
-    
-    if (partnerView) {
-        [partnerView setFrame:CGRectMake(80, 80, 864, 688)];
-        [partnerView setHorizontalFrame];
-    }
+   
+    [contnetView setFrame:CGRectMake(80, 80, 864, 688)];
+    [contnetView setHorizontalFrame];
     [bg_topImageView setFrame:CGRectMake(80, 16, 928, 64)];
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_h_shop.png"]];
     [bg_rightImageView setFrame:CGRectMake(944, 80, 64, 688)];

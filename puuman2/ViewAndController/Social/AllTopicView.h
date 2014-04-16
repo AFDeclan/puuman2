@@ -17,9 +17,8 @@
      UIColumnView *_showColumnView;
     int address;
 }
-
+- (void)removeColumnView;
 - (void)reloadAllTopic;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
-
 @end

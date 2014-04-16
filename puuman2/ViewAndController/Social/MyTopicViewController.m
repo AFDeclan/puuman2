@@ -29,7 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[Forum sharedInstance] removeDelegateObject:self];
     [[Forum sharedInstance] addDelegateObject:self];
     emptyNotiView = [[UIView alloc] initWithFrame:CGRectMake(192, 216, 224, 80)];
     [self.view addSubview:emptyNotiView];
@@ -81,6 +80,11 @@
         
     }
     [_refreshFooter beginRefreshing];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+   
 }
 
 - (void)reloadMyTopic
@@ -179,6 +183,18 @@
     if (_refreshHeader.isRefreshing)
         [_refreshHeader endRefreshing];
     [self.tableView reloadData];
+}
+
+- (void)dealloc
+{
+    [_refreshFooter setDelegate:nil];
+    [_refreshFooter removeFromSuperview];
+    _refreshFooter = nil;
+    [_refreshHeader setDelegate:nil];
+    [_refreshHeader removeFromSuperview];
+    _refreshHeader = nil;
+    [self.tableView setDelegate:nil];
+    [self.tableView setDataSource:nil];
 }
 
 @end

@@ -197,10 +197,10 @@
     }else{
         [DiaryFileManager savePhotoWithPaths:photoPath withAudio:audioFileUrl withTitle:titleStr andTaskInfo:_taskInfo andIsTopic:_isTopic];
     }
-    if (!_isTopic) {
-        [_delegate cameraViewHidden];
-        [self cancel];
-    }
+  //  if (!_isTopic) {
+       //  [_delegate cameraViewHidden];
+  // }
+    [self cancel];
 }
 
 - (void)cancel
@@ -251,7 +251,6 @@
         [timeView showTimeWithSecond:0];
         [timeView stopRecord];
     }
-    [controlView setFinishBtnEnabled:YES];
     [cameraUI stopVideoCapture];
 }
 
@@ -297,13 +296,12 @@
 
 - (void)showAudioView
 {
-    if (!audioView) {
-        audioView = [[CameraAudioViewController alloc] initWithNibName:nil bundle:nil];
-        [audioView setControlBtnType:kCloseAndFinishButton];
-        [audioView setTitle:@"录声音" withIcon:[UIImage imageNamed:@"icon_audio2_diary.png"]];
-        [audioView setDelegate:self];
-    }
     
+    CameraAudioViewController * audioView = [[CameraAudioViewController alloc] initWithNibName:nil bundle:nil];
+    [audioView setControlBtnType:kCloseAndFinishButton];
+    [audioView setTitle:@"录声音" withIcon:[UIImage imageNamed:@"icon_audio2_diary.png"]];
+    [audioView setDelegate:self];
+    [audioView setRecordUrl:audioFileUrl];
     if (isVertical) {
         [audioView setVerticalFrame];
     }else{
@@ -334,7 +332,16 @@
         UIGraphicsEndImageContext();
         [photos addObject:image];
         imgViewL = nil;
+     
+    
         [controlView addPhoto:image andNum:[photos count]];
+        if (audioFileUrl && [photos count] == 1)
+        {
+            [controlView useCameraBtnWithAble:NO];
+        }else{
+            [controlView useCameraBtnWithAble:YES];
+        }
+        
         [self performSelector:@selector(saveWithImg:) withObject:img afterDelay:0];
         
     }else if (CFStringCompare ((CFStringRef) mediaType, kUTTypeMovie, 0)
@@ -359,10 +366,7 @@
 - (void)setIsTopic:(BOOL)isTopic
 {
     _isTopic = isTopic;
-    if (isTopic) {
-        [[Forum sharedInstance] removeDelegateObject:self];
-        [[Forum sharedInstance] addDelegateObject:self];
-    }
+
     [controlView setIsTopic:isTopic];
 }
 
@@ -373,9 +377,14 @@
 }
 
 - (void)videoClosed{
+    
     [moviePlayer.view removeFromSuperview];
     [controlView setVideoBackControl];
     [timeView showTimeWithSecond:0];
+    cameraUI = nil;
+    cameraUI = [self camera:YES];
+   
+
 }
 
 - (void)saveWithImg:(UIImage *)img
@@ -394,7 +403,9 @@
 
 - (void)resetSampleImgWithPhotos:(NSMutableArray *)photosArr  andphotoPaths:(NSMutableArray *)pathsArr
 {
+   
     int num = [photosArr count];
+ 
     photos = photosArr;
     photoPath = pathsArr;
     if ([photosArr count]>0) {
@@ -402,6 +413,16 @@
     }else{
         [controlView addPhoto:nil andNum:0];
         
+    }
+    
+    if (audioFileUrl) {
+        [controlView audioWithShow:YES];
+    }
+    
+    if (audioFileUrl && num == 1) {
+        [controlView useCameraBtnWithAble:NO];
+    }else{
+        [controlView useCameraBtnWithAble:YES];
     }
 }
 
@@ -412,21 +433,21 @@
 
 - (void)getAudioWithUrl:(NSURL *)audioUrl
 {
-    audioFileUrl = audioUrl;
-}
-
-//回复上传成功
-- (void)topicReplyUploaded:(ReplyForUpload *)reply
-{
-    PostNotification(Noti_RefreshTopicTable, nil);
-    [[Forum sharedInstance] removeDelegateObject:self];
-    [self cancel];
-}
-
-//回复上传失败
-- (void)topicReplyUploadFailed:(ReplyForUpload *)reply
-{
+    if (audioUrl) {
+        audioFileUrl = audioUrl;
+    }
     
+    if (audioFileUrl&&[photos count] == 1) {
+        [controlView useCameraBtnWithAble:NO];
+    }
+    
+    
+  
+    
+
 }
+
+
+
 
 @end

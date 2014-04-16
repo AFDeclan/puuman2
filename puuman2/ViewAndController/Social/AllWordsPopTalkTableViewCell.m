@@ -44,24 +44,12 @@
     [self.contentView addSubview:mainTextView];
     [mainTextView setTitle:comment withMaxWidth:340];
     [mainTextView setText:comment];
-    Member *member =[[MemberCache sharedInstance] getMemberWithUID:uid];
-    if (member) {
-        [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:member.BabyIsBoy];
-    }
-    
+
+    [infoView setInfoWithUid:uid andIsTopic:NO];
     
 }
 
-- (void)memberDownloaded:(Member *)member
-{
-    [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"哥哥" andIsBoy:member.BabyIsBoy];
 
-}
-//Member数据下载失败
-- (void)memberDownloadFailed
-{
-
-}
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

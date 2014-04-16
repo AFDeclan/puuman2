@@ -16,7 +16,7 @@
 #import "UserInfo.h"
 #import "Comment.h"
 #import "BabyData.h"
-#import "NSDate+Compute.h"
+
 
 
 @implementation TopicCell
@@ -27,7 +27,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        hasInfoView = NO;
+      
        
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         headerView = [[UIView alloc] init];
@@ -51,10 +51,7 @@
   
     infoView = [[BasicInfoView alloc] init];
     [self.contentView addSubview:infoView];
-    info_btn = [[UIButton alloc] initWithFrame:infoView.frame];
-    [info_btn setBackgroundColor:[UIColor clearColor]];
-    [info_btn addTarget:self action:@selector(tapped) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:info_btn];
+   
 
     info_time = [[UILabel alloc] initWithFrame:CGRectMake(464, 16, 128, 12)];
     [info_time setTextAlignment:NSTextAlignmentRight];
@@ -77,12 +74,12 @@
     [headTitleView addSubview:topicNumLabel];
     
     
-    title_label = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, 128, 16)];
-    [title_label setTextAlignment:NSTextAlignmentRight];
+    title_label = [[UILabel alloc] initWithFrame:CGRectMake(56, 48, 128, 16)];
     [title_label setTextColor:PMColor1];
     [title_label setFont:PMFont2];
     [title_label setBackgroundColor:[UIColor clearColor]];
-    [contentView addSubview:title_label];
+    [title_label setAlpha:0];
+    [headerView addSubview:title_label];
 
     
     replayBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 304, 40)];
@@ -113,8 +110,8 @@
     UIImageView *partLine_second  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 608, 2)];
     [partLine_second setImage:[UIImage imageNamed:@"line2_topic.png"]];
     [footerView addSubview:partLine_second];
-    
 }
+
 
 - (void)setIsMyTopic:(BOOL)isMyTopic
 {
@@ -139,59 +136,12 @@
 }
 
 
-- (void)tapped
-{
-   
-    Member *member = [[MemberCache sharedInstance] getMemberWithUID:[UserInfo sharedUserInfo].UID];
-    if (member) {
-        [self memberDownloaded:member];
-    }
 
-    
 
-}
 
-//Member数据下载成功
-- (void)memberDownloaded:(Member *)member
-{
-   
-    if (![member belongsTo:_reply.UID]) {
-            if (!hasInfoView) {
-                RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
-                [recommend setDelegate:self];
-                [recommend setControlBtnType:kOnlyCloseButton];
-                [recommend setRecommend:NO];
-                [recommend setTitle:@"宝宝详情" withIcon:nil];
-                [recommend buildWithTheUid:_reply.UID andUserInfo:member];
-                [[MainTabBarController sharedMainViewController].view addSubview:recommend.view];
-                [recommend show];
-                hasInfoView = YES;
-            }
-     
-    }else{
-        
-        if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned && [member BabyHasBorn]) {
-            [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:member.BabyBirth andSex:member.BabyIsBoy] andIsBoy:member.BabyIsBoy];
-            
-        }else{
-            [infoView setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"" andIsBoy:member.BabyIsBoy];
-            
-        }
-    }
-}
 
-//Member数据下载失败
-- (void)memberDownloadFailed
-{
 
-}
 
-- (void)popViewfinished
-{
-    hasInfoView = NO;
-    PostNotification(Noti_RefreshTopicTable, nil);
-    //[[Forum sharedInstance] addDelegateObject:self];
-}
 
 - (void)buildWithReply:(Reply *)reply
 {
@@ -199,22 +149,10 @@
      _reply = reply;
     [topicNumLabel setText:[NSString stringWithFormat:@"第%d期",reply.TID]];
     
-    _member = [[MemberCache sharedInstance] getMemberWithUID:reply.UID];
-    if (_member) {
-        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned &&[_member BabyHasBorn]) {
-            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
-
-        }else{
-            [infoView setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"" andIsBoy:_member.BabyIsBoy];
-
-        }
-    }
-     [[Friend sharedInstance] removeDelegateObject:self];
-    [[Friend sharedInstance] addDelegateObject:self];
-    
+       
     [[Forum sharedInstance] removeDelegateObject:self];
     [[Forum sharedInstance] addDelegateObject:self];
-   
+    [infoView setInfoWithUid:_reply.UID andIsTopic:YES];
     
 //    if ([[_reply comments] count] == 0) {
 //        [_reply getMoreComments:1 newDirect:YES];
@@ -235,6 +173,10 @@
             }
 
         }
+        SetViewLeftUp(title_label, 56, 80);
+    }else{
+        SetViewLeftUp(title_label, 56, 48);
+
     }
 
     
@@ -244,12 +186,15 @@
     
    
     
-    CGRect frame = contentView.frame;
+    CGRect frame = headerView.frame;
     if (![reply.RTitle isEqualToString:@""]) {
+        [title_label setAlpha:1];
         [title_label setText:reply.RTitle];
         frame.size.height += 28;
-        frame.origin.y = ViewHeight(headerView);
-        contentView.frame = frame;
+        headerView.frame = frame;
+        SetViewLeftUp(contentView, 0, ViewHeight(headerView));
+    }else{
+       [title_label setAlpha:0];
     }
     if (_reply.TID == [[Forum sharedInstance] onTopic].TID){
         if (_reply.voted) {

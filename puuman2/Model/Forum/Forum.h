@@ -132,7 +132,7 @@ typedef enum VotingTopicOrder {
 
 - (void)addDelegateObject:(id<ForumDelegate>)object;
 - (void)removeDelegateObject:(id<ForumDelegate>)object;
-
+- (void)removeAllDelegates;
 //获取当期话题，异步操作。
 - (void)getActiveTopic;
 

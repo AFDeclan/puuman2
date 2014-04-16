@@ -59,6 +59,7 @@
 
 - (void)removeDelegateObject:(id<FriendDelegate>)object;
 
+- (void)removeAllDelegates;
 //获取小组数据（我的小组或我收到的邀请）
 - (void)getGroupData;
 

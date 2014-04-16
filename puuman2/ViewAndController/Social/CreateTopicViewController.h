@@ -18,4 +18,6 @@
     CustomTextField *inputTextFied;
     UIImageView *bgTitleImageView;
 }
+
+- (void)showKeyBoard;
 @end

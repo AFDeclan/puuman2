@@ -107,9 +107,12 @@
     else
     {
         data = [[AFDataStore sharedStore] getDataFromPath:filePath needCache:YES];
-        UIImage *thumbImage = [UIImage croppedImage:[UIImage imageWithData:data] WithHeight:464 andWidth:464];
-        [UIImageJPEGRepresentation(thumbImage, 0) writeToFile:thumbPath atomically:YES];
-        return thumbImage;
+        if (data) {
+            UIImage *thumbImage = [UIImage croppedImage:[UIImage imageWithData:data] WithHeight:464 andWidth:464];
+            [UIImageJPEGRepresentation(thumbImage, 0) writeToFile:thumbPath atomically:YES];
+            return thumbImage;
+        }
+        
     }
     return nil;
 }
@@ -161,6 +164,9 @@
     if (isTopic) {
         ReplyForUpload *upload = [[Forum sharedInstance] createReplyForUpload];
         [upload setTexts:[NSArray arrayWithObject:text]];
+        if (!title) {
+            title = @"";
+        }
         [upload setRTitle:title];
         [upload upload];
     }
@@ -226,6 +232,9 @@
       
             ReplyForUpload *upload = [[Forum sharedInstance] createReplyForUpload];
             [upload setPhotos:photos];
+            if (!title) {
+                title = @"";
+            }
             [upload setRTitle:title];
             [upload upload];
         
@@ -296,6 +305,9 @@
         }
         ReplyForUpload *upload = [[Forum sharedInstance] createReplyForUpload];
         [upload setPhotos:photos];
+        if (!title) {
+            title = @"";
+        }
         [upload setRTitle:title];
         [upload upload];
         

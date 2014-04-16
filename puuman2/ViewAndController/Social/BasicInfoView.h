@@ -10,14 +10,20 @@
 #import "AFImageView.h"
 #import "UILabel+AdjustSize.h"
 #import "AFTextImgButton.h"
+#import "RecommendPartnerViewController.h"
+#import "Friend.h"
 
-@interface BasicInfoView : UIView
+@interface BasicInfoView : UIView<PopViewDelegate,FriendDelegate>
 {
     AFImageView *portrait;
     UILabel *info_name;
     UILabel *info_relate;
     UIImageView *icon_sex;
-    
+    NSInteger _uid;
+    UIButton *info_btn;
+    BOOL hasInfoView;
+    BOOL tapped;
+    BOOL _isTopic;
 }
-- (void)setInfoWithName:(NSString *)name andPortrailPath:(NSString*)path andRelate:(NSString *)relate andIsBoy:(BOOL)isBoy;
+- (void)setInfoWithUid:(NSInteger)uid andIsTopic:(BOOL)isTopic;
 @end

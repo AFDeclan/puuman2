@@ -60,10 +60,8 @@
     [[Friend sharedInstance] addDelegateObject:self];
     
     votingTopic = voteTopic;
-    Member *member =  [[MemberCache sharedInstance] getMemberWithUID:voteTopic.TUploadUID];
-    if (member) {
-        [infoView setInfoWithName:[member BabyNick] andPortrailPath:[member BabyPortraitUrl] andRelate:@"" andIsBoy:[member BabyIsBoy]];
-    }
+  
+    [infoView setInfoWithUid:voteTopic.TUploadUID andIsTopic:NO];
    [votedNum_label setText:[NSString stringWithFormat:@"%d票",voteTopic.voteCnt]];
     if (voteTopic.voted) {
         [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
@@ -97,20 +95,7 @@
     NSLog(@"投票失败");
 }
 
-//Member数据下载成功
-- (void)memberDownloaded:(Member *)member
-{
-    if ([member belongsTo:votingTopic.TUploadUID]) {
-        [infoView setInfoWithName:[member BabyNick] andPortrailPath:[member BabyPortraitUrl] andRelate:@"" andIsBoy:[member BabyIsBoy]];
 
-    }
-
-}
-//Member数据下载失败
-- (void)memberDownloadFailed
-{
-
-}
 
 
 @end

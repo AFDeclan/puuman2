@@ -52,7 +52,7 @@
 
 - (void)setHorizontalFrame
 {
-     [topicMyVC setHorizontalFrame];
+    [topicMyVC setHorizontalFrame];
     [topicMyVC.view setFrame:CGRectMake(128, 0, 608, 688)];
 }
 

@@ -47,6 +47,7 @@
 -(void)setInfoViewWithTopicNum:(NSInteger)topicNum;
 - (void)rightSortSelected;
 - (void)leftSortSelected;
+
 @end
 
 @protocol TopicContentCellDelegate <NSObject>

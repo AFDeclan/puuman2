@@ -25,6 +25,9 @@
 }
 - (void)initialize
 {
+    [self.contentView addSubview:self.whereBtn];
+    [self.contentView addSubview:self.whyBtn];
+    [self.contentView addSubview:self.howBtn];
     [self.whereBtn setEnabled:YES];
     [self.whyBtn setEnabled:YES];
     [self.howBtn setEnabled:YES];
@@ -35,26 +38,40 @@
     [self.detail setBackgroundColor:[UIColor clearColor]];
     [self.detail setFont:PMFont2];
     [self setBackgroundColor:PMColor4];
-    if (!selectedBtn) {
-         selectedBtn = self.whyBtn;
-        [self whyBtnPressed:self.whyBtn];
-    }
+   
     [self setDatawithHospital:kNoneHospital];
     if ([MainTabBarController sharedMainViewController].isVertical) {
+        
         [self setVerticalFrame];
     }else{
+        
         [self setHorizontalFrame];
+        
     }
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+    
    
 }
 
 - (void)setVerticalFrame
 {
    // SetViewLeftUp(self.contentView, -24, 0);
+    [self.contentView setAlpha:0];
+    [self setAlpha:0];
+  
 }
 
 - (void)setHorizontalFrame
 {
+    if (!selectedBtn) {
+        selectedBtn = self.whyBtn;
+        [self whyBtnPressed:self.whyBtn];
+    }
+     [self.contentView setAlpha:1];
+    [self setAlpha:1];
     //SetViewLeftUp(self.contentView, 0, 0);
 }
 

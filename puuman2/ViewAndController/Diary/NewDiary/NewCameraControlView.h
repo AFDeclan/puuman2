@@ -43,7 +43,8 @@
 - (void)enableControl;
 - (void)setVideoBackControl;
 - (void)setFinishBtnEnabled:(BOOL)enabled;
-
+- (void)useCameraBtnWithAble:(BOOL)able;
+- (void)audioWithShow:(BOOL)isShow;
 @end
 @protocol CameraControlDelegate <NSObject>
 - (void)closeBtnPressed;
@@ -56,4 +57,5 @@
 - (void)toPhotoModel;
 - (void)showSampleView;
 - (void)showAudioView;
+
 @end

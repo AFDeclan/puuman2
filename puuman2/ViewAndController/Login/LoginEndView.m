@@ -231,9 +231,9 @@
         }
 
          userInfo.pwd = _pwdField.text;
-        //[MainViewController showHud:@"登陆中..."];
+        [MainTabBarController showHud:@"登陆中..."];
         UserActionResult result = [userInfo login];
-        //[MainViewController hideHud];
+        [MainTabBarController hideHud];
         switch (result) {
             case succeeded:
                 [CustomNotiViewController showNotiWithTitle:@"登录成功" withTypeStyle:kNotiTypeStyleNone];
@@ -361,9 +361,9 @@
         {
             mail = _userField.text;
         }
-      //  [MainViewController showHud:@"正在处理注册请求，请稍后.."];
+        [MainTabBarController showHud:@"正在处理注册请求，请稍后.."];
         enum userActionResult result = [regForm registerUserWithMail:mail phoneNum:phoneNum password:_pwdField.text];
-     //   [MainViewController hideHud];
+       [MainTabBarController hideHud];
         switch (result) {
             case succeeded:
             {

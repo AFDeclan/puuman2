@@ -11,7 +11,7 @@
 #import "UserInfo.h"
 #import "CustomAlertViewController.h"
 #import "CustomNotiViewController.h"
-
+#import "MainTabBarController.h"
 @interface SettingAdviceViewController ()
 
 @end
@@ -106,9 +106,11 @@
     [request setParam:[NSString stringWithFormat:@"%d", [UserInfo sharedUserInfo].UID] forKey:@"UID"];
     [request setParam:_textView.text forKey:@"Content"];
     
-    PostNotification(Noti_ShowHud, @"正在提交反馈...");
+  
+    [MainTabBarController showHud:@"正在提交反馈..."];
     [request postSynchronous];
-    PostNotification(Noti_HideHud, nil);
+    [MainTabBarController hideHud];
+   // PostNotification(Noti_HideHud, nil);
     
     switch (request.result) {
         case PumanRequest_Succeeded:

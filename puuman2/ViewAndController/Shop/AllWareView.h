@@ -22,6 +22,7 @@ typedef enum ShopState {
     UITableView *_shopMallTable;
     ShopState _shopState;
      MJRefreshFooterView *_refreshFooter;
+    UILabel *noti_insurance;
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

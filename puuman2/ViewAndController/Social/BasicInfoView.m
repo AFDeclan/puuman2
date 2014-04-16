@@ -9,6 +9,11 @@
 #import "BasicInfoView.h"
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
+#import "MemberCache.h"
+#import "UserInfo.h"
+#import "BabyData.h"
+#import "NSDate+Compute.h"
+#import "MainTabBarController.h"
 
 @implementation BasicInfoView
 
@@ -22,7 +27,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        
+        hasInfoView = NO;
+        tapped = NO;
+        _isTopic = NO;
+        _uid = 0;
+        [[Friend sharedInstance] removeDelegateObject:self];
+        [[Friend sharedInstance] addDelegateObject:self];
+
         portrait =[[AFImageView alloc] initWithFrame:CGRectMake(8, 8, 40, 40)];
         [portrait setBackgroundColor:[UIColor blackColor]];
         portrait.layer.cornerRadius = 20;
@@ -44,6 +55,12 @@
 
         icon_sex = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 16, 16)];
         [self addSubview:icon_sex];
+        
+        info_btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        [info_btn setBackgroundColor:[UIColor clearColor]];
+        [info_btn addTarget:self action:@selector(tapped) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:info_btn];
+        
 
     }
     return self;
@@ -64,5 +81,88 @@
     
 }
 
+- (void)setInfoWithUid:(NSInteger)uid andIsTopic:(BOOL)isTopic
+{
+    _isTopic = isTopic;
+    _uid = uid;
+    Member  *_member = [[MemberCache sharedInstance] getMemberWithUID:uid];
+    if (_member) {
+        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned &&[_member BabyHasBorn]) {
+            [self setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
+            
+        }else{
+            [self setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"" andIsBoy:_member.BabyIsBoy];
+            
+        }
+    }
+
+}
+
+//Member数据下载成功
+- (void)memberDownloaded:(Member *)member
+{
+    
+    if (![member belongsTo:_uid]) {
+        
+        if (!hasInfoView && _isTopic) {
+            [self showRecommendViewWithMember:member];
+        }else{
+            tapped = NO;
+        }
+        
+        
+    }else{
+        tapped = NO;
+        if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned && [member BabyHasBorn]) {
+            [self setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:member.BabyBirth andSex:member.BabyIsBoy] andIsBoy:member.BabyIsBoy];
+            
+        }else{
+            [self setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"" andIsBoy:member.BabyIsBoy];
+            
+        }
+    }
+}
+
+
+- (void)tapped
+{
+    tapped = YES;
+    Member *member = [[MemberCache sharedInstance] getMemberWithUID:[UserInfo sharedUserInfo].UID];
+    if (member) {
+        [self memberDownloaded:member];
+    }
+
+}
+
+
+//Member数据下载失败
+- (void)memberDownloadFailed
+{
+    
+}
+
+
+- (void)showRecommendViewWithMember:(Member *)member
+{
+    if (tapped == YES) {
+        RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
+        [recommend setDelegate:self];
+        [recommend setControlBtnType:kOnlyCloseButton];
+        [recommend setRecommend:NO];
+        [recommend setTitle:@"宝宝详情" withIcon:nil];
+        [recommend buildWithTheUid:_uid andUserInfo:member];
+        [[MainTabBarController sharedMainViewController].view addSubview:recommend.view];
+        [recommend show];
+        hasInfoView = YES;
+        tapped = NO;
+    }
+}
+
+- (void)popViewfinished
+{
+    hasInfoView = NO;
+    PostNotification(Noti_RefreshTopicTable, nil);
+    //[[Forum sharedInstance] addDelegateObject:self];
+}
 
 @end

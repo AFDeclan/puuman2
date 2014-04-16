@@ -263,7 +263,8 @@ static TaskCell * instance;
         }
         else
         {
-            PostNotification(Noti_ShowHudCanCancel, @"音乐加载中...");
+           // PostNotification(Noti_ShowHudCanCancel, @"音乐加载中...");
+            [MainTabBarController showHudCanCancel: @"音乐加载中..."];
             [MyNotiCenter addObserver:self selector:@selector(stopDownMudic) name:Noti_HudCanceled object:nil];
         }
     }
@@ -286,7 +287,8 @@ static TaskCell * instance;
 }
 - (void)playMusicWithData:(NSData *)data
 {
-    PostNotification(Noti_ShowHudCanCancel, @"请和宝宝一起欣赏音乐~");
+    //PostNotification(Noti_ShowHudCanCancel, @"请和宝宝一起欣赏音乐~");
+    [MainTabBarController showHudCanCancel: @"请和宝宝一起欣赏音乐~"];
     [MyNotiCenter removeObserver:self name:Noti_HudCanceled object:nil ];
     [MyNotiCenter addObserver:self selector:@selector(stopPlayMusic) name:Noti_HudCanceled object:nil];
     NSError *error;
@@ -413,7 +415,8 @@ static TaskCell * instance;
 
 - (void)bgmDownloaded:(NSInteger)index
 {
-     PostNotification(Noti_HideHud,nil);
+   //  PostNotification(Noti_HideHud,nil);
+    [MainTabBarController hideHud];
     if (index == taskTitle.taskIndex && _toStart)
      {
           [self playMusicWithData:[[TaskModel sharedTaskModel] bgmData:index]];
@@ -425,13 +428,15 @@ static TaskCell * instance;
 {
     if (!_toStart) return;
     [MyNotiCenter removeObserver:self name:Noti_HudCanceled object:nil ];
-    PostNotification(Noti_HideHud,nil);
+    //PostNotification(Noti_HideHud,nil);
+    [MainTabBarController hideHud];
     [self didStartTask];
 }
 
 - (void)dataDownloadEnded:(NSData *)data forUrl:(NSString *)url
 {
-    PostNotification(Noti_HideHud, nil);
+   // PostNotification(Noti_HideHud, nil);
+    [MainTabBarController hideHud];
     if (data) {
          [self playMusicWithData:data];
     }

@@ -93,6 +93,7 @@
 
 - (void)hidden
 {
+    
     [_selecedDelegate selectedViewhidden];
     [self.view hiddenOutTo:kAFAnimationNone inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
 }

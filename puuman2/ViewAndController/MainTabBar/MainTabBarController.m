@@ -16,11 +16,14 @@
 #import "SettingViewController.h"
 #import "DiaryViewController.h"
 #import "CustomNotiViewController.h"
+#import "MBProgressHUD.h"
 
 @interface MainTabBarController ()
 
 @end
 static MainTabBarController *instance;
+static MBProgressHUD *hud;
+
 @implementation MainTabBarController
 @synthesize isVertical = _isVertical;
 @synthesize refresh_HV = _refresh_HV;
@@ -201,9 +204,9 @@ static MainTabBarController *instance;
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [tabBar selectedWithTag:1];
-    if (settingVC) {
-        [settingVC back];
-    }
+//    if (settingVC) {
+//        [settingVC back];
+//    }
    
 }
 
@@ -279,4 +282,48 @@ static MainTabBarController *instance;
     [inputVC.view removeFromSuperview];
     inputVC = nil;
 }
+
++ (void)showHud:(NSString *)text
+{
+    MainTabBarController *viewCon = [self sharedMainViewController];
+    if (!hud)
+    {
+        hud = [[MBProgressHUD alloc] initWithView:viewCon.view];
+    }
+    else return;
+    hud.labelText = text;
+    [viewCon.view addSubview:hud];
+    [hud show:YES];
+}
+
+
++ (void)showHudCanCancel:(NSString *)text
+{
+    MainTabBarController *viewCon = [self sharedMainViewController];
+    if (!hud)
+    {
+        hud = [[MBProgressHUD alloc] initWithView:viewCon.view];
+        UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelHud)];
+        [hud addGestureRecognizer:tap];
+    }
+    else return;
+    hud.labelText = text;
+    [viewCon.view addSubview:hud];
+    [hud show:YES];
+}
+
++ (void)hideHud
+{
+    [hud removeFromSuperview];
+    hud = nil;
+}
+
++ (void)cancelHud
+{
+    [self hideHud];
+    PostNotification(Noti_HudCanceled, nil);
+}
+
+
+
 @end

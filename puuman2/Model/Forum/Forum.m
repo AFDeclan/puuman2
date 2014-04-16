@@ -297,6 +297,11 @@ static Forum * instance;
     [_delegates removeObject:object];
 }
 
+- (void)removeAllDelegates
+{
+    [_delegates removeAllObjects];
+}
+
 - (void)informDelegates:(SEL)sel withObject:(id)obj
 {
     NSSet *dels = [_delegates copy];

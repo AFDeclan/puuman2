@@ -7,7 +7,7 @@
 //
 
 #import "AllTopicView.h"
-
+#import "MainTabBarController.h"
 
 @implementation AllTopicView
 
@@ -16,38 +16,49 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [[Forum sharedInstance] addDelegateObject:self];
+       
         address = 0;
         [self setBackgroundColor:[UIColor clearColor]];
-        [self initialization];
         [MyNotiCenter addObserver:self selector:@selector(gotoCurrentTopic) name:Noti_GoToCurrentTopic object:nil];
     }
     return self;
 }
 
-- (void)initialization
+
+- (void)reloadAllTopic
 {
-    
+    [[Forum sharedInstance] removeDelegateObject:self];
+    [[Forum sharedInstance] addDelegateObject:self];
+    [[Forum sharedInstance] getActiveTopic];
+}
+
+
+
+- (void)reloadTopicsTable
+{
+    if (_showColumnView) {
+        [_showColumnView removeFromSuperview];
+        _showColumnView = nil;
+    }
     _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
     [_showColumnView setViewDelegate:self];
     [_showColumnView setViewDataSource:self];
-    [_showColumnView setPagingEnabled:YES];
+    [_showColumnView setPagingEnabled:NO];
     [_showColumnView setScrollEnabled:NO];
     [self addSubview:_showColumnView];
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
+    }
+   // [(TopicContentCell *)[_showColumnView cellForIndex:address-1] loadInfo];
 
-  
 }
-
-- (void)reloadAllTopic
-{
-    [[Forum sharedInstance] getActiveTopic];
-}
-
 - (void)activeTopicReceived
 {
-
-    [_showColumnView reloadData];
+    [[Forum sharedInstance] removeDelegateObject:self];
+    [self reloadTopicsTable];
      address = [Forum sharedInstance].onTopic.TNo;
     [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
    
@@ -55,16 +66,16 @@
 
 - (void)activeTopicFailed
 {
-    [_showColumnView reloadData];
+    [[Forum sharedInstance] removeDelegateObject:self];
+    [self reloadTopicsTable];
     address = [Forum sharedInstance].onTopic.TNo;
     [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
 }
 
 - (void)setVerticalFrame
 {
-    
-    
-    [_showColumnView setContentSize:CGSizeMake( self.frame.size.width*2, self.frame.size.height)];
+
+    [_showColumnView setContentSize:CGSizeMake( self.frame.size.width*([[Forum sharedInstance] onTopic].TNo +1), self.frame.size.height)];
     [_showColumnView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
 }
@@ -72,7 +83,7 @@
 - (void)setHorizontalFrame
 {
   
-    [_showColumnView setContentSize:CGSizeMake( self.frame.size.width*2, self.frame.size.height)];
+    [_showColumnView setContentSize:CGSizeMake( self.frame.size.width*([[Forum sharedInstance] onTopic].TNo +1), self.frame.size.height)];
     [_showColumnView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
 }
@@ -80,7 +91,7 @@
 - (void)gotoCurrentTopic
 {
     address = [[Forum sharedInstance] onTopic].TNo;
-    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address-1), 0) animated:YES];
+    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address-1), 0)];
 }
 
 
@@ -130,15 +141,48 @@
 - (void)nextTopic
 {
     address ++;
-    [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x + self.frame.size.width, 0) animated:YES];
-
+    [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x + self.frame.size.width, 0) ];
+   // [self performSelector:@selector(sendLoadNoti:) withObject:[NSNumber numberWithInt:address] afterDelay:0];
 }
 
 - (void)preTopic
 {
     address--;
-    [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x - self.frame.size.width, 0) animated:YES];
+    [_showColumnView setContentOffset:CGPointMake(_showColumnView.contentOffset.x - self.frame.size.width, 0) ];
+   // [self performSelector:@selector(sendLoadNoti:) withObject:[NSNumber numberWithInt:address] afterDelay:0];
+
 }
 
+- (void)sendLoadNoti:(NSNumber *)num
+{
+    PostNotification(Noti_loadTopicCell,num);
+
+}
+
+
+//回复上传成功
+- (void)topicReplyUploaded:(ReplyForUpload *)reply
+{
+    PostNotification(Noti_RefreshTopicTable, nil);
+    [[Forum sharedInstance] removeDelegateObject:self];
+    
+}
+
+//回复上传失败
+- (void)topicReplyUploadFailed:(ReplyForUpload *)reply
+{
+    
+}
+
+- (void)removeColumnView
+{
+    [_showColumnView removeFromSuperview];
+    _showColumnView = nil;
+}
+
+- (void)dealloc
+{
+    
+}
 
 @end

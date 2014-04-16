@@ -106,6 +106,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     if ([[Reachability reachabilityForInternetConnection] isReachable])
     {
        // PostNotification(Noti_ShowHud, @"正在检查更新...");
+        [MainTabBarController showHud: @"正在检查更新..."];
         [ASIHTTPRequest setSessionCookies:nil];
         NSURL* url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", APPID]];
         ASIHTTPRequest* request = [[ASIHTTPRequest alloc] initWithURL:url];
@@ -113,6 +114,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
         [request setTag:1];
         [request setRequestMethod:@"GET"];
         [request startSynchronous];
+        [MainTabBarController hideHud];
        // PostNotification(Noti_HideHud, nil);
         if (request.error)
         {

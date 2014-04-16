@@ -511,10 +511,12 @@ static DiaryViewController * instance;
             NSString *templateUrl = [taskInfo valueForKey:@"phototemplate"];
             if (templateUrl && ![templateUrl isEqualToString:@"yes"])
             {
-                PostNotification(Noti_ShowHud,@"照片模板下载中...");
+                //PostNotification(Noti_ShowHud,);
+                [MainTabBarController showHud:@"照片模板下载中..."];
                 FileUploader *downloader = [[FileUploader alloc] init];
                 NSData *templateData = [downloader downloadDataSynchoronusFromUrl:templateUrl];
-                PostNotification(Noti_HideHud, nil);
+                [MainTabBarController hideHud];
+                //PostNotification(Noti_HideHud, nil);
                 if (!templateData)
                 {
                     [CustomAlertViewController showAlertWithTitle:@"照片模板下载失败，请稍后再试。" confirmRightHandler:^{

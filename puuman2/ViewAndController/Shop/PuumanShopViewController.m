@@ -317,8 +317,8 @@
 
 -(void)paid
 {
-    PostNotification(Noti_ShowHud, @"提交中...");
-    
+  
+    [MainTabBarController showHud:@"提交中..."];
     ASIFormDataRequest* request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:kUrl_SubmitPayback]];
     [request setDelegate:self];
     [request setTimeOutSeconds:10];
@@ -338,7 +338,7 @@
 {
     [ErrorLog requestFailedLog:request fromFile:@"PayBackViewController.m"];
     NSLog(@"\nResponse:%@\nError:%@", [request responseString], [request error]);
-    PostNotification(Noti_HideHud, nil);
+    [MainTabBarController hideHud];
     [CustomAlertViewController showAlertWithTitle:@"您的网络存在故障，这次没法用扑满币了诶.." confirmRightHandler:^{
         
     }];
@@ -359,7 +359,7 @@
         
     }];
     [[UserInfo sharedUserInfo] updateUserInfo];
-    PostNotification(Noti_HideHud, nil);
+    [MainTabBarController hideHud];
     [self.delegate popViewfinished];
     [self hidden];
 }

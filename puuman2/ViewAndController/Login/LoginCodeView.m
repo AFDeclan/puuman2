@@ -69,9 +69,9 @@
             phone = user_textfield.text;
         else
             mail = user_textfield.text;
-        //[MainViewController showHud:@"向服务器提交申请中..."];
+        [MainTabBarController showHud:@"向服务器提交申请中..."];
         enum userActionResult ret = [UserInfo resetPwdForMail:mail phoneNum:phone];
-       // [MainViewController hideHud];
+        [MainTabBarController hideHud];
         switch (ret) {
             case succeeded:
             {

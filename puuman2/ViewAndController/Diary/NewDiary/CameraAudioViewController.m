@@ -39,6 +39,7 @@
 
 - (void)closeBtnPressed
 {
+  
     [_delegate getAudioWithUrl:nil];
     [super closeBtnPressed];
     
@@ -63,6 +64,26 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setRecordUrl:(NSURL *)audioUrl
+{
+    
+    if (audioUrl) {
+        [_finishBtn setAlpha:1];
+        [_finishBtn setEnabled:YES];
+        [play setPlayFile:audioUrl];
+        [UIView animateWithDuration:0.5 animations:^{
+            SetViewLeftUp(record, 80, 240);
+            [label_restart setAlpha:1];
+            [label_stop setAlpha:0];
+            SetViewLeftUp(play, 400, 240);
+            [play setAlpha:1];
+            [label_play setAlpha:1];
+        }];
+    }else{
+        [record restartRecord];
+    }
 }
 
 @end

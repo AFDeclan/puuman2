@@ -13,6 +13,7 @@
     NSArray *_insurances;
     InsuranceCellSubview *_insuranceView[3];
 }
-
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 - (void)setInsurances:(NSArray *)insurances;
 @end

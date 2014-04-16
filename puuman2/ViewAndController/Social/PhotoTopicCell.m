@@ -10,8 +10,7 @@
 #import "DiaryFileManager.h"
 #import "DetailShowViewController.h"
 #import "DiaryFileManager.h"
-#import "AFImageView.h"
-
+#import "DiaryImageView.h"
 
 @implementation PhotoTopicCell
 
@@ -80,16 +79,22 @@
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            AFImageView *imgView = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+            DiaryImageView *imgView = [[DiaryImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
             imgView.tag = 11;
             [cell.contentView addSubview:imgView];
         }
+        DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
+       // NSString *str = ;
+        UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
+        [photoView setImage:photo];
+        if (_photoPaths) {
+            [photoView setCropSize:CGSizeMake(224, 224)];
+            [photoView loadThumbImgWithPath:[_photoPaths objectAtIndex:index]];
+        }
+       // [photoView getImage:[_photoPaths objectAtIndex:index] defaultImage:@""];
     
-   
-
-        AFImageView *photoView = (AFImageView *)[cell viewWithTag:11];
-        [photoView setImage:[DiaryFileManager thumbImageForPath:[_photoPaths objectAtIndex:index]]];
-        [cell setBackgroundColor:[UIColor clearColor]];
+       // [photoView setImage:[DiaryFileManager thumbImageForPath:str]];
+       [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
         
     

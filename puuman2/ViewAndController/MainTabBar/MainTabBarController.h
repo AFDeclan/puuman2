@@ -33,6 +33,9 @@
 @property(assign,nonatomic) BOOL isReply;
 
 + (MainTabBarController *)sharedMainViewController;
++ (void)showHud:(NSString *)text;
++ (void)showHudCanCancel:(NSString *)text;
++ (void)hideHud;
 - (void)initautoImportView;
 - (void)removeAutoImportView;
 - (void)showAutoImportView;

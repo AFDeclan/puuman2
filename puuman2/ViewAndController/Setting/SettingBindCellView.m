@@ -13,6 +13,7 @@
 #import "UserInfo.h"
 #import "CustomAlertViewController.h"
 #import "CustomNotiViewController.h"
+#import "MainTabBarController.h"
 
 @implementation SettingBindCellView
 
@@ -89,9 +90,11 @@
                     }];
                     return;
                 }else{
-                   // PostNotification(Noti_ShowHud, @"向服务器提交中...");
+                   // PostNotification(Noti_ShowHud, );
+                    [MainTabBarController showHud:@"向服务器提交中..."];
                     enum userActionResult result = [[UserInfo sharedUserInfo] changeMailTo:numTextField.text phoneTo:@""];
                   //  PostNotification(Noti_HideHud, nil);
+                    [MainTabBarController hideHud];
                     switch (result) {
                         case succeeded:
                             [self setCheck:[[UserInfo sharedUserInfo] mailVerified] andType:buttontype withTheNum:numTextField.text];
@@ -139,8 +142,11 @@
                     return;
                 }else{
                   //  PostNotification(Noti_ShowHud, @"向服务器提交中...");
+                    [MainTabBarController showHud:@"向服务器提交中..."];
+
                     enum userActionResult result = [[UserInfo sharedUserInfo] changeMailTo:@"" phoneTo:numTextField.text];
                   //  PostNotification(Noti_HideHud, nil);
+                    [MainTabBarController hideHud];
                     switch (result) {
                         case succeeded:
                              [self setCheck:[[UserInfo sharedUserInfo] phoneVerified] andType:buttontype withTheNum:numTextField.text];
@@ -245,7 +251,10 @@
             //发送验证
             if (buttontype == TypeOfEmail) {
               //  PostNotification(Noti_ShowHud, @"请求提交中...");
+                [MainTabBarController showHud:@"请求提交中..."];
+
                 enum userActionResult result = [[UserInfo sharedUserInfo] verifyUser:YES];
+                [MainTabBarController hideHud];
                // PostNotification(Noti_HideHud, nil);
                 switch (result) {
                     case succeeded:
@@ -272,9 +281,13 @@
                         return;
                 }
             }else{
-                PostNotification(Noti_ShowHud, @"请求提交中...");
+               // PostNotification(Noti_ShowHud, @"请求提交中...");
+                [MainTabBarController showHud:@"请求提交中..."];
+
                 enum userActionResult result = [[UserInfo sharedUserInfo] verifyUser:NO];
-                PostNotification(Noti_HideHud, nil);
+                [MainTabBarController hideHud];
+
+               // PostNotification(Noti_HideHud, nil);
                 switch (result) {
                     case succeeded:
                     {

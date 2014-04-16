@@ -14,10 +14,10 @@
 #import "NewCameraShowPhotosViewController.h"
 #import "CameraAudioViewController.h"
 #import "VideoPlayerController.h"
-#import "Forum.h"
+
 
 @protocol CameraViewDelegate;
-@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate,VideoPlayerDelegate,ForumDelegate>
+@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate,VideoPlayerDelegate>
 {
     NewCameraControlView *controlView;
     UIImagePickerController *cameraUI;
@@ -29,7 +29,6 @@
     VideoPlayerController *moviePlayer;
     TimeView *timeView;
     NSURL *audioFileUrl;
-    CameraAudioViewController *audioView;
    BOOL isVertical;
 }
 @property(assign,nonatomic) id<CameraViewDelegate> delegate;

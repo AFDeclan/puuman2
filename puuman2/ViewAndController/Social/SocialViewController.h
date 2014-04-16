@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ColorButton.h"
 #import "AFSelecedTextImgButton.h"
-#import "TopicView.h"
-#import "PartnerView.h"
+#import "SocialContentView.h"
+
 
 
 @interface SocialViewController : UIViewController
@@ -21,8 +21,7 @@
     ColorButton *rightBtn;
     AFSelecedTextImgButton *topicBtn;
     AFSelecedTextImgButton *partnerBtn;
-    TopicView *topicView;
-    PartnerView *partnerView;
+    SocialContentView *contnetView;
     BOOL selectedTopic;
 
 }

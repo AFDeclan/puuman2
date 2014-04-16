@@ -12,7 +12,7 @@
 #import "HealthCell.h"
 #import "InsuranceCell.h"
 #import "WareCell.h"
-
+#import "MainTabBarController.h"
 @implementation AllWareView
 
 - (id)initWithFrame:(CGRect)frame
@@ -31,7 +31,7 @@
         [_shopMallTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_shopMallTable setShowsHorizontalScrollIndicator:NO];
         [_shopMallTable setShowsVerticalScrollIndicator:NO];
-        [_shopMallTable setContentSize:CGSizeMake(592, 904)];
+        [_shopMallTable setContentSize:CGSizeMake(448, 904)];
         _refreshFooter = [[MJRefreshFooterView alloc] init];
         [_refreshFooter setDelegate:self];
         _refreshFooter.scrollView = _shopMallTable;
@@ -46,7 +46,15 @@
         };
         [self reloadShopMall];
      
-  
+        noti_insurance = [[UILabel alloc] initWithFrame:CGRectMake(0, 492, 608, 48)];
+        [noti_insurance setBackgroundColor:[UIColor clearColor]];
+        [noti_insurance setTextColor:PMColor2];
+        [noti_insurance setFont:PMFont2];
+        [noti_insurance setTextAlignment:NSTextAlignmentCenter];
+        [noti_insurance setText:@"请在横屏下查看此页面"];
+        [noti_insurance setAlpha:0];
+        [_shopMallTable addSubview:noti_insurance];
+        
     }
     return self;
 }
@@ -95,14 +103,27 @@
     
     switch (_shopState) {
         case ShopStateInsurance:
+            
+           
+            
             if (row == 0) {
                 NSString *identifier = @"HealthCell";
                 HealthCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
                 if (cell == nil) {
                     cell = [[[NSBundle mainBundle] loadNibNamed:identifier owner:self options:nil]lastObject];
                     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                    [cell initialize];
                 }
-                [cell initialize];
+                
+                [cell setBackgroundColor:[UIColor clearColor]];
+                if ([MainTabBarController sharedMainViewController].isVertical) {
+                    [cell.contentView setAlpha:0];
+                    [self setVerticalFrame];
+                }else{
+                    [cell.contentView setAlpha:1];
+                    [self setHorizontalFrame];
+                }
+                
                 return cell;
                 
             }else
@@ -127,7 +148,13 @@
                     [insurances addObject:[data objectAtIndex:i]];
                 }
                 [cell setInsurances:insurances];
-                
+                if ([MainTabBarController sharedMainViewController].isVertical) {
+                    [cell.contentView setAlpha:0];
+                    [self setVerticalFrame];
+                }else{
+                    [cell.contentView setAlpha:1];
+                    [self setHorizontalFrame];
+                }
                 return cell;
             }
             
@@ -292,11 +319,17 @@
 - (void)setVerticalFrame
 {
     [_shopMallTable setFrame:CGRectMake(0, 0, 608, 944)];
+    if (_shopState == ShopStateInsurance) {
+        [noti_insurance setAlpha:1];
+    }
 }
 
 - (void)setHorizontalFrame
 {
     [_shopMallTable setFrame:CGRectMake(0, 0, 648, 688)];
+    if (_shopState == ShopStateInsurance) {
+          [noti_insurance setAlpha:0];
+    }
 }
 
 

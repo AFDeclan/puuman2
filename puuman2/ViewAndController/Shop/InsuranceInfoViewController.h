@@ -15,6 +15,7 @@
     UIImage *_infoImg;
     NSString *_url;
 }
+
 - (void)show;
 - (void)setInfoUrl:(NSString *)url;
 @end

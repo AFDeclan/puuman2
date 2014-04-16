@@ -13,12 +13,9 @@
 #import "AFSelecedTextImgButton.h"
 #import "ChatInputViewController.h"
 #import "Forum.h"
-#import "MemberCache.h"
-#import "Friend.h"
-#import "RecommendPartnerViewController.h"
 #import "Topic.h"
 
-@interface TopicCell : UITableViewCell<ForumDelegate,FriendDelegate,PopViewDelegate>
+@interface TopicCell : UITableViewCell<ForumDelegate,PopViewDelegate>
 {
     BasicInfoView *infoView;
     UILabel *info_time;
@@ -31,8 +28,6 @@
     AFTextImgButton *scanMoreReplay;
     UILabel *title_label;
     Reply *_reply;
-    UIButton *info_btn;
-    BOOL hasInfoView;
     UIView *headTitleView;
     UILabel *topicNameLabel;
     UILabel *topicNumLabel;

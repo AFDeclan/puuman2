@@ -10,6 +10,7 @@
 #import "PuumanPartnerDataCell.h"
 #import "ColorsAndFonts.h"
 #import "Member.h"
+#import "UniverseConstant.h"
 
 @implementation PuumanRankPartnerDataView
 
@@ -21,6 +22,9 @@
         [icon setImage:[UIImage imageNamed:@"icon_bank_fri.png"]];
         [titleLabel setText:@"金库"];
         // [self setBackgroundColor:PMColor5];
+//        icon_money = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 74, 60)];
+//        [icon_money setImage:[UIImage imageNamed:@"pic_coin_shop.png"]];
+//        [self addSubview:icon_money];
     }
     return self;
 }
@@ -75,14 +79,16 @@
 
 - (void)setVerticalFrame
 {
+    SetViewLeftUp(icon_money, 0, 0);
     [bgView setFrame:CGRectMake(0, 0, 608, 224)];
     [dataColumnView setFrame:CGRectMake(22, 0, 576, 224)];
 }
 
 - (void)setHorizontalFrame
 {
+   // SetViewLeftUp(icon_money, 0, 0);
     [bgView setFrame:CGRectMake(0, 0, 864, 224)];
-     [dataColumnView setFrame:CGRectMake(152, 0, 576, 224)];
+    [dataColumnView setFrame:CGRectMake(152, 0, 576, 224)];
 }
 
 @end

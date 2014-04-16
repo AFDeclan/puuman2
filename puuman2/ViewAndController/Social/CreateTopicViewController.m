@@ -47,7 +47,12 @@
     [_content  addSubview:createBtn];
     SetViewLeftUp(instructionBtn, 592, 256);
     SetViewLeftUp(createBtn, 592, 296);
+}
+
+- (void)showKeyBoard
+{
     [inputTextFied becomeFirstResponder];
+
 }
 
 - (void)viewDidLoad

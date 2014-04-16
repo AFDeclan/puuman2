@@ -9,5 +9,7 @@
 #import "PartnerDataCellView.h"
 
 @interface PuumanRankPartnerDataView : PartnerDataCellView
-
+{
+    UIImageView *icon_money;
+}
 @end

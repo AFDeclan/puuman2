@@ -148,7 +148,8 @@
     [photoNumLabel setText:[NSString stringWithFormat:@"%d",num]];
     if (num == 1)
     {
-         [sampleBtn setAlpha:1];
+        [finishBtn setEnabled:YES];
+        [sampleBtn setAlpha:1];
         if (!_isTopic) {
             [audioBtn setAlpha:1];
             
@@ -161,7 +162,12 @@
     }else if (num == 2){
         
         [audioBtn setAlpha:0];
+        
+        
     }else if (num == 0){
+        
+        [audioBtn setAlpha:0];
+        [finishBtn setEnabled:NO];
         [sampleBtn setAlpha:0];
         if (!_isTopic) {
              [modelChangeBtn setAlpha:1];
@@ -175,7 +181,6 @@
 - (void)enableControl
 {
     [closeBtn setEnabled:YES];
-    [finishBtn setEnabled:YES];
     [frontRareChangeBtn setEnabled:YES];
     [modelChangeBtn setEnabled:YES];
     [audioBtn setEnabled:YES];
@@ -310,7 +315,7 @@
     [finishBtn setEnabled:enabled];
 }
 
-- (void)setIsTopic:(BOOL)isTopic
+- (void)setIsTopic:(BOOL) isTopic
 {
     _isTopic = isTopic;
     if (isTopic) {
@@ -320,5 +325,23 @@
     
 }
 
+- (void)audioWithShow:(BOOL)isShow
+{
+    if (isShow) {
+        [audioBtn setAlpha:1];
+    }else{
+        [audioBtn setAlpha:0];
+    }
+}
 
+- (void)useCameraBtnWithAble:(BOOL)able;
+{
+    if (able) {
+        [playCameraBtn setEnabled:YES];
+
+    }else{
+        [playCameraBtn setEnabled:NO];
+
+    }
+}
 @end

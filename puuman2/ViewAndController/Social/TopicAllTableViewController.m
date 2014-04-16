@@ -142,7 +142,7 @@
                 cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
         }
-         [cell setRow:[indexPath row]];
+        [cell setRow:[indexPath row]];
         [cell setIsMyTopic:NO];
         [cell buildWithReply:[replays objectAtIndex:[indexPath row]]];
 
@@ -189,8 +189,7 @@
             _refreshFooter.alpha = 1;
             __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
             _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-               
-                if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
+            if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
                 {
                     [blockRefreshFooter endRefreshing];
                 }
@@ -265,7 +264,7 @@
     }
     replays = [_topic replies:_replyOrder];
     
-    if ([replays count] < 5) {
+    if ([replays count] == 0) {
         if (! [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ])
         {
             [_refreshFooter beginRefreshing];
@@ -282,7 +281,7 @@
         [_refreshFooter endRefreshing];
     }
     votings = [[Forum sharedInstance] votingTopic:_voteOrder];
-    if ([votings count] <5) {
+    if ([votings count] == 0) {
         if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
         {
             [_refreshFooter endRefreshing];
@@ -363,6 +362,7 @@
 - (void)setHorizontalFrame
 {
     
+    
 }
 
 
@@ -372,5 +372,17 @@
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:reloadIndexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
+- (void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
+    [_refreshFooter setDelegate:nil];
+    [_refreshFooter removeFromSuperview];
+    _refreshFooter = nil;
+    [_refreshHeader setDelegate:nil];
+    [_refreshHeader removeFromSuperview];
+    _refreshHeader = nil;
+    [self.tableView setDelegate:nil];
+    [self.tableView setDataSource:nil];
+}
 
 @end

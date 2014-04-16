@@ -35,6 +35,8 @@ typedef enum{
 @property(weak,nonatomic)IBOutlet UIButton *backBtn;
 -(IBAction)whyBtnPressed:(UIButton *)sender;
 -(IBAction)howBtnPressed:(UIButton *)sender;
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 //-(IBAction)whereBtnPressed:(UIButton *)sender;
 - (IBAction)backBtnPressed:(UIButton *)sender;
 -(void)initialize;
