@@ -64,7 +64,7 @@
     [noti_label setTextColor:PMColor3];
     [noti_label setBackgroundColor:[UIColor clearColor]];
     [self addSubview:noti_label];
-    [self reloadChatData];
+   // [self reloadChatData];
     [self refreshChatTable];
 
 }

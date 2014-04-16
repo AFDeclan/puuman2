@@ -143,7 +143,9 @@
 - (void)leftBtnPressed
 {
     [leftBtn selected];
+    [leftBtn setEnabled:NO];
     [rightBtn unSelected];
+    [rightBtn setEnabled:YES];
     if (selectedTopic) {
         [contnetView selectWithType:kAllTopicView];
     }else{
@@ -154,7 +156,9 @@
 - (void)rightBtnPressed
 {
     [rightBtn selected];
+    [rightBtn setEnabled:NO];
     [leftBtn unSelected];
+    [leftBtn setEnabled:YES];
     if (selectedTopic) {
         [contnetView selectWithType:kMyTopicView];
     }else{

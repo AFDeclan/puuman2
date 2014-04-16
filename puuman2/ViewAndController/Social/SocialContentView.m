@@ -8,8 +8,7 @@
 
 #import "SocialContentView.h"
 #import "MainTabBarController.h"
-#import "Friend.h"
-#import "Forum.h"
+
 
 @implementation SocialContentView
 
@@ -164,14 +163,10 @@
 - (void)selectWithType:(SocialViewType)type
 {
     
-    [[Forum sharedInstance] removeAllDelegates];
-    [[Friend sharedInstance] removeAllDelegates];
+   
     switch (socialType) {
         case kAllTopicView:
         {
-
-            [allTopic removeColumnView];
-          //  [[Forum sharedInstance] removeDelegateObject:allTopic];
             [allTopic removeFromSuperview];
             allTopic = nil;
         }
@@ -185,21 +180,22 @@
         case kPartnerChatView:
         {
             [partnerChat removeFromSuperview];
-         //   [[Friend sharedInstance] removeDelegateObject:partnerChat];
+           
             partnerChat = nil;
         }
             break;
         case kPartnerDataView:
         {
             [partnerData removeFromSuperview];
-          //  [[Friend sharedInstance] removeDelegateObject:partnerData];
+          
             partnerData = nil;
         }
             break;
         default:
             break;
     }
-
+    [[Forum sharedInstance] removeAllDelegates];
+    [[Friend sharedInstance] removeAllDelegates];
     
     PostNotification(Noti_BottomInputViewHidden, nil);
     switch (type) {
