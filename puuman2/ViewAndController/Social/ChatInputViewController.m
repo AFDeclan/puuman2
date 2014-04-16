@@ -74,7 +74,7 @@
 
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(taped)];
         [bgView addGestureRecognizer:tap];
-        [MyNotiCenter addObserver:self selector:@selector(removeAllDelegate) name:Noti_RemoveFriendDelegate object:nil];
+//        [MyNotiCenter addObserver:self selector:@selector(removeAllDelegate) name:Noti_RemoveFriendDelegate object:nil];
         
     }
     return self;

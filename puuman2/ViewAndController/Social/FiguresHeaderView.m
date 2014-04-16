@@ -63,7 +63,7 @@
         noti_label = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
         [noti_label setBackgroundColor:[UIColor clearColor]];
         [self addSubview:noti_label];
-        [MyNotiCenter addObserver:self selector:@selector(removeAllDelegate) name:Noti_RemoveFriendDelegate object:nil];
+//        [MyNotiCenter addObserver:self selector:@selector(removeAllDelegate) name:Noti_RemoveFriendDelegate object:nil];
         
         modifyNameBtn = [[UIButton alloc] initWithFrame:CGRectMake(80, 0, 160, 48)];
         [modifyNameBtn setBackgroundColor:[UIColor clearColor]];
@@ -82,7 +82,6 @@
 
 - (void)removeAllDelegate
 {
-    
     [[Friend sharedInstance] removeDelegateObject:self];
 }
 

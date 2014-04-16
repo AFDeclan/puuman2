@@ -44,7 +44,7 @@
     
 }
 @property(nonatomic,assign)id<TopicContentCellDelegate>delegate;
--(void)setInfoViewWithTopicNum:(NSInteger)topicNum;
+- (void)setInfoViewWithTopicNum:(NSInteger)topicNum;
 - (void)rightSortSelected;
 - (void)leftSortSelected;
 

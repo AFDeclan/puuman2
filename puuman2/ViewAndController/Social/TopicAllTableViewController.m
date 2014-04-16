@@ -66,8 +66,6 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setShowsHorizontalScrollIndicator:NO];
     [self.tableView setShowsVerticalScrollIndicator:NO];
-
-    
 }
 
 
@@ -104,7 +102,6 @@
         return [replays count];
 
     }
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -159,25 +156,14 @@
 {
 
     if (_voting) {
-        
         return 108;
     }else{
-        
         return  [TopicCell heightForReply:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType];
     }
-   
-    
-    
 }
-
-
-
-
-
 
 - (void)setVoting:(BOOL)voting
 {
-   
     _voting = voting;
     if (voting) {
         [self.tableView reloadData];
@@ -188,8 +174,9 @@
             [_refreshFooter setDelegate:self];
             _refreshFooter.alpha = 1;
             __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+            __block VotingTopicOrder order = _voteOrder;
             _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
+            if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:order newDirect:NO])
                 {
                     [blockRefreshFooter endRefreshing];
                 }
@@ -206,9 +193,9 @@
             [self.tableView addSubview:_refreshHeader];
             [_refreshHeader setDelegate:self];
             _refreshHeader.alpha = 1;
-            __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
+            __block VotingTopicOrder order = _voteOrder;
             _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-                 [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:YES];
+                 [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:order newDirect:YES];
             };
             
         }
@@ -228,8 +215,10 @@
         [_refreshFooter setDelegate:self];
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+        __block Topic * topic = _topic;
+        __block TopicReplyOrder order = _replyOrder;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            if (! [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ])
+            if (! [topic getMoreReplies:5 orderBy:order newDirect:NO ])
             {
                 [blockRefreshFooter endRefreshing];
             }
@@ -244,9 +233,10 @@
         [self.tableView addSubview:_refreshHeader];
         [_refreshHeader setDelegate:self];
         _refreshHeader.alpha = 1;
-        __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
+        __block TopicReplyOrder order = _replyOrder;
+        __block Topic * topic = _topic;
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:YES ];
+            [topic getMoreReplies:5 orderBy:order newDirect:YES ];
         };
         
     }
@@ -381,8 +371,10 @@
     [_refreshHeader setDelegate:nil];
     [_refreshHeader removeFromSuperview];
     _refreshHeader = nil;
+    [self.tableView removeFromSuperview];
     [self.tableView setDelegate:nil];
     [self.tableView setDataSource:nil];
+
 }
 
 @end
