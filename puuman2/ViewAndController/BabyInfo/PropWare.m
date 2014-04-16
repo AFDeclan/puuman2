@@ -8,7 +8,7 @@
 
 #import "PropWare.h"
 #import "ColorsAndFonts.h"
-//#import "SingleGoodViewController.h"
+#import "SinglepopViewController.h"
 #import "MainTabBarController.h"
 #import "ShopViewController.h"
 #import "ShopModel.h"
@@ -100,6 +100,17 @@
 //  
 //        [[MainViewController sharedMainViewController] scrollToShopWithParentIndex:parentMenu andChildIndex:childMenu];
 //    }
+    
+    if(_ware) {
+        SinglepopViewController *singGoodVC = [[SinglepopViewController alloc] initWithNibName:nil bundle:nil];
+        [singGoodVC setControlBtnType:kOnlyCloseButton];
+        [singGoodVC setTitle:@"单品信息" withIcon:nil];
+        [singGoodVC setWare:_ware];
+        [[MainTabBarController sharedMainViewController].view addSubview:singGoodVC.view];
+        [singGoodVC show];
+    }else{
+        [[MainTabBarController sharedMainViewController] goToShopWithParentIndex:parentMenu andChildIndex:childMenu];
+    }
     
 
 }

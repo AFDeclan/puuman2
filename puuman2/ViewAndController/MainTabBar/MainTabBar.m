@@ -110,7 +110,21 @@
 
 - (void)selectedWithTag:(NSInteger)tag
 {
-    [self clickedBtn:diaryBtn];
+    if (tag == 1) {
+         [self clickedBtn:diaryBtn];
+    }
+    
+    if (tag == 2) {
+        [self clickedBtn:babyInfoBtn];
+    }
+    
+    if (tag == 3) {
+        [self clickedBtn:socialBtn];
+    }
+    
+    if (tag == 4) {
+        [self clickedBtn:shopBtn];
+    }
 }
 
 @end

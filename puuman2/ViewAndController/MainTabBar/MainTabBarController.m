@@ -17,6 +17,7 @@
 #import "DiaryViewController.h"
 #import "CustomNotiViewController.h"
 #import "MBProgressHUD.h"
+#import "ShopModel.h"
 
 @interface MainTabBarController ()
 
@@ -252,6 +253,14 @@ static MBProgressHUD *hud;
         improtAutoVC = nil;
     }
     
+}
+
+- (void)goToShopWithParentIndex:(NSInteger)parentMenu andChildIndex:(NSInteger)childMenu
+{
+    [tabBar selectedWithTag:4];
+    [ShopModel sharedInstance].sectionIndex = parentMenu;
+    [ShopModel sharedInstance].subClassIndex = childMenu;
+     PostNotification(Noti_RefreshMenu, nil);
 }
 
 - (void)showBottomInputView:(NSNotification *)notification

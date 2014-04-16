@@ -36,6 +36,7 @@
 + (void)showHud:(NSString *)text;
 + (void)showHudCanCancel:(NSString *)text;
 + (void)hideHud;
+- (void)goToShopWithParentIndex:(NSInteger)parentMenu andChildIndex:(NSInteger)childMenu;
 - (void)initautoImportView;
 - (void)removeAutoImportView;
 - (void)showAutoImportView;
