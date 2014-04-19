@@ -332,6 +332,11 @@
     }
 }
 
+- (void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
+}
+
 
 
 

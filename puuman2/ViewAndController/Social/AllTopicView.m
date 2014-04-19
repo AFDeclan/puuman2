@@ -42,7 +42,7 @@
     }
     _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
-    [_showColumnView setViewDelegate:self];
+    [_showColumnView setColumnViewDelegate:self];
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:NO];
     [_showColumnView setScrollEnabled:NO];
@@ -182,7 +182,7 @@
 
 - (void)dealloc
 {
-    
+    [MyNotiCenter removeObserver:self];
 }
 
 @end

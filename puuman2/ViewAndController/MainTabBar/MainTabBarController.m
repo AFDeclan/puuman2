@@ -86,7 +86,6 @@ static MBProgressHUD *hud;
 
 - (void)initWithTabBar
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:YES animated:NO];
     tabBar  = [[MainTabBar alloc] initWithFrame:CGRectMake(0, 0, 64, 0)];
     [tabBar setDelegate:self];
     [self.view addSubview:tabBar];

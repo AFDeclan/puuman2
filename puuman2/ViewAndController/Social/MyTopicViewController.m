@@ -79,7 +79,10 @@
         };
         
     }
-    [_refreshFooter beginRefreshing];
+    if ([[[Forum sharedInstance] myReplies] count] == 0) {
+        [_refreshFooter beginRefreshing];
+    }
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated

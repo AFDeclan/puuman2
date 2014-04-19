@@ -49,7 +49,7 @@
     
     photosTable = [[UIColumnView alloc] initWithFrame:CGRectMake(32, 160, 640, 128)];
     [photosTable setBackgroundColor:[UIColor whiteColor]];
-    [photosTable setViewDelegate:self];
+    [photosTable setColumnViewDelegate:self];
     [photosTable setViewDataSource:self];
     [_content addSubview:photosTable];
    
@@ -171,7 +171,7 @@
     [photosTable removeFromSuperview];
     photosTable = [[UIColumnView alloc] initWithFrame:CGRectMake(32, 160, 640, 128)];
     [photosTable setBackgroundColor:[UIColor whiteColor]];
-    [photosTable setViewDelegate:self];
+    [photosTable setColumnViewDelegate:self];
     [photosTable setViewDataSource:self];
     [_content addSubview:photosTable];
     [photosTable reloadData];

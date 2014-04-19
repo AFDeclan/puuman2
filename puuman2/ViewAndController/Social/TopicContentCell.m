@@ -433,16 +433,12 @@
 {
     if (status == TopicStatus_Voting) {
         [topicAllVC setVoteOrder:VotingTopicOrder_Vote];
-       
     }else{
-        
         [topicAllVC setReplyOrder:TopicReplyOrder_Vote];
-
     }
     [left_sortBtn selected];
     [right_sortBtn unSelected];
     [topicAllVC.tableView reloadData];
-   
 }
 
 - (void)rightSortSelected

@@ -32,7 +32,7 @@
     _selected = selected;
     if (selected) {
         self.enabled = NO;
-        [flag setImage:_selectedImage];
+        if (_selectedImage) [flag setImage:_selectedImage];
         [UIView animateWithDuration:animateTime animations:^{
             SetViewLeftUp(flag, 14, 31);
         } completion:^(BOOL finished) {
@@ -40,7 +40,7 @@
         }];
         
     }else{
-        [flag setImage:_normalImage];
+        if (_normalImage) [flag setImage:_normalImage];
         [UIView animateWithDuration:animateTime animations:^{
             SetViewLeftUp(flag, 7, 31);
         } completion:^(BOOL finished) {

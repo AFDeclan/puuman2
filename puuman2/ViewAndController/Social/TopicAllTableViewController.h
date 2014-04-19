@@ -29,6 +29,5 @@
 
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
-- (void)forceRelease;
 
 @end

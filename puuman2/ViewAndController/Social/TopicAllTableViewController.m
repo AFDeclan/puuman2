@@ -174,9 +174,9 @@
             [_refreshFooter setDelegate:self];
             _refreshFooter.alpha = 1;
             __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
-            __block VotingTopicOrder order = _voteOrder;
+            __block TopicAllTableViewController * this = self;
             _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:order newDirect:NO])
+            if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:this.voteOrder newDirect:NO])
                 {
                     [blockRefreshFooter endRefreshing];
                 }
@@ -193,14 +193,11 @@
             [self.tableView addSubview:_refreshHeader];
             [_refreshHeader setDelegate:self];
             _refreshHeader.alpha = 1;
-            __block VotingTopicOrder order = _voteOrder;
+            __block TopicAllTableViewController * this = self;
             _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-                 [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:order newDirect:YES];
+                 [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:this.voteOrder newDirect:YES];
             };
-            
         }
-        
-
     }
 }
 
@@ -216,9 +213,9 @@
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         __block Topic * topic = _topic;
-        __block TopicReplyOrder order = _replyOrder;
+        __block TopicAllTableViewController * this = self;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            if (! [topic getMoreReplies:5 orderBy:order newDirect:NO ])
+            if (! [topic getMoreReplies:5 orderBy:this.replyOrder newDirect:NO ])
             {
                 [blockRefreshFooter endRefreshing];
             }
@@ -233,10 +230,10 @@
         [self.tableView addSubview:_refreshHeader];
         [_refreshHeader setDelegate:self];
         _refreshHeader.alpha = 1;
-        __block TopicReplyOrder order = _replyOrder;
+        __block TopicAllTableViewController * this = self;
         __block Topic * topic = _topic;
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [topic getMoreReplies:5 orderBy:order newDirect:YES ];
+            [topic getMoreReplies:5 orderBy:this.replyOrder newDirect:YES ];
         };
         
     }

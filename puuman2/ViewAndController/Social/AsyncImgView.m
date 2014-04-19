@@ -8,6 +8,7 @@
 
 #import "AsyncImgView.h"
 #import "UIImage+CroppedImage.h"
+#import "UIImageView+AnimateFade.h"
 
 static NSOperationQueue * operationQueue;
 
@@ -33,6 +34,7 @@ static NSOperationQueue * operationQueue;
 
 - (void)loadImgWithUrl:(NSString *)imgUrl
 {
+    if ([imgUrl isEqualToString:_url]) return;
     _url = imgUrl;
     NSInvocationOperation *operation = [[NSInvocationOperation alloc]initWithTarget:self
                                                                            selector:@selector(loadImgThread)
@@ -44,7 +46,7 @@ static NSOperationQueue * operationQueue;
 {
     if ([self getImage:_url defaultImage:nil]) {
         if (_cropSize.width != 0) {
-            [self setImage:[UIImage croppedImage:self.image WithHeight:_cropSize.height andWidth:_cropSize.width]];
+            [self fadeToImage:[UIImage croppedImage:self.image WithHeight:_cropSize.height andWidth:_cropSize.width]];
         }
     }
 }
@@ -57,7 +59,7 @@ static NSOperationQueue * operationQueue;
     if (_cropSize.width > 0) {
         finalImage = [UIImage croppedImage:finalImage WithHeight:_cropSize.height andWidth:_cropSize.width];
     }
-    [self setImage:finalImage];
+    [self fadeToImage:finalImage];
 }
 
 @end

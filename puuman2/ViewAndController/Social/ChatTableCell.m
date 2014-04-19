@@ -61,10 +61,6 @@
     }
     member= [[[Friend sharedInstance] myGroup] memberWithBid:chatInfo.ATargetBID];
     [portrait getImage:[member BabyPortraitUrl] defaultImage:@"pic_default_topic.png"];
-   
-    
-    
-  NSInteger minite = [chatInfo.ACreateTime miniteFromDate:preChat.ACreateTime];
     
     float disHeight = 0;
    // if (minite >= 0) {

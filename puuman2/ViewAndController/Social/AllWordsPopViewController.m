@@ -192,8 +192,9 @@
         [_refreshFooter setDelegate:self];
         _refreshFooter.alpha = 1;
         __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+        __block Reply * reply = _replay;
         _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [_replay getMoreComments:2 newDirect:NO];
+            [reply getMoreComments:2 newDirect:NO];
             if (![replay noMore])
             {
                 [blockRefreshFooter endRefreshing];
@@ -209,9 +210,9 @@
         [talksTable addSubview:_refreshHeader];
         [_refreshHeader setDelegate:self];
         _refreshHeader.alpha = 1;
-        __block MJRefreshHeaderView * blockRefreshHeader = _refreshHeader;
+        __block Reply * reply = _replay;
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [_replay getMoreComments:2 newDirect:YES];
+            [reply getMoreComments:2 newDirect:YES];
         };
         
     }

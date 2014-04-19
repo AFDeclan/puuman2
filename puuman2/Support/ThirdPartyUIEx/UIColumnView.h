@@ -26,15 +26,13 @@
     NSInteger					endIndex; //current end index of view cell on screen
     
     NSArray						*itemDataList;
-    id<UIColumnViewDelegate>    viewDelegate;
-    id<UIColumnViewDataSource>  viewDataSource;
     
     NSMutableArray              *originPointList; //store the view cell's left origin for all view cells
 }
 
-- (void)setViewDelegate:(id<UIColumnViewDelegate>)delegate;
-
-- (void)setViewDataSource:(id<UIColumnViewDataSource>)dataSource;
+//- (void)setViewDelegate:(id<UIColumnViewDelegate>)delegate;
+//
+//- (void)setViewDataSource:(id<UIColumnViewDataSource>)dataSource;
 
 - (void)initForXib;
 /*
@@ -45,12 +43,12 @@
 /*
  UIColumnView delegate
  */
-//@property (nonatomic, assign) id<UIColumnViewDelegate> viewDelegate;
+@property (nonatomic, assign) id<UIColumnViewDelegate> columnViewDelegate;
 
 /*
  UIColumnView data source
  */
-//@property (nonatomic, assign) id<UIColumnViewDataSource> viewDataSource;
+@property (nonatomic, assign) id<UIColumnViewDataSource> viewDataSource;
 
 /*
  Return the reused view cell for this column view, nil if no cell can be reused

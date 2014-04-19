@@ -10,6 +10,7 @@
 #import "DiaryFileManager.h"
 #import "DetailShowViewController.h"
 #import "DiaryFileManager.h"
+#import "AsyncImgView.h"
 
 @implementation PhotoTopicCell
 
@@ -32,7 +33,7 @@
     }
     _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, 0, 536, 112)];
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
-    [_showColumnView setViewDelegate:self];
+    [_showColumnView setColumnViewDelegate:self];
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:NO];
     [_showColumnView setScrollEnabled:YES];
@@ -74,18 +75,18 @@
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        AFImageView *imgView = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+        AsyncImgView *imgView = [[AsyncImgView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+        UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
+        [imgView setImage:photo];
         imgView.tag = 11;
         [cell.contentView addSubview:imgView];
+    } else {
+
     }
-    AFImageView *photoView = (AFImageView *)[cell viewWithTag:11];
-    // NSString *str = ;
-    UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
-    [photoView setImage:photo];
+    AsyncImgView *photoView = (AsyncImgView *)[cell viewWithTag:11];
     if (_photoPaths) {
-        [photoView getImage:[_photoPaths objectAtIndex:index] defaultImage:@"pic_default_diary.png"];
+        [photoView loadImgWithUrl:[_photoPaths objectAtIndex:index]];
     }
-    // [photoView setImage:[DiaryFileManager thumbImageForPath:str]];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
 }
