@@ -4554,7 +4554,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s";
@@ -4591,7 +4591,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -4603,7 +4603,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 721904F09AE644A085A71BDA /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanglin Hu (HU7TNQNUEQ)";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/Tencent,
@@ -4613,7 +4613,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,
@@ -4624,7 +4624,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CC793F5E-708D-4324-B0CA-E8EBEB4439CA";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4634,7 +4634,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 721904F09AE644A085A71BDA /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Amazing Finger Interactive Technology Co., Ltd (3NS9QVX256)";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/Tencent,
@@ -4644,7 +4644,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,
@@ -4655,7 +4655,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CC793F5E-708D-4324-B0CA-E8EBEB4439CA";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
