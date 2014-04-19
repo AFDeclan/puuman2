@@ -22,6 +22,7 @@
 @end
 
 @protocol NewTextSelectPhotoDelegate <NSObject>
+@optional
 - (void)selectedPhoto:(UIImage *)img;
 - (void)selectedhidden;
 @end
