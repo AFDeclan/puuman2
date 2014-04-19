@@ -56,4 +56,9 @@
     [topicMyVC.view setFrame:CGRectMake(128, 0, 608, 688)];
 }
 
+- (void)dealloc
+{
+    
+}
+
 @end

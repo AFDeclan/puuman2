@@ -29,4 +29,5 @@
 
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
+
 @end

@@ -31,7 +31,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
@@ -228,20 +227,15 @@
 
 -(void)setInfoViewWithTopicNum:(NSInteger)topicNum
 {
-    
-    
-    PostNotification(Noti_RemoveFriendDelegate, nil);
+//    PostNotification(Noti_RemoveFriendDelegate, nil);
     _topicNum = topicNum;
-     [[Forum sharedInstance] removeDelegateObject:self];
-     [[Forum sharedInstance] addDelegateObject:self];
+    [[Forum sharedInstance] addDelegateObject:self];
     
     if (topicNum == 1 ) {
         [leftBtn setAlpha:0];
     }else{
         [leftBtn setAlpha:1];
     }
-    
- 
     
     if(topicNum > [[Forum sharedInstance] onTopic].TNo)
     {
@@ -268,14 +262,11 @@
         
         
     }else{
-      
         [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多喜欢" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
         [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新参与" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
          [topicAllVC setVoting:NO];
         [info_title setTextColor:PMColor1];
         [rightBtn setAlpha:1];
-  
-        
        
         if ([[Forum sharedInstance] onTopic].TNo == topicNum) {
             _topic = [[Forum sharedInstance] onTopic];
@@ -284,7 +275,7 @@
             [leftBtn setTitleName:@"回顾！"];
             status= TopicStatus_On;
             [info_title setText:[[Forum sharedInstance] onTopic].TTitle];
-            [info_num setText:[NSString stringWithFormat:@"已有%d人参与",[[Forum sharedInstance] onTopic].TNo]];
+            [info_num setText:[NSString stringWithFormat:@"已有%ld人参与", (long)[[Forum sharedInstance] onTopic].TNo]];
             [bgImageView getImage:[_topic TImgUrl] defaultImage:nil];
             status = _topic.TStatus;
             // [info_num setText:[NSString stringWithFormat:@"已有%d人参与",_topic.TNo]];
@@ -297,11 +288,11 @@
             [rightBtn setNoti:@"下期话题"];
             [leftBtn setNoti:@"往期话题"];
               status= TopicStatus_Past;
-            [info_num setText:[NSString stringWithFormat:@"第%d期",topicNum]];
+            [info_num setText:[NSString stringWithFormat:@"第%ld期", (long)topicNum]];
             [leftBtn setNoti:@""];
-            [leftBtn setTitleName:[NSString stringWithFormat:@"第%d期",topicNum-1]];
+            [leftBtn setTitleName:[NSString stringWithFormat:@"第%ld期", (long)topicNum-1]];
             [rightBtn setNoti:@""];
-            [rightBtn setTitleName:[NSString stringWithFormat:@"第%d期",topicNum+1]];
+            [rightBtn setTitleName:[NSString stringWithFormat:@"第%ld期", (long)topicNum+1]];
             if ([[Forum sharedInstance] getTopic:topicNum]) {
                 
                 _topic = [[Forum sharedInstance] getTopic:topicNum];
@@ -438,21 +429,16 @@
 
 }
 
-
 - (void)leftSortSelected
 {
     if (status == TopicStatus_Voting) {
         [topicAllVC setVoteOrder:VotingTopicOrder_Vote];
-       
     }else{
-        
         [topicAllVC setReplyOrder:TopicReplyOrder_Vote];
-
     }
     [left_sortBtn selected];
     [right_sortBtn unSelected];
     [topicAllVC.tableView reloadData];
-   
 }
 
 - (void)rightSortSelected
@@ -466,14 +452,10 @@
     [right_sortBtn selected];
     [left_sortBtn unSelected];
     [topicAllVC.tableView reloadData];
-   
 }
 
 - (void)dealloc
 {
-  //  [topicAllVC.view removeFromSuperview];
-//    topicAllVC.view = nil;
- 
 }
 
 

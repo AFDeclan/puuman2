@@ -11,19 +11,7 @@
 
 @implementation UIColumnView
 
-
 @synthesize itemDataList;
-
-
-- (void)setViewDelegate:(id<UIColumnViewDelegate>)delegate
-{
-    viewDelegate = delegate;
-}
-
-- (void)setViewDataSource:(id<UIColumnViewDataSource>)dataSource
-{
-    viewDataSource = dataSource;
-}
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -90,9 +78,9 @@
 
 - (float)contentSizeWidth {
     float width = 0.0;
-    numberOfColumns = viewDataSource == nil ? 0 : [viewDataSource numberOfColumnsInColumnView:self];
+    numberOfColumns = _viewDataSource == nil ? 0 : [_viewDataSource numberOfColumnsInColumnView:self];
     for (int i = 0; i < numberOfColumns; i++) {
-        float itemWidth = [viewDelegate columnView:self widthForColumnAtIndex:i];
+        float itemWidth = [_columnViewDelegate columnView:self widthForColumnAtIndex:i];
         width += itemWidth;
     }
     //NSLog(@"content size: %f", width);
@@ -106,7 +94,7 @@
     float viewOrigin = 0;
     for (int i = 0; i < numberOfColumns; i++) {
         [originPointList addObject:[NSNumber numberWithFloat:viewOrigin]];
-        viewOrigin += [viewDelegate columnView:self widthForColumnAtIndex:i];
+        viewOrigin += [_columnViewDelegate columnView:self widthForColumnAtIndex:i];
     }
 }
 
@@ -131,7 +119,7 @@
     endIndex = 0;
     self.contentSize = CGSizeMake(0, 0);
 
-//    numberOfColumns = viewDataSource == nil ? 0: [viewDataSource numberOfColumnsInColumnView:self];
+//    numberOfColumns = _viewDataSource == nil ? 0: [_viewDataSource numberOfColumnsInColumnView:self];
 //    
 //    self.contentSize = CGSizeMake([self contentSizeWidth], self.bounds.size.height);
 //    
@@ -186,10 +174,10 @@
     
     for (int i = startIndex; i < endIndex + 1; i++) {
         if (![[onScreenViewDic allKeys] containsObject:[NSNumber numberWithInt:i]]) {
-            UITableViewCell *viewCell = [viewDataSource columnView:self viewForColumnAtIndex:i];
+            UITableViewCell *viewCell = [_viewDataSource columnView:self viewForColumnAtIndex:i];
             [onScreenViewDic setObject:viewCell forKey:[NSNumber numberWithInt:i]];
             
-            float viewWidth = [viewDelegate columnView:self widthForColumnAtIndex:i];
+            float viewWidth = [_columnViewDelegate columnView:self widthForColumnAtIndex:i];
             float viewOrigin = [[originPointList objectAtIndex:i] floatValue];
             viewCell.frame = CGRectMake(viewOrigin, 0, viewWidth, self.bounds.size.height);
             [self addSubview:viewCell];
@@ -204,7 +192,7 @@
     //NSLog(@"%s", __FUNCTION__);
     
     if (numberOfColumns == 0) {
-    	numberOfColumns = viewDataSource == nil ? 0: [viewDataSource numberOfColumnsInColumnView:self];
+    	numberOfColumns = _viewDataSource == nil ? 0: [_viewDataSource numberOfColumnsInColumnView:self];
     }
     //NSLog(@"column count:%d", numberOfColumns);
     
@@ -221,24 +209,24 @@
 
 
 #pragma mark -
-#pragma mark UIScrollViewDelegate method implementation
+#pragma mark UIScroll_columnViewDelegate method implementation
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
    
     
     self.contentOffset = scrollView.contentOffset;
-    if ([viewDelegate respondsToSelector:@selector(scrollViewDidScroll:)])
-        [viewDelegate scrollViewDidScroll:self];
+    if ([_columnViewDelegate respondsToSelector:@selector(scrollViewDidScroll:)])
+        [_columnViewDelegate scrollViewDidScroll:self];
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if ([viewDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)])
-            [viewDelegate scrollViewDidEndDecelerating:self];
+    if ([_columnViewDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)])
+            [_columnViewDelegate scrollViewDidEndDecelerating:self];
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if ([viewDelegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)])
-        [viewDelegate scrollViewDidEndDragging:self willDecelerate:decelerate];
+    if ([_columnViewDelegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)])
+        [_columnViewDelegate scrollViewDidEndDragging:self willDecelerate:decelerate];
 }
 
 
@@ -253,13 +241,13 @@
 //        NSLog(@"point in self:%@", NSStringFromCGPoint(point));
         
         float viewWidth = 0;
-        for (int i = 0; i < [viewDataSource numberOfColumnsInColumnView:self]; i++) {
+        for (int i = 0; i < [_viewDataSource numberOfColumnsInColumnView:self]; i++) {
             if (viewWidth < point.x &&
-                (viewWidth + [viewDelegate columnView:self widthForColumnAtIndex:i]) > point.x) {
-                [viewDelegate columnView:self didSelectColumnAtIndex:i];
+                (viewWidth + [_columnViewDelegate columnView:self widthForColumnAtIndex:i]) > point.x) {
+                [_columnViewDelegate columnView:self didSelectColumnAtIndex:i];
                 break;
             }else {
-                viewWidth += [viewDelegate columnView:self widthForColumnAtIndex:i];
+                viewWidth += [_columnViewDelegate columnView:self widthForColumnAtIndex:i];
             }
             
         }

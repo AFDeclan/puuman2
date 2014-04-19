@@ -24,7 +24,7 @@
         groupMembers = [[NSArray alloc] init];
         figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 36, 576, 120)];
         [figuresColumnView setBackgroundColor:[UIColor clearColor]];
-        [figuresColumnView setViewDelegate:self];
+        [figuresColumnView setColumnViewDelegate:self];
         [figuresColumnView setViewDataSource:self];
         [figuresColumnView setPagingEnabled:NO];
         [figuresColumnView setScrollEnabled:YES];

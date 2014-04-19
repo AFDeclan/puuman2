@@ -162,11 +162,13 @@
 
 - (void)selectWithType:(SocialViewType)type
 {
-    
+    [[Forum sharedInstance] removeAllDelegates];
+    [[Friend sharedInstance] removeAllDelegates];
    
     switch (socialType) {
         case kAllTopicView:
         {
+            [allTopic removeColumnView];
             [allTopic removeFromSuperview];
             allTopic = nil;
         }
@@ -180,7 +182,6 @@
         case kPartnerChatView:
         {
             [partnerChat removeFromSuperview];
-           
             partnerChat = nil;
         }
             break;
@@ -194,8 +195,6 @@
         default:
             break;
     }
-    [[Forum sharedInstance] removeAllDelegates];
-    [[Friend sharedInstance] removeAllDelegates];
     
     PostNotification(Noti_BottomInputViewHidden, nil);
     switch (type) {
@@ -203,18 +202,17 @@
             [self selectedAll];
             break;
         case kMyTopicView:
-              [self selectedMine];
+            [self selectedMine];
             break;
         case kPartnerChatView:
             [self selectedChat];
             break;
         case kPartnerDataView:
-              [self selectedData];
+            [self selectedData];
             break;
         default:
             break;
     }
-   socialType = type;
-    
+    socialType = type;
 }
 @end

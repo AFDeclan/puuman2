@@ -10,7 +10,7 @@
 #import "DiaryFileManager.h"
 #import "DetailShowViewController.h"
 #import "DiaryFileManager.h"
-#import "DiaryImageView.h"
+#import "AsyncImgView.h"
 
 @implementation PhotoTopicCell
 
@@ -27,14 +27,13 @@
 
 - (void)buildWithReply:(Reply *)reply
 {
-    
     _photoPaths = [reply photoUrls];
     if (_showColumnView) {
         [_showColumnView removeFromSuperview];
     }
     _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(56, 0, 536, 112)];
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
-    [_showColumnView setViewDelegate:self];
+    [_showColumnView setColumnViewDelegate:self];
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:NO];
     [_showColumnView setScrollEnabled:YES];
@@ -54,8 +53,6 @@
     [self showPhotoAtIndex:index];
 }
 
-
-
 - (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
 {
     
@@ -73,46 +70,41 @@
 
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
-    
-        NSString * cellIdentifier = @"photoTopicShowColumnCell";
-        UITableViewCell *cell = [columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            DiaryImageView *imgView = [[DiaryImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
-            imgView.tag = 11;
-            [cell.contentView addSubview:imgView];
-        }
-        DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
-       // NSString *str = ;
+    NSString * cellIdentifier = @"photoTopicShowColumnCell";
+    UITableViewCell *cell = [columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        AsyncImgView *imgView = [[AsyncImgView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
         UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
-        [photoView setImage:photo];
-        if (_photoPaths) {
-            [photoView setCropSize:CGSizeMake(224, 224)];
-            [photoView loadThumbImgWithPath:[_photoPaths objectAtIndex:index]];
-        }
-       // [photoView getImage:[_photoPaths objectAtIndex:index] defaultImage:@""];
-    
-       // [photoView setImage:[DiaryFileManager thumbImageForPath:str]];
-       [cell setBackgroundColor:[UIColor clearColor]];
-        return cell;
-        
-    
+        [imgView setImage:photo];
+        imgView.tag = 11;
+        [cell.contentView addSubview:imgView];
+    } else {
+
+    }
+    AsyncImgView *photoView = (AsyncImgView *)[cell viewWithTag:11];
+    if (_photoPaths) {
+        [photoView loadImgWithUrl:[_photoPaths objectAtIndex:index]];
+    }
+    [cell setBackgroundColor:[UIColor clearColor]];
+    return cell;
 }
 
 - (void)showPhotoAtIndex:(NSInteger)index
 {
-    
     [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1];
+}
+
+- (void)dealloc
+{
     
 }
 
 
 + (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type;
 {
- 
     return 128;
-    
 }
 
 @end

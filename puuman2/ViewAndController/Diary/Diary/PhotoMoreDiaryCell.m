@@ -61,7 +61,7 @@
     SetViewLeftUp(_scrollView, 56, height);
     height += 192;
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
-    [_showColumnView setViewDelegate:self];
+    [_showColumnView setColumnViewDelegate:self];
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:NO];
     [_showColumnView setScrollEnabled:NO];

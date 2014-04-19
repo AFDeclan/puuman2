@@ -16,6 +16,8 @@
 #import "SkipViewController.h"
 #import "CustomAlertViewController.h"
 #import "Models.h"
+#import "NSString+VersionCompare.h"
+
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
 
@@ -64,11 +66,57 @@
     [[UserInfo sharedUserInfo] updateUserInfo];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [MobClick updateOnlineConfig];
-    [MobClick checkUpdateWithDelegate:self selector:@selector(appUpdate:)];
+//    [MobClick checkUpdateWithDelegate:self selector:@selector(appUpdate:)];
+    [self checkUpdate];
     PostNotification(Noti_Refresh, nil);
 }
 
+- (void)checkUpdate
+{
+    [ASIHTTPRequest setSessionCookies:nil];
+    NSURL* url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", APPID]];
+    ASIHTTPRequest* request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.delegate = self;
+    [request setTimeOutSeconds:5];
+    [request setTag:1];
+    [request setRequestMethod:@"GET"];
+    [request startAsynchronous];
+}
+
 #pragma mark - Umeng and Update
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    NSError* parseError = nil;
+    id result =[[request responseData] objectFromJSONDataWithParseOptions:JKParseOptionStrict error:&parseError];
+    if ( parseError )
+    {
+        [ErrorLog errorLog:@"JSON Error" fromFile:@"AppDelegate.m" error:parseError];
+    }
+    else
+    {
+        NSArray* appInfo = [NSArray arrayWithArray:[result objectForKey:@"results"]];
+        NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setValue:appInfo forKey:APPINFO];
+        [userDefault synchronize];
+        NSString* receivedVersion = @"";
+        NSString* trackViewUrl = @"";
+        for( id conf in appInfo ){
+            receivedVersion = [conf objectForKey:@"version"];
+            trackViewUrl = [conf objectForKey:@"trackViewUrl"];
+            break;
+        }
+        NSString* currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+        if( [currentVersion earlierThenVersion:receivedVersion] && ![currentVersion isEqualToString:@""])
+        {
+            
+            [CustomAlertViewController showAlertWithTitle:[NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。",receivedVersion] confirmRightHandler:^{
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+            }];
+            
+        }
+    }
+}
 
 - (void)initialUmeng
 {
@@ -86,19 +134,19 @@
     }
 }
 
-- (void)appUpdate:(NSDictionary *)appInfo
-{
-    if ([[appInfo valueForKey:@"update"] boolValue])
-    {
-        NSString *newVersion = [appInfo valueForKey:@"version"];
-        NSString *hint = [NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。", newVersion];
-        NSString *trackViewUrl = [appInfo valueForKey:@"path"];
-        [CustomAlertViewController showAlertWithTitle:hint confirmRightHandler:^{
-   //          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
-        }];
-
-    }
-}
+//- (void)appUpdate:(NSDictionary *)appInfo
+//{
+//    if ([[appInfo valueForKey:@"update"] boolValue])
+//    {
+//        NSString *newVersion = [appInfo valueForKey:@"version"];
+//        NSString *hint = [NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。", newVersion];
+//        NSString *trackViewUrl = [appInfo valueForKey:@"path"];
+//        [CustomAlertViewController showAlertWithTitle:hint confirmRightHandler:^{
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+//        }];
+//
+//    }
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

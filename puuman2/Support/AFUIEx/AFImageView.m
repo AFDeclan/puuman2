@@ -51,7 +51,7 @@
         animation.type = kCATransitionFade;
         [self.layer addAnimation:animation forKey:@"imageFade"];
     }
-    [self setImage:image];
+    [self performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
     return !isDefault;
 }
 

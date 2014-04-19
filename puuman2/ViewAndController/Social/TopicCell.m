@@ -149,8 +149,6 @@
      _reply = reply;
     [topicNumLabel setText:[NSString stringWithFormat:@"第%d期",reply.TID]];
     
-       
-    [[Forum sharedInstance] removeDelegateObject:self];
     [[Forum sharedInstance] addDelegateObject:self];
     [infoView setInfoWithUid:_reply.UID andIsTopic:YES];
     

@@ -43,7 +43,7 @@
     }
     _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(48, 16, 544, 112)];
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
-    [_showColumnView setViewDelegate:self];
+    [_showColumnView setColumnViewDelegate:self];
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:NO];
     [_showColumnView setScrollEnabled:YES];

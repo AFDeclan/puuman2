@@ -263,7 +263,7 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
     }
     _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(24, 88, 816, 328)];
     [_showColumnView setBackgroundColor:[UIColor clearColor]];
-    [_showColumnView setViewDelegate:self];
+    [_showColumnView setColumnViewDelegate:self];
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:NO];
     [_showColumnView setScrollEnabled:NO];

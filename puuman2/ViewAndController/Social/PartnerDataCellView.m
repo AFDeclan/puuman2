@@ -81,7 +81,7 @@
     [dataColumnView setBackgroundColor:[UIColor clearColor]];
     [dataColumnView setShowsHorizontalScrollIndicator:NO];
     [dataColumnView setShowsVerticalScrollIndicator:NO];
-    [dataColumnView setViewDelegate:self];
+    [dataColumnView setColumnViewDelegate:self];
     [dataColumnView setViewDataSource:self];
     [dataColumnView setPagingEnabled:NO];
     [dataColumnView setScrollEnabled:YES];
