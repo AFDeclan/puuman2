@@ -30,7 +30,7 @@
         portrait.layer.masksToBounds = YES;
         portrait.layer.shadowRadius =0.1;
         [self.contentView addSubview:portrait];
-        info_name = [[UILabel alloc] initWithFrame:CGRectMake(96, 88, 0, 0)];
+        info_name = [[UILabel alloc] initWithFrame:CGRectMake(96, 20, 0, 0)];
         [info_name setTextAlignment:NSTextAlignmentCenter];
         [info_name setTextColor:PMColor2];
         [info_name setFont:PMFont2];
@@ -97,7 +97,7 @@
         [portrait getImage:[member BabyPortraitUrl] defaultImage:@""];
         [info_name setText: member.BabyNick];
         [info_name adjustSize];
-        SetViewLeftUp(icon_sex, 96+ViewWidth(info_name)+2, 88);
+        SetViewLeftUp(icon_sex, 96+ViewWidth(info_name)+2, 20);
         if (member.BabyIsBoy)
         {
             [icon_sex setImage:[UIImage imageNamed:@"icon_male_topic.png"]];
@@ -121,7 +121,7 @@
     [portrait getImage:[member BabyPortraitUrl] defaultImage:@""];
     [info_name setText: member.BabyNick];
     [info_name adjustSize];
-    SetViewLeftUp(icon_sex, 96+ViewWidth(info_name)+2, 88);
+    SetViewLeftUp(icon_sex, 96+ViewWidth(info_name)+2, 20);
     if (member.BabyIsBoy)
     {
         [icon_sex setImage:[UIImage imageNamed:@"icon_male_topic.png"]];
