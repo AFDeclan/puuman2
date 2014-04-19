@@ -106,29 +106,15 @@
         }
         NSInteger suitMonth = [[vacInfo valueForKey:kVaccine_SuitMonth] integerValue];
         
-        if (month >= startMonth && month < endMonth)
-        {
-           
-            [info_age setText:[NSString stringWithFormat:@"%d",suitMonth]];
-            [info_date setText:@""];
+        [info_age setText:[NSString stringWithFormat:@"%d",suitMonth]];
+        [info_date setText:@""];
+        if (month >= startMonth && month < endMonth) {
             [self setNowStyle];
-            
-        }
-        else if(month<startMonth)
-        {
-            
-            [info_age setText:[NSString stringWithFormat:@"%d",suitMonth]];
-            [info_date setText:@""];
-            [self setDonePreStyle];
-            
-        }else{
-            [info_age setText:[NSString stringWithFormat:@"%d",suitMonth]];
-            [info_date setText:@""];
+        } else if(month<startMonth) {
             [self setFutureStyle];
+        } else {
+            [self setDonePreStyle];
         }
-        
-
-
     }
 }
 

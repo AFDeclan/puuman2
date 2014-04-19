@@ -588,7 +588,7 @@ static DiaryModel * instance;
 
 - (void)downloadUpdateDiary
 {
-    Reachability *rechability = [Reachability reachabilityWithHostname:@"http://puman.oss.aliyuncs.com"];
+    Reachability *rechability = [Reachability reachabilityForInternetConnection];
     FileUploader *downloader = [[FileUploader alloc] init];
     for (NSDictionary *dic in updateDiaryInfo)
     {

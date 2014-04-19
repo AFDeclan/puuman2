@@ -154,7 +154,9 @@
 
 - (void)hidden
 {
-    [_delegate selectedhidden];
+    if ([_delegate respondsToSelector:@selector(selectedhidden)]) {
+        [_delegate selectedhidden];
+    }
     [super hidden];
 }
 

@@ -22,4 +22,6 @@
 
 - (void)loadVideoImgWithPath:(NSString *)imgPath;
 
+- (void)reset;
+
 @end

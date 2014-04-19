@@ -94,12 +94,18 @@ static NSOperationQueue * operationQueue;
 
 - (void)setImg
 {
-    [self fadeToImage:_img];
+    if (_img) {
+        [self fadeToImage:_img];
+    }
 }
 
 - (void)setImage:(UIImage *)image
 {
     [super setImage:image];
+}
+
+- (void)reset
+{
     _path = nil;
 }
 

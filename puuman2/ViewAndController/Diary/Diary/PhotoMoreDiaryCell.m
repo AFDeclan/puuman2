@@ -183,6 +183,7 @@
   
         UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
         DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
+        [photoView reset];
         [photoView setImage:photo];
         if (_photoPaths) {
             [photoView setCropSize:CGSizeMake(384, 384)];

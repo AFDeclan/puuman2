@@ -1,4 +1,4 @@
-                                                                                                                                                                               //
+//
 //  DiaryHeaderView.m
 //  puman
 //
@@ -88,7 +88,7 @@
         [bg_progress setBackgroundColor:PMColor7];
         [bg_view setBackgroundColor:PMColor6];
         [title setTextColor:[UIColor whiteColor]];
-        [title setText:@"正在下载您的日记...... "];
+        [title setText:@"正在下载同步您的日记...... "];
     }else{
         [bg_progress setBackgroundColor:RGBColor(239, 84, 77)];
         [bg_view setBackgroundColor:RGBColor(239, 128, 123)];
@@ -142,7 +142,7 @@
 {
     isFinished = NO;
     if (_isDiary) {
-        [title setText:@"正在下载您的日记...... "];
+        [title setText:@"正在下载同步您的日记...... "];
     }else{
         [title setText:@"正在导入照片...... "];
     }

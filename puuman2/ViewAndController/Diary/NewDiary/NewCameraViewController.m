@@ -335,13 +335,7 @@
      
     
         [controlView addPhoto:image andNum:[photos count]];
-        if (audioFileUrl && [photos count] == 1)
-        {
-            [controlView useCameraBtnWithAble:NO];
-        }else{
-            [controlView useCameraBtnWithAble:YES];
-        }
-        
+        [controlView useCameraBtnWithAble:NO];
         [self performSelector:@selector(saveWithImg:) withObject:img afterDelay:0];
         
     }else if (CFStringCompare ((CFStringRef) mediaType, kUTTypeMovie, 0)
@@ -391,6 +385,9 @@
 {
     NSString *path = [DiaryFileManager saveTmpPhoto:img];
     [photoPath addObject:path];
+    if (!audioFileUrl || [photoPath count] < 1) {
+        [controlView useCameraBtnWithAble:YES];
+    }
 }
 
 
@@ -440,10 +437,6 @@
     if (audioFileUrl&&[photos count] == 1) {
         [controlView useCameraBtnWithAble:NO];
     }
-    
-    
-  
-    
 
 }
 
