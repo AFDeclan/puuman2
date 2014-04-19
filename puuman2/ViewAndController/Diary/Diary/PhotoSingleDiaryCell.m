@@ -60,6 +60,7 @@
         [titleView setAlpha:1];
     }
     [_imgView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
+    [_imgView reset];
     _content.frame = CGRectMake(112, kHeaderHeight, ContentWidth, 440);
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
@@ -73,7 +74,6 @@
     for (NSString *photoPath in photoPaths)
     {
         _photoPath = photoPath;
-        
         if (_photoPath != nil) {
             break;
         }

@@ -438,9 +438,11 @@
 
 + (NSString *)saveTmpPhoto:(UIImage *)photo
 {
+    static int tempNum = 0;
     NSString *tmpDir = [self tmpDir];
     NSDate *curDate = [NSDate date];
     NSString *fileName = [DateFormatter stringFromDatetime:curDate];
+    fileName = [NSString stringWithFormat:@"%@_%d", fileName, tempNum++];
     NSString *filePath = [tmpDir stringByAppendingPathComponent:fileName];
     filePath = [filePath stringByAppendingPathExtension:@"jpg"];
     if (![UIImageJPEGRepresentation(photo, 0) writeToFile:filePath atomically:YES])

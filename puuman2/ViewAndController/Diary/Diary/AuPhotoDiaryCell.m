@@ -70,6 +70,7 @@
     }
     //在这里调整控件坐标，填充内容
     [_photoView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
+    [_photoView reset];
      _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,488);
     
     NSString *filePath = [self.diaryInfo valueForKey:kFilePath2Name];
