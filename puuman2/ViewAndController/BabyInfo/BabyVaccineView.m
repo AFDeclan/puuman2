@@ -302,7 +302,7 @@
             
         }else{
             [self noVaccine];
-             [statusText setText:[NSString stringWithFormat:@"建议在%d月龄接种",suitMonth]];
+            [statusText setText:[NSString stringWithFormat:@"建议在%d月龄接种",suitMonth]];
             right  = NO;
         }
 

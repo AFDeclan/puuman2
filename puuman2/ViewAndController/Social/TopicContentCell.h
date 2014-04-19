@@ -19,13 +19,13 @@
 #import "AFImageView.h"
 #import "NewTextDiaryViewController.h"
 #import "NewCameraViewController.h"
-
+#import "Friend.h"
 @protocol TopicContentCellDelegate;
-@interface TopicContentCell : UITableViewCell<ForumDelegate,SelectPhotoDelegate,PopViewDelegate>
+@interface TopicContentCell : UITableViewCell<ForumDelegate,SelectPhotoDelegate,PopViewDelegate,FriendDelegate>
 {
     AFImageView *bgImageView;
     UILabel *info_title;
-    UILabel *info_num;
+    UILabel *info_upload;
     TopicSelectButton *leftBtn;
     TopicSelectButton *rightBtn;
     ColorButton *toNewestBtn;
