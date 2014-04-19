@@ -77,6 +77,7 @@
             SetViewLeftUp(record, 80, 240);
             [label_restart setAlpha:1];
             [label_stop setAlpha:0];
+            [label_start setAlpha:0];
             SetViewLeftUp(play, 400, 240);
             [play setAlpha:1];
             [label_play setAlpha:1];
