@@ -158,9 +158,12 @@
     if (_voting) {
         return 108;
     }else{
-        return  [TopicCell heightForReply:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType];
+        return [TopicCell heightForReply:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType];
     }
 }
+
+
+
 
 - (void)setVoting:(BOOL)voting
 {
