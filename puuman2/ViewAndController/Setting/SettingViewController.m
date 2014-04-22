@@ -65,13 +65,9 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     [backBtn setBackgroundColor:[UIColor clearColor]];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:backBtn];
-    updateBtn = [[ColorButton alloc] init];
-    [updateBtn initWithTitle:@"检查更新" andButtonType:kGrayLeftUp];
-    [updateBtn addTarget:self action:@selector(updateBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_content addSubview:updateBtn];
     
     logOut = [[ColorButton alloc] init];
-    [logOut initWithTitle:@"注销登录" andButtonType:kRedLeftDown];
+    [logOut initWithTitle:@"注销登录" andButtonType:kRedLeft];
     [logOut addTarget:self action:@selector(logOutBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:logOut];
     
@@ -88,7 +84,13 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     }else{
         [self setHorizontalFrame];
     }
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back)];
+    [bgView addGestureRecognizer:tap];
+    
 }
+
+
 
 - (void)logOutBtnPressed
 {
@@ -101,75 +103,6 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     
 }
 
-- (void)updateBtnPressed
-{
-    if ([[Reachability reachabilityForInternetConnection] isReachable])
-    {
-       // PostNotification(Noti_ShowHud, @"正在检查更新...");
-        [MainTabBarController showHud: @"正在检查更新..."];
-        [ASIHTTPRequest setSessionCookies:nil];
-        NSURL* url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", APPID]];
-        ASIHTTPRequest* request = [[ASIHTTPRequest alloc] initWithURL:url];
-        [request setTimeOutSeconds:5];
-        [request setTag:1];
-        [request setRequestMethod:@"GET"];
-        [request startSynchronous];
-        [MainTabBarController hideHud];
-       // PostNotification(Noti_HideHud, nil);
-        if (request.error)
-        {
-            [CustomAlertViewController showAlertWithTitle:@"您当前的网络状态不佳，请在网络通畅的环境中再次尝试" confirmRightHandler:^{
-                
-            }];
-           
-        }
-        else
-        {
-            NSError* parseError = nil;
-            id result =[[request responseData] objectFromJSONDataWithParseOptions:JKParseOptionStrict error:&parseError];
-            
-            if ( parseError )
-            {
-                [ErrorLog errorLog:@"JSON Error" fromFile:@"AppDelegate.m" error:parseError];
-            }
-            else
-            {
-                NSArray* appInfo = [NSArray arrayWithArray:[result objectForKey:@"results"]];
-                NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
-                [userDefault setValue:appInfo forKey:APPINFO];
-                [userDefault synchronize];
-                NSString* receivedVersion = @"";
-                NSString* trackViewUrl = @"";
-                for( id conf in appInfo ){
-                    receivedVersion = [conf objectForKey:@"version"];
-                    trackViewUrl = [conf objectForKey:@"trackViewUrl"];
-                    break;
-                }
-                NSString* currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-                if( [currentVersion earlierThenVersion:receivedVersion] && ![currentVersion isEqualToString:@""])
-                {
-           
-                    [CustomAlertViewController showAlertWithTitle:[NSString stringWithFormat:@"现在最新的版本是%@，当前您的版本是%@，请前往更新~",receivedVersion,currentVersion] confirmRightHandler:^{
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
-                    }];
-                    
-                }else{
-                    [CustomAlertViewController showAlertWithTitle:@"当前已是最新版本~" confirmRightHandler:^{
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
-                    }];
-                }
-            }
-        }
-    }
-    else
-    {
-   
-        [CustomAlertViewController showAlertWithTitle:@"您当前的网络状态不佳，请在网络通畅的环境中再次尝试" confirmRightHandler:^{
-            
-        }];
-    }
-    
-}
 
 
 - (void)setVerticalFrame
@@ -177,8 +110,8 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     [super setVerticalFrame];
     [_content setFrame:CGRectMake(0, 0, 320, 1024)];
     SetViewLeftUp(backBtn, 0, 952);
-    SetViewLeftUp(updateBtn, 208, 938);
-    SetViewLeftUp(logOut, 208, 978);
+   // SetViewLeftUp(updateBtn, 208, 938);
+    SetViewLeftUp(logOut, 208, 952);
     
 }
 
@@ -187,8 +120,8 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     [super setHorizontalFrame];
     [_content setFrame:CGRectMake(0, 0, 320, 768)];
     SetViewLeftUp(backBtn, 0, 696);
-    SetViewLeftUp(updateBtn, 208, 682);
-    SetViewLeftUp(logOut, 208, 722);
+   // SetViewLeftUp(updateBtn, 208, 682);
+    SetViewLeftUp(logOut, 208, 696);
     
 }
 - (void)didReceiveMemoryWarning

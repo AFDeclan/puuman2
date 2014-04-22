@@ -49,6 +49,10 @@
             [self setTitleLabelColor:[UIColor whiteColor]];
             [backgroundImgView setImage:[UIImage imageNamed:@"btn_red.png"]];
             break;
+        case kRedLeft:
+            [self setTitleLabelColor:[UIColor whiteColor]];
+            [backgroundImgView setImage:[UIImage imageNamed:@"btn_red3.png"]];
+            break;
         case kBlueLeft:
             [self setTitleLabelColor:[UIColor whiteColor]];
             [backgroundImgView setImage:[UIImage imageNamed:@"btn_blue1.png"]];
@@ -82,6 +86,7 @@
             [self setTitleLabelColor:PMColor2];
             [backgroundImgView setImage:[UIImage imageNamed:@"block4_btn.png"]];
             break;
+     
 
         default:
             break;
