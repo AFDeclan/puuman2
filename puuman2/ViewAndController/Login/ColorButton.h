@@ -11,6 +11,7 @@ typedef enum{
 
     kRedLeftUp,
     kRedLeftDown,
+    kRedLeft,
     kBlueLeft,
     kBlueRight,
     kBlueLeftUp,

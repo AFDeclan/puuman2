@@ -15,7 +15,6 @@
     UITableView *settingTable;
     BOOL canSelected;
     AFTextImgButton *backBtn;
-    ColorButton *updateBtn;
     ColorButton *logOut;
     UILabel *versionLabel;
 }
