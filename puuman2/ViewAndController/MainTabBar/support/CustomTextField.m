@@ -24,12 +24,12 @@
 
 - (CGRect)textRectForBounds:(CGRect)bounds
 {
-    return CGRectInset(bounds, 12, 16);
+    return CGRectInset(bounds, 12, 12);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds
 {
-    return CGRectInset(bounds, 12, 16);
+    return CGRectInset(bounds, 12, 12);
 }
 
 @end

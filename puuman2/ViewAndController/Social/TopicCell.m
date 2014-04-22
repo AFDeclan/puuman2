@@ -74,7 +74,7 @@
     [headTitleView addSubview:topicNumLabel];
     
     
-    title_label = [[UILabel alloc] initWithFrame:CGRectMake(56, 48, 128, 16)];
+    title_label = [[UILabel alloc] initWithFrame:CGRectMake(56, 48, 512, 16)];
     [title_label setTextColor:PMColor1];
     [title_label setFont:PMFont2];
     [title_label setBackgroundColor:[UIColor clearColor]];

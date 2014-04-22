@@ -112,7 +112,6 @@ typedef enum VotingTopicOrder {
 
 //当期话题
 @property (nonatomic, retain, readonly) Topic * onTopic;
-
 //我参与的
 @property (retain, nonatomic, readonly) NSMutableArray * myReplies;
 @property (assign, nonatomic, readonly) BOOL noMore;

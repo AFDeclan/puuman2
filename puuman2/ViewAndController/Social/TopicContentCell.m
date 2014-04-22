@@ -12,7 +12,8 @@
 #import "RewardViewController.h"
 #import "CreateTopicViewController.h"
 #import "UniverseConstant.h"
-
+#import "MemberCache.h"
+#import "Member.h"
 
 @implementation TopicContentCell
 @synthesize delegate = _delegate;
@@ -40,16 +41,23 @@
     bgImageView = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 144)];
     [self addSubview:bgImageView];
      leftSelected = YES;
+    noti_current = [[UILabel alloc] initWithFrame:CGRectMake(208, 24, 320, 28)];
+    [noti_current setBackgroundColor:[UIColor clearColor]];
+    [noti_current setFont:PMFont2];
+    [noti_current setTextColor:PMColor3];
+    [noti_current setText:@"本期话题"];
+    [self addSubview:noti_current];
+    [noti_current setAlpha:0];
     info_title = [[UILabel alloc] initWithFrame:CGRectMake(208, 48, 320, 28)];
     [info_title setBackgroundColor:[UIColor clearColor]];
     [info_title setFont:PMFont1];
     [info_title setTextColor:PMColor1];
     [self addSubview:info_title];
-    info_num = [[UILabel alloc] initWithFrame:CGRectMake(208, 76, 320, 20)];
-    [info_num setBackgroundColor:[UIColor clearColor]];
-    [info_num setFont:PMFont2];
-    [info_num setTextColor:PMColor3];
-    [self addSubview:info_num];
+    info_upload = [[UILabel alloc] initWithFrame:CGRectMake(208, 76, 320, 20)];
+    [info_upload setBackgroundColor:[UIColor clearColor]];
+    [info_upload setFont:PMFont2];
+    [info_upload setTextColor:PMColor3];
+    [self addSubview:info_upload];
     rewardBtn = [[ColorButton alloc] init];
     [rewardBtn initWithTitle:@"奖励" andIcon:[UIImage imageNamed:@"icon_prize_topic.png"] andButtonType:kGrayLeftUp];
     [rewardBtn addTarget:self action:@selector(reward) forControlEvents:UIControlEventTouchUpInside];
@@ -230,7 +238,7 @@
 //    PostNotification(Noti_RemoveFriendDelegate, nil);
     _topicNum = topicNum;
     [[Forum sharedInstance] addDelegateObject:self];
-    
+    [[Friend sharedInstance] addDelegateObject:self];
     if (topicNum == 1 ) {
         [leftBtn setAlpha:0];
     }else{
@@ -239,13 +247,15 @@
     
     if(topicNum > [[Forum sharedInstance] onTopic].TNo)
     {
+        [noti_current setAlpha:0];
+
         status = TopicStatus_Voting;
         [rightBtn setAlpha:0];
         [leftBtn setNoti:@""];
         [leftBtn setTitleName:@"本期话题"];
         [info_title setText:[NSString stringWithFormat:@"第%d期话题征集中",topicNum]];
         [info_title setTextColor:PMColor6];
-        [info_num setText:@"发起或投票选出你最喜欢的话题吧！"];
+        [info_upload setText:@"发起或投票选出你最喜欢的话题吧！"];
         [topicAllVC setVoting:YES];
         [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多投票" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
         [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新发起" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
@@ -269,26 +279,28 @@
         [rightBtn setAlpha:1];
        
         if ([[Forum sharedInstance] onTopic].TNo == topicNum) {
+            [noti_current setAlpha:1];
+
             _topic = [[Forum sharedInstance] onTopic];
             [rightBtn setAlpha:1];
             [rightBtn setTitleName:@"征集!"];
             [leftBtn setTitleName:@"回顾！"];
             status= TopicStatus_On;
             [info_title setText:[[Forum sharedInstance] onTopic].TTitle];
-            [info_num setText:[NSString stringWithFormat:@"已有%ld人参与", (long)[[Forum sharedInstance] onTopic].TNo]];
             [bgImageView getImage:[_topic TImgUrl] defaultImage:nil];
             status = _topic.TStatus;
-            // [info_num setText:[NSString stringWithFormat:@"已有%d人参与",_topic.TNo]];
             [info_title setText:_topic.TTitle];
             [topicAllVC setTopic:_topic];
             [self leftSortSelected];
+            
+            
         }else{
-  
+            [noti_current setAlpha:0];
+
             [rightBtn setAlpha:1];
             [rightBtn setNoti:@"下期话题"];
             [leftBtn setNoti:@"往期话题"];
               status= TopicStatus_Past;
-            [info_num setText:[NSString stringWithFormat:@"第%ld期", (long)topicNum]];
             [leftBtn setNoti:@""];
             [leftBtn setTitleName:[NSString stringWithFormat:@"第%ld期", (long)topicNum-1]];
             [rightBtn setNoti:@""];
@@ -298,13 +310,18 @@
                 _topic = [[Forum sharedInstance] getTopic:topicNum];
                 [bgImageView getImage:[_topic TImgUrl] defaultImage:nil];
                 status = _topic.TStatus;
-                // [info_num setText:[NSString stringWithFormat:@"已有%d人参与",_topic.TNo]];
                 [info_title setText:_topic.TTitle];
                 [topicAllVC setTopic:_topic];
                 [self leftSortSelected];
             }
         }
-        
+        [info_upload setText:@""];
+        Member *member_upload = [[MemberCache sharedInstance] getMemberWithUID:_topic.TUploadUID];
+        if (member_upload) {
+            if (member_upload.BabyNick && ![member_upload.BabyNick isEqualToString:@""]) {
+                [info_upload setText:[NSString stringWithFormat:@"该话题由%@发起",member_upload.BabyNick]];
+            }
+        }
         
 
         if([MainTabBarController sharedMainViewController].isVertical)
@@ -458,6 +475,19 @@
 {
 }
 
+- (void)memberDownloaded:(Member *)member
+{
+    if ([member belongsTo:_topic.TUploadUID]) {
+        if (member.BabyNick && ![member.BabyNick isEqualToString:@""]) {
+            [info_upload setText:[NSString stringWithFormat:@"该话题由%@发起",member.BabyNick]];
+        }
+    }
+    
+}
+//Member数据下载失败
+- (void)memberDownloadFailed
+{
 
+}
 
 @end

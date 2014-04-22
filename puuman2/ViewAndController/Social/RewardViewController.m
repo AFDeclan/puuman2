@@ -49,6 +49,7 @@
     [rewardTable setShowsHorizontalScrollIndicator:NO];
     [rewardTable setShowsVerticalScrollIndicator:NO];
     [_content addSubview:rewardTable];
+    [rewardTable setScrollEnabled:NO];
     
     
     rankTable = [[UITableView alloc] initWithFrame:CGRectMake(480, 112, 192, 240)];
@@ -59,6 +60,7 @@
     [rankTable setShowsHorizontalScrollIndicator:NO];
     [rankTable setShowsVerticalScrollIndicator:NO];
     [_content addSubview:rankTable];
+    [rankTable setScrollEnabled:NO];
     
     empty_rank  = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 192, 240)];
     [empty_rank setTextColor:PMColor3];
