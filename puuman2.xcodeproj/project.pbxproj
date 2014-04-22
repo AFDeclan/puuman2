@@ -4613,7 +4613,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,
@@ -4624,7 +4624,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
+				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4644,7 +4644,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,
@@ -4655,7 +4655,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
+				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
