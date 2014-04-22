@@ -41,6 +41,13 @@
     bgImageView = [[AFImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 144)];
     [self addSubview:bgImageView];
      leftSelected = YES;
+    noti_current = [[UILabel alloc] initWithFrame:CGRectMake(208, 24, 320, 28)];
+    [noti_current setBackgroundColor:[UIColor clearColor]];
+    [noti_current setFont:PMFont2];
+    [noti_current setTextColor:PMColor3];
+    [noti_current setText:@"本期话题"];
+    [self addSubview:noti_current];
+    [noti_current setAlpha:0];
     info_title = [[UILabel alloc] initWithFrame:CGRectMake(208, 48, 320, 28)];
     [info_title setBackgroundColor:[UIColor clearColor]];
     [info_title setFont:PMFont1];
@@ -240,6 +247,8 @@
     
     if(topicNum > [[Forum sharedInstance] onTopic].TNo)
     {
+        [noti_current setAlpha:0];
+
         status = TopicStatus_Voting;
         [rightBtn setAlpha:0];
         [leftBtn setNoti:@""];
@@ -270,6 +279,8 @@
         [rightBtn setAlpha:1];
        
         if ([[Forum sharedInstance] onTopic].TNo == topicNum) {
+            [noti_current setAlpha:1];
+
             _topic = [[Forum sharedInstance] onTopic];
             [rightBtn setAlpha:1];
             [rightBtn setTitleName:@"征集!"];
@@ -284,7 +295,8 @@
             
             
         }else{
-  
+            [noti_current setAlpha:0];
+
             [rightBtn setAlpha:1];
             [rightBtn setNoti:@"下期话题"];
             [leftBtn setNoti:@"往期话题"];

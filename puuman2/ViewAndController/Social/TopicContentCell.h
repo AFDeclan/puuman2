@@ -40,6 +40,8 @@
     AFSelecedTextImgButton *right_sortBtn;
     BOOL leftSelected;
     NSInteger _topicNum;
+    
+    UILabel *noti_current;
   
     
 }

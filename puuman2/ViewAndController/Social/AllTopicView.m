@@ -8,7 +8,7 @@
 
 #import "AllTopicView.h"
 #import "MainTabBarController.h"
-
+#import "CustomAlertViewController.h"
 @implementation AllTopicView
 
 - (id)initWithFrame:(CGRect)frame
@@ -66,10 +66,14 @@
 
 - (void)activeTopicFailed
 {
-    [[Forum sharedInstance] removeDelegateObject:self];
-    [self reloadTopicsTable];
-    address = [Forum sharedInstance].onTopic.TNo;
-    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
+    [CustomAlertViewController showAlertWithTitle:@"网络不给力哦~" confirmRightHandler:^{
+        
+    }];
+    
+//    [[Forum sharedInstance] removeDelegateObject:self];
+//    [self reloadTopicsTable];
+//    address = [Forum sharedInstance].onTopic.TNo;
+//    [_showColumnView setContentOffset:CGPointMake(self.frame.size.width*(address -1), 0)];
 }
 
 - (void)setVerticalFrame
