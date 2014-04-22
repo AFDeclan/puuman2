@@ -11,7 +11,7 @@
 #import "CustomTextField.h"
 #import "Forum.h"
 
-@interface CreateTopicViewController : CustomPopViewController<ForumDelegate>
+@interface CreateTopicViewController : CustomPopViewController<ForumDelegate,UITextFieldDelegate>
 {
     ColorButton *instructionBtn;
     ColorButton *createBtn;
