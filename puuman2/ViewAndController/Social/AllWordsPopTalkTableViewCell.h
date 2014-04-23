@@ -10,7 +10,7 @@
 #import "AdaptiveLabel.h"
 #import "BasicInfoView.h"
 #import "Friend.h"
-@interface AllWordsPopTalkTableViewCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate,FriendDelegate>
+@interface AllWordsPopTalkTableViewCell : UITableViewCell<FriendDelegate>
 {
     BasicInfoView *infoView;
     AdaptiveLabel *mainTextView;

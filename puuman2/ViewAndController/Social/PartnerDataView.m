@@ -18,7 +18,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        [[Friend sharedInstance] getGroupData];
         inGroupView = [[PartnerDataInGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
         [self addSubview:inGroupView];
         outGroupView = [[PartnerDataOutGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
@@ -35,7 +34,7 @@
     if ([[Friend sharedInstance] inGroup]) {
          PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:YES] );
     }else{
-        PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:NO] );
+         PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:NO] );
     }
     [[Friend sharedInstance] removeDelegateObject:self];
     [[Friend sharedInstance] addDelegateObject:self];
