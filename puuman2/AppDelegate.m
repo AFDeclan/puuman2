@@ -111,7 +111,7 @@
         {
             
             [CustomAlertViewController showAlertWithTitle:[NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。",receivedVersion] confirmRightHandler:^{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+             //   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
             }];
             
         }

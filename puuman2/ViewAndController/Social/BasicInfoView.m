@@ -86,6 +86,7 @@
     _isTopic = isTopic;
     _uid = uid;
     Member  *_member = [[MemberCache sharedInstance] getMemberWithUID:uid];
+    NSLog(@"%@",[_member.UIDs objectAtIndex:0]);
     if (_member) {
         if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned &&[_member BabyHasBorn]) {
             [self setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
@@ -110,8 +111,8 @@
             tapped = NO;
         }
         
-        
     }else{
+        
         tapped = NO;
         if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned && [member BabyHasBorn]) {
             [self setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:member.BabyBirth andSex:member.BabyIsBoy] andIsBoy:member.BabyIsBoy];

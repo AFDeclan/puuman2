@@ -63,9 +63,13 @@
             _finishBtn.alpha = 1;
         }
     }else{
-        
-        _finishBtn.enabled = YES;
-        _finishBtn.alpha = 1;
+        if ([text isEqualToString:@""]) {
+            _finishBtn.enabled = NO;
+            _finishBtn.alpha = 0.5;
+        }else{
+            _finishBtn.enabled = YES;
+            _finishBtn.alpha = 1;
+        }
     }
     return YES;
 }

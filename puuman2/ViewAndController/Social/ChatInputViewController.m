@@ -240,9 +240,14 @@
             createBtn.alpha = 1;
         }
     }else{
-        
-        createBtn.enabled = YES;
-        createBtn.alpha = 1;
+        if ([text isEqualToString:@""]) {
+            createBtn.enabled = NO;
+            createBtn.alpha = 0.5;
+        }else{
+            createBtn.enabled = YES;
+            createBtn.alpha = 1;
+        }
+
     }
     return YES;
 }
