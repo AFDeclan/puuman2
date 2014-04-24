@@ -133,7 +133,7 @@
 - (IBAction)touchePressed:(UIButton *)sender
 {
     [MobClick event:umeng_event_click label:@"showDiaryCell_DiaryShowCell"];
-   int index =  [[DiaryModel sharedDiaryModel] indexForDiaryNearDate:[_diaryInfo valueForKey:kDateName] filtered:DIARY_FILTER_ALL];
-  // [[DiaryViewController sharedDiaryViewController] showDiaryAtIndex:index];
+    int index =  [[DiaryModel sharedDiaryModel] indexForDiaryNearDate:[_diaryInfo valueForKey:kDateName] filtered:DIARY_FILTER_ALL];
+    [[DiaryViewController sharedDiaryViewController] showDiaryAtIndex:index];
 }
 @end

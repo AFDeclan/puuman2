@@ -212,7 +212,12 @@ static Forum * instance;
         if (afRequest.result == PumanRequest_Succeeded) {
             [self informDelegates:@selector(topicUploaded) withObject:nil];
         } else {
-            [self informDelegates:@selector(topicUploadFailed) withObject:nil];
+            if (afRequest.result == 2) {
+                [self informDelegates:@selector(topicUploadFull) withObject:nil];
+            } else {
+                [self informDelegates:@selector(topicUploadFailed) withObject:nil];
+            }
+            
         }
     } else if ([url isEqualToString:kUrl_GetMyReply]) {
         if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]]) {

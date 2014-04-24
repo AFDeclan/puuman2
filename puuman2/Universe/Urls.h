@@ -11,6 +11,53 @@
 
 #pragma mark - 各类网址
 
+#define AF_DEBUG
+
+#ifdef AF_DEBUG
+//forum
+#define kUrl_GetTopicReply  @"http://2.server4puman.sinaapp.com/forumTest/topic_replies"
+#define kUrl_GetMyReply  @"http://2.server4puman.sinaapp.com/forumTest/my_replies"
+#define kUrl_GetActiveTopic  @"http://2.server4puman.sinaapp.com/forumTest/topic_active"
+#define kUrl_GetVotingTopic  @"http://2.server4puman.sinaapp.com/forumTest/topics_voting"
+#define kUrl_GetTopic  @"http://2.server4puman.sinaapp.com/forumTest/topic_no"
+#define kUrl_GetAwardRank  @"http://2.server4puman.sinaapp.com/forumTest/rank_award"
+#define kUrl_UploadTopic  @"http://2.server4puman.sinaapp.com/forumTest/upload_topic"
+#define kUrl_VoteTopic  @"http://2.server4puman.sinaapp.com/forumTest/vote_topic"
+#define kUrl_UploadTopicReply  @"http://2.server4puman.sinaapp.com/forumTest/upload_reply"
+#define kUrl_Headimg  @"http://2.server4puman.sinaapp.com/forumTest/headimg"
+#define kUrl_VoteReply @"http://2.server4puman.sinaapp.com/forumTest/vote_reply"
+#define kUrl_GetReplyComment @"http://2.server4puman.sinaapp.com/forumTest/reply_comments"
+#define kUrl_UploadReplyComment @"http://2.server4puman.sinaapp.com/forumTest/reply_comments_upload"
+//group
+#define kUrl_GetGroupData @"http://2.server4puman.sinaapp.com/forumTest/group_data"
+#define kUrl_UploadAction @"http://2.server4puman.sinaapp.com/forumTest/upload_action"
+#define kUrl_UpdateAction @"http://2.server4puman.sinaapp.com/forumTest/update_action"
+#define kUrl_GetMember @"http://2.server4puman.sinaapp.com/forumTest/get_member"
+
+#else
+
+//forum
+#define kUrl_GetTopicReply  @"http://2.server4puman.sinaapp.com/forum/topic_replies"
+#define kUrl_GetMyReply  @"http://2.server4puman.sinaapp.com/forum/my_replies"
+#define kUrl_GetActiveTopic  @"http://2.server4puman.sinaapp.com/forum/topic_active"
+#define kUrl_GetVotingTopic  @"http://2.server4puman.sinaapp.com/forum/topics_voting"
+#define kUrl_GetTopic  @"http://2.server4puman.sinaapp.com/forum/topic_no"
+#define kUrl_GetAwardRank  @"http://2.server4puman.sinaapp.com/forum/rank_award"
+#define kUrl_UploadTopic  @"http://2.server4puman.sinaapp.com/forum/upload_topic"
+#define kUrl_VoteTopic  @"http://2.server4puman.sinaapp.com/forum/vote_topic"
+#define kUrl_UploadTopicReply  @"http://2.server4puman.sinaapp.com/forum/upload_reply"
+#define kUrl_Headimg  @"http://2.server4puman.sinaapp.com/forum/headimg"
+#define kUrl_VoteReply @"http://2.server4puman.sinaapp.com/forum/vote_reply"
+#define kUrl_GetReplyComment @"http://2.server4puman.sinaapp.com/forum/reply_comments"
+#define kUrl_UploadReplyComment @"http://2.server4puman.sinaapp.com/forum/reply_comments_upload"
+//group
+#define kUrl_GetGroupData @"http://2.server4puman.sinaapp.com/forum/group_data"
+#define kUrl_UploadAction @"http://2.server4puman.sinaapp.com/forum/upload_action"
+#define kUrl_UpdateAction @"http://2.server4puman.sinaapp.com/forum/update_action"
+#define kUrl_GetMember @"http://2.server4puman.sinaapp.com/forum/get_member"
+
+#endif
+
 //ware
 #define kUrl_GetWareFilterDb @"http://1.server4puman.sinaapp.com/Ware/getFilterDb.php"
 #define kUrl_GetWareFilterDbForTest @"http://1.server4puman.sinaapp.com/Ware/getFilterDb_test.php"
@@ -52,25 +99,6 @@
 #define kUrl_SubmitPayback @"http://1.server4puman.sinaapp.com/Payback/submitPayBack.php"
 //feedback
 #define kUrl_PostFeedback @"http://1.server4puman.sinaapp.com/feedBack.php"
-//forum
-#define kUrl_GetTopicReply  @"http://2.server4puman.sinaapp.com/forum/topic_replies"
-#define kUrl_GetMyReply  @"http://2.server4puman.sinaapp.com/forum/my_replies"
-#define kUrl_GetActiveTopic  @"http://2.server4puman.sinaapp.com/forum/topic_active"
-#define kUrl_GetVotingTopic  @"http://2.server4puman.sinaapp.com/forum/topics_voting"
-#define kUrl_GetTopic  @"http://2.server4puman.sinaapp.com/forum/topic_no"
-#define kUrl_GetAwardRank  @"http://2.server4puman.sinaapp.com/forum/rank_award"
-#define kUrl_UploadTopic  @"http://2.server4puman.sinaapp.com/forum/upload_topic"
-#define kUrl_VoteTopic  @"http://2.server4puman.sinaapp.com/forum/vote_topic"
-#define kUrl_UploadTopicReply  @"http://2.server4puman.sinaapp.com/forum/upload_reply"
-#define kUrl_Headimg  @"http://2.server4puman.sinaapp.com/forum/headimg"
-#define kUrl_VoteReply @"http://2.server4puman.sinaapp.com/forum/vote_reply"
-#define kUrl_GetReplyComment @"http://2.server4puman.sinaapp.com/forum/reply_comments"
-#define kUrl_UploadReplyComment @"http://2.server4puman.sinaapp.com/forum/reply_comments_upload"
-//group
-#define kUrl_GetGroupData @"http://2.server4puman.sinaapp.com/forum/group_data"
-#define kUrl_UploadAction @"http://2.server4puman.sinaapp.com/forum/upload_action"
-#define kUrl_UpdateAction @"http://2.server4puman.sinaapp.com/forum/update_action"
-#define kUrl_GetMember @"http://2.server4puman.sinaapp.com/forum/get_member"
 
 #define _puman_feedback_identifier_prefix @"_puman_"
 #define _puman_feedbackFailed_identifier_prefix @"_pumanFail_"

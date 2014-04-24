@@ -57,20 +57,16 @@
     [titleLabel setText:[NSString stringWithFormat:@"%@的最新动态",nameStr]];
     [self addSubview:titleLabel];
     
-    
-
-   
-        diaryTable = [[UITableView alloc] initWithFrame:CGRectMake(16, 16, 208, 194)];
-        [diaryTable setShowsHorizontalScrollIndicator:NO];
-        [diaryTable setShowsVerticalScrollIndicator:NO];
-        [diaryTable setBackgroundColor:[UIColor clearColor]];
-        [diaryTable setDelegate:self];
-        [diaryTable setDataSource:self];
-        [diaryTable setScrollEnabled:NO];
-        [diaryTable setExclusiveTouch:NO];
-        [diaryTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        [self addSubview:diaryTable];
-    
+    diaryTable = [[UITableView alloc] initWithFrame:CGRectMake(16, 16, 208, 194)];
+    [diaryTable setShowsHorizontalScrollIndicator:NO];
+    [diaryTable setShowsVerticalScrollIndicator:NO];
+    [diaryTable setBackgroundColor:[UIColor clearColor]];
+    [diaryTable setDelegate:self];
+    [diaryTable setDataSource:self];
+    [diaryTable setScrollEnabled:NO];
+    [diaryTable setExclusiveTouch:NO];
+    [diaryTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self addSubview:diaryTable];
 
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
