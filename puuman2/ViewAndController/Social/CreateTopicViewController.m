@@ -9,6 +9,7 @@
 #import "CreateTopicViewController.h"
 #import "UniverseConstant.h"
 #import "Forum.h"
+#import "CustomAlertViewController.h"
 
 @interface CreateTopicViewController ()
 
@@ -103,9 +104,16 @@
 //新话题上传失败
 - (void)topicUploadFailed
 {
-    
+    [CustomAlertViewController showAlertWithTitle:@"网络不给力~" confirmRightHandler:^{
+        
+    }];
 }
 
-
+- (void)topicUploadFull
+{
+    [CustomAlertViewController showAlertWithTitle:@"您本期发起的话题数量太多了~" confirmRightHandler:^{
+        
+    }];
+}
 
 @end
