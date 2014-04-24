@@ -25,7 +25,7 @@
     float minHeight;
     float preheight;
     int addHeightNum;
-    
+    float keyBoardHeigh;
 }
 @property(retain,nonatomic)id actionParent;
 @property(assign,nonatomic)BOOL sendIsHidden;
