@@ -96,6 +96,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
 {
     [CustomAlertViewController showAlertWithTitle:@"确定要离开了吗？" confirmHandler:^{
         [[UserInfo sharedUserInfo] logout];
+        [self back];
         [[NSUserDefaults standardUserDefaults] synchronize];
     } cancelHandler:^{
         

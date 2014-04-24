@@ -59,6 +59,9 @@
 //新话题上传失败
 - (void)topicUploadFailed;
 
+//新话题超过5个
+- (void)topicUploadFull;
+
 //话题投票成功
 - (void)topicVoted:(Topic *)topic;
 
