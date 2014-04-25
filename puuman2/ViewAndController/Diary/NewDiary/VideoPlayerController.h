@@ -26,6 +26,6 @@
 @protocol VideoPlayerDelegate <NSObject>
 
 - (void)videoClosed;
-- (void)videoFinished;
+- (void)videoFinishedWithTitle:(NSString *)title;
 
 @end

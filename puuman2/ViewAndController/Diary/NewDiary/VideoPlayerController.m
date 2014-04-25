@@ -88,7 +88,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
     
 
-   [_delegate videoFinished];
+   [_delegate videoFinishedWithTitle:titleTextField.text];
 }
 
 - (void)setVerticalFrame

@@ -36,10 +36,11 @@
         [_playBtn addTarget:self action:@selector(playVideo) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:_playBtn];
         
-        titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 416, 80)];
+        titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416-80, 416, 80)];
         [titleView setImage:[UIImage imageNamed:@"bg_title_diary.png"]];
         [titleView setBackgroundColor:[UIColor clearColor]];
         [_imgView addSubview:titleView];
+        
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 80)];
         [titleLabel setTextAlignment:NSTextAlignmentRight];
         [titleLabel setFont:PMFont1];

@@ -29,7 +29,7 @@
     VideoPlayerController *moviePlayer;
     TimeView *timeView;
     NSURL *audioFileUrl;
-   BOOL isVertical;
+    BOOL isVertical;
 }
 @property(assign,nonatomic) id<CameraViewDelegate> delegate;
 @property (retain, nonatomic) NSDictionary *taskInfo;
