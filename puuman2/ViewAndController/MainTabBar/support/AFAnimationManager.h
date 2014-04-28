@@ -94,7 +94,7 @@ static inline CGPoint FTAnimationOutOfViewCenterPoint(CGRect enclosingViewFrame,
 }
 
 
-@interface AFAnimationManager : NSObject 
+@interface AFAnimationManager : NSObject
 {
 
 }

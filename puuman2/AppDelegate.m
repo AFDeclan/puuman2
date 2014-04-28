@@ -53,7 +53,7 @@
     [_rootTabBarC addChildViewController:babyInfoVC];
     [_rootTabBarC addChildViewController:socialVC];
     [_rootTabBarC addChildViewController:shopVC];
-   
+    
     self.window.rootViewController = _rootTabBarC;
     
 }
@@ -110,9 +110,9 @@
         if( [currentVersion earlierThenVersion:receivedVersion] && ![currentVersion isEqualToString:@""])
         {
             
-            [CustomAlertViewController showAlertWithTitle:[NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。",receivedVersion] confirmRightHandler:^{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
-            }];
+           // [CustomAlertViewController showAlertWithTitle:[NSString stringWithFormat:@"扑满日记有新版本（%@）咯~~请前往更新。",receivedVersion] confirmRightHandler:^{
+             //   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+            //}];
             
         }
     }

@@ -54,6 +54,7 @@
     user_textfield = [[CustomTextField alloc] initWithFrame:CGRectMake(240, 264,256, 48)];
     user_textfield.keyboardType = UIKeyboardTypeDefault;
     user_textfield.returnKeyType = UIReturnKeyDone;
+    [user_textfield  addTarget:self action:@selector(sendNums:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [user_textfield setDelegate:self];
     [self addSubview:user_textfield];
 }

@@ -64,7 +64,9 @@
     [title setBackgroundColor:[UIColor clearColor]];
     [emptyView addSubview:title];
     if ([[BabyData sharedBabyData] recordCount] > 0) {
-        [emptyView setAlpha:0];
+        //[emptyView setAlpha:0];
+        [emptyView removeFromSuperview];
+     
     }else{
         [emptyView setAlpha:1];
     }

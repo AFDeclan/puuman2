@@ -104,7 +104,10 @@ static UserInfo *instance = nil;
             [self uploadDeviceToken:NO];
         }
     }
-    return logined;
+//    _UID = 3;
+//    logined = YES;
+//    PostNotification(Noti_UserLogined, nil);
+  return logined;
 }
 
 - (void)updateInviteState
