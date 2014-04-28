@@ -53,7 +53,7 @@
     [_rootTabBarC addChildViewController:babyInfoVC];
     [_rootTabBarC addChildViewController:socialVC];
     [_rootTabBarC addChildViewController:shopVC];
-   
+    
     self.window.rootViewController = _rootTabBarC;
     
 }

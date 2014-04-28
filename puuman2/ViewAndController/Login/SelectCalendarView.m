@@ -67,7 +67,7 @@
         self.highlight = highlight;
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        titleLabel.textAlignment = UITextAlignmentCenter;
+        titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         [self addSubview:titleLabel];
