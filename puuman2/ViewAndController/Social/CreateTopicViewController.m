@@ -111,7 +111,9 @@
 
 - (void)topicUploadFull
 {
-    
+    [CustomAlertViewController showAlertWithTitle:@"您本期发起的话题数量太多了~" confirmRightHandler:^{
+        
+    }];
 }
 
 @end

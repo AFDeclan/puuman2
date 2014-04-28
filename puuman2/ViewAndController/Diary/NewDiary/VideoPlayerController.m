@@ -84,7 +84,7 @@
     [timeView stopRecord];
     [self stop];
     [MyNotiCenter removeObserver:self];
-    [_delegate videoFinished];
+    [_delegate videoFinishedWithTitle:titleTextField.text];
 }
 
 - (void)setVerticalFrame
