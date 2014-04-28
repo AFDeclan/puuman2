@@ -11,6 +11,7 @@
 #import "DateFormatter.h"
 #import "ErrorLog.h"
 #import "PumanRequest.h"
+#import "MemberCache.h"
 
 
 static UserInfo *instance = nil;
@@ -104,6 +105,9 @@ static UserInfo *instance = nil;
             [self uploadDeviceToken:NO];
         }
     }
+    _UID = 3;
+    PostNotification(Noti_UserLogined, nil);
+    return YES;
     return logined;
 }
 
@@ -303,6 +307,7 @@ static UserInfo *instance = nil;
         }
         [self saveToUserDefault];
         PostNotification(Noti_UserInfoUpdated, nil);
+        [[MemberCache sharedInstance] removeMemberWithBID:_BID];
         return YES;
     }
     else
@@ -331,6 +336,7 @@ static UserInfo *instance = nil;
     {
         [_meta setValue:val forKey:key];
         PostNotification(Noti_UserInfoUpdated, nil);
+        [[MemberCache sharedInstance] removeMemberWithBID:_BID];
         return YES;
     }
     else return NO;

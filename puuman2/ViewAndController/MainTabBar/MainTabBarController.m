@@ -139,7 +139,7 @@ static MBProgressHUD *hud;
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    UIInterfaceOrientation interfaceOrientation=[[UIApplication sharedApplication] statusBarOrientation];
+    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     if (interfaceOrientation == UIDeviceOrientationPortrait || interfaceOrientation == UIDeviceOrientationPortraitUpsideDown) {
         //翻转为竖屏时
         [self setVerticalFrame];

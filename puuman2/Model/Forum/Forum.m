@@ -217,7 +217,6 @@ static Forum * instance;
             } else {
                 [self informDelegates:@selector(topicUploadFailed) withObject:nil];
             }
-            
         }
     } else if ([url isEqualToString:kUrl_GetMyReply]) {
         if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]]) {

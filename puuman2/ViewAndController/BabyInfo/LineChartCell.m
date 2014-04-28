@@ -34,7 +34,7 @@
         [self.contentView addSubview:scroll];
         [self initilzation];
 
-        pageControl = [[AFPageControl alloc] initWithFrame:CGRectMake(0, 316, 544, 6)];
+        pageControl = [[AFPageControl alloc] initWithFrame:CGRectMake(0, 332, 544, 6)];
         pageControl.pointSize = CGSizeMake(6, 6);
         pageControl.currentPage = 1;
         pageControl.numberOfPages = 2;

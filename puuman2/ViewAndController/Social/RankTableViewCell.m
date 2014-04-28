@@ -21,7 +21,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-         [[Friend sharedInstance] addDelegateObject:self];
+        [[Friend sharedInstance] addDelegateObject:self];
         rank_icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 12, 40, 40)];
         [self.contentView addSubview:rank_icon];
         portrait=[[AFImageView alloc] initWithFrame:CGRectMake(48, 12, 40, 40)];
@@ -30,14 +30,19 @@
         portrait.layer.masksToBounds = YES;
         portrait.layer.shadowRadius =0.1;
         [self.contentView addSubview:portrait];
-        info_name = [[UILabel alloc] initWithFrame:CGRectMake(96, 20, 0, 0)];
+        info_name = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         [info_name setTextAlignment:NSTextAlignmentCenter];
         [info_name setTextColor:PMColor2];
         [info_name setFont:PMFont2];
         [info_name setBackgroundColor:[UIColor clearColor]];
-        [self.contentView addSubview:info_name];
+        info_scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(96, 20, 85, 48)];
+        info_scroll.showsHorizontalScrollIndicator = NO;
+        info_scroll.showsVerticalScrollIndicator = NO;
+        info_scroll.userInteractionEnabled = NO;
+        [self.contentView addSubview:info_scroll];
+        [info_scroll addSubview:info_name];
         icon_sex = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 16, 16)];
-        [self.contentView addSubview:icon_sex];
+        [info_scroll addSubview:icon_sex];
         icon_reply = [[UIImageView alloc]initWithFrame:CGRectMake(16, 56, 16, 16)];
         [icon_reply setImage:[UIImage imageNamed:@"btn_reply2_topic.png"]];
         [self.contentView addSubview:icon_reply];
@@ -91,19 +96,9 @@
     [info_like setText:[NSString stringWithFormat:@"%d",rank.VCnt]];
     [total setText:[NSString stringWithFormat:@"%d",rank.VCnt +rank.CCnt]];
     [rank_icon setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_no%d_topic.png",row+1]]];
-
-    if ( [[MemberCache sharedInstance] getMemberWithBID:rank.BID]) {
-        Member *member = [[MemberCache sharedInstance] getMemberWithBID:rank.BID];
-        [portrait getImage:[member BabyPortraitUrl] defaultImage:@""];
-        [info_name setText: member.BabyNick];
-        [info_name adjustSize];
-        SetViewLeftUp(icon_sex, 96+ViewWidth(info_name)+2, 20);
-        if (member.BabyIsBoy)
-        {
-            [icon_sex setImage:[UIImage imageNamed:@"icon_male_topic.png"]];
-        }else{
-            [icon_sex setImage:[UIImage imageNamed:@"icon_female_topic.png"]];
-        }
+    Member *member = [[MemberCache sharedInstance] getMemberWithBID:rank.BID];
+    if (member) {
+        [self memberDownloaded:member];
     }
 
 }
@@ -118,25 +113,62 @@
 //Member数据下载成功
 - (void)memberDownloaded:(Member *)member
 {
-    [portrait getImage:[member BabyPortraitUrl] defaultImage:@""];
+    [portrait getImage:[member BabyPortraitUrl] defaultImage:@"pic_default_topic.png"];
     [info_name setText: member.BabyNick];
     [info_name adjustSize];
-    SetViewLeftUp(icon_sex, 96+ViewWidth(info_name)+2, 20);
+    SetViewLeftUp(icon_sex, ViewWidth(info_name)+2, 0);
+    [info_scroll setContentSize:CGSizeMake(ViewRightX(icon_sex), ViewHeight(info_scroll))];
+    if (info_scroll.contentSize.width > ViewWidth(info_scroll)) {
+        [self startAutoScroll];
+    }
     if (member.BabyIsBoy)
     {
         [icon_sex setImage:[UIImage imageNamed:@"icon_male_topic.png"]];
     }else{
         [icon_sex setImage:[UIImage imageNamed:@"icon_female_topic.png"]];
     }
-    
-
 }
-
 
 //Member数据下载失败
 - (void)memberDownloadFailed
 {
     
+}
+
+- (void)startAutoScroll
+{
+    if (timer) {
+        [timer invalidate];
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(autoScroll) userInfo:nil repeats:YES];
+}
+
+- (void)autoScroll
+{
+    CGPoint offset = info_scroll.contentOffset;
+    CGFloat w = ViewWidth(info_scroll);
+    if (scrollDir) {
+        offset.x += 0.5;
+        if (offset.x + w >= info_scroll.contentSize.width) {
+            scrollDir = NO;
+            [timer invalidate];
+            [self performSelector:@selector(startAutoScroll) withObject:nil afterDelay:3];
+        }
+    } else {
+        offset.x -= 0.5;
+        if (offset.x <= 0) {
+            scrollDir = YES;
+            offset.x = 0;
+            [timer invalidate];
+            [self performSelector:@selector(startAutoScroll) withObject:nil afterDelay:3];
+        }
+    }
+    [info_scroll setContentOffset:offset];
+}
+
+- (void)dealloc
+{
+    [timer invalidate];
 }
 
 @end

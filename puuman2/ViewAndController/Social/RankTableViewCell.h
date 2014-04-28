@@ -17,13 +17,15 @@
     UIImageView *rank_icon;
     AFImageView *portrait;
     UILabel *info_name;
+    UIScrollView *info_scroll;
     UIImageView *icon_sex;
     UIImageView *icon_reply;
     UIImageView *icon_like;
     UILabel *info_reply;
     UILabel *info_like;
     UILabel *total;
-    
+    NSTimer *timer;
+    BOOL scrollDir;
 }
 
 @property(nonatomic,assign)NSInteger row;

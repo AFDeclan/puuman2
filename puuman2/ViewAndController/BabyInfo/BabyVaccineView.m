@@ -101,6 +101,7 @@
     backBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 336, 48, 156)];
     [backBtn addTarget:self action:@selector(backToMainTable)  forControlEvents:UIControlEventTouchUpInside];
     [backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_right.png"] andButtonType:kButtonTypeSix];
+    [backBtn setTransform:CGAffineTransformMakeRotation(M_PI)];
     [rightView addSubview:backBtn];
     
     maskView = [[UIView alloc] init];
