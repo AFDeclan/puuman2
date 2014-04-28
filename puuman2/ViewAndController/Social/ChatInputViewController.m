@@ -95,7 +95,7 @@
         [self setHorizontalFrame];
     }
     CGRect rect = [[notif.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    float keyBoardHeigh = rect.size.height >rect.size.width ?rect.size.width :rect.size.height;
+    keyBoardHeigh = rect.size.height >rect.size.width ?rect.size.width :rect.size.height;
     NSTimeInterval animationDuration = [[[notif userInfo] valueForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     [UIView animateWithDuration:animationDuration*1.1 animations:^{
         [bgView setAlpha:0.3];
@@ -115,7 +115,7 @@
 
     NSTimeInterval animationDuration = [[[notif userInfo] valueForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGRect rect = [[notif.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    float keyBoardHeigh = rect.size.height >rect.size.width ?rect.size.width :rect.size.height;
+    keyBoardHeigh = rect.size.height >rect.size.width ?rect.size.width :rect.size.height;
     
     
     [UIView animateWithDuration:animationDuration animations:^{
@@ -206,25 +206,53 @@
 {
     NSInteger newSizeH = inputTextView.contentSize.height;
     
-    if (newSizeH>minHeight&&newSizeH<maxHeight) {
+    float height  = 0;
+    if (newSizeH > maxHeight) {
+        height = maxHeight - minHeight;
+    }else{
+        if (newSizeH > minHeight && newSizeH < minHeight +preheight) {
+            height = preheight;
+        }else{
+            height = preheight *(int)((newSizeH - minHeight)/preheight);
+            
+        }
         
-        addHeightNum += preheight;
-        _content.frame=CGRectMake(_content.frame.origin.x, _content.frame.origin.y-preheight,ViewWidth(_content), ViewHeight(_content)+preheight);
-        inputTextView.frame=CGRectMake(inputTextView.frame.origin.x, inputTextView.frame.origin.y, inputTextView.frame.size.width, inputTextView.frame.size.height+preheight);
-        minHeight=newSizeH;
-        [bg_inputView setFrame:CGRectMake(bg_inputView.frame.origin.x, bg_inputView.frame.origin.y, bg_inputView.frame.size.width, bg_inputView.frame.size.height + preheight)];
-        SetViewLeftUp(createBtn, createBtn.frame.origin.x, createBtn.frame.origin.y+preheight);
-        
-        
-    }else if(newSizeH<minHeight)
-    {
-        addHeightNum -= preheight;
-        _content.frame=CGRectMake(_content.frame.origin.x, _content.frame.origin.y+preheight, ViewWidth(_content), ViewHeight(_content)-preheight);
-        inputTextView.frame=CGRectMake(inputTextView.frame.origin.x, inputTextView.frame.origin.y, inputTextView.frame.size.width, inputTextView.frame.size.height-preheight);
-        minHeight=newSizeH;
-        [bg_inputView setFrame:CGRectMake(bg_inputView.frame.origin.x, bg_inputView.frame.origin.y, bg_inputView.frame.size.width, bg_inputView.frame.size.height - preheight)];
-        SetViewLeftUp(createBtn, createBtn.frame.origin.x, createBtn.frame.origin.y-preheight);
     }
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        _content.frame=CGRectMake(_content.frame.origin.x, 1024-keyBoardHeigh- 56-height,ViewWidth(_content), height+  56);
+        [bg_inputView setFrame:CGRectMake(0, 4, 640, ViewHeight(_content)-8)];
+        [inputTextView setFrame:CGRectMake(16, 10, 608, ViewHeight(_content)-20)];
+        SetViewLeftUp(createBtn, ViewWidth(_content)-ViewWidth(createBtn), ViewHeight(_content)-48);
+        [inputTextView setContentOffset:CGPointMake(0, newSizeH - ViewHeight(inputTextView))];
+    }else{
+        _content.frame=CGRectMake(_content.frame.origin.x, 768-keyBoardHeigh- 56-height,ViewWidth(_content), height+  56);
+        [bg_inputView setFrame:CGRectMake(0, 4, 900, ViewHeight(_content)-8)];
+        [inputTextView setFrame:CGRectMake(16, 10, 868, ViewHeight(_content)-20)];
+        SetViewLeftUp(createBtn, ViewWidth(_content)-ViewWidth(createBtn), ViewHeight(_content)-48);
+        [inputTextView setContentOffset:CGPointMake(0, newSizeH - ViewHeight(inputTextView))];
+    }
+ 
+
+    
+//    
+//    if (newSizeH>minHeight&&newSizeH<maxHeight) {
+//        
+//        addHeightNum += preheight;
+//        _content.frame=CGRectMake(_content.frame.origin.x, _content.frame.origin.y-preheight,ViewWidth(_content), ViewHeight(_content)+preheight);
+//        inputTextView.frame=CGRectMake(inputTextView.frame.origin.x, inputTextView.frame.origin.y, inputTextView.frame.size.width, inputTextView.frame.size.height+preheight);
+//        minHeight=newSizeH;
+//        [bg_inputView setFrame:CGRectMake(bg_inputView.frame.origin.x, bg_inputView.frame.origin.y, bg_inputView.frame.size.width, bg_inputView.frame.size.height + preheight)];
+//        
+//        
+//    }else if(newSizeH<minHeight)
+//    {
+//        addHeightNum -= preheight;
+//        _content.frame=CGRectMake(_content.frame.origin.x, _content.frame.origin.y+preheight, ViewWidth(_content), ViewHeight(_content)-preheight);
+//        inputTextView.frame=CGRectMake(inputTextView.frame.origin.x, inputTextView.frame.origin.y, inputTextView.frame.size.width, inputTextView.frame.size.height-preheight);
+//        minHeight=newSizeH;
+//        [bg_inputView setFrame:CGRectMake(bg_inputView.frame.origin.x, bg_inputView.frame.origin.y, bg_inputView.frame.size.width, bg_inputView.frame.size.height - preheight)];
+//        SetViewLeftUp(createBtn, createBtn.frame.origin.x, createBtn.frame.origin.y-preheight);
+//    }
 
 }
 
@@ -240,9 +268,14 @@
             createBtn.alpha = 1;
         }
     }else{
-        
-        createBtn.enabled = YES;
-        createBtn.alpha = 1;
+        if ([text isEqualToString:@""]) {
+            createBtn.enabled = NO;
+            createBtn.alpha = 0.5;
+        }else{
+            createBtn.enabled = YES;
+            createBtn.alpha = 1;
+        }
+
     }
     return YES;
 }

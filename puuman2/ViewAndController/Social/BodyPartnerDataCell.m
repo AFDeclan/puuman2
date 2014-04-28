@@ -31,10 +31,10 @@
         [data_info setFont:PMFont4];
         [data_info setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:data_info];
-        [self addSubview:mask];
+       
         mask = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 96, 224)];
         [mask setBackgroundColor:[UIColor whiteColor]];
-
+        [self addSubview:mask];
         line = [[UIView alloc]initWithFrame:CGRectMake(-1, 0, 2, 224)];
         [line setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_timeline_diary.png"]]];
         [self addSubview:line];
@@ -59,8 +59,12 @@
         [histogram setFrame:CGRectMake(0, 224-h, 96, h)];
     }
     if (bodyValue == highest) {
+        [histogram setFrame:CGRectMake(0, 224-200, 96, 200)];
+
         [mask setAlpha:0];
     }else if(bodyValue == lowest){
+        [histogram setFrame:CGRectMake(0, 224-50, 96, 50)];
+
         [mask setAlpha:0.5];
     }else{
         [mask setAlpha:0.3];

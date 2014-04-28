@@ -2387,13 +2387,13 @@
 			isa = PBXGroup;
 			children = (
 				5447C46B18D97D1100187BE6 /* btn_like1_topic.png */,
+				5447C46C18D97D1100187BE6 /* btn_like2_topic.png */,
+				5447C46D18D97D1100187BE6 /* btn_like3_topic.png */,
 				54012DC518E2CB8B00F11D97 /* line2_topic.png */,
 				54CCF1E918F3E7A80081C149 /* btn_partner1_topic.png */,
 				54CCF1EA18F3E7A80081C149 /* btn_partner2_topic.png */,
-				5447C46C18D97D1100187BE6 /* btn_like2_topic.png */,
-				5447C46D18D97D1100187BE6 /* btn_like3_topic.png */,
-				5447C47018D97D1100187BE6 /* btn_reply1z_topic.png */,
 				5447C47118D97D1100187BE6 /* btn_reply2_topic.png */,
+				5447C47018D97D1100187BE6 /* btn_reply1z_topic.png */,
 				5447C47218D97D1100187BE6 /* btn_topic1_topic.png */,
 				5447C47318D97D1100187BE6 /* btn_topic2_topic.png */,
 				5447C47418D97D1100187BE6 /* icon_female_topic.png */,
@@ -2402,6 +2402,8 @@
 				5447C47718D97D1100187BE6 /* icon_join_topic.png */,
 				5447C47818D97D1100187BE6 /* icon_like1_topic.png */,
 				5447C47918D97D1100187BE6 /* icon_like2_topic.png */,
+				5447C48218D97D1100187BE6 /* icon_time1_topic.png */,
+				5447C48318D97D1100187BE6 /* icon_time2_topic.png */,
 				5447C47A18D97D1100187BE6 /* icon_male_topic.png */,
 				5447C47B18D97D1100187BE6 /* icon_no1_topic.png */,
 				5447C47C18D97D1100187BE6 /* icon_no2_topic.png */,
@@ -2410,8 +2412,6 @@
 				5447C47F18D97D1100187BE6 /* icon_prize_topic.png */,
 				5447C48018D97D1100187BE6 /* icon_reply_topic.png */,
 				5447C48118D97D1100187BE6 /* icon_start_topic.png */,
-				5447C48218D97D1100187BE6 /* icon_time1_topic.png */,
-				5447C48318D97D1100187BE6 /* icon_time2_topic.png */,
 				5447C48418D97D1100187BE6 /* icon_vote_topic.png */,
 				5447C48518D97D1100187BE6 /* icon_weight_topic.png */,
 				5447C48618D97D1100187BE6 /* line_topic.png */,
@@ -4617,7 +4617,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,
@@ -4628,7 +4628,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4648,7 +4648,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,
@@ -4659,7 +4659,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

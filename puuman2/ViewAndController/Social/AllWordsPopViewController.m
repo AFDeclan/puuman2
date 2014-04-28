@@ -174,13 +174,13 @@
     _replay =replay;
     
     if (replay.TID == [[Forum sharedInstance] onTopic].TID) {
-        [talkTextField setAlpha:YES];
-        [createTalkBtn setAlpha:YES];
+        [talkTextField setAlpha:1];
+        [createTalkBtn setAlpha:1];
         [talksTable setContentSize:CGSizeMake(528, 436)];
         [talksTable setFrame:CGRectMake(48, 168, 528, 436)];
     }else{
-        [talkTextField setAlpha:NO];
-        [createTalkBtn setAlpha:NO];
+        [talkTextField setAlpha:0];
+        [createTalkBtn setAlpha:0];
         [talksTable setContentSize:CGSizeMake(528, 492)];
         [talksTable setFrame:CGRectMake(48, 112, 528, 492)];
     }

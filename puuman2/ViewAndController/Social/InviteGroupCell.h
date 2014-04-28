@@ -11,6 +11,7 @@
 #import "ColorButton.h"
 #import "Group.h"
 #import "Friend.h"
+
 @interface InviteGroupCell : UITableViewCell<UIColumnViewDataSource, UIColumnViewDelegate,FriendDelegate>
 {
     UILabel *noti_Title;

@@ -41,7 +41,6 @@
     [icon_head setImage:[UIImage imageNamed:@"block_name_fri.png"]];
     [self addSubview:icon_head];
     
-    
     info_title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
     [info_title setBackgroundColor:[UIColor clearColor]];
     [info_title setTextColor:[UIColor whiteColor]];

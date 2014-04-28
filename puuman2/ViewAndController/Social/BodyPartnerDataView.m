@@ -95,15 +95,15 @@
 
 - (void)reloadWithGroupInfo:(Group *)group
 {
-   
+    _group = group;
     min = 0;
     max = 0;
     for (int i = 0; i <[group.GMember count]; i ++) {
         float  value;
         if (_isHeight) {
-            value = ((Member *)[_group.GMember objectAtIndex:i]).BabyHeight;
+            value = ((Member *)[group.GMember objectAtIndex:i]).BabyHeight;
         }else{
-            value = ((Member *)[_group.GMember objectAtIndex:i]).BabyWeight;
+            value = ((Member *)[group.GMember objectAtIndex:i]).BabyWeight;
         }
     
         if (i== 0) {

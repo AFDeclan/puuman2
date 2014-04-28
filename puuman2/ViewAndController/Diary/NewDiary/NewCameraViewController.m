@@ -366,8 +366,9 @@
 }
 
 
-- (void)videoFinished
+- (void)videoFinishedWithTitle:(NSString *)title
 {
+    titleStr = title;
     [self finishBtnPressed];
 }
 

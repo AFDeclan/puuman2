@@ -9,6 +9,7 @@
 #import "CreateTopicViewController.h"
 #import "UniverseConstant.h"
 #import "Forum.h"
+#import "CustomAlertViewController.h"
 
 @interface CreateTopicViewController ()
 
@@ -34,7 +35,9 @@
     [_content addSubview:bgTitleImageView];
     
     inputTextFied = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 286, 544, 48)];
-    inputTextFied.placeholder =[NSString stringWithFormat:@"您还可以发起%d个话题,30字以内哦",5];
+   // inputTextFied.placeholder =[NSString stringWithFormat:@"您还可以发起%d个话题,30字以内哦",5];
+    inputTextFied.placeholder = @"请输入您要发起的话题,30字以内哦";
+    [inputTextFied setDelegate:self];
     [_content addSubview:inputTextFied];
     
 //    instructionBtn = [[ColorButton alloc] init];
@@ -47,6 +50,17 @@
     [_content  addSubview:createBtn];
     SetViewLeftUp(instructionBtn, 592, 256);
     SetViewLeftUp(createBtn, 592, 296);
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (range.length == 0) {
+        if ([textField.text length] >=30) {
+            NSString *str = [textField.text substringToIndex:30];
+            textField.text =str;
+        }
+    }
+    return YES;
 }
 
 - (void)showKeyBoard
@@ -90,7 +104,9 @@
 //新话题上传失败
 - (void)topicUploadFailed
 {
-    
+    [CustomAlertViewController showAlertWithTitle:@"网络不给力~" confirmRightHandler:^{
+        
+    }];
 }
 
 - (void)topicUploadFull

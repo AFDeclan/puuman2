@@ -108,7 +108,7 @@
 {
     
     _memberInfo = member;
-    if (member.GID == 0 &&_userInfo.GID != 0) {
+    if (member.GID == 0 ) {
         [inviteBtn setAlpha:1];
     }else{
         [inviteBtn setAlpha:0];
