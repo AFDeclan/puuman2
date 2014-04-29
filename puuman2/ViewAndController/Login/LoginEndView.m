@@ -370,6 +370,7 @@
                 [CustomAlertViewController showAlertWithTitle:@"注册成功！欢迎开始您的扑满日记~" confirmRightHandler:^{
                     
                 }];
+                
                 break;
             }
             case timeOut:
