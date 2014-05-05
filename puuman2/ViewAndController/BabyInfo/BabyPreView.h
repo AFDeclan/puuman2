@@ -8,8 +8,9 @@
 
 #import "BabyInfoContentView.h"
 #import "UIColumnView.h"
+#import "BabyPreTableViewCell.h"
 
-@interface BabyPreView : BabyInfoContentView<UIColumnViewDataSource, UIColumnViewDelegate,UIScrollViewDelegate>
+@interface BabyPreView : BabyInfoContentView<UIColumnViewDataSource, UIColumnViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
 {
 
     UIColumnView *_showColumnView;
@@ -19,6 +20,9 @@
     UIView *bgLine;
     int selectedIndex;
     UIScrollView *bgScrollView;
+    
+    
+    
 }
 @property (nonatomic,assign)BOOL columnImgBMode;
 - (void)refresh;

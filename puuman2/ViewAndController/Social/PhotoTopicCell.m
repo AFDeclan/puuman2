@@ -93,7 +93,7 @@
 
 - (void)showPhotoAtIndex:(NSInteger)index
 {
-    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1];
+    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1 andTitle:_reply.RTitle];
 }
 
 - (void)dealloc

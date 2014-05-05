@@ -22,10 +22,11 @@ typedef enum {
     NSArray *photoPaths;
     UIScrollView *photoScroll;
     UIButton *hiddenBtn;
+    UILabel *titleLabel;
 }
 @property (assign, nonatomic)NSInteger index;
 @property (assign, nonatomic) DetailModel model;
-+(void)showPhotosPath:(NSArray *)imgPaths atIndex:(NSInteger)index;
-+(void)showVideo:(NSString *)path;
-+(void)showPhotoPath:(NSString *)imgPath;
++(void)showPhotosPath:(NSArray *)imgPaths atIndex:(NSInteger)index andTitle:(NSString *)title;
++(void)showVideo:(NSString *)path andTitle:(NSString *)title;
++(void)showPhotoPath:(NSString *)imgPath andTitle:(NSString *)title;
 @end
