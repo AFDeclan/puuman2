@@ -10,7 +10,7 @@
 #import "CustomTextField.h"
 #import "ColorButton.h"
 
-@interface InviteView : UIView
+@interface InviteView : UIView<UITextFieldDelegate>
 {
     UILabel *titleLabel;
     UILabel *detailLabel;
