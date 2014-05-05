@@ -206,7 +206,7 @@
                                    NSString *sGroupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
                                    NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
                                    
-                                   if ([[sGroupPropertyName lowercaseString] isEqualToString:@"相机胶卷"] && nType == ALAssetsGroupSavedPhotos) {
+                                   if (([[sGroupPropertyName lowercaseString] isEqualToString:@"camera roll"]||[[sGroupPropertyName lowercaseString] isEqualToString:@"相机胶卷"]) && nType == ALAssetsGroupSavedPhotos) {
                                        @autoreleasepool {
                                            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
                                                if (result == nil) {

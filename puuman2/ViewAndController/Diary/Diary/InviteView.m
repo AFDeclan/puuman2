@@ -71,6 +71,7 @@
      [relateNum setText:@""];
     relateNum.keyboardType = UIKeyboardTypeDefault;
     relateNum.returnKeyType = UIReturnKeySend;
+    [relateNum setDelegate:self];
      [relateNum setPlaceholder:@"输入对方的邮箱或电话号"];
      [self addSubview:relateNum];
      inviteBtn = [[ColorButton alloc] init];
@@ -79,10 +80,18 @@
      [inviteBtn addTarget:self action:@selector(invite:) forControlEvents:UIControlEventTouchUpInside];
      [self addSubview:inviteBtn];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self invite:nil];
+    return YES;
+}
+
 -(void)resign
 {
     [relateNum resignFirstResponder];
 }
+
 - (void)invite:(UIButton *)sender
 {
     if ([relateNum.text isEqualToString:@""]) {

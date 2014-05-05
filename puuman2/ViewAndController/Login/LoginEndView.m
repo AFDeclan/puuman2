@@ -373,7 +373,6 @@
                     [self loginButtonPressed:nil];
                 }];
                 
-                
                 break;
             }
             case timeOut:

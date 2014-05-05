@@ -162,6 +162,9 @@
     }
     [self buildAgeLabels];
     [self buildFromIdentity];
+    
+    
+    
 }
 
 - (void)buildAgeLabels
@@ -174,13 +177,20 @@
     NSArray *age = [date ageFromDate:[[BabyData sharedBabyData] babyBirth]];
     NSMutableArray *ageStr = [[NSMutableArray alloc] init];
     NSString *unitStr = nil;
+    [_delBtn setAlpha:1];
     
     if ([_diaryInfo valueForKey:kSampleDiary])
     {
         unitStr = @"样例日记";
+        [_delBtn setAlpha:0];
+        [_shareBtn setAlpha:0];
+        delCanShow = NO;
+        shareCanShow = NO;
+        [ageStr addObject:unitStr];
     }
     else if ([age count] == 3)
     {
+        
         NSString *y = [age objectAtIndex:0];
         NSString *m = [age objectAtIndex:1];
         NSString *d = [age objectAtIndex:2];

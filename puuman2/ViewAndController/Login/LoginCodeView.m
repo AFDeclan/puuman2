@@ -58,6 +58,13 @@
     [user_textfield setDelegate:self];
     [self addSubview:user_textfield];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self sendNums:nil];
+    return YES;
+}
+
 - (void)sendNums:(UIButton *)sender
 {
     

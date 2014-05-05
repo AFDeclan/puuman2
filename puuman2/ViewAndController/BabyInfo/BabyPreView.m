@@ -15,10 +15,6 @@
 #import "NSDate+Compute.h"
 #import "BabyData.h"
 
-#define columnB @"http://appui.oss-cn-hangzhou.aliyuncs.com/%E5%AD%95%E6%9C%9F%E5%9B%BE%E7%89%87%EF%BC%88%E4%BA%A7%E6%A3%80%EF%BC%89/"
-#define columnA @"http://appui.oss-cn-hangzhou.aliyuncs.com/%E5%AD%95%E6%9C%9F%E5%9B%BE%E7%89%87%EF%BC%88%E6%89%8B%E7%BB%98%EF%BC%89/"
-static NSString *clonumAimages[40] = {@"1week%402x.jpg",@"2week%402x.jpg",@"3week%402x.jpg",@"4week%402x.jpg",@"5week%402x.jpg",@"6week%402x.jpg",@"7week%402x.jpg",@"8week%402x.jpg",@"9week%402x.jpg",@"10week%402x.jpg",@"11week%402x.jpg",@"12week%402x.jpg",@"13week%402x.jpg",@"14week%402x.jpg",@"15week%402x.jpg",@"16week%402x.jpg",@"17week%402x.jpg",@"18week%402x.jpg",@"19week%402x.jpg",@"20week%402x.jpg",@"21week%402x.jpg",@"22week%402x.jpg",@"23week%402x.jpg",@"24week%402x.jpg",@"25week%402x.jpg",@"26week%402x.jpg",@"27week%402x.jpg",@"28week%402x.jpg",@"29week%402x.jpg",@"30week%402x.jpg",@"31week%402x.jpg",@"32week%402x.jpg",@"33week%402x.jpg",@"34week%402x.jpg",@"35week%402x.jpg",@"36week%402x.jpg",@"37week%402x.jpg",@"38week%402x.jpg",@"39week%402x.jpg",@"40week%402x.jpg"};
-static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"3week-b%402x.PNG",@"4week-b%402x.PNG",@"5week-b%402x.PNG",@"6week-b%402x.PNG",@"7week-b%402x.PNG",@"8week-b%402x.PNG",@"9week-b%402x.PNG",@"10week-b%402x.PNG",@"11week-b%402x.PNG",@"12week-b%402x.PNG",@"13week-b%402x.PNG",@"14week-b%402x.PNG",@"15week-b%402x.PNG",@"16week-b%402x.PNG",@"17week-b%402x.PNG",@"18week-b%402x.PNG",@"19week-b%402x.PNG",@"20week-b%402x.PNG",@"21week-b%402x.PNG",@"22week-b%402x.PNG",@"23week-b%402x.PNG",@"24week-b%402x.PNG",@"25week-b%402x.PNG",@"26week-b%402x.PNG",@"27week-b%402x.PNG",@"28week-b%402x.PNG",@"29week-b%402x.PNG",@"30week-b%402x.PNG",@"31week-b%402x.PNG",@"32week-b%402x.PNG",@"33week-b%402x.PNG",@"34week-b%402x.PNG",@"35week-b%402x.PNG",@"36week-b%402x.PNG",@"37week-b%402x.PNG",@"38week-b%402x.PNG",@"39week-b%402x.PNG",@"40week-b%402x.PNG"};
 #define  BABY_COLUMN_CNT   40
 
 @implementation BabyPreView
@@ -98,17 +94,48 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
 
     for (int i = 0; i<BABY_COLUMN_CNT; i++) {
         
-        UIImageView *point = [[UIImageView alloc] initWithFrame:CGRectMake(i*272, 0, 4, 4)];
+        UIImageView *point = [[UIImageView alloc] initWithFrame:CGRectMake(i*272+272, 0, 4, 4)];
         [point setImage:[UIImage imageNamed:@"dot3_baby_diary.png"]];
         [_points addSubview:point];
         
         
     }
 
-    UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
-    [_controlView addGestureRecognizer:gestureRecognizer];
+    UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    [gestureRecognizer setDelegate:self];
+    [self addGestureRecognizer:gestureRecognizer];
   
     
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+     CGPoint pos = [touch locationInView:self];
+    UITableViewCell *cell =[_showColumnView cellForIndex:selectedIndex];
+    if ([cell isKindOfClass:[BabyPreTableViewCell class]]) {
+        pos.x +=   _showColumnView.contentOffset.x + bgScrollView.contentOffset.x-bgScrollView.frame.origin.x -_showColumnView.frame.origin.x ;
+        pos.y -= (_showColumnView.frame.origin.y + bgScrollView.frame.origin.y);
+        
+        CGRect frame1 = cell.frame;
+        frame1.origin.x += 8;
+        frame1.size.width = 256;
+        frame1.size.height = 296;
+
+        if (!CGRectContainsPoint(frame1, pos)) {
+            [(BabyPreTableViewCell *)cell setShowInfo:NO];
+             [_controlView setAlpha:1];
+        }else{
+            CGRect frame = CGRectMake(cell.frame.origin.x+180, cell.frame.origin.y+16, 64, 64);
+            if (CGRectContainsPoint(frame,pos)) {
+                [(BabyPreTableViewCell *)cell setShowInfo:YES];
+                [_controlView setAlpha:0];
+            }
+        }
+
+    }
+   
+    
+    return YES;
 }
 
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
@@ -121,13 +148,7 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
     
 }
 
-- (void)tapped
-{
-//    float x = _scrollView.contentOffset.x;
-//    int index =x/416;
-//    [self showPhotoAtIndex:index+1];
-    
-}
+
 
 - (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
 {
@@ -152,27 +173,50 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
         float nowX = pos.x/816;
         float indexX = (int)(pos.x/816);
         selectedIndex = pos.x/816 +1;
-        [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:(nowX-indexX)*0.5];
-        [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0.5-(nowX-indexX)*0.5];
-        SetViewLeftUp([[_showColumnView cellForIndex:selectedIndex] viewWithTag:11], 8, (nowX-indexX)*32);
-        SetViewLeftUp([[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:11], 8,32- (nowX-indexX)*32);
-        SetViewLeftUp([[_showColumnView cellForIndex:selectedIndex] viewWithTag:12], 8, (nowX-indexX)*32);
-        SetViewLeftUp([[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12], 8,32- (nowX-indexX)*32);
+        UITableViewCell *cell = [_showColumnView cellForIndex:selectedIndex];
+         UITableViewCell *nextCell = [_showColumnView cellForIndex:selectedIndex+1];
+        if ([cell isKindOfClass:[BabyPreTableViewCell class]]) {
+            [(BabyPreTableViewCell *)cell setMaskAlpha:(nowX-indexX)*0.5];
+            [(BabyPreTableViewCell *)cell setContentY:(nowX-indexX)*32];
+            [(BabyPreTableViewCell *)cell setShowInfo:NO];
+            
+
+        }
+        
+        if ([nextCell isKindOfClass:[BabyPreTableViewCell class]]) {
+            [(BabyPreTableViewCell *)nextCell setMaskAlpha:0.5-(nowX-indexX)*0.5];
+            [(BabyPreTableViewCell *)nextCell setContentY:32- (nowX-indexX)*32];
+            [(BabyPreTableViewCell *)nextCell setShowInfo:NO];
+
+        }
+        
+       
+        
         pos.x = pos.x*272/816;
         [_showColumnView setContentOffset:pos];
         [_points setContentOffset:pos];
         [_titles setContentOffset:pos];
         if (selectedIndex == 0) {
-            [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0];
-     
-            SetViewLeftUp([[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:11], 8,0);
-            SetViewLeftUp([[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12], 8,0);
+            if ([nextCell isKindOfClass:[BabyPreTableViewCell class]]) {
+                [(BabyPreTableViewCell *)nextCell setMaskAlpha:0];
+                [(BabyPreTableViewCell *)nextCell setContentY:0];
+                [(BabyPreTableViewCell *)nextCell setShowInfo:NO];
+
+            }
+           
         }
         if (selectedIndex == BABY_COLUMN_CNT) {
-            [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0];
-       
-            SetViewLeftUp([[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:11], 8,0);
-            SetViewLeftUp([[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12], 8,0);
+            if ([cell isKindOfClass:[BabyPreTableViewCell class]]) {
+                [(BabyPreTableViewCell *)cell setMaskAlpha:0];
+                [(BabyPreTableViewCell *)cell setShowInfo:NO];
+
+            }
+            if ([nextCell isKindOfClass:[BabyPreTableViewCell class]]) {
+                [(BabyPreTableViewCell *)nextCell setContentY:8];
+                [(BabyPreTableViewCell *)nextCell setShowInfo:NO];
+
+            }
+            
         }
         
     }
@@ -205,37 +249,15 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
         
     }else{
         NSString * cellIdentifier = @"photoShowColumnCell";
-        UITableViewCell *cell = [columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+        BabyPreTableViewCell *cell = (BabyPreTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil)
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            AFImageView *imgView = [[AFImageView alloc] initWithFrame:CGRectMake(8, 32, 256, 296)];
-             [imgView setImage:[UIImage imageNamed:@"pic_default_baby.png"]];
-            imgView.tag = 11;
-            [cell.contentView addSubview:imgView];
-            UIImageView *mask = [[UIImageView alloc] initWithFrame:CGRectMake(8, 32, 256, 296)];
-            mask.tag = 12;
-            [cell.contentView addSubview:mask];
+            cell = [[BabyPreTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            
         }
         
         
-        // photo = [UIImage croppedImage:photo WithHeight:384 andWidth:384];
-        AFImageView *photoView = (AFImageView *)[cell viewWithTag:11];
-        NSString *imageName = _columnImgBMode ? [NSString stringWithFormat:@"%@%@", columnB,clonumBimages[index -1]] : [NSString stringWithFormat:@"%@%@",columnA,clonumAimages[index-1]];
-       
-        [photoView getImage:imageName defaultImage:@"pic_default_baby.png"];
-        UIImageView *mask = (UIImageView *)[cell viewWithTag:12];
-        [mask setBackgroundColor:[UIColor whiteColor]];
-        
-        if (selectedIndex == index) {
-            [mask setAlpha:0];
-            SetViewLeftUp(photoView, 8, 0);
-            SetViewLeftUp(mask, 8, 0);
-        }else{
-            [mask setAlpha:0.5];
-            SetViewLeftUp(photoView, 8, 32);
-            SetViewLeftUp(mask, 8, 32);
-        }
+        [cell buildCellWithIndex:index andSelectedIndex:selectedIndex andColumnImgBMode:_columnImgBMode];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -278,13 +300,13 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
     int age = 1;
     if ([ages count] == 2) {
         age = [[ages objectAtIndex:0] intValue];
-        
+
     }
     if (age > 3) {
         [_controlView setContentOffset:CGPointMake(816*(age-2), 0)];
     }
     
-    
+    age = age>1?age:1;
     [UIView animateWithDuration:0.5 animations:^{
         [_controlView setContentOffset:CGPointMake(816*(age-1), 0)];
     }];

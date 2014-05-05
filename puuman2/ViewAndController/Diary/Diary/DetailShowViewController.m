@@ -26,6 +26,14 @@ static DetailShowViewController *detailVC;
         // Custom initialization
         _model = kModelOfNone;
          [_content setBackgroundColor:[UIColor clearColor]];
+        
+        titleLabel = [[UILabel alloc] init];
+        [titleLabel setTextColor:[UIColor whiteColor]];
+        [titleLabel setBackgroundColor:[UIColor clearColor]];
+        [titleLabel setShadowColor:[UIColor blackColor]];
+        [titleLabel setFont:PMFont(28)];
+        [titleLabel setShadowOffset:CGSizeMake(1, 1)];
+       
     }
     return self;
 }
@@ -40,6 +48,8 @@ static DetailShowViewController *detailVC;
 {
     [super setVerticalFrame];
     [_content setFrame:CGRectMake(0, 0, 768, 1024)];
+    [titleLabel setFrame:CGRectMake(48, 1024-96, 768-48*2, 28)];
+
     if (_model == kModelOfVideo) {
          [moviePlayer.view setFrame:CGRectMake(0, 0, 768, 1024)];
     }else if(_model == kModelOfPicMore ||_model == kModelOfPicSingle){
@@ -54,13 +64,14 @@ static DetailShowViewController *detailVC;
         [photoScroll setContentSize:CGSizeMake(768*[photoPaths count], 1024)];
     }
     
+
 }
 
 - (void)setHorizontalFrame
 {
     [super setHorizontalFrame];
     [_content setFrame:CGRectMake(0, 0, 1024, 768)];
-    
+    [titleLabel setFrame:CGRectMake(48, 768-96, 1024-48*2, 28)];
     if (_model == kModelOfVideo) {
          [moviePlayer.view setFrame:CGRectMake(0, 0, 1024, 768)];
     }else if(_model == kModelOfPicMore ||_model == kModelOfPicSingle){
@@ -78,19 +89,22 @@ static DetailShowViewController *detailVC;
     }
 }
 
--(void)showPhotoPath:(NSString *)imgPath
+-(void)showPhotoPath:(NSString *)imgPath andTitle:(NSString *)title
 {
-   [self showPhotosPath:[NSArray arrayWithObject:imgPath] atIndex:0];
+   [self showPhotosPath:[NSArray arrayWithObject:imgPath] atIndex:0 andTitle:title];
 }
 
--(void)showVideo:(NSString *)path
+-(void)showVideo:(NSString *)path andTitle:(NSString *)title
 {
+    [titleLabel setText:title];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:path]];
     [moviePlayer prepareToPlay];
     [moviePlayer setShouldAutoplay:NO];
     [moviePlayer setFullscreen:YES];
     [moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
     [_content addSubview:moviePlayer.view];
+     [self.view addSubview:titleLabel];
+    [titleLabel setText:title];
     for (UIView *view in [[[[moviePlayer.view viewWithTag:0] viewWithTag:0] viewWithTag:0] subviews]) {
 //        if ([view isKindOfClass:[UILabel class]]) {
 //            NSLog(@"%@",view.tag);
@@ -115,8 +129,9 @@ static DetailShowViewController *detailVC;
     [self hidden];
 }
 
-- (void)showPhotosPath:(NSArray *)imgPaths atIndex:(NSInteger)index
+- (void)showPhotosPath:(NSArray *)imgPaths atIndex:(NSInteger)index andTitle:(NSString *)title
 {
+    [titleLabel setText:title];
     photoPaths = imgPaths;
     photoScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
     photoScroll.contentSize = CGSizeMake(768*[imgPaths count], 1024);
@@ -135,6 +150,7 @@ static DetailShowViewController *detailVC;
     [photoScroll addGestureRecognizer:tapPhotos];
     photoScroll.alpha = 0;
     [self.view addSubview:photoScroll];
+    [self.view addSubview:titleLabel];
     if ([MainTabBarController sharedMainViewController].isVertical) {
         
 
@@ -161,30 +177,30 @@ static DetailShowViewController *detailVC;
     // Dispose of any resources that can be recreated.
 }
 
-+ (void)showPhotosPath:(NSArray *)imgPaths atIndex:(NSInteger)index
++ (void)showPhotosPath:(NSArray *)imgPaths atIndex:(NSInteger)index andTitle:(NSString *)title;
 {
     detailVC = [[DetailShowViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:detailVC.view];
     detailVC.model = kModelOfPicMore;
-    [detailVC showPhotosPath:imgPaths atIndex:index];
+    [detailVC showPhotosPath:imgPaths atIndex:index andTitle:title];
     [detailVC show];
 }
 
-+ (void)showVideo:(NSString *)path
++ (void)showVideo:(NSString *)path andTitle:(NSString *)title
 {
     detailVC = [[DetailShowViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:detailVC.view];
     detailVC.model = kModelOfVideo;
-    [detailVC showVideo:path];
+    [detailVC showVideo:path andTitle:title];
     [detailVC show];
 }
 
-+ (void)showPhotoPath:(NSString *)imgPath
++ (void)showPhotoPath:(NSString *)imgPath andTitle:(NSString *)title
 {
     detailVC = [[DetailShowViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:detailVC.view];
     detailVC.model = kModelOfPicSingle;
-    [detailVC showPhotoPath:imgPath];
+    [detailVC showPhotoPath:imgPath andTitle:title];
     [detailVC show];
 }
 

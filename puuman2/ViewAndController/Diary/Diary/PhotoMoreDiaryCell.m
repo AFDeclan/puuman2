@@ -205,7 +205,7 @@
 
 - (void)showPhotoAtIndex:(NSInteger)index
 {
-    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1];
+    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1 andTitle:titleLabel.text];
 }
 
 - (void)share:(id)sender
