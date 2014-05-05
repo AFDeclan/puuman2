@@ -170,37 +170,39 @@
     _voting = voting;
     if (voting) {
         [self.tableView reloadData];
-        if (!_refreshFooter) {
-            _refreshFooter = [[MJRefreshFooterView alloc] init];
-            _refreshFooter.scrollView = self.tableView;
-            [self.tableView addSubview:_refreshFooter];
-            [_refreshFooter setDelegate:self];
-            _refreshFooter.alpha = 1;
-            __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
-            __block TopicAllTableViewController * this = self;
-            _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+        if (_refreshFooter) {
+            [_refreshFooter setDelegate:nil];
+            [_refreshFooter removeFromSuperview];
+        }
+        _refreshFooter = [[MJRefreshFooterView alloc] init];
+        _refreshFooter.scrollView = self.tableView;
+        [self.tableView addSubview:_refreshFooter];
+        [_refreshFooter setDelegate:self];
+        _refreshFooter.alpha = 1;
+        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+        __block TopicAllTableViewController * this = self;
+        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
             if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:this.voteOrder newDirect:NO])
-                {
-                    [blockRefreshFooter endRefreshing];
-                }
-            };
-            
+            {
+                [blockRefreshFooter endRefreshing];
+            }
+        };
+        if (votings.count == 0) {
             [_refreshFooter beginRefreshing];
-            
         }
-
         
-        if (!_refreshHeader) {
-            _refreshHeader = [[MJRefreshHeaderView alloc] init];
-            _refreshHeader.scrollView = self.tableView;
-            [self.tableView addSubview:_refreshHeader];
-            [_refreshHeader setDelegate:self];
-            _refreshHeader.alpha = 1;
-            __block TopicAllTableViewController * this = self;
-            _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-                 [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:this.voteOrder newDirect:YES];
-            };
+        if (_refreshHeader) {
+            _refreshHeader.delegate = nil;
+            [_refreshHeader removeFromSuperview];
         }
+        _refreshHeader = [[MJRefreshHeaderView alloc] init];
+        _refreshHeader.scrollView = self.tableView;
+        [self.tableView addSubview:_refreshHeader];
+        [_refreshHeader setDelegate:self];
+        _refreshHeader.alpha = 1;
+        _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+            [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:this.voteOrder newDirect:YES];
+        };
     }
 }
 
@@ -304,15 +306,12 @@
 //更多话题回复加载成功。
 - (void)topicRepliesLoadedMore:(Topic *)topic
 {
-    
     replays = [topic replies:_replyOrder];
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
     if (_refreshHeader.isRefreshing)
         [_refreshHeader endRefreshing];
-
     [self.tableView reloadData];
-
 }
 
 //更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
@@ -328,7 +327,7 @@
 
 - (void)refreshTable
 {
-    [self.tableView  reloadData];
+    [self.tableView reloadData];
 }
 
 
@@ -337,8 +336,9 @@
 
 - (void)refreshVoteTable
 {
-      _voting = YES;
-   
+    if (_voting) {
+        [_refreshHeader beginRefreshing];
+    }
 }
 
 

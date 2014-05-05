@@ -345,7 +345,8 @@
         [moviePlayer prepareToPlay];
         [moviePlayer setDelegate:self];
         [moviePlayer setShouldAutoplay:NO];
-        if ([MainTabBarController sharedMainViewController].isVertical) {
+        UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+        if (UIDeviceOrientationIsPortrait(interfaceOrientation)) {
             [moviePlayer setVerticalFrame];
         }else{
             [moviePlayer setHorizontalFrame];
@@ -376,10 +377,9 @@
     [moviePlayer.view removeFromSuperview];
     [controlView setVideoBackControl];
     [timeView showTimeWithSecond:0];
-    cameraUI = nil;
+    [cameraUI.view removeFromSuperview];
     cameraUI = [self camera:YES];
-   
-
+    [self.view insertSubview:cameraUI.view atIndex:0];
 }
 
 - (void)saveWithImg:(UIImage *)img

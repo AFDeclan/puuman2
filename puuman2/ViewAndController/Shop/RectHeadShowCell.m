@@ -68,8 +68,6 @@
         [warePriceLabel setTextColor:PMColor6];
         [rectInfoView addSubview:warePriceLabel];
         
-     
-       
     }
     return self;
 }
@@ -112,8 +110,6 @@
         [mask setBackgroundColor:[UIColor blackColor]];
         
         [mask setTag:11];
-        
-        
     }
     
     AFImageView *img = (AFImageView *)[cell.contentView viewWithTag:10];
@@ -121,6 +117,7 @@
     [img getImage:rec.RWPicLink defaultImage:default_ware_image];
     UIView *mask = [cell.contentView viewWithTag:11];
     if ([indexPath row] == selectedIndex) {
+        selectedCell = cell;
         [mask setAlpha:0];
         [rectWareShowView getImage:rec.RWPicLink defaultImage:default_ware_image];
         [self setWareNameWithName:rec.RWName];
@@ -129,10 +126,13 @@
     }else{
         [mask setAlpha:0.3];
     }
-    
-    
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.tag = indexPath.row;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellSelected:)];
+    [cell addGestureRecognizer:tap];
+    
     return cell;
     
 }
@@ -145,23 +145,36 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIView *mask = [cell viewWithTag:11];
-    
-    if ([indexPath row] != selectedIndex) {
-        
-        [mask setAlpha:0];
-        UITableViewCell *selectedcell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]];
-        [[selectedcell viewWithTag:11] setAlpha:0.3];
-        selectedIndex = [indexPath row];
-        RecomWare* rec = [wareArray objectAtIndex:[indexPath row]];
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    UIView *mask = [cell viewWithTag:11];
+//    
+//    if ([indexPath row] != selectedIndex) {
+//        
+//        [mask setAlpha:0];
+//        UITableViewCell *selectedcell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]];
+//        [[selectedcell viewWithTag:11] setAlpha:0.3];
+//        selectedIndex = [indexPath row];
+//        RecomWare* rec = [wareArray objectAtIndex:[indexPath row]];
+//        [rectWareShowView getImage:rec.RWPicLink defaultImage:default_ware_image];
+//        [self setWareNameWithName:rec.RWName];
+//        [warePriceLabel setText:[NSString stringWithFormat:@"%0.2f",rec.RWPrice]];
+//    }
+}
+
+- (void)cellSelected:(UIGestureRecognizer *)gesRec
+{
+    UITableViewCell * cell = (UITableViewCell *)gesRec.view;
+    if (cell != selectedCell) {
+        [cell viewWithTag:11].alpha = 0;
+        [selectedCell viewWithTag:11].alpha = 0.3;
+        selectedCell = cell;
+        NSInteger index = cell.tag;
+        selectedIndex = index;
+        RecomWare* rec = [wareArray objectAtIndex:index];
         [rectWareShowView getImage:rec.RWPicLink defaultImage:default_ware_image];
         [self setWareNameWithName:rec.RWName];
         [warePriceLabel setText:[NSString stringWithFormat:@"%0.2f",rec.RWPrice]];
-
     }
-
-    
 }
 
 -(void)pressShowPic{

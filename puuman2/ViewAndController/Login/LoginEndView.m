@@ -14,6 +14,7 @@
 #import "RegisterForm.h"
 #import "CustomAlertViewController.h"
 #import "CustomNotiViewController.h"
+#import "DiaryViewController.h"
 
 @implementation LoginEndView
 @synthesize delegate = _delegate;
@@ -368,7 +369,8 @@
             case succeeded:
             {
                 [CustomAlertViewController showAlertWithTitle:@"注册成功！欢迎开始您的扑满日记~" confirmRightHandler:^{
-                    
+                
+                    [self loginButtonPressed:nil];
                 }];
                 
                 break;

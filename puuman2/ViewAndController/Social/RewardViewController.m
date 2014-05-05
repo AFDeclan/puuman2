@@ -52,7 +52,7 @@
     [rewardTable setScrollEnabled:NO];
     
     
-    rankTable = [[UITableView alloc] initWithFrame:CGRectMake(480, 112, 192, 240)];
+    rankTable = [[UITableView alloc] initWithFrame:CGRectMake(480, 112, 192, 260)];
     [rankTable setDelegate:self];
     [rankTable setDataSource:self];
     [rankTable setSeparatorColor:[UIColor clearColor]];

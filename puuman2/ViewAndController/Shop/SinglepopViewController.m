@@ -80,16 +80,21 @@
         wareNameLabel.font = PMFont1;
         [_content addSubview:wareNameLabel];
     
-        shareBtn =[[ColorButton alloc] init];
-        [shareBtn initWithTitle:@"分享" andIcon:[UIImage imageNamed:@"btn_share_diary.png"] andButtonType:kGrayLeftUp];
-        [shareBtn addTarget:self action:@selector(shareWare) forControlEvents:UIControlEventTouchUpInside];
-        [_content addSubview:shareBtn];
+//        shareBtn =[[ColorButton alloc] init];
+//        [shareBtn initWithTitle:@"分享" andIcon:[UIImage imageNamed:@"btn_share_diary.png"] andButtonType:kGrayLeftUp];
+//        [shareBtn addTarget:self action:@selector(shareWare) forControlEvents:UIControlEventTouchUpInside];
+//        [_content addSubview:shareBtn];
+//        SetViewLeftUp(shareBtn, 592, 480);
+        
+//        addBtn = [[ColorButton alloc] init];
+//        [addBtn addTarget:self action:@selector(addToCart) forControlEvents:UIControlEventTouchUpInside];
+//        [_content addSubview:addBtn];
+//        SetViewLeftUp(addBtn, 592, 520);
         addBtn = [[ColorButton alloc] init];
-       
         [addBtn addTarget:self action:@selector(addToCart) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:addBtn];
-        SetViewLeftUp(shareBtn, 592, 480);
         SetViewLeftUp(addBtn, 592, 520);
+
     }
     return self;
 }
@@ -118,11 +123,14 @@
     if ([[CartModel sharedCart] wareIsInCart:_ware])
     {
         [addBtn setEnabled:NO];
-        [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeftDown];
+//        [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeftDown];
+        [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeft];
         
     }else{
         [addBtn setEnabled:YES];
-        [addBtn initWithTitle:@"+加入购物车"  andButtonType:kBlueLeftDown];
+//        [addBtn initWithTitle:@"+加入购物车"  andButtonType:kBlueLeftDown];
+        [addBtn initWithTitle:@"+加入购物车"  andButtonType:kBlueLeft];
+
     }
     
     //图片

@@ -37,7 +37,6 @@
     [title setTextColor:PMColor3];
     [title setBackgroundColor:[UIColor clearColor]];
     [self addSubview:title];
-    
     goBirthViewButton=[[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 255, 224)];
     [goBirthViewButton setTitle:@"已出生" andImg:[UIImage imageNamed:@"pic_born_login.png"] andButtonType:kButtonTypeThree];
     [goBirthViewButton setTitleLabelColor:PMColor1];

@@ -21,7 +21,7 @@
     UILabel *warePriceLabel;
     NSArray* wareArray;
     NSInteger selectedIndex;
-  
+    UITableViewCell * selectedCell;
 }
 
 - (void)reloadDataWithData:(NSArray *)showWare;

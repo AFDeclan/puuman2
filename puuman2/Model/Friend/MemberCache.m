@@ -118,6 +118,12 @@
     return nil;
 }
 
+- (void)removeMemberWithBID:(NSInteger)bid
+{
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE BID = ?", MemberTableName];
+    [_db executeUpdate:sql, [NSNumber numberWithInteger:bid]];
+}
+
 - (void)downloadMemberWithUID:(NSInteger)uid orBID:(NSInteger)bid
 {
     PumanRequest *req = [[PumanRequest alloc] init];

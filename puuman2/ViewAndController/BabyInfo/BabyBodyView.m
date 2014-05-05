@@ -29,8 +29,6 @@
         }else{
             [self setHorizontalFrame];
         }
-        
-        
     }
     return self;
 }
@@ -64,7 +62,9 @@
     [title setBackgroundColor:[UIColor clearColor]];
     [emptyView addSubview:title];
     if ([[BabyData sharedBabyData] recordCount] > 0) {
-        [emptyView setAlpha:0];
+        //[emptyView setAlpha:0];
+        [emptyView removeFromSuperview];
+     
     }else{
         [emptyView setAlpha:1];
     }
@@ -73,10 +73,6 @@
 
 - (void)initWithRightView
 {
-    
-    
-    
-    
     _lineChartView  = [[UITableView alloc] initWithFrame:CGRectMake(56, 184, 544, 408)];
    
     [_lineChartView setDataSource:self];
@@ -100,9 +96,6 @@
     [noti_label setText:@"左右滑动切换身高&体重"];
     [noti_label setTextAlignment:NSTextAlignmentCenter];
     [rightView addSubview:noti_label];
-    
-    
-    
 }
 
 - (void)addData
@@ -118,7 +111,6 @@
 {
     [dataTable reloadData];
     [_lineChartView reloadData];
- 
 }
 
 -(void)setVerticalFrame
@@ -184,9 +176,7 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.contentView setBackgroundColor:[UIColor whiteColor]];
         return cell;
-
     }
-  
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -196,7 +186,6 @@
     }else{
         return 408;
     }
-   
 }
 
 - (void)fold
@@ -205,7 +194,6 @@
     [UIView animateWithDuration:0.3 animations:^{
         SetViewLeftUp(leftView, -216, 0);
     }];
-    
 }
 
 - (void)unfold

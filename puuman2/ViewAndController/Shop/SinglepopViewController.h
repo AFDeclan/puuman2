@@ -22,6 +22,7 @@
     UITableView *_shopsTableView;
     ColorButton *shareBtn;
     ColorButton *addBtn;
+
      NSMutableArray *_shopsInfo;
      NSMutableArray *_detail_propertyKeys;
      NSArray *_propertyKeys;

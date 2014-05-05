@@ -75,8 +75,7 @@
 - (void)closeBtnPressed
 {
     [self stop];
-    [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
+    [MyNotiCenter removeObserver:self];
     [_delegate videoClosed];
 }
 
@@ -84,11 +83,8 @@
 {
     [timeView stopRecord];
     [self stop];
-    [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
-    
-
-   [_delegate videoFinishedWithTitle:titleTextField.text];
+    [MyNotiCenter removeObserver:self];
+    [_delegate videoFinishedWithTitle:titleTextField.text];
 }
 
 - (void)setVerticalFrame
