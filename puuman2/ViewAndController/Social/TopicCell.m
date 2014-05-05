@@ -99,11 +99,7 @@
     [relayExample setBackgroundColor:[UIColor clearColor]];
     [footerView addSubview:relayExample];
     scanMoreReplay = [[AFTextImgButton alloc] initWithFrame:CGRectMake(496, 40, 112, 48)];
-    if(!_reply){
-        [scanMoreReplay setTitle:@"还没有留言哦" andImg:nil andButtonType:kButtonTypeOne];
-    }else{
-        [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
-    }
+    [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
     [scanMoreReplay setTitleLabelColor:PMColor3];
     [scanMoreReplay addTarget:self action:@selector(scanMore) forControlEvents:UIControlEventTouchUpInside];
     [scanMoreReplay setTitleFont:PMFont3];

@@ -28,12 +28,12 @@
 - (void)initContent
 {
     photosArr = [[NSMutableArray alloc] init];
-    titleTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 112, 640, 48)];
-    titleTextField.placeholder = @"这些照片是……";
-    titleTextField.keyboardType = UIKeyboardTypeDefault;
-    titleTextField.returnKeyType = UIReturnKeyDone;
-    [titleTextField setDelegate:self];
-    [_content addSubview:titleTextField];
+//    titleTextField = [[CustomTextField alloc] initWithFrame:CGRectMake(32, 112, 640, 48)];
+//    titleTextField.placeholder = @"这些照片是……";
+//    titleTextField.keyboardType = UIKeyboardTypeDefault;
+//    titleTextField.returnKeyType = UIReturnKeyDone;
+//    [titleTextField setDelegate:self];
+//    [_content addSubview:titleTextField];
     photosTable = [[UITableView alloc] initWithFrame:CGRectMake(32, 160, 640, 384)];
     [photosTable setDataSource:self];
     [photosTable setDelegate:self];
@@ -126,30 +126,30 @@
 
 }
 
-- (void)setTitleStr:(NSString *)titleStr
-{
-    _titleStr = titleStr;
-    [titleTextField setText:titleStr];
-}
-
-- (void)closeBtnPressed
-{
-    [_delegate setTitleStr:titleTextField.text];
-    [super closeBtnPressed];
-    
-}
-
-- (void)finishBtnPressed
-{
-    [_delegate setTitleStr:titleTextField.text];
-    [super finishBtnPressed];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    
-    [textField resignFirstResponder];
-    return YES;
-}
+//- (void)setTitleStr:(NSString *)titleStr
+//{
+//    _titleStr = titleStr;
+//    [titleTextField setText:titleStr];
+//}
+//
+//- (void)closeBtnPressed
+//{
+//    [_delegate setTitleStr:titleTextField.text];
+//    [super closeBtnPressed];
+//    
+//}
+//
+//- (void)finishBtnPressed
+//{
+//    [_delegate setTitleStr:titleTextField.text];
+//    [super finishBtnPressed];
+//}
+//
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    
+//    [textField resignFirstResponder];
+//    return YES;
+//}
 
 @end
