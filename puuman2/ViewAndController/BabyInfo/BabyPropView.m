@@ -17,7 +17,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        SetViewLeftUp(showAndHiddenBtn, 216, 350);
+       // SetViewLeftUp(showAndHiddenBtn, 216, 350);
         [self initWithLeftView];
         [self initWithRightView];
         if ([MainTabBarController sharedMainViewController].isVertical) {
