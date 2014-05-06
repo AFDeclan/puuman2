@@ -4646,7 +4646,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 721904F09AE644A085A71BDA /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Amazing Finger Interactive Technology Co., Ltd (3NS9QVX256)";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/Tencent,
