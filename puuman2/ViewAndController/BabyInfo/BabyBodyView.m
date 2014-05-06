@@ -108,8 +108,22 @@
     if ([[BabyData sharedBabyData] recordCount] > 0) {
         [emptyView setAlpha:0];
     }
+    if([[BabyData sharedBabyData]recordCount]>5){
+        [dataTable setContentOffset:CGPointMake(0, 60)];
+        [self performSelectorOnMainThread: @selector(animateWithBodyView) withObject: nil waitUntilDone: 0];
+    
+   }
+    
     [dataTable reloadData];
     [_lineChartView reloadData];
+}
+-(void)animateWithBodyView{
+    [UIView animateWithDuration:0.5 animations:^{
+        [dataTable setContentOffset:CGPointMake(0,0)];
+    } completion:^(BOOL finished){
+    }];
+
+
 }
 
 -(void)setVerticalFrame
