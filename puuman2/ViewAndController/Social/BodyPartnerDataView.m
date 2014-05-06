@@ -91,6 +91,7 @@
         [titleLabel setText:@"体重"];
        // [self setBackgroundColor:[UIColor clearColor]];
     }
+    
 }
 
 - (void)reloadWithGroupInfo:(Group *)group

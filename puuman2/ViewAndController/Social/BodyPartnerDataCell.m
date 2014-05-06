@@ -46,42 +46,46 @@
 - (void)setBodyData:(float)bodyValue andTheDate:(NSDate *)date andHighest:(float)highest andLowest:(float)lowest andIsHeight:(BOOL) height;
 {
     
+     _height = 0;
+     [histogram setFrame:CGRectMake(0, 224, 96, 0)];
     if (bodyValue == 0) {
-     
-       [histogram setFrame:CGRectMake(0, 224-200, 96, 0)];
-        return;
-    }
-    
-    if (highest == lowest) {
-        [histogram setFrame:CGRectMake(0, 224-200, 96, 200)];
+        _height = 0;
     }else{
-        float h = 50+(bodyValue-lowest)*(highest -lowest)/(200-50);
-        [histogram setFrame:CGRectMake(0, 224-h, 96, h)];
-    }
-    if (bodyValue == highest) {
-        [histogram setFrame:CGRectMake(0, 224-200, 96, 200)];
+        if (highest == lowest) {
+            _height = 200;
+        }else{
+            _height = 50+(bodyValue-lowest)*(highest -lowest)/(200-50);
+        }
+        
+        if (bodyValue == highest) {
+            _height = 200;
+            [mask setAlpha:0];
+        }else if(bodyValue == lowest){
+            _height = 50;
+            [mask setAlpha:0.5];
+        }else{
+            [mask setAlpha:0.3];
+        }
+        
+        SetViewLeftUp(data_info, 0, ViewY(histogram)-16);
+        
+        if (height) {
+            [data_info setText:[NSString stringWithFormat:@"%0.1fcm",bodyValue]];
+            [histogram setBackgroundColor:RGBColor(246, 114, 99)];
+            [data_info setTextColor:RGBColor(246, 114, 99)];
+        }else{
+            [data_info setText:[NSString stringWithFormat:@"%0.1fkg",bodyValue]];
+            [histogram setBackgroundColor:RGBColor(228, 206, 58)];
+            [data_info setTextColor:RGBColor(228, 206, 58)];
+        }
+        [UIView animateWithDuration:0.5 animations:^{
+            [histogram setFrame:CGRectMake(0, 224-_height, 96, _height)];
+             SetViewLeftUp(data_info, 0, ViewY(histogram)-16);
+        }];
+        
 
-        [mask setAlpha:0];
-    }else if(bodyValue == lowest){
-        [histogram setFrame:CGRectMake(0, 224-50, 96, 50)];
-
-        [mask setAlpha:0.5];
-    }else{
-        [mask setAlpha:0.3];
     }
     
-   // [date_info setText:@"比我大2天"];
-    SetViewLeftUp(data_info, 0, ViewY(histogram)-16);
-    
-    if (height) {
-        [data_info setText:[NSString stringWithFormat:@"%0.1fcm",bodyValue]];
-        [histogram setBackgroundColor:RGBColor(246, 114, 99)];
-        [data_info setTextColor:RGBColor(246, 114, 99)];
-    }else{
-        [data_info setText:[NSString stringWithFormat:@"%0.1fkg",bodyValue]];
-         [histogram setBackgroundColor:RGBColor(228, 206, 58)];
-        [data_info setTextColor:RGBColor(228, 206, 58)];
-    }
     
     
     

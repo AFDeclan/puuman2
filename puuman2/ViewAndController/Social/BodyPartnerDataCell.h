@@ -15,6 +15,7 @@
     UILabel *data_info;
     UIView *mask;
     UIView *line;
+    float _height;
 }
 
 @property(nonatomic,assign)BOOL showLine;
