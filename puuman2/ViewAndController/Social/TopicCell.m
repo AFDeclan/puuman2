@@ -156,11 +156,15 @@
     [[Forum sharedInstance] addDelegateObject:self];
     [infoView setInfoWithUid:_reply.UID andIsTopic:YES];
     
-//    if ([[_reply comments] count] == 0) {
-//        [_reply getMoreComments:1 newDirect:YES];
-//    }else{
-//        [relayExample setText:[[_reply comments] objectAtIndex:0]];
-//    }
+    if ([reply RCommentCnt] == 0) {
+        [scanMoreReplay setTitle:@"没有留言" andImg:nil andButtonType:kButtonTypeOne];
+    }else{
+        [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
+
+    }
+    [scanMoreReplay setTitleFont:PMFont3];
+
+    [scanMoreReplay adjustLayout];
  
     if (_isMyTopic) {
         Topic *topic =  [[Forum sharedInstance] getTopic:reply.TID];

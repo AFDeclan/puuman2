@@ -78,7 +78,7 @@
 
 - (void)playVideo
 {
-   [DetailShowViewController showVideo:[self.diaryInfo valueForKey:kFilePathName]];
+   [DetailShowViewController showVideo:[self.diaryInfo valueForKey:kFilePathName] andTitle:titleLabel.text];
 }
 
 - (void)share:(id)sender

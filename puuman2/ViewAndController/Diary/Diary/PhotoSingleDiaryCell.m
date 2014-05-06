@@ -45,7 +45,7 @@
 - (void)showPhoto
 {
     if (_photoPath) {
-        [DetailShowViewController showPhotoPath:_photoPath];
+        [DetailShowViewController showPhotoPath:_photoPath andTitle:titleLabel.text];
      }
     
 }

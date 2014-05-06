@@ -143,8 +143,7 @@ static MBProgressHUD *hud;
     if (interfaceOrientation == UIDeviceOrientationPortrait || interfaceOrientation == UIDeviceOrientationPortraitUpsideDown) {
         //翻转为竖屏时
         [self setVerticalFrame];
-       
-        
+
         
     }else if (interfaceOrientation==UIDeviceOrientationLandscapeLeft || interfaceOrientation == UIDeviceOrientationLandscapeRight) {
         //翻转为横屏时

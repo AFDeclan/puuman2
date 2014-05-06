@@ -123,7 +123,7 @@
 
 - (void)showPhoto
 {
-    [DetailShowViewController showPhotoPath:[self.diaryInfo valueForKey:kFilePathName]];
+    [DetailShowViewController showPhotoPath:[self.diaryInfo valueForKey:kFilePathName] andTitle:titleLabel.text];
 
 }
 

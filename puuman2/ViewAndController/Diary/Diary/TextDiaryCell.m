@@ -191,7 +191,7 @@
 {
     if (photo) {
         NSString *photoPath = [self.diaryInfo valueForKey:kFilePath2Name];
-        [DetailShowViewController showPhotoPath:photoPath];
+        [DetailShowViewController showPhotoPath:photoPath andTitle:titleLabel.text];
     }
 
 }
