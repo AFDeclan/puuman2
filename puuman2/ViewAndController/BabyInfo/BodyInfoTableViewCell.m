@@ -20,9 +20,12 @@
     if (self) {
         // Initialization code
         [self initialization];
-    }
+                }
+    
+    
     return self;
 }
+
 
 - (void)initialization
 {
@@ -129,7 +132,7 @@
             str_age = [str_age stringByAppendingFormat:@"%d天",dayNum];
         }
     }
-
-
+ 
 }
+
 @end

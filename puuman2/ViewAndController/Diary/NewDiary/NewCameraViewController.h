@@ -17,11 +17,11 @@
 
 
 @protocol CameraViewDelegate;
-@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate,VideoPlayerDelegate>
+@interface NewCameraViewController : UIViewController<CameraControlDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NewCameraShowPhotosDelegate,CameraAudioDelegate,VideoPlayerDelegate,UITextFieldDelegate>
 {
     NewCameraControlView *controlView;
     UIImagePickerController *cameraUI;
-    NSString *titleStr;
+   // NSString *titleStr;
     NSMutableArray *photoPath;
     NSMutableDictionary *photosStatus;
     NSMutableArray *photos;
@@ -30,11 +30,15 @@
     TimeView *timeView;
     NSURL *audioFileUrl;
     BOOL isVertical;
+    UITextField *titleTextField;
+    UIView *lineView;
 }
+//- (void)setTitleStr:(NSString *)title;
 @property(assign,nonatomic) id<CameraViewDelegate> delegate;
 @property (retain, nonatomic) NSDictionary *taskInfo;
 @property (assign, nonatomic) BOOL isTopic;
 @property (assign, nonatomic) BOOL cameraModel;
+@property (retain,nonatomic)NSString *titleStr;
 @end
 @protocol CameraViewDelegate <NSObject>
 @optional
