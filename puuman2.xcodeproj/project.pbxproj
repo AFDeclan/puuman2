@@ -4628,7 +4628,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "CC793F5E-708D-4324-B0CA-E8EBEB4439CA";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4638,7 +4638,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 721904F09AE644A085A71BDA /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Amazing Finger Interactive Technology Co., Ltd (3NS9QVX256)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/Tencent,
@@ -4659,7 +4659,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "CC793F5E-708D-4324-B0CA-E8EBEB4439CA";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

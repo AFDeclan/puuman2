@@ -76,6 +76,7 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         AsyncImgView *imgView = [[AsyncImgView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+        [imgView setContentMode:UIViewContentModeScaleAspectFill];
         UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
         [imgView setImage:photo];
         imgView.tag = 11;

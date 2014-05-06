@@ -612,7 +612,7 @@ static DiaryModel * instance;
         {
             NSString *url = [NSString stringWithFormat:@"%@/%d", url1, i];
             NSData *fileData;
-            for (NSInteger j=0; j<3; j++) //尝试3次
+            for (NSInteger j=0; j<100; j++) //尝试100次
             {
                 while (![rechability isReachable]) sleep(10);
                 fileData = [downloader downloadDataSynchoronusFromUrl:url];

@@ -105,9 +105,6 @@ static UserInfo *instance = nil;
             [self uploadDeviceToken:NO];
         }
     }
-    _UID = 3;
-    PostNotification(Noti_UserLogined, nil);
-    return YES;
     return logined;
 }
 

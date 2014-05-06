@@ -111,7 +111,7 @@
     [iconOutBg setBackgroundColor:PMColor5];
     [emptyoutView addSubview:iconOutBg];
     
-    UILabel *title_out = [[UILabel alloc] initWithFrame:CGRectMake(0, 48, 88, 24)];
+    UILabel *title_out = [[UILabel alloc] initWithFrame:CGRectMake(0, 48, 100, 24)];
     [title_out setFont:PMFont4];
     [title_out setTextColor:PMColor3];
     [title_out setText:@"啊哦，还没有金币兑现~"];
