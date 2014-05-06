@@ -97,7 +97,8 @@
     [photoNumLabel setText:@"0"];
     [numLabelBgView addSubview:photoNumLabel];
     [photoNumLabel setTextAlignment:NSTextAlignmentCenter];
-
+    
+    
     [closeBtn setEnabled:NO];
     [finishBtn setEnabled:NO];
     [frontRareChangeBtn setEnabled:NO];

@@ -22,6 +22,7 @@
 @synthesize isTopic = _isTopic;
 @synthesize cameraModel = _cameraModel;
 @synthesize delegate = _delegate;
+@synthesize titleStr = _titleStr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,13 +40,38 @@
 {
     [super viewDidLoad];
     movieUrl = nil;
-    titleStr= @"";
+  //  titleStr= @"";
     photos = [[NSMutableArray alloc] init];
     photoPath = [[NSMutableArray alloc] init];
     photosStatus = [[NSMutableDictionary alloc] init];
     [self.view setBackgroundColor:[UIColor blackColor]];
 	// Do any additional setup after loading the view.
+    titleTextField = [[UITextField alloc]initWithFrame:CGRectMake(96, 20, 580, 80)];
+    [titleTextField setReturnKeyType:UIReturnKeyDone];
+    [titleTextField setFont:PMFont(28)];
+    [titleTextField setPlaceholder:@"点击这里写点什么......"];
+    [titleTextField setKeyboardType:UIKeyboardTypeDefault];
+    [titleTextField setDelegate:self];
+    [titleTextField setTextColor:[UIColor whiteColor]];
+    [titleTextField setClipsToBounds:YES];
+    [titleTextField setBorderStyle:UITextBorderStyleNone];
+    [titleTextField setBackgroundColor:[UIColor clearColor]];
+    
+    [self.view addSubview:titleTextField];
+    lineView = [[UIView alloc]initWithFrame:CGRectMake(96,101, 580, 1)];
+    [lineView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:lineView];
     [self initialization];
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+
+    
+    titleTextField.layer.shadowRadius = 2.0f;
+    titleTextField.layer.shadowColor=[[UIColor blackColor]CGColor];
+    titleTextField.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    titleTextField.layer.shadowOpacity=1.0f;
+
+    return YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,9 +105,10 @@
                 [controlView setVideoMode:YES];
             }
         }
-        titleStr = [self.taskInfo valueForKey:_task_Name];
+        titleTextField.text = [self.taskInfo valueForKey:_task_Name];
+        [titleTextField setEnabled:NO];
     }
-    
+
     cameraUI = [self camera:videoOnly];
     [self.view insertSubview:cameraUI.view atIndex:0];
     [self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation duration:0];
@@ -192,10 +219,10 @@
 {
     if (controlView.videoMode) {
         if (movieUrl != nil) {
-            [DiaryFileManager saveVideo:movieUrl withTitle:titleStr andTaskInfo:_taskInfo];
+            [DiaryFileManager saveVideo:movieUrl withTitle:titleTextField.text andTaskInfo:_taskInfo];
         }
     }else{
-        [DiaryFileManager savePhotoWithPaths:photoPath withAudio:audioFileUrl withTitle:titleStr andTaskInfo:_taskInfo andIsTopic:_isTopic];
+        [DiaryFileManager savePhotoWithPaths:photoPath withAudio:audioFileUrl withTitle:titleTextField.text andTaskInfo:_taskInfo andIsTopic:_isTopic];
     }
   //  if (!_isTopic) {
        //  [_delegate cameraViewHidden];
@@ -287,7 +314,7 @@
     NewCameraShowPhotosViewController *showView =[[NewCameraShowPhotosViewController alloc] initWithNibName:nil bundle:nil];
    [self.view addSubview:showView.view];
     [showView setDelegate:self];
-    [showView setTitleStr:titleStr];
+   // [showView setTitleStr:titleStr];
     [showView setTitle:@"选择照片" withIcon:nil];
     [showView setControlBtnType:kOnlyFinishButton];
     [showView initWithPhotos:photos andphotoPaths:photoPath];
@@ -369,7 +396,8 @@
 
 - (void)videoFinishedWithTitle:(NSString *)title
 {
-    titleStr = title;
+    //titleStr = title;
+    titleTextField.text=title;
     [self finishBtnPressed];
 }
 
@@ -425,10 +453,12 @@
     }
 }
 
-- (void)setTitleStr:(NSString *)title
-{
-    titleStr = title;
-}
+//- (void)setTitleStr:(NSString *)title
+//{
+//    _titleStr = title;
+//   
+//    [titleTextField setText:_titleStr];
+//}
 
 - (void)getAudioWithUrl:(NSURL *)audioUrl
 {
@@ -441,6 +471,14 @@
     }
 
 }
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [titleTextField resignFirstResponder];
+    return  YES;
+    
+}
+
+
 
 
 

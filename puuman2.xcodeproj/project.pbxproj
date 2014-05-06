@@ -711,7 +711,6 @@
 		54F1D10518C48B340005CDD9 /* bg_prompt.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10118C48B340005CDD9 /* bg_prompt.png */; };
 		54F1D10618C48B340005CDD9 /* bg_subpage.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D10218C48B340005CDD9 /* bg_subpage.png */; };
 		54F1D12A18C48FA50005CDD9 /* block_photo__h_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11818C48FA50005CDD9 /* block_photo__h_diary.png */; };
-		54F1D12B18C48FA50005CDD9 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11918C48FA50005CDD9 /* block_photo_diary.png */; };
 		54F1D12C18C48FA50005CDD9 /* btn_auphoto_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11A18C48FA50005CDD9 /* btn_auphoto_diary.png */; };
 		54F1D12D18C48FA50005CDD9 /* btn_change_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11B18C48FA50005CDD9 /* btn_change_diary.png */; };
 		54F1D12E18C48FA50005CDD9 /* btn_delete3_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D11C18C48FA50005CDD9 /* btn_delete3_diary.png */; };
@@ -725,6 +724,7 @@
 		54F1D13B18C48FA50005CDD9 /* icon_text2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12918C48FA50005CDD9 /* icon_text2_diary.png */; };
 		54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D13D18C490A10005CDD9 /* PopUpViewController.m */; };
 		6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A163B769C9D646389F66C162 /* libPods.a */; };
+		88AE17C9191761C80047107D /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 88AE17C8191761C80047107D /* block_photo_diary.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1730,7 +1730,6 @@
 		54F1D10118C48B340005CDD9 /* bg_prompt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_prompt.png; sourceTree = "<group>"; };
 		54F1D10218C48B340005CDD9 /* bg_subpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_subpage.png; sourceTree = "<group>"; };
 		54F1D11818C48FA50005CDD9 /* block_photo__h_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo__h_diary.png; sourceTree = "<group>"; };
-		54F1D11918C48FA50005CDD9 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		54F1D11A18C48FA50005CDD9 /* btn_auphoto_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_auphoto_diary.png; sourceTree = "<group>"; };
 		54F1D11B18C48FA50005CDD9 /* btn_change_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_change_diary.png; sourceTree = "<group>"; };
 		54F1D11C18C48FA50005CDD9 /* btn_delete3_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_delete3_diary.png; sourceTree = "<group>"; };
@@ -1745,6 +1744,7 @@
 		54F1D13C18C490A10005CDD9 /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
 		54F1D13D18C490A10005CDD9 /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
 		721904F09AE644A085A71BDA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		88AE17C8191761C80047107D /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block_photo_diary.png; path = ../../../../block_photo_diary.png; sourceTree = "<group>"; };
 		A163B769C9D646389F66C162 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -3129,11 +3129,11 @@
 				54B867F618E6B81A00BE5335 /* SinglepopViewController.m */,
 				54D64EED18E7BA2000B8899D /* ShopWebViewController.h */,
 				54D64EEE18E7BA2000B8899D /* ShopWebViewController.m */,
-				54D64EFF18E7E92700B8899D /* ShopCartViewController.h */,
 				54D64F0018E7E92700B8899D /* ShopCartViewController.m */,
 				54ACEE8718EAC2E70055562B /* CompareCartViewController.h */,
 				54ACEE8818EAC2E70055562B /* CompareCartViewController.m */,
 				54D64F0218E7EFAA00B8899D /* subView */,
+				54D64EFF18E7E92700B8899D /* ShopCartViewController.h */,
 			);
 			name = Ware;
 			sourceTree = "<group>";
@@ -3639,8 +3639,8 @@
 				54AB6CC718F2BA8D00E4269E /* icon_check_autoinput.png */,
 				543BAEC418CEBE9E00ED4672 /* bg_title_diary.png */,
 				5474A48318C5C7AE0073B2FE /* btn_input_diary.png */,
+				88AE17C8191761C80047107D /* block_photo_diary.png */,
 				54F1D11818C48FA50005CDD9 /* block_photo__h_diary.png */,
-				54F1D11918C48FA50005CDD9 /* block_photo_diary.png */,
 				54F1D11A18C48FA50005CDD9 /* btn_auphoto_diary.png */,
 				54F1D11B18C48FA50005CDD9 /* btn_change_diary.png */,
 				54F1D11C18C48FA50005CDD9 /* btn_delete3_diary.png */,
@@ -3927,6 +3927,7 @@
 				5463759B18C98493004B11EF /* tri_white_up.png in Resources */,
 				54B97E4E18FA2B1E00B6C4C9 /* pic8_insure_shop.png in Resources */,
 				549B62CB18CABEAB00AFEEAB /* circle_status.png in Resources */,
+				88AE17C9191761C80047107D /* block_photo_diary.png in Resources */,
 				5403CE3918D04F5E004CAE22 /* icon_vac2_baby.png in Resources */,
 				5447C48F18D97D1100187BE6 /* btn_topic1_topic.png in Resources */,
 				5447C48918D97D1100187BE6 /* btn_like2_topic.png in Resources */,
