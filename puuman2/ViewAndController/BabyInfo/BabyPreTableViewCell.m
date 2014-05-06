@@ -18,6 +18,13 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
 #define kPicWidth 256
 #define kPicHeight 296
 
+
+static NSString *info[40] ={@"·宝宝·\n因为精子与卵子暂时还没有接触，所以婴儿还没有形成。为了便利，怀孕期通常从最后一次月经周期开始算起，共40周（280天）。但是，真正的排卵和精子的受精在最后月经后的两周才会发生，所以怀孕的最初两周并不是真正的怀孕期间。严格来说，婴儿是精子与卵子受精大约38周后诞生的。\n·妈妈·\n受精后12天会形成胎盘，并分泌人绒毛膜促性腺激素（hCG），此时可以用早孕试纸自我检测怀孕与否，但最好还是等到人绒毛膜促性腺激素充分分泌，大概需要1~2周的时间，这样会得到更准确的结果。如果体质敏感的话，这种荷尔蒙的变化会引起呕吐等症状。妊娠呕吐在怀孕第3个月时最厉害，此时人绒毛膜促性腺激素分泌达到最高潮；之后会慢慢变好。为了运输更多的氧与营养，血液量也会开始增加。血液量的增幅在怀孕的前三个月程度最大，分娩时会有比没怀孕时多出30%~50%的血液。为了适应增加的血液量，心脏也会跳得更快更有力，脉搏次数会比没怀孕时每分钟多跳15下，因此可能有疲劳、气喘的症状。这段时间乳房的感觉也会和以前不太一样，用手指按乳房时会感到有些硬，甚至麻木或疼痛，乳房和乳头也开始变大，乳晕也会变宽，颜色变深，这是因为血液循环变得活跃起来，使色素沉着。这种变化在出产后也有可能持续。同时子宫的内膜开始变厚，血管也更加发达了。"};
+
+
+
+
+
 @implementation BabyPreTableViewCell
 @synthesize  showInfo = _showInfo;
 @synthesize maskAlpha = _maskAlpha;
@@ -60,27 +67,15 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
     weekTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, kPicWidth, 28)];
     [weekTitle setBackgroundColor:[UIColor clearColor]];
     [weekTitle setTextColor:[UIColor whiteColor]];
+    [weekTitle setTextAlignment:NSTextAlignmentCenter];
     [weekTitle setFont:PMFont(28)];
     [infoView addSubview:weekTitle];
     
-    UILabel *baby = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, kPicWidth, 16)];
-    [baby setBackgroundColor:[UIColor clearColor]];
-    [baby setTextColor:[UIColor whiteColor]];
-    [baby setFont:PMFont2];
-    [baby setText:@"·宝宝·"];
-    [baby setTextAlignment:NSTextAlignmentCenter];
-    [infoView addSubview:baby];
-    UILabel *mother = [[UILabel alloc] initWithFrame:CGRectMake(0, 270, kPicWidth, 16)];
-    [mother setBackgroundColor:[UIColor clearColor]];
-    [mother setTextColor:[UIColor whiteColor]];
-    [mother setFont:PMFont2];
-    [mother setTextAlignment:NSTextAlignmentCenter];
-    [mother setText:@"·妈妈·"];
-    [infoView addSubview:mother];
-    
-    infoTextView = [[UITextView alloc] initWithFrame:CGRectMake(12,56, kPicWidth - 24, 214)];
+    infoTextView = [[UITextView alloc] initWithFrame:CGRectMake(12,40, kPicWidth - 24, kPicHeight-40-8)];
     [infoTextView setBackgroundColor:[UIColor clearColor]];
     [infoTextView setTextColor:[UIColor whiteColor]];
+    [infoTextView setTextAlignment:NSTextAlignmentCenter];
+    [infoTextView setFont:PMFont2];
     [infoView addSubview:infoTextView];
 
     mask  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kPicWidth, kPicHeight)];
@@ -108,6 +103,8 @@ static NSString *clonumBimages[40] = {@"1week-b%402x.PNG",@"2week-b%402x.PNG",@"
 - (void)buildCellWithIndex:(NSInteger)index andSelectedIndex:(NSInteger)selectedIndex andColumnImgBMode:(BOOL)bModel
 {
     NSString *imageName = bModel ? [NSString stringWithFormat:@"%@%@", columnB,clonumBimages[index -1]] : [NSString stringWithFormat:@"%@%@",columnA,clonumAimages[index-1]];
+    [weekTitle setText:[NSString stringWithFormat:@"%dweek",index]];
+    [infoTextView setText:info[0]];
     
     [imgView getImage:imageName defaultImage:@"pic_default_baby.png"];
 

@@ -206,7 +206,6 @@
         frame = CGRectMake(0, 0, ContentWidth-TEXT_PHOTO_HEIGHT-16, 80);
     }
     else frame = CGRectMake(0, 0, ContentWidth, 80);
-    
     TextLayoutLabel *textLayoutLabel  = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(16, 8, ContentWidth, 80)];
     textLayoutLabel.numberOfLines = 0;
     textLayoutLabel.font = PMFont2;
