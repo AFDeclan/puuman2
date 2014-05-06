@@ -79,6 +79,7 @@
         UIImage *photo = [UIImage imageNamed:@"pic_default_diary.png"];
         [imgView setImage:photo];
         imgView.tag = 11;
+        imgView.layer.masksToBounds = YES;
         [cell.contentView addSubview:imgView];
     } else {
 
@@ -87,13 +88,14 @@
     if (_photoPaths) {
         [photoView loadImgWithUrl:[_photoPaths objectAtIndex:index]];
     }
+    [photoView setContentMode:UIViewContentModeScaleAspectFit];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
 }
 
 - (void)showPhotoAtIndex:(NSInteger)index
 {
-    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1 andTitle:_reply.RTitle];
+    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index andTitle:_reply.RTitle];
 }
 
 - (void)dealloc
