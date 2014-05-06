@@ -330,6 +330,7 @@
 {
     if (isShow) {
         [audioBtn setAlpha:1];
+        
     }else{
         [audioBtn setAlpha:0];
     }

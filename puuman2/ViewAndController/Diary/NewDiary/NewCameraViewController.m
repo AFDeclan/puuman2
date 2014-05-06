@@ -44,7 +44,7 @@
     photos = [[NSMutableArray alloc] init];
     photoPath = [[NSMutableArray alloc] init];
     photosStatus = [[NSMutableDictionary alloc] init];
-    [self.view setBackgroundColor:[UIColor blackColor]];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
 	// Do any additional setup after loading the view.
     titleTextField = [[UITextField alloc]initWithFrame:CGRectMake(96, 20, 580, 80)];
     [titleTextField setReturnKeyType:UIReturnKeyDone];
@@ -56,9 +56,8 @@
     [titleTextField setClipsToBounds:YES];
     [titleTextField setBorderStyle:UITextBorderStyleNone];
     [titleTextField setBackgroundColor:[UIColor clearColor]];
-    
     [self.view addSubview:titleTextField];
-    lineView = [[UIView alloc]initWithFrame:CGRectMake(96,101, 580, 1)];
+    lineView = [[UIView alloc]initWithFrame:CGRectMake(96,81, 580, 1)];
     [lineView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:lineView];
     [self initialization];
@@ -69,9 +68,13 @@
     titleTextField.layer.shadowRadius = 2.0f;
     titleTextField.layer.shadowColor=[[UIColor blackColor]CGColor];
     titleTextField.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    titleTextField.layer.shadowOpacity=1.0f;
+    titleTextField.layer.shadowOpacity=0.5f;
 
     return YES;
+}
+- (void)drawPlaceholderInRect:(CGRect)rect{
+
+    [[UIColor greenColor] setFill];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -297,7 +300,6 @@
     [self.view addSubview:timeView];
     [timeView setBackgroundColor:[UIColor whiteColor]];
     [timeView setAlpha:1];
-    [timeView showTimeWithSecond:0];
     [cameraUI setCameraCaptureMode:UIImagePickerControllerCameraCaptureModeVideo];
 }
 
@@ -335,6 +337,7 @@
         [audioView setHorizontalFrame];
     }
     [self.view addSubview:audioView.view];
+  
     [audioView show];
 }
 

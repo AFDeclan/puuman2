@@ -14,6 +14,7 @@
 #import "MainTabBarController.h"
 #import "UIView+AFAnimation.h"
 #import "PuumanRulesViewController.h"
+#import "BabyData.h"
 
 
 @implementation BabyPuumanView
@@ -35,8 +36,31 @@
 
 - (void)refresh
 {
+  
+    if([[PumanBookModel bookModel] inBooks]){
+        [inBookTable setContentOffset:CGPointMake(0, 60)];
+        [self performSelectorOnMainThread: @selector(animateWithPumanView) withObject: nil waitUntilDone: 0];
+    }
+    
+     if([[PumanBookModel bookModel] outBooks]){
+         [outBookTable setContentOffset:CGPointMake(0, 60)];
+         [self performSelectorOnMainThread: @selector(animateWithPumanView) withObject: nil waitUntilDone: 0];
+         
+    }
     
 }
+
+-(void)animateWithPumanView{
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        [outBookTable setContentOffset:CGPointMake(0, 0)];
+        [inBookTable setContentOffset:CGPointMake(0, 0)];
+    }];
+    
+    
+    
+}
+
 
 - (void)initWithLeftView
 {
@@ -261,6 +285,7 @@
     SetViewLeftUp(ruleBtn, 496, 16);
     SetViewLeftUp(_newAddView, 392, 168);
     [pumanIcon setImage:[UIImage imageNamed:@"pic_puuman1_baby.png"]];
+    pumanIcon.contentMode =UIViewContentModeScaleAspectFill;
     [pumanIcon setFrame:CGRectMake(112, 646, 384, 213)];
 }
 
@@ -280,7 +305,7 @@
     SetViewLeftUp(ruleBtn, 752, 16);
     [pumanIcon setImage:[UIImage imageNamed:@"pic_puuman2_baby.png"]];
     [pumanIcon setFrame:CGRectMake(544, 478, 216, 132)];
-
+  
 }
 
 - (void)fold
@@ -298,7 +323,9 @@
     [UIView animateWithDuration:0.3 animations:^{
         SetViewLeftUp(leftView, 0, 0);
     }];
+
 }
+
 
 - (void)setNums
 {

@@ -302,8 +302,7 @@
     }
     
     [[BabyData sharedBabyData] insertRecordAtDate:date height:height weight:weight];
-    
-    //save the file
+       //save the file
     NSString *content = @"";
     if (weight !=0 ||height !=0) {
         
@@ -315,5 +314,6 @@
     [super finishBtnPressed];
 
 }
+
 
 @end

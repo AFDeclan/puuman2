@@ -28,6 +28,7 @@
             [self setVerticalFrame];
         }else{
             [self setHorizontalFrame];
+
         }
     }
     return self;
@@ -108,9 +109,20 @@
     if ([[BabyData sharedBabyData] recordCount] > 0) {
         [emptyView setAlpha:0];
     }
+    if([[BabyData sharedBabyData]recordCount]>5){
+        [dataTable setContentOffset:CGPointMake(0, 60)];
+        [self performSelectorOnMainThread: @selector(animateWithBodyView) withObject: nil waitUntilDone: 0];
+    
+   }
+    
+}
+-(void)animateWithBodyView{
+    [UIView animateWithDuration:0.5 animations:^{
+        [dataTable setContentOffset:CGPointMake(0,0)];
+    } completion:^(BOOL finished){
+    }];
 
-    [dataTable reloadData];
-    [_lineChartView reloadData];
+
 }
 
 -(void)setVerticalFrame
@@ -136,7 +148,8 @@
     [emptyView setFrame:CGRectMake(64, 192, 88, 112)];
     SetViewLeftUp(noti_label, 312, 430);
     SetViewLeftUp(addDataBtn, 752, 512);
-  
+
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -192,16 +205,19 @@
 {
     [showAndHiddenBtn foldWithDuration:0.3];
     [UIView animateWithDuration:0.3 animations:^{
-        SetViewLeftUp(leftView, -216, 0);
+     SetViewLeftUp(leftView, -216, 0);
     }];
 }
 
 - (void)unfold
 {
     [showAndHiddenBtn unfoldWithDuration:0.3];
-    [UIView animateWithDuration:0.3 animations:^{
-        SetViewLeftUp(leftView, 0, 0);
+    [UIView animateWithDuration:1 animations:^{
+     SetViewLeftUp(leftView, 0, 0);
     }];
+   
+    
 }
+
 
 @end

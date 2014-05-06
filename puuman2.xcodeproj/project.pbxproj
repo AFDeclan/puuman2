@@ -307,7 +307,6 @@
 		547F9B4E18D15B7E00486337 /* BabyBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46918D15A73003822CC /* BabyBodyView.m */; };
 		547F9B5118D162A600486337 /* BodyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 547F9B5018D162A600486337 /* BodyInfoTableViewCell.m */; };
 		548902B81917392C00F6AE3D /* BabyPreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 548902B71917392C00F6AE3D /* BabyPreTableViewCell.m */; };
-		548902BA19173B4200F6AE3D /* btn_preinfo_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 548902B919173B4200F6AE3D /* btn_preinfo_baby.png */; };
 		548D3A3618F4E3D1006CC6D6 /* pic_default_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D3A3518F4E3D1006CC6D6 /* pic_default_diary.png */; };
 		549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549B62C618CABC5A00AFEEAB /* CustomNotiViewController.m */; };
 		549B62CB18CABEAB00AFEEAB /* circle_status.png in Resources */ = {isa = PBXBuildFile; fileRef = 549B62CA18CABEAB00AFEEAB /* circle_status.png */; };
@@ -4626,7 +4625,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,
@@ -4657,7 +4656,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,

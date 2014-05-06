@@ -11,6 +11,9 @@
 #import "LoginViewController.h"
 #import "BabyData.h"
 #import "MainTabBarController.h"
+#import "BabyBodyView.h"
+#import "BabyPuumanView.h"
+#import "BabyVaccineView.h"
 
  NSString *bornselectedBtnImgs[4] = {@"btn_body1_baby.png",@"btn_vac1_baby.png",@"btn_equip1_baby.png",@"btn_bank1_baby.png"};
  NSString *bornunselectedBtnImgs[4] = {@"btn_body2_baby.png",@"btn_vac2_baby.png",@"btn_equip2_baby.png",@"btn_bank2_baby.png"};
@@ -122,6 +125,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
                
             }
              [self.view addSubview:bodyView];
+            [bodyView refresh];
             [bodyView setAlpha:1];
             if (vaccineView) {
                 [vaccineView setAlpha:0];
@@ -143,7 +147,8 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
                
             }
             [vaccineView setAlpha:1];
-             [self.view addSubview:vaccineView];
+            [self.view addSubview:vaccineView];
+            [vaccineView refresh];
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
@@ -188,9 +193,11 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
                 [puumanView setBackgroundColor:[UIColor clearColor]];
                 
             }
+
             [self.view addSubview:puumanView];
             [puumanView setAlpha:1];
             [puumanView setNums];
+            [puumanView refresh];
             if (bodyView) {
                 [bodyView setAlpha:0];
             }
@@ -301,8 +308,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
 {
     if (bodyView) {
          [bodyView setHorizontalFrame];
-    }
-   
+            }
     if (vaccineView) {
         [vaccineView setHorizontalFrame];
     }
@@ -322,6 +328,13 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
     [bgImageView setFrame:CGRectMake(80, 16, 928, 736)];
     [bgImageView setImage:[UIImage imageNamed:@"paper_h_baby.png"]];
 }
+//-(void)animateWithVaccineView{
+//
+//    [UIView animateWithDuration:0.5 animations:^{SetViewLeftUp(vaccineView, 80, 180);} completion:^(BOOL finished ){
+//    }];
+//
+//}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -362,6 +375,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
     }
     if (bodyView) {
         [bodyView refresh];
+        
     }
     if (vaccineView) {
         [vaccineView refresh];

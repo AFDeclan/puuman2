@@ -213,6 +213,8 @@
     //[backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_left.png"] andButtonType:kButtonTypeSix];
     [backBtn setEnabled:NO];
     SetViewLeftUp(backBtn, 0, 200);
+//    SetViewLeftUp(leftView, 0, -60);
+//    [self performSelectorOnMainThread:@selector(animateWithVaccineView) withObject:nil waitUntilDone:0];
     [self setContentOffset:CGPointMake(0, 0)];
     [maskView setFrame:CGRectMake(0, 0, 864, 576)];
     if (selectVaccine == -1) {
@@ -230,9 +232,21 @@
 
 }
 
+
 - (void)refresh
 {
     [dataTable reloadData];
+    [dataTable setContentOffset:CGPointMake(0, 80)];
+    [self performSelectorOnMainThread:@selector(animateWithVaccineView) withObject:nil waitUntilDone:0];
+        
+}
+-(void)animateWithVaccineView{
+    
+    [UIView animateWithDuration:0.5 animations:^{
+    [dataTable setContentOffset:CGPointMake(0, 0)];
+    } completion:^(BOOL finished){
+    }];
+    
 }
 
 - (void)selectAtIndex:(NSInteger)index
@@ -315,6 +329,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+
     if (selectVaccine == -1) {
         SetViewLeftUp(backBtn, 0, -156);
     }else{
@@ -329,8 +344,6 @@
     [alreadyBtn setEnabled:NO];
     [alreadyBtn selected];
     [notBtn unSelected];
-
-    
    
 }
 
@@ -345,6 +358,7 @@
 
 - (void)refreshStatus
 {
+    
     NSInteger month = 0;
     if (date) {
         NSArray *age = [date ageFromDate:[BabyData sharedBabyData].babyBirth];
@@ -405,6 +419,8 @@
     [[BabyData sharedBabyData] updateVaccineAtIndex:selectVaccine withDoneTime:date];
     [self performSelector:@selector(refresh) withObject:nil afterDelay:0];
 }
+
+
 
 
 @end

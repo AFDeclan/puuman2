@@ -43,7 +43,7 @@
         frame.origin.x = (i%2)*MenuBtnWidth;
         frame.origin.y = ((int)(i/2))*MenuBtnHeight;
         _typeBtn[i] = [[TypeButton alloc] initWithFrame:frame];
-        [_typeBtn[i] initWithIconImg:[ShopModel icon2ForSectionAtIndex:i]  andTitle:[ShopModel titleForSectionAtIndex:i] andTitleColor:[UIColor colorWithRed:5.0f green:38.0f blue:114.0f alpha:1.0f]andTitleFont:PMFont3];
+        [_typeBtn[i] initWithIconImg:[ShopModel icon2ForSectionAtIndex:i]  andTitle:[ShopModel titleForSectionAtIndex:i] andTitleColor:RGBColor(5, 38, 114) andTitleFont:PMFont3];
         [_typeBtn[i] setBackgroundImage:[UIImage imageNamed:@"btn_h_shop.png"] forState:UIControlStateNormal];
         [_typeBtn[i] setAdjustsImageWhenDisabled:NO];
         [_typeBtn[i] setTypeIndex:i];
