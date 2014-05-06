@@ -26,7 +26,6 @@ static DetailShowViewController *detailVC;
         // Custom initialization
         _model = kModelOfNone;
          [_content setBackgroundColor:[UIColor clearColor]];
-        
         titleLabel = [[UILabel alloc] init];
         [titleLabel setTextColor:[UIColor whiteColor]];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
@@ -48,7 +47,7 @@ static DetailShowViewController *detailVC;
 {
     [super setVerticalFrame];
     [_content setFrame:CGRectMake(0, 0, 768, 1024)];
-    [titleLabel setFrame:CGRectMake(48, 1024-96, 768-48*2, 28)];
+    [titleLabel setFrame:CGRectMake(24, 1024-52, 768-48*2, 28)];
 
     if (_model == kModelOfVideo) {
          [moviePlayer.view setFrame:CGRectMake(0, 0, 768, 1024)];
@@ -71,7 +70,7 @@ static DetailShowViewController *detailVC;
 {
     [super setHorizontalFrame];
     [_content setFrame:CGRectMake(0, 0, 1024, 768)];
-    [titleLabel setFrame:CGRectMake(48, 768-96, 1024-48*2, 28)];
+    [titleLabel setFrame:CGRectMake(24, 768-52, 1024-48*2, 28)];
     if (_model == kModelOfVideo) {
          [moviePlayer.view setFrame:CGRectMake(0, 0, 1024, 768)];
     }else if(_model == kModelOfPicMore ||_model == kModelOfPicSingle){
@@ -96,6 +95,7 @@ static DetailShowViewController *detailVC;
 
 -(void)showVideo:(NSString *)path andTitle:(NSString *)title
 {
+    [titleLabel setAlpha:0];
     [titleLabel setText:title];
     moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:path]];
     [moviePlayer prepareToPlay];
@@ -131,6 +131,7 @@ static DetailShowViewController *detailVC;
 
 - (void)showPhotosPath:(NSArray *)imgPaths atIndex:(NSInteger)index andTitle:(NSString *)title
 {
+    [titleLabel setAlpha:1];
     [titleLabel setText:title];
     photoPaths = imgPaths;
     photoScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
