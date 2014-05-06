@@ -319,6 +319,7 @@
         UIImage *img = (UIImage *) [info objectForKey: UIImagePickerControllerOriginalImage];
         
         UIImageView *imgViewL = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128, 128)];
+        [imgViewL setContentMode:UIViewContentModeScaleAspectFill];
         [imgViewL setImage:img];
         if(UIGraphicsBeginImageContextWithOptions != NULL)
         {

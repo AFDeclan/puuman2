@@ -11,7 +11,7 @@
 
 #pragma mark - 各类网址
 
-#define AF_DEBUG
+//#define AF_DEBUG
 
 #ifdef AF_DEBUG
 //forum

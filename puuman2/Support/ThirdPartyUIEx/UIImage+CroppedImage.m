@@ -15,9 +15,9 @@
     [image drawInRect:CGRectMake(0, 0, image.size.width * scaleSize, image.size.height * scaleSize)];
     UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     return scaledImage;
 }
+
 + (UIImage *)croppedImage:(UIImage *)image WithHeight:(float)height andWidth:(float)width
 {
     CGRect newFrame=CGRectMake(0, 0, width, height);
@@ -25,10 +25,9 @@
     if (imgSize.height/imgSize.width>height/width) {
         image = [self scaleImage:image toScale:width/imgSize.width];
         newFrame.origin.y = (image.size.height-height)/2;
-    }else
-    {
+    }else {
         image = [self scaleImage:image toScale:height/imgSize.height];
-         newFrame.origin.x = (image.size.width-width)/2;
+        newFrame.origin.x = (image.size.width-width)/2;
     }
  
     CGImageRef resultImage = CGImageCreateWithImageInRect([image CGImage], newFrame);

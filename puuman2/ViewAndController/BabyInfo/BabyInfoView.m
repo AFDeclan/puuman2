@@ -38,6 +38,7 @@
     portraitView.layer.cornerRadius = 56;
     portraitView.layer.masksToBounds = YES;
     portraitView.layer.shadowRadius =0.1;
+    portraitView.contentMode = UIViewContentModeScaleAspectFill;
     [portraitBg addSubview:portraitView];
     selectPhoto = [[UIButton alloc] initWithFrame:CGRectMake(204, 24, 112, 112)];
     [selectPhoto setBackgroundColor:[UIColor clearColor]];

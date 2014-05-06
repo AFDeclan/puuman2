@@ -62,13 +62,8 @@
     [title setBackgroundColor:[UIColor clearColor]];
     [emptyView addSubview:title];
     if ([[BabyData sharedBabyData] recordCount] > 0) {
-        //[emptyView setAlpha:0];
-        [emptyView removeFromSuperview];
-     
-    }else{
-        [emptyView setAlpha:1];
+        [emptyView setAlpha:0];
     }
-
 }
 
 - (void)initWithRightView
@@ -109,6 +104,9 @@
 
 - (void)refresh
 {
+    if ([[BabyData sharedBabyData] recordCount] > 0) {
+        [emptyView setAlpha:0];
+    }
     [dataTable reloadData];
     [_lineChartView reloadData];
 }
