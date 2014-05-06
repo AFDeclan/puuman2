@@ -13,7 +13,8 @@
 {
     AFImageView *imgView;
     UIImageView *mask;
-    UIImageView *qusetionView;
+    UIView *questionView;
+    
     UITextView *infoTextView;
     
     UIView *content;
