@@ -13,6 +13,8 @@
 #define userIDKey           @"UserID"
 #define renameKey           @"FileRename"
 
+@class Diary;
+
 @interface TaskUploader : NSObject
 {
     BOOL uploading;
@@ -22,9 +24,9 @@
 
 - (void)addNewTask:(NSDictionary *)info;
 
-- (void)addNewTaskWithDiaryInfo:(NSDictionary *)diaryInfo taskInfo:(NSDictionary *)taskInfo;
+- (void)addNewTaskWithDiaryInfo:(Diary *)diary taskInfo:(NSDictionary *)taskInfo;
 
-- (void)addNewTaskToDeleteDiary:(NSDictionary *)diaryInfo;
+- (void)addNewTaskToDeleteDiary:(Diary *)diary;
 
 + (void)init;
 
