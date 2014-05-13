@@ -10,6 +10,8 @@
 #import "RecommentPartnerTableViewCell.h"
 #import "RankTableViewCell.h"
 #import "RewardTableViewCell.h"
+#import "UILabel+AdjustSize.h"
+#import "Award.h"
 
 
 @interface RewardViewController ()
@@ -41,7 +43,7 @@
     [noti_label setBackgroundColor:[UIColor clearColor]];
     [_content addSubview:noti_label];
     
-    rewardTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 112, 384, 436)];
+    rewardTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 112, 384, 352)];
     [rewardTable setDelegate:self];
     [rewardTable setDataSource:self];
     [rewardTable setSeparatorColor:[UIColor clearColor]];
@@ -51,6 +53,26 @@
     [_content addSubview:rewardTable];
     [rewardTable setScrollEnabled:NO];
     
+    timeLabel1 = [[UILabel alloc] init];
+    timeLabel1.text = @"距离本期获奖名单公布还有";
+    timeLabel1.textColor = PMColor2;
+    timeLabel1.font = PMFont2;
+    timeLabel1.backgroundColor = [UIColor clearColor];
+    [timeLabel1 adjustSize];
+    SetViewCenterUp(timeLabel1, ViewX(rewardTable)+ViewWidth(rewardTable)/2, ViewDownY(rewardTable)+32);
+    [_content addSubview:timeLabel1];
+    timeLabel1.alpha = 0;
+    
+    timeLabel2 = [[UILabel alloc] init];
+    timeLabel2.text = @"n天n小时n分n秒";
+    timeLabel2.alpha = 0;
+    timeLabel2.textColor = PMColor6;
+    timeLabel2.font = PMFont1;
+    timeLabel2.backgroundColor= [UIColor clearColor];
+    [timeLabel2 adjustSize];
+    SetViewCenterUp(timeLabel2, ViewX(rewardTable)+ViewWidth(rewardTable)/2, ViewDownY(timeLabel1)+16);
+    [_content addSubview:timeLabel2];
+    timeLabel2.alpha = 0;
     
     rankTable = [[UITableView alloc] initWithFrame:CGRectMake(480, 112, 192, 260)];
     [rankTable setDelegate:self];
@@ -71,10 +93,6 @@
     [rankTable addSubview:empty_rank];
     [empty_rank setAlpha:0];
     
-//    instructionBtn = [[ColorButton alloc] init];
-//    [instructionBtn  initWithTitle:@"说明" andIcon:[UIImage imageNamed:@"icon_info_diary.png"] andButtonType:kGrayLeftUp];
-//    [instructionBtn addTarget:self action:@selector(instruction) forControlEvents:UIControlEventTouchUpInside];
-//    [_content  addSubview:instructionBtn];
     createBtn = [[ColorButton alloc] init];
     [createBtn  initWithTitle:@"参与" andIcon:[UIImage imageNamed:@"icon_start_topic.png"] andButtonType:kBlueLeft];
     [createBtn addTarget:self action:@selector(participate) forControlEvents:UIControlEventTouchUpInside];
@@ -232,16 +250,50 @@
     return view;
 }
 
+- (void)refreshTime
+{
+    if ([[Forum sharedInstance].awards count] == 0) {
+        timeLabel1.alpha = 0;
+        timeLabel2.alpha = 0;
+        return;
+    }
+    Award * award = [[Forum sharedInstance].awards objectAtIndex:0];
+    NSDate * due = award.ADueTime;
+    NSTimeInterval time = [due timeIntervalSinceNow];
+    if (time > 0) {
+        timeLabel1.alpha = 1;
+        timeLabel2.alpha = 1;
+        NSInteger days = time / 60 / 60 / 24;
+        time -= days * 60 * 60 * 24;
+        NSInteger hours = time / 60 / 60;
+        time -= hours * 60 * 60;
+        NSInteger mins = time / 60;
+        NSInteger secs = time - mins * 60;
+        NSString * str = [NSString stringWithFormat:@"%ld天%ld小时%ld分%ld秒", (long)days, (long)hours, (long)mins, (long)secs];
+        timeLabel2.text = str;
+        [timeLabel2 adjustSizeFixCenter];
+    }
+
+}
+
 //奖品与排行
 - (void)rankAwardReceived
 {
-    
     [rewardTable reloadData];
     [rankTable reloadData];
+    if (timer) [timer invalidate];
+    [self refreshTime];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshTime) userInfo:nil repeats:YES];
 }
+
 - (void)rankAwardFailed
 {
 
+}
+
+- (void)dealloc
+{
+    [timer invalidate];
 }
 
 @end

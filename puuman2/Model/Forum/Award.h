@@ -13,6 +13,7 @@
 @property (assign, nonatomic, readonly) NSInteger ALevel;
 @property (retain, nonatomic, readonly) NSString * AName;
 @property (retain, nonatomic, readonly) NSString * AImgUrl;
+@property (retain, nonatomic, readonly) NSDate * ADueTime;
 
 - (void)setData:(NSDictionary *)data;
 

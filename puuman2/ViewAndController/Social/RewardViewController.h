@@ -21,6 +21,8 @@
     UITableView *rankTable;
     UILabel *empty_rank;
     UILabel *noti_label;
+    UILabel *timeLabel1, *timeLabel2;
+    NSTimer * timer;
 }
 
 
