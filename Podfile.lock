@@ -12,10 +12,10 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
-  - FMDB (2.2):
+  - FMDB (2.3):
     - FMDB/standard
-  - FMDB/common (2.2)
-  - FMDB/standard (2.2):
+  - FMDB/common (2.3)
+  - FMDB/standard (2.3):
     - FMDB/common
   - JSONKit (1.5pre)
   - MBProgressHUD (0.8)
@@ -31,7 +31,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: 0b05282cf3c422c3474eff98c5bb8c1192b91b86
-  FMDB: e0dd09464b4e1a1cd7fa51ea835ae821b5656865
+  FMDB: 8b6b69b1164e3007d7f4b3b3719e667602ec247e
   JSONKit: b1f52f3f522b8602307769511d4fb47c6f856159
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
