@@ -2298,8 +2298,6 @@
 		5403CE4518D05180004CAE22 /* subView */ = {
 			isa = PBXGroup;
 			children = (
-				14847B601929A8E200B4F9D7 /* BabyPreTableViewCell.h */,
-				14847B611929A8E200B4F9D7 /* BabyPreTableViewCell.m */,
 				5403CE4618D051A2004CAE22 /* BabyInfoView.h */,
 				5403CE4718D051A2004CAE22 /* BabyInfoView.m */,
 				54BAD46818D15A73003822CC /* BabyBodyView.h */,
@@ -3093,6 +3091,8 @@
 		54B7539A18D2A75D002411CF /* support */ = {
 			isa = PBXGroup;
 			children = (
+				14847B601929A8E200B4F9D7 /* BabyPreTableViewCell.h */,
+				14847B611929A8E200B4F9D7 /* BabyPreTableViewCell.m */,
 				54B753A418D2BEB0002411CF /* AnimateShowLabel.h */,
 				54B753A518D2BEB0002411CF /* AnimateShowLabel.m */,
 				54BAD46218D15087003822CC /* PageControlButton.h */,
