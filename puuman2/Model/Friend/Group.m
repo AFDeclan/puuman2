@@ -13,6 +13,7 @@
 #import "ActionForUpload.h"
 #import "UserInfo.h"
 #import "ActionManager.h"
+#import "MemberCache.h"
 
 @implementation Group
 
@@ -169,6 +170,9 @@
                 Action *act = [[Action alloc] init];
                 [act setData:data];
                 [[ActionManager sharedInstance] addAction:act forGroup:_GID];
+                if (act.AType == ActionType_Join || act.AType == ActionType_Quit || act.AType == ActionType_Remove) {
+                    [[MemberCache sharedInstance] removeMemberWithBID:act.ATargetBID];
+                }
             }
             [self loadActions];
             [[Friend sharedInstance] informDelegates:@selector(actionUpdated:) withObject:self];
@@ -198,6 +202,11 @@
                     break;
                 }
             }
+            [[MemberCache sharedInstance] removeMemberWithBID:action.ATargetBID];
+            break;
+        case ActionType_Quit:
+        case ActionType_Join:
+            [[MemberCache sharedInstance] removeMemberWithBID:action.ATargetBID];
             break;
         default:
             break;

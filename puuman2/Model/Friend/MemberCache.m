@@ -85,11 +85,11 @@
         } else {
             Member *mem = [[Member alloc] init];
             [mem setData:data];
-            NSInteger bid = [rs intForColumn:@"BID"];
-            NSString *update = [NSString stringWithFormat:@"UPDATE %@ SET LastActive = ? WHERE BID = %d", MemberTableName, bid];
-            if (![_db executeUpdate:update, [NSDate date]]) {
-                [ErrorLog errorLog:@"Update member active failed!" fromFile:@"MemberCache.m" error:_db.lastError];
-            }
+//            NSInteger bid = [rs intForColumn:@"BID"];
+//            NSString *update = [NSString stringWithFormat:@"UPDATE %@ SET LastActive = ? WHERE BID = %d", MemberTableName, bid];
+//            if (![_db executeUpdate:update, [NSDate date]]) {
+//                [ErrorLog errorLog:@"Update member active failed!" fromFile:@"MemberCache.m" error:_db.lastError];
+//            }
             return mem;
         }
     } else {
