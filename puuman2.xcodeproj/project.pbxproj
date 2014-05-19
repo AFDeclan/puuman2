@@ -26,8 +26,6 @@
 		147756F918D7F49E00E08BD0 /* Forum.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756F818D7F49E00E08BD0 /* Forum.m */; };
 		147756FF18D7F4B800E08BD0 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756FE18D7F4B800E08BD0 /* Reply.m */; };
 		14847B621929A8E200B4F9D7 /* BabyPreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14847B611929A8E200B4F9D7 /* BabyPreTableViewCell.m */; };
-		14847B641929A92400B4F9D7 /* btn_preinfo_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 14847B631929A92400B4F9D7 /* btn_preinfo_baby.png */; };
-		14847B661929A94700B4F9D7 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 14847B651929A94700B4F9D7 /* block_photo_diary.png */; };
 		148D79E318B8A71A001B4FA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E218B8A71A001B4FA7 /* Foundation.framework */; };
 		148D79E518B8A71A001B4FA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E418B8A71A001B4FA7 /* CoreGraphics.framework */; };
 		148D79E718B8A71A001B4FA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E618B8A71A001B4FA7 /* UIKit.framework */; };
@@ -463,6 +461,8 @@
 		54AFBBCB18D6938600861A69 /* SelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBBD18D6938600861A69 /* SelectButton.m */; };
 		54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBBF18D6938600861A69 /* SelectCalendarView.m */; };
 		54AFBBD018D6946900861A69 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AFBBCF18D6946900861A69 /* SettingViewController.m */; };
+		54B06C2B1929C34000539EA5 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C2A1929C34000539EA5 /* block_photo_diary.png */; };
+		54B06C2D1929C37B00539EA5 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C2C1929C37B00539EA5 /* block_photo_diary.png */; };
 		54B4680018E5154C00745F72 /* ShopAllWareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */; };
 		54B4680518E520C500745F72 /* HealthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4680318E520C500745F72 /* HealthCell.m */; };
 		54B4680618E520C500745F72 /* HealthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B4680418E520C500745F72 /* HealthCell.xib */; };
@@ -768,8 +768,6 @@
 		147756FE18D7F4B800E08BD0 /* Reply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reply.m; sourceTree = "<group>"; };
 		14847B601929A8E200B4F9D7 /* BabyPreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPreTableViewCell.h; sourceTree = "<group>"; };
 		14847B611929A8E200B4F9D7 /* BabyPreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPreTableViewCell.m; sourceTree = "<group>"; };
-		14847B631929A92400B4F9D7 /* btn_preinfo_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_preinfo_baby.png; sourceTree = "<group>"; };
-		14847B651929A94700B4F9D7 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		148D79DF18B8A71A001B4FA7 /* puuman2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = puuman2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148D79E218B8A71A001B4FA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		148D79E418B8A71A001B4FA7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1386,6 +1384,8 @@
 		54AFBBBF18D6938600861A69 /* SelectCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCalendarView.m; path = Login/SelectCalendarView.m; sourceTree = "<group>"; };
 		54AFBBCE18D6946900861A69 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Setting/SettingViewController.h; sourceTree = "<group>"; };
 		54AFBBCF18D6946900861A69 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Setting/SettingViewController.m; sourceTree = "<group>"; };
+		54B06C2A1929C34000539EA5 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
+		54B06C2C1929C37B00539EA5 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		54B467FE18E5154C00745F72 /* ShopAllWareHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAllWareHeaderView.h; sourceTree = "<group>"; };
 		54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAllWareHeaderView.m; sourceTree = "<group>"; };
 		54B4680218E520C500745F72 /* HealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthCell.h; sourceTree = "<group>"; };
@@ -2229,8 +2229,8 @@
 		5403CDF818D04F51004CAE22 /* BabyInfoImages */ = {
 			isa = PBXGroup;
 			children = (
-				14847B631929A92400B4F9D7 /* btn_preinfo_baby.png */,
 				5475A43418FD2DD0002B88A0 /* pic_coin_baby.png */,
+				54B06C2C1929C37B00539EA5 /* block_photo_diary.png */,
 				54441A0418D461C300FBE69F /* btn_babyinfo3_diary.png */,
 				54441A0218D43D9F00FBE69F /* dot3_baby_diary.png */,
 				54441A0018D431B700FBE69F /* pic_default_baby.png */,
@@ -3482,6 +3482,7 @@
 		54CE117318C1C84000966396 /* DiaryImages */ = {
 			isa = PBXGroup;
 			children = (
+				54B06C2A1929C34000539EA5 /* block_photo_diary.png */,
 				548D3A3518F4E3D1006CC6D6 /* pic_default_diary.png */,
 				5403CD0A18D03D39004CAE22 /* DiaryJoinImages */,
 				54D14FDD18CAEF890022E1F4 /* DiaryShow */,
@@ -3633,7 +3634,6 @@
 		54F1D11718C48F7F0005CDD9 /* NewDiary */ = {
 			isa = PBXGroup;
 			children = (
-				14847B651929A94700B4F9D7 /* block_photo_diary.png */,
 				5475A43218FD2AFE002B88A0 /* bg_title2_diary.png */,
 				54AB6CC518F2BA8D00E4269E /* check_diary.png */,
 				54AB6CC618F2BA8D00E4269E /* circle_autoinput.png */,
@@ -4030,7 +4030,8 @@
 				5403CE3E18D04F5E004CAE22 /* line3_baby.png in Resources */,
 				54B97E9418FA572600B6C4C9 /* pic16_insure_shop.png in Resources */,
 				5403CE2D18D04F5E004CAE22 /* circle1_baby.png in Resources */,
-				14847B661929A94700B4F9D7 /* block_photo_diary.png in Resources */,
+				54B06C2D1929C37B00539EA5 /* block_photo_diary.png in Resources */,
+				54B06C2B1929C34000539EA5 /* block_photo_diary.png in Resources */,
 				5403CE3C18D04F5E004CAE22 /* line1_baby.png in Resources */,
 				54012DC618E2CB8B00F11D97 /* line2_topic.png in Resources */,
 				5447C46418D97D0800187BE6 /* pic_coin_fri.png in Resources */,
@@ -4088,7 +4089,6 @@
 				54B4685118E527D700745F72 /* icon_toy_shop.png in Resources */,
 				5447C44B18D9785600187BE6 /* paper_right_shop.png in Resources */,
 				5403CD5C18D03DBD004CAE22 /* icon_text_h_diary.png in Resources */,
-				14847B641929A92400B4F9D7 /* btn_preinfo_baby.png in Resources */,
 				54B97E8318FA572600B6C4C9 /* pic31_insure_shop.png in Resources */,
 				54CE10EA18C1842C00966396 /* SinaWeibo.bundle in Resources */,
 				54CCF1EC18F3E7A80081C149 /* btn_partner2_topic.png in Resources */,
@@ -4566,7 +4566,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				SDKROOT = iphoneos;
@@ -4603,7 +4603,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				SDKROOT = iphoneos;
@@ -4638,7 +4638,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
