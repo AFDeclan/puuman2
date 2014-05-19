@@ -30,8 +30,8 @@
     if (self) {
         // Custom initialization
         _voting = NO;
-        _voteOrder =  VotingTopicOrder_Vote;
-        _replyOrder = TopicReplyOrder_Vote;
+        _voteOrder =  VotingTopicOrder_Time;
+        _replyOrder = TopicReplyOrder_Time;
         votings = [[NSArray alloc] init];
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSArray alloc] init];

@@ -26,6 +26,7 @@ static DetailShowViewController *detailVC;
         // Custom initialization
         _model = kModelOfNone;
          [_content setBackgroundColor:[UIColor clearColor]];
+        
         titleLabel = [[UILabel alloc] init];
         [titleLabel setTextColor:[UIColor whiteColor]];
         [titleLabel setBackgroundColor:[UIColor clearColor]];

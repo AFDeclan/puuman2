@@ -257,8 +257,8 @@
         [info_title setTextColor:PMColor6];
         [info_upload setText:@"发起或投票选出你最喜欢的话题吧！"];
         [topicAllVC setVoting:YES];
-        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多投票" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新发起" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多投票" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新发起" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
         [self leftSortSelected];
         if([MainTabBarController sharedMainViewController].isVertical)
         {
@@ -272,8 +272,8 @@
         
         
     }else{
-        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多喜欢" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新参与" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多喜欢" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新参与" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
          [topicAllVC setVoting:NO];
         [info_title setTextColor:PMColor1];
         [rightBtn setAlpha:1];
@@ -449,9 +449,9 @@
 - (void)leftSortSelected
 {
     if (status == TopicStatus_Voting) {
-        [topicAllVC setVoteOrder:VotingTopicOrder_Vote];
+        [topicAllVC setVoteOrder:VotingTopicOrder_Time];
     }else{
-        [topicAllVC setReplyOrder:TopicReplyOrder_Vote];
+        [topicAllVC setReplyOrder:TopicReplyOrder_Time];
     }
     [left_sortBtn selected];
     [right_sortBtn unSelected];
@@ -461,9 +461,9 @@
 - (void)rightSortSelected
 {
     if (status == TopicStatus_Voting) {
-        [topicAllVC setVoteOrder:VotingTopicOrder_Time];
+        [topicAllVC setVoteOrder:VotingTopicOrder_Vote];
     }else{
-        [topicAllVC setReplyOrder:TopicReplyOrder_Time];
+        [topicAllVC setReplyOrder:TopicReplyOrder_Vote];
     
     }
     [right_sortBtn selected];

@@ -56,6 +56,7 @@
     [titleTextField setClipsToBounds:YES];
     [titleTextField setBorderStyle:UITextBorderStyleNone];
     [titleTextField setBackgroundColor:[UIColor clearColor]];
+    
     [self.view addSubview:titleTextField];
     lineView = [[UIView alloc]initWithFrame:CGRectMake(96,81, 580, 1)];
     [lineView setBackgroundColor:[UIColor whiteColor]];

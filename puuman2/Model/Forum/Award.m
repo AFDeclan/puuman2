@@ -7,6 +7,7 @@
 //
 
 #import "Award.h"
+#import "DateFormatter.h"
 
 @implementation Award
 
@@ -15,6 +16,7 @@
     _AImgUrl = [data valueForKey:@"AImgUrl"];
     _ALevel = [[data valueForKey:@"ALevel"] integerValue];
     _AName = [data valueForKey:@"AName"];
+    _ADueTime = [DateFormatter datetimeFromTimestampStr:[data valueForKey:@"ADueTime"]];
 }
 
 @end
