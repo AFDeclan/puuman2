@@ -25,6 +25,9 @@
 		146FB10A18FFEA2E002EABA7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 146FB10318FFEA2E002EABA7 /* Icon.png */; };
 		147756F918D7F49E00E08BD0 /* Forum.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756F818D7F49E00E08BD0 /* Forum.m */; };
 		147756FF18D7F4B800E08BD0 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = 147756FE18D7F4B800E08BD0 /* Reply.m */; };
+		14847B621929A8E200B4F9D7 /* BabyPreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14847B611929A8E200B4F9D7 /* BabyPreTableViewCell.m */; };
+		14847B641929A92400B4F9D7 /* btn_preinfo_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 14847B631929A92400B4F9D7 /* btn_preinfo_baby.png */; };
+		14847B661929A94700B4F9D7 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 14847B651929A94700B4F9D7 /* block_photo_diary.png */; };
 		148D79E318B8A71A001B4FA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E218B8A71A001B4FA7 /* Foundation.framework */; };
 		148D79E518B8A71A001B4FA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E418B8A71A001B4FA7 /* CoreGraphics.framework */; };
 		148D79E718B8A71A001B4FA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E618B8A71A001B4FA7 /* UIKit.framework */; };
@@ -763,6 +766,10 @@
 		147756F818D7F49E00E08BD0 /* Forum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forum.m; sourceTree = "<group>"; };
 		147756FD18D7F4B800E08BD0 /* Reply.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reply.h; sourceTree = "<group>"; };
 		147756FE18D7F4B800E08BD0 /* Reply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reply.m; sourceTree = "<group>"; };
+		14847B601929A8E200B4F9D7 /* BabyPreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPreTableViewCell.h; sourceTree = "<group>"; };
+		14847B611929A8E200B4F9D7 /* BabyPreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPreTableViewCell.m; sourceTree = "<group>"; };
+		14847B631929A92400B4F9D7 /* btn_preinfo_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_preinfo_baby.png; sourceTree = "<group>"; };
+		14847B651929A94700B4F9D7 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		148D79DF18B8A71A001B4FA7 /* puuman2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = puuman2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148D79E218B8A71A001B4FA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		148D79E418B8A71A001B4FA7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -2222,6 +2229,7 @@
 		5403CDF818D04F51004CAE22 /* BabyInfoImages */ = {
 			isa = PBXGroup;
 			children = (
+				14847B631929A92400B4F9D7 /* btn_preinfo_baby.png */,
 				5475A43418FD2DD0002B88A0 /* pic_coin_baby.png */,
 				54441A0418D461C300FBE69F /* btn_babyinfo3_diary.png */,
 				54441A0218D43D9F00FBE69F /* dot3_baby_diary.png */,
@@ -2287,6 +2295,8 @@
 		5403CE4518D05180004CAE22 /* subView */ = {
 			isa = PBXGroup;
 			children = (
+				14847B601929A8E200B4F9D7 /* BabyPreTableViewCell.h */,
+				14847B611929A8E200B4F9D7 /* BabyPreTableViewCell.m */,
 				5403CE4618D051A2004CAE22 /* BabyInfoView.h */,
 				5403CE4718D051A2004CAE22 /* BabyInfoView.m */,
 				54BAD46818D15A73003822CC /* BabyBodyView.h */,
@@ -3623,6 +3633,7 @@
 		54F1D11718C48F7F0005CDD9 /* NewDiary */ = {
 			isa = PBXGroup;
 			children = (
+				14847B651929A94700B4F9D7 /* block_photo_diary.png */,
 				5475A43218FD2AFE002B88A0 /* bg_title2_diary.png */,
 				54AB6CC518F2BA8D00E4269E /* check_diary.png */,
 				54AB6CC618F2BA8D00E4269E /* circle_autoinput.png */,
@@ -4019,6 +4030,7 @@
 				5403CE3E18D04F5E004CAE22 /* line3_baby.png in Resources */,
 				54B97E9418FA572600B6C4C9 /* pic16_insure_shop.png in Resources */,
 				5403CE2D18D04F5E004CAE22 /* circle1_baby.png in Resources */,
+				14847B661929A94700B4F9D7 /* block_photo_diary.png in Resources */,
 				5403CE3C18D04F5E004CAE22 /* line1_baby.png in Resources */,
 				54012DC618E2CB8B00F11D97 /* line2_topic.png in Resources */,
 				5447C46418D97D0800187BE6 /* pic_coin_fri.png in Resources */,
@@ -4076,6 +4088,7 @@
 				54B4685118E527D700745F72 /* icon_toy_shop.png in Resources */,
 				5447C44B18D9785600187BE6 /* paper_right_shop.png in Resources */,
 				5403CD5C18D03DBD004CAE22 /* icon_text_h_diary.png in Resources */,
+				14847B641929A92400B4F9D7 /* btn_preinfo_baby.png in Resources */,
 				54B97E8318FA572600B6C4C9 /* pic31_insure_shop.png in Resources */,
 				54CE10EA18C1842C00966396 /* SinaWeibo.bundle in Resources */,
 				54CCF1EC18F3E7A80081C149 /* btn_partner2_topic.png in Resources */,
@@ -4415,6 +4428,7 @@
 				1455006218E042E100360EDF /* OtherUserInfo.m in Sources */,
 				54ADB1EF18E1B42200FCCC83 /* ImportStore.m in Sources */,
 				54ADE09B18C8608700B166C4 /* NewCameraControlView.m in Sources */,
+				14847B621929A8E200B4F9D7 /* BabyPreTableViewCell.m in Sources */,
 				54AFBBC218D6938600861A69 /* DateButton.m in Sources */,
 				54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */,
 				54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */,
