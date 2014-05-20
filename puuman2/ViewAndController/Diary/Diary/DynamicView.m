@@ -25,7 +25,7 @@
 }
 - (void)initialization
 {
-    diaryArray = [[DiaryModel sharedDiaryModel] diaryInfoRelateArraywithFilter:DIARY_FILTER_ALL];
+    diaryArray = [[DiaryModel sharedDiaryModel] diaryInfoRelateArray];
   
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, 208, 16)];
     [titleLabel setFont:PMFont2];

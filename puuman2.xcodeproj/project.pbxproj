@@ -38,6 +38,7 @@
 		148D79FE18B8A71A001B4FA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148D79E618B8A71A001B4FA7 /* UIKit.framework */; };
 		148D7A0618B8A71A001B4FA7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 148D7A0418B8A71A001B4FA7 /* InfoPlist.strings */; };
 		148D7A0818B8A71A001B4FA7 /* puuman2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D7A0718B8A71A001B4FA7 /* puuman2Tests.m */; };
+		1495A1B719189298006A64BA /* Diary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1495A1B619189298006A64BA /* Diary.m */; };
 		149B2E7C18FFDAA600CE6337 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 149B2E7118FFDAA600CE6337 /* Default-Landscape.png */; };
 		149B2E7D18FFDAA600CE6337 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 149B2E7218FFDAA600CE6337 /* Default-Landscape@2x.png */; };
 		149B2E7E18FFDAA600CE6337 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 149B2E7318FFDAA600CE6337 /* Default-Portrait.png */; };
@@ -785,6 +786,8 @@
 		148D7A0318B8A71A001B4FA7 /* puuman2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "puuman2Tests-Info.plist"; sourceTree = "<group>"; };
 		148D7A0518B8A71A001B4FA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		148D7A0718B8A71A001B4FA7 /* puuman2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = puuman2Tests.m; sourceTree = "<group>"; };
+		1495A1B519189298006A64BA /* Diary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Diary.h; sourceTree = "<group>"; };
+		1495A1B619189298006A64BA /* Diary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Diary.m; sourceTree = "<group>"; };
 		149B2E7118FFDAA600CE6337 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
 		149B2E7218FFDAA600CE6337 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		149B2E7318FFDAA600CE6337 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
@@ -1975,6 +1978,8 @@
 				14B8DE9A18BC37A30047C6B3 /* TaskModel.m */,
 				14B8DE9B18BC37A30047C6B3 /* TaskUploader.h */,
 				14B8DE9C18BC37A30047C6B3 /* TaskUploader.m */,
+				1495A1B519189298006A64BA /* Diary.h */,
+				1495A1B619189298006A64BA /* Diary.m */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -4412,6 +4417,7 @@
 				5403CE4E18D06E87004CAE22 /* BabyInfoButton.m in Sources */,
 				54012DF618E3092E00F11D97 /* BodyPartnerDataCell.m in Sources */,
 				54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */,
+				1495A1B719189298006A64BA /* Diary.m in Sources */,
 				14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */,
 				54B4685918E54D5A00745F72 /* RankView.m in Sources */,
 				54B6F41118D6B0590055FC72 /* SettingBindViewController.m in Sources */,
@@ -4642,7 +4648,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CC793F5E-708D-4324-B0CA-E8EBEB4439CA";
+				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4673,7 +4679,7 @@
 					"$(PROJECT_DIR)/puuman2/Support/WeiXin",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CC793F5E-708D-4324-B0CA-E8EBEB4439CA";
+				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
