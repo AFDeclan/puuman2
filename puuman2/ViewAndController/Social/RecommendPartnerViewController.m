@@ -137,7 +137,8 @@
 
 - (void)invite
 {
-    [[Friend sharedInstance] addDelegateObject:self];
+   // [[Friend sharedInstance] addDelegateObject:self];
+    [[Friend sharedInstance]  getGroupData];
     Group *myGroup = [[Friend sharedInstance] myGroup];
     [[myGroup actionForInvite:_memberInfo.BID] upload];
     
@@ -147,7 +148,7 @@
 - (void)actionUploaded:(ActionForUpload *)action
 {
     [inviteBtn setAlpha:0];
-     [[Friend sharedInstance] removeDelegateObject:self];
+     //[[Friend sharedInstance] removeDelegateObject:self];
 }
 //Group Action 上传失败
 - (void)actionUploadFailed:(ActionForUpload *)action

@@ -19,7 +19,7 @@
     {
         //在这里初始化控件（可重用的部分）
         [MyNotiCenter addObserver:self selector:@selector(stopAudio) name:Noti_PauseMultiMedia object:nil];
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 24)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 28)];
         [titleLabel setFont:PMFont1];
         [titleLabel setTextColor:PMColor1];
         [titleLabel setBackgroundColor:[UIColor clearColor]];

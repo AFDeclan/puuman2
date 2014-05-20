@@ -30,7 +30,7 @@
         //在这里初始化控件（可重用的部分）
         photo = nil;
        
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 24)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 28)];
         [titleLabel setFont:PMFont1];
         [titleLabel setTextColor:PMColor1];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
@@ -88,7 +88,7 @@
         [titleLabel setFrame:CGRectMake(0, 0, 0, 0)];
         [titleLabel setAlpha:0];
     }else{
-        [titleLabel setFrame:CGRectMake(0, 16, ContentWidth, 24)];
+        [titleLabel setFrame:CGRectMake(0, 16, ContentWidth, 28)];
         [titleLabel setAlpha:1];
     }
 

@@ -22,7 +22,7 @@
     if (self)
     {
         // Initialization code
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 24)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 28)];
         [titleLabel setFont:PMFont1];
         [titleLabel setTextColor:PMColor1];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
