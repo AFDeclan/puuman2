@@ -15,6 +15,8 @@
 #define DiaryTypeStrPhoto     @"photo"
 #define DiaryTypeStrAudio     @"audio"
 #define DiaryTypeStrVideo     @"video"
+#define DiaryTypeStrPhoto_More  @"photo_more"
+#define DiaryTypeStrPhoto_Single @"photo_single"
 
 #define DiaryMetaKeyWhetherBabyData     @"IsBabyData"       //是否是身高体重生成的日记
 

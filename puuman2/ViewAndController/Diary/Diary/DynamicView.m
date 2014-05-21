@@ -83,8 +83,7 @@
         {
             cell = [[[NSBundle mainBundle] loadNibNamed:diaryCellIdentifier owner:self options:nil] lastObject];
         }
-        
-        [cell setDiaryInfo:[diaryArray objectAtIndex:[indexPath row]]];
+        [cell setDiary:[diaryArray objectAtIndex:[indexPath row]]];
         [cell buildCellViewWithIndexRow:indexPath.row];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;

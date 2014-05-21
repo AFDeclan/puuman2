@@ -17,6 +17,6 @@
  
 }
 
-+ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
++ (CGFloat)heightForDiary:(Diary*)diary abbreviated:(BOOL)abbr;
 
 @end

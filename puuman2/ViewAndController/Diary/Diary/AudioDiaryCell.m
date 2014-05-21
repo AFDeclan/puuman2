@@ -19,7 +19,7 @@
     {
         //在这里初始化控件（可重用的部分）
         [MyNotiCenter addObserver:self selector:@selector(stopAudio) name:Noti_PauseMultiMedia object:nil];
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 28)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 24)];
         [titleLabel setFont:PMFont1];
         [titleLabel setTextColor:PMColor1];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
@@ -38,8 +38,8 @@
 {
     [_shareBtn setAlpha:0];
     float height = 0;
-    titleLabel.text = [self.diaryInfo valueForKey:kTitleName];
-    if ([[self.diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+    titleLabel.text = self.diary.title;
+    if ([self.diary.title isEqualToString:@""]) {
         [titleLabel setAlpha:0];
     }else{
         height += 40;
@@ -53,7 +53,7 @@
 
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
     
-    NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
+    NSString *filePath = [self.diary.filePaths1 objectAtIndex:0];
     [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
     
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
@@ -103,10 +103,10 @@
     //去除临时控件，准备重用
 }
 
-+ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr 
++ (CGFloat)heightForDiary:(Diary*)diary abbreviated:(BOOL)abbr
 {
     CGFloat height = 120;
-    if (![[diaryInfo valueForKey:kTitleName] isEqualToString:@""])
+    if (![diary.title isEqualToString:@""])
         height += 40;
     //计算高度
     

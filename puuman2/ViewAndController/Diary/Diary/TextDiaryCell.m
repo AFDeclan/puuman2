@@ -15,6 +15,7 @@
 #import "UIImage+CroppedImage.h"
 #import "DiaryViewController.h"
 #import "DiaryFileManager.h"
+#import "DiaryCell.h"
 
 #define  TEXT_PHOTO_HEIGHT 128
 
@@ -30,7 +31,7 @@
         //在这里初始化控件（可重用的部分）
         photo = nil;
        
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 28)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, ContentWidth, 24)];
         [titleLabel setFont:PMFont1];
         [titleLabel setTextColor:PMColor1];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
@@ -83,21 +84,21 @@
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr
 {
    [_shareBtn setAlpha:1];
-    titleLabel.text = [self.diaryInfo valueForKey:kTitleName];
-    if ([[self.diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+    titleLabel.text = self.diary.title;
+    if ([self.diary.title isEqualToString:@""]) {
         [titleLabel setFrame:CGRectMake(0, 0, 0, 0)];
         [titleLabel setAlpha:0];
     }else{
-        [titleLabel setFrame:CGRectMake(0, 16, ContentWidth, 28)];
+        [titleLabel setFrame:CGRectMake(0, 16, ContentWidth, 24)];
         [titleLabel setAlpha:1];
     }
 
     CGRect frame;
-    if ([[self.diaryInfo valueForKey:kType2Name] isEqualToString:vType_Photo] &&![[self.diaryInfo valueForKey:kFilePath2Name] isEqualToString:@""])
+    if ([self.diary.type2Str isEqualToString:DiaryTypeStrPhoto] &&![[self.diary.filePaths2 objectAtIndex:0] isEqualToString:@""])
     {
         frame = CGRectMake(0, 24 + ViewHeight(titleLabel) + ViewY(titleLabel), ContentWidth-TEXT_PHOTO_HEIGHT-16, 0);
         [showBtn setAlpha:1];
-        NSString *photoPath = [self.diaryInfo valueForKey:kFilePath2Name];
+        NSString *photoPath = [self.diary.filePaths2 objectAtIndex:0];
         photo = [DiaryFileManager imageForPath:photoPath];
         UIImage  *photo2 = [UIImage croppedImage:photo WithHeight:256 andWidth:256];
         _photoView.image = photo2;
@@ -122,7 +123,7 @@
     [_contentLabel setLinesSpacing:12];
     [_contentLabel setCharacterSpacing:1];
     [_content addSubview:_contentLabel];
-    NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
+    NSString *filePath = [self.diary.filePaths1 objectAtIndex:0];
     NSString *text;
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
         text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
@@ -142,7 +143,7 @@
         [line setAlpha:0];
         [spreadBtn setAlpha:0];
     }
-    if ([[self.diaryInfo valueForKey:kType2Name] isEqualToString:vType_Photo])
+    if ([self.diary.type2Str isEqualToString:DiaryTypeStrPhoto])
         if (dh < TEXT_PHOTO_HEIGHT) dh = TEXT_PHOTO_HEIGHT;
     dh += ViewHeight(titleLabel)+ViewY(titleLabel)+24;
     if (dh <80) {
@@ -164,20 +165,20 @@
     //子类重载
     NSString *text;
     UIImage *img;
-    NSString *path = [self.diaryInfo objectForKey:kFilePathName] ;
-    NSString *diaryType2 = [self.diaryInfo valueForKey:kType2Name];
+    NSString *path = [self.diary.filePaths1 objectAtIndex:0] ;
+    NSString *diaryType2 = self.diary.type2Str;
     if ([[NSFileManager defaultManager]fileExistsAtPath:path])
         text = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     else text = @"";
     if ([text length] == 1) {
         text = [text stringByAppendingString:@" "];
     }
-    if ([diaryType2 isEqualToString:vType_Photo])
+    if ([diaryType2 isEqualToString:DiaryTypeStrPhoto])
     {
-        NSString *photoPath = [self.diaryInfo valueForKey:kFilePath2Name];
+        NSString *photoPath = [self.diary.filePaths2 objectAtIndex:0];
         img = [[UIImage alloc] initWithContentsOfFile:photoPath];
     }
-    NSString *title = [self.diaryInfo valueForKey:kTitleName];
+    NSString *title = self.diary.title;
     [ShareSelectedViewController shareText:text title:title image:img];
     
     
@@ -190,18 +191,18 @@
 - (void)showPhoto
 {
     if (photo) {
-        NSString *photoPath = [self.diaryInfo valueForKey:kFilePath2Name];
+        NSString *photoPath = [self.diary.filePaths2 objectAtIndex:0];
         [DetailShowViewController showPhotoPath:photoPath andTitle:titleLabel.text];
     }
 
 }
-+ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr
++ (CGFloat)heightForDiary:(Diary*)diary abbreviated:(BOOL)abbr
 {
     CGFloat height = 0;
-    if (![[diaryInfo valueForKey:kTitleName] isEqualToString:@""])
+    if (![diary.title isEqualToString:@""])
         height += 40;
     CGRect frame;
-    if ([[diaryInfo valueForKey:kType2Name] isEqualToString:vType_Photo])
+    if ([diary.type2Str isEqualToString:DiaryTypeStrPhoto])
     {
         frame = CGRectMake(0, 0, ContentWidth-TEXT_PHOTO_HEIGHT-16, 80);
     }
@@ -213,7 +214,7 @@
     textLayoutLabel.backgroundColor = [UIColor clearColor];
     [textLayoutLabel setLinesSpacing:12];
     [textLayoutLabel setCharacterSpacing:1];
-    NSString *filePath = [diaryInfo valueForKey:kFilePathName];
+    NSString *filePath = [diary.filePaths1 objectAtIndex:0];
     NSString *text;
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
         text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
@@ -223,7 +224,7 @@
 
 
 
-    if ([[diaryInfo valueForKey:kType2Name] isEqualToString:vType_Photo])
+    if ([diary.type2Str isEqualToString:DiaryTypeStrPhoto])
         if (dh < TEXT_PHOTO_HEIGHT) dh = TEXT_PHOTO_HEIGHT;
     height += dh +24;
     textLayoutLabel = nil;

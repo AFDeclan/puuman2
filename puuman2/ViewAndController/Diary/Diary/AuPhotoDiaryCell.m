@@ -62,8 +62,8 @@
 {
     
     [_shareBtn setAlpha:1];
-    titleLabel.text = [self.diaryInfo valueForKey:kTitleName];
-    if ([[self.diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+    titleLabel.text = self.diary.title;
+    if ([self.diary.title isEqualToString:@""]) {
         [titleView setAlpha:0];
     }else{
         [titleView setAlpha:1];
@@ -73,7 +73,7 @@
     [_photoView reset];
      _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,488);
     
-    NSString *filePath = [self.diaryInfo valueForKey:kFilePath2Name];
+    NSString *filePath = [self.diary.filePaths2 objectAtIndex:0];
     [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
 
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
@@ -99,7 +99,7 @@
 {
     [super loadInfo];
     [_photoView setCropSize:CGSizeMake(416*2, 416*2)];
-    [_photoView loadThumbImgWithPath:[self.diaryInfo valueForKey:kFilePathName]];
+    [_photoView loadThumbImgWithPath: [self.diary.filePaths1 objectAtIndex:0] ];
     
 }
 
@@ -114,16 +114,16 @@
     //子类重载
     NSString *text = @"";
     UIImage *img;
-    NSString *path = [self.diaryInfo valueForKey:kFilePathName];
+    NSString *path = [self.diary.filePaths1 objectAtIndex:0];
     img = [DiaryFileManager imageForPath:path];
-    NSString *title = [self.diaryInfo valueForKey:kTitleName];
+    NSString *title = self.diary.title;
     [ShareSelectedViewController shareText:text title:title image:img];
     
 }
 
 - (void)showPhoto
 {
-    [DetailShowViewController showPhotoPath:[self.diaryInfo valueForKey:kFilePathName] andTitle:titleLabel.text];
+    [DetailShowViewController showPhotoPath:[self.diary.filePaths1 objectAtIndex:0] andTitle:titleLabel.text];
 
 }
 

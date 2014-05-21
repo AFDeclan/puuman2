@@ -16,6 +16,7 @@
 #import "UILabel+AdjustSize.h"
 #include "UserInfo.h"
 #import "ShareSelectedViewController.h"
+#import "Diary.h"
 #define kHeaderHeight    36
 #define kFooterHeight    24
 #define ContentWidth  512
@@ -50,11 +51,11 @@ typedef enum{
 @property (assign, nonatomic)DiaryType diaryType;
 @property (strong, nonatomic)UIButton *delBtn;
 @property (strong, nonatomic)UIScrollView *delScrollView;
-@property (retain,nonatomic) NSDictionary* diaryInfo;
+@property (retain,nonatomic) Diary * diary;
 @property (strong,nonatomic) NSIndexPath *indexPath;
 @property (assign,nonatomic) BOOL controlCanHidden;
 @property (assign,nonatomic) BOOL abbr;
-+ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
++ (CGFloat)heightForDiary:(Diary*) diary abbreviated:(BOOL)abbr;
 
 - (void)loadInfo;
 - (void)share:(id)sender;

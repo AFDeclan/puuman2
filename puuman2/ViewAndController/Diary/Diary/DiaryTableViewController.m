@@ -9,6 +9,7 @@
 #import "DiaryTableViewController.h"
 #import "DiaryModel.h"
 #import "CustomNotiViewController.h"
+#import "Diary.h"
 
 @interface DiaryTableViewController ()
 
@@ -113,7 +114,7 @@ static BOOL needLoadInfo = YES;
         case 0:
             return 2;
         case 1:
-            return [[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL];
+            return  [[[DiaryModel sharedDiaryModel]diaries]count];
         case 2:
             return 1;
         default:
@@ -201,15 +202,16 @@ static BOOL needLoadInfo = YES;
         return cell;
 
     }
-    DiaryModel *diaryModel = [DiaryModel sharedDiaryModel];
-    NSDictionary *diaryInfo = [diaryModel diaryInfoAtIndex:indexPath.row filtered:DIARY_FILTER_ALL];
-    DiaryCell *cell;
-    NSString *type = [diaryInfo valueForKey:kTypeName];
-    NSString *type2 = [diaryInfo valueForKey:kType2Name];
+    Diary *diary =[[[DiaryModel sharedDiaryModel] diaries]objectAtIndex:indexPath.row];
+    DiaryCell *cell;;
+    NSString *type = diary.type1Str;
+    NSString *type2 =diary.type2Str;
     NSString *identity;
-    if ([type isEqualToString:vType_Audio])
+    
+                      
+    if ([type isEqualToString:DiaryTypeStrAudio])
     {
-        identity = vType_Audio;
+        identity = DiaryTypeStrAudio;
         cell = [tableView dequeueReusableCellWithIdentifier:identity];
         if (!cell){
             cell = [[AudioDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
@@ -218,20 +220,20 @@ static BOOL needLoadInfo = YES;
         
         
         
-    }else if ([type isEqualToString:vType_Video])
+    }else if ([type isEqualToString:DiaryTypeStrVideo])
     {
-        identity = vType_Video;
+        identity = DiaryTypeStrVideo;
         cell = [tableView dequeueReusableCellWithIdentifier:identity];
         if (!cell){
           cell = [[VideoDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
             [cell setDiaryType:kDiaryVideoType];
         }
         
-    }else if ([type isEqualToString:vType_Photo])
+    }else if ([type isEqualToString:DiaryTypeStrPhoto])
     {
-        if ([type2 isEqualToString:vType_Audio])
+        if ([type2 isEqualToString:DiaryTypeStrAudio])
         {
-            identity = [NSString stringWithFormat:@"%@%@", vType_Photo, vType_Audio];
+            identity = [NSString stringWithFormat:@"%@%@", DiaryTypeStrPhoto, DiaryTypeStrAudio];
             cell = [tableView dequeueReusableCellWithIdentifier:identity];
             if (!cell){
              cell = [[AuPhotoDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
@@ -241,16 +243,16 @@ static BOOL needLoadInfo = YES;
         }
         else
         {
-            NSString *photoPathsString = [diaryInfo objectForKey:kFilePathName];
-            NSArray *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+    
+            NSArray *photoPaths = diary.filePaths1;
             if ([photoPaths count] > 1) {
-                identity = vType_Photo_More;
+                identity = DiaryTypeStrPhoto_More;
                 cell = [tableView dequeueReusableCellWithIdentifier:identity];
                 if (!cell)
                     cell = [[PhotoMoreDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
                   [cell setDiaryType:kdiaryPhotoMoreType];
             }else{
-                identity = vType_Photo_Single;
+                identity = DiaryTypeStrPhoto_Single;
                 cell = [tableView dequeueReusableCellWithIdentifier:identity];
                 if (!cell)
                     cell = [[PhotoSingleDiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
@@ -259,8 +261,8 @@ static BOOL needLoadInfo = YES;
           
             
         }
-    }else if ([type isEqualToString:vType_Text]){
-        identity = vType_Text;
+    }else if ([type isEqualToString:DiaryTypeStrText]){
+        identity = DiaryTypeStrText;
         cell = [tableView dequeueReusableCellWithIdentifier:identity];
         if (!cell)
         {
@@ -271,77 +273,17 @@ static BOOL needLoadInfo = YES;
     
     } else return nil;
     [cell setIndexPath:indexPath];
-    [cell setDiaryInfo:diaryInfo];
+    [cell setDiary:diary];
     [cell buildCellViewWithIndexRow:indexPath.row abbreviated:(selectedPath == nil || [indexPath compare:selectedPath] != NSOrderedSame)];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor: [UIColor clearColor]];
-    if ( [indexPath row] == [[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]-1 || [indexPath row] == [[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]-2 ) {
+    if ( [indexPath row] == [[[DiaryModel sharedDiaryModel] diaries] count]-1 || [indexPath row] == [[[DiaryModel sharedDiaryModel] diaries] count]-2 ) {
         [cell setControlCanHidden:NO];
     }else{
         [cell setControlCanHidden:YES];
     }
 
    
-    
-//    int rowMax = 0;
-//    int rowMin = 0;
-//    DiaryCell *rowMaxCell;
-//    DiaryCell *rowMinCell;
-//    NSArray *ce =  [self.tableView visibleCells];
-//    for (UITableViewCell *ca in ce) {
-//        if ([ca isKindOfClass:[DiaryCell class]]) {
-//            DiaryCell  *c = (DiaryCell *)ca;
-//            if (rowMin == 0) {
-//                rowMin = c.indexPath.row;
-//                rowMinCell = c;
-//            }
-//            if (rowMax == 0) {
-//                rowMax = c.indexPath.row;
-//                rowMaxCell = c;
-//            }
-//            if (c.indexPath.row >rowMax) {
-//                rowMax = c.indexPath.row;
-//                rowMaxCell = c;
-//            }
-//            
-//            if (c.indexPath.row < rowMin) {
-//                rowMin = c.indexPath.row;
-//                rowMinCell = c;
-//            }
-//        }
-//    }
-//    if (indexPath.row >rowMax) {
-//        if (rowMaxCell.frame.origin.y+rowMaxCell.frame.size.height< self.view.frame.size.height/2 ||rowMaxCell.frame.origin.y+rowMaxCell.frame.size.height>self.tableView.contentSize.height- self.tableView.frame.size.height/2 -64 )
-//        {
-//            [cell setDelBtnCanHidden:NO];
-//        }else{
-//            [cell setDelBtnCanHidden:YES];
-//        }
-//    }
-//    if (indexPath.row <rowMin) {
-//        
-//        if (rowMinCell.frame.origin.y-cell.frame.size.height< self.view.frame.size.height/2 ||rowMinCell.frame.origin.y-cell.frame.size.height>self.tableView.contentSize.height- self.tableView.frame.size.height/2- 64)
-//        {
-//            [cell setDelBtnCanHidden:NO];
-//        }else{
-//            [cell setDelBtnCanHidden:YES];
-//        }
-//    }
-//    if (indexPath.row == rowMin) {
-//        
-//        
-//        if (rowMin == 0) {
-//            UITableViewCell *preCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-//            if (preCell.frame.origin.y+preCell.frame.size.height< self.tableView.frame.size.height/2 ||preCell.frame.origin.y+preCell.frame.size.height>self.tableView.contentSize.height- self.tableView.frame.size.height/2 -64)
-//            {
-//                [cell setDelBtnCanHidden:NO];
-//            }else{
-//                [cell setDelBtnCanHidden:YES];
-//            }
-//            
-//            
-//        }
-//    }
 
         return cell;
     
@@ -367,10 +309,10 @@ static BOOL needLoadInfo = YES;
         return 64;
     }
     
-    DiaryModel *diaryModel = [DiaryModel sharedDiaryModel];
+   // DiaryModel *diaryModel = [DiaryModel sharedDiaryModel];
     if (selectedPath != nil && [selectedPath compare:indexPath] == NSOrderedSame)
-        return [DiaryCell heightForDiary:[diaryModel diaryInfoAtIndex:indexPath.row filtered:DIARY_FILTER_ALL] abbreviated:NO];
-    else return [DiaryCell heightForDiary:[diaryModel diaryInfoAtIndex:indexPath.row filtered:DIARY_FILTER_ALL] abbreviated:YES];
+        return [DiaryCell heightForDiary:[[[DiaryModel sharedDiaryModel] diaries ]objectAtIndex:indexPath.row] abbreviated:NO];
+    else return [DiaryCell heightForDiary:[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:indexPath.row] abbreviated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -448,9 +390,9 @@ static BOOL needLoadInfo = YES;
     NSArray *reloadArray;
     BOOL expand = NO;
     
-    if (indexPath.row > [[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]+1) return;
-    
-    if ((selectedPath == nil || ![[[[DiaryModel sharedDiaryModel] diaryInfoAtIndex:selectedPath.row filtered:DIARY_FILTER_ALL] valueForKey:kTypeName] isEqualToString:vType_Text]) && ![[[[DiaryModel sharedDiaryModel] diaryInfoAtIndex:indexPath.row filtered:DIARY_FILTER_ALL] valueForKey:kTypeName] isEqualToString:vType_Text]) return;
+    //if (indexPath.row > [[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]+1) return;
+    if(indexPath.row > [[[DiaryModel sharedDiaryModel] diaries] count]+1)
+    if ((selectedPath == nil || ![[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:indexPath.row] isEqualToString:DiaryTypeStrText]) && ![[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:indexPath.row] isEqualToString:DiaryTypeStrText]) return;
     if (selectedPath != nil && [selectedPath compare:indexPath] == NSOrderedSame)
     {
         reloadArray = [NSArray arrayWithObject:indexPath];
@@ -460,7 +402,8 @@ static BOOL needLoadInfo = YES;
     {
         reloadArray = [NSArray arrayWithObjects:indexPath, selectedPath, nil];
         selectedPath = indexPath;
-        expand = [[[[DiaryModel sharedDiaryModel] diaryInfoAtIndex:indexPath.row filtered:DIARY_FILTER_ALL] valueForKey:kTypeName] isEqualToString:vType_Text];
+        expand = [[[[DiaryModel sharedDiaryModel] diaries
+                    ]objectAtIndex:indexPath.row] isEqualToString:DiaryTypeStrText];
     }
     
     [self.tableView reloadRowsAtIndexPaths:reloadArray withRowAnimation:UITableViewRowAnimationNone];
@@ -470,8 +413,8 @@ static BOOL needLoadInfo = YES;
 
 - (void)deleteDiary:(NSNotification *)notification
 {
-    NSDictionary *diaryInfo = [notification object];
-    if (![[DiaryModel sharedDiaryModel] deleteDiary:diaryInfo])
+     Diary *diary = [notification object];
+    if (![[DiaryModel sharedDiaryModel] deleteDiary:diary])
     {
         
         [ErrorLog errorLog:@"Delete diary failed!" fromFile:@"DiaryViewController.m" error:nil];

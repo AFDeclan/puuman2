@@ -16,7 +16,7 @@
 @synthesize detailLabel =_detailLabel;
 @synthesize nodeLabel = _nodeLabel;
 @synthesize flagImgView = _flagImgView;
-@synthesize diaryInfo = _diaryInfo;
+@synthesize diary = _diary;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -37,18 +37,18 @@
 {
     
  
-    [_detailLabel setText:[_diaryInfo valueForKey:kTitleName]];
-     NSString *diaryType = [_diaryInfo valueForKey:kTypeName];
-     if ([diaryType isEqualToString:vType_Text]) [self bulidTextCell];
-     else if ([diaryType isEqualToString:vType_Photo]) [self bulidPhotoCell];
-     else if ([diaryType isEqualToString:vType_Audio]) [self bulidAudiotCell];
-     else if ([diaryType isEqualToString:vType_Video]) [self bulidVideoCell];
+    [_detailLabel setText:_diary.title];
+    NSString *diaryType = DiaryTypeStrNone;
+     if ([diaryType isEqualToString:DiaryTypeStrText]) [self bulidTextCell];
+     else if ([diaryType isEqualToString:DiaryTypeStrPhoto]) [self bulidPhotoCell];
+     else if ([diaryType isEqualToString:DiaryTypeStrAudio]) [self bulidAudiotCell];
+     else if ([diaryType isEqualToString:DiaryTypeStrVideo]) [self bulidVideoCell];
 
 }
 - (void)bulidTextCell
 {
-    if ([[_diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
-         NSString *path = [_diaryInfo objectForKey:kFilePathName] ;
+    if ([_diary.title isEqualToString:@""]) {
+         NSString *path = [_diary.filePaths1 objectAtIndex:0] ;
         NSString *text;
         if ([[NSFileManager defaultManager]fileExistsAtPath:path])
             text = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -58,9 +58,9 @@
     }
     
     
-    if ([[_diaryInfo valueForKey:kType2Name] isEqualToString:vType_Photo])
+    if ([_diary.type2Str isEqualToString:DiaryTypeStrPhoto])
     {
-         NSString *photoPath = [_diaryInfo valueForKey:kFilePath2Name];
+         NSString *photoPath = [_diary.filePaths2 objectAtIndex:2];
          UIImage *photo = [[UIImage alloc] initWithContentsOfFile:photoPath];
           photo = [UIImage croppedImage:photo WithHeight:112 andWidth:112];
          [_flagImgView setImage:photo];
@@ -73,12 +73,12 @@
 }
 - (void)bulidPhotoCell
 {
-     if ([[_diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+     if ([_diary.title isEqualToString:@""]) {
          CGRect frame = _nodeLabel.frame;
          frame.origin.y = 26;
          [_nodeLabel setFrame:frame];
      }
-    NSString *photoPathsString = [_diaryInfo objectForKey:kFilePathName];
+    NSString *photoPathsString = [_diary.filePaths1 objectAtIndex:0];
     NSArray *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     UIImage *photo = [[UIImage alloc] initWithContentsOfFile:[photoPaths objectAtIndex:0]];
     photo = [UIImage croppedImage:photo WithHeight:112 andWidth:112];
@@ -88,7 +88,7 @@
 }
 - (void)bulidAudiotCell
 {
-    if ([[_diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+    if ([_diary.title isEqualToString:@""]) {
         CGRect frame = _nodeLabel.frame;
         frame.origin.y = 26;
         [_nodeLabel setFrame:frame];
@@ -98,7 +98,7 @@
 }
 - (void)bulidVideoCell
 {
-    if ([[_diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+    if ([_diary.title isEqualToString:@""]) {
         CGRect frame = _nodeLabel.frame;
         frame.origin.y = 26;
         [_nodeLabel setFrame:frame];
@@ -110,7 +110,7 @@
 }
 - (UIImage *)imageForVideo
 {
-    NSString *filePath = [_diaryInfo valueForKey:kFilePathName];
+    NSString *filePath = [_diary.filePaths1 objectAtIndex:0];
     if (!filePath) return nil;
     NSString *cutImagePath = [filePath stringByAppendingString:@"_cutImage"];
     if ([[NSFileManager defaultManager]fileExistsAtPath:cutImagePath])
@@ -133,7 +133,8 @@
 - (IBAction)touchePressed:(UIButton *)sender
 {
     [MobClick event:umeng_event_click label:@"showDiaryCell_DiaryShowCell"];
-    int index =  [[DiaryModel sharedDiaryModel] indexForDiaryNearDate:[_diaryInfo valueForKey:kDateName] filtered:DIARY_FILTER_ALL];
+    //int index =  [[DiaryModel sharedDiaryModel] indexForDiaryNearDate:[_diaryInfo valueForKey:kDateName] filtered:DIARY_FILTER_ALL];
+    int index =[[DiaryModel sharedDiaryModel]indexForDiaryInDay:_diary.DCreateTime];
     [[DiaryViewController sharedDiaryViewController] showDiaryAtIndex:index];
 }
 @end

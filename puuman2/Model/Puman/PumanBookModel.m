@@ -12,7 +12,7 @@
 #import "UserInfo.h"
 #import "DiaryModel.h"
 #import "ErrorLog.h"
-
+#import "Diary.h"
 static PumanBookModel *instance;
 
 @implementation PumanBookModel
@@ -183,19 +183,19 @@ static PumanBookModel *instance;
     NSInteger tid = [[item valueForKey:@"TID"] integerValue];
     NSString *type1 = [item valueForKey:@"type1"];
     NSString *type2 = [item valueForKey:@"type2"];
-    if ([type1 isEqualToString:vType_Text])
+    if ([type1 isEqualToString:DiaryTypeStrText])
     {
-        if ([type2 isEqualToString:vType_Photo])
+        if ([type2 isEqualToString:DiaryTypeStrPhoto])
             bTitle = @"图文";
         else bTitle = @"文字";
     }
-    else if ([type1 isEqualToString:vType_Photo])
+    else if ([type1 isEqualToString:DiaryTypeStrPhoto])
     {
-        if ([type2 isEqualToString:vType_Audio])
+        if ([type2 isEqualToString:DiaryTypeStrAudio])
             bTitle = @"有声图";
         else bTitle = @"照片";
     }
-    else if ([type1 isEqualToString:vType_Audio])
+    else if ([type1 isEqualToString:DiaryTypeStrAudio])
         bTitle = @"录音";
     else bTitle = @"视频";
     if (tid < 6)

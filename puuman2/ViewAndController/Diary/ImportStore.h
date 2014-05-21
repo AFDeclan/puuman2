@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Diary.h"
 
 @interface ImportStore : NSObject
 {
     NSMutableArray *photosArr;
     NSString *title;
     NSInteger *progress;
-    NSDictionary *diaryInfo;
+   // NSDictionary *diaryInfo;
+    Diary *diary;
     
 }
 
