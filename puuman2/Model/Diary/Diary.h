@@ -61,5 +61,6 @@ typedef void (^DiaryRecallBlock)(BOOL);
 //重新下载某一日记内容，异步方法
 - (void)redownloadContent1AtIndex:(NSInteger)index withRecall:(DiaryRecallBlock)block;
 - (void)redownloadContent2AtIndex:(NSInteger)index withRecall:(DiaryRecallBlock)block;
-
+- (void)setInfoWithDictionary:(NSDictionary *)info;
+- (NSDictionary *)getInfoDictionary;
 @end

@@ -177,7 +177,7 @@ static DiaryModel * instance;
 - (BOOL)addNewDiary:(Diary *)d
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? 0)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary];
+    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,0)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary];
     if (![db executeUpdate: sqlInsert,
           d.title,
           d.DCreateTime,
@@ -397,19 +397,22 @@ static DiaryModel * instance;
 - (BOOL)diaryExistAtDate:(NSDate *)createDate
 {
     for (Diary * d in _diaries) {
-        if ([d.DCreateTime isEqualToDate:createDate]) {
+        NSDate *date = d.DCreateTime;
+        NSTimeInterval dt = [date timeIntervalSinceDate:createDate];
+        if (dt >= 0 && dt < 1)
             return YES;
-        }
     }
     for (Diary * d in _deletedDiaries) {
-        if ([d.DCreateTime isEqualToDate:createDate]) {
+        NSDate *date = d.DCreateTime;
+        NSTimeInterval dt = [date timeIntervalSinceDate:createDate];
+        if (dt >= 0 && dt < 1)
             return YES;
-        }
     }
     for (Diary * d in _downloadedDiaries) {
-        if ([d.DCreateTime isEqualToDate:createDate]) {
+        NSDate *date = d.DCreateTime;
+        NSTimeInterval dt = [date timeIntervalSinceDate:createDate];
+        if (dt >= 0 && dt < 1)
             return YES;
-        }
     }
     return NO;
 }

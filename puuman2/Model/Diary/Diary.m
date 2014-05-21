@@ -10,6 +10,17 @@
 #import "DiaryFileManager.h"
 #import "DateFormatter.h"
 
+#define kDateName       @"date"
+#define kTypeName       @"type"
+#define kType2Name      @"type2"
+#define kTitleName      @"title"
+#define kFilePathName   @"filePath"
+#define kFilePath2Name  @"filePath2"
+#define kUrlName        @"url"
+#define kUrl2Name       @"url2"
+#define kDiaryUIdentity @"DiaryUIdentity"
+#define kDeletedDiary   @"deletedDiary"
+#define kDiaryMeta      @"DiaryMeta"
 static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeStrPhoto, DiaryTypeStrAudio, DiaryTypeStrVideo};
 
 @implementation Diary
@@ -226,6 +237,28 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
     } else {
         block(NO);
     }
+}
+
+- (void)setInfoWithDictionary:(NSDictionary *)info
+{
+    _title = [info valueForKey:kTitleName];
+    _DCreateTime = [info valueForKey:kDateName];
+    _type1Str = [info valueForKey:kTypeName];
+    _type2Str = [info valueForKey:kType2Name];
+   _filePaths1 = [info valueForKey:kFilePathName];
+    _filePaths2 = [info valueForKey:kFilePath2Name];
+}
+
+- (NSDictionary *)getInfoDictionary
+{
+    NSMutableDictionary *dic_diary = [[NSMutableDictionary alloc] init];
+    [dic_diary setValue:_title forKey:kTitleName];
+    [dic_diary setValue:_DCreateTime forKey:kDateName];
+    [dic_diary setValue:_type1Str forKey:kTypeName];
+    [dic_diary setValue:_type2Str forKey:kType2Name];
+    [dic_diary setValue:_filePaths1 forKey:kFilePathName];
+    [dic_diary setValue:_filePaths2 forKey:kFilePath2Name];
+    return dic_diary;
 }
 
 @end

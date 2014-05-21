@@ -380,6 +380,7 @@ static BOOL needLoadInfo = YES;
 - (void)reloadTable
 {
    
+    [[DiaryModel sharedDiaryModel] reloadData];
 
     [self.tableView reloadData];
 }

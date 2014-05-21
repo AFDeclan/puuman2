@@ -53,6 +53,9 @@
 {
     _currentTime = currentTime;    
     CGPoint pos = self.contentOffset;
+    if (_maxTime == 0) {
+        return;
+    }
     pos.y = (_currentTime/_maxTime)*self.frame.size.height;
     self.contentOffset = pos;
     [self scrollRectToVisible:CGRectMake(0, pos.y, self.frame.size.width, self.frame.size.height) animated:YES];

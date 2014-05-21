@@ -16,6 +16,19 @@
 #import "DateFormatter.h"
 #import "PumanRequest.h"
 #import "Diary.h"
+#import "DiaryModel.h"
+
+#define kDateName       @"date"
+#define kTypeName       @"type"
+#define kType2Name      @"type2"
+#define kTitleName      @"title"
+#define kFilePathName   @"filePath"
+#define kFilePath2Name  @"filePath2"
+#define kUrlName        @"url"
+#define kUrl2Name       @"url2"
+#define kDiaryUIdentity @"DiaryUIdentity"
+#define kDeletedDiary   @"deletedDiary"
+#define kDiaryMeta      @"DiaryMeta"
 
 static TaskUploader *instance = nil;
 
@@ -87,7 +100,11 @@ static TaskUploader *instance = nil;
     NSString *uid = [NSString stringWithFormat:@"%d", [UserInfo sharedUserInfo].UID];
     NSDate *date = diary.DCreateTime;
     NSString *name = [DateFormatter stringFromDatetime:date];
-    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:name, renameKey, tid, taskIDKey, diary, diaryInfoKey, uid, userIDKey, nil];
+    
+  
+   
+    
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:name, renameKey, tid, taskIDKey, [diary getInfoDictionary], diaryInfoKey, uid, userIDKey, nil];
     [self addNewTask:info];
 }
 
@@ -106,7 +123,10 @@ static TaskUploader *instance = nil;
     FileUploader *fUploader = [[FileUploader alloc]init];
     NSString *userID = [info valueForKey:userIDKey];
     NSString *userDir = userID;//[MD5 md5:userID];
-    Diary *diaryInfo = [info valueForKey:diaryInfoKey];
+    
+    Diary *diaryInfo = [[Diary alloc] init];
+    [diaryInfo setInfoWithDictionary:[info valueForKey:diaryInfoKey]];
+    
     NSInteger subCnt1 = 1;
     NSInteger subCnt2 = 1;
     NSString *type1 = @"";
@@ -114,7 +134,9 @@ static TaskUploader *instance = nil;
     NSString *name = @"";
     NSString *dir1 = @"";
     NSString *dir2 = @"";
-    NSString *diaryCreateTime = [DateFormatter stringFromDatetime:diaryInfo.DCreateTime];
+    
+    NSString *diaryCreateTime = [DateFormatter stringFromDatetime:[NSDate date]];
+
     if (diaryInfo && ![[info valueForKey:taskIDKey] isEqualToString:@"-1"])
     {
         type1 = diaryInfo.type1Str;
