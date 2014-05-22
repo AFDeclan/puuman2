@@ -606,6 +606,13 @@
 		54BEB68E18E948E100AB3E27 /* PartnerDataOutGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB68D18E948E100AB3E27 /* PartnerDataOutGroupView.m */; };
 		54BEB69118E948FE00AB3E27 /* PartnerDataInGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69018E948FE00AB3E27 /* PartnerDataInGroupView.m */; };
 		54BEB69418E94E9800AB3E27 /* InviteGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69318E94E9800AB3E27 /* InviteGroupCell.m */; };
+		54C2E9FA192DE0BA0011AA0C /* course_p1_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */; };
+		54C2E9FB192DE0BA0011AA0C /* course_p1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F5192DE0BA0011AA0C /* course_p1.png */; };
+		54C2E9FC192DE0BA0011AA0C /* course_p2_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */; };
+		54C2E9FD192DE0BA0011AA0C /* course_p2.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F7192DE0BA0011AA0C /* course_p2.png */; };
+		54C2E9FE192DE0BA0011AA0C /* course_p3_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F8192DE0BA0011AA0C /* course_p3_h.png */; };
+		54C2E9FF192DE0BA0011AA0C /* course_p3.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F9192DE0BA0011AA0C /* course_p3.png */; };
+		54C2EA02192DE0EB0011AA0C /* EnterTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */; };
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
 		54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56A18DC2E840013FD03 /* TopicContentCell.m */; };
 		54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */; };
@@ -1582,6 +1589,14 @@
 		54BEB69018E948FE00AB3E27 /* PartnerDataInGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerDataInGroupView.m; sourceTree = "<group>"; };
 		54BEB69218E94E9800AB3E27 /* InviteGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteGroupCell.h; sourceTree = "<group>"; };
 		54BEB69318E94E9800AB3E27 /* InviteGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteGroupCell.m; sourceTree = "<group>"; };
+		54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p1_h.png; sourceTree = "<group>"; };
+		54C2E9F5192DE0BA0011AA0C /* course_p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p1.png; sourceTree = "<group>"; };
+		54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p2_h.png; sourceTree = "<group>"; };
+		54C2E9F7192DE0BA0011AA0C /* course_p2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p2.png; sourceTree = "<group>"; };
+		54C2E9F8192DE0BA0011AA0C /* course_p3_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p3_h.png; sourceTree = "<group>"; };
+		54C2E9F9192DE0BA0011AA0C /* course_p3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p3.png; sourceTree = "<group>"; };
+		54C2EA00192DE0EB0011AA0C /* EnterTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterTutorialView.h; sourceTree = "<group>"; };
+		54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterTutorialView.m; sourceTree = "<group>"; };
 		54C8D56018DBE1B80013FD03 /* ChatInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputViewController.h; sourceTree = "<group>"; };
 		54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputViewController.m; sourceTree = "<group>"; };
 		54C8D56918DC2E840013FD03 /* TopicContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicContentCell.h; sourceTree = "<group>"; };
@@ -3398,6 +3413,8 @@
 				54CE111F18C1BC6D00966396 /* MainTabBarController.m */,
 				54BB09E618D9494C00F805DD /* SkipViewController.h */,
 				54BB09E718D9494C00F805DD /* SkipViewController.m */,
+				54C2EA00192DE0EB0011AA0C /* EnterTutorialView.h */,
+				54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
@@ -3503,6 +3520,12 @@
 		54CE117618C1C8C100966396 /* MainTabBarImages */ = {
 			isa = PBXGroup;
 			children = (
+				54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */,
+				54C2E9F5192DE0BA0011AA0C /* course_p1.png */,
+				54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */,
+				54C2E9F7192DE0BA0011AA0C /* course_p2.png */,
+				54C2E9F8192DE0BA0011AA0C /* course_p3_h.png */,
+				54C2E9F9192DE0BA0011AA0C /* course_p3.png */,
 				54AC1D2118EEB542005E2DCE /* btn_share1_diary.png */,
 				54AC1D2218EEB542005E2DCE /* btn_share2_diary.png */,
 				54CE118F18C1CA5200966396 /* pic1_circle_diary.png */,
@@ -3772,6 +3795,7 @@
 				5463758118C98476004B11EF /* pic_pre_login.png in Resources */,
 				54B5206F18F4E1B700EF5DC4 /* pic_future_topic.png in Resources */,
 				54ADE08218C85D1C00B166C4 /* btn2_video_diary.png in Resources */,
+				54C2E9FB192DE0BA0011AA0C /* course_p1.png in Resources */,
 				541970C618D1940E0058FE64 /* chart_wei_baby_diary.png in Resources */,
 				5463759418C98493004B11EF /* tri_gray_down.png in Resources */,
 				54AC20EF18E3FD30001C1357 /* icon_compare2_shop.png in Resources */,
@@ -3779,6 +3803,7 @@
 				5403CE4318D04F5E004CAE22 /* pic_puuman1_baby.png in Resources */,
 				541970EF18D1BA7E0058FE64 /* dot_gray_baby.png in Resources */,
 				5403CE3018D04F5E004CAE22 /* icon_female_baby.png in Resources */,
+				54C2E9FF192DE0BA0011AA0C /* course_p3.png in Resources */,
 				5403CE2E18D04F5E004CAE22 /* circle2_baby.png in Resources */,
 				54B97EB418FA594B00B6C4C9 /* pic_redefining_shop.png in Resources */,
 				5447C46618D97D0800187BE6 /* pic_dais2_fri.png in Resources */,
@@ -3813,6 +3838,7 @@
 				54B97E7D18FA572600B6C4C9 /* num2_insure_shop.png in Resources */,
 				5403CD3A18D03D39004CAE22 /* icon15_weather_diary.png in Resources */,
 				54D14FFD18CAEFD70022E1F4 /* paper_bottom_diary.png in Resources */,
+				54C2E9FC192DE0BA0011AA0C /* course_p2_h.png in Resources */,
 				54CCF1E018F3E7170081C149 /* btn_diary2_diary.png in Resources */,
 				54AF7DFE18FBCD9800FC454C /* right_arrow.png in Resources */,
 				54B97E4518FA2B1E00B6C4C9 /* puuman3_insure_shop.png in Resources */,
@@ -3866,6 +3892,7 @@
 				5403CD3218D03D39004CAE22 /* icon11_weather_diary.png in Resources */,
 				5403CE2418D04F5E004CAE22 /* btn_Bpre2_baby.png in Resources */,
 				54B4684D18E527D700745F72 /* icon_health_shop.png in Resources */,
+				54C2E9FA192DE0BA0011AA0C /* course_p1_h.png in Resources */,
 				54B6F40918D6A5030055FC72 /* icon_admin_set.png in Resources */,
 				54B97E9018FA572600B6C4C9 /* pic22_insure_shop.png in Resources */,
 				1405E0CB18FE8E1E00781B81 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -4122,6 +4149,8 @@
 				54D64EF718E7C39500B8899D /* btn_back2_br_shop.png in Resources */,
 				54B97E8618FA572600B6C4C9 /* pic24_insure_shop.png in Resources */,
 				5403CD4018D03D39004CAE22 /* icon18_weather_diary.png in Resources */,
+				54C2E9FD192DE0BA0011AA0C /* course_p2.png in Resources */,
+				54C2E9FE192DE0BA0011AA0C /* course_p3_h.png in Resources */,
 				54B97E4A18FA2B1E00B6C4C9 /* pic37_insure_shop.png in Resources */,
 				5447C49618D97D1100187BE6 /* icon_like2_topic.png in Resources */,
 				54B97E7E18FA572600B6C4C9 /* num3_insure_shop.png in Resources */,
@@ -4437,6 +4466,7 @@
 				54BEB69418E94E9800AB3E27 /* InviteGroupCell.m in Sources */,
 				1455006218E042E100360EDF /* OtherUserInfo.m in Sources */,
 				54ADE09B18C8608700B166C4 /* NewCameraControlView.m in Sources */,
+				54C2EA02192DE0EB0011AA0C /* EnterTutorialView.m in Sources */,
 				14847B621929A8E200B4F9D7 /* BabyPreTableViewCell.m in Sources */,
 				54AFBBC218D6938600861A69 /* DateButton.m in Sources */,
 				54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */,

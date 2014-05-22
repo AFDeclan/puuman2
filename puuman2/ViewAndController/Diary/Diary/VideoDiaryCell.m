@@ -78,7 +78,7 @@
         [_imgView loadVideoImgWithPath:[self.diary.filePaths1 objectAtIndex:0]];
 
     }else{
-    
+        
     }
     
 }
