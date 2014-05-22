@@ -73,7 +73,14 @@
 {
     [super loadInfo];
     [_imgView setCropSize:CGSizeMake(832, 832)];
-    [_imgView loadVideoImgWithPath:[self.diary.filePaths1 objectAtIndex:0]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
+    {
+        [_imgView loadVideoImgWithPath:[self.diary.filePaths1 objectAtIndex:0]];
+
+    }else{
+    
+    }
+    
 }
 
 - (void)playVideo

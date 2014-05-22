@@ -75,12 +75,9 @@
 {
     if (_photoPaths) return;
     [super loadInfo];
-    
     _photoPaths = self.diary.filePaths1;
     [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
-    if ([_photoPaths count] >1) {
-        [_showColumnView reloadData];
-    }
+    [_showColumnView reloadData];
 
 }
 
@@ -135,7 +132,7 @@
             [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0];
         }
         if (selectedIndex == [_photoPaths count]) {
-             [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0];
+            [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0];
         }
         
     }
@@ -185,10 +182,15 @@
         DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
         [photoView reset];
         [photoView setImage:photo];
-        if (_photoPaths) {
+        if ([UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index-1]]) {
             [photoView setCropSize:CGSizeMake(384, 384)];
             [photoView loadThumbImgWithPath:[_photoPaths objectAtIndex:index-1]];
+
+        }else{
+            [photoView setImage:photo];
         }
+    
+        
         UIImageView *mask = (UIImageView *)[cell viewWithTag:12];
         [mask setBackgroundColor:[UIColor whiteColor]];
 

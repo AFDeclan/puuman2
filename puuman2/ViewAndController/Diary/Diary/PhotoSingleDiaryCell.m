@@ -44,10 +44,14 @@
 
 - (void)showPhoto
 {
-    if (_photoPath) {
-        [DetailShowViewController showPhotoPath:_photoPath andTitle:titleLabel.text];
-     }
+        if ([UIImage imageWithContentsOfFile:_photoPath]){
+            [DetailShowViewController showPhotoPath:_photoPath andTitle:titleLabel.text];
+        }else{
+            [self.diary redownloadContent1AtIndex:0 withRecall:nil];
+
+        }
     
+ 
 }
 
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr
@@ -69,17 +73,15 @@
 {
     [super loadInfo];
     if (_photoPath) return;
-    NSString *photoPathsString = [self.diary.filePaths1 objectAtIndex:0];
-    NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
-    for (NSString *photoPath in photoPaths)
-    {
-        _photoPath = photoPath;
-        if (_photoPath != nil) {
-            break;
-        }
+  
+    _photoPath = [self.diary.filePaths1 objectAtIndex:0];
+    if ([UIImage imageWithContentsOfFile:_photoPath]) {
+        [_imgView setCropSize:CGSizeMake(832, 832)];
+        [_imgView loadImgWithPath:_photoPath];
+    }else{
+    
     }
-    [_imgView setCropSize:CGSizeMake(832, 832)];
-    [_imgView loadImgWithPath:_photoPath];
+
 }
 
 - (void)share:(id)sender

@@ -52,10 +52,27 @@
     //audio player init
 
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
-    
     NSString *filePath = [self.diary.filePaths1 objectAtIndex:0];
-    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+    NSError *playerError;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:&playerError];
+    if (player)
+    {
+        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+         [playBtn setAlpha:1];
+    }else{
+        [playBtn setAlpha:0];
+
+    }
+
     
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+//    {
+//        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+//        [playBtn setAlpha:1];
+//    }else{
+//      [playBtn setAlpha:0];
+//    }
+   
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 

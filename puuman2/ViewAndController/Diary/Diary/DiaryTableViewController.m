@@ -244,7 +244,7 @@ static BOOL needLoadInfo = YES;
         else
         {
     
-            NSArray *photoPaths = diary.filePaths1;
+            NSArray *photoPaths = diary.urls1;
             if ([photoPaths count] > 1) {
                 identity = DiaryTypeStrPhoto_More;
                 cell = [tableView dequeueReusableCellWithIdentifier:identity];

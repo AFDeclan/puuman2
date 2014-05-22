@@ -72,10 +72,19 @@
     [_photoView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
     [_photoView reset];
      _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,488);
-    
     NSString *filePath = [self.diary.filePaths2 objectAtIndex:0];
-    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+    NSError *playerError;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:&playerError];
+    if (player)
+    {
+        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+        [playBtn setAlpha:1];
 
+    }else{
+        [playBtn setAlpha:0];
+        
+    }
+   
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 
 }
@@ -99,7 +108,13 @@
 {
     [super loadInfo];
     [_photoView setCropSize:CGSizeMake(416*2, 416*2)];
-    [_photoView loadThumbImgWithPath: [self.diary.filePaths1 objectAtIndex:0] ];
+    if ([UIImage imageWithContentsOfFile:[self.diary.filePaths1 objectAtIndex:0]]) {
+        [_photoView loadThumbImgWithPath:[self.diary.filePaths1 objectAtIndex:0]];
+    
+    }else{
+    
+    }
+   
     
 }
 

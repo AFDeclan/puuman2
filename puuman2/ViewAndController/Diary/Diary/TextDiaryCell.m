@@ -93,56 +93,59 @@
         [titleLabel setAlpha:1];
     }
 
-    CGRect frame;
-    if ([self.diary.type2Str isEqualToString:DiaryTypeStrPhoto] &&![[self.diary.filePaths2 objectAtIndex:0] isEqualToString:@""])
-    {
-        frame = CGRectMake(0, 24 + ViewHeight(titleLabel) + ViewY(titleLabel), ContentWidth-TEXT_PHOTO_HEIGHT-16, 0);
-        [showBtn setAlpha:1];
+    CGRect frame = CGRectMake(0, 24 + ViewHeight(titleLabel) + ViewY(titleLabel), ContentWidth, 0);
+    [showBtn setAlpha:0];
+    if ([self.diary.type2Str isEqualToString:DiaryTypeStrPhoto]) {
+        
         NSString *photoPath = [self.diary.filePaths2 objectAtIndex:0];
         photo = [DiaryFileManager imageForPath:photoPath];
-        UIImage  *photo2 = [UIImage croppedImage:photo WithHeight:256 andWidth:256];
-        _photoView.image = photo2;
-        SetViewLeftUp(showBtn,ContentWidth-TEXT_PHOTO_HEIGHT, 24 + ViewHeight(titleLabel) + ViewY(titleLabel));
+        if (photo) {
+            frame = CGRectMake(0, 24 + ViewHeight(titleLabel) + ViewY(titleLabel), ContentWidth-TEXT_PHOTO_HEIGHT-16, 0);
+            [showBtn setAlpha:1];
+            UIImage  *photo2 = [UIImage croppedImage:photo WithHeight:256 andWidth:256];
+            _photoView.image = photo2;
+            SetViewLeftUp(showBtn,ContentWidth-TEXT_PHOTO_HEIGHT, 24 + ViewHeight(titleLabel) + ViewY(titleLabel));
+        }else{
         
-       
-    }else{
-        
-        frame = CGRectMake(0, 24 + ViewHeight(titleLabel) + ViewY(titleLabel), ContentWidth, 0);
-        [showBtn setAlpha:0];
-
+        }
     }
-
+    CGFloat dh = 0;
+    
     if (_contentLabel) {
         [_contentLabel removeFromSuperview];
     }
-    _contentLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(16, 8, ContentWidth, 80)];
-    _contentLabel.numberOfLines = 0;
-    _contentLabel.font = PMFont2;
-    _contentLabel.textColor = PMColor2;
-    _contentLabel.backgroundColor = [UIColor clearColor];
-    [_contentLabel setLinesSpacing:12];
-    [_contentLabel setCharacterSpacing:1];
-    [_content addSubview:_contentLabel];
     NSString *filePath = [self.diary.filePaths1 objectAtIndex:0];
-    NSString *text;
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-        text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    else text = @"";
-    if (text == nil) text = @"";
-    CGFloat dh = [_contentLabel setText:text abbreviated:abbr];
-    frame.size.height = dh;
-    [_contentLabel setFrame:frame];
-    
-    if (_contentLabel.didAbbr) {
-        [line setAlpha:1];
-        SetViewLeftUp(line, 0,frame.origin.y+ frame.size.height);
-       // SetViewLeftUp(line, 16, _contentLabel.frame.origin.y+_contentLabel.frame.size.height);
-        [spreadBtn setFrame:frame];
-        [spreadBtn setAlpha:1];
+    {
+        _contentLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(16, 8, ContentWidth, 80)];
+        _contentLabel.numberOfLines = 0;
+        _contentLabel.font = PMFont2;
+        _contentLabel.textColor = PMColor2;
+        _contentLabel.backgroundColor = [UIColor clearColor];
+        [_contentLabel setLinesSpacing:12];
+        [_contentLabel setCharacterSpacing:1];
+        [_content addSubview:_contentLabel];
+        NSString *text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        if (text == nil) text = @"";
+        
+        dh = [_contentLabel setText:text abbreviated:abbr];
+        frame.size.height = dh;
+        [_contentLabel setFrame:frame];
+        if (_contentLabel.didAbbr) {
+            [line setAlpha:1];
+            SetViewLeftUp(line, 0,frame.origin.y+ frame.size.height);
+            // SetViewLeftUp(line, 16, _contentLabel.frame.origin.y+_contentLabel.frame.size.height);
+            [spreadBtn setFrame:frame];
+            [spreadBtn setAlpha:1];
+        }else{
+            [line setAlpha:0];
+            [spreadBtn setAlpha:0];
+        }
     }else{
-        [line setAlpha:0];
-        [spreadBtn setAlpha:0];
+    
+        
     }
+    
     if ([self.diary.type2Str isEqualToString:DiaryTypeStrPhoto])
         if (dh < TEXT_PHOTO_HEIGHT) dh = TEXT_PHOTO_HEIGHT;
     dh += ViewHeight(titleLabel)+ViewY(titleLabel)+24;
@@ -214,6 +217,7 @@
     textLayoutLabel.backgroundColor = [UIColor clearColor];
     [textLayoutLabel setLinesSpacing:12];
     [textLayoutLabel setCharacterSpacing:1];
+        
     NSString *filePath = [diary.filePaths1 objectAtIndex:0];
     NSString *text;
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
@@ -221,13 +225,15 @@
     else text = @"";
     if (text == nil) text = @"";
     CGFloat dh = [textLayoutLabel setText:text abbreviated:abbr];
-
-
-
+        
+        
+        
     if ([diary.type2Str isEqualToString:DiaryTypeStrPhoto])
         if (dh < TEXT_PHOTO_HEIGHT) dh = TEXT_PHOTO_HEIGHT;
     height += dh +24;
     textLayoutLabel = nil;
+
+    
     if (height < 80)
         height = 80;
     return height;
