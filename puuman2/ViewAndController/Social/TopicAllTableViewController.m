@@ -7,7 +7,6 @@
 //
 
 #import "TopicAllTableViewController.h"
-#import "TopicCell.h"
 #import "VotingCell.h"
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
@@ -35,6 +34,8 @@
         votings = [[NSArray alloc] init];
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSArray alloc] init];
+        status = [[NSMutableDictionary alloc] init];
+        
         emptyNotiView = [[UIView alloc] initWithFrame:CGRectMake(192, 216, 224, 80)];
         [self.view addSubview:emptyNotiView];
         UIImageView  *icon_empty = [[UIImageView alloc] initWithFrame:CGRectMake(36, 0, 152, 40)];
@@ -142,7 +143,8 @@
         [cell setRow:[indexPath row]];
         [cell setIsMyTopic:NO];
         [cell buildWithReply:[replays objectAtIndex:[indexPath row]]];
-
+        [cell setUnfold:[[status valueForKey:[NSString stringWithFormat:@"%d",[indexPath row]]] boolValue]];
+        [cell setDelegate:self];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -152,13 +154,19 @@
   
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)changedStausWithUnfold:(BOOL)unfold andIndex:(NSInteger)index
+{
+    [status setValue:[NSNumber numberWithBool:unfold] forKeyPath:[NSString stringWithFormat:@"%d",index]];
+    [self.tableView reloadData];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
     if (_voting) {
         return 108;
     }else{
-        return [TopicCell heightForReply:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType];
+        return [TopicCell heightForReply:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType andUnfold:[[status valueForKey:[NSString stringWithFormat:@"%d",[indexPath row]]] boolValue]];
     }
 }
 
@@ -255,7 +263,8 @@
         [_refreshFooter endRefreshing];
     }
     replays = [_topic replies:_replyOrder];
-    
+    [status removeAllObjects];
+  
     if ([replays count] == 0) {
         if (! [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ])
         {
@@ -310,7 +319,12 @@
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
     if (_refreshHeader.isRefreshing)
+    {
         [_refreshHeader endRefreshing];
+        [status removeAllObjects];
+
+
+    }
     [self.tableView reloadData];
 }
 

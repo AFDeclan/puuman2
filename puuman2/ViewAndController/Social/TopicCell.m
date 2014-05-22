@@ -23,6 +23,8 @@
 @implementation TopicCell
 @synthesize isMyTopic = _isMyTopic;
 @synthesize row = _row;
+@synthesize unfold = _unfold;
+@synthesize delegate = _delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -35,14 +37,13 @@
         [self.contentView addSubview:headerView];
         contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 608, 112)];
         [self.contentView addSubview:contentView];
-        footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 176, 608, 88)];
+        footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 176, 608, 40)];
         [self.contentView addSubview:footerView];
         [self initWithHeaderView];
         [headerView setBackgroundColor:PMColor5];
         [contentView setBackgroundColor:PMColor5];
         [footerView setBackgroundColor:PMColor5];
-  //      [MyNotiCenter addObserver:self selector:@selector(removeForumDelegate) name:Noti_ReplyRemoveForumDelgate object:nil];
-        
+        self.layer.masksToBounds = YES;
     }
     return self;
 }
@@ -98,12 +99,16 @@
     [relayExample setTextColor:PMColor2];
     [relayExample setBackgroundColor:[UIColor clearColor]];
     [footerView addSubview:relayExample];
-    scanMoreReplay = [[AFTextImgButton alloc] initWithFrame:CGRectMake(496, 40, 112, 48)];
-    [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
-    [scanMoreReplay setTitleLabelColor:PMColor3];
-    [scanMoreReplay addTarget:self action:@selector(scanMore) forControlEvents:UIControlEventTouchUpInside];
-    [scanMoreReplay setTitleFont:PMFont3];
-    [footerView addSubview:scanMoreReplay];
+    [footerView.layer setMasksToBounds:YES];
+    comment = [[TopicCommentView alloc] initWithFrame:CGRectMake(0, 40, 608, 0)];
+    [footerView addSubview:comment];
+    
+//    scanMoreReplay = [[AFTextImgButton alloc] initWithFrame:CGRectMake(496, 40, 112, 48)];
+//    [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
+//    [scanMoreReplay setTitleLabelColor:PMColor3];
+//    [scanMoreReplay addTarget:self action:@selector(scanMore) forControlEvents:UIControlEventTouchUpInside];
+//    [scanMoreReplay setTitleFont:PMFont3];
+//    [footerView addSubview:scanMoreReplay];
     UIImageView *partLine_first  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 2)];
     [partLine_first setImage:[UIImage imageNamed:@"line2_topic.png"]];
     [footerView addSubview:partLine_first];
@@ -145,6 +150,8 @@
 
 - (void)buildWithReply:(Reply *)reply
 {
+    [comment setCommentWithReply:reply];
+
     
      _reply = reply;
     [topicNumLabel setText:[NSString stringWithFormat:@"第%d期",reply.TID]];
@@ -152,15 +159,15 @@
     [[Forum sharedInstance] addDelegateObject:self];
     [infoView setInfoWithUid:_reply.UID andIsTopic:YES];
     
-    if ([reply RCommentCnt] == 0) {
-        [scanMoreReplay setTitle:@"没有留言" andImg:nil andButtonType:kButtonTypeOne];
-    }else{
-        [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
-
-    }
-    [scanMoreReplay setTitleFont:PMFont3];
-
-    [scanMoreReplay adjustLayout];
+//    if ([reply RCommentCnt] == 0) {
+//        [scanMoreReplay setTitle:@"没有留言" andImg:nil andButtonType:kButtonTypeOne];
+//    }else{
+//        [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
+//
+//    }
+//    [scanMoreReplay setTitleFont:PMFont3];
+//
+//    [scanMoreReplay adjustLayout];
  
     if (_isMyTopic) {
         Topic *topic =  [[Forum sharedInstance] getTopic:reply.TID];
@@ -221,10 +228,8 @@
 
 - (void)replayBtnPressed
 {
-    [[MainTabBarController sharedMainViewController] setIsReply:YES];
-    PostNotification(Noti_BottomInputViewShow,_reply);
-    
-    
+    _unfold = !_unfold;
+    [_delegate changedStausWithUnfold:_unfold andIndex:_row];
 }
 
 
@@ -265,12 +270,24 @@
 //    [[Forum sharedInstance] removeDelegateObject:self];
 //}
 
++ (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type andUnfold:(BOOL)unfold
+{
+   
+    
+    if (unfold) {
+        TopicCommentView *commentView = [[TopicCommentView alloc] init];
+        [commentView setCommentWithReply:reply];
+        return [TopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type]+ViewHeight(commentView);
 
+    }else{
+        return  [TopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
+    }
+}
 
 + (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type
 {
     
-    float h = 64+88 +8;
+    float h = 64+40 +8;
     if (![reply.RTitle isEqualToString:@""]) {
         h += 28;
     }
@@ -363,6 +380,21 @@
 //{
 //
 //}
+
+- (void)setUnfold:(BOOL)unfold
+{
+    CGRect frameF = footerView.frame;
+    _unfold = unfold;
+    if (unfold) {
+       
+        frameF.size.height = ViewHeight(comment)+40;
+    
+    }else{
+        frameF.size.height = 40;
+    }
+    [footerView setFrame:frameF];
+}
+
 
 
 @end

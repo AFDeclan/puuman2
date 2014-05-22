@@ -393,7 +393,7 @@ static BOOL needLoadInfo = YES;
     
     //if (indexPath.row > [[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]+1) return;
     if(indexPath.row > [[[DiaryModel sharedDiaryModel] diaries] count]+1)
-    if ((selectedPath == nil || ![[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:indexPath.row] isEqualToString:DiaryTypeStrText]) && ![[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:indexPath.row] isEqualToString:DiaryTypeStrText]) return;
+    if ((selectedPath == nil || ![[[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:indexPath.row] type1Str] isEqualToString:DiaryTypeStrText]) && ![[[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:indexPath.row] type1Str] isEqualToString:DiaryTypeStrText]) return;
     if (selectedPath != nil && [selectedPath compare:indexPath] == NSOrderedSame)
     {
         reloadArray = [NSArray arrayWithObject:indexPath];
@@ -403,8 +403,8 @@ static BOOL needLoadInfo = YES;
     {
         reloadArray = [NSArray arrayWithObjects:indexPath, selectedPath, nil];
         selectedPath = indexPath;
-        expand = [[[[DiaryModel sharedDiaryModel] diaries
-                    ]objectAtIndex:indexPath.row] isEqualToString:DiaryTypeStrText];
+        expand = [[[[[DiaryModel sharedDiaryModel] diaries
+                    ]objectAtIndex:indexPath.row] type1Str] isEqualToString:DiaryTypeStrText];
     }
     
     [self.tableView reloadRowsAtIndexPaths:reloadArray withRowAnimation:UITableViewRowAnimationNone];

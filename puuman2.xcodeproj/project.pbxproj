@@ -613,6 +613,7 @@
 		54C2E9FE192DE0BA0011AA0C /* course_p3_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F8192DE0BA0011AA0C /* course_p3_h.png */; };
 		54C2E9FF192DE0BA0011AA0C /* course_p3.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F9192DE0BA0011AA0C /* course_p3.png */; };
 		54C2EA02192DE0EB0011AA0C /* EnterTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */; };
+		54C2EA05192DF55B0011AA0C /* TopicCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2EA04192DF55B0011AA0C /* TopicCommentView.m */; };
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
 		54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56A18DC2E840013FD03 /* TopicContentCell.m */; };
 		54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */; };
@@ -1597,6 +1598,8 @@
 		54C2E9F9192DE0BA0011AA0C /* course_p3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p3.png; sourceTree = "<group>"; };
 		54C2EA00192DE0EB0011AA0C /* EnterTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterTutorialView.h; sourceTree = "<group>"; };
 		54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterTutorialView.m; sourceTree = "<group>"; };
+		54C2EA03192DF55B0011AA0C /* TopicCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCommentView.h; sourceTree = "<group>"; };
+		54C2EA04192DF55B0011AA0C /* TopicCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCommentView.m; sourceTree = "<group>"; };
 		54C8D56018DBE1B80013FD03 /* ChatInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputViewController.h; sourceTree = "<group>"; };
 		54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputViewController.m; sourceTree = "<group>"; };
 		54C8D56918DC2E840013FD03 /* TopicContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicContentCell.h; sourceTree = "<group>"; };
@@ -2788,6 +2791,8 @@
 			children = (
 				54AE788018DFF87100AE558C /* TopicCell.h */,
 				54AE788118DFF87100AE558C /* TopicCell.m */,
+				54C2EA03192DF55B0011AA0C /* TopicCommentView.h */,
+				54C2EA04192DF55B0011AA0C /* TopicCommentView.m */,
 				54ADB1D218E1860200FCCC83 /* TextTopicCell.h */,
 				54ADB1D318E1860200FCCC83 /* TextTopicCell.m */,
 				54ADB1D518E1861700FCCC83 /* PhotoTopicCell.h */,
@@ -2796,6 +2801,7 @@
 				54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */,
 				1405E0CC18FE97B300781B81 /* AsyncImgView.h */,
 				1405E0CD18FE97B300781B81 /* AsyncImgView.m */,
+				54AFAA7C18DA896B0067B8C1 /* AllWordsPopViewController.h */,
 			);
 			name = TopicCell;
 			sourceTree = "<group>";
@@ -2819,7 +2825,6 @@
 		54AFAA7A18DA889C0067B8C1 /* popView */ = {
 			isa = PBXGroup;
 			children = (
-				54AFAA7C18DA896B0067B8C1 /* AllWordsPopViewController.h */,
 				54AFAA7D18DA896B0067B8C1 /* AllWordsPopViewController.m */,
 				54AFAA8218DA94600067B8C1 /* CreateTopicViewController.h */,
 				54AFAA8318DA94600067B8C1 /* CreateTopicViewController.m */,
@@ -4264,6 +4269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54ADB1CE18E16CD700FCCC83 /* Comment.m in Sources */,
+				54C2EA05192DF55B0011AA0C /* TopicCommentView.m in Sources */,
 				547F9B4E18D15B7E00486337 /* BabyBodyView.m in Sources */,
 				5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */,
 				1405E0CE18FE97B300781B81 /* AsyncImgView.m in Sources */,

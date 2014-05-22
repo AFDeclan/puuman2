@@ -11,8 +11,9 @@
 #import "MJRefreshFooterView.h"
 #import "MJRefreshHeaderView.h"
 #import "Forum.h"
+#import "TopicCell.h"
 
-@interface TopicAllTableViewController : SortTableViewController<ForumDelegate,MJRefreshBaseViewDelegate>
+@interface TopicAllTableViewController : SortTableViewController<ForumDelegate,MJRefreshBaseViewDelegate,TopicCellDelegate>
 {
     MJRefreshFooterView *_refreshFooter;
     MJRefreshHeaderView *_refreshHeader;
@@ -20,6 +21,7 @@
     NSArray *votings;
     UIView *emptyNotiView;
     UILabel *noti_empty;
+    NSMutableDictionary *status;
 }
 
 @property(nonatomic,assign)BOOL voting;

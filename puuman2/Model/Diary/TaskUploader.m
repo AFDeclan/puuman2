@@ -100,10 +100,6 @@ static TaskUploader *instance = nil;
     NSString *uid = [NSString stringWithFormat:@"%d", [UserInfo sharedUserInfo].UID];
     NSDate *date = diary.DCreateTime;
     NSString *name = [DateFormatter stringFromDatetime:date];
-    
-  
-   
-    
     NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:name, renameKey, tid, taskIDKey, [diary getInfoDictionary], diaryInfoKey, uid, userIDKey, nil];
     [self addNewTask:info];
 }
@@ -114,7 +110,7 @@ static TaskUploader *instance = nil;
     NSString *uid = [NSString stringWithFormat:@"%d", [UserInfo sharedUserInfo].UID];
     NSDate *date = diary.DCreateTime;
     NSString *name = [DateFormatter stringFromDatetime:date];
-    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:name, renameKey, @"-1", taskIDKey, uid, userIDKey, diary, diaryInfoKey, nil];
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:name, renameKey, @"-1", taskIDKey, uid, userIDKey, [diary getInfoDictionary], diaryInfoKey, nil];
     [self addNewTask:info];
 }
 
