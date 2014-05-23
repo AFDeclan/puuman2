@@ -340,8 +340,6 @@
 
     float tableY  = [[notification object] floatValue];
     
-    
-    
     if ([MainTabBarController sharedMainViewController].isVertical) {
         if (self.frame.origin.y < 512) {
             _controlCanHidden = NO;

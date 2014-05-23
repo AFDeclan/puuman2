@@ -75,4 +75,6 @@
 #define Noti_RefreshTextTopicCell               @"Noti_RefreshTextTopicCell"
 #define Noti_GoToCurrentTopic                   @"Noti_GoToCurrentTopic"
 #define Noti_loadTopicCell                      @"Noti_loadTopicCell"
+#define Noti_ShowCommentPopView                 @"Noti_ShowCommentPopView"
+#define Noti_HiddenCommentKeyBoard              @"Noti_HiddenCommentKeyBoard"
 #endif

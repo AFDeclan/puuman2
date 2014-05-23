@@ -113,7 +113,7 @@
     if (_photoPaths) {
         return [_photoPaths count]+2;
     } else {
-        return 4;
+        return 2;
     }
 }
 
@@ -207,7 +207,7 @@
 
 - (void)showPhotoAtIndex:(NSInteger)index
 {
-    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1 andTitle:titleLabel.text];
+    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index andTitle:titleLabel.text];
 }
 
 - (void)share:(id)sender

@@ -7,10 +7,10 @@
 //
 
 #import "TopicAllTableViewController.h"
-#import "TopicCell.h"
 #import "VotingCell.h"
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
+#import "SinglePhotoTopicVIew.h"
 #import "ReplyForUpload.h"
 #import "UniverseConstant.h"
 
@@ -30,11 +30,14 @@
     if (self) {
         // Custom initialization
         _voting = NO;
+        replayNum= 0;
         _voteOrder =  VotingTopicOrder_Time;
         _replyOrder = TopicReplyOrder_Time;
         votings = [[NSArray alloc] init];
         [[Forum sharedInstance] addDelegateObject:self];
         replays = [[NSArray alloc] init];
+        status = [[NSMutableDictionary alloc] init];
+        
         emptyNotiView = [[UIView alloc] initWithFrame:CGRectMake(192, 216, 224, 80)];
         [self.view addSubview:emptyNotiView];
         UIImageView  *icon_empty = [[UIImageView alloc] initWithFrame:CGRectMake(36, 0, 152, 40)];
@@ -129,12 +132,23 @@
             
         }else if (_topic.TType == TopicType_Photo)
         {
-            identifier = @"ReplayPhotoTopicCell";
-            cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
-            if (!cell) {
-                cell  =[[PhotoTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            if ([[[replays objectAtIndex:[indexPath row]] photoUrls] count] >1) {
+                identifier = @"ReplayPhotoTopicCell";
+                cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+                if (!cell) {
+                    cell  =[[PhotoTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                }
+
+            }else{
+                identifier = @"ReplaySinglePhotoTopicCell";
+                cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+                if (!cell) {
+                    cell  =[[SinglePhotoTopicVIew alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                }
+
             }
-        }else{
+            
+                    }else{
             if (!cell) {
                 cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
@@ -142,7 +156,8 @@
         [cell setRow:[indexPath row]];
         [cell setIsMyTopic:NO];
         [cell buildWithReply:[replays objectAtIndex:[indexPath row]]];
-
+        [cell setUnfold:[[status valueForKey:[NSString stringWithFormat:@"%d",[indexPath row]]] boolValue]];
+        [cell setDelegate:self];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
@@ -152,13 +167,19 @@
   
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)changedStausWithUnfold:(BOOL)unfold andIndex:(NSInteger)index
+{
+    [status setValue:[NSNumber numberWithBool:unfold] forKeyPath:[NSString stringWithFormat:@"%d",index]];
+    [self.tableView reloadData];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
     if (_voting) {
         return 108;
     }else{
-        return [TopicCell heightForReply:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType];
+        return [TopicCell heightForReply:[replays objectAtIndex:[indexPath row]] andIsMyTopic:NO andTopicType:_topic.TType andUnfold:[[status valueForKey:[NSString stringWithFormat:@"%d",[indexPath row]]] boolValue]];
     }
 }
 
@@ -169,27 +190,25 @@
 {
     _voting = voting;
     if (voting) {
-        [self.tableView reloadData];
-        if (_refreshFooter) {
-            [_refreshFooter setDelegate:nil];
-            [_refreshFooter removeFromSuperview];
-        }
-        _refreshFooter = [[MJRefreshFooterView alloc] init];
-        _refreshFooter.scrollView = self.tableView;
-        [self.tableView addSubview:_refreshFooter];
-        [_refreshFooter setDelegate:self];
-        _refreshFooter.alpha = 1;
-        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+//        [self.tableView reloadData];
+//        if (_refreshFooter) {
+//            [_refreshFooter setDelegate:nil];
+//            [_refreshFooter removeFromSuperview];
+//        }
+//        _refreshFooter = [[MJRefreshFooterView alloc] init];
+//        _refreshFooter.scrollView = self.tableView;
+//        [self.tableView addSubview:_refreshFooter];
+//        [_refreshFooter setDelegate:self];
+//        _refreshFooter.alpha = 1;
+//        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
         __block TopicAllTableViewController * this = self;
-        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:this.voteOrder newDirect:NO])
-            {
-                [blockRefreshFooter endRefreshing];
-            }
-        };
-        if (votings.count == 0) {
-            [_refreshFooter beginRefreshing];
-        }
+//        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+//            if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:this.voteOrder newDirect:NO])
+//            {
+//                [blockRefreshFooter endRefreshing];
+//            }
+//        };
+        
         
         if (_refreshHeader) {
             _refreshHeader.delegate = nil;
@@ -203,6 +222,9 @@
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
             [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:this.voteOrder newDirect:YES];
         };
+        if (votings.count == 0) {
+            [_refreshHeader beginRefreshing];
+        }
     }
 }
 
@@ -210,25 +232,25 @@
 {
     
     _topic = topic;
-    if (!_refreshFooter) {
-        _refreshFooter = [[MJRefreshFooterView alloc] init];
-        _refreshFooter.scrollView = self.tableView;
-        [self.tableView addSubview:_refreshFooter];
-        [_refreshFooter setDelegate:self];
-        _refreshFooter.alpha = 1;
-        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
-        __block Topic * topic = _topic;
-        __block TopicAllTableViewController * this = self;
-        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            if (! [topic getMoreReplies:5 orderBy:this.replyOrder newDirect:NO ])
-            {
-                [blockRefreshFooter endRefreshing];
-            }
-        };
-    
-        [_refreshFooter beginRefreshing];
-
-    }
+//    if (!_refreshFooter) {
+//        _refreshFooter = [[MJRefreshFooterView alloc] init];
+//        _refreshFooter.scrollView = self.tableView;
+//        [self.tableView addSubview:_refreshFooter];
+//        [_refreshFooter setDelegate:self];
+//        _refreshFooter.alpha = 1;
+//        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+//        __block Topic * topic = _topic;
+//        __block TopicAllTableViewController * this = self;
+//        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+//            if (![topic getMoreReplies:5 orderBy:this.replyOrder newDirect:NO ])
+//            {
+//                [blockRefreshFooter endRefreshing];
+//            }
+//        };
+//    
+//        [_refreshFooter beginRefreshing];
+//
+//    }
     if (!_refreshHeader) {
         _refreshHeader = [[MJRefreshHeaderView alloc] init];
         _refreshHeader.scrollView = self.tableView;
@@ -240,7 +262,7 @@
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
             [topic getMoreReplies:5 orderBy:this.replyOrder newDirect:YES ];
         };
-        
+          [_refreshHeader beginRefreshing];
     }
    
     [self.tableView reloadData];
@@ -251,16 +273,18 @@
 {
     _replyOrder = replyOrder;
     
-    if ([_refreshFooter isRefreshing]) {
-        [_refreshFooter endRefreshing];
-    }
+    //if ([_refreshFooter isRefreshing]) {
+   //     [_refreshFooter endRefreshing];
+   // }
     replays = [_topic replies:_replyOrder];
-    
+    [status removeAllObjects];
+    replayNum = [replays count];
     if ([replays count] == 0) {
-        if (! [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ])
-        {
-            [_refreshFooter beginRefreshing];
-        }
+        [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ];
+        //if (! [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ])
+       // {
+            //[_refreshFooter beginRefreshing];
+       // }
     }
    
 
@@ -269,15 +293,17 @@
 - (void)setVoteOrder:(VotingTopicOrder)voteOrder
 {
     _voteOrder = voteOrder;
-    if ([_refreshFooter isRefreshing]) {
-        [_refreshFooter endRefreshing];
-    }
+   // if ([_refreshFooter isRefreshing]) {
+      //  [_refreshFooter endRefreshing];
+   // }/
     votings = [[Forum sharedInstance] votingTopic:_voteOrder];
+    replayNum = [votings count];
     if ([votings count] == 0) {
-        if (![[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO])
-        {
-            [_refreshFooter endRefreshing];
-        }
+        [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO];
+       // if (![)
+       // {
+          //  [_refreshFooter endRefreshing];
+       // }
     }
 }
 
@@ -285,8 +311,8 @@
 - (void)votingTopicLoadedMore
 {
     votings = [[Forum sharedInstance] votingTopic:_voteOrder];
-    if (_refreshFooter.isRefreshing)
-        [_refreshFooter endRefreshing];
+   // if (_refreshFooter.isRefreshing)
+    //    [_refreshFooter endRefreshing];
     if (_refreshHeader.isRefreshing)
         [_refreshHeader endRefreshing];
     [self.tableView reloadData];
@@ -295,11 +321,11 @@
 //更多投票中话题获取失败
 - (void)votingTopicLoadFailed
 {
-    if (_refreshFooter.isRefreshing)
-        [_refreshFooter endRefreshing];
+   // if (_refreshFooter.isRefreshing)
+     //   [_refreshFooter endRefreshing];
     if (_refreshHeader.isRefreshing)
         [_refreshHeader endRefreshing];
-    [self.tableView reloadData];
+   // [self.tableView reloadData];
 }
 
 
@@ -307,22 +333,35 @@
 - (void)topicRepliesLoadedMore:(Topic *)topic
 {
     replays = [topic replies:_replyOrder];
-    if (_refreshFooter.isRefreshing)
-        [_refreshFooter endRefreshing];
+  //  if (_refreshFooter.isRefreshing)
+     //   [_refreshFooter endRefreshing];
     if (_refreshHeader.isRefreshing)
+    {
         [_refreshHeader endRefreshing];
-    [self.tableView reloadData];
+        [status removeAllObjects];
+
+        [self.tableView reloadData];
+    }else{
+        if (replayNum <[replays count]) {
+            [self.tableView reloadData];
+        }
+    }
+   
+    replayNum = [replays count];
+   
+    
 }
 
 //更多话题回复加载失败。（可能是网络问题或者全部加载完毕，根据topic.noMore判断）
 - (void)topicRepliesLoadFailed:(Topic *)topic
 {
     NSLog(@"Replay Failed");
-    if (_refreshFooter.isRefreshing)
-        [_refreshFooter endRefreshing];
+   // if (_refreshFooter.isRefreshing)
+      //  [_refreshFooter endRefreshing];
     if (_refreshHeader.isRefreshing)
         [_refreshHeader endRefreshing];
-    [self.tableView reloadData];
+   // [self.tableView reloadData];
+    
 }
 
 - (void)refreshTable
@@ -365,9 +404,9 @@
 - (void)dealloc
 {
     [MyNotiCenter removeObserver:self];
-    [_refreshFooter setDelegate:nil];
-    [_refreshFooter removeFromSuperview];
-    _refreshFooter = nil;
+   // [_refreshFooter setDelegate:nil];
+  //  [_refreshFooter removeFromSuperview];
+   // _refreshFooter = nil;
     [_refreshHeader setDelegate:nil];
     [_refreshHeader removeFromSuperview];
     _refreshHeader = nil;
@@ -376,5 +415,28 @@
     [self.tableView setDataSource:nil];
 
 }
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+   
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+   }
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    
+    if (self.tableView.contentSize.height - self.tableView.contentOffset.y < self.tableView.frame.size.height*2 ) {
+        if (_voting) {
+            [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO];
+        }else{
+            [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO];
+        }
+    }
+}
+
 
 @end

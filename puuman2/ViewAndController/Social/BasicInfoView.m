@@ -146,6 +146,8 @@
 - (void)showRecommendViewWithMember:(Member *)member
 {
     if (tapped == YES) {
+        PostNotification(Noti_HiddenCommentKeyBoard, nil);
+
         RecommendPartnerViewController  *recommend = [[RecommendPartnerViewController alloc] initWithNibName:nil bundle:nil];
         [recommend setDelegate:self];
         [recommend setControlBtnType:kOnlyCloseButton];
@@ -162,7 +164,7 @@
 - (void)popViewfinished
 {
     hasInfoView = NO;
-    PostNotification(Noti_RefreshTopicTable, nil);
+    //PostNotification(Noti_RefreshTopicTable, nil);
     //[[Forum sharedInstance] addDelegateObject:self];
 }
 
