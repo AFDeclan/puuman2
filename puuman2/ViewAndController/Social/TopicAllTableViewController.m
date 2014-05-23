@@ -417,18 +417,8 @@
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-   
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-   }
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    
     if (self.tableView.contentSize.height - self.tableView.contentOffset.y < self.tableView.frame.size.height*2 ) {
         if (_voting) {
             [[Forum sharedInstance] getMoreVotingTopic:5 orderBy:_voteOrder newDirect:NO];

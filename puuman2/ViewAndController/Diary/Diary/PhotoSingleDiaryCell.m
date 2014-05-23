@@ -79,7 +79,7 @@
         [_imgView setCropSize:CGSizeMake(832, 832)];
         [_imgView loadImgWithPath:_photoPath];
     }else{
-    
+        [_imgView setImage:[UIImage imageNamed:@"pic_redownload.png"]];
     }
 
 }
