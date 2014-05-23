@@ -288,7 +288,6 @@
                     [meta setValue:@"生日" forKey:uMeta_whetherBirth];
                     [meta setValue:[birth babyName] forKey:uMeta_nickName];
                     [meta setValue:[DateFormatter stringFromDate:[birth birthDate]] forKey:uMeta_birthDate];
-                    
                     if ([birth babyType] == kGenderBoy)
                         [meta setValue:@"男宝宝" forKey:uMeta_gender];
                     else if([birth babyType] == kGenderGirl)

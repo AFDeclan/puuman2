@@ -10,6 +10,9 @@
 #import "CustomTextField.h"
 #import "BirthCalendar.h"
 #import "AFTextImgButton.h"
+#import "NewTextPhotoSelectedViewController.h"
+#import "UserInfo.h"
+#import "AFImageView.h"
 
 typedef enum{
 
@@ -18,7 +21,7 @@ typedef enum{
     kGenderNone
 } BabyType;
 @protocol LoginBirthViewDelegate;
-@interface LoginBirthRegisterView : UIView<UITextFieldDelegate,BirthCalendarDelegate>
+@interface LoginBirthRegisterView : UIView<UITextFieldDelegate,BirthCalendarDelegate,NewTextSelectPhotoDelegate,UserPortraitUploadDelegate>
 {
     CustomTextField *name_textfield;
     CustomTextField *age;
@@ -26,7 +29,7 @@ typedef enum{
     AFTextImgButton *girl;
     UIView *calendarView;
     NSDate *birthday;
-    UIImageView *portrait;
+    AFImageView *portraitView;
     BirthCalendar *_calendar;
     UIImageView *imgIcon;
     BabyType babyType;
