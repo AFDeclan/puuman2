@@ -603,6 +603,8 @@
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
+		54BC7B85192EE7EE00D033E8 /* TopicCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */; };
+		54BC7B8B192F1EC300D033E8 /* SinglePhotoTopicVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */; };
 		54BEB68E18E948E100AB3E27 /* PartnerDataOutGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB68D18E948E100AB3E27 /* PartnerDataOutGroupView.m */; };
 		54BEB69118E948FE00AB3E27 /* PartnerDataInGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69018E948FE00AB3E27 /* PartnerDataInGroupView.m */; };
 		54BEB69418E94E9800AB3E27 /* InviteGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69318E94E9800AB3E27 /* InviteGroupCell.m */; };
@@ -1584,6 +1586,10 @@
 		54BAD46918D15A73003822CC /* BabyBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBodyView.m; sourceTree = "<group>"; };
 		54BB09E618D9494C00F805DD /* SkipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkipViewController.h; sourceTree = "<group>"; };
 		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
+		54BC7B83192EE7EE00D033E8 /* TopicCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCommentCell.h; sourceTree = "<group>"; };
+		54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCommentCell.m; sourceTree = "<group>"; };
+		54BC7B89192F1EC300D033E8 /* SinglePhotoTopicVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePhotoTopicVIew.h; sourceTree = "<group>"; };
+		54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePhotoTopicVIew.m; sourceTree = "<group>"; };
 		54BEB68C18E948E100AB3E27 /* PartnerDataOutGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerDataOutGroupView.h; sourceTree = "<group>"; };
 		54BEB68D18E948E100AB3E27 /* PartnerDataOutGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerDataOutGroupView.m; sourceTree = "<group>"; };
 		54BEB68F18E948FE00AB3E27 /* PartnerDataInGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerDataInGroupView.h; sourceTree = "<group>"; };
@@ -2791,17 +2797,20 @@
 			children = (
 				54AE788018DFF87100AE558C /* TopicCell.h */,
 				54AE788118DFF87100AE558C /* TopicCell.m */,
+				54BC7B83192EE7EE00D033E8 /* TopicCommentCell.h */,
+				54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */,
 				54C2EA03192DF55B0011AA0C /* TopicCommentView.h */,
 				54C2EA04192DF55B0011AA0C /* TopicCommentView.m */,
 				54ADB1D218E1860200FCCC83 /* TextTopicCell.h */,
 				54ADB1D318E1860200FCCC83 /* TextTopicCell.m */,
 				54ADB1D518E1861700FCCC83 /* PhotoTopicCell.h */,
 				54ADB1D618E1861700FCCC83 /* PhotoTopicCell.m */,
+				54BC7B89192F1EC300D033E8 /* SinglePhotoTopicVIew.h */,
+				54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */,
 				54ADB1D818E1862A00FCCC83 /* AudioTopicCell.h */,
 				54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */,
 				1405E0CC18FE97B300781B81 /* AsyncImgView.h */,
 				1405E0CD18FE97B300781B81 /* AsyncImgView.m */,
-				54AFAA7C18DA896B0067B8C1 /* AllWordsPopViewController.h */,
 			);
 			name = TopicCell;
 			sourceTree = "<group>";
@@ -2825,6 +2834,7 @@
 		54AFAA7A18DA889C0067B8C1 /* popView */ = {
 			isa = PBXGroup;
 			children = (
+				54AFAA7C18DA896B0067B8C1 /* AllWordsPopViewController.h */,
 				54AFAA7D18DA896B0067B8C1 /* AllWordsPopViewController.m */,
 				54AFAA8218DA94600067B8C1 /* CreateTopicViewController.h */,
 				54AFAA8318DA94600067B8C1 /* CreateTopicViewController.m */,
@@ -4400,6 +4410,7 @@
 				54AE2BBA18E93FEB00D24F92 /* Member.m in Sources */,
 				5447C4B418D98F1700187BE6 /* PartnerDataView.m in Sources */,
 				54B753B318D3021E002411CF /* PuumanOutBookCell.m in Sources */,
+				54BC7B8B192F1EC300D033E8 /* SinglePhotoTopicVIew.m in Sources */,
 				54ADB1D418E1860200FCCC83 /* TextTopicCell.m in Sources */,
 				5403CC7318D03B7D004CAE22 /* WaitView.m in Sources */,
 				54AC210418E3FEA8001C1357 /* AllWareView.m in Sources */,
@@ -4461,6 +4472,7 @@
 				54AE2BB818E93FEB00D24F92 /* Friend.m in Sources */,
 				547F9B5118D162A600486337 /* BodyInfoTableViewCell.m in Sources */,
 				54012DFF18E3097200F11D97 /* PuumanPartnerDataCell.m in Sources */,
+				54BC7B85192EE7EE00D033E8 /* TopicCommentCell.m in Sources */,
 				54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */,
 				54AC211718E4130D001C1357 /* TypeButton.m in Sources */,
 				54CE112818C1BC6D00966396 /* ShopViewController.m in Sources */,

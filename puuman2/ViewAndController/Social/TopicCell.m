@@ -9,10 +9,9 @@
 #import "TopicCell.h"
 #import "ColorsAndFonts.h"
 #import "UserInfo.h"
-#import "AllWordsPopViewController.h"
-#import "MainTabBarController.h"
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
+#import "SinglePhotoTopicVIew.h"
 #import "UserInfo.h"
 #import "Comment.h"
 #import "BabyData.h"
@@ -31,7 +30,7 @@
     if (self) {
         // Initialization code
       
-       
+        commentNum = 0;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         headerView = [[UIView alloc] init];
         [self.contentView addSubview:headerView];
@@ -44,6 +43,7 @@
         [contentView setBackgroundColor:PMColor5];
         [footerView setBackgroundColor:PMColor5];
         self.layer.masksToBounds = YES;
+        [MyNotiCenter addObserver:self selector:@selector(showCommentView:) name:Noti_ShowCommentPopView object:nil];
     }
     return self;
 }
@@ -103,12 +103,7 @@
     comment = [[TopicCommentView alloc] initWithFrame:CGRectMake(0, 40, 608, 0)];
     [footerView addSubview:comment];
     
-//    scanMoreReplay = [[AFTextImgButton alloc] initWithFrame:CGRectMake(496, 40, 112, 48)];
-//    [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
-//    [scanMoreReplay setTitleLabelColor:PMColor3];
-//    [scanMoreReplay addTarget:self action:@selector(scanMore) forControlEvents:UIControlEventTouchUpInside];
-//    [scanMoreReplay setTitleFont:PMFont3];
-//    [footerView addSubview:scanMoreReplay];
+
     UIImageView *partLine_first  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 2)];
     [partLine_first setImage:[UIImage imageNamed:@"line2_topic.png"]];
     [footerView addSubview:partLine_first];
@@ -150,6 +145,7 @@
 
 - (void)buildWithReply:(Reply *)reply
 {
+    commentNum = [[reply comments] count];
     [comment setCommentWithReply:reply];
 
     
@@ -253,17 +249,7 @@
     // Configure the view for the selected state
 }
 
-- (void)scanMore
-{
- //   PostNotification(Noti_ReplyRemoveForumDelgate, nil);
-    AllWordsPopViewController *moreReplayVC  =[[ AllWordsPopViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:moreReplayVC.view];
-    [moreReplayVC setControlBtnType:kOnlyCloseButton];
-    [moreReplayVC setTitle:@"所有留言"];
-    [moreReplayVC setReplay:_reply];
-    [moreReplayVC setDelegate:self];
-    [moreReplayVC show];
-}
+
 
 //- (void)removeForumDelegate
 //{
@@ -272,9 +258,11 @@
 
 + (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type andUnfold:(BOOL)unfold
 {
-   
-    
+
     if (unfold) {
+        if ([reply.comments count] <= 5 && [reply.comments count] < reply.RCommentCnt){
+            [reply getMoreComments:5 newDirect:YES];
+        }
         TopicCommentView *commentView = [[TopicCommentView alloc] init];
         [commentView setCommentWithReply:reply];
         return [TopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type]+ViewHeight(commentView);
@@ -294,7 +282,14 @@
   
     switch (type) {
         case TopicType_Photo:
-             h += [PhotoTopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
+        {
+            if ([[reply photoUrls] count] > 1) {
+                h += [PhotoTopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
+            }else{
+                h += [SinglePhotoTopicVIew heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
+
+            }
+        }
             break;
         case TopicType_Text:
             h += [TextTopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
@@ -395,6 +390,43 @@
     [footerView setFrame:frameF];
 }
 
+//更多评论加载成功
+- (void)replyCommentsLoadedMore:(Reply *)reply
+{
+    if (_reply == reply) {
+        PostNotification(Noti_RefreshTopicTable, nil);
+    }
+}
 
 
+//评论上传成功
+- (void)replyCommentUploaded:(Reply *)reply
+{
+    
+    
+    if (_reply == reply) {
+        if ([_reply.comments count] <= 6 && commentNum <[[reply comments] count]) {
+            PostNotification(Noti_RefreshTopicTable, nil);
+
+        }
+    }
+}
+
+
+
+//更多评论加载失败 注意根据noMore判断是否是因为全部加载完
+- (void)replyCommentsLoadFailed:(Reply *)reply
+{
+
+}
+
+- (void)showCommentView:(NSNotification *)notification
+{
+    if ([notification class]) {
+        [[Forum sharedInstance] removeDelegateObject:self];
+    }else{
+        [[Forum sharedInstance] addDelegateObject:self];
+
+    }
+}
 @end

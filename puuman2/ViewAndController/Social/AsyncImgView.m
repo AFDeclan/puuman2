@@ -34,7 +34,7 @@ static NSOperationQueue * operationQueue;
 
 - (void)loadImgWithUrl:(NSString *)imgUrl
 {
-    if ([imgUrl isEqualToString:_url]) return;
+    if ([imgUrl isEqualToString:_url]) [self loadImgThread];
     _url = imgUrl;
     NSInvocationOperation *operation = [[NSInvocationOperation alloc]initWithTarget:self
                                                                            selector:@selector(loadImgThread)

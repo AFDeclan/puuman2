@@ -22,6 +22,7 @@
     UIView *emptyNotiView;
     UILabel *noti_empty;
     NSMutableDictionary *status;
+    NSInteger replayNum;
 }
 
 @property(nonatomic,assign)BOOL voting;

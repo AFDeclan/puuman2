@@ -11,15 +11,16 @@
 #import "AFTextImgButton.h"
 #import "Reply.h"
 #import "Forum.h"
-
-@interface TopicCommentView : UIView<ForumDelegate>
+#import "TopicCommentCell.h"
+@interface TopicCommentView : UIView<ForumDelegate,PopViewDelegate,UITextFieldDelegate>
 {
-    UITextField *textField;
+    UITextField *commentText;
     
     UITableView *commentsTable;
     ColorButton *createBtn;
     AFTextImgButton *scanMoreReplay;
-
+    TopicCommentCell*comments[5];
+    Reply *_reply;
 }
 - (void)setCommentWithReply:(Reply *)reply;
 @end

@@ -34,7 +34,7 @@
     UILabel *topicNumLabel;
     Member *_member;
     TopicCommentView *comment;
-    
+    NSInteger commentNum;
 }
 @property(nonatomic,assign)BOOL isMyTopic;
 @property(nonatomic,assign)NSInteger row;
