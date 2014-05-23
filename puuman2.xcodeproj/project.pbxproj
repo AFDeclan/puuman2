@@ -598,7 +598,6 @@
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
 		54BC7B85192EE7EE00D033E8 /* TopicCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */; };
-		54BC7B8B192F1EC300D033E8 /* SinglePhotoTopicVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */; };
 		54BEB68E18E948E100AB3E27 /* PartnerDataOutGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB68D18E948E100AB3E27 /* PartnerDataOutGroupView.m */; };
 		54BEB69118E948FE00AB3E27 /* PartnerDataInGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69018E948FE00AB3E27 /* PartnerDataInGroupView.m */; };
 		54BEB69418E94E9800AB3E27 /* InviteGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69318E94E9800AB3E27 /* InviteGroupCell.m */; };
@@ -738,6 +737,7 @@
 		88B5160C192F52EE006A79AB /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515EA192F52EE006A79AB /* UIImage+Scale.m */; };
 		88B5160D192F52EE006A79AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EC192F52EE006A79AB /* libMobClickLibrary.a */; };
 		88B5160E192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EF192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a */; };
+		88B51611192F558E006A79AB /* AFSelecedTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1777,6 +1777,8 @@
 		88B515EF192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
 		88B515F0192F52EE006A79AB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		88B515F1192F52EE006A79AB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		88B5160F192F558E006A79AB /* AFSelecedTextImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSelecedTextImgButton.h; sourceTree = "<group>"; };
+		88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSelecedTextImgButton.m; sourceTree = "<group>"; };
 		A163B769C9D646389F66C162 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -3616,6 +3618,8 @@
 		88B515B9192F52EE006A79AB /* AFUIEx */ = {
 			isa = PBXGroup;
 			children = (
+				88B5160F192F558E006A79AB /* AFSelecedTextImgButton.h */,
+				88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */,
 				88B515BA192F52EE006A79AB /* AFButton.h */,
 				88B515BB192F52EE006A79AB /* AFButton.m */,
 				88B515BC192F52EE006A79AB /* AFIconButton.h */,
@@ -4392,6 +4396,7 @@
 				54BAD45D18D14B8A003822CC /* BabyInfoContentView.m in Sources */,
 				88B515F4192F52EE006A79AB /* AFBaseRequest.m in Sources */,
 				54B4682318E5210900745F72 /* HospitalBigView.m in Sources */,
+				88B51611192F558E006A79AB /* AFSelecedTextImgButton.m in Sources */,
 				54ADB1B818E1203A00FCCC83 /* FigureHeaderCell.m in Sources */,
 				54AFBBC018D6938600861A69 /* BirthCalendar.m in Sources */,
 				541970E718D1A1C00058FE64 /* RulerView.m in Sources */,
