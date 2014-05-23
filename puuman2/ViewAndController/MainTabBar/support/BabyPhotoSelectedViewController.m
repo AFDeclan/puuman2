@@ -1,21 +1,21 @@
 //
-//  NewTextPhotoSelectedViewController.m
+//  BabyPhotoSelectedViewController.m
 //  puuman2
 //
-//  Created by Ra.（祁文龙） on 14-3-4.
+//  Created by AF_Bigwaves on 14-5-23.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "NewTextPhotoSelectedViewController.h"
+#import "BabyPhotoSelectedViewController.h"
 #import "UniverseConstant.h"
 #import "ColorsAndFonts.h"
 #import "MainTabBarController.h"
 
-@interface NewTextPhotoSelectedViewController ()
+@interface BabyPhotoSelectedViewController ()
 
 @end
 
-@implementation NewTextPhotoSelectedViewController
+@implementation BabyPhotoSelectedViewController
 @synthesize delegate = _delegate;
 @synthesize isMiddle = _isMiddle;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -23,8 +23,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-            _isMiddle = NO;
-        }
+        _isMiddle = NO;
+    }
     return self;
 }
 
@@ -33,7 +33,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     imagePickerShowed = NO;
-   
+    
 }
 
 
@@ -59,11 +59,11 @@
         if (_isMiddle) {
             [popover presentPopoverFromRect:CGRectMake(344, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
         }else{
-           [popover presentPopoverFromRect:CGRectMake(654, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
+            [popover presentPopoverFromRect:CGRectMake(654, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
         }
         
     }
-
+    
 }
 
 //横屏
@@ -106,7 +106,7 @@
     [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     popover = [[UIPopoverController alloc] initWithContentViewController:imagePickerController];
     [popover setDelegate:self];
-
+    
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [popover presentPopoverFromRect:CGRectMake(654, 100, 66, 96) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
     }else
@@ -115,15 +115,15 @@
     }
     [_content setAlpha:0];
     [bgView setAlpha:0];
-  
+    
     imagePickerShowed = YES;
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-   imagePickerShowed = NO;
+    imagePickerShowed = NO;
     [self hidden];
-
+    
     
     
     
@@ -134,13 +134,13 @@
 {
     if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) return;
     if (!imagePickerController) {
-         imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController = [[UIImagePickerController alloc] init];
     }
 	imagePickerController.delegate = self;
 	imagePickerController.allowsEditing = YES;
     [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
 	[self presentModalViewController:imagePickerController animated:YES];
-  
+    
 }
 
 

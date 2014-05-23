@@ -10,7 +10,7 @@
 #import "AFImageView.h"
 #import "BasicInfoView.h"
 #import "Reply.h"
-#import "AFSelecedTextImgButton.h"
+#import "AFTextImgButton.h"
 #import "ChatInputViewController.h"
 #import "Forum.h"
 #import "Topic.h"

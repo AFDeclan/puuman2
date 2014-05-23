@@ -10,6 +10,8 @@
 #import "ColorsAndFonts.h"
 #import "UserInfo.h"
 #import "BabyData.h"
+#import "TaskCell.h"
+#import "UIImage+CroppedImage.h"
 #import "MainTabBarController.h"
 
 #define _NAME_MAX_LENGTH_ 30
@@ -50,11 +52,13 @@
     [title setBackgroundColor:[UIColor clearColor]];
     [self addSubview:title];
     
-    portrait=[[UIImageView alloc] initWithFrame:CGRectMake(282, 64, 140, 140) ];
-    [portrait setImage:[UIImage imageNamed:@"pic_born_login.png"]];
-    [portrait setBackgroundColor:[UIColor clearColor]];
-
-    [self addSubview:portrait];
+    portraitView=[[AFImageView alloc] initWithFrame:CGRectMake(282, 64, 140, 140)];
+    [portraitView setImage:[UIImage imageNamed:@"pic_born_login.png"]];
+    portraitView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[ UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapPortrait)];
+    [portraitView addGestureRecognizer:tap];
+    [portraitView setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:portraitView];
     
     
     name_textfield = [[CustomTextField alloc] initWithFrame:CGRectMake(224, 248,256, 48)];
@@ -107,6 +111,33 @@
     }else{
         babyType = kGenderNone;
     }
+}
+-(void)tapPortrait{
+  
+    NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
+       [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
+        [chooseView setDelegate:self];
+        [chooseView setIsMiddle:YES];
+        [chooseView setStyle:ConfirmError];
+        [chooseView show];
+
+
+}
+-(void)selectedPhoto:(UIImage *)img{
+
+    [[UserInfo sharedUserInfo] uploadPortrait:img];
+     
+
+}
+- (void)portraitUploadFinish:(BOOL)suc
+{
+    if (suc) {
+        [[TaskCell sharedTaskCell] reloadPortrait];
+        [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+        portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
+
+    }
+    
 }
 -(void)setHorizontalFrame
 {

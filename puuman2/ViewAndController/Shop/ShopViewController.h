@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFSelecedTextImgButton.h"
+#import "AFTextImgButton.h"
 #import "ColorButton.h"
 #import "SearchTextField.h"
 #import "ShopContentView.h"
@@ -16,8 +16,8 @@
 {
     UIImageView *bg_topImageView;
     UIImageView *bg_rightImageView;
-    AFSelecedTextImgButton *rectWareBtn;
-    AFSelecedTextImgButton *allWareBtn;
+    AFTextImgButton *rectWareBtn;
+    AFTextImgButton *allWareBtn;
     ColorButton *searchBtn;
     SearchTextField *searchTextField;
     UIView *searchView;

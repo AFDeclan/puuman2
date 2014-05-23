@@ -54,10 +54,10 @@
         }
         if ([UserInfo sharedUserInfo].identity == Father) {
             [bg setImage:[UIImage imageNamed:@"pic3_equip_baby.png"]];
-            [propWare1 setFrame:CGRectMake(16, 56, 80, 108)];
+            [propWare1 setFrame:CGRectMake(40, 56, 80, 108)];
             [propWare2 setFrame:CGRectMake(16, 224, 80, 108)];
-            [propWare3 setFrame:CGRectMake(380, 52, 80, 108)];
-            [propWare4 setFrame:CGRectMake(452, 136, 80, 108)];
+            [propWare3 setFrame:CGRectMake(340, 10, 80, 108)];
+            [propWare4 setFrame:CGRectMake(452, 90, 80, 108)];
             [propWare5 setFrame:CGRectMake(452, 224, 80, 108)];
             [propWare1 setParentMenu:10 andChildMenu:1];
             [propWare2 setParentMenu:10 andChildMenu:3];

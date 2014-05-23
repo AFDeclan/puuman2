@@ -11,7 +11,7 @@
 #import "AFTextImgButton.h"
 #import "AFImageView.h"
 #import "ColorButton.h"
-#import "AFSelecedTextImgButton.h"
+#import "AFTextImgButton.h"
 #import "PuumanShopViewController.h"
 
 @protocol WebViewDelegate;
@@ -20,8 +20,8 @@
     UIButton *_closeBtn;
     AFTextImgButton *otherShopButton;
     UIImageView *icon_shoptri;
-    AFSelecedTextImgButton *backButton;
-    AFSelecedTextImgButton *forwardButton;
+    AFTextImgButton *backButton;
+    AFTextImgButton *forwardButton;
     AFImageView *shopImg;
     AFTextImgButton *reloadButton;
     ColorButton *shareBtn;

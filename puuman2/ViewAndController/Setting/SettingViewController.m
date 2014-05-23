@@ -71,7 +71,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     [logOut addTarget:self action:@selector(logOutBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:logOut];
     
-    versionLabel = [[UILabel  alloc] initWithFrame:CGRectMake(0, 608, 304, 30)];
+    versionLabel = [[UILabel  alloc] initWithFrame:CGRectMake(0, 658, 304, 40)];
     [versionLabel setTextColor:PMColor7];
     [versionLabel setFont:PMFont3];
     [versionLabel setBackgroundColor:[UIColor clearColor]];
@@ -81,8 +81,10 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     [versionLabel setText:[NSString stringWithFormat:@"当前版本:%@",currentVersion]];
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
+        
     }else{
         [self setHorizontalFrame];
+       
     }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back)];
@@ -110,6 +112,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
 {
     [super setVerticalFrame];
     [_content setFrame:CGRectMake(0, 0, 320, 1024)];
+    versionLabel.frame = CGRectMake(0, 914, 304, 40);
     SetViewLeftUp(backBtn, 0, 952);
    // SetViewLeftUp(updateBtn, 208, 938);
     SetViewLeftUp(logOut, 208, 952);
@@ -123,6 +126,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     SetViewLeftUp(backBtn, 0, 696);
    // SetViewLeftUp(updateBtn, 208, 682);
     SetViewLeftUp(logOut, 208, 696);
+     versionLabel.frame = CGRectMake(0, 658, 304, 40);
     
 }
 - (void)didReceiveMemoryWarning
