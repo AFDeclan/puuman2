@@ -21,6 +21,7 @@
     UILabel *titleLabel;
     NSString *_photoPath;
     UIButton *reloadBtn;
+    NSString *filePath;
 }
 @property (assign,nonatomic)id <TextDiaryDelegate> delegate;
 

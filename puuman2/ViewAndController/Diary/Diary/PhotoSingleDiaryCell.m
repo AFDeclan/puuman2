@@ -24,6 +24,7 @@
         [_imgView setBackgroundColor:[UIColor clearColor]];
         _imgView.userInteractionEnabled = YES;
         [_content addSubview:_imgView];
+
         
         UITapGestureRecognizer *tapPhoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto)];
         [_imgView addGestureRecognizer:tapPhoto];

@@ -71,11 +71,12 @@
         [spreadBtn addTarget:self action:@selector(spread) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:spreadBtn];
         reloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [reloadBtn setFrame:CGRectMake(16, 8, ContentWidth, 80)];
+        [reloadBtn setFrame:CGRectMake(16, 8, ContentWidth-128-32, 80)];
         [reloadBtn setBackgroundColor:[UIColor clearColor]];
         [_content addSubview:reloadBtn];
         [reloadBtn setTitle:@"文字记录下载失败，点击重新下载" forState:UIControlStateNormal];
         [reloadBtn setTitleColor:PMColor2 forState:UIControlStateNormal];
+        [reloadBtn addTarget:self action:@selector(reloadFile) forControlEvents:UIControlEventTouchUpInside];
         [reloadBtn setAlpha:0];
     }
     return self;
@@ -113,10 +114,20 @@
         [_contentLabel removeFromSuperview];
     }
     
-     xd
-    NSString *filePath = [self.diary.filePaths1 objectAtIndex:0];
+//    if ([[self.diary urls1] count]>0 && !filePath)
+//    {
+//        
+//        if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
+//        {
+//            NSError *error;
+//            [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
+//        }
+//    }
+
+    filePath = [self.diary.filePaths1 objectAtIndex:0];
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
     {
+        
         _contentLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(16, 8, ContentWidth, 80)];
         _contentLabel.numberOfLines = 0;
         _contentLabel.font = PMFont2;
@@ -127,7 +138,7 @@
         [_content addSubview:_contentLabel];
         NSString *text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
         if (text == nil) text = @"";
-        
+    
         dh = [_contentLabel setText:text abbreviated:abbr];
         frame.size.height = dh;
         [_contentLabel setFrame:frame];
@@ -143,8 +154,10 @@
         }
         [reloadBtn setAlpha:0];
     }else{
-        [reloadBtn setAlpha:1];
         
+        SetViewLeftUp(reloadBtn, 16, 24 + ViewHeight(titleLabel) + ViewY(titleLabel));
+        [reloadBtn setAlpha:1];
+         [line setAlpha:0];
     }
     
     if ([self.diary.type2Str isEqualToString:DiaryTypeStrPhoto])
@@ -230,6 +243,14 @@
 
 
 }
+
+- (void)reloadFile
+{
+    [self.diary redownloadContent1AtIndex:0 withRecall:^(BOOL finished){
+        [self buildCellViewWithIndexRow:indexRow abbreviated:self.abbr];
+    }];
+}
+
 + (CGFloat)heightForDiary:(Diary*)diary abbreviated:(BOOL)abbr
 {
     CGFloat height = 0;
