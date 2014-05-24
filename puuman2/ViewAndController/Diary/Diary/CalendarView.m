@@ -10,7 +10,7 @@
 #import "UniverseConstant.h"
 #import "DiaryModel.h"
 #import "DiaryViewController.h"
-
+#import "Diary.h"
 static const float dayCellWidth = 28;
 static const float dayCellHeight = 32;
 static const float startDayCellOfX = 18;
@@ -78,8 +78,8 @@ static NSString * weekDayStr[7] = {@"日", @"一", @"二", @"三", @"四", @"五
         
       
         
-        if ([[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]>0) {
-            NSDate *date = [[[DiaryModel sharedDiaryModel] diaryInfoAtIndex:[[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]-1 filtered:DIARY_FILTER_ALL]valueForKey:kDateName];
+        if ([[[DiaryModel sharedDiaryModel] diaries] count]>0) {
+            NSDate *date = [[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:[[[DiaryModel sharedDiaryModel] diaries] count]-1] DCreateTime];
             NSCalendar *calendar = [NSCalendar currentCalendar];
             NSInteger unit = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
             NSDateComponents *comps_available = [calendar components:unit fromDate:date];
@@ -208,7 +208,7 @@ static NSString * weekDayStr[7] = {@"日", @"一", @"二", @"三", @"四", @"五
     NSDate *newDate = [[self startDateInMonthOfDate:showDate] dateByAddingTimeInterval:-24*60*60];
     [self setDate:newDate];
     
-    NSDate *date = [[[DiaryModel sharedDiaryModel] diaryInfoAtIndex:[[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]-1 filtered:DIARY_FILTER_ALL]valueForKey:kDateName];
+      NSDate *date = [[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:[[[DiaryModel sharedDiaryModel] diaries] count]-1] DCreateTime];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSInteger unit = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
     NSDateComponents *comps_available = [calendar components:unit fromDate:date];

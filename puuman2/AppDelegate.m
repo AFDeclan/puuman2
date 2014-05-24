@@ -17,6 +17,7 @@
 #import "CustomAlertViewController.h"
 #import "Models.h"
 #import "NSString+VersionCompare.h"
+#import "EnterTutorialView.h"
 
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
@@ -53,7 +54,12 @@
     [_rootTabBarC addChildViewController:babyInfoVC];
     [_rootTabBarC addChildViewController:socialVC];
     [_rootTabBarC addChildViewController:shopVC];
-    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+    if (![userDefaults boolForKey:@"tutorialShowed"]){
+        EnterTutorialView *enterTutorialView = [[EnterTutorialView alloc] init];
+        [_rootTabBarC.view addSubview:enterTutorialView];
+    }
     self.window.rootViewController = _rootTabBarC;
     
 }

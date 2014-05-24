@@ -10,6 +10,8 @@
 #import "ColorsAndFonts.h"
 #import "UserInfo.h"
 #import "UniverseConstant.h"
+#import "CustomAlertViewController.h"
+#import "BabyData.h"
 
 @implementation LoginStartView
 
@@ -140,6 +142,9 @@
 
 - (void)goBirthView:(UIButton *)sender
 {
+    if([[UserInfo sharedUserInfo] logined]){
+    [CustomAlertViewController showAlertWithTitle:@" 亲 您的宝贝降落人间了么" confirmRightHandler:^{
+
      [MobClick event:umeng_event_click label:@"Birth_LoginStartView"];
     stateSelf =State_birth;
     [goBirthViewButton selected];
@@ -156,29 +161,54 @@
             [_delegate selectLoginView:kLoginBirthRegisterView];
         }
     }
+}];
+    }  else{
+    
+        
+        [MobClick event:umeng_event_click label:@"Birth_LoginStartView"];
+        stateSelf =State_birth;
+        [goBirthViewButton selected];
+        [goPregnancyViewButton unSelected];
+        if ([[UserInfo sharedUserInfo] logined])
+        {
+            [_delegate selectLoginView:kLoginBirthRegisterView];
+            
+        }else{
+            if (_relation == Relate_none) {
+                
+            }else
+            {
+                [_delegate selectLoginView:kLoginBirthRegisterView];
+            }
+        }
+
+       
+    }
+    
+    
+    
    
    
 }
 - (void)goPregnancyView:(UIButton *)sender
 {
-    
-    [MobClick event:umeng_event_click label:@"Pregnancy_LoginStartView"];
-    [goPregnancyViewButton selected];
-    [goBirthViewButton unSelected];
-    stateSelf =  State_pre;
-    if ([[UserInfo sharedUserInfo] logined])
-    {
-       [_delegate selectLoginView:kLoginPregnancyRegisterView];
-        
-    }else{
-        if (_relation == Relate_none) {
-            
-        }else
+        [MobClick event:umeng_event_click label:@"Pregnancy_LoginStartView"];
+        [goPregnancyViewButton selected];
+        [goBirthViewButton unSelected];
+        stateSelf =  State_pre;
+        if ([[UserInfo sharedUserInfo] logined])
         {
             [_delegate selectLoginView:kLoginPregnancyRegisterView];
+            
+        }else{
+            if (_relation == Relate_none) {
+                
+            }else
+            {
+                [_delegate selectLoginView:kLoginPregnancyRegisterView];
+            }
         }
-    }
-
+    
 }
 - (void)goLoginloadView:(UIButton *)sender
 {

@@ -38,8 +38,8 @@
 {
     [_shareBtn setAlpha:0];
     float height = 0;
-    titleLabel.text = [self.diaryInfo valueForKey:kTitleName];
-    if ([[self.diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+    titleLabel.text = self.diary.title;
+    if ([self.diary.title isEqualToString:@""]) {
         [titleLabel setAlpha:0];
     }else{
         height += 40;
@@ -52,10 +52,27 @@
     //audio player init
 
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
+    NSString *filePath = [self.diary.filePaths1 objectAtIndex:0];
+    NSError *playerError;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:&playerError];
+    if (player)
+    {
+        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+         [playBtn setAlpha:1];
+    }else{
+        [playBtn setAlpha:0];
+
+    }
+
     
-    NSString *filePath = [self.diaryInfo valueForKey:kFilePathName];
-    [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
-    
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+//    {
+//        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+//        [playBtn setAlpha:1];
+//    }else{
+//      [playBtn setAlpha:0];
+//    }
+   
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
@@ -103,10 +120,10 @@
     //去除临时控件，准备重用
 }
 
-+ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr 
++ (CGFloat)heightForDiary:(Diary*)diary abbreviated:(BOOL)abbr
 {
     CGFloat height = 120;
-    if (![[diaryInfo valueForKey:kTitleName] isEqualToString:@""])
+    if (![diary.title isEqualToString:@""])
         height += 40;
     //计算高度
     

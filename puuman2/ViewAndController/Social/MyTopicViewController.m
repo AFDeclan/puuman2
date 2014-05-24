@@ -8,9 +8,9 @@
 
 #import "MyTopicViewController.h"
 #import "VotingCell.h"
-#import "TopicCell.h"
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
+#import "SinglePhotoTopicVIew.h"
 
 @interface MyTopicViewController ()
 
@@ -22,6 +22,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        status = [[NSMutableDictionary alloc] init];
+        [MyNotiCenter addObserver:self selector:@selector(refreshTable) name:Noti_RefreshTopicTable object:nil];
+
     }
     return self;
 }
@@ -29,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    replayNum= 0;
     [[Forum sharedInstance] addDelegateObject:self];
     emptyNotiView = [[UIView alloc] initWithFrame:CGRectMake(192, 216, 224, 80)];
     [self.view addSubview:emptyNotiView];
@@ -50,22 +54,22 @@
     [self.tableView setShowsVerticalScrollIndicator:NO];
     
 //	// Do any additional setup after loading the view.
-    if (!_refreshFooter) {
-        _refreshFooter = [[MJRefreshFooterView alloc] init];
-        _refreshFooter.scrollView = self.tableView;
-        [self.tableView addSubview:_refreshFooter];
-        [_refreshFooter setDelegate:self];
-        _refreshFooter.alpha = 1;
-        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
-        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-            [[Forum sharedInstance] getMoreMyReplies:5 newDirect:NO];
-            if (![[Forum sharedInstance] noMore])
-            {
-                [blockRefreshFooter endRefreshing];
-            }
-        };
-      
-    }
+//    if (!_refreshFooter) {
+//        _refreshFooter = [[MJRefreshFooterView alloc] init];
+//        _refreshFooter.scrollView = self.tableView;
+//        [self.tableView addSubview:_refreshFooter];
+//        [_refreshFooter setDelegate:self];
+//        _refreshFooter.alpha = 1;
+//        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
+//        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+//            [[Forum sharedInstance] getMoreMyReplies:5 newDirect:NO];
+//            if (![[Forum sharedInstance] noMore])
+//            {
+//                [blockRefreshFooter endRefreshing];
+//            }
+//        };
+//      
+//    }
     
     if (!_refreshHeader) {
         _refreshHeader = [[MJRefreshHeaderView alloc] init];
@@ -79,8 +83,11 @@
         };
         
     }
+    
+    replayNum = [[[Forum sharedInstance] myReplies] count];
+
     if ([[[Forum sharedInstance] myReplies] count] == 0) {
-        [_refreshFooter beginRefreshing];
+        [_refreshHeader beginRefreshing];
     }
     
 }
@@ -143,11 +150,20 @@
         
     }else if ([replay.photoUrls count] !=0)
     {
-        identifier = @"MyPhotoTopicCell";
-        cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (!cell) {
-            cell  =[[PhotoTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        if ([replay.photoUrls count] == 1) {
+            identifier = @"MySinglePhotoTopicCell";
+            cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (!cell) {
+                cell  =[[SinglePhotoTopicVIew alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+        }else{
+            identifier = @"MyPhotoTopicCell";
+            cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (!cell) {
+                cell  =[[PhotoTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
         }
+       
     }else{
         if (!cell) {
             cell = [[TopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -156,48 +172,82 @@
     [cell setRow:[indexPath row]];
     [cell setIsMyTopic:YES];
     [cell buildWithReply:replay];
+    [cell setUnfold:[[status valueForKey:[NSString stringWithFormat:@"%d",[indexPath row]]] boolValue]];
+    [cell setDelegate:self];
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
 
 }
 
+- (void)changedStausWithUnfold:(BOOL)unfold andIndex:(NSInteger)index
+{
+    [status setValue:[NSNumber numberWithBool:unfold] forKeyPath:[NSString stringWithFormat:@"%d",index]];
+    [self.tableView reloadData];
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Reply *replay = [[[Forum sharedInstance] myReplies] objectAtIndex:[indexPath row]];
-   return  [TopicCell heightForReply:replay andIsMyTopic:YES andTopicType:[[replay photoUrls] count]>0?TopicType_Photo:TopicType_Text];
+   return  [TopicCell heightForReply:replay andIsMyTopic:YES andTopicType:[[replay photoUrls] count]>0?TopicType_Photo:TopicType_Text andUnfold:[[status valueForKey:[NSString stringWithFormat:@"%d",[indexPath row]]] boolValue]];
   
 }
 
 
 - (void)myRepliesLoadedMore
 {
-    if (_refreshFooter.isRefreshing)
-        [_refreshFooter endRefreshing];
+    //if (_refreshFooter.isRefreshing)
+      //  [_refreshFooter endRefreshing];
     if (_refreshHeader.isRefreshing)
+    {
         [_refreshHeader endRefreshing];
-    [self.tableView reloadData];
+        [status removeAllObjects];
+        [self.tableView reloadData];
+    }else{
+        if (replayNum <[[[Forum sharedInstance] myReplies] count]) {
+            [self.tableView reloadData];
+        }
+
+    }
+    
+    replayNum = [[[Forum sharedInstance] myReplies] count];
 }
 
 - (void)myRepliesLoadFailed
 {
-    if (_refreshFooter.isRefreshing)
-        [_refreshFooter endRefreshing];
+    //if (_refreshFooter.isRefreshing)
+      //  [_refreshFooter endRefreshing];
     if (_refreshHeader.isRefreshing)
         [_refreshHeader endRefreshing];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
 }
 
 - (void)dealloc
 {
-    [_refreshFooter setDelegate:nil];
-    [_refreshFooter removeFromSuperview];
-    _refreshFooter = nil;
+    //[_refreshFooter setDelegate:nil];
+   // [_refreshFooter removeFromSuperview];
+    //_refreshFooter = nil;
     [_refreshHeader setDelegate:nil];
     [_refreshHeader removeFromSuperview];
     _refreshHeader = nil;
     [self.tableView setDelegate:nil];
     [self.tableView setDataSource:nil];
+}
+
+- (void)refreshTable
+{
+    [self.tableView reloadData];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (self.tableView.contentSize.height - self.tableView.contentOffset.y < self.tableView.frame.size.height*2 ) {
+        if (![[Forum sharedInstance] noMore]) {
+            [[Forum sharedInstance] getMoreMyReplies:5 newDirect:NO];
+        }
+        
+    }
 }
 
 @end

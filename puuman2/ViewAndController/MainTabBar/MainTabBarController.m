@@ -18,6 +18,8 @@
 #import "CustomNotiViewController.h"
 #import "MBProgressHUD.h"
 #import "ShopModel.h"
+#import "EnterTutorialView.h"
+
 
 @interface MainTabBarController ()
 
@@ -67,22 +69,53 @@ static MBProgressHUD *hud;
     [self initWithTabBar];
     _isReply = YES;
     userInfo = [UserInfo sharedUserInfo];
-   
+
+ 
     
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-     [self initautoImportView];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (![userDefaults boolForKey:@"tutorialShowed"]){
+        
+        [userDefaults setBool:YES forKey:@"tutorialShowed"];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startApp) name:Noti_TutorialFinshed object:nil];
+     
+        
+    }else{
+        
+        [self initautoImportView];
+        
+        if (![userInfo logined]) {
+            if (![userInfo loginFromUserDefault])
+            {
+                [self showLoginView];
+            }
+            
+        }
+
+    }
+
+    
+}
+
+- (void)startApp
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:Noti_TutorialFinshed object:nil];
+    [self initautoImportView];
+    
     if (![userInfo logined]) {
         if (![userInfo loginFromUserDefault])
         {
             [self showLoginView];
         }
-
+        
     }
-  
+    
 }
+
+
 
 - (void)initWithTabBar
 {

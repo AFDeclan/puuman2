@@ -25,7 +25,7 @@
 }
 - (void)initialization
 {
-    diaryArray = [[DiaryModel sharedDiaryModel] diaryInfoRelateArraywithFilter:DIARY_FILTER_ALL];
+    diaryArray = [[DiaryModel sharedDiaryModel] diaryInfoRelateArray];
   
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, 208, 16)];
     [titleLabel setFont:PMFont2];
@@ -83,8 +83,7 @@
         {
             cell = [[[NSBundle mainBundle] loadNibNamed:diaryCellIdentifier owner:self options:nil] lastObject];
         }
-        
-        [cell setDiaryInfo:[diaryArray objectAtIndex:[indexPath row]]];
+        [cell setDiary:[diaryArray objectAtIndex:[indexPath row]]];
         [cell buildCellViewWithIndexRow:indexPath.row];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;

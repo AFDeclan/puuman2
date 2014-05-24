@@ -44,8 +44,8 @@
 {
     [_shareBtn setAlpha:1];
     float height = 0;
-    titleLabel.text = [self.diaryInfo valueForKey:kTitleName];
-    if ([[self.diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+    titleLabel.text = self.diary.title;
+    if ([self.diary.title isEqualToString:@""]) {
         [titleLabel setAlpha:0];
     }else{
         height += 40;
@@ -75,12 +75,9 @@
 {
     if (_photoPaths) return;
     [super loadInfo];
-    NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
-    _photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+    _photoPaths = self.diary.filePaths1;
     [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
-    if ([_photoPaths count] >1) {
-        [_showColumnView reloadData];
-    }
+    [_showColumnView reloadData];
 
 }
 
@@ -98,7 +95,7 @@
 {
     float x = _scrollView.contentOffset.x;
     int index =x/416;
-    [self showPhotoAtIndex:index+1];
+    [self showPhotoAtIndex:index];
 }
 
 - (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
@@ -116,7 +113,7 @@
     if (_photoPaths) {
         return [_photoPaths count]+2;
     } else {
-        return 4;
+        return 2;
     }
 }
 
@@ -135,7 +132,7 @@
             [[[_showColumnView cellForIndex:selectedIndex+1] viewWithTag:12] setAlpha:0];
         }
         if (selectedIndex == [_photoPaths count]) {
-             [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0];
+            [[[_showColumnView cellForIndex:selectedIndex] viewWithTag:12] setAlpha:0];
         }
         
     }
@@ -185,10 +182,15 @@
         DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
         [photoView reset];
         [photoView setImage:photo];
-        if (_photoPaths) {
+        if ([UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index-1]]) {
             [photoView setCropSize:CGSizeMake(384, 384)];
             [photoView loadThumbImgWithPath:[_photoPaths objectAtIndex:index-1]];
+
+        }else{
+            [photoView setImage:photo];
         }
+    
+        
         UIImageView *mask = (UIImageView *)[cell viewWithTag:12];
         [mask setBackgroundColor:[UIColor whiteColor]];
 
@@ -205,7 +207,7 @@
 
 - (void)showPhotoAtIndex:(NSInteger)index
 {
-    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index-1 andTitle:titleLabel.text];
+    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index andTitle:titleLabel.text];
 }
 
 - (void)share:(id)sender
@@ -221,7 +223,7 @@
             img = [img addImage:photo];
         }
     }
-    NSString *title = [self.diaryInfo valueForKey:kTitleName];
+    NSString *title = self.diary.title;
     [ShareSelectedViewController shareText:text title:title image:img];
 }
 
@@ -231,11 +233,11 @@
     _photoPaths = nil;
 }
 
-+ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
++ (CGFloat)heightForDiary:(Diary*)diary abbreviated:(BOOL)abbr;
 {
     
     CGFloat height = 216;
-    if (![[diaryInfo valueForKey:kTitleName] isEqualToString:@""])
+    if (![diary.title isEqualToString:@""])
         height += 40;
     //计算高度
     return height;

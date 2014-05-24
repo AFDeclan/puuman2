@@ -13,6 +13,7 @@
 #import "BabyData.h"
 #import "DiaryModel.h"
 #import "DiaryViewController.h"
+#import "Diary.h"
 
 static const float dayCellWidth = 28;
 static const float dayCellHeight = 32;
@@ -101,7 +102,7 @@ static const float subDistanceOfY = 4;
     [_preBtn setAlpha:1];
     [_nextBtn setAlpha:0];
     NSArray *ages = [[NSDate date] ageFromDate:[BabyData sharedBabyData].babyBirth];
-      NSDate *date = [[[DiaryModel sharedDiaryModel] diaryInfoAtIndex:[[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]-1 filtered:DIARY_FILTER_ALL]valueForKey:kDateName];
+      NSDate *date = [[[[DiaryModel sharedDiaryModel] diaries ] objectAtIndex:[[[DiaryModel sharedDiaryModel] diaries] count]-1] DCreateTime];
     if ([ages count] == 3) {
         NSDateComponents *comp_nowMonth = [[NSDateComponents alloc] init];
         [comp_nowMonth setDay:[[ages objectAtIndex:2] intValue]*(-1)+1];
@@ -174,7 +175,8 @@ static const float subDistanceOfY = 4;
     num = 0;
     next = NO;
     [_nextBtn setAlpha:1];
-    NSDate *date = [[[DiaryModel sharedDiaryModel] diaryInfoAtIndex:[[DiaryModel sharedDiaryModel] diaryNumFiltered:DIARY_FILTER_ALL]-1 filtered:DIARY_FILTER_ALL]valueForKey:kDateName];
+    NSDate *date = [[[[DiaryModel sharedDiaryModel] diaries ] objectAtIndex:[[[DiaryModel sharedDiaryModel] diaries] count]-1] DCreateTime];
+
     NSArray *availiavbleAge = [date ageFromDate:[BabyData sharedBabyData].babyBirth];
     if ([availiavbleAge count] == 3) {
         if (month <= [[availiavbleAge objectAtIndex:0] integerValue]*12 + [[availiavbleAge objectAtIndex:1] integerValue]) {

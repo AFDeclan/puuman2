@@ -49,7 +49,7 @@
             imagePickerController = [[UIImagePickerController alloc] init];
         }
         imagePickerController.delegate = self;
-        imagePickerController.allowsEditing = NO;
+        imagePickerController.allowsEditing = YES;
         [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         popover = [[UIPopoverController alloc] initWithContentViewController:imagePickerController];
         [popover setDelegate:self];
@@ -77,7 +77,7 @@
             imagePickerController = [[UIImagePickerController alloc] init];
         }
         imagePickerController.delegate = self;
-        imagePickerController.allowsEditing = NO;
+        imagePickerController.allowsEditing = YES;
         [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         popover = [[UIPopoverController alloc] initWithContentViewController:imagePickerController];
         [popover setDelegate:self];
@@ -102,7 +102,7 @@
         imagePickerController = [[UIImagePickerController alloc] init];
     }
     imagePickerController.delegate = self;
-	imagePickerController.allowsEditing = NO;
+	imagePickerController.allowsEditing =YES;
     [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     popover = [[UIPopoverController alloc] initWithContentViewController:imagePickerController];
     [popover setDelegate:self];
@@ -121,8 +121,13 @@
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    imagePickerShowed = NO;
+   imagePickerShowed = NO;
     [self hidden];
+
+    
+    
+    
+    
 }
 
 - (void)takePicBtnPressed
@@ -138,6 +143,7 @@
   
 }
 
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
 	
@@ -146,11 +152,15 @@
     [_delegate selectedPhoto:photo];
     if (imagePickerShowed) {
         [popover dismissPopoverAnimated:NO];
+        
+        
+        
     }else{
         [picker dismissModalViewControllerAnimated:YES];
     }
     [self hidden];
 }
+
 
 - (void)hidden
 {

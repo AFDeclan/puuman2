@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        commentNum =0;
         [self initWithContent];
     }
     return self;
@@ -133,7 +134,10 @@
 //评论上传成功
 - (void)replyCommentUploaded:(Reply *)reply
 {
-   
+    if ([reply.comments count] <= 6 && commentNum <[[reply comments] count]) {
+        PostNotification(Noti_RefreshTopicTable, nil);
+        
+    }
     [talkTextField setText:@""];
     [createTalkBtn setEnabled:NO];
     [createTalkBtn setAlpha:0.5];
@@ -154,7 +158,7 @@
         [_refreshFooter endRefreshing];
     if (_refreshHeader.isRefreshing)
         [_refreshHeader endRefreshing];
-   
+
     [talksTable reloadData];
 }
 
@@ -172,10 +176,10 @@
 - (void)setReplay:(Reply *)replay
 {
     _replay =replay;
-    
+    commentNum = [[replay comments] count];
     if (replay.TID == [[Forum sharedInstance] onTopic].TID) {
         [talkTextField setAlpha:1];
-        [createTalkBtn setAlpha:1];
+        [createTalkBtn setAlpha:0.5];
         [talksTable setContentSize:CGSizeMake(528, 436)];
         [talksTable setFrame:CGRectMake(48, 168, 528, 436)];
     }else{
@@ -247,4 +251,6 @@
     [self replayed];
     return YES;
 }
+
+
 @end

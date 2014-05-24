@@ -22,6 +22,7 @@
     ColorButton *createTalkBtn;
     MJRefreshFooterView *_refreshFooter;
     MJRefreshHeaderView *_refreshHeader;
+   NSInteger commentNum;
 }
 
 @property(retain,nonatomic)Reply *replay;

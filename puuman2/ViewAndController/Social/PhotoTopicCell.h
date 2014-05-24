@@ -9,9 +9,12 @@
 #import "TopicCell.h"
 #import "UIColumnView.h"
 
-@interface PhotoTopicCell : TopicCell<UIColumnViewDataSource, UIColumnViewDelegate>
+@interface PhotoTopicCell : TopicCell<UIColumnViewDataSource, UIColumnViewDelegate,UIScrollViewDelegate>
 {
     NSArray *_photoPaths;
     UIColumnView *_showColumnView;
+    int selectedIndex;
+    UILabel *titleLabel;
+    UIScrollView *_scrollView;
 }
 @end

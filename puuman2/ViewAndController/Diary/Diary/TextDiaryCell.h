@@ -8,6 +8,7 @@
 
 #import "DiaryCell.h"
 #import "TextLayoutLabel.h"
+#import "Diary.h"
 @protocol TextDiaryDelegate;
 @interface TextDiaryCell : DiaryCell
 {

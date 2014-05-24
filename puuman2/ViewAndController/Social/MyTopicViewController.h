@@ -10,13 +10,17 @@
 #import "MJRefreshFooterView.h"
 #import "MJRefreshHeaderView.h"
 #import "Forum.h"
+#import "TopicCell.h"
 
-@interface MyTopicViewController : SortTableViewController<ForumDelegate,MJRefreshBaseViewDelegate>
+@interface MyTopicViewController : SortTableViewController<ForumDelegate,MJRefreshBaseViewDelegate,TopicCellDelegate>
 {
-    MJRefreshFooterView *_refreshFooter;
+    //MJRefreshFooterView *_refreshFooter;
     MJRefreshHeaderView *_refreshHeader;
     UIView *emptyNotiView;
     UILabel *noti_empty;
+    NSMutableDictionary *status;
+    NSInteger replayNum;
+
 }
 
 - (void)reloadMyTopic;
