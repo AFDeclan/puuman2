@@ -11,7 +11,10 @@
 #import "DateFormatter.h"
 
 #define kDateName       @"date"
+#define kTypeStr        @"typeStr"
+#define kType2Str       @"type2Str"
 #define kTypeName       @"type"
+
 #define kType2Name      @"type2"
 #define kTitleName      @"title"
 #define kFilePathName   @"filePath"
@@ -138,6 +141,7 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
     {
         NSString *url = [_urls1 objectAtIndex:i];
         NSData *fileData;
+        NSString *filePath = [NSString stringWithFormat:@"%d",i];
         for (NSInteger j=0; j<100; j++) //尝试100次
         {
             
@@ -149,7 +153,8 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
             //save the file
             NSString *fileDir = [DiaryFileManager fileDirForDiaryType:_type1Str];
             NSString *fileName = [DateFormatter stringFromDatetime:_DCreateTime];
-            NSString *filePath = [fileDir stringByAppendingPathComponent:fileName];
+            filePath = [filePath stringByAppendingString:fileName];
+            filePath = [fileDir stringByAppendingPathComponent:filePath];
             if (_type1 == DiaryContentTypeVideo) {
                 filePath = [filePath stringByAppendingPathExtension:@"MOV"];
             }
@@ -243,10 +248,13 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
 {
     _title = [info valueForKey:kTitleName];
     _DCreateTime = [info valueForKey:kDateName];
-    _type1Str = [info valueForKey:kTypeName];
-    _type2Str = [info valueForKey:kType2Name];
-   _filePaths1 = [info valueForKey:kFilePathName];
+    _filePaths1 = [info valueForKey:kFilePathName];
     _filePaths2 = [info valueForKey:kFilePath2Name];
+    _type1 = [[info valueForKey:kTypeName] integerValue];
+    _type2 = [[info valueForKey:kType2Name] integerValue];
+    _type1Str = [info valueForKey:kTypeStr];
+    _type2Str = [info valueForKey:kType2Str];
+   
 }
 
 - (NSDictionary *)getInfoDictionary
@@ -254,10 +262,12 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
     NSMutableDictionary *dic_diary = [[NSMutableDictionary alloc] init];
     [dic_diary setValue:_title forKey:kTitleName];
     [dic_diary setValue:_DCreateTime forKey:kDateName];
-    [dic_diary setValue:_type1Str forKey:kTypeName];
-    [dic_diary setValue:_type2Str forKey:kType2Name];
     [dic_diary setValue:_filePaths1 forKey:kFilePathName];
     [dic_diary setValue:_filePaths2 forKey:kFilePath2Name];
+    [dic_diary setValue:_type1Str forKey:kTypeStr];
+    [dic_diary setValue:_type2Str forKey:kType2Str];
+    [dic_diary setValue:[NSNumber numberWithInt:_type1] forKey:kTypeName];
+    [dic_diary setValue:[NSNumber numberWithInt:_type2]  forKey:kType2Name];
     return dic_diary;
 }
 

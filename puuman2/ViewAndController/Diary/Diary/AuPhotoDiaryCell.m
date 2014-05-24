@@ -38,9 +38,6 @@
         [playBtn setDelegate:self];
         [_content addSubview:playBtn];
       
-      
-
-        
         titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 416, 80)];
         [titleView setImage:[UIImage imageNamed:@"bg_title2_diary.png"]];
         [titleView setBackgroundColor:[UIColor clearColor]];
@@ -112,7 +109,8 @@
         [_photoView loadThumbImgWithPath:[self.diary.filePaths1 objectAtIndex:0]];
     
     }else{
-    
+        [_photoView setImage:[UIImage imageNamed:@"pic_redownload.png"]];
+
     }
    
     

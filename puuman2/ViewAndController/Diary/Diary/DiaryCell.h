@@ -27,7 +27,8 @@ typedef enum{
     kDiaryAudioType,
     kDiaryPhotoAudioType,
     kDiaryVideoType,
-    kdiaryPhotoMoreType
+    kdiaryPhotoMoreType,
+    kdiaryType
 } DiaryType;
 
 @interface DiaryCell : UITableViewCell
@@ -47,6 +48,7 @@ typedef enum{
     UIView *bg;
     BOOL delCanShow;
     BOOL shareCanShow;
+    NSInteger indexRow;
 }
 @property (assign, nonatomic)DiaryType diaryType;
 @property (strong, nonatomic)UIButton *delBtn;

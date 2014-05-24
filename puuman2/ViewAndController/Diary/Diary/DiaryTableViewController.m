@@ -244,7 +244,7 @@ static BOOL needLoadInfo = YES;
         else
         {
     
-            NSArray *photoPaths = diary.urls1;
+            NSArray *photoPaths = diary.filePaths1;
             if ([photoPaths count] > 1) {
                 identity = DiaryTypeStrPhoto_More;
                 cell = [tableView dequeueReusableCellWithIdentifier:identity];
@@ -271,7 +271,15 @@ static BOOL needLoadInfo = YES;
             [cell setDiaryType:kDiaryTextType];
         }
     
-    } else return nil;
+    } else {
+        identity = @"DiaryCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:identity];
+        if (!cell){
+            cell = [[DiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+            [cell setDiaryType:kdiaryType];
+        }
+
+    };
     [cell setIndexPath:indexPath];
     [cell setDiary:diary];
     [cell buildCellViewWithIndexRow:indexPath.row abbreviated:(selectedPath == nil || [indexPath compare:selectedPath] != NSOrderedSame)];
@@ -282,10 +290,7 @@ static BOOL needLoadInfo = YES;
     }else{
         [cell setControlCanHidden:YES];
     }
-
-   
-
-        return cell;
+    return cell;
     
     
     

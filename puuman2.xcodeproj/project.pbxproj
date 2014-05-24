@@ -598,8 +598,8 @@
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
 		54BC7B85192EE7EE00D033E8 /* TopicCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */; };
-		54BC7B8B192F1EC300D033E8 /* SinglePhotoTopicVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */; };
 		54BC7B8D192F56EF00D033E8 /* pic_redownload.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC7B8C192F56EF00D033E8 /* pic_redownload.png */; };
+		54BC7B8E192F592F00D033E8 /* SinglePhotoTopicVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */; };
 		54BEB68E18E948E100AB3E27 /* PartnerDataOutGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB68D18E948E100AB3E27 /* PartnerDataOutGroupView.m */; };
 		54BEB69118E948FE00AB3E27 /* PartnerDataInGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69018E948FE00AB3E27 /* PartnerDataInGroupView.m */; };
 		54BEB69418E94E9800AB3E27 /* InviteGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69318E94E9800AB3E27 /* InviteGroupCell.m */; };
@@ -4292,6 +4292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54BC7B8E192F592F00D033E8 /* SinglePhotoTopicVIew.m in Sources */,
 				88B51607192F52EE006A79AB /* MJRefreshFooterView.m in Sources */,
 				54ADB1CE18E16CD700FCCC83 /* Comment.m in Sources */,
 				54C2EA05192DF55B0011AA0C /* TopicCommentView.m in Sources */,

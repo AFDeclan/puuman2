@@ -19,7 +19,8 @@
     UIButton *spreadBtn;
     UILabel *line;
     UILabel *titleLabel;
-    
+    NSString *_photoPath;
+    UIButton *reloadBtn;
 }
 @property (assign,nonatomic)id <TextDiaryDelegate> delegate;
 

@@ -70,7 +70,13 @@
         [spreadBtn setBackgroundColor:[UIColor clearColor]];
         [spreadBtn addTarget:self action:@selector(spread) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:spreadBtn];
-        
+        reloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [reloadBtn setFrame:CGRectMake(16, 8, ContentWidth, 80)];
+        [reloadBtn setBackgroundColor:[UIColor clearColor]];
+        [_content addSubview:reloadBtn];
+        [reloadBtn setTitle:@"文字记录下载失败，点击重新下载" forState:UIControlStateNormal];
+        [reloadBtn setTitleColor:PMColor2 forState:UIControlStateNormal];
+        [reloadBtn setAlpha:0];
     }
     return self;
     
@@ -96,24 +102,18 @@
     CGRect frame = CGRectMake(0, 24 + ViewHeight(titleLabel) + ViewY(titleLabel), ContentWidth, 0);
     [showBtn setAlpha:0];
     if ([self.diary.type2Str isEqualToString:DiaryTypeStrPhoto]) {
-        
-        NSString *photoPath = [self.diary.filePaths2 objectAtIndex:0];
-        photo = [DiaryFileManager imageForPath:photoPath];
-        if (photo) {
-            frame = CGRectMake(0, 24 + ViewHeight(titleLabel) + ViewY(titleLabel), ContentWidth-TEXT_PHOTO_HEIGHT-16, 0);
-            [showBtn setAlpha:1];
-            UIImage  *photo2 = [UIImage croppedImage:photo WithHeight:256 andWidth:256];
-            _photoView.image = photo2;
-            SetViewLeftUp(showBtn,ContentWidth-TEXT_PHOTO_HEIGHT, 24 + ViewHeight(titleLabel) + ViewY(titleLabel));
-        }else{
-        
-        }
+        frame = CGRectMake(0, 24 + ViewHeight(titleLabel) + ViewY(titleLabel), ContentWidth-TEXT_PHOTO_HEIGHT-16, 0);
+        [showBtn setAlpha:1];
+        [_photoView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
+        SetViewLeftUp(showBtn,ContentWidth-TEXT_PHOTO_HEIGHT, 24 + ViewHeight(titleLabel) + ViewY(titleLabel));
     }
     CGFloat dh = 0;
     
     if (_contentLabel) {
         [_contentLabel removeFromSuperview];
     }
+    
+     xd
     NSString *filePath = [self.diary.filePaths1 objectAtIndex:0];
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
     {
@@ -141,8 +141,9 @@
             [line setAlpha:0];
             [spreadBtn setAlpha:0];
         }
+        [reloadBtn setAlpha:0];
     }else{
-    
+        [reloadBtn setAlpha:1];
         
     }
     
@@ -159,6 +160,30 @@
 - (void)loadInfo
 {
     [super loadInfo];
+    
+    if ([self.diary.type2Str isEqualToString:DiaryTypeStrPhoto])
+    {
+//        if ([[self.diary urls2] count]>0 && !_photoPath)
+//        {
+//            if ([UIImage imageWithContentsOfFile:[self.diary.filePaths2 objectAtIndex:0]])
+//                {
+//                        NSError *error;
+//                        [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths2 objectAtIndex:0] error:&error];
+//                }
+//        }
+        _photoPath = [self.diary.filePaths2 objectAtIndex:0];
+        if ([UIImage imageWithContentsOfFile:_photoPath]&&[UIImage imageWithContentsOfFile:_photoPath])
+        {
+            photo = [DiaryFileManager imageForPath:_photoPath];
+            UIImage  *photo2 = [UIImage croppedImage:photo WithHeight:256 andWidth:256];
+            [_photoView setImage:photo2];
+        }else{
+            [_photoView setImage:[UIImage imageNamed:@"pic_redownload.png"]];
+         
+        }
+
+    }
+    
 }
 
 - (void)share:(id)sender
@@ -193,10 +218,16 @@
 }
 - (void)showPhoto
 {
-    if (photo) {
-        NSString *photoPath = [self.diary.filePaths2 objectAtIndex:0];
-        [DetailShowViewController showPhotoPath:photoPath andTitle:titleLabel.text];
+    if ([UIImage imageWithContentsOfFile:_photoPath]&&[UIImage imageWithContentsOfFile:_photoPath])
+    {
+        [DetailShowViewController showPhotoPath:_photoPath andTitle:titleLabel.text];
+
+    }else{
+        [self.diary redownloadContent2AtIndex:0 withRecall:^(BOOL finished){
+            [self loadInfo];
+        }];
     }
+
 
 }
 + (CGFloat)heightForDiary:(Diary*)diary abbreviated:(BOOL)abbr

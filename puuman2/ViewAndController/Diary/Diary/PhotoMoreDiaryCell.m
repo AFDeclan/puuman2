@@ -73,8 +73,25 @@
 
 - (void)loadInfo
 {
-    if (_photoPaths) return;
     [super loadInfo];
+   
+//    if (!_photoPaths) {
+//        for (NSString *path in self.diary.filePaths1) {
+//            
+//            if ([[self.diary urls1] count]>0 && path)
+//            {
+//                
+//                if ([UIImage imageWithContentsOfFile:path])
+//                {
+//                    NSError *error;
+//                    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+//                }
+//            }
+//        }
+//
+//    }
+    
+
     _photoPaths = self.diary.filePaths1;
     [_scrollView setContentSize:CGSizeMake( [_photoPaths count]*416, 192)];
     [_showColumnView reloadData];
@@ -85,7 +102,15 @@
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
 {
     if (index == selectedIndex ) {
-        [self showPhotoAtIndex:index];
+        if([UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index-1]])
+        {
+            [self showPhotoAtIndex:index];
+
+        }else{
+            [self.diary redownloadContent1AtIndex:index-1 withRecall:nil];
+
+        }
+
     }
    
 
@@ -182,12 +207,12 @@
         DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
         [photoView reset];
         [photoView setImage:photo];
-        if ([UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index-1]]) {
+        if ([UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index-1]]&&[UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index-1]]) {
             [photoView setCropSize:CGSizeMake(384, 384)];
             [photoView loadThumbImgWithPath:[_photoPaths objectAtIndex:index-1]];
 
         }else{
-            [photoView setImage:photo];
+            [photoView setImage:[UIImage imageNamed:@"pic_redownload.png"]];
         }
     
         
@@ -207,7 +232,20 @@
 
 - (void)showPhotoAtIndex:(NSInteger)index
 {
-    [DetailShowViewController showPhotosPath:_photoPaths atIndex:index andTitle:titleLabel.text];
+    
+    if ([UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index]] &&[UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index]]){
+         [DetailShowViewController showPhotosPath:_photoPaths atIndex:index andTitle:titleLabel.text];
+        
+    }else{
+        
+        [self.diary redownloadContent1AtIndex:index withRecall:^(BOOL finished){
+            UITableViewCell *cell = [_showColumnView cellForIndex:index+1];
+            
+            [(DiaryImageView *)[cell viewWithTag:11] loadThumbImgWithPath:[_photoPaths objectAtIndex:index]];
+        }];
+    }
+
+   
 }
 
 - (void)share:(id)sender
