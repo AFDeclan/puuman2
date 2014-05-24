@@ -22,6 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self initialize];
+        [UserInfo sharedUserInfo].portraitUploadDelegate = self;
     }
     return self;
 }
@@ -54,8 +55,15 @@
     [self addSubview:title];
     
     portraitView=[[AFImageView alloc] initWithFrame:CGRectMake(282, 64, 140, 140)];
-    [portraitView setImage:[UIImage imageNamed:@"pic_born_login.png"]];
-    portraitView.userInteractionEnabled = YES;
+  //  [portraitView setImage:[UIImage imageNamed:@"pic_born_login.png"]];
+    ;
+    portraitView.layer.cornerRadius = 70;
+    portraitView.layer.masksToBounds = YES;
+    portraitView.layer.shadowRadius =0.1;
+    portraitView.contentMode = UIViewContentModeScaleAspectFill;
+    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:@"pic_born_login.png"];
+     portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
+     portraitView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[ UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapPortrait)];
     [portraitView addGestureRecognizer:tap];
     [portraitView setBackgroundColor:[UIColor clearColor]];
@@ -137,8 +145,7 @@
     if (suc) {
         [[TaskCell sharedTaskCell] reloadPortrait];
         [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
-        portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
-
+         portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
     }
     
 }
