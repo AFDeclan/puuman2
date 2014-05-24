@@ -131,7 +131,7 @@
                     [_controlView setAlpha:0];
                 }
             return YES;
-            }
+        }
         
         
         UITableViewCell *cell_pre = [_showColumnView cellForIndex:selectedIndex-1];

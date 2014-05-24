@@ -135,9 +135,9 @@
 -(void)selectedPhoto:(UIImage *)img{
 
     
-   // [[UserInfo sharedUserInfo] uploadPortrait:img];
-     
-
+    [[UserInfo sharedUserInfo] uploadPortrait:img];
+    
+    
 }
 
 - (void)portraitUploadFinish:(BOOL)suc
