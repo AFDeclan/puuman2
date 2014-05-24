@@ -62,16 +62,6 @@
 
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
    
-
-    
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-//    {
-//        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
-//        [playBtn setAlpha:1];
-//    }else{
-//      [playBtn setAlpha:0];
-//    }
-   
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
 
@@ -79,14 +69,14 @@
 {
     [super loadInfo];
     
-    if ([[self.diary urls1] count]>0 && !filePath)
-    {
-        if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
-        {
-            NSError *error;
-            [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
-        }
-    }
+//    if ([[self.diary urls1] count]>0 && !filePath)
+//    {
+//        if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
+//        {
+//            NSError *error;
+//            [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
+//        }
+//    }
 
     filePath = [self.diary.filePaths1 objectAtIndex:0];
     NSError *playerError;
