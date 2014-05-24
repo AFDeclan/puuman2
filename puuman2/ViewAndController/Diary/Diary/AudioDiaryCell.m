@@ -30,7 +30,7 @@
         [playBtn setDelegate:self];
         [_content addSubview:playBtn];
         reloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [reloadBtn setFrame:CGRectMake(56, 8, ContentWidth-128, 80)];
+        [reloadBtn setFrame:CGRectMake(56, 16, ContentWidth-128, 80)];
         [reloadBtn setBackgroundColor:[UIColor clearColor]];
         [_content addSubview:reloadBtn];
         [reloadBtn setTitle:@"录音下载失败，点击重新下载" forState:UIControlStateNormal];
@@ -79,14 +79,14 @@
 {
     [super loadInfo];
     
-//    if ([[self.diary urls1] count]>0 && !filePath)
-//    {
-//        if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
-//        {
-//            NSError *error;
-//            [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
-//        }
-//    }
+    if ([[self.diary urls1] count]>0 && !filePath)
+    {
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
+        {
+            NSError *error;
+            [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
+        }
+    }
 
     filePath = [self.diary.filePaths1 objectAtIndex:0];
     NSError *playerError;
