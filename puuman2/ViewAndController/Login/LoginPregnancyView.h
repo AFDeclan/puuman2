@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "CustomTextField.h"
 #import "PregnancyCalendar.h"
+#import "AFImageView.h"
+#import "NewTextPhotoSelectedViewController.h"
+#import "UserInfo.h"
 
 @protocol LoginPregnancyViewDelegate;
-@interface LoginPregnancyView : UIView<UITextFieldDelegate,PregnancyCalendarDelegate>
+@interface LoginPregnancyView : UIView<UITextFieldDelegate,PregnancyCalendarDelegate,NewTextSelectPhotoDelegate,UserPortraitUploadDelegate>
 {
     CustomTextField *name_textfield;
     CustomTextField *birthday;
@@ -19,6 +22,7 @@
     NSDate *_date;
     PregnancyCalendar *_calendar;
     UIImageView *imgIcon;
+    AFImageView *portraitView;
 }
 @property (assign,nonatomic) id <LoginPregnancyViewDelegate> delegate;
 @property (nonatomic, assign) enum userIdentity identity;

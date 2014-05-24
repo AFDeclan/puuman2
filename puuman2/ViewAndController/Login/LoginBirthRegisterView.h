@@ -33,6 +33,7 @@ typedef enum{
     BirthCalendar *_calendar;
     UIImageView *imgIcon;
     BabyType babyType;
+
 }
 @property (assign,nonatomic) id <LoginBirthViewDelegate> delegate;
 @property (nonatomic, assign) enum userIdentity identity;
