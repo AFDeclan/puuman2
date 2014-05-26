@@ -12,6 +12,7 @@
 #import "UniverseConstant.h"
 #import "CustomAlertViewController.h"
 #import "BabyData.h"
+#import "MainTabBarController.h"
 
 @implementation LoginStartView
 
@@ -143,25 +144,32 @@
 - (void)goBirthView:(UIButton *)sender
 {
     if([[UserInfo sharedUserInfo] logined]){
-    [CustomAlertViewController showAlertWithTitle:@" 亲 您的宝贝降落人间了么" confirmRightHandler:^{
-
-     [MobClick event:umeng_event_click label:@"Birth_LoginStartView"];
-    stateSelf =State_birth;
-    [goBirthViewButton selected];
-    [goPregnancyViewButton unSelected];
-    if ([[UserInfo sharedUserInfo] logined])
-    {
-        [_delegate selectLoginView:kLoginBirthRegisterView];
-       
-    }else{
-        if (_relation == Relate_none) {
+        
+        [CustomAlertViewController showAlertWithTitle:@" 亲 您的宝贝降落人间了么" confirmHandler:^{
+        
+            [MobClick event:umeng_event_click label:@"Birth_LoginStartView"];
+                stateSelf =State_birth;
+                [goBirthViewButton selected];
+                [goPregnancyViewButton unSelected];
+               if ([[UserInfo sharedUserInfo] logined])
+                {
+                 [_delegate selectLoginView:kLoginBirthRegisterView];
             
-        }else
-        {
-            [_delegate selectLoginView:kLoginBirthRegisterView];
-        }
-    }
-}];
+                }else{
+                    if (_relation == Relate_none) {
+            
+                     }else
+                    {
+                        [_delegate selectLoginView:kLoginBirthRegisterView];
+                    }
+                }
+        
+            }
+         cancelHandler:^{
+        
+        
+                        }];
+
     }  else{
     
         

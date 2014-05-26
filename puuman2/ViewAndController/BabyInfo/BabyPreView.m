@@ -125,6 +125,9 @@
         if (!CGRectContainsPoint(frame1, pos)) {
             [(BabyPreTableViewCell *)cell setShowInfo:NO];
             [_controlView setAlpha:1];
+                                                                                                                                                      
+            
+            
         }else{
                 CGRect frame = CGRectMake(cell.frame.origin.x+180, cell.frame.origin.y+16, 64, 64);
                 if (CGRectContainsPoint(frame,pos)) {
