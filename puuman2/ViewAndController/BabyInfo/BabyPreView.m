@@ -141,13 +141,15 @@
         if([cell_pre isKindOfClass:[BabyPreTableViewCell class]]){
             
             CGRect frame2 = cell_pre.frame;
-            frame2.origin.x +=8;
-            frame2.size.width = 256;
-            frame2.size.height = 296;
+//            frame2.origin.x +=8;
+//            frame2.size.width = 256;
+//            frame2.size.height = 296;
             
             if(CGRectContainsPoint(frame2, pos)){
+                [_controlView setContentOffset:CGPointMake(cell_pre.frame.origin.x, 8) animated:NO];
                 
-                frame2 = cell.frame;
+                
+               
                 return YES;
             }
     }
@@ -156,12 +158,14 @@
     if([cell_next isKindOfClass:[BabyPreTableViewCell class]]){
      
         CGRect frame3 = cell_next.frame;
-        frame3.origin.x += 8;
-        frame3.size.width = 256;
-        frame3.size.height = 296;
+//        frame3.origin.x += 8;
+//        frame3.size.width = 256;
+//        frame3.size.height = 296;
         if((CGRectContainsPoint(frame3, pos))){
         
-            
+            [_controlView setContentOffset:CGPointMake(cell_next.frame.origin.x, 8)];
+            //[bgScrollView setContentOffset:CGPointMake(cell_next.frame.origin.x, 8)];
+
             
             return YES;
         
