@@ -49,6 +49,14 @@
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [titleView addSubview:titleLabel];
         [titleView setAlpha:0];
+        reloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [reloadBtn setFrame:CGRectMake(56, 24, 416, 416)];
+        [reloadBtn setBackgroundColor:[UIColor clearColor]];
+        [_content addSubview:reloadBtn];
+        [reloadBtn setTitle:@"声音图像日记下载失败，点击重新下载" forState:UIControlStateNormal];
+        [reloadBtn setTitleColor:PMColor2 forState:UIControlStateNormal];
+        [reloadBtn addTarget:self action:@selector(reloadFile) forControlEvents:UIControlEventTouchUpInside];
+        [reloadBtn setAlpha:0];
         
     }
     return self;
@@ -69,19 +77,7 @@
     [_photoView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
     [_photoView reset];
      _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,488);
-    NSString *filePath = [self.diary.filePaths2 objectAtIndex:0];
-    NSError *playerError;
-    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:&playerError];
-    if (player)
-    {
-        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
-        [playBtn setAlpha:1];
-
-    }else{
-        [playBtn setAlpha:0];
-        
-    }
-   
+    
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 
 }
@@ -104,18 +100,62 @@
 - (void)loadInfo
 {
     [super loadInfo];
-    [_photoView setCropSize:CGSizeMake(416*2, 416*2)];
-    if ([UIImage imageWithContentsOfFile:[self.diary.filePaths1 objectAtIndex:0]]) {
-        [_photoView loadThumbImgWithPath:[self.diary.filePaths1 objectAtIndex:0]];
-    
+//    if ([[self.diary urls2] count]>0 && !filePath)
+//    {
+//        if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths2 objectAtIndex:0]])
+//        {
+//            NSError *error;
+//            [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths2 objectAtIndex:0] error:&error];
+//        }
+//    }
+//    
+//    if ([[self.diary urls1] count]>0 && !photoPath)
+//    {
+//        
+//        if ([UIImage imageWithContentsOfFile:[self.diary.filePaths1 objectAtIndex:0]])
+//        {
+//            NSError *error;
+//            [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
+//        }
+//    }
+    photoPath = [self.diary.filePaths1 objectAtIndex:0];
+    filePath = [self.diary.filePaths2 objectAtIndex:0];
+    NSError *playerError;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:&playerError];
+    if ([UIImage imageWithContentsOfFile:photoPath]&&[UIImage imageWithContentsOfFile:photoPath]&&player)
+    {
+        [_photoView setCropSize:CGSizeMake(416*2, 416*2)];
+        [_photoView loadThumbImgWithPath:photoPath];
+        [reloadBtn setAlpha:0];
+        [playBtn setAlpha:1];
+        [_photoView setAlpha:1];
+        [titleView setAlpha:1];
+        [playBtn setPlayFile:[NSURL URLWithString:filePath]];
     }else{
-        [_photoView setImage:[UIImage imageNamed:@"pic_redownload.png"]];
+        
+        [reloadBtn setAlpha:1];
+        [playBtn setAlpha:0];
+        [_photoView setAlpha:0];
+        [titleView setAlpha:0];
+
 
     }
+
    
     
 }
 
+- (void)reloadFile
+{
+    [self.diary redownloadContent1AtIndex:0 withRecall:^(BOOL finished){
+        [self loadInfo];
+    }];
+    
+    [self.diary redownloadContent2AtIndex:0 withRecall:^(BOOL finished){
+        [self loadInfo];
+    }];
+    
+}
 
 - (void)dealloc
 {

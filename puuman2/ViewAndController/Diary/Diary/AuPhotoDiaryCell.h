@@ -16,6 +16,10 @@
     NewAudioPlayView *playBtn;
     UIImageView *titleView;
     UILabel *titleLabel;
+    NSString *filePath;
+    NSString *photoPath;
+    UIButton *reloadBtn;
+
 }
 
 @end

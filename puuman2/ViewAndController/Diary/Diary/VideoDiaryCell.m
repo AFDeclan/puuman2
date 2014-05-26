@@ -35,19 +35,27 @@
         [_playBtn setImage:[UIImage imageNamed:@"btn_play_diary.png"] forState:UIControlStateNormal];
         [_playBtn addTarget:self action:@selector(playVideo) forControlEvents:UIControlEventTouchUpInside];
         [_content addSubview:_playBtn];
-        
+        [_playBtn setAlpha:0];
         titleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 416-80, 416, 80)];
         [titleView setImage:[UIImage imageNamed:@"bg_title_diary.png"]];
         [titleView setBackgroundColor:[UIColor clearColor]];
         [_imgView addSubview:titleView];
         
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 80)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 24, 416, 416)];
         [titleLabel setTextAlignment:NSTextAlignmentRight];
         [titleLabel setFont:PMFont1];
         [titleLabel setTextColor:[UIColor whiteColor]];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [titleView addSubview:titleLabel];
         [titleView setAlpha:0];
+        reloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [reloadBtn setFrame:CGRectMake(56, 24, 416, 416)];
+        [reloadBtn setBackgroundColor:[UIColor clearColor]];
+        [_content addSubview:reloadBtn];
+        [reloadBtn setTitle:@"录像下载失败，点击重新下载" forState:UIControlStateNormal];
+        [reloadBtn setTitleColor:PMColor2 forState:UIControlStateNormal];
+        [reloadBtn addTarget:self action:@selector(reloadFile) forControlEvents:UIControlEventTouchUpInside];
+        [reloadBtn setAlpha:0];
 
     }
     return self;
@@ -72,20 +80,44 @@
 - (void)loadInfo
 {
     [super loadInfo];
-    [_imgView setCropSize:CGSizeMake(832, 832)];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
+    
+//    if ([[self.diary urls1] count]>0 && !filePath)
+//    {
+//            if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
+//            {
+//                    NSError *error;
+//                    [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
+//           }
+//    }
+    filePath = [self.diary.filePaths1 objectAtIndex:0];
+  
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
     {
+        [_imgView setCropSize:CGSizeMake(832, 832)];
         [_imgView loadVideoImgWithPath:[self.diary.filePaths1 objectAtIndex:0]];
-
+        [_playBtn setAlpha:1];
+        [_imgView setAlpha:1];
+        [reloadBtn setAlpha:0];
     }else{
         
+        [_imgView setAlpha:0];
+        [_playBtn setAlpha:0];
+        [reloadBtn setAlpha:1];
     }
     
 }
 
 - (void)playVideo
 {
-   [DetailShowViewController showVideo:[self.diary.filePaths1 objectAtIndex:0] andTitle:titleLabel.text];
+   [DetailShowViewController showVideo:filePath andTitle:titleLabel.text];
+}
+
+
+- (void)reloadFile
+{
+    [self.diary redownloadContent1AtIndex:0 withRecall:^(BOOL finished){
+        [self loadInfo];
+    }];
 }
 
 - (void)share:(id)sender

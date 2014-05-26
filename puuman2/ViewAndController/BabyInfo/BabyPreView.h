@@ -22,7 +22,6 @@
     UIScrollView *bgScrollView;
 }
 @property (nonatomic,assign)BOOL columnImgBMode;
-
 - (void)refresh;
 - (void)scrollToToday;
 @end
