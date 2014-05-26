@@ -265,7 +265,6 @@ static BabyData * instance;
     NSString *sqlUpdate = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ?, %@ = ? WHERE %@ = ?", tableName, kVaccine_DoneTime, kVaccine_Uploaded, kVaccine_ID];
     if (![_db executeUpdate:sqlUpdate, date, [NSNumber numberWithBool:fromSer], [NSNumber numberWithInteger:VID]])
     {
-    
         [ErrorLog errorLog: @"BabyData vaccine update Failed:" fromFile:@"BabyData.m" error:nil];
          NSLog(@"BabyData vaccine update Failed: %@ %@ %d", sqlUpdate, date, VID);
     }

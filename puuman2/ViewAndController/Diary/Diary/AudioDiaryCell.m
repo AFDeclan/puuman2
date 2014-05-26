@@ -81,7 +81,6 @@
     filePath = [self.diary.filePaths1 objectAtIndex:0];
     NSError *playerError;
     AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:&playerError];
-    
     if (player)
     {
         [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];

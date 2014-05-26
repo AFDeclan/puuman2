@@ -41,7 +41,8 @@ typedef enum
     kHeight,
     kWeightLow,
     kWeightHigh,
-    kWeight
+    kWeight,
+    KHeightWeightNone
 }Standard;
 @interface StandardLine : NSObject
 {
