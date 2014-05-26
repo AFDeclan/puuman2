@@ -17,7 +17,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setAlpha:0.3];
         UITapGestureRecognizer *tap= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
         [self addGestureRecognizer:tap];
       

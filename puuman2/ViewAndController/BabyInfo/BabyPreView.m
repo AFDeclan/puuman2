@@ -124,7 +124,7 @@
 
         if (!CGRectContainsPoint(frame1, pos)) {
             [(BabyPreTableViewCell *)cell setShowInfo:NO];
-            [_controlView setAlpha:0.3];
+            [_controlView setAlpha:1];
         }else{
                 CGRect frame = CGRectMake(cell.frame.origin.x+180, cell.frame.origin.y+16, 64, 64);
                 if (CGRectContainsPoint(frame,pos)) {
@@ -201,14 +201,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
-    NSLog(@"%d",selectedIndex);
     if (scrollView == _controlView) {
         CGPoint pos= _controlView.contentOffset;
         
         float nowX = pos.x/816;
         float indexX = (int)(pos.x/816);
         selectedIndex = pos.x/816 +1;
-        NSLog(@"%d",selectedIndex);
 
         UITableViewCell *cell = [_showColumnView cellForIndex:selectedIndex];
         UITableViewCell *nextCell = [_showColumnView cellForIndex:selectedIndex+1];
@@ -313,8 +311,7 @@
         [_showColumnView removeFromSuperview];
     }
     _showColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(24, 88, 816, 328)];
-    [_showColumnView setBackgroundColor:[UIColor blueColor]];
-    [_showColumnView setAlpha:0.3];
+    [_showColumnView setBackgroundColor:[UIColor clearColor]];
     [_showColumnView setColumnViewDelegate:self];
     [_showColumnView setViewDataSource:self];
     [_showColumnView setPagingEnabled:NO];
