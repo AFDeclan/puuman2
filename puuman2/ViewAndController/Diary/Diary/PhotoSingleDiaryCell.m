@@ -44,17 +44,21 @@
 
 - (void)showPhoto
 {
-    if (_photoPath) {
-        [DetailShowViewController showPhotoPath:_photoPath andTitle:titleLabel.text];
-     }
+        if ([UIImage imageWithContentsOfFile:_photoPath]){
+            [DetailShowViewController showPhotoPath:_photoPath andTitle:titleLabel.text];
+        }else{
+            [self.diary redownloadContent1AtIndex:0 withRecall:nil];
+
+        }
     
+ 
 }
 
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr
 {
     [_shareBtn setAlpha:1];
-    titleLabel.text = [self.diaryInfo valueForKey:kTitleName];
-    if ([[self.diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+    titleLabel.text = self.diary.title;
+    if ([self.diary.title isEqualToString:@""]) {
         [titleView setAlpha:0];
     }else{
         [titleView setAlpha:1];
@@ -69,23 +73,21 @@
 {
     [super loadInfo];
     if (_photoPath) return;
-    NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
-    NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
-    for (NSString *photoPath in photoPaths)
-    {
-        _photoPath = photoPath;
-        if (_photoPath != nil) {
-            break;
-        }
+  
+    _photoPath = [self.diary.filePaths1 objectAtIndex:0];
+    if ([UIImage imageWithContentsOfFile:_photoPath]) {
+        [_imgView setCropSize:CGSizeMake(832, 832)];
+        [_imgView loadImgWithPath:_photoPath];
+    }else{
+        [_imgView setImage:[UIImage imageNamed:@"pic_redownload.png"]];
     }
-    [_imgView setCropSize:CGSizeMake(832, 832)];
-    [_imgView loadImgWithPath:_photoPath];
+
 }
 
 - (void)share:(id)sender
 {
     NSString *text = @"";
-    NSString *photoPathsString = [self.diaryInfo objectForKey:kFilePathName];
+    NSString *photoPathsString = [self.diary.filePaths1 objectAtIndex:0];
     NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
     for (NSString *photoPath in photoPaths)
     {
@@ -96,7 +98,7 @@
         }
     }
     UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
-    NSString *title = [self.diaryInfo valueForKey:kTitleName];
+    NSString *title = self.diary.title;
     [ShareSelectedViewController shareText:text title:title image:photo];
 
 }
@@ -107,7 +109,7 @@
     _photoPath = nil;
 }
 
-+ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr;
++ (CGFloat)heightForDiary:(Diary*)diary abbreviated:(BOOL)abbr;
 {
     return 440;
 }

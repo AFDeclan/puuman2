@@ -67,6 +67,10 @@ static NSString *info[40] ={@"·宝宝·\n     因为精子与卵子暂时还没
     
     infoView = [[UIView alloc] initWithFrame:CGRectMake(0, -kPicHeight, kPicWidth, kPicHeight)];
     [content addSubview:infoView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:nil];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired =2;
+    [infoView addGestureRecognizer:tap];
     
     content.layer.masksToBounds = YES;
     

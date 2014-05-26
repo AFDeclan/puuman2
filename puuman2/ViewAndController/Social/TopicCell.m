@@ -9,10 +9,9 @@
 #import "TopicCell.h"
 #import "ColorsAndFonts.h"
 #import "UserInfo.h"
-#import "AllWordsPopViewController.h"
-#import "MainTabBarController.h"
 #import "TextTopicCell.h"
 #import "PhotoTopicCell.h"
+#import "SinglePhotoTopicVIew.h"
 #import "UserInfo.h"
 #import "Comment.h"
 #import "BabyData.h"
@@ -23,26 +22,28 @@
 @implementation TopicCell
 @synthesize isMyTopic = _isMyTopic;
 @synthesize row = _row;
+@synthesize unfold = _unfold;
+@synthesize delegate = _delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
       
-       
+        commentNum = 0;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         headerView = [[UIView alloc] init];
         [self.contentView addSubview:headerView];
         contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 608, 112)];
         [self.contentView addSubview:contentView];
-        footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 176, 608, 88)];
+        footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 176, 608, 40)];
         [self.contentView addSubview:footerView];
         [self initWithHeaderView];
         [headerView setBackgroundColor:PMColor5];
         [contentView setBackgroundColor:PMColor5];
         [footerView setBackgroundColor:PMColor5];
-  //      [MyNotiCenter addObserver:self selector:@selector(removeForumDelegate) name:Noti_ReplyRemoveForumDelgate object:nil];
-        
+        self.layer.masksToBounds = YES;
+        [MyNotiCenter addObserver:self selector:@selector(showCommentView:) name:Noti_ShowCommentPopView object:nil];
     }
     return self;
 }
@@ -98,12 +99,11 @@
     [relayExample setTextColor:PMColor2];
     [relayExample setBackgroundColor:[UIColor clearColor]];
     [footerView addSubview:relayExample];
-    scanMoreReplay = [[AFTextImgButton alloc] initWithFrame:CGRectMake(496, 40, 112, 48)];
-    [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
-    [scanMoreReplay setTitleLabelColor:PMColor3];
-    [scanMoreReplay addTarget:self action:@selector(scanMore) forControlEvents:UIControlEventTouchUpInside];
-    [scanMoreReplay setTitleFont:PMFont3];
-    [footerView addSubview:scanMoreReplay];
+    [footerView.layer setMasksToBounds:YES];
+    comment = [[TopicCommentView alloc] initWithFrame:CGRectMake(0, 40, 608, 0)];
+    [footerView addSubview:comment];
+    
+
     UIImageView *partLine_first  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 608, 2)];
     [partLine_first setImage:[UIImage imageNamed:@"line2_topic.png"]];
     [footerView addSubview:partLine_first];
@@ -145,6 +145,9 @@
 
 - (void)buildWithReply:(Reply *)reply
 {
+    commentNum = [[reply comments] count];
+    [comment setCommentWithReply:reply];
+
     
      _reply = reply;
     [topicNumLabel setText:[NSString stringWithFormat:@"第%d期",reply.TID]];
@@ -152,15 +155,15 @@
     [[Forum sharedInstance] addDelegateObject:self];
     [infoView setInfoWithUid:_reply.UID andIsTopic:YES];
     
-    if ([reply RCommentCnt] == 0) {
-        [scanMoreReplay setTitle:@"没有留言" andImg:nil andButtonType:kButtonTypeOne];
-    }else{
-        [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
-
-    }
-    [scanMoreReplay setTitleFont:PMFont3];
-
-    [scanMoreReplay adjustLayout];
+//    if ([reply RCommentCnt] == 0) {
+//        [scanMoreReplay setTitle:@"没有留言" andImg:nil andButtonType:kButtonTypeOne];
+//    }else{
+//        [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
+//
+//    }
+//    [scanMoreReplay setTitleFont:PMFont3];
+//
+//    [scanMoreReplay adjustLayout];
  
     if (_isMyTopic) {
         Topic *topic =  [[Forum sharedInstance] getTopic:reply.TID];
@@ -221,10 +224,8 @@
 
 - (void)replayBtnPressed
 {
-    [[MainTabBarController sharedMainViewController] setIsReply:YES];
-    PostNotification(Noti_BottomInputViewShow,_reply);
-    
-    
+    _unfold = !_unfold;
+    [_delegate changedStausWithUnfold:_unfold andIndex:_row];
 }
 
 
@@ -248,36 +249,47 @@
     // Configure the view for the selected state
 }
 
-- (void)scanMore
-{
- //   PostNotification(Noti_ReplyRemoveForumDelgate, nil);
-    AllWordsPopViewController *moreReplayVC  =[[ AllWordsPopViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:moreReplayVC.view];
-    [moreReplayVC setControlBtnType:kOnlyCloseButton];
-    [moreReplayVC setTitle:@"所有留言"];
-    [moreReplayVC setReplay:_reply];
-    [moreReplayVC setDelegate:self];
-    [moreReplayVC show];
-}
+
 
 //- (void)removeForumDelegate
 //{
 //    [[Forum sharedInstance] removeDelegateObject:self];
 //}
 
++ (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type andUnfold:(BOOL)unfold
+{
 
+    if (unfold) {
+        if ([reply.comments count] <= 5 && [reply.comments count] < reply.RCommentCnt){
+            [reply getMoreComments:5 newDirect:YES];
+        }
+        TopicCommentView *commentView = [[TopicCommentView alloc] init];
+        [commentView setCommentWithReply:reply];
+        return [TopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type]+ViewHeight(commentView);
+
+    }else{
+        return  [TopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
+    }
+}
 
 + (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type
 {
     
-    float h = 64+88 +8;
+    float h = 64+40 +8;
     if (![reply.RTitle isEqualToString:@""]) {
         h += 28;
     }
   
     switch (type) {
         case TopicType_Photo:
-             h += [PhotoTopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
+        {
+            if ([[reply photoUrls] count] > 1) {
+                h += [PhotoTopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
+            }else{
+                h += [SinglePhotoTopicVIew heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
+
+            }
+        }
             break;
         case TopicType_Text:
             h += [TextTopicCell heightForReply:reply andIsMyTopic:isMytopic andTopicType:type];
@@ -364,5 +376,57 @@
 //
 //}
 
+- (void)setUnfold:(BOOL)unfold
+{
+    CGRect frameF = footerView.frame;
+    _unfold = unfold;
+    if (unfold) {
+       
+        frameF.size.height = ViewHeight(comment)+40;
+    
+    }else{
+        frameF.size.height = 40;
+    }
+    [footerView setFrame:frameF];
+}
 
+//更多评论加载成功
+- (void)replyCommentsLoadedMore:(Reply *)reply
+{
+    if (_reply == reply) {
+        PostNotification(Noti_RefreshTopicTable, nil);
+    }
+}
+
+
+//评论上传成功
+- (void)replyCommentUploaded:(Reply *)reply
+{
+    
+    
+    if (_reply == reply) {
+        if ([_reply.comments count] <= 6 && commentNum <[[reply comments] count]) {
+            PostNotification(Noti_RefreshTopicTable, nil);
+
+        }
+    }
+}
+
+
+
+//更多评论加载失败 注意根据noMore判断是否是因为全部加载完
+- (void)replyCommentsLoadFailed:(Reply *)reply
+{
+
+}
+
+- (void)showCommentView:(NSNotification *)notification
+{
+    if ([notification class]) {
+        [[Forum sharedInstance] removeDelegateObject:self];
+    }else{
+        [[Forum sharedInstance] addDelegateObject:self];
+
+    }
+}
 @end

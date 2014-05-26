@@ -56,7 +56,7 @@ static ImportStore * instance;
 
 - (void)writeAndStoreWithPhotos:(NSArray *)photos andTitle:(NSString *)title_
 {
-    NSString *fileDir = [DiaryFileManager fileDirForDiaryType:vType_Photo];
+    NSString *fileDir = [DiaryFileManager fileDirForDiaryType:DiaryTypeStrPhoto];
     if (!fileDir) return ;
     NSDate *curDate = [NSDate date];
     NSString *fileName = [DateFormatter stringFromDatetime:curDate];
@@ -79,26 +79,31 @@ static ImportStore * instance;
     
     if (title == nil) title = @"";
     NSString *taskDiary = @"";
-   diaryInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
-                               title, kTitleName,
-                               vType_Photo, kTypeName,
-                               filePathAll, kFilePathName,
-                               curDate, kDateName,
-                               type2, kType2Name,
-                               filePath2, kFilePath2Name,
-                               taskDiary, kTaskDiary,
-                               nil];
+    diary =[[Diary alloc] init];
+    diary.title = title;
+    diary.type1Str = DiaryTypeStrPhoto;
 
+    
+#warning undone
+//  diaryInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                               title, kTitleName,
+//                               vType_Photo, kTypeName,
+//                               filePathAll, kFilePathName,
+//                               curDate, kDateName,
+//                               type2, kType2Name,
+//                               filePath2, kFilePath2Name,
+//                               taskDiary, kTaskDiary,
+ //                              nil];
     TaskUploader *uploader = [TaskUploader uploader];
-    [uploader addNewTaskWithDiaryInfo:diaryInfo taskInfo:nil];
+    [uploader addNewTaskWithDiaryInfo:diary taskInfo:nil];
 
     
 }
 
 - (void)addNewDiary
 {
-    if (diaryInfo) {
-        [[DiaryModel sharedDiaryModel] addNewDiary:diaryInfo];
+    if (diary) {
+        [[DiaryModel sharedDiaryModel] addNewDiary:diary];
     }
 
     
@@ -107,7 +112,7 @@ static ImportStore * instance;
 {
     photosArr = nil;
     title = @"";
-    diaryInfo = nil;
+    //diaryInfo = nil;
      progress = 0;
 }
 @end

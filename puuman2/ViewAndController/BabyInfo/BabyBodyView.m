@@ -46,7 +46,7 @@
     [dataTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [dataTable setShowsHorizontalScrollIndicator:NO];
     [dataTable setShowsVerticalScrollIndicator:NO];
-    emptyView = [[UIView alloc] init];
+     emptyView = [[UIView alloc] init];
     [emptyView setBackgroundColor:[UIColor clearColor]];
     [leftView addSubview:emptyView];
     

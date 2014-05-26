@@ -15,6 +15,20 @@
 #import "TaskModel.h"
 #import "DateFormatter.h"
 #import "PumanRequest.h"
+#import "Diary.h"
+#import "DiaryModel.h"
+
+#define kDateName       @"date"
+#define kTypeName       @"type"
+#define kType2Name      @"type2"
+#define kTitleName      @"title"
+#define kFilePathName   @"filePath"
+#define kFilePath2Name  @"filePath2"
+#define kUrlName        @"url"
+#define kUrl2Name       @"url2"
+#define kDiaryUIdentity @"DiaryUIdentity"
+#define kDeletedDiary   @"deletedDiary"
+#define kDiaryMeta      @"DiaryMeta"
 
 static TaskUploader *instance = nil;
 
@@ -71,7 +85,7 @@ static TaskUploader *instance = nil;
 }
 
 
-- (void)addNewTaskWithDiaryInfo:(NSDictionary *)diaryInfo taskInfo:(NSDictionary *)taskInfo
+- (void)addNewTaskWithDiaryInfo:(Diary *)diary taskInfo:(NSDictionary *)taskInfo
 {
     if (![UserInfo sharedUserInfo].logined) return;
     NSString *tid;
@@ -84,19 +98,19 @@ static TaskUploader *instance = nil;
         tid = @"6";
     }
     NSString *uid = [NSString stringWithFormat:@"%d", [UserInfo sharedUserInfo].UID];
-    NSDate *date = [diaryInfo valueForKey:kDateName];
+    NSDate *date = diary.DCreateTime;
     NSString *name = [DateFormatter stringFromDatetime:date];
-    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:name, renameKey, tid, taskIDKey, diaryInfo, diaryInfoKey, uid, userIDKey, nil];
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:name, renameKey, tid, taskIDKey, [diary getInfoDictionary], diaryInfoKey, uid, userIDKey, nil];
     [self addNewTask:info];
 }
 
-- (void)addNewTaskToDeleteDiary:(NSDictionary *)diaryInfo
+- (void)addNewTaskToDeleteDiary:(Diary *)diary
 {
     if (![UserInfo sharedUserInfo].logined) return;
     NSString *uid = [NSString stringWithFormat:@"%d", [UserInfo sharedUserInfo].UID];
-    NSDate *date = [diaryInfo valueForKey:kDateName];
+    NSDate *date = diary.DCreateTime;
     NSString *name = [DateFormatter stringFromDatetime:date];
-    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:name, renameKey, @"-1", taskIDKey, uid, userIDKey, diaryInfo, diaryInfoKey, nil];
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:name, renameKey, @"-1", taskIDKey, uid, userIDKey, [diary getInfoDictionary], diaryInfoKey, nil];
     [self addNewTask:info];
 }
 
@@ -105,7 +119,10 @@ static TaskUploader *instance = nil;
     FileUploader *fUploader = [[FileUploader alloc]init];
     NSString *userID = [info valueForKey:userIDKey];
     NSString *userDir = userID;//[MD5 md5:userID];
-    NSDictionary *diaryInfo = [info valueForKey:diaryInfoKey];
+    
+    Diary *diaryInfo = [[Diary alloc] init];
+    [diaryInfo setInfoWithDictionary:[info valueForKey:diaryInfoKey]];
+    
     NSInteger subCnt1 = 1;
     NSInteger subCnt2 = 1;
     NSString *type1 = @"";
@@ -113,24 +130,22 @@ static TaskUploader *instance = nil;
     NSString *name = @"";
     NSString *dir1 = @"";
     NSString *dir2 = @"";
-    NSString *diaryCreateTime = [DateFormatter stringFromDatetime:[diaryInfo valueForKey:kDateName]];
+    
+    NSString *diaryCreateTime = [DateFormatter stringFromDatetime:[NSDate date]];
+
     if (diaryInfo && ![[info valueForKey:taskIDKey] isEqualToString:@"-1"])
     {
-        type1 = [diaryInfo valueForKey:kTypeName];
+        type1 = diaryInfo.type1Str;
         name = [info valueForKey:renameKey];
-        NSString *path1 = [diaryInfo valueForKey:kFilePathName];
-        //if ([[diaryInfo valueForKey:kTypeName] isEqualToString:vType_Audio])
-        //    name = [name stringByAppendingPathExtension:@"aac"];
+        NSArray *path1 = diaryInfo.filePaths1;
         BOOL suc;
         
-        if (type1 && path1)
+        if (diaryInfo.type1 != DiaryContentTypeNone && path1.count > 0)
         {
-            
-            NSArray *pathArray = [path1 componentsSeparatedByString:@"#@#"];
-            subCnt1 = [pathArray count];
+            subCnt1 = [path1 count];
             for (int i=0; i<subCnt1; i++)
             {
-                NSString *path = [pathArray objectAtIndex:i];
+                NSString *path = [path1 objectAtIndex:i];
                 dir1 = [userDir stringByAppendingPathComponent:type1];
                 dir1 = [dir1 stringByAppendingPathComponent:name];
                 suc = [fUploader uploadFile:path toDir:dir1 fileRename:[NSString stringWithFormat:@"%d", i]];
@@ -138,16 +153,15 @@ static TaskUploader *instance = nil;
             }
         }
         
-        type2 = [diaryInfo valueForKey:kType2Name];
-        NSString *path2 = [diaryInfo valueForKey:kFilePath2Name];
+        type2 = diaryInfo.type2Str;
+        NSArray * path2 = diaryInfo.filePaths2;
         
-        if (type2 && path2 && ![path2 isEqualToString:@""])
+        if (diaryInfo.type2 != DiaryContentTypeNone && path2.count > 0)
         {
-            NSArray *pathArray = [path2 componentsSeparatedByString:@"#@#"];
-            subCnt2 = [pathArray count];
+            subCnt2 = [path2 count];
             for (int i=0; i<subCnt2; i++)
             {
-                NSString *path = [pathArray objectAtIndex:i];
+                NSString *path = [path2 objectAtIndex:i];
                 dir2 = [userDir stringByAppendingPathComponent:type2];
                 dir2 = [dir2 stringByAppendingPathComponent:name];
                 suc = [fUploader uploadFile:path toDir:dir2 fileRename:[NSString stringWithFormat:@"%d", i]];
@@ -164,7 +178,7 @@ static TaskUploader *instance = nil;
     [request setParam:[MobClick getConfigParams:umeng_onlineConfig_authKey] forKey:@"authCode"];
     [request setParam:userID forKey:@"UID"];
     [request setParam:[info valueForKey:taskIDKey] forKey:@"TID"];
-    [request setParam:[diaryInfo valueForKey:kTitleName] forKey:@"title"];
+    [request setParam:diaryInfo.title forKey:@"title"];
     [request setParam:[NSString stringWithFormat:@"%d", subCnt1] forKey:@"subCnt1"];
     [request setParam:[NSString stringWithFormat:@"%d", subCnt2] forKey:@"subCnt2"];
     [request setParam:type1 forKey:@"type1"];

@@ -56,8 +56,8 @@
 
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr
 {
-    titleLabel.text = [self.diaryInfo valueForKey:kTitleName];
-    if ([[self.diaryInfo valueForKey:kTitleName] isEqualToString:@""]) {
+    titleLabel.text = self.diary.title;
+    if ([self.diary.title isEqualToString:@""]) {
         [titleView setAlpha:0];
     }else{
         [titleView setAlpha:1];
@@ -73,12 +73,19 @@
 {
     [super loadInfo];
     [_imgView setCropSize:CGSizeMake(832, 832)];
-    [_imgView loadVideoImgWithPath:[self.diaryInfo valueForKey:kFilePathName]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
+    {
+        [_imgView loadVideoImgWithPath:[self.diary.filePaths1 objectAtIndex:0]];
+
+    }else{
+        
+    }
+    
 }
 
 - (void)playVideo
 {
-   [DetailShowViewController showVideo:[self.diaryInfo valueForKey:kFilePathName] andTitle:titleLabel.text];
+   [DetailShowViewController showVideo:[self.diary.filePaths1 objectAtIndex:0] andTitle:titleLabel.text];
 }
 
 - (void)share:(id)sender

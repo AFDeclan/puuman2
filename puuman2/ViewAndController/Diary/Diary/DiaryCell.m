@@ -15,10 +15,11 @@
 #import "PhotoSingleDiaryCell.h"
 #import "MainTabBarController.h"
 #import "DiaryTableViewController.h"
+#import "Diary.h"
 
 
 @implementation DiaryCell
-@synthesize diaryInfo = _diaryInfo;
+@synthesize diary = _diary;
 @synthesize indexPath = _indexPath;
 @synthesize delBtn = _delBtn;
 @synthesize delScrollView = _delScrollView;
@@ -140,14 +141,12 @@
     [self.contentView addSubview:_delScrollView];
     SetViewLeftUp(noti, width, 0);
     [_delScrollView addSubview:noti];
-    if ([_diaryInfo valueForKey:kSampleDiary])
+    if (_diary.sampleDiary)
     {
         [_delBtn setEnabled:NO];
     }else{
         [_delBtn setEnabled:YES];
     }
-
-
 }
 
 - (void)buildParentControl
@@ -170,7 +169,7 @@
 - (void)buildAgeLabels
 {
     //age
-     NSDate *date = [self.diaryInfo valueForKey:kDateName];
+    NSDate *date = self.diary.DCreateTime;
     _ageLabel1.alpha = 0;
     _ageLabel2.alpha = 0;
     _ageLabel3.alpha = 0;
@@ -179,7 +178,7 @@
     NSString *unitStr = nil;
     [_delBtn setAlpha:1];
     
-    if ([_diaryInfo valueForKey:kSampleDiary])
+    if (_diary.sampleDiary)
     {
         unitStr = @"样例日记";
         [_delBtn setAlpha:0];
@@ -235,14 +234,16 @@
 
 - (void)buildFromIdentity
 {
-    if ([_diaryInfo valueForKey:kSampleDiary])
+    if (_diary.sampleDiary)
     {
         _fromLabel.text = @"";
         _icon_from.image = nil;
         return;
     }
-    NSString *fromIdentity = [self.diaryInfo valueForKey:kDiaryUIdentity];
-    if (![self.diaryInfo valueForKey:kSampleDiary] &&[fromIdentity isEqualToString:[UserInfo sharedUserInfo].identityStr])
+   // NSString *fromIdentity = [self.diaryInfo valueForKey:kDiaryUIdentity];
+   // NSString *fromIdentity = self.diary.UIdentity;
+    BOOL fromIdentity = self.diary.UIdentity;
+    if (!(self.diary.sampleDiary) &&fromIdentity ==[UserInfo sharedUserInfo].identity)
     {
         [_delBtn setAlpha:1];
     }else{
@@ -250,19 +251,19 @@
     }
     
     if (!fromIdentity) {
-        fromIdentity = [UserInfo sharedUserInfo].identityStr;
+        fromIdentity = [UserInfo sharedUserInfo].identity;
     }
-    if ([fromIdentity isEqualToString: kUserIdentity_Mother])
+    if (fromIdentity==1)
     {
         _fromLabel.text = @"来自妈妈";
         _icon_from.image = [UIImage imageNamed:@"tri_pink_diary.png"];
     }
-    else  if ([fromIdentity isEqualToString: kUserIdentity_Father])
+    else  if (fromIdentity==0)
     {
         _fromLabel.text = @"来自爸爸";
         _icon_from.image = [UIImage imageNamed:@"tri_blue_diary.png"];
     }
-    if (![self.diaryInfo valueForKey:kSampleDiary] &&[fromIdentity isEqualToString:[UserInfo sharedUserInfo].identityStr])
+    if (!(self.diary.sampleDiary) &&fromIdentity ==[UserInfo sharedUserInfo].identity)
     {
         [_delBtn setAlpha:1];
         delCanShow = YES;
@@ -299,7 +300,7 @@
 - (void)deleteConfirmed
 {
     
-    [MyNotiCenter postNotificationName:Noti_DeleteDiary object:self.diaryInfo];
+    [MyNotiCenter postNotificationName:Noti_DeleteDiary object:self.diary];
 
     
 }
@@ -316,7 +317,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         [_delBtn setImage:[UIImage imageNamed:@"btn_delete1_diary.png"] forState:UIControlStateNormal];
         
-        if ([_diaryInfo valueForKey:kSampleDiary])
+        if (_diary.sampleDiary)
         {
             [_delBtn setEnabled:NO];
         }else{
@@ -338,8 +339,6 @@
 {
 
     float tableY  = [[notification object] floatValue];
-    
-    
     
     if ([MainTabBarController sharedMainViewController].isVertical) {
         if (self.frame.origin.y < 512) {
@@ -400,36 +399,35 @@
   
 }
 
-+ (CGFloat)heightForDiary:(NSDictionary *)diaryInfo abbreviated:(BOOL)abbr
++ (CGFloat)heightForDiary:(Diary*) diary abbreviated:(BOOL)abbr
 {
     CGFloat height = kHeaderHeight + kFooterHeight;
-    NSString *type = [diaryInfo valueForKey:kTypeName];
-    if ([type isEqualToString:vType_Text])  //是文本类型
+    NSString *type = diary.type1Str;
+    if ([type isEqualToString:DiaryTypeStrText])  //是文本类型
     {
-        height += [TextDiaryCell heightForDiary:diaryInfo abbreviated:abbr]  ;
-    }else if ([type isEqualToString:vType_Photo])    //是照片类型
+        height += [TextDiaryCell heightForDiary:diary abbreviated:abbr]  ;
+    }else if ([type isEqualToString:DiaryTypeStrPhoto])    //是照片类型
     {
-                if ([[diaryInfo valueForKey:kType2Name] isEqualToString:vType_Audio]) //有声图
+                if ([diary.type2Str isEqualToString:DiaryTypeStrVideo]) //有声图
                 {
-                    height += [AuPhotoDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+                    height += [AuPhotoDiaryCell heightForDiary:diary abbreviated:abbr];
                 }
                 else
                 {
-                    NSString *photoPathsString = [diaryInfo objectForKey:kFilePathName];
-                    NSArray *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+                    NSArray *photoPaths = diary.urls1;
                     if ([photoPaths count]>1) {
-                         height += [PhotoMoreDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+                         height += [PhotoMoreDiaryCell heightForDiary:diary abbreviated:abbr];
                     }else{
-                        height += [PhotoSingleDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+                         height += [PhotoSingleDiaryCell heightForDiary:diary abbreviated:abbr];
                     }
                    
                 }
-    }else if ([type isEqualToString:vType_Audio])
+    }else if ([type isEqualToString:DiaryTypeStrAudio])
     {
-        height += [AudioDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
-    }else if ([type isEqualToString:vType_Video])
+        height += [AudioDiaryCell heightForDiary:diary abbreviated:abbr];
+    }else if ([type isEqualToString:DiaryTypeStrVideo])
     {
-        height += [VideoDiaryCell heightForDiary:diaryInfo abbreviated:abbr];
+        height += [VideoDiaryCell heightForDiary:diary abbreviated:abbr];
     }
         return height;
 }

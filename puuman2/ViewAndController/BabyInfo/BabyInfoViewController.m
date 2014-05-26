@@ -344,6 +344,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
 
 - (void)moadifyBabyInfo
 {
+    
     LoginViewController *modifyInfoVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:modifyInfoVC.view];
     [modifyInfoVC setControlBtnType:kCloseAndFinishButton];
