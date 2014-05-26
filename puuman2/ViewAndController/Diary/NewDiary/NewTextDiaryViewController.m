@@ -132,7 +132,7 @@
             [DiaryFileManager savePhotos:[NSArray arrayWithObject:photo] withAudio:nil withTitle:titleTextField.text andTaskInfo:nil andIsTopic:NO];
         }
     }else{
-        [DiaryFileManager saveText:_textView.text withPhoto:photo withTitle:titleTextField.text andTaskInfo:_taskInfo andIsTopic:_isTopic];
+        [DiaryFileManager saveText:_textView.text withPhoto:photo withTitle:titleTextField.text  andIsTopic:_isTopic andBabyData:NO andTaskInfo:_taskInfo];
     }
 
    // if (!_isTopic) {

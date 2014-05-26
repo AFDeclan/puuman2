@@ -159,7 +159,7 @@
     return fixed;
 }
 
-+ (Diary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo andIsTopic:(BOOL)isTopic
++ (Diary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title   andIsTopic:(BOOL)isTopic andBabyData:(BOOL)babyData andTaskInfo:(NSDictionary *)taskInfo
 {
     //save the file
     if (isTopic) {
@@ -210,6 +210,7 @@
     d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.filePaths2 = [NSArray arrayWithObject:filePath2];
     d.deleted = NO;
+    [d setCreatedByBabyData:babyData];
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
     [MobClick endEvent:umeng_event_newdiary label:@"TextDiary"];
     TaskUploader *uploader = [TaskUploader uploader];

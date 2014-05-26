@@ -539,14 +539,14 @@ static BabyData * instance;
         case 2:
         {
             [self babydataUploaded:[afRequest.userInfo valueForKey:@"uploadList"]];
-            NSArray *records = [resDic valueForKey:@"records"];
+            NSArray *records = [resDic valueForKey:@"Records"];
             if (![records isKindOfClass:[NSNull class]])
             {
                 for (NSDictionary *record in records)
                 {
                     CGFloat h = [[record valueForKey:@"Height"] doubleValue];
-                    CGFloat w = [[records valueForKey:@"Weight"] doubleValue];
-                    NSString *dateStr = [records valueForKey:@"Date"];
+                    CGFloat w = [[record valueForKey:@"Weight"] doubleValue];
+                    NSString *dateStr = [record valueForKey:@"Date"];
                     NSDate *date = [DateFormatter datetimeFromString:dateStr withFormat:@"yyyy-MM-dd HH:mm:ss"];
                     if (!date) date = [NSDate date];
                     [self insertRecordAtDate:date height:h weight:w fromServer:YES];
