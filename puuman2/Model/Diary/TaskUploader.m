@@ -190,8 +190,15 @@ static TaskUploader *instance = nil;
     [request setParam:diaryCreateTime forKey:@"createTime"];
     [request postSynchronous];
     if (request.result == PumanRequest_Succeeded)
+    {
+        PostNotification(Noti_Imported, name);
         return YES;
-    else return NO;
+    }else{
+        PostNotification(Noti_Imported, name);
+        return NO;
+    }
+    
+
 }
 
 - (void)startUpload

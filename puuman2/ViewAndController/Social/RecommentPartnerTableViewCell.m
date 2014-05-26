@@ -127,7 +127,7 @@
                     {
                         [label_compare setText:@"一样重"];
                     }else{
-                        [label_compare setText:[NSString stringWithFormat:@"重%fkg",[data BabyWeight]-[userData BabyWeight]]];
+                        [label_compare setText:[NSString stringWithFormat:@"重%0.1fkg",[data BabyWeight]-[userData BabyWeight]]];
                     }
                     
                 }else{

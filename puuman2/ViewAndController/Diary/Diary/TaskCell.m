@@ -134,7 +134,7 @@ static TaskCell * instance;
         {
             [self foldWithAnmate:YES];
         }
-        [_delegate foldOrUnfold];
+       // [_delegate foldOrUnfold];
     }
 
 }
@@ -153,6 +153,7 @@ static TaskCell * instance;
     self.contentView.frame = CGRectMake(0, 0, kTaskCellWidth, kTaskCellHeight_Folded);
     [bgImgView setImage:[UIImage imageNamed:@"paper_task1_diary.png"]];
     [bgImgView setFrame:CGRectMake(16, 0, 640,112)];
+    PostNotification(Noti_ReloadDiaryTable, nil);
 }
 
 - (void)unfold
@@ -177,6 +178,7 @@ static TaskCell * instance;
     pageControl.numberOfPages = [TaskModel sharedTaskModel].taskCount;
     pageControl.currentPage = taskTitle.taskIndex;
     [textScrollView setContentOffset:CGPointMake(taskTitle.taskIndex*416, 0)];
+    PostNotification(Noti_ReloadDiaryTable, nil);
 }
 
 - (void)buildTextScrollView
@@ -392,7 +394,7 @@ static TaskCell * instance;
     {
         [_delegate foldOrUnfold];
     }
-
+  
 }
 
 - (void)taskReloding
