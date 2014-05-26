@@ -24,6 +24,7 @@
         [_imgView setBackgroundColor:[UIColor clearColor]];
         _imgView.userInteractionEnabled = YES;
         [_content addSubview:_imgView];
+
         
         UITapGestureRecognizer *tapPhoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto)];
         [_imgView addGestureRecognizer:tapPhoto];
@@ -44,11 +45,15 @@
 
 - (void)showPhoto
 {
-        if ([UIImage imageWithContentsOfFile:_photoPath]){
-            [DetailShowViewController showPhotoPath:_photoPath andTitle:titleLabel.text];
-        }else{
-            [self.diary redownloadContent1AtIndex:0 withRecall:nil];
+        if ([UIImage imageWithContentsOfFile:_photoPath]&&[UIImage imageWithContentsOfFile:_photoPath]){
+           [DetailShowViewController showPhotoPath:_photoPath andTitle:titleLabel.text];
 
+            
+        }else{
+            
+            [self.diary redownloadContent1AtIndex:0 withRecall:^(BOOL finished){
+                [self loadInfo];
+            }];
         }
     
  
@@ -72,10 +77,18 @@
 - (void)loadInfo
 {
     [super loadInfo];
-    if (_photoPath) return;
+//    if ([[self.diary urls1] count]>0 && !_photoPath)
+//    {
+//        
+//        if ([UIImage imageWithContentsOfFile:[self.diary.filePaths1 objectAtIndex:0]])
+//        {
+//            NSError *error;
+//           [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
+//        }
+//   }
   
     _photoPath = [self.diary.filePaths1 objectAtIndex:0];
-    if ([UIImage imageWithContentsOfFile:_photoPath]) {
+    if ([UIImage imageWithContentsOfFile:_photoPath]&&[UIImage imageWithContentsOfFile:_photoPath]) {
         [_imgView setCropSize:CGSizeMake(832, 832)];
         [_imgView loadImgWithPath:_photoPath];
     }else{

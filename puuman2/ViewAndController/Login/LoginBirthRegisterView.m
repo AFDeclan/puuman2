@@ -45,6 +45,7 @@
 - (void) initialize
 {
     birthday = nil;
+    [[UserInfo sharedUserInfo] setPortraitUploadDelegate:self];
     UILabel *title=[[UILabel alloc] initWithFrame:CGRectMake(0, 16, 704, 16)];
     [title setFont:PMFont2];
     [title setText:@"请输入宝宝的基本信息"];
@@ -132,11 +133,13 @@
 
 }
 -(void)selectedPhoto:(UIImage *)img{
+
     
     [[UserInfo sharedUserInfo] uploadPortrait:img];
     
     
 }
+
 - (void)portraitUploadFinish:(BOOL)suc
 {
     if (suc) {
@@ -146,6 +149,7 @@
     }
     
 }
+
 -(void)setHorizontalFrame
 {
     CGRect frame = _calendar.frame;

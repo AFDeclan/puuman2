@@ -39,7 +39,7 @@
 
 - (void)initialization
 {
-      selectedIndex = 1;
+    selectedIndex = 1;
     bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [bgScrollView setScrollEnabled:NO];
     [bgScrollView setContentSize:CGSizeMake(816, 576)];
@@ -60,13 +60,14 @@
     [_points setBackgroundColor:[UIColor clearColor]];
     [bgScrollView addSubview:_points];
     
-    _controlView = [[UIScrollView alloc] initWithFrame:CGRectMake(24, 0, 816, 0)];
+    _controlView = [[ControlScrollView alloc] initWithFrame:CGRectMake(24, 0, 816, 0)];
     [_controlView setDelegate:self];
+    [_controlView setControlDelegate:self];
     [_controlView setPagingEnabled:YES];
     [_controlView setBackgroundColor:[UIColor clearColor]];
     [_controlView setFrame:CGRectMake(0, 0, 816, 576)];
     [_controlView setContentSize:CGSizeMake( 40*816, 576)];
-
+    [_controlView setSelectedIndex:selectedIndex];
     [bgScrollView addSubview:_controlView];
     NSArray *ages = [[NSDate date] ageFromDate:[[BabyData sharedBabyData] babyBirth]];
     int age = 0;
@@ -134,7 +135,7 @@
                     [_controlView setAlpha:0];
                 }
             return YES;
-            }
+        }
         
         
         UITableViewCell *cell_pre = [_showColumnView cellForIndex:selectedIndex-1];
@@ -177,6 +178,7 @@
     return YES;
 }
 
+
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
 {
@@ -212,8 +214,10 @@
         float nowX = pos.x/816;
         float indexX = (int)(pos.x/816);
         selectedIndex = pos.x/816 +1;
+
         UITableViewCell *cell = [_showColumnView cellForIndex:selectedIndex];
-         UITableViewCell *nextCell = [_showColumnView cellForIndex:selectedIndex+1];
+        UITableViewCell *nextCell = [_showColumnView cellForIndex:selectedIndex+1];
+        
         if ([cell isKindOfClass:[BabyPreTableViewCell class]]) {
             [(BabyPreTableViewCell *)cell setMaskAlpha:(nowX-indexX)*0.5];
             [(BabyPreTableViewCell *)cell setContentY:(nowX-indexX)*32];
@@ -258,19 +262,11 @@
         }
         
     }
-   
+   [_controlView setSelectedIndex:selectedIndex];
     
 }
 
-- (void)scrollViewDidEndDecelerating:(UIColumnView *)scrollView
-{
-    
-}
 
-- (void)scrollViewDidEndDragging:(UIColumnView *)scrollView willDecelerate:(BOOL)decelerate;
-{
-    
-}
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
     
@@ -363,7 +359,6 @@
 {
     [super setHorizontalFrame];
     [bgScrollView setContentOffset:CGPointMake(0, 0)];
-
     [bgScrollView setFrame:CGRectMake(24, 0, 816, 576)];
     SetViewLeftUp(bgScrollView, 0, 0);
 }
@@ -374,4 +369,29 @@
     else label.text = [NSString stringWithFormat:@"孕期第%d周", index];
 }
 
+- (void)goPre
+{
+    if (selectedIndex >1) {
+        [_controlView setScrollEnabled:NO];
+        [UIView animateWithDuration:0.5 animations:^{
+            [_controlView setContentOffset:CGPointMake((selectedIndex-2)*_controlView.frame.size.width, _controlView.frame.origin.y) animated:YES];
+        } completion:^(BOOL finished) {
+            [_controlView setScrollEnabled:YES];
+        }];
+    }
+ 
+}
+
+- (void)goNext
+{
+    if (selectedIndex < BABY_COLUMN_CNT+1) {
+        [_controlView setScrollEnabled:NO];
+        [UIView animateWithDuration:0.5 animations:^{
+            [_controlView setContentOffset:CGPointMake(selectedIndex*_controlView.frame.size.width, _controlView.frame.origin.y) animated:YES];
+        } completion:^(BOOL finished) {
+            [_controlView setScrollEnabled:YES];
+        }];
+    }
+
+}
 @end

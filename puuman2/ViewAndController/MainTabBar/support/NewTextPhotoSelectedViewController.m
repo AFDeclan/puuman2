@@ -147,17 +147,14 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
 	
-    
 	UIImage *photo = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
     [_delegate selectedPhoto:photo];
     if (imagePickerShowed) {
         [popover dismissPopoverAnimated:NO];
-        
-        
-        
     }else{
         [picker dismissModalViewControllerAnimated:YES];
     }
+    
     [self hidden];
 }
 

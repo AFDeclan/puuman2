@@ -144,7 +144,12 @@ static DetailShowViewController *detailVC;
         UIImageView *photoView = [[UIImageView alloc] initWithFrame:CGRectMake(i*768, 0, 768, 1024)];
         [photoView setTag:i+1];
         [photoView setContentMode:UIViewContentModeScaleAspectFit];
-        [photoView setImage:photo];
+        if (photo) {
+             [photoView setImage:photo];
+        }else{
+            [photoView setImage:[UIImage imageNamed:@"pic_default_diary.png"]];
+        }
+       
         [photoView setBackgroundColor:[UIColor clearColor]];
         [photoScroll addSubview:photoView];
     }

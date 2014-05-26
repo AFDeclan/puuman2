@@ -200,8 +200,9 @@
 - (void)finishBtnPressed
 {
     [DiaryFileManager savePhotos:photosArr withAudio:nil withTitle:titleTextField.text andTaskInfo:nil andIsTopic:_isTopic];
+    
     //if (!_isTopic) {
-        [super finishBtnPressed];
+    [super finishBtnPressed];
 //
   //  }
 }

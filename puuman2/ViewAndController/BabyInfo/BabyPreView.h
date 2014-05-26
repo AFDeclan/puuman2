@@ -9,20 +9,21 @@
 #import "BabyInfoContentView.h"
 #import "UIColumnView.h"
 #import "BabyPreTableViewCell.h"
+#import "ControlScrollView.h"
 
-@interface BabyPreView : BabyInfoContentView<UIColumnViewDataSource, UIColumnViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
+@interface BabyPreView : BabyInfoContentView<UIColumnViewDataSource, UIColumnViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,ControlScrollDelegate>
 {
 
     UIColumnView *_showColumnView;
-    UIScrollView *_controlView;
+    ControlScrollView *_controlView;
     UIScrollView *_titles;
     UIScrollView *_points;
     UIView *bgLine;
     int selectedIndex;
     UIScrollView *bgScrollView;
+    BOOL scrolled;
 }
 @property (nonatomic,assign)BOOL columnImgBMode;
-
 - (void)refresh;
 - (void)scrollToToday;
 @end

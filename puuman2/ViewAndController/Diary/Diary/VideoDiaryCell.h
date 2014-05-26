@@ -15,6 +15,9 @@
     UIButton *_playBtn;
     UIImageView *titleView;
     UILabel *titleLabel;
+    NSString *filePath;
+    UIButton *reloadBtn;
+
 }
 
 @end

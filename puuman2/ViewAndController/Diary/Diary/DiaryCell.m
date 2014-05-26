@@ -102,6 +102,7 @@
 
 - (void)buildCellViewWithIndexRow:(NSUInteger)index abbreviated:(BOOL)abbr
 {
+    indexRow = index;
     _abbr = abbr;
     CGFloat height = kHeaderHeight + kFooterHeight + ViewHeight(_content);
     [self buildParentControl];
@@ -414,7 +415,7 @@
                 }
                 else
                 {
-                    NSArray *photoPaths = diary.urls1;
+                    NSArray *photoPaths = diary.filePaths1;
                     if ([photoPaths count]>1) {
                          height += [PhotoMoreDiaryCell heightForDiary:diary abbreviated:abbr];
                     }else{

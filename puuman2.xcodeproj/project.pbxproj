@@ -597,8 +597,10 @@
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
+		54BB14471932F37A00D801CC /* ControlScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB14461932F37A00D801CC /* ControlScrollView.m */; };
 		54BC7B85192EE7EE00D033E8 /* TopicCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */; };
 		54BC7B8D192F56EF00D033E8 /* pic_redownload.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC7B8C192F56EF00D033E8 /* pic_redownload.png */; };
+		54BC7B8E192F592F00D033E8 /* SinglePhotoTopicVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */; };
 		54BEB68E18E948E100AB3E27 /* PartnerDataOutGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB68D18E948E100AB3E27 /* PartnerDataOutGroupView.m */; };
 		54BEB69118E948FE00AB3E27 /* PartnerDataInGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69018E948FE00AB3E27 /* PartnerDataInGroupView.m */; };
 		54BEB69418E94E9800AB3E27 /* InviteGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB69318E94E9800AB3E27 /* InviteGroupCell.m */; };
@@ -1578,6 +1580,8 @@
 		54BAD46918D15A73003822CC /* BabyBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBodyView.m; sourceTree = "<group>"; };
 		54BB09E618D9494C00F805DD /* SkipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkipViewController.h; sourceTree = "<group>"; };
 		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
+		54BB14451932F37A00D801CC /* ControlScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlScrollView.h; sourceTree = "<group>"; };
+		54BB14461932F37A00D801CC /* ControlScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlScrollView.m; sourceTree = "<group>"; };
 		54BC7B83192EE7EE00D033E8 /* TopicCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCommentCell.h; sourceTree = "<group>"; };
 		54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCommentCell.m; sourceTree = "<group>"; };
 		54BC7B89192F1EC300D033E8 /* SinglePhotoTopicVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePhotoTopicVIew.h; sourceTree = "<group>"; };
@@ -3123,6 +3127,8 @@
 				544419EA18D3ED3E00FBE69F /* PropWare.m */,
 				544419F718D40EE800FBE69F /* PuumanRulesViewController.h */,
 				544419F818D40EE800FBE69F /* PuumanRulesViewController.m */,
+				54BB14451932F37A00D801CC /* ControlScrollView.h */,
+				54BB14461932F37A00D801CC /* ControlScrollView.m */,
 				541970DC18D1A0B70058FE64 /* ruler */,
 				541970B118D18F240058FE64 /* LineCart */,
 			);
@@ -4295,6 +4301,7 @@
 				88B3AF6E1932E3B800FAB2A0 /* SinglePhotoTopicVIew.m in Sources */,
 				88B51607192F52EE006A79AB /* MJRefreshFooterView.m in Sources */,
 				54ADB1CE18E16CD700FCCC83 /* Comment.m in Sources */,
+				54BB14471932F37A00D801CC /* ControlScrollView.m in Sources */,
 				54C2EA05192DF55B0011AA0C /* TopicCommentView.m in Sources */,
 				547F9B4E18D15B7E00486337 /* BabyBodyView.m in Sources */,
 				5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */,

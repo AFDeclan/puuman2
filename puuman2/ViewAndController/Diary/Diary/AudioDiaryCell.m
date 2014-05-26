@@ -29,6 +29,15 @@
         playBtn = [[NewAudioPlayView alloc] initWithFrame:CGRectMake(220, 24, 96, 96)];
         [playBtn setDelegate:self];
         [_content addSubview:playBtn];
+        reloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [reloadBtn setFrame:CGRectMake(56, 16, ContentWidth-128, 80)];
+        [reloadBtn setBackgroundColor:[UIColor clearColor]];
+        [_content addSubview:reloadBtn];
+        [reloadBtn setTitle:@"录音下载失败，点击重新下载" forState:UIControlStateNormal];
+        [reloadBtn setTitleColor:PMColor2 forState:UIControlStateNormal];
+        [reloadBtn addTarget:self action:@selector(reloadFile) forControlEvents:UIControlEventTouchUpInside];
+        [reloadBtn setAlpha:0];
+
     }
     return self;
     
@@ -52,26 +61,6 @@
     //audio player init
 
     _content.frame = CGRectMake(112,kHeaderHeight,ContentWidth,height);
-    NSString *filePath = [self.diary.filePaths1 objectAtIndex:0];
-    NSError *playerError;
-    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:&playerError];
-    if (player)
-    {
-        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
-         [playBtn setAlpha:1];
-    }else{
-        [playBtn setAlpha:0];
-
-    }
-
-    
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-//    {
-//        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
-//        [playBtn setAlpha:1];
-//    }else{
-//      [playBtn setAlpha:0];
-//    }
    
     [super buildCellViewWithIndexRow:index abbreviated:abbr];
 }
@@ -80,6 +69,36 @@
 {
     [super loadInfo];
     
+//    if ([[self.diary urls1] count]>0 && !filePath)
+//    {
+//        if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
+//        {
+//            NSError *error;
+//            [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
+//        }
+//    }
+
+    filePath = [self.diary.filePaths1 objectAtIndex:0];
+    NSError *playerError;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:filePath] error:&playerError];
+    
+    if (player)
+    {
+        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
+        [playBtn setAlpha:1];
+        [reloadBtn setAlpha:0];
+    }else{
+        [playBtn setAlpha:0];
+        [reloadBtn setAlpha:1];
+        
+    }
+}
+
+- (void)reloadFile
+{
+    [self.diary redownloadContent1AtIndex:0 withRecall:^(BOOL finished){
+        [self loadInfo];
+    }];
 }
 
 - (void)stopAudio

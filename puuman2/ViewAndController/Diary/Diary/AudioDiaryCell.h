@@ -14,7 +14,9 @@
 {
     NewAudioPlayView *playBtn;
     UILabel *titleLabel;
- 
+    NSString *filePath;
+    UIButton *reloadBtn;
+
 }
 
 + (CGFloat)heightForDiary:(Diary*)diary abbreviated:(BOOL)abbr;
