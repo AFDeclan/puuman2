@@ -120,9 +120,9 @@ static TaskModel *instance;
 {
     switch (afRequest.result) {
         case PumanRequest_Succeeded:
+        {
             nowTasks = afRequest.resObj;
             nowTasksReady = YES;
-            [self.delegate nowTaskDownloadSucceeded];
             updating = NO;
             for (int i=0; i<[nowTasks count]; i++)
             {
@@ -137,14 +137,19 @@ static TaskModel *instance;
                     [downloader downloadDataFromUrl:bgm];
                 }
             }
+            [self.delegate nowTaskDownloadSucceeded];
+        }
             return;
         case PumanRequest_TimeOut:
             [self.delegate nowTaskDownloadFailed:@"任务加载失败，您当前的网络不太给力，点击重试。" needDismiss:YES];
             break;
         case 2:
-            [self.delegate nowTaskDownloadFailed:@"您已完成现阶段所有任务，真棒~" needDismiss:NO];
+        {
             nowTasksReady = YES;
+            nowTasks = afRequest.resObj;
             updating = NO;
+            [self.delegate nowTaskDownloadFailed:@"您已完成现阶段所有任务，真棒~" needDismiss:NO];
+        }
             return;
         default:
             [self.delegate nowTaskDownloadFailed:@"任务加载失败，连接服务器出错。。。" needDismiss:YES];
@@ -168,12 +173,13 @@ static TaskModel *instance;
                 if ([[task valueForKey:_task_ID] integerValue] == tid)
                 {
                    
-                   // [nowTasks removeObjectAtIndex:i];
+                   //[nowTasks removeObjectAtIndex:i];
                     break;
                 }
             }
         }
     }
+    
     [self.delegate nowTaskDownloadSucceeded];
 }
 #pragma mark - downloader delegate
