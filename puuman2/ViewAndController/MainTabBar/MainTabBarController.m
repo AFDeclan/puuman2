@@ -69,12 +69,14 @@ static MBProgressHUD *hud;
     [self initWithTabBar];
     _isReply = YES;
     userInfo = [UserInfo sharedUserInfo];
-//    videoVC = [[VideoShowViewController alloc] init];
-//    [videoVC.view setAlpha:0];
-//    [self.view addSubview:videoVC.view];
-    
-    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(0, 0, 252/2, 240/2) fileName:@"animate_puuman"];
-    
+    videoVC = [[VideoShowViewController alloc] init];
+    [videoVC.view setBackgroundColor:[UIColor clearColor]];
+    [videoVC.view setFrame:CGRectMake(0, 0, 1024, 768)];
+    [self.view addSubview:videoVC.view];
+    [videoVC.view  setAlpha:0];
+
+    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(0, 0, 189,180) fileName:@"animate_puuman"];
+    [videoBtn setDelegate:self];
     [self.view addSubview:videoBtn];
     
 }
@@ -102,6 +104,25 @@ static MBProgressHUD *hud;
     }
 
     
+}
+
+- (void)showVideo
+{
+    
+    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fillMode = kCAFillModeForwards;
+    positionAnimation.removedOnCompletion =NO;
+    positionAnimation.duration = 1;
+    CGMutablePathRef positionPath = CGPathCreateMutable();
+    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [positionAnimation setBeginTime:0];
+    CGPathMoveToPoint(positionPath, NULL, [videoBtn layer].position.x, [videoBtn layer].position.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [videoBtn layer].position.x, [videoBtn layer].position.y, [videoBtn layer].position.x,[videoBtn layer].position.y+768);
+    positionAnimation.path = positionPath;
+    [videoBtn.layer addAnimation:positionAnimation forKey:@"position"];
+    [videoVC.view setAlpha:1];
+    [videoVC showVideoView];
+
 }
 
 - (void)startApp
@@ -197,6 +218,8 @@ static MBProgressHUD *hud;
         _isVertical = YES;
          [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Vertical object:nil];
     }
+    [videoBtn setAlpha:0];
+    [videoBtn stopGif];
     [tabBar setVerticalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_V]];
     [bgImgView setFrame:CGRectMake(0, 0, 768, 1024)];
@@ -209,6 +232,8 @@ static MBProgressHUD *hud;
          _isVertical = NO;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Horizontal object:nil];
     }
+    [videoBtn setAlpha:1];
+    [videoBtn startGif];
     [tabBar setHorizontalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 1024)];

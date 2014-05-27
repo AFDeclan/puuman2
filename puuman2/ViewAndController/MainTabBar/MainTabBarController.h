@@ -18,7 +18,7 @@
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
 
-@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,MainTabBarDelegate,UITextViewDelegate,PopViewDelegate>
+@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,MainTabBarDelegate,UITextViewDelegate,PopViewDelegate,VideoShowButtonDelegate>
 {
     MainTabBar *tabBar;
     UIImageView *bgImgView;
