@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface VideoShowViewController : UIViewController
+{
+    UIView *contentView;
+
+}
 
 @end
