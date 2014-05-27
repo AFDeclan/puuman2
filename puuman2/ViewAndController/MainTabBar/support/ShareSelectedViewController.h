@@ -20,4 +20,5 @@
 }
 
 + (void)shareText:(NSString *)sharetext_ title:(NSString *)title image:(UIImage *)img;
+
 @end

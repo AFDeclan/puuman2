@@ -55,10 +55,11 @@
     manage = !manage;
     if (manage) {
         [manageBtn initWithTitle:@"保存" andButtonType:kGrayLeft];
-        PostNotification(Noti_manangePartnerData, nil);
+       PostNotification(Noti_manangePartnerData, nil);
+        
     }else{
         [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];
-        PostNotification(Noti_manangedPartnerData, nil);
+     PostNotification(Noti_manangedPartnerData, nil);
     }
 }
 
@@ -66,7 +67,7 @@
 {
     manage = NO;
     [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];
-   //PostNotification(Noti_manangedPartnerData, nil);
+  //  PostNotification(Noti_manangedPartnerData, nil);
     [figuresHeader reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
     [dataInfoView reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
     

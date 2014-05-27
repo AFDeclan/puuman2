@@ -196,7 +196,7 @@
             break;
     }
     
-    PostNotification(Noti_BottomInputViewHidden, nil);
+ //  PostNotification(Noti_BottomInputViewHidden, nil);
     switch (type) {
         case kAllTopicView:
             [self selectedAll];

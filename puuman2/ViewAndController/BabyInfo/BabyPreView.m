@@ -138,38 +138,7 @@
         }
         
         
-        UITableViewCell *cell_pre = [_showColumnView cellForIndex:selectedIndex-1];
-        if([cell_pre isKindOfClass:[BabyPreTableViewCell class]]){
-            
-            CGRect frame2 = cell_pre.frame;
-            frame2.origin.x +=8;
-            frame2.size.width = 256;
-            frame2.size.height = 296;
-            
-            if(CGRectContainsPoint(frame2, pos)){
-                
-                frame2 = cell.frame;
-                return YES;
-            }
-    }
-    UITableViewCell *cell_next = [_showColumnView cellForIndex:selectedIndex +1];
-    
-    if([cell_next isKindOfClass:[BabyPreTableViewCell class]]){
-     
-        CGRect frame3 = cell_next.frame;
-        frame3.origin.x += 8;
-        frame3.size.width = 256;
-        frame3.size.height = 296;
-        if((CGRectContainsPoint(frame3, pos))){
         
-            
-            
-            return YES;
-        
-        }
-    
-    }
-    
         }
     return YES;
 }
