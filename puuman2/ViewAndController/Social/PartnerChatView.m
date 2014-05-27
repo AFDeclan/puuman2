@@ -71,7 +71,8 @@
 
 - (void)reloadChatData
 {
-    [MyNotiCenter addObserver:self selector:@selector(goOut) name:Noti_BottomInputViewHidden object:nil];
+   
+    
     [[Friend sharedInstance] removeDelegateObject:self];
     [[Friend sharedInstance] addDelegateObject:self];
     [[[Friend sharedInstance] myGroup] startUpdateAction];
@@ -80,7 +81,6 @@
 
 - (void)goOut
 {
-    [MyNotiCenter removeObserver:self name:Noti_BottomInputViewHidden object:nil];
     [[Friend sharedInstance] removeDelegateObject:self];
     [[[Friend sharedInstance] myGroup] stopUpdateAction];
 }

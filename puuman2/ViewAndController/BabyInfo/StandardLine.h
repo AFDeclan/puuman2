@@ -48,8 +48,6 @@ typedef enum
 {
     float subHeight;
     float subWeight;
-    
-    
 }
 
 - (NSString *)getNodeStringStandardwithDate:(NSDate *)date andValue:(float)value andIsHeight:(BOOL)isHeight;

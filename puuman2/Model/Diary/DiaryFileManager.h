@@ -26,7 +26,7 @@
 + (NSString *)fixedFilePath:(NSString *)filePath;
 
 //保存不同类型的日记，若成功返回diaryInfo，否则返回nil
-+ (Diary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title  andIsTopic:(BOOL)isTopic andBabyData:(BOOL)babyData andTaskInfo:(NSDictionary *)taskInfo ;
++ (Diary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title  andIsTopic:(BOOL)isTopic andBabyData:(BOOL)babyData andTaskInfo:(NSDictionary *)taskInfo createDate:(NSDate *)date;
 
 + (Diary *)savePhotos:(NSArray *)photos withAudio:(NSURL *)audioUrl withTitle:(NSString *)title  andTaskInfo:(NSDictionary *)taskInfo andIsTopic:(BOOL)isTopic;
 

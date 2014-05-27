@@ -9,7 +9,7 @@
 #import "StandardLine.h"
 #import "BabyData.h"
 #import "NSDate+Compute.h"
-
+#import "DateFormatter.h"
 @implementation StandardLine
 
 - (NSString *)getNodeStringStandardwithDate:(NSDate *)date andHeightValue:(float)heightValue andWeightValue:(float)weightValue
@@ -19,7 +19,7 @@
     subWeight = 0;
   
    //if ([self dateIsToday:date]) {
-     NSString *nodeString = @"今日宝宝";
+    NSString *nodeString = @"宝宝今日";
 //    }else{
 //        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 //        dateFormatter.dateFormat = @"YYYY年M月d日";
@@ -119,7 +119,13 @@
     NSString *m = [age objectAtIndex:1];
    // NSString *d = [age objectAtIndex:2];
     float nowMonth = [y intValue]*12+[m intValue];
+
+    if ([age count]== 2) {
+        nowMonth = 0;
+    }
+    
     nowMonth= nowMonth > 0?nowMonth:1;
+    nowMonth = nowMonth == 0?1:nowMonth;
     if (nowMonth < 25) {
         for (int i = 0;  i <25; i++) {
             float  month = [standardHeightWeight[i][0] floatValue];
@@ -180,6 +186,7 @@
 }
 -(Standard)getStandardHeightWithPreStandard:(int)preStandard andNextStandard:(int)nextStandard withMyHeight:(float)height withNowMonth:(int)month
 {
+    
     float preMaxheight = 0;
     float nextMaxheight = 0;
     float preMinheight = 0;
@@ -190,8 +197,6 @@
         preMaxheight = [standardHeightWeight[preStandard][6] floatValue];
         nextMinheight = [standardHeightWeight[nextStandard][5] floatValue];
         nextMaxheight = [standardHeightWeight[nextStandard][6] floatValue];
-        
-        
     }else{
         preMinheight = [standardHeightWeight[preStandard][7] floatValue];
         preMaxheight = [standardHeightWeight[preStandard][8] floatValue];

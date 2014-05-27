@@ -136,4 +136,11 @@
     }
    
 }
+
+- (void)dealloc
+{
+    [MyNotiCenter removeObserver:self name:Noti_manangePartnerData object:nil];
+    [MyNotiCenter removeObserver:self name:Noti_manangedPartnerData object:nil];
+}
+
 @end

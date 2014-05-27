@@ -2349,6 +2349,11 @@
 			children = (
 				54BEB69218E94E9800AB3E27 /* InviteGroupCell.h */,
 				54BEB69318E94E9800AB3E27 /* InviteGroupCell.m */,
+				5421667918E0331A005875F8 /* BasicInfoView.h */,
+				5421667A18E0331A005875F8 /* BasicInfoView.m */,
+				54ADB1B618E1203A00FCCC83 /* FigureHeaderCell.h */,
+				54ADB1B718E1203A00FCCC83 /* FigureHeaderCell.m */,
+				54012DDC18E3049000F11D97 /* DataCellView */,
 			);
 			name = support;
 			sourceTree = "<group>";
@@ -2360,18 +2365,6 @@
 				5421667518E032B5005875F8 /* VotingCell.m */,
 			);
 			name = VotingCell;
-			sourceTree = "<group>";
-		};
-		5421667718E032F5005875F8 /* support */ = {
-			isa = PBXGroup;
-			children = (
-				5421667918E0331A005875F8 /* BasicInfoView.h */,
-				5421667A18E0331A005875F8 /* BasicInfoView.m */,
-				54ADB1B618E1203A00FCCC83 /* FigureHeaderCell.h */,
-				54ADB1B718E1203A00FCCC83 /* FigureHeaderCell.m */,
-				54012DDC18E3049000F11D97 /* DataCellView */,
-			);
-			name = support;
 			sourceTree = "<group>";
 		};
 		5447C44518D9785100187BE6 /* SocialImages */ = {
@@ -2491,7 +2484,6 @@
 				54BEB68D18E948E100AB3E27 /* PartnerDataOutGroupView.m */,
 				54BEB68F18E948FE00AB3E27 /* PartnerDataInGroupView.h */,
 				54BEB69018E948FE00AB3E27 /* PartnerDataInGroupView.m */,
-				5421667718E032F5005875F8 /* support */,
 				5421667318E03281005875F8 /* VotingCell */,
 				54AE788318E00B9100AE558C /* DataView */,
 				54AE787F18DFF83D00AE558C /* TopicCell */,
@@ -2754,8 +2746,8 @@
 				54AE2BAE18E93FEB00D24F92 /* Friend.m */,
 				54AE2BAF18E93FEB00D24F92 /* Group.h */,
 				54AE2BB018E93FEB00D24F92 /* Group.m */,
-				54AE2BB118E93FEB00D24F92 /* Member.h */,
 				54AE2BB218E93FEB00D24F92 /* Member.m */,
+				54AE2BB118E93FEB00D24F92 /* Member.h */,
 				54AE2BB318E93FEB00D24F92 /* MemberCache.h */,
 				54AE2BB418E93FEB00D24F92 /* MemberCache.m */,
 			);
