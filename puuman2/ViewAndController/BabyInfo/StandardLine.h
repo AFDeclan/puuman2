@@ -41,14 +41,13 @@ typedef enum
     kHeight,
     kWeightLow,
     kWeightHigh,
-    kWeight
+    kWeight,
+    KHeightWeightNone
 }Standard;
 @interface StandardLine : NSObject
 {
     float subHeight;
     float subWeight;
-    
-    
 }
 
 - (NSString *)getNodeStringStandardwithDate:(NSDate *)date andValue:(float)value andIsHeight:(BOOL)isHeight;

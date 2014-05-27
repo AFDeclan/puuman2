@@ -9,7 +9,7 @@
 #import "StandardLine.h"
 #import "BabyData.h"
 #import "NSDate+Compute.h"
-
+#import "DateFormatter.h"
 @implementation StandardLine
 
 - (NSString *)getNodeStringStandardwithDate:(NSDate *)date andHeightValue:(float)heightValue andWeightValue:(float)weightValue
@@ -19,7 +19,7 @@
     subWeight = 0;
   
    //if ([self dateIsToday:date]) {
-     NSString *nodeString = @"今日宝宝";
+    NSString *nodeString = @"宝宝今日";
 //    }else{
 //        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 //        dateFormatter.dateFormat = @"YYYY年M月d日";
@@ -119,51 +119,65 @@
     NSString *m = [age objectAtIndex:1];
    // NSString *d = [age objectAtIndex:2];
     float nowMonth = [y intValue]*12+[m intValue];
-    nowMonth= nowMonth>0?nowMonth:1;
-    for (int i =0;  i <25; i++) {
-        float  month = [standardHeightWeight[i][0] floatValue];
-        if (nowMonth>=month) {
-            preStandard = i;
-        }
-        if (nowMonth<=month) {
-            nextStandard = i;
-            break;
-        }
+
+    if ([age count]== 2) {
+        nowMonth = 0;
     }
     
-    if (isHeight) {
-        Standard heightStandard =  [self getStandardHeightWithPreStandard:preStandard andNextStandard:nextStandard withMyHeight:value withNowMonth:nowMonth];
-        switch (heightStandard) {
-            case kHeight:
-                nodeString =  @"身高正常";
+    nowMonth= nowMonth > 0?nowMonth:1;
+    nowMonth = nowMonth == 0?1:nowMonth;
+    if (nowMonth < 25) {
+        for (int i = 0;  i <25; i++) {
+            float  month = [standardHeightWeight[i][0] floatValue];
+            if (nowMonth>=month) {
+                preStandard = i;
+            }
+            if (nowMonth<=month) {
+                nextStandard = i;
                 break;
-            case kHeightHigh:
-                nodeString = [NSString stringWithFormat:@"高于标准%0.1fcm",subHeight];
-                break;
-            case kHeightLow:
-                nodeString = [NSString stringWithFormat:@"低于标准%0.1fcm",subHeight];
-                break;
-                
-            default:
-                break;
-        }
-    }else{
-        Standard weightStandard = [self getStandardWeightWithPreStandard:preStandard andNextStandard:nextStandard withMyWeight:value withNowMonth:nowMonth];
-        switch (weightStandard) {
-            case kWeight:
-                nodeString =  @"体重正常";
-                break;
-            case kWeightHigh:
-                nodeString =  [NSString stringWithFormat:@"高于标准%0.1fkg",subWeight];
-                break;
-            case kWeightLow:
-                nodeString =  [NSString stringWithFormat:@"低于标准%0.1fkg",subWeight];
-                break;
-                
-            default:
-                break;
+            }
         }
         
+        if (isHeight) {
+            Standard heightStandard =  [self getStandardHeightWithPreStandard:preStandard andNextStandard:nextStandard withMyHeight:value withNowMonth:nowMonth];
+            switch (heightStandard) {
+                case kHeight:
+                    nodeString =  @"身高正常";
+                    break;
+                case kHeightHigh:
+                    nodeString = [NSString stringWithFormat:@"高于标准%0.1fcm",subHeight];
+                    break;
+                case kHeightLow:
+                    nodeString = [NSString stringWithFormat:@"低于标准%0.1fcm",subHeight];
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+        }else{
+            Standard weightStandard = [self getStandardWeightWithPreStandard:preStandard andNextStandard:nextStandard withMyWeight:value withNowMonth:nowMonth];
+            switch (weightStandard) {
+                case kWeight:
+                    nodeString =  @"体重正常";
+                    break;
+                case kWeightHigh:
+                    nodeString =  [NSString stringWithFormat:@"高于标准%0.1fkg",subWeight];
+                    break;
+                case kWeightLow:
+                    nodeString =  [NSString stringWithFormat:@"低于标准%0.1fkg",subWeight];
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+        }
+
+    }else{
+        
+        nodeString =  @"";
+      
     }
     
     return nodeString;
@@ -172,6 +186,7 @@
 }
 -(Standard)getStandardHeightWithPreStandard:(int)preStandard andNextStandard:(int)nextStandard withMyHeight:(float)height withNowMonth:(int)month
 {
+    
     float preMaxheight = 0;
     float nextMaxheight = 0;
     float preMinheight = 0;
@@ -182,8 +197,6 @@
         preMaxheight = [standardHeightWeight[preStandard][6] floatValue];
         nextMinheight = [standardHeightWeight[nextStandard][5] floatValue];
         nextMaxheight = [standardHeightWeight[nextStandard][6] floatValue];
-        
-        
     }else{
         preMinheight = [standardHeightWeight[preStandard][7] floatValue];
         preMaxheight = [standardHeightWeight[preStandard][8] floatValue];

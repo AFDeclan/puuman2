@@ -11,6 +11,8 @@
 #import "MainTabBarController.h"
 #import "DiaryFileManager.h"
 #import "StandardLine.h"
+#import "DiaryModel.h"
+#import "Diary.h"
 
 @interface AddBodyDataViewController ()
 
@@ -294,13 +296,21 @@
 
 - (void)finishBtnPressed
 {
+    
+    NSArray *diarys =  [[DiaryModel sharedDiaryModel] diariesInDay:(date?date:[NSDate date])];
+    
+    for (Diary *diary in diarys) {
+        if ([diary createdByBabyData]) {
+            [[DiaryModel sharedDiaryModel] deleteDiary:diary];
+        }
+    }
+    
     if (calendarView) {
         [calendarView removeFromSuperview];
     }else
     {
         date = [NSDate date];
     }
-    
     [[BabyData sharedBabyData] insertRecordAtDate:date height:height weight:weight];
        //save the file
     NSString *content = @"";
@@ -310,8 +320,9 @@
         
     }
     [MyNotiCenter postNotificationName:Noti_BabyDataUpdated object:nil];
-    [DiaryFileManager saveText:content withPhoto:nil withTitle:@"宝宝成长记录" andTaskInfo:nil andIsTopic:NO];
+    [DiaryFileManager saveText:content withPhoto:nil withTitle:@"宝宝成长记录"  andIsTopic:NO andBabyData:YES andTaskInfo:nil createDate:date];
     [super finishBtnPressed];
+    PostNotification(Noti_ReloadDiaryTable, nil);
 
 }
 

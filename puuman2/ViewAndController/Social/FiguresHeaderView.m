@@ -23,9 +23,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         [MyNotiCenter addObserver:self selector:@selector(showManagerMenu) name:Noti_manangePartnerData object:nil];
         [MyNotiCenter addObserver:self selector:@selector(hiddenManagerMenu) name:Noti_manangedPartnerData object:nil];
-        
         icon_head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
         [icon_head setImage:[UIImage imageNamed:@"block_name_fri.png"]];
         [self addSubview:icon_head];
@@ -63,8 +63,6 @@
         noti_label = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
         [noti_label setBackgroundColor:[UIColor clearColor]];
         [self addSubview:noti_label];
-//        [MyNotiCenter addObserver:self selector:@selector(removeAllDelegate) name:Noti_RemoveFriendDelegate object:nil];
-        
         modifyNameBtn = [[UIButton alloc] initWithFrame:CGRectMake(80, 0, 160, 48)];
         [modifyNameBtn setBackgroundColor:[UIColor clearColor]];
         [modifyNameBtn addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventTouchUpInside];
@@ -124,6 +122,7 @@
 
 - (void)showManagerMenu
 {
+    
     [info_title setEnabled:YES];
     canDeleteMember = YES;
     [info_title setEnabled:YES];
@@ -134,6 +133,7 @@
 
 - (void)hiddenManagerMenu
 {
+    
     [info_title setEnabled:NO];
     canDeleteMember = NO;
     [info_title setEnabled:NO];
@@ -275,6 +275,14 @@
     }
     return YES;
     
+  
     
+}
+
+
+- (void)dealloc
+{
+    [MyNotiCenter removeObserver:self name:Noti_manangePartnerData object:nil];
+    [MyNotiCenter removeObserver:self name:Noti_manangedPartnerData object:nil];
 }
 @end

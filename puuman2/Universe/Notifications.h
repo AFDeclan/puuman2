@@ -62,6 +62,7 @@
 //社交
 #define Noti_manangePartnerData                 @"Noti_manangePartnerData"
 #define Noti_manangedPartnerData                @"Noti_manangedPartnerData"
+#define Noti_GoOutDataView                      @"Noti_GoOutDataView"
 #define Noti_BottomInputViewShow                @"Noti_BottomInputViewShow"
 #define Noti_BottomInputViewHidden              @"Noti_BottomInputViewHidden"
 #define Noti_RefreshTopicTable                  @"Noti_RefreshTopicTable"

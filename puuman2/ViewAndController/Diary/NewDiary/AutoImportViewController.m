@@ -149,7 +149,6 @@
 
 - (void)updatePhotos:(NSDictionary *)dic
 {
-    
     [[ImportStore shareImportStore] initWithImportData:dic];
 }
 

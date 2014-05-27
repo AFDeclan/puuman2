@@ -75,6 +75,7 @@
 //    [MobClick checkUpdateWithDelegate:self selector:@selector(appUpdate:)];
     [self checkUpdate];
     PostNotification(Noti_Refresh, nil);
+    
 }
 
 - (void)checkUpdate

@@ -60,7 +60,7 @@ static ImportStore * instance;
     if (!fileDir) return ;
     NSDate *curDate = [NSDate date];
     NSString *fileName = [DateFormatter stringFromDatetime:curDate];
-    NSString *filePathAll = nil;
+    NSMutableArray * paths = [[NSMutableArray alloc] initWithCapacity:photos.count];
     NSError *error;
     for (int i=0; i<[photos count]; i++)
     {
@@ -71,29 +71,18 @@ static ImportStore * instance;
         {
             [ErrorLog errorLog:@"Save photo failed - 1" fromFile:@"DiaryFileManager.m" error:error];
         }
-        if (i == 0) filePathAll = filePath;
-        else filePathAll = [filePathAll stringByAppendingFormat:@"#@#%@", filePath];
+        [paths addObject:filePath];
     }
-    NSString *type2 = @"", *filePath2 = @"";
-    //buildDiaryInfo
-    
     if (title == nil) title = @"";
-    NSString *taskDiary = @"";
-    diary =[[Diary alloc] init];
+    diary = [[Diary alloc] init];
     diary.title = title;
+    diary.DCreateTime = [NSDate date];
     diary.type1Str = DiaryTypeStrPhoto;
-
-    
-#warning undone
-//  diaryInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
-//                               title, kTitleName,
-//                               vType_Photo, kTypeName,
-//                               filePathAll, kFilePathName,
-//                               curDate, kDateName,
-//                               type2, kType2Name,
-//                               filePath2, kFilePath2Name,
-//                               taskDiary, kTaskDiary,
- //                              nil];
+    diary.type1 = DiaryContentTypePhoto;
+    diary.filePaths1 = paths;
+    diary.UIdentity = [UserInfo sharedUserInfo].identity;
+    diary.type2 = DiaryContentTypeNone;
+    diary.deleted = NO;
     TaskUploader *uploader = [TaskUploader uploader];
     [uploader addNewTaskWithDiaryInfo:diary taskInfo:nil];
 

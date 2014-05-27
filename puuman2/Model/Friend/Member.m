@@ -33,7 +33,7 @@
         if ([tp respondsToSelector:@selector(doubleValue)]) _BabyHeight = [tp doubleValue]; else _BabyHeight = 0;
         tp = [baseInfo valueForKey:@"BabyWeight"];
         if ([tp respondsToSelector:@selector(doubleValue)]) _BabyWeight = [tp doubleValue]; else _BabyWeight = 0;
-        tp = [baseInfo valueForKey:userInfo_pumanQuan];
+        tp = [baseInfo valueForKey:@"UPuman"];
         if ([tp respondsToSelector:@selector(doubleValue)]) _BabyPuuman = [tp doubleValue]; else _BabyPuuman = 0;
     }
     NSDictionary * detailInfo = [data valueForKey:@"DetailInfo"];

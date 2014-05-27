@@ -131,6 +131,7 @@
         if (dayNum !=0 ) {
             str_age = [str_age stringByAppendingFormat:@"%d天",dayNum];
         }
+        info_age.text = str_age;
     }
  
 }

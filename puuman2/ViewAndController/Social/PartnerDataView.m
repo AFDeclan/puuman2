@@ -36,6 +36,7 @@
     }else{
          PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:NO] );
     }
+    
     [[Friend sharedInstance] removeDelegateObject:self];
     [[Friend sharedInstance] addDelegateObject:self];
     [[Friend sharedInstance] getGroupData];
