@@ -502,6 +502,9 @@
 		54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB3818C57C1D004489DA /* CustomTextField.m */; };
 		54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */; };
 		54B5206F18F4E1B700EF5DC4 /* pic_future_topic.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B5206E18F4E1B700EF5DC4 /* pic_future_topic.png */; };
+		54B5AA3019343ED300805E63 /* VideoShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B5AA2F19343ED300805E63 /* VideoShowViewController.m */; };
+		54B5AA331934421700805E63 /* VideoShowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B5AA321934421700805E63 /* VideoShowButton.m */; };
+		54B5AA351934443700805E63 /* animate_puuman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 54B5AA341934443700805E63 /* animate_puuman.gif */; };
 		54B6F40818D6A5030055FC72 /* btn_back_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40118D6A5030055FC72 /* btn_back_set.png */; };
 		54B6F40918D6A5030055FC72 /* icon_admin_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40218D6A5030055FC72 /* icon_admin_set.png */; };
 		54B6F40A18D6A5030055FC72 /* icon_check_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B6F40318D6A5030055FC72 /* icon_check_set.png */; };
@@ -1465,6 +1468,11 @@
 		54B4EB4018C58D9E004489DA /* CustomAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertViewController.h; sourceTree = "<group>"; };
 		54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertViewController.m; sourceTree = "<group>"; };
 		54B5206E18F4E1B700EF5DC4 /* pic_future_topic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_future_topic.png; sourceTree = "<group>"; };
+		54B5AA2E19343ED300805E63 /* VideoShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShowViewController.h; sourceTree = "<group>"; };
+		54B5AA2F19343ED300805E63 /* VideoShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoShowViewController.m; sourceTree = "<group>"; };
+		54B5AA311934421700805E63 /* VideoShowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShowButton.h; sourceTree = "<group>"; };
+		54B5AA321934421700805E63 /* VideoShowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoShowButton.m; sourceTree = "<group>"; };
+		54B5AA341934443700805E63 /* animate_puuman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = animate_puuman.gif; sourceTree = "<group>"; };
 		54B6F40118D6A5030055FC72 /* btn_back_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_set.png; sourceTree = "<group>"; };
 		54B6F40218D6A5030055FC72 /* icon_admin_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_admin_set.png; sourceTree = "<group>"; };
 		54B6F40318D6A5030055FC72 /* icon_check_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_check_set.png; sourceTree = "<group>"; };
@@ -3013,6 +3021,10 @@
 		54B4EB2218C576E5004489DA /* support */ = {
 			isa = PBXGroup;
 			children = (
+				54B5AA2E19343ED300805E63 /* VideoShowViewController.h */,
+				54B5AA2F19343ED300805E63 /* VideoShowViewController.m */,
+				54B5AA311934421700805E63 /* VideoShowButton.h */,
+				54B5AA321934421700805E63 /* VideoShowButton.m */,
 				54B4EB3718C57C1D004489DA /* CustomTextField.h */,
 				54B4EB3818C57C1D004489DA /* CustomTextField.m */,
 				5474A47818C5B0860073B2FE /* AFButton */,
@@ -3272,7 +3284,6 @@
 		54CE111B18C1BC6D00966396 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				54B4EB2218C576E5004489DA /* support */,
 				54CE111C18C1BC6D00966396 /* MainTabBar.h */,
 				54CE111D18C1BC6D00966396 /* MainTabBar.m */,
 				54CE119118C1CD7C00966396 /* MainTabBarButton.h */,
@@ -3283,6 +3294,7 @@
 				54BB09E718D9494C00F805DD /* SkipViewController.m */,
 				54C2EA00192DE0EB0011AA0C /* EnterTutorialView.h */,
 				54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */,
+				54B4EB2218C576E5004489DA /* support */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
@@ -3399,6 +3411,7 @@
 				54CE118F18C1CA5200966396 /* pic1_circle_diary.png */,
 				54CE117718C1C8DC00966396 /* bg_h.png */,
 				54CE117818C1C8DC00966396 /* bg.png */,
+				54B5AA341934443700805E63 /* animate_puuman.gif */,
 				54CCF1E118F3E7350081C149 /* btn_look1_diary.png */,
 				54CCF1E218F3E7350081C149 /* btn_look2_diary.png */,
 				54CCF1D918F3E7170081C149 /* btn_baby1_diary.png */,
@@ -3852,6 +3865,7 @@
 				549B62CD18CAC79800AFEEAB /* check_status.png in Resources */,
 				54B97E4B18FA2B1E00B6C4C9 /* pic38_insure_shop.png in Resources */,
 				54F1D13518C48FA50005CDD9 /* btn_video_diary.png in Resources */,
+				54B5AA351934443700805E63 /* animate_puuman.gif in Resources */,
 				54B753AA18D2F8C4002411CF /* pic_ruler_baby.png in Resources */,
 				546375BC18C9AB36004B11EF /* tri_login_diary.png in Resources */,
 				5403CD4918D03D39004CAE22 /* icon4_weather_diary@2x.png in Resources */,
@@ -4468,6 +4482,7 @@
 				54012DD818E3046400F11D97 /* PartnerDataCellView.m in Sources */,
 				54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */,
 				5412BC5E192C80AD0033F322 /* ImportStore.m in Sources */,
+				54B5AA3019343ED300805E63 /* VideoShowViewController.m in Sources */,
 				541970D118D1956D0058FE64 /* LineChartView.m in Sources */,
 				54AC210E18E40AED001C1357 /* ShopContentView.m in Sources */,
 				54ADE09F18C8608700B166C4 /* NewTextDiaryViewController.m in Sources */,
@@ -4480,6 +4495,7 @@
 				14B8DF1E18BC37A30047C6B3 /* DiaryFileManager.m in Sources */,
 				54AF7DF818FBB3F400FC454C /* InsuranceInfoViewController.m in Sources */,
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,
+				54B5AA331934421700805E63 /* VideoShowButton.m in Sources */,
 				5403CE4E18D06E87004CAE22 /* BabyInfoButton.m in Sources */,
 				54012DF618E3092E00F11D97 /* BodyPartnerDataCell.m in Sources */,
 				54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */,

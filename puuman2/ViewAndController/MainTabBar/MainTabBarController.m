@@ -69,8 +69,13 @@ static MBProgressHUD *hud;
     [self initWithTabBar];
     _isReply = YES;
     userInfo = [UserInfo sharedUserInfo];
-
- 
+//    videoVC = [[VideoShowViewController alloc] init];
+//    [videoVC.view setAlpha:0];
+//    [self.view addSubview:videoVC.view];
+    
+    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(0, 0, 252/2, 240/2) fileName:@"animate_puuman"];
+    
+    [self.view addSubview:videoBtn];
     
 }
 
@@ -81,7 +86,6 @@ static MBProgressHUD *hud;
         
         [userDefaults setBool:YES forKey:@"tutorialShowed"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startApp) name:Noti_TutorialFinshed object:nil];
-     
         
     }else{
         
