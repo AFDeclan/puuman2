@@ -36,9 +36,9 @@
 
 -(void)initialization{
     
-    contentView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768)];
-    contentView.backgroundColor = [UIColor greenColor];
-    [contentView setAlpha:0.5];
+    contentView = [[UIView alloc]initWithFrame:CGRectMake(0, -768, 1024, 768)];
+    contentView.backgroundColor = [UIColor blueColor];
+    //[contentView setAlpha:0.2];
     [self.view addSubview:contentView];
     UILabel *mainLab = [[UILabel alloc] initWithFrame:CGRectMake(408,216, 215, 25)];
     mainLab.text = @"您觉得这段视频......";
@@ -80,7 +80,7 @@
         
     }else if(button.tag == 101){
         
-         
+        [self.view removeFromSuperview];
     }
     
 }
@@ -106,11 +106,11 @@
     CGMutablePathRef positionPath = CGPathCreateMutable();
     positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [positionAnimation setBeginTime:0];
-    CGPathMoveToPoint(positionPath, NULL, [videoView layer].position.x, [videoView layer].position.y);
-    CGPathAddQuadCurveToPoint(positionPath, NULL, [videoView layer].position.x, [videoView layer].position.y, [videoView layer].position.x,[videoView layer].position.y+768);
+    CGPathMoveToPoint(positionPath, NULL, [contentView layer].position.x, [contentView layer].position.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [contentView layer].position.x, [contentView layer].position.y, [contentView layer].position.x,[contentView layer].position.y+768);
     positionAnimation.path = positionPath;
-    [videoView.layer addAnimation:positionAnimation forKey:@"position"];
-    SetViewLeftUp(videoView, 0, 0);
+    [contentView.layer addAnimation:positionAnimation forKey:@"position"];
+    SetViewLeftUp(contentView, 0, 0);
 }
 
 @end

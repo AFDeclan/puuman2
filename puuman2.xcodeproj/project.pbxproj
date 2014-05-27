@@ -744,6 +744,8 @@
 		88B5160D192F52EE006A79AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EC192F52EE006A79AB /* libMobClickLibrary.a */; };
 		88B5160E192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EF192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a */; };
 		88B51611192F558E006A79AB /* AFSelecedTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */; };
+		88CA16EF19347A8F0072F8B8 /* btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CA16EE19347A8F0072F8B8 /* btn1.png */; };
+		88CA16F119347A940072F8B8 /* btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CA16F019347A940072F8B8 /* btn.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1793,6 +1795,8 @@
 		88B515F1192F52EE006A79AB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		88B5160F192F558E006A79AB /* AFSelecedTextImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSelecedTextImgButton.h; sourceTree = "<group>"; };
 		88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSelecedTextImgButton.m; sourceTree = "<group>"; };
+		88CA16EE19347A8F0072F8B8 /* btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn1.png; sourceTree = "<group>"; };
+		88CA16F019347A940072F8B8 /* btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn.png; sourceTree = "<group>"; };
 		A163B769C9D646389F66C162 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -3322,6 +3326,8 @@
 		54CE114718C1C7BF00966396 /* Img */ = {
 			isa = PBXGroup;
 			children = (
+				88CA16F019347A940072F8B8 /* btn.png */,
+				88CA16EE19347A8F0072F8B8 /* btn1.png */,
 				149B2E6818FFDAA500CE6337 /* Icon */,
 				149B2E7018FFDAA500CE6337 /* Launch */,
 				54CE117118C1C84000966396 /* Images */,
@@ -3924,6 +3930,7 @@
 				54441A0718D462DE00FBE69F /* block_new_puuman.png in Resources */,
 				54B4684818E527D700745F72 /* icon_abroad_shop.png in Resources */,
 				54B97EAD18FA589800B6C4C9 /* pic_insure3_shop.png in Resources */,
+				88CA16EF19347A8F0072F8B8 /* btn1.png in Resources */,
 				54B97E8D18FA572600B6C4C9 /* pic19_insure_shop.png in Resources */,
 				5403CE2318D04F5E004CAE22 /* btn_Bpre1_baby.png in Resources */,
 				54AC20EE18E3FD30001C1357 /* icon_compare1_shop.png in Resources */,
@@ -4049,6 +4056,7 @@
 				54B97E9D18FA583F00B6C4C9 /* title3_insure_shop.png in Resources */,
 				54AD6A7819061502000897F4 /* btn_red3.png in Resources */,
 				54B97E5E18FA2B1E00B6C4C9 /* wing1_insure_shop.png in Resources */,
+				88CA16F119347A940072F8B8 /* btn.png in Resources */,
 				5463759718C98493004B11EF /* tri_gray_up.png in Resources */,
 				5474A48618C5C8040073B2FE /* btn_photo3_diary.png in Resources */,
 				54B4684918E527D700745F72 /* icon_bed_shop.png in Resources */,
