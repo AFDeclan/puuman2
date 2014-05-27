@@ -116,7 +116,8 @@
 {
     [talkTextField resignFirstResponder];
     [_replay comment:talkTextField.text];
-
+    [createTalkBtn setEnabled:NO];
+    [createTalkBtn setAlpha:0.5];
 }
 
 - (void)show
@@ -139,15 +140,14 @@
         
     }
     [talkTextField setText:@""];
-    [createTalkBtn setEnabled:NO];
-    [createTalkBtn setAlpha:0.5];
     [talksTable reloadData];
 }
 
 //评论上传失败
 - (void)replyCommentUploadFailed:(Reply *)reply
 {
-    
+    [createTalkBtn setEnabled:YES];
+    [createTalkBtn setAlpha:1];
 }
 
 
