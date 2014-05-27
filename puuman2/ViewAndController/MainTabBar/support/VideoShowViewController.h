@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface VideoShowViewController : UIViewController
-
+{
+    UIView *videoView;
+}
+- (void)showVideoView;
 @end

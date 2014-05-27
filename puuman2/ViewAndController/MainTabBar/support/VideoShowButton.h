@@ -11,16 +11,22 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
 
-
+@protocol VideoShowButtonDelegate;
 @interface VideoShowButton : UIView
 {
     CGImageSourceRef gif;
     NSDictionary *gifProperties;
-    NSInteger index;
-    NSInteger count;
-    NSTimer *timer; 
+    NSInteger currentProperty;
+    NSInteger countProperty;
+    NSTimer *timer;
+    UIButton *playBtn;
 }
-
+@property(nonatomic,assign)id<VideoShowButtonDelegate> delegate;
 - (id)initWithFrame:(CGRect)frame fileName:(NSString *)fileName;
 - (void)stopGif;
+-(void)startGif;
+
+@end
+@protocol VideoShowButtonDelegate <NSObject>
+- (void)showVideo;
 @end

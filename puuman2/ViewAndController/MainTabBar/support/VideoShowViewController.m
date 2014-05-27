@@ -7,6 +7,7 @@
 //
 
 #import "VideoShowViewController.h"
+#import "UniverseConstant.h"
 
 @interface VideoShowViewController ()
 
@@ -26,6 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    videoView = [[UIView alloc] initWithFrame:CGRectMake(0, -768, 1024, 768)];
+    [videoView setBackgroundColor:[UIColor blueColor]];
+    [self.view addSubview:videoView];
     // Do any additional setup after loading the view.
 }
 
@@ -35,15 +39,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)showVideoView
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fillMode = kCAFillModeForwards;
+    positionAnimation.removedOnCompletion =NO;
+    positionAnimation.duration = 1;
+    CGMutablePathRef positionPath = CGPathCreateMutable();
+    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [positionAnimation setBeginTime:0];
+    CGPathMoveToPoint(positionPath, NULL, [videoView layer].position.x, [videoView layer].position.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [videoView layer].position.x, [videoView layer].position.y, [videoView layer].position.x,[videoView layer].position.y+768);
+    positionAnimation.path = positionPath;
+    [videoView.layer addAnimation:positionAnimation forKey:@"position"];
+    SetViewLeftUp(videoView, 0, 0);
 }
-*/
 
 @end
