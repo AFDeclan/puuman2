@@ -44,8 +44,8 @@
             [propWare1 setFrame:CGRectMake(188, 48, 80, 108)];
             [propWare2 setFrame:CGRectMake(12, 198, 80, 108)];
             [propWare3 setFrame:CGRectMake(148, 308, 80, 108)];
-            [propWare4 setFrame:CGRectMake(452, 96, 80, 108)];
-            [propWare5 setFrame:CGRectMake(452, 224, 80, 108)];
+            [propWare4 setFrame:CGRectMake(460, 96, 80, 108)];
+            [propWare5 setFrame:CGRectMake(465, 224, 80, 108)];
             [propWare1 setParentMenu:8 andChildMenu:7];
             [propWare2 setParentMenu:8 andChildMenu:1];
             [propWare3 setParentMenu:6 andChildMenu:6];
