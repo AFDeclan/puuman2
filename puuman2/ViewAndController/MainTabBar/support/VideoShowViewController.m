@@ -30,6 +30,7 @@
 {
     [super viewDidLoad];
     [self initialization];
+    
     // Do any additional setup after loading the view.
 }
 

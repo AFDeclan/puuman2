@@ -10,8 +10,9 @@
 
 @interface VideoShowViewController : UIViewController
 {
+    UIView *videoView;
     UIView *contentView;
 
 }
-
+- (void)showVideoView;
 @end
