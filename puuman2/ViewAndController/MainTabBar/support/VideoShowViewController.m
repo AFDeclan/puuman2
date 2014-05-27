@@ -8,13 +8,16 @@
 
 #import "VideoShowViewController.h"
 #import "UniverseConstant.h"
+#import "ColorsAndFonts.h"
+#import "MainTabBarController.h"
+#import "ShareSelectedViewController.h"
 
 @interface VideoShowViewController ()
 
 @end
 
 @implementation VideoShowViewController
-
+@synthesize delegate = _delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,17 +30,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    videoView = [[UIView alloc] initWithFrame:CGRectMake(0, -768, 1024, 768)];
-    [videoView setBackgroundColor:[UIColor blueColor]];
-    [self.view addSubview:videoView];
+    [self initialization];
     // Do any additional setup after loading the view.
 }
 
 -(void)initialization{
     
-    contentView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768)];
-    contentView.backgroundColor = [UIColor greenColor];
-    [contentView setAlpha:0.5];
+    contentView = [[UIView alloc]initWithFrame:CGRectMake(0, -768, 1024, 768)];
+    contentView.backgroundColor = [UIColor blueColor];
     [self.view addSubview:contentView];
     UILabel *mainLab = [[UILabel alloc] initWithFrame:CGRectMake(408,216, 215, 25)];
     mainLab.text = @"您觉得这段视频......";
@@ -54,41 +54,32 @@
     subLab.textColor = [UIColor whiteColor];
     [subLab setFont:[UIFont fontWithName:nil size:30.0f]];
     [contentView addSubview:subLab];
-    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn1.frame = CGRectMake(240, 320, 128, 128);
-    [btn1 setImage:[UIImage imageNamed:@"btn1.png"] forState:UIControlStateNormal];
-    [btn1 addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    btn1.tag = 100;
-    [contentView addSubview:btn1];
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(690, 320, 128, 128);
-    [btn setImage:[UIImage imageNamed:@"btn.png"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(btnClick:)forControlEvents:UIControlEventTouchUpInside];
-    btn.tag= 101;
-    [contentView addSubview:btn];
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareBtn.frame = CGRectMake(240, 320, 128, 128);
+    [shareBtn setImage:[UIImage imageNamed:@"btn1.png"] forState:UIControlStateNormal];
+    [shareBtn addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview:shareBtn];
+    UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    closeBtn.frame = CGRectMake(690, 320, 128, 128);
+    [closeBtn setImage:[UIImage imageNamed:@"btn.png"] forState:UIControlStateNormal];
+    [closeBtn addTarget:self action:@selector(closeBtnPressed)forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview:closeBtn];
 
 
 }
 
--(void)btnClick:(id)sender{
-    
-    UIButton *button = sender;
-    if(button.tag == 100){
-        
-        [ShareSelectedViewController shareText:nil title:nil image:nil];
-        
-    }else if(button.tag == 101){
-        
-         
-    }
-    
+- (void)share
+{
+    [ShareSelectedViewController shareText:nil title:nil image:nil];
 }
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-    
-    
-    return (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
-    
+
+ -(void)closeBtnPressed
+{
+    [_delegate closeShowVideo];
 }
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -99,17 +90,18 @@
 - (void)showVideoView
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    positionAnimation.fillMode = kCAFillModeForwards;
-    positionAnimation.removedOnCompletion =NO;
+//    positionAnimation.fillMode = kCAFillModeForwards;
+//    positionAnimation.removedOnCompletion =NO;
     positionAnimation.duration = 1;
     CGMutablePathRef positionPath = CGPathCreateMutable();
     positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [positionAnimation setBeginTime:0];
-    CGPathMoveToPoint(positionPath, NULL, [videoView layer].position.x, [videoView layer].position.y);
-    CGPathAddQuadCurveToPoint(positionPath, NULL, [videoView layer].position.x, [videoView layer].position.y, [videoView layer].position.x,[videoView layer].position.y+768);
+    CGPathMoveToPoint(positionPath, NULL, [contentView layer].position.x, [contentView layer].position.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [contentView layer].position.x, [contentView layer].position.y, [contentView layer].position.x,[contentView layer].position.y+768);
     positionAnimation.path = positionPath;
-    [videoView.layer addAnimation:positionAnimation forKey:@"position"];
-    SetViewLeftUp(videoView, 0, 0);
+    [contentView.layer addAnimation:positionAnimation forKey:@"position"];
+    SetViewLeftUp(contentView, 0, 0);
+    
 }
 
 @end

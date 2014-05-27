@@ -10,6 +10,7 @@
 
 @implementation VideoShowButton
 @synthesize delegate = _delegate;
+
 - (id)initWithFrame:(CGRect)frame fileName:(NSString *)fileName
 {
     self = [super initWithFrame:frame];

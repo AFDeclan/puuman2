@@ -68,11 +68,13 @@ static MBProgressHUD *hud;
  
     [self initWithTabBar];
     _isReply = YES;
+    videoShowed = NO;
     userInfo = [UserInfo sharedUserInfo];
     videoVC = [[VideoShowViewController alloc] init];
     [videoVC.view setBackgroundColor:[UIColor clearColor]];
     [videoVC.view setFrame:CGRectMake(0, 0, 1024, 768)];
     [self.view addSubview:videoVC.view];
+    [videoVC setDelegate:self];
     [videoVC.view  setAlpha:0];
 
     videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(0, 0, 189,180) fileName:@"animate_puuman"];
@@ -108,7 +110,7 @@ static MBProgressHUD *hud;
 
 - (void)showVideo
 {
-    
+     videoShowed = YES;
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     positionAnimation.fillMode = kCAFillModeForwards;
     positionAnimation.removedOnCompletion =NO;
@@ -183,17 +185,25 @@ static MBProgressHUD *hud;
 
 #pragma mark - vertiacl and horizontal
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
+
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     
     return YES;
+    
 }
 
 - (BOOL)shouldAutorotate
 {
-    
-    return YES;
+    if (videoShowed) {
+        return NO;
+    }else{
+        return YES;
+    }
+   
 }
+
+
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
@@ -393,6 +403,11 @@ static MBProgressHUD *hud;
     PostNotification(Noti_HudCanceled, nil);
 }
 
-
+- (void)closeShowVideo
+{
+    videoShowed = NO;
+    [videoVC.view removeFromSuperview];
+    [videoBtn removeFromSuperview];
+}
 
 @end
