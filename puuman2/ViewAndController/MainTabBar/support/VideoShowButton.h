@@ -22,6 +22,7 @@
     UIButton *playBtn;
 }
 @property(nonatomic,assign)id<VideoShowButtonDelegate> delegate;
+
 - (id)initWithFrame:(CGRect)frame fileName:(NSString *)fileName;
 - (void)stopGif;
 -(void)startGif;

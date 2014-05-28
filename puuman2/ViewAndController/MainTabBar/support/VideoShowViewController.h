@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol VideoShowViewDelegate;
 @interface VideoShowViewController : UIViewController
 {
     UIView *videoView;
@@ -15,4 +16,8 @@
 
 }
 - (void)showVideoView;
+@end
+@protocol VideoShowViewDelegate <NSObject>
+- (void)showVideo;
+- (void)closeShowVideo;
 @end

@@ -292,6 +292,7 @@
                     if ([[UserInfo sharedUserInfo] uploadBabyMeta:meta])
                     {
                         [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
+                         [[TaskModel sharedTaskModel] updateTasks];
                         [super finishBtnPressed];
                     }
                     else
@@ -330,7 +331,7 @@
                     {
 
                          [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
-                        
+                         [[TaskModel sharedTaskModel] updateTasks];
                         [self hidden];
                     }
                     else

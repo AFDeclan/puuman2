@@ -207,6 +207,7 @@ static TaskCell * instance;
         desView.text = [taskInfo objectForKey:_task_Description];
     }
     pageControl.numberOfPages = [[TaskModel sharedTaskModel] taskCount];
+  
     
 }
 
@@ -379,10 +380,13 @@ static TaskCell * instance;
 
 - (void)nowTaskDownloadSucceeded
 {
+    
     updating = NO;
+    [taskTitle removeAnimate];
     if ([[TaskModel sharedTaskModel] taskCount] <taskTitle.taskIndex+1) {
         taskTitle.taskIndex = [[TaskModel sharedTaskModel] taskCount]-1;
     }
+    
     if (taskTitle.taskIndex <0) {
         taskTitle.taskIndex =0;
     }
@@ -411,7 +415,13 @@ static TaskCell * instance;
 
 - (void)nowTaskDownloadFailed:(NSString *)msg needDismiss:(BOOL)dismiss
 {
+    
+    [taskTitle removeAnimate];
+    taskTitle.taskIndex =0;
+    [self loadAllTasksText];
+    [self loadTask];
     [taskTitle setTitle:msg];
+    [self foldWithAnmate:YES];
     
 }
 

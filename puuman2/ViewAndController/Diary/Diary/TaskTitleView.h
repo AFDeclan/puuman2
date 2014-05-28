@@ -26,5 +26,6 @@
 - (void)loadTask;
 - (void)changeTask:(NSInteger)step;
 - (void)reloadPortrait;
+- (void)removeAnimate;
 
 @end

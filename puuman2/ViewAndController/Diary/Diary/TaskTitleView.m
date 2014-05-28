@@ -101,6 +101,14 @@ const NSTimeInterval AnimatedInterval = 0.3;
     
 }
 
+- (void)removeAnimate
+{
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    }
+}
+
 - (void)nextTask
 {
     [UIView animateWithDuration:AnimatedInterval animations:^{
@@ -134,6 +142,7 @@ const NSTimeInterval AnimatedInterval = 0.3;
         else {
             title.text = @"未登录";
         }
+        [pointView setAlpha:0];
     }
     else
     {

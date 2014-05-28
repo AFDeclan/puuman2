@@ -18,7 +18,7 @@
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
 
-@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,MainTabBarDelegate,UITextViewDelegate,PopViewDelegate,VideoShowButtonDelegate>
+@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,MainTabBarDelegate,UITextViewDelegate,PopViewDelegate,VideoShowButtonDelegate,VideoShowViewDelegate>
 {
     MainTabBar *tabBar;
     UIImageView *bgImgView;
@@ -29,6 +29,7 @@
     SettingViewController *settingVC;
     VideoShowViewController *videoVC;
     VideoShowButton *videoBtn;
+    BOOL videoShowed;
 }
 
 @property(assign,nonatomic) BOOL isVertical;

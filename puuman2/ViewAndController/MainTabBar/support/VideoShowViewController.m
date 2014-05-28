@@ -16,7 +16,7 @@
 @end
 
 @implementation VideoShowViewController
-
+@synthesize delegate = _delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -55,18 +55,16 @@
     subLab.textColor = [UIColor whiteColor];
     [subLab setFont:[UIFont fontWithName:nil size:30.0f]];
     [contentView addSubview:subLab];
-    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn1.frame = CGRectMake(240, 320, 128, 128);
-    [btn1 setImage:[UIImage imageNamed:@"btn1.png"] forState:UIControlStateNormal];
-    [btn1 addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    btn1.tag = 100;
-    [contentView addSubview:btn1];
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(690, 320, 128, 128);
-    [btn setImage:[UIImage imageNamed:@"btn.png"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(btnClick:)forControlEvents:UIControlEventTouchUpInside];
-    btn.tag= 101;
-    [contentView addSubview:btn];
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareBtn.frame = CGRectMake(240, 320, 128, 128);
+    [shareBtn setImage:[UIImage imageNamed:@"btn1.png"] forState:UIControlStateNormal];
+    [shareBtn addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview:shareBtn];
+    UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    closeBtn.frame = CGRectMake(690, 320, 128, 128);
+    [closeBtn setImage:[UIImage imageNamed:@"btn.png"] forState:UIControlStateNormal];
+    [closeBtn addTarget:self action:@selector(closeBtnPressed)forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview:closeBtn];
 
 
 }
@@ -84,12 +82,14 @@
     }
     
 }
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-    
-    
-    return (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
-    
+
+ -(void)closeBtnPressed
+{
+    [_delegate closeShowVideo];
 }
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -100,8 +100,8 @@
 - (void)showVideoView
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    positionAnimation.fillMode = kCAFillModeForwards;
-    positionAnimation.removedOnCompletion =NO;
+//    positionAnimation.fillMode = kCAFillModeForwards;
+//    positionAnimation.removedOnCompletion =NO;
     positionAnimation.duration = 1;
     CGMutablePathRef positionPath = CGPathCreateMutable();
     positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];

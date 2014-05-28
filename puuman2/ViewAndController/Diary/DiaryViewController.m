@@ -549,11 +549,12 @@ static DiaryViewController * instance;
 
 - (void)refresh
 {
-    
+    [calenderView show];
+    [[TaskCell sharedTaskCell] loadTask];
+    [joinView refreshStaus];
     [diaryTableVC.tableView reloadData];
     [diaryTableVC.tableView setContentOffset:CGPointMake(0, 0)];
-    [calenderView show];
-    [joinView refreshStaus];
+    
 
 }
 
