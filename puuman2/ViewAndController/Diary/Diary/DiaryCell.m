@@ -243,7 +243,7 @@
     }
    // NSString *fromIdentity = [self.diaryInfo valueForKey:kDiaryUIdentity];
    // NSString *fromIdentity = self.diary.UIdentity;
-    BOOL fromIdentity = self.diary.UIdentity;
+    UserIdentity fromIdentity = self.diary.UIdentity;
     if (!(self.diary.sampleDiary) &&fromIdentity ==[UserInfo sharedUserInfo].identity)
     {
         [_delBtn setAlpha:1];
@@ -254,12 +254,12 @@
     if (!fromIdentity) {
         fromIdentity = [UserInfo sharedUserInfo].identity;
     }
-    if (fromIdentity==1)
+    if (fromIdentity==Mother)
     {
         _fromLabel.text = @"来自妈妈";
         _icon_from.image = [UIImage imageNamed:@"tri_pink_diary.png"];
     }
-    else  if (fromIdentity==0)
+    else  if (fromIdentity==Father)
     {
         _fromLabel.text = @"来自爸爸";
         _icon_from.image = [UIImage imageNamed:@"tri_blue_diary.png"];
@@ -409,7 +409,7 @@
         height += [TextDiaryCell heightForDiary:diary abbreviated:abbr]  ;
     }else if ([type isEqualToString:DiaryTypeStrPhoto])    //是照片类型
     {
-                if ([diary.type2Str isEqualToString:DiaryTypeStrVideo]) //有声图
+                if ([diary.type2Str isEqualToString:DiaryTypeStrAudio]) //有声图
                 {
                     height += [AuPhotoDiaryCell heightForDiary:diary abbreviated:abbr];
                 }

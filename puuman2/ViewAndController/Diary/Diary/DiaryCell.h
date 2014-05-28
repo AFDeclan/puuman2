@@ -28,7 +28,7 @@ typedef enum{
     kDiaryPhotoAudioType,
     kDiaryVideoType,
     kdiaryPhotoMoreType,
-    kdiaryType
+    kDiaryType
 } DiaryType;
 
 @interface DiaryCell : UITableViewCell
