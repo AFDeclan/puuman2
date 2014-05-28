@@ -420,7 +420,7 @@
     [[MainTabBarController sharedMainViewController].view addSubview:webVC.view];
     [webVC setWare:_ware shops:_shopsInfo firstIndex:index];
     [webVC show];
-    [webVC setDelegate:self];
+    [webVC setShopDelegate:self];
 }
 
 

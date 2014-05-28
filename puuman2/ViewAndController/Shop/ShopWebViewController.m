@@ -18,7 +18,7 @@
 @end
 #define WaitTime 20
 @implementation ShopWebViewController
-@synthesize delegate = _delegate;
+@synthesize shopDelegate = _shopDelegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -169,7 +169,7 @@
     [[CartModel sharedCart] addWareIntoCart:_ware];
     [addBtn initWithTitle:@"已加入购物车"  andButtonType:kBlueLeftDown];
     [CustomNotiViewController showNotiWithTitle:@"添加成功" withTypeStyle:kNotiTypeStyleRight];
-    [_delegate cartStatusUpdate];
+    [_shopDelegate cartStatusUpdate];
 }
 
 - (void)backButtonPush {

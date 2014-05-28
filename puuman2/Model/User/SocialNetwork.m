@@ -135,7 +135,7 @@ static SocialNetwork * instance;
 #pragma mark - 微信
 - (void)shareToWeixin
 {
-    NSString *version = [WXApi getWXAppSupportMaxApiVersion];
+    NSString *version = [WXApi getApiVersion];
     NSLog(@"Weixin version:%@", version);
     if ([version isEqualToString:@""])
     {
@@ -166,7 +166,7 @@ static SocialNetwork * instance;
     {
        
         NSLog(@"分享到朋友圈成功");
-        [self shareSucceeded];
+        //[self shareSucceeded];
     }
     else
     {
@@ -197,7 +197,7 @@ static SocialNetwork * instance;
     {
         NSLog(@"微信发送媒体消息结果:%d", resp.errCode);
     }
-    else if([resp isKindOfClass:[SendAuthResp class]])
+    else if([resp isKindOfClass:[SendMessageToWXResp class]])
     {
         NSLog(@"微信Auth结果:%d", resp.errCode);
     }
