@@ -29,7 +29,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self initWithContent];
     [self initialUmeng];
-    
     [self initialSocialNetWork];
     [self.window makeKeyAndVisible];
     return YES;
@@ -55,7 +54,6 @@
     [_rootTabBarC addChildViewController:socialVC];
     [_rootTabBarC addChildViewController:shopVC];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
     if (![userDefaults boolForKey:@"tutorialShowed"]){
         EnterTutorialView *enterTutorialView = [[EnterTutorialView alloc] init];
         [_rootTabBarC.view addSubview:enterTutorialView];

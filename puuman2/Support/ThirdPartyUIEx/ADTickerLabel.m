@@ -231,7 +231,7 @@
     newTextLabelBounds.size = CGSizeMake(width, self.font.lineHeight * [charactersArray count]);
     UILabel *textLabel = [[UILabel alloc] initWithFrame:newTextLabelBounds];
     textLabel.font = self.font;
-    textLabel.textAlignment = UITextAlignmentRight;
+    textLabel.textAlignment = NSTextAlignmentRight;
     textLabel.backgroundColor = [UIColor clearColor];
     textLabel.textColor = self.textColor;
     textLabel.numberOfLines = 0;
