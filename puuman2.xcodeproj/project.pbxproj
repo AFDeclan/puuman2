@@ -713,6 +713,7 @@
 		54F1D13B18C48FA50005CDD9 /* icon_text2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12918C48FA50005CDD9 /* icon_text2_diary.png */; };
 		54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D13D18C490A10005CDD9 /* PopUpViewController.m */; };
 		6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A163B769C9D646389F66C162 /* libPods.a */; };
+		88AF6FF01936ADC600CC0ED7 /* hh.mov in Resources */ = {isa = PBXBuildFile; fileRef = 88AF6FEF1936ADC600CC0ED7 /* hh.mov */; };
 		88B3AF6E1932E3B800FAB2A0 /* SinglePhotoTopicVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */; };
 		88B515A4192F4AE1006A79AB /* CutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515A3192F4AE1006A79AB /* CutViewController.m */; };
 		88B515AA192F50C2006A79AB /* BabyPhotoSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515A9192F50C2006A79AB /* BabyPhotoSelectedViewController.m */; };
@@ -1734,6 +1735,7 @@
 		54F1D13C18C490A10005CDD9 /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
 		54F1D13D18C490A10005CDD9 /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
 		721904F09AE644A085A71BDA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		88AF6FEF1936ADC600CC0ED7 /* hh.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = hh.mov; path = ../../Documents/hh.mov; sourceTree = "<group>"; };
 		88B515A2192F4AE1006A79AB /* CutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutViewController.h; sourceTree = "<group>"; };
 		88B515A3192F4AE1006A79AB /* CutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutViewController.m; sourceTree = "<group>"; };
 		88B515A8192F50C2006A79AB /* BabyPhotoSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPhotoSelectedViewController.h; sourceTree = "<group>"; };
@@ -1863,6 +1865,7 @@
 		148D79D618B8A71A001B4FA7 = {
 			isa = PBXGroup;
 			children = (
+				88AF6FEF1936ADC600CC0ED7 /* hh.mov */,
 				148D79E818B8A71A001B4FA7 /* puuman2 */,
 				148D7A0118B8A71A001B4FA7 /* puuman2Tests */,
 				148D79E118B8A71A001B4FA7 /* Frameworks */,
@@ -3960,6 +3963,7 @@
 				5403CD3918D03D39004CAE22 /* icon14_weather_diary@2x.png in Resources */,
 				541970ED18D1BA730058FE64 /* dot_blue_baby.png in Resources */,
 				5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */,
+				88AF6FF01936ADC600CC0ED7 /* hh.mov in Resources */,
 				54B97E5F18FA2B1E00B6C4C9 /* wing2_insure_shop.png in Resources */,
 				5447C46918D97D0800187BE6 /* tri_blue_fri.png in Resources */,
 				54CE116D18C1C7BF00966396 /* btn_red.png in Resources */,

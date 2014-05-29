@@ -70,16 +70,16 @@ static MBProgressHUD *hud;
     _isReply = YES;
     videoShowed = NO;
     userInfo = [UserInfo sharedUserInfo];
-//    videoVC = [[VideoShowViewController alloc] init];
-//    [videoVC.view setBackgroundColor:[UIColor clearColor]];
-//    [videoVC.view setFrame:CGRectMake(0, 0, 1024, 768)];
-//    [self.view addSubview:videoVC.view];
-//    [videoVC setDelegate:self];
-//    [videoVC.view  setAlpha:0];
+    videoVC = [[VideoShowViewController alloc] init];
+    [videoVC.view setBackgroundColor:[UIColor clearColor]];
+    [videoVC.view setFrame:CGRectMake(0, 0, 1024, 768)];
+    [self.view addSubview:videoVC.view];
+    [videoVC setDelegate:self];
+    [videoVC.view  setAlpha:1];
 
-//    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(0, 0, 189,180) fileName:@"animate_puuman"];
-//    [videoBtn setDelegate:self];
-//    [self.view addSubview:videoBtn];
+    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(0, 0, 189,180) fileName:@"animate_puuman"];
+   [videoBtn setDelegate:self];
+    [self.view addSubview:videoBtn];
     
 }
 

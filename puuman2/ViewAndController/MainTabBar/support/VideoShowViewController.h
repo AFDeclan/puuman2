@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @protocol VideoShowViewDelegate;
 @interface VideoShowViewController : UIViewController
 {
     UIView *videoView;
     UIView *contentView;
-
+    UIView *closeView;
+    UIView *shareView;
+    
 }
+@property(assign,nonatomic)id<VideoShowViewDelegate> delegate;
 - (void)showVideoView;
 @end
+
+
 @protocol VideoShowViewDelegate <NSObject>
 - (void)showVideo;
 - (void)closeShowVideo;
