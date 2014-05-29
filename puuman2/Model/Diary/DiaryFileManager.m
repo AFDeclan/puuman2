@@ -99,6 +99,33 @@
     return image;
 }
 
++ (UIImage *)imageForVideo:(NSString *)filePath withDuraTion:(NSTimeInterval)duration
+{
+    if (!filePath) return nil;
+    NSString *cutImagePath = [filePath stringByAppendingString:@"_cutImage"];
+    
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:cutImagePath])
+//    {
+//        UIImage *image = [[UIImage alloc] initWithContentsOfFile:cutImagePath];
+//        if (image) return image;
+//    }
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:filePath] options:nil];
+    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    gen.appliesPreferredTrackTransform = YES;
+    CMTime time = CMTimeMakeWithSeconds(duration, 600);
+    NSError *error = nil;
+    CMTime actualTime  =time;
+    CGImageRef cgImage = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+    UIImage *image = [[UIImage alloc] initWithCGImage:cgImage];
+    if (image)
+    {
+        [UIImageJPEGRepresentation(image, 0) writeToFile:cutImagePath atomically:YES];
+    }
+    else
+        image = [[UIImage alloc] init];
+    return image;
+}
+
 + (UIImage *)thumbImageForPath:(NSString *)filePath
 {
     NSString *thumbPath = [self thumbImagePathForPath:filePath];

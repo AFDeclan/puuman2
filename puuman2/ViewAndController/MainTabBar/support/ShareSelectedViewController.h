@@ -18,7 +18,9 @@
     NSString *shareTitle;
     UIImage *shareImg;
 }
-
+- (void) setShareText:(NSString *) shareText_;
+- (void) setShareTitle:(NSString *) shareTitle_;
+- (void) setShareImg:(UIImage *) shareImg_;
 + (void)shareText:(NSString *)sharetext_ title:(NSString *)title image:(UIImage *)img;
 
 @end

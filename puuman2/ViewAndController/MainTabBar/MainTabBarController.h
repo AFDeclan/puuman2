@@ -13,7 +13,7 @@
 #import "AutoImportViewController.h"
 #import "ChatInputViewController.h"
 #import "SettingViewController.h"
-#import "VideoShowViewController.h"
+#import "VideoShowView.h"
 #import "VideoShowButton.h"
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
@@ -27,7 +27,7 @@
     AutoImportViewController *improtAutoVC;
     ChatInputViewController *inputVC;
     SettingViewController *settingVC;
-    VideoShowViewController *videoVC;
+    VideoShowView *videoView;
     VideoShowButton *videoBtn;
     BOOL videoShowed;
 }

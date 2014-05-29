@@ -20,6 +20,7 @@
     NSInteger countProperty;
     NSTimer *timer;
     UIButton *playBtn;
+    NSMutableArray *refs;
 }
 @property(nonatomic,assign)id<VideoShowButtonDelegate> delegate;
 

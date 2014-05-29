@@ -70,17 +70,18 @@ static MBProgressHUD *hud;
     _isReply = YES;
     videoShowed = NO;
     userInfo = [UserInfo sharedUserInfo];
-    videoVC = [[VideoShowViewController alloc] init];
-    [videoVC.view setBackgroundColor:[UIColor clearColor]];
-    [videoVC.view setFrame:CGRectMake(0, 0, 1024, 768)];
-    [self.view addSubview:videoVC.view];
-    [videoVC setDelegate:self];
-    [videoVC.view  setAlpha:1];
-
     videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(0, 0, 189,180) fileName:@"animate_puuman"];
-   [videoBtn setDelegate:self];
+    [videoBtn setDelegate:self];
     [self.view addSubview:videoBtn];
-    
+    [videoBtn startGif];
+
+    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    [videoView setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:videoView];
+    [videoView setDelegate:self];
+    [videoView  setAlpha:0];
+    [videoView.layer setMasksToBounds:YES];
+ 
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -110,10 +111,10 @@ static MBProgressHUD *hud;
 
 - (void)showVideo
 {
-     videoShowed = YES;
+   
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    positionAnimation.fillMode = kCAFillModeForwards;
-    positionAnimation.removedOnCompletion =NO;
+//    positionAnimation.fillMode = kCAFillModeForwards;
+//    positionAnimation.removedOnCompletion =NO;
     positionAnimation.duration = 1;
     CGMutablePathRef positionPath = CGPathCreateMutable();
     positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
@@ -122,9 +123,21 @@ static MBProgressHUD *hud;
     CGPathAddQuadCurveToPoint(positionPath, NULL, [videoBtn layer].position.x, [videoBtn layer].position.y, [videoBtn layer].position.x,[videoBtn layer].position.y+768);
     positionAnimation.path = positionPath;
     [videoBtn.layer addAnimation:positionAnimation forKey:@"position"];
-    [videoVC.view setAlpha:1];
-    [videoVC showVideoView];
+    [videoView setAlpha:1];
+   // [videoBtn setAlpha:0];
+    [videoView showVideoView];
+    [videoView playVideo];
+    videoShowed = YES;
 
+}
+
+- (void)deleteVideo
+{
+    [videoBtn startGif];
+    videoShowed = NO;
+    [videoView removeFromSuperview];
+   [videoBtn removeFromSuperview];
+  
 }
 
 - (void)startApp
@@ -229,7 +242,6 @@ static MBProgressHUD *hud;
          [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Vertical object:nil];
     }
     [videoBtn setAlpha:0];
-    [videoBtn stopGif];
     [tabBar setVerticalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_V]];
     [bgImgView setFrame:CGRectMake(0, 0, 768, 1024)];
@@ -243,7 +255,6 @@ static MBProgressHUD *hud;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_Horizontal object:nil];
     }
     [videoBtn setAlpha:1];
-    [videoBtn startGif];
     [tabBar setHorizontalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 1024)];
@@ -403,11 +414,6 @@ static MBProgressHUD *hud;
     PostNotification(Noti_HudCanceled, nil);
 }
 
-- (void)closeShowVideo
-{
-    videoShowed = NO;
-    [videoVC.view removeFromSuperview];
-    [videoBtn removeFromSuperview];
-}
+
 
 @end

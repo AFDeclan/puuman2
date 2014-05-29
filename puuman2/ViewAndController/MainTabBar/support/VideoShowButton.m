@@ -30,22 +30,34 @@
         [playBtn setBackgroundColor:[UIColor clearColor]];
         [playBtn addTarget:self action:@selector(showVideo) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:playBtn];
-        [self startGif];
+        refs = [[NSMutableArray alloc] init];
+        for (int i =0; i<countProperty; i++) {
+            CGImageRef ref = CGImageSourceCreateImageAtIndex(gif, i, (__bridge CFDictionaryRef)gifProperties);
+            [refs addObject:(__bridge id)(ref)];
+        }
     }
     return self;
 }
 
 -(void)startGif
 {
+    
+    [playBtn setEnabled:YES];
+
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+    
     timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(play) userInfo:nil repeats:YES];
-    [timer fire];
+   [timer fire];
 }
 
 - (void)showGifAtIndex:(NSInteger)index
 {
-    CGImageRef ref = CGImageSourceCreateImageAtIndex(gif, index, (__bridge CFDictionaryRef)gifProperties);
-    self.layer.contents = (__bridge id)ref;
-    CFRelease(ref);
+   // CGImageRef ref = CGImageSourceCreateImageAtIndex(gif, index, (__bridge CFDictionaryRef)gifProperties);
+    self.layer.contents = [refs objectAtIndex:index];
+   // CFRelease(ref);
 
 }
 
@@ -53,7 +65,7 @@
 {
     currentProperty ++;
     currentProperty = currentProperty%countProperty;
-    [self showGifAtIndex:currentProperty];
+   [self showGifAtIndex:currentProperty];
 }
 
 - (void)dealloc

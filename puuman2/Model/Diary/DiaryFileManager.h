@@ -15,6 +15,8 @@
 + (NSString *)fileDirForDiaryType:(NSString *)type;
 
 + (UIImage *)imageForVideo:(NSString *)filePath;
++ (UIImage *)imageForVideo:(NSString *)filePath withDuraTion:(NSTimeInterval)duration;
+
 
 + (UIImage *)thumbImageForPath:(NSString *)filePath;
 
