@@ -603,6 +603,7 @@
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
 		54BB14471932F37A00D801CC /* ControlScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB14461932F37A00D801CC /* ControlScrollView.m */; };
+		54BBE8941936D6B50056390B /* hh.mov in Resources */ = {isa = PBXBuildFile; fileRef = 54BBE8931936D6B50056390B /* hh.mov */; };
 		54BC7B85192EE7EE00D033E8 /* TopicCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */; };
 		54BC7B8D192F56EF00D033E8 /* pic_redownload.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC7B8C192F56EF00D033E8 /* pic_redownload.png */; };
 		54BEB68E18E948E100AB3E27 /* PartnerDataOutGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BEB68D18E948E100AB3E27 /* PartnerDataOutGroupView.m */; };
@@ -1595,6 +1596,7 @@
 		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
 		54BB14451932F37A00D801CC /* ControlScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlScrollView.h; sourceTree = "<group>"; };
 		54BB14461932F37A00D801CC /* ControlScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlScrollView.m; sourceTree = "<group>"; };
+		54BBE8931936D6B50056390B /* hh.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = hh.mov; sourceTree = "<group>"; };
 		54BC7B83192EE7EE00D033E8 /* TopicCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCommentCell.h; sourceTree = "<group>"; };
 		54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCommentCell.m; sourceTree = "<group>"; };
 		54BC7B89192F1EC300D033E8 /* SinglePhotoTopicVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePhotoTopicVIew.h; sourceTree = "<group>"; };
@@ -3410,6 +3412,7 @@
 		54CE117618C1C8C100966396 /* MainTabBarImages */ = {
 			isa = PBXGroup;
 			children = (
+				54BBE8931936D6B50056390B /* hh.mov */,
 				54B5AA3619347ABB00805E63 /* btn.png */,
 				54B5AA3719347ABB00805E63 /* btn1.png */,
 				54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */,
@@ -3960,6 +3963,7 @@
 				5403CD3918D03D39004CAE22 /* icon14_weather_diary@2x.png in Resources */,
 				541970ED18D1BA730058FE64 /* dot_blue_baby.png in Resources */,
 				5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */,
+				54BBE8941936D6B50056390B /* hh.mov in Resources */,
 				54B97E5F18FA2B1E00B6C4C9 /* wing2_insure_shop.png in Resources */,
 				5447C46918D97D0800187BE6 /* tri_blue_fri.png in Resources */,
 				54CE116D18C1C7BF00966396 /* btn_red.png in Resources */,
