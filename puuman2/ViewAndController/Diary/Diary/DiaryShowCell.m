@@ -38,7 +38,7 @@
     
  
     [_detailLabel setText:_diary.title];
-    NSString *diaryType = DiaryTypeStrNone;
+    NSString *diaryType = _diary.type1Str;
      if ([diaryType isEqualToString:DiaryTypeStrText]) [self bulidTextCell];
      else if ([diaryType isEqualToString:DiaryTypeStrPhoto]) [self bulidPhotoCell];
      else if ([diaryType isEqualToString:DiaryTypeStrAudio]) [self bulidAudiotCell];

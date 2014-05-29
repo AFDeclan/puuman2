@@ -99,6 +99,9 @@
 - (void)refreshProgress
 {
     CGPoint pos = progress.contentOffset;
+    if (_cnt >_totalCnt) {
+        _cnt = _totalCnt;
+    }
     pos.x =self.frame.size.width-self.frame.size.width*_cnt/_totalCnt;
     [progress setContentOffset:pos animated:YES];
 

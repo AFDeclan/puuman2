@@ -130,7 +130,7 @@
         [playBtn setAlpha:1];
         [_photoView setAlpha:1];
         [titleView setAlpha:1];
-        [playBtn setPlayFile:[NSURL URLWithString:filePath]];
+        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
     }else{
         
         [reloadBtn setAlpha:1];
@@ -166,9 +166,8 @@
 {    
     //子类重载
     NSString *text = @"";
-    UIImage *img;
     NSString *path = [self.diary.filePaths1 objectAtIndex:0];
-    img = [DiaryFileManager imageForPath:path];
+    UIImage *img = [DiaryFileManager imageForPath:path];
     NSString *title = self.diary.title;
     [ShareSelectedViewController shareText:text title:title image:img];
     

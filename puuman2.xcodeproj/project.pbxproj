@@ -616,6 +616,7 @@
 		54C2E9FF192DE0BA0011AA0C /* course_p3.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F9192DE0BA0011AA0C /* course_p3.png */; };
 		54C2EA02192DE0EB0011AA0C /* EnterTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */; };
 		54C2EA05192DF55B0011AA0C /* TopicCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2EA04192DF55B0011AA0C /* TopicCommentView.m */; };
+		54C3959D193596AB00E0BE6F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C3959A193596AB00E0BE6F /* libWeChatSDK.a */; };
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
 		54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56A18DC2E840013FD03 /* TopicContentCell.m */; };
 		54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */; };
@@ -745,7 +746,6 @@
 		88B5160B192F52EE006A79AB /* UIImage+CroppedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515E8192F52EE006A79AB /* UIImage+CroppedImage.m */; };
 		88B5160C192F52EE006A79AB /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515EA192F52EE006A79AB /* UIImage+Scale.m */; };
 		88B5160D192F52EE006A79AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EC192F52EE006A79AB /* libMobClickLibrary.a */; };
-		88B5160E192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EF192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a */; };
 		88B51611192F558E006A79AB /* AFSelecedTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */; };
 		88CA16EF19347A8F0072F8B8 /* btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CA16EE19347A8F0072F8B8 /* btn1.png */; };
 		88CA16F119347A940072F8B8 /* btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CA16F019347A940072F8B8 /* btn.png */; };
@@ -1617,6 +1617,9 @@
 		54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterTutorialView.m; sourceTree = "<group>"; };
 		54C2EA03192DF55B0011AA0C /* TopicCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCommentView.h; sourceTree = "<group>"; };
 		54C2EA04192DF55B0011AA0C /* TopicCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCommentView.m; sourceTree = "<group>"; };
+		54C3959A193596AB00E0BE6F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		54C3959B193596AB00E0BE6F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		54C3959C193596AB00E0BE6F /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		54C8D56018DBE1B80013FD03 /* ChatInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputViewController.h; sourceTree = "<group>"; };
 		54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputViewController.m; sourceTree = "<group>"; };
 		54C8D56918DC2E840013FD03 /* TopicContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicContentCell.h; sourceTree = "<group>"; };
@@ -1796,9 +1799,6 @@
 		88B515EA192F52EE006A79AB /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		88B515EC192F52EE006A79AB /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		88B515ED192F52EE006A79AB /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
-		88B515EF192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
-		88B515F0192F52EE006A79AB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		88B515F1192F52EE006A79AB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		88B5160F192F558E006A79AB /* AFSelecedTextImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSelecedTextImgButton.h; sourceTree = "<group>"; };
 		88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSelecedTextImgButton.m; sourceTree = "<group>"; };
 		88CA16EE19347A8F0072F8B8 /* btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn1.png; sourceTree = "<group>"; };
@@ -1813,6 +1813,7 @@
 			files = (
 				14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */,
 				14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */,
+				54C3959D193596AB00E0BE6F /* libWeChatSDK.a in Frameworks */,
 				14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */,
 				14B8DF5E18BC3E340047C6B3 /* CoreTelephony.framework in Frameworks */,
 				14B8DF5C18BC3E250047C6B3 /* QuartzCore.framework in Frameworks */,
@@ -1821,7 +1822,6 @@
 				148D79E718B8A71A001B4FA7 /* UIKit.framework in Frameworks */,
 				148D79E318B8A71A001B4FA7 /* Foundation.framework in Frameworks */,
 				88B5160D192F52EE006A79AB /* libMobClickLibrary.a in Frameworks */,
-				88B5160E192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 				6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3739,9 +3739,9 @@
 		88B515EE192F52EE006A79AB /* WeiXin */ = {
 			isa = PBXGroup;
 			children = (
-				88B515EF192F52EE006A79AB /* libWeChatSDK_armv7_armv7s.a */,
-				88B515F0192F52EE006A79AB /* WXApi.h */,
-				88B515F1192F52EE006A79AB /* WXApiObject.h */,
+				54C3959A193596AB00E0BE6F /* libWeChatSDK.a */,
+				54C3959B193596AB00E0BE6F /* WXApi.h */,
+				54C3959C193596AB00E0BE6F /* WXApiObject.h */,
 			);
 			path = WeiXin;
 			sourceTree = "<group>";

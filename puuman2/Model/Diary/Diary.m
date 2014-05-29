@@ -31,6 +31,7 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
 - (id)init
 {
     if (self = [super init]) {
+        _sampleDiary = NO;
         _filePaths1 = [[NSArray alloc] init];
         _filePaths2 = [[NSArray alloc] init];
         _urls1 = [[NSArray alloc] init];
@@ -89,20 +90,25 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
 
 - (NSArray *)fixedFilePath:(NSArray *)paths
 {
-    NSMutableArray *fixed = [[NSMutableArray alloc] init];
-    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    for (NSString *filePath in paths)
-    {
-        NSRange range = [filePath rangeOfString:@"Documents/"];
-        NSString *subPath = filePath;
-        if (range.location != NSNotFound)
+    if (_sampleDiary) {
+        return paths;
+    }else{
+        NSMutableArray *fixed = [[NSMutableArray alloc] init];
+        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        for (NSString *filePath in paths)
         {
-            subPath = [subPath substringFromIndex:range.location + range.length];
+            NSRange range = [filePath rangeOfString:@"Documents/"];
+            NSString *subPath = filePath;
+            if (range.location != NSNotFound)
+            {
+                subPath = [subPath substringFromIndex:range.location + range.length];
+            }
+            NSString *fixed0 = [docDir stringByAppendingPathComponent:subPath];
+            [fixed addObject:fixed0];
         }
-        NSString *fixed0 = [docDir stringByAppendingPathComponent:subPath];
-        [fixed addObject:fixed0];
+        return fixed;
     }
-    return fixed;
+    
 }
 
 - (BOOL)createdByBabyData

@@ -276,7 +276,7 @@ static BOOL needLoadInfo = YES;
         cell = [tableView dequeueReusableCellWithIdentifier:identity];
         if (!cell){
             cell = [[DiaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
-            [cell setDiaryType:kdiaryType];
+            [cell setDiaryType:kDiaryType];
         }
 
     };

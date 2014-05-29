@@ -110,9 +110,7 @@
     }
     CGFloat dh = 0;
     
-    if (_contentLabel) {
-        [_contentLabel removeFromSuperview];
-    }
+   
     
 //    if ([[self.diary urls1] count]>0 && !filePath)
 //    {
@@ -125,6 +123,9 @@
 //    }
 
     filePath = [self.diary.filePaths1 objectAtIndex:0];
+    if (_contentLabel) {
+        [_contentLabel removeFromSuperview];
+    }
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
     {
         

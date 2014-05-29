@@ -48,7 +48,8 @@
      NSTimer *_timer;
     PuumanShopViewController *puumanVC;
 }
-@property(assign,nonatomic)id<WebViewDelegate> delegate;
+
+@property(assign,nonatomic)id<WebViewDelegate> shopDelegate;
 - (void)show;
 - (void)setWare:(Ware *)ware shops:(NSArray *)shopsInfo firstIndex:(NSInteger)index;
 - (void)setRecWebUrl:(NSString *)urlString  wareName:(NSString *)wName wareId:(NSInteger)WID warePrice:(CGFloat)price shopName:(NSString *)sName shopIndex:(NSInteger)shopIndex imgLink:(NSString *)picLink;
