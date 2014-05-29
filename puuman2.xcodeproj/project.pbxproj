@@ -602,7 +602,6 @@
 		54BAD46718D151EB003822CC /* BabyInfoPageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* BabyInfoPageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
 		54BB14471932F37A00D801CC /* ControlScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB14461932F37A00D801CC /* ControlScrollView.m */; };
-		54BBE8A51936EED00056390B /* popeye.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 54BBE8A41936EED00056390B /* popeye.mp4 */; };
 		54BBE8A81936F6B20056390B /* VideoShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE8A71936F6B20056390B /* VideoShowView.m */; };
 		54BBE8AB193727E30056390B /* VideoManageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE8AA193727E30056390B /* VideoManageView.m */; };
 		54BC7B85192EE7EE00D033E8 /* TopicCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B84192EE7EE00D033E8 /* TopicCommentCell.m */; };
@@ -1595,7 +1594,6 @@
 		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
 		54BB14451932F37A00D801CC /* ControlScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlScrollView.h; sourceTree = "<group>"; };
 		54BB14461932F37A00D801CC /* ControlScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlScrollView.m; sourceTree = "<group>"; };
-		54BBE8A41936EED00056390B /* popeye.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = popeye.mp4; sourceTree = "<group>"; };
 		54BBE8A61936F6B20056390B /* VideoShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShowView.h; sourceTree = "<group>"; };
 		54BBE8A71936F6B20056390B /* VideoShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoShowView.m; sourceTree = "<group>"; };
 		54BBE8A9193727E30056390B /* VideoManageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoManageView.h; sourceTree = "<group>"; };
@@ -3417,7 +3415,6 @@
 		54CE117618C1C8C100966396 /* MainTabBarImages */ = {
 			isa = PBXGroup;
 			children = (
-				54BBE8A41936EED00056390B /* popeye.mp4 */,
 				54B5AA3619347ABB00805E63 /* btn.png */,
 				54B5AA3719347ABB00805E63 /* btn1.png */,
 				54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */,
@@ -4078,7 +4075,6 @@
 				54B6F40818D6A5030055FC72 /* btn_back_set.png in Resources */,
 				5403CD4518D03D39004CAE22 /* icon2_weather_diary@2x.png in Resources */,
 				54AC20F818E3FD30001C1357 /* icon2_toy_shop.png in Resources */,
-				54BBE8A51936EED00056390B /* popeye.mp4 in Resources */,
 				54AB6CCA18F2BA8D00E4269E /* icon_check_autoinput.png in Resources */,
 				54DEFEAE18FE4FC20087658F /* pic_coin_shop.png in Resources */,
 				5447C45E18D97D0800187BE6 /* block_name_fri.png in Resources */,
