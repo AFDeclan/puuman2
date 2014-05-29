@@ -58,6 +58,10 @@
 
 #endif
 
+//shareVideo
+#define kUrl_VideoShare @"http://2.server4puman.sinaapp.com/shareVideo/share"
+#define kUrl_VideoDiscard @"http://2.server4puman.sinaapp.com/shareVideo/discard"
+
 //ware
 #define kUrl_GetWareFilterDb @"http://1.server4puman.sinaapp.com/Ware/getFilterDb.php"
 #define kUrl_GetWareFilterDbForTest @"http://1.server4puman.sinaapp.com/Ware/getFilterDb_test.php"
