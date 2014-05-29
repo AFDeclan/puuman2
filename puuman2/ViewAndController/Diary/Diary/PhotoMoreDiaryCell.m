@@ -207,7 +207,7 @@
         DiaryImageView *photoView = (DiaryImageView *)[cell viewWithTag:11];
         [photoView reset];
         [photoView setImage:photo];
-        if ([UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index-1]]&&[UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index-1]]) {
+        if ([UIImage imageWithContentsOfFile:[_photoPaths objectAtIndex:index-1]]) {
             [photoView setCropSize:CGSizeMake(384, 384)];
             [photoView loadThumbImgWithPath:[_photoPaths objectAtIndex:index-1]];
 

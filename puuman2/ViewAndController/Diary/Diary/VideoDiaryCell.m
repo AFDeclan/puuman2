@@ -52,7 +52,7 @@
         [reloadBtn setFrame:CGRectMake(56, 24, 416, 416)];
         [reloadBtn setBackgroundColor:[UIColor clearColor]];
         [_content addSubview:reloadBtn];
-        [reloadBtn setTitle:@"录像下载失败，点击重新下载" forState:UIControlStateNormal];
+        [reloadBtn setTitle:@"视频下载失败，点击重新下载" forState:UIControlStateNormal];
         [reloadBtn setTitleColor:PMColor2 forState:UIControlStateNormal];
         [reloadBtn addTarget:self action:@selector(reloadFile) forControlEvents:UIControlEventTouchUpInside];
         [reloadBtn setAlpha:0];

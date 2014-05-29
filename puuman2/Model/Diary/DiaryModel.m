@@ -144,8 +144,8 @@ static DiaryModel * instance;
     d.DCreateTime = date;
     d.type1 = DiaryContentTypeText;
     d.type2 = DiaryContentTypeNone;
-    d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.sampleDiary = YES;
+    d.filePaths1 = [NSArray arrayWithObject:filePath];
     [_diaries addObject:d];
     
     //sample diary - auphoto
@@ -156,9 +156,9 @@ static DiaryModel * instance;
     d.DCreateTime = date;
     d.type1 = DiaryContentTypePhoto;
     d.type2 = DiaryContentTypeAudio;
+    d.sampleDiary = YES;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.filePaths2 = [NSArray arrayWithObject:filePath2];
-    d.sampleDiary = YES;
     [_diaries addObject:d];
 
     _downloadedDiaries = [[NSMutableArray alloc] init];

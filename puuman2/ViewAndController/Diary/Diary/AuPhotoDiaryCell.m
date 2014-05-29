@@ -130,7 +130,7 @@
         [playBtn setAlpha:1];
         [_photoView setAlpha:1];
         [titleView setAlpha:1];
-        [playBtn setPlayFile:[NSURL URLWithString:filePath]];
+        [playBtn setPlayFile:[NSURL fileURLWithPath:filePath]];
     }else{
         
         [reloadBtn setAlpha:1];
