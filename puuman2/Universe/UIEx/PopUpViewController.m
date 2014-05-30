@@ -40,6 +40,7 @@ static NSMutableArray * instances = nil;
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated

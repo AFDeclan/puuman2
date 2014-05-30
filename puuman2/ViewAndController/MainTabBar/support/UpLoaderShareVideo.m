@@ -48,9 +48,20 @@ static NSMutableArray *instanceList;
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    PostNotification(Noti_FinishShareVideo, nil);
-    [self releaseSelf];
+    NSString *fileDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    fileDir = [fileDir stringByAppendingPathComponent:@"Baby4/video"];
+    NSString *fileName =  @"sharevideo";
+    fileName = [fileName stringByAppendingPathExtension:@"MOV"];
+    NSString *filePath = [fileDir stringByAppendingPathComponent:fileName];
+    NSData *data = [request responseData];
+    if ([data writeToFile:filePath atomically:YES]) {
+        PostNotification(Noti_FinishShareVideo, filePath);
 
+    }else{
+        NSLog(@"Save ShareVideo failed!");
+
+    }
+    [self releaseSelf];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request

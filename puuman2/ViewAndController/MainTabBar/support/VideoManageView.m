@@ -9,6 +9,7 @@
 #import "VideoManageView.h"
 #import "UniverseConstant.h"
 #import "ColorsAndFonts.h"
+#import "UserInfo.h"
 
 
 @implementation VideoManageView
@@ -113,6 +114,7 @@
 
 - (void)share
 {
+    [[[UserInfo sharedUserInfo] shareVideo] toShare];
     ShareSelectedViewController *shareVC = [[ShareSelectedViewController alloc] initWithNibName:nil bundle:nil];
     [self addSubview:shareVC.view];
     [shareVC setShareText:nil];
@@ -121,7 +123,6 @@
     [shareVC setStyle:ConfirmError];
     shareVC.delegate = self;
     [shareVC show];
-    //[ShareSelectedViewController shareText:nil title:nil image:nil];
     [_delegate shareVideo];
 }
 
@@ -132,6 +133,7 @@
 
 -(void)closeBtnPressed
 {
+    [[[UserInfo sharedUserInfo] shareVideo] toDiscard];
     [_delegate deleteVideo];
 }
 

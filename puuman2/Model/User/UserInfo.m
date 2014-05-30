@@ -445,12 +445,12 @@ static UserInfo *instance = nil;
     [_meta setValue:[dic objectForKey:uMeta_InviteStateKey] forKey:uMeta_InviteStateKey];
     [self updateInviteState];
     _pumanQuan = [[_meta valueForKey:@"UPuman"] doubleValue];
-    tp = [dic valueForKey:@"ShareVideo"];
+    tp = [dic valueForKey:@"ShareInfo"];
     if (tp != nil && [tp isKindOfClass:[NSDictionary class]]) {
         _shareVideo = [[ShareVideo alloc] init];
         [_shareVideo initWithData:tp];
+        PostNotification(Noti_HasShareVideo, nil);
     }
-    PostNotification(Noti_HasShareVideo, nil);
 
     [self saveToUserDefault];
 }

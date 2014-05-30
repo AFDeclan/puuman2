@@ -55,8 +55,8 @@ static MBProgressHUD *hud;
         [MyNotiCenter addObserver:self selector:@selector(showBottomInputView:) name:Noti_BottomInputViewShow object:nil];
         [MyNotiCenter addObserver:self selector:@selector(refreshProgressAutoVideo:) name:Noti_RefreshProgressAutoVideo object:nil];
         [MyNotiCenter addObserver:self selector:@selector(downAutoVideo) name:Noti_HasShareVideo object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(finishDownShareVideo) name:Noti_FailShareVideo object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(failDownShareVideo) name:Noti_FinishShareVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(finishDownShareVideo:) name:Noti_FinishShareVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(failDownShareVideo) name:Noti_FailShareVideo object:nil];
 
         [self.tabBar removeFromSuperview];
         
@@ -78,16 +78,27 @@ static MBProgressHUD *hud;
     videoShowed = NO;
     progress = 0;
     userInfo = [UserInfo sharedUserInfo];
-    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, -189, 189,180) fileName:@"animate_puuman"];
+
+    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, 0, 189,180) fileName:@"animate_puuman"];
     [videoBtn setDelegate:self];
     [self.view addSubview:videoBtn];
     [videoBtn showGifAtIndex:0];
     [videoBtn setClickEnable:NO];
+   
  
 }
 
 - (void)downAutoVideo
 {
+
+    SetViewLeftUp(videoBtn, 608, -189);
+    [videoBtn setClickEnable:NO];
+    if (!_isVertical) {
+        [videoBtn setAlpha:1];
+    }else{
+        [videoBtn setAlpha:0];
+
+    }
     UpLoaderShareVideo *downloader = [[UpLoaderShareVideo alloc] init];
     [downloader downloadDataFromUrl:[[UserInfo sharedUserInfo] shareVideo].videoUrl];
 
@@ -95,22 +106,19 @@ static MBProgressHUD *hud;
 
 - (void)refreshProgressAutoVideo:(NSNotification *)notification
 {
-    [videoBtn setAlpha:1];
+
     progress = [[notification object] floatValue];
     NSLog(@"%f",progress);
     if (!timer) {
-        timer  = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(animateWIthVideoBtn) userInfo:[NSNumber numberWithFloat:progress] repeats:YES];
+        timer  = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(animateWithVideoBtn) userInfo:[NSNumber numberWithFloat:progress] repeats:YES];
     }
-    
-    
-    
     
 }
 
 - (void)failDownShareVideo
 {
     [videoBtn setClickEnable:NO];
-
+    
     if (timer) {
         [timer invalidate];
         timer = nil;
@@ -118,26 +126,29 @@ static MBProgressHUD *hud;
   
 }
 
-- (void)finishDownShareVideo
+- (void)finishDownShareVideo:(NSNotification *)notification
 {
+    
     if (timer) {
         [timer invalidate];
         timer = nil;
     }
-    [videoBtn startGif];
-    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    
+    NSString *path = [notification object];
+    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768) withVideoPath:path];
     [videoView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:videoView];
     [videoView setDelegate:self];
     [videoView  setAlpha:0];
     [videoView.layer setMasksToBounds:YES];
     [videoBtn setClickEnable:YES];
+    [videoBtn startGif];
 
 }
 
-- (void)animateWIthVideoBtn
+- (void)animateWithVideoBtn
 {
-    [UIView animateWithDuration:0.05 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         SetViewLeftUp(videoBtn, 608, -189*(1 - progress));
     }];
 }
@@ -185,7 +196,7 @@ static MBProgressHUD *hud;
    // [videoBtn setAlpha:0];
     [videoView showVideoView];
     [videoView playVideo];
-    videoShowed = YES;
+     videoShowed = YES;
 
 }
 
@@ -193,9 +204,10 @@ static MBProgressHUD *hud;
 {
     [videoBtn startGif];
     videoShowed = NO;
-    [videoView removeFromSuperview];
-   [videoBtn removeFromSuperview];
-  
+    [videoView  removeFromSuperview];
+    [videoBtn   removeFromSuperview];
+    videoBtn = nil;
+    videoView = nil;
 }
 
 - (void)startApp

@@ -25,7 +25,7 @@
         NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"gif"];
         gif = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:filePath], (__bridge CFDictionaryRef)gifProperties);
         countProperty =CGImageSourceGetCount(gif);
-        [self showGifAtIndex:currentProperty];
+//        [self showGifAtIndex:currentProperty];
         
         playBtn = [[UIButton alloc] initWithFrame:CGRectMake((frame.size.height - frame.size.width)/2, 0, frame.size.height, frame.size.height)];
         [playBtn setBackgroundColor:[UIColor clearColor]];

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "VideoManageView.h"
+//#import "Reachability.h"
 
 @protocol VideoShowViewDelegate;
 
@@ -24,9 +25,11 @@
     UIImage *finishImg;
     NSInteger index;
     NSMutableArray *animates;
-
+    NSString *_filePath;
 }
+
 @property(assign,nonatomic)id<VideoShowViewDelegate> delegate;
+- (id)initWithFrame:(CGRect)frame withVideoPath:(NSString *)filePath;
 
 - (void)showVideoView;
 - (void)playVideo;
