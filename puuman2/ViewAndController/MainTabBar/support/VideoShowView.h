@@ -27,6 +27,7 @@
 
 }
 @property(assign,nonatomic)id<VideoShowViewDelegate> delegate;
+
 - (void)showVideoView;
 - (void)playVideo;
 

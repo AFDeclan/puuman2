@@ -13,7 +13,6 @@
 #import "UIImage+CroppedImage.h"
 
 @implementation VideoShowView
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

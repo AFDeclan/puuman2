@@ -10,6 +10,7 @@
 
 @implementation VideoShowButton
 @synthesize delegate = _delegate;
+@synthesize clickEnable = _clickEnable;
 
 - (id)initWithFrame:(CGRect)frame fileName:(NSString *)fileName
 {
@@ -87,6 +88,17 @@
 {
     [timer invalidate];
     timer = nil;
+}
+
+- (void)setClickEnable:(BOOL)clickEnable
+{
+    _clickEnable = clickEnable;
+    if (clickEnable) {
+        [playBtn setEnabled:YES];
+    }else{
+        [playBtn setEnabled:NO];
+
+    }
 }
 
 @end

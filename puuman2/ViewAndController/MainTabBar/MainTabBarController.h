@@ -30,6 +30,9 @@
     VideoShowView *videoView;
     VideoShowButton *videoBtn;
     BOOL videoShowed;
+    NSTimer *timer;
+    float progress;
+
 }
 
 @property(assign,nonatomic) BOOL isVertical;

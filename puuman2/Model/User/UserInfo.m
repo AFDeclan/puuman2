@@ -449,8 +449,9 @@ static UserInfo *instance = nil;
     if (tp != nil && [tp isKindOfClass:[NSDictionary class]]) {
         _shareVideo = [[ShareVideo alloc] init];
         [_shareVideo initWithData:tp];
-        PostNotification(Noti_ShowAutoVideo, nil);
     }
+    PostNotification(Noti_HasShareVideo, nil);
+
     [self saveToUserDefault];
 }
 

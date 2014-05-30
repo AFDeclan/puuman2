@@ -23,6 +23,7 @@
     NSMutableArray *refs;
 }
 @property(nonatomic,assign)id<VideoShowButtonDelegate> delegate;
+@property(assign,nonatomic)BOOL clickEnable;
 
 - (id)initWithFrame:(CGRect)frame fileName:(NSString *)fileName;
 - (void)stopGif;

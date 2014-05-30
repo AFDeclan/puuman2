@@ -123,18 +123,12 @@ static NSMutableArray *instanceList;
     _targetUrl = url;
     _request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:url]];
     [_request setRequestMethod:@"GET"];
-    [_request setUploadProgressDelegate:self];
-    [_request setDownloadProgressDelegate:self];
     [_request setDelegate:self];
     [_request startAsynchronous];
 }
 
 
-- (void)setProgress:(float)newProgress
-{
-    NSLog(@"mew%f",newProgress);
-    
-}
+
 
 
 - (NSData *)downloadDataSynchoronusFromUrl:(NSString *)url

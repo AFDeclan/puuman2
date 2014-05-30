@@ -27,32 +27,35 @@ static NSMutableArray *instanceList;
 }
 - (void)downloadDataFromUrl:(NSString *)url
 {
-    [self retainSelf];
-
-    _request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:url]];
-    [_request setDownloadProgressDelegate:self];
-    [_request setUploadProgressDelegate:self];
-    [_request setRequestMethod:@"GET"];
-    [_request setDelegate:self];
-    [_request startAsynchronous];
+    if (url) {
+        [self retainSelf];
+        _request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:url]];
+        [_request setDownloadProgressDelegate:self];
+        [_request setUploadProgressDelegate:self];
+        [_request setRequestMethod:@"GET"];
+        [_request setDelegate:self];
+        [_request startAsynchronous];
+    }
+  
 }
 
 - (void)setProgress:(float)newProgress
 {
     PostNotification(Noti_RefreshProgressAutoVideo, [NSNumber numberWithDouble:newProgress]);
-
 }
 
 
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
+    PostNotification(Noti_FinishShareVideo, nil);
     [self releaseSelf];
 
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+    PostNotification(Noti_FailShareVideo, nil);
     [self releaseSelf];
 
 }

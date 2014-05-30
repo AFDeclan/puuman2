@@ -20,6 +20,7 @@
 #import "ShopModel.h"
 #import "EnterTutorialView.h"
 #import "ShareVideo.h"
+#import "UpLoaderShareVideo.h"
 
 @interface MainTabBarController ()
 
@@ -53,6 +54,9 @@ static MBProgressHUD *hud;
         [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
         [MyNotiCenter addObserver:self selector:@selector(showBottomInputView:) name:Noti_BottomInputViewShow object:nil];
         [MyNotiCenter addObserver:self selector:@selector(refreshProgressAutoVideo:) name:Noti_RefreshProgressAutoVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(downAutoVideo) name:Noti_HasShareVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(finishDownShareVideo) name:Noti_FailShareVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(failDownShareVideo) name:Noti_FinishShareVideo object:nil];
 
         [self.tabBar removeFromSuperview];
         
@@ -72,33 +76,70 @@ static MBProgressHUD *hud;
     [self initWithTabBar];
     _isReply = YES;
     videoShowed = NO;
+    progress = 0;
     userInfo = [UserInfo sharedUserInfo];
     videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, -189, 189,180) fileName:@"animate_puuman"];
     [videoBtn setDelegate:self];
     [self.view addSubview:videoBtn];
     [videoBtn showGifAtIndex:0];
-
+    [videoBtn setClickEnable:NO];
  
+}
+
+- (void)downAutoVideo
+{
+    UpLoaderShareVideo *downloader = [[UpLoaderShareVideo alloc] init];
+    [downloader downloadDataFromUrl:[[UserInfo sharedUserInfo] shareVideo].videoUrl];
+
 }
 
 - (void)refreshProgressAutoVideo:(NSNotification *)notification
 {
-    
     [videoBtn setAlpha:1];
-    float progress = [[notification object] floatValue];
+    progress = [[notification object] floatValue];
     NSLog(@"%f",progress);
-    
-    SetViewLeftUp(videoBtn, 608, -189*(1 - progress));
-    
-    if (progress >= 1) {
-        [videoBtn startGif];
-        videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
-        [videoView setBackgroundColor:[UIColor clearColor]];
-        [self.view addSubview:videoView];
-        [videoView setDelegate:self];
-        [videoView  setAlpha:0];
-        [videoView.layer setMasksToBounds:YES];
+    if (!timer) {
+        timer  = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(animateWIthVideoBtn) userInfo:[NSNumber numberWithFloat:progress] repeats:YES];
     }
+    
+    
+    
+    
+}
+
+- (void)failDownShareVideo
+{
+    [videoBtn setClickEnable:NO];
+
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+  
+}
+
+- (void)finishDownShareVideo
+{
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+    [videoBtn startGif];
+    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    [videoView setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:videoView];
+    [videoView setDelegate:self];
+    [videoView  setAlpha:0];
+    [videoView.layer setMasksToBounds:YES];
+    [videoBtn setClickEnable:YES];
+
+}
+
+- (void)animateWIthVideoBtn
+{
+    [UIView animateWithDuration:0.05 animations:^{
+        SetViewLeftUp(videoBtn, 608, -189*(1 - progress));
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
