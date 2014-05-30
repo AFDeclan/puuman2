@@ -79,7 +79,7 @@
 #define kUrl_RegisterUser @"http://1.server4puman.sinaapp.com/User/registerUser.php"
 #define kUrl_RegisterUserWithCode @"http://1.server4puman.sinaapp.com/User/registerUserWithCode.php"
 #define kUrl_SendRigisterInvitation @"http://1.server4puman.sinaapp.com/User/sendInvitation.php"
-#define kUrl_UpdateUserInfo @"http://1.server4puman.sinaapp.com/User/getUserInfo.php"
+#define kUrl_UpdateUserInfo @"http://2.server4puman.sinaapp.com/user/get_user_info"
 #define kUrl_VerifyUser @"http://1.server4puman.sinaapp.com/User/verifRequest.php"
 #define kUrl_VerifyPhoneWithCode @"http://1.server4puman.sinaapp.com/User/verifWithCode.php"
 #define kUrl_UpdateDiary @"http://1.server4puman.sinaapp.com/User/updateDiary.php"
