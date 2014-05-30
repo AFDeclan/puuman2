@@ -16,7 +16,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        currentProperty = 0;
+        currentProperty = 1;
         NSDictionary *gifLoopCount = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0] forKey:(NSString *)kCGImagePropertyGIFLoopCount];
         
         gifProperties = [NSDictionary dictionaryWithObject:gifLoopCount forKey:(NSString *)kCGImagePropertyGIFDictionary];

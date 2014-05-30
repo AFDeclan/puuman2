@@ -27,6 +27,7 @@
 - (id)initWithFrame:(CGRect)frame fileName:(NSString *)fileName;
 - (void)stopGif;
 -(void)startGif;
+- (void)showGifAtIndex:(NSInteger)index;
 
 @end
 @protocol VideoShowButtonDelegate <NSObject>

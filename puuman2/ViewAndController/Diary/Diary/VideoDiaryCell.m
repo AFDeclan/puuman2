@@ -12,7 +12,7 @@
 #import "Device.h"
 #import "DetailShowViewController.h"
 #import "UniverseConstant.h"
-
+#import "UpLoaderShareVideo.h"
 
 
 @implementation VideoDiaryCell
@@ -81,14 +81,14 @@
 {
     [super loadInfo];
     
-//    if ([[self.diary urls1] count]>0 && !filePath)
-//    {
-//            if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
-//            {
-//                    NSError *error;
-//                    [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
-//           }
-//    }
+    if ([[self.diary urls1] count]>0 && !filePath)
+    {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:[self.diary.filePaths1 objectAtIndex:0]])
+            {
+                    NSError *error;
+                    [[NSFileManager defaultManager] removeItemAtPath:[self.diary.filePaths1 objectAtIndex:0] error:&error];
+           }
+    }
     filePath = [self.diary.filePaths1 objectAtIndex:0];
   
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
@@ -115,9 +115,8 @@
 
 - (void)reloadFile
 {
-    [self.diary redownloadContent1AtIndex:0 withRecall:^(BOOL finished){
-        [self loadInfo];
-    }];
+    UpLoaderShareVideo *downloader = [[UpLoaderShareVideo alloc] init];
+    [downloader downloadDataFromUrl:[self.diary.urls1 objectAtIndex:0]];
 }
 
 - (void)share:(id)sender

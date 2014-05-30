@@ -277,6 +277,7 @@
 		545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7EC18D7ECCF00D8EB7F /* CalendarView.m */; };
 		545EB7F318D7F22900D8EB7F /* AgeCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7F218D7F22900D8EB7F /* AgeCalendarView.m */; };
 		545EB7F618D7F33F00D8EB7F /* AgeCalenderTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7F518D7F33F00D8EB7F /* AgeCalenderTitleButton.m */; };
+		5461934419382A4B004FED04 /* UpLoaderShareVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5461934319382A4B004FED04 /* UpLoaderShareVideo.m */; };
 		5463755B18C96622004B11EF /* btn_pic_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463755A18C96622004B11EF /* btn_pic_diary.png */; };
 		5463757C18C98476004B11EF /* btn_back_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463757618C98476004B11EF /* btn_back_login.png */; };
 		5463757D18C98476004B11EF /* btn_next_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 5463757718C98476004B11EF /* btn_next_login.png */; };
@@ -1138,6 +1139,8 @@
 		545EB7F218D7F22900D8EB7F /* AgeCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalendarView.m; sourceTree = "<group>"; };
 		545EB7F418D7F33F00D8EB7F /* AgeCalenderTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalenderTitleButton.h; sourceTree = "<group>"; };
 		545EB7F518D7F33F00D8EB7F /* AgeCalenderTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalenderTitleButton.m; sourceTree = "<group>"; };
+		5461934219382A4B004FED04 /* UpLoaderShareVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoaderShareVideo.h; sourceTree = "<group>"; };
+		5461934319382A4B004FED04 /* UpLoaderShareVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoaderShareVideo.m; sourceTree = "<group>"; };
 		5463755A18C96622004B11EF /* btn_pic_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pic_diary.png; sourceTree = "<group>"; };
 		5463757618C98476004B11EF /* btn_back_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_login.png; sourceTree = "<group>"; };
 		5463757718C98476004B11EF /* btn_next_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_next_login.png; sourceTree = "<group>"; };
@@ -3043,6 +3046,8 @@
 				54BBE8AA193727E30056390B /* VideoManageView.m */,
 				54B5AA311934421700805E63 /* VideoShowButton.h */,
 				54B5AA321934421700805E63 /* VideoShowButton.m */,
+				5461934219382A4B004FED04 /* UpLoaderShareVideo.h */,
+				5461934319382A4B004FED04 /* UpLoaderShareVideo.m */,
 				54B4EB3718C57C1D004489DA /* CustomTextField.h */,
 				54B4EB3818C57C1D004489DA /* CustomTextField.m */,
 				5474A47818C5B0860073B2FE /* AFButton */,
@@ -4562,6 +4567,7 @@
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
 				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
 				54ADB1E318E1AA4C00FCCC83 /* AuToImportImgCell.m in Sources */,
+				5461934419382A4B004FED04 /* UpLoaderShareVideo.m in Sources */,
 				5448D58C18FE2F2300DA696C /* SocialContentView.m in Sources */,
 				54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */,
 				541970D418D1956D0058FE64 /* InfoView.m in Sources */,
@@ -4757,7 +4763,7 @@
 					/Users/af_bigwaves/Documents/puuman/puuman2/Support/WeiXin,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4791,7 +4797,7 @@
 					/Users/af_bigwaves/Documents/puuman/puuman2/Support/WeiXin,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647B61AB-04F6-4EE9-832F-1ED12653D49F";
+				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

@@ -19,7 +19,7 @@
 #import "MBProgressHUD.h"
 #import "ShopModel.h"
 #import "EnterTutorialView.h"
-
+#import "ShareVideo.h"
 
 @interface MainTabBarController ()
 
@@ -31,6 +31,7 @@ static MBProgressHUD *hud;
 @synthesize isVertical = _isVertical;
 @synthesize refresh_HV = _refresh_HV;
 @synthesize isReply = _isReply;
+
 
 + (MainTabBarController *)sharedMainViewController
 {
@@ -51,6 +52,8 @@ static MBProgressHUD *hud;
         [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
         [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
         [MyNotiCenter addObserver:self selector:@selector(showBottomInputView:) name:Noti_BottomInputViewShow object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(refreshProgressAutoVideo:) name:Noti_RefreshProgressAutoVideo object:nil];
+
         [self.tabBar removeFromSuperview];
         
     }
@@ -70,18 +73,32 @@ static MBProgressHUD *hud;
     _isReply = YES;
     videoShowed = NO;
     userInfo = [UserInfo sharedUserInfo];
-    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(0, 0, 189,180) fileName:@"animate_puuman"];
+    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, -189, 189,180) fileName:@"animate_puuman"];
     [videoBtn setDelegate:self];
     [self.view addSubview:videoBtn];
-    [videoBtn startGif];
+    [videoBtn showGifAtIndex:0];
 
-    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
-    [videoView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview:videoView];
-    [videoView setDelegate:self];
-    [videoView  setAlpha:0];
-    [videoView.layer setMasksToBounds:YES];
  
+}
+
+- (void)refreshProgressAutoVideo:(NSNotification *)notification
+{
+    
+    [videoBtn setAlpha:1];
+    float progress = [[notification object] floatValue];
+    NSLog(@"%f",progress);
+    
+    SetViewLeftUp(videoBtn, 608, -189*(1 - progress));
+    
+    if (progress >= 1) {
+        [videoBtn startGif];
+        videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+        [videoView setBackgroundColor:[UIColor clearColor]];
+        [self.view addSubview:videoView];
+        [videoView setDelegate:self];
+        [videoView  setAlpha:0];
+        [videoView.layer setMasksToBounds:YES];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

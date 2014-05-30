@@ -21,7 +21,7 @@
 
 @end
 
-@interface FileUploader : NSObject <ASIHTTPRequestDelegate>
+@interface FileUploader : NSObject <ASIHTTPRequestDelegate,ASIProgressDelegate>
 {
     ASIHTTPRequest *_request;
 }

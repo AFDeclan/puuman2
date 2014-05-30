@@ -449,9 +449,11 @@ static UserInfo *instance = nil;
     if (tp != nil && [tp isKindOfClass:[NSDictionary class]]) {
         _shareVideo = [[ShareVideo alloc] init];
         [_shareVideo initWithData:tp];
+        PostNotification(Noti_ShowAutoVideo, nil);
     }
     [self saveToUserDefault];
 }
+
 
 #pragma mark - 账号关联
 - (NSString *)invitedBy
