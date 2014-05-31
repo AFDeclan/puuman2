@@ -179,7 +179,9 @@
         [[MainTabBarController sharedMainViewController] initautoImportView];
         
     }
-    
+    if ([[MainTabBarController sharedMainViewController] videoShowed]) {
+        PostNotification(Noti_ContinueVideo, nil);
+    }
   
   
 

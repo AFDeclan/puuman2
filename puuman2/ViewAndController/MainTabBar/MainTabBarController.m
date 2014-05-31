@@ -32,8 +32,8 @@ static MBProgressHUD *hud;
 @synthesize isVertical = _isVertical;
 @synthesize refresh_HV = _refresh_HV;
 @synthesize isReply = _isReply;
-
-
+@synthesize videoShowed =_videoShowed;
+//@synthesize loadingVideo = _loadingVideo;
 + (MainTabBarController *)sharedMainViewController
 {
     if (!instance)
@@ -75,17 +75,14 @@ static MBProgressHUD *hud;
  
     [self initWithTabBar];
     _isReply = YES;
-    videoShowed = NO;
+    _videoShowed = NO;
     progress = 0;
+    videoPath = 0;
     userInfo = [UserInfo sharedUserInfo];
+   // _loadingVideo = YES;
 
-    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, 0, 189,180) fileName:@"animate_puuman"];
-    [videoBtn setDelegate:self];
-    [self.view addSubview:videoBtn];
-    [videoBtn showGifAtIndex:0];
-    [videoBtn setClickEnable:NO];
-   
- 
+
+
 }
 
 - (void)downAutoVideo
@@ -99,8 +96,27 @@ static MBProgressHUD *hud;
         [videoBtn setAlpha:0];
 
     }
+  
+    
+  //  if (!_loadingVideo) {
+    //    _loadingVideo = YES;
     UpLoaderShareVideo *downloader = [[UpLoaderShareVideo alloc] init];
     [downloader downloadDataFromUrl:[[UserInfo sharedUserInfo] shareVideo].videoUrl];
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+//    if (!timer) {
+//        timer  = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(animateWithVideoBtn) userInfo:[NSNumber numberWithFloat:progress] repeats:YES];
+//    }
+  //  }
+    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, -189, 189,180) fileName:@"animate_puuman"];
+    [videoBtn setDelegate:self];
+    [self.view addSubview:videoBtn];
+    //  [videoBtn showGifAtIndex:0];
+    [videoBtn setClickEnable:NO];
+    [videoBtn setAlpha:1];
+
 
 }
 
@@ -108,34 +124,41 @@ static MBProgressHUD *hud;
 {
 
     progress = [[notification object] floatValue];
-    NSLog(@"%f",progress);
-    if (!timer) {
-        timer  = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(animateWithVideoBtn) userInfo:[NSNumber numberWithFloat:progress] repeats:YES];
-    }
+    
+    [UIView animateWithDuration:1 animations:^{
+        SetViewLeftUp(videoBtn, 608, -189*(1 - progress));
+    }];
     
 }
 
 - (void)failDownShareVideo
 {
+   // _loadingVideo = NO;
     [videoBtn setClickEnable:NO];
-    
-    if (timer) {
-        [timer invalidate];
-        timer = nil;
-    }
-  
+    SetViewLeftUp(videoBtn, 608, -189);
+    [videoBtn setAlpha:0];
+    [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
+
 }
 
+
+
 - (void)finishDownShareVideo:(NSNotification *)notification
+{
+   // _loadingVideo = NO;
+    videoPath = [notification object];
+   [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
+
+}
+
+- (void)startGif
 {
     
     if (timer) {
         [timer invalidate];
         timer = nil;
     }
-    
-    NSString *path = [notification object];
-    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768) withVideoPath:path];
+    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768) withVideoPath:videoPath];
     [videoView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:videoView];
     [videoView setDelegate:self];
@@ -143,7 +166,6 @@ static MBProgressHUD *hud;
     [videoView.layer setMasksToBounds:YES];
     [videoBtn setClickEnable:YES];
     [videoBtn startGif];
-
 }
 
 - (void)animateWithVideoBtn
@@ -196,22 +218,26 @@ static MBProgressHUD *hud;
    // [videoBtn setAlpha:0];
     [videoView showVideoView];
     [videoView playVideo];
-     videoShowed = YES;
-
+     _videoShowed = YES;
+    [videoBtn startGif];
 }
 
 - (void)deleteVideo
 {
     [videoBtn startGif];
-    videoShowed = NO;
+    _videoShowed = NO;
     [videoView  removeFromSuperview];
-    [videoBtn   removeFromSuperview];
-    videoBtn = nil;
     videoView = nil;
+    SetViewLeftUp(videoBtn, 608, -189);
+    //[videoBtn showGifAtIndex:0];
+    [videoBtn setClickEnable:NO];
+    [videoBtn setAlpha:0];
+
 }
 
 - (void)startApp
 {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:Noti_TutorialFinshed object:nil];
     [self initautoImportView];
     
@@ -278,7 +304,7 @@ static MBProgressHUD *hud;
 
 - (BOOL)shouldAutorotate
 {
-    if (videoShowed) {
+    if (_videoShowed) {
         return NO;
     }else{
         return YES;

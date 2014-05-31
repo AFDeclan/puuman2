@@ -52,10 +52,19 @@
         [manageView setDelegate:self];
         [self addSubview:manageView];
         [manageView setAlpha:0];
+        [MyNotiCenter addObserver:self selector:@selector(continueVideo) name:Noti_ContinueVideo object:nil];
       
     }
     return self;
 }
+
+- (void)continueVideo
+{
+    if ([moviePlayer playbackState] == MPMoviePlaybackStatePaused) {
+        [moviePlayer play];
+    }
+}
+
 - (void)showVideoView
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];

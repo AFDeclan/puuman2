@@ -31,6 +31,7 @@
 #define Noti_RefreshProgressAutoVideo           @"Noti_RefreshProgressAutoVideo"
 #define Noti_FinishShareVideo                   @"Noti_FinishShareVideo"
 #define Noti_FailShareVideo                     @"Noti_FailShareVideo"
+#define Noti_ContinueVideo                      @"Noti_ContinueVideo"
 
 
 #define Noti_LoadDiaryCellInfo                  @"Noti_LoadDiaryCellInfo"

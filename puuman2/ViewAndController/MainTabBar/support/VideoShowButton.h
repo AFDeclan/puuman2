@@ -17,9 +17,11 @@
     CGImageSourceRef gif;
     NSDictionary *gifProperties;
     NSInteger currentProperty;
+    UIImageView *gifImgView;
     NSInteger countProperty;
     NSTimer *timer;
     UIButton *playBtn;
+    UIImageView *imgView;
     NSMutableArray *refs;
 }
 @property(nonatomic,assign)id<VideoShowButtonDelegate> delegate;
@@ -28,7 +30,6 @@
 - (id)initWithFrame:(CGRect)frame fileName:(NSString *)fileName;
 - (void)stopGif;
 -(void)startGif;
-- (void)showGifAtIndex:(NSInteger)index;
 
 @end
 @protocol VideoShowButtonDelegate <NSObject>

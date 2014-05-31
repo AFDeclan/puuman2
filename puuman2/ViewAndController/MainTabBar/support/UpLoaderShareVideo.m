@@ -31,7 +31,7 @@ static NSMutableArray *instanceList;
         [self retainSelf];
         _request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:url]];
         [_request setDownloadProgressDelegate:self];
-        [_request setUploadProgressDelegate:self];
+        //[_request setUploadProgressDelegate:self];
         [_request setRequestMethod:@"GET"];
         [_request setDelegate:self];
         [_request startAsynchronous];
@@ -41,6 +41,7 @@ static NSMutableArray *instanceList;
 
 - (void)setProgress:(float)newProgress
 {
+   
     PostNotification(Noti_RefreshProgressAutoVideo, [NSNumber numberWithDouble:newProgress]);
 }
 
@@ -48,6 +49,7 @@ static NSMutableArray *instanceList;
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
+    
     NSString *fileDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     fileDir = [fileDir stringByAppendingPathComponent:@"Baby4/video"];
     NSString *fileName =  @"sharevideo";
@@ -71,7 +73,11 @@ static NSMutableArray *instanceList;
 
 }
 
-
+- (void)dealloc
+{
+    [_request setDelegate:nil];
+    [_request cancel];
+}
 
 
 @end

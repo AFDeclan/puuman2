@@ -128,9 +128,6 @@ static NSMutableArray *instanceList;
 }
 
 
-
-
-
 - (NSData *)downloadDataSynchoronusFromUrl:(NSString *)url
 {
     [self retainSelf];
@@ -189,4 +186,11 @@ static NSMutableArray *instanceList;
         [self.delegate downloadResult:nil downLoader:self];
     [self releaseSelf];
 }
+
+- (void)dealloc
+{
+    [_request setDelegate:nil];
+    [_request cancel];
+}
+
 @end

@@ -65,7 +65,10 @@
     if (!isFinished) {
         _totalCnt = totalCnt;
         _cnt = cnt;
-        
+       
+        if (_cnt >_totalCnt) {
+            _cnt = _totalCnt;
+        }
         if (!timer) {
            
             timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshProgress) userInfo:nil repeats:YES];

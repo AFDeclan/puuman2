@@ -447,9 +447,19 @@ static UserInfo *instance = nil;
     _pumanQuan = [[_meta valueForKey:@"UPuman"] doubleValue];
     tp = [dic valueForKey:@"ShareInfo"];
     if (tp != nil && [tp isKindOfClass:[NSDictionary class]]) {
-        _shareVideo = [[ShareVideo alloc] init];
-        [_shareVideo initWithData:tp];
-        PostNotification(Noti_HasShareVideo, nil);
+        
+        if (_shareVideo && _shareVideo.RID ==[[tp valueForKey:@"RID"] integerValue]) {
+            _shareVideo = [[ShareVideo alloc] init];
+            [_shareVideo initWithData:tp];
+
+        }else{
+            _shareVideo = [[ShareVideo alloc] init];
+            [_shareVideo initWithData:tp];
+            PostNotification(Noti_HasShareVideo, nil);
+        }
+      
+        
+        
     }
 
     [self saveToUserDefault];
