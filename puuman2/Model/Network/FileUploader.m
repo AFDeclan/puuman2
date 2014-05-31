@@ -10,6 +10,7 @@
 #import "FileUploader.h"
 #import "UniverseConstant.h"
 #import "ErrorLog.h"
+#import "PumanRequest.h"
 
 static NSMutableArray *instanceList;
 
@@ -59,46 +60,15 @@ static NSMutableArray *instanceList;
 
 - (BOOL)uploadDataSync:(NSData *)data toDir:(NSString *)dir fileName:(NSString *)name
 {
-    [self retainSelf];
     _targetUrl = [NSString stringWithFormat:@"http://puman.oss.aliyuncs.com/%@/%@", dir, name];
-    NSString *urlHostString = @"http://6.pumantest.sinaapp.com";
-    NSString *urlSubpageString = @"/upload.php";
-    NSString *urlString = [urlHostString stringByAppendingString:urlSubpageString];
-    NSURL *myurl = [NSURL URLWithString:urlString];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:myurl];
+    PumanRequest *request = [[PumanRequest alloc] init];
+    [request setUrlStr:kUrl_UploadToOSS];
     //设置表单提交项
     [request setData:data forKey:@"file"];
-    [request setPostValue:[MobClick getConfigParams:umeng_onlineConfig_authKey] forKey:@"authCode"];
-    [request setPostValue:dir forKey:@"dir"];
-    [request setPostValue:name forKey:@"filename"];
-    [request setDelegate:self];
-    [request setDidFinishSelector:@selector(getUploadResult:)];
-    [request setDidFailSelector:@selector(getErr:)];
-    [request startSynchronous];
-    if ([request error]) return NO; else return YES;
-}
-
-- (BOOL)uploadFile:(NSString *)filePath toDir:(NSString *)dir fileRename:(NSString *)name;
-{
-    [self retainSelf];
-    _targetUrl = [NSString stringWithFormat:@"http://puman.oss.aliyuncs.com/%@/%@", dir, name];
-    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
-    NSLog(@"filePath:%@", filePath);
-    NSLog(@"Dir:%@,", dir);
-    NSLog(@"Rename:%@", name);
-    NSLog(@"dataLength:%d", [fileData length]);
-    NSString *urlHostString = @"http://6.pumantest.sinaapp.com";
-    NSString *urlSubpageString = @"/upload.php";
-    NSString *urlString = [urlHostString stringByAppendingString:urlSubpageString];
-    NSURL *myurl = [NSURL URLWithString:urlString];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:myurl];
-    //设置表单提交项
-    [request setData:fileData forKey:@"file"];
-    [request setPostValue:[MobClick getConfigParams:umeng_onlineConfig_authKey] forKey:@"authCode"];
-    [request setPostValue:dir forKey:@"dir"];
-    [request setPostValue:name forKey:@"filename"];
-    [request startSynchronous];
-    if ([request error])
+    [request setParam:dir forKey:@"dir"];
+    [request setParam:name forKey:@"filename"];
+    [request postSynchronous];
+    if (request.result != PumanRequest_Succeeded)
     {
         PostNotification(Noti_Imported, name);
         return NO;
@@ -106,6 +76,13 @@ static NSMutableArray *instanceList;
         PostNotification(Noti_Imported, name);
         return YES;
     }
+}
+
+- (BOOL)uploadFile:(NSString *)filePath toDir:(NSString *)dir fileRename:(NSString *)name;
+{
+    _targetUrl = [NSString stringWithFormat:@"http://puman.oss.aliyuncs.com/%@/%@", dir, name];
+    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+    return [self uploadDataSync:fileData toDir:dir fileName:name];
 }
 
 - (void)downloadDataFromDir:(NSString *)dir fileName:(NSString *)name

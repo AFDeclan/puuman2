@@ -213,7 +213,7 @@ static TaskUploader *instance = nil;
                 [_uploadList removeObjectAtIndex:0];
                 [self writeWaitForUploadTasks];
             }
-            else sleep(5000);
+            else sleep(30);
         }
     }
     TaskModel *taskModel = [TaskModel sharedTaskModel];

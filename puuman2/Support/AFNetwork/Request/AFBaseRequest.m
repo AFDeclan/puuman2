@@ -37,8 +37,14 @@ static NSMutableArray * instanceList;
     if (self = [super init])
     {
         _params = [[NSMutableDictionary alloc] init];
+        _datas = [[NSMutableDictionary alloc] init];
     }
     return self;
+}
+
+- (void)setData:(NSData *)data forKey:(NSString *)key
+{
+    [_datas setValue:data forKey:key];
 }
 
 - (void)setParam:(id)param forKey:(id)key
@@ -149,6 +155,10 @@ static NSMutableArray * instanceList;
 {
     _formRequest = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:_urlStr]];
     _formRequest.delegate = self;
+    for (id key in _datas)
+    {
+        [_formRequest setData:[_datas valueForKey:key] forKey:key];
+    }
     for (id key in _params)
     {
         [_formRequest setPostValue:[_params valueForKey:key] forKey:key];

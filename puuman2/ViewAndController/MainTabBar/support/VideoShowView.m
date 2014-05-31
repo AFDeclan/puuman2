@@ -26,8 +26,10 @@
         finishView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
         [finishView setImage:nil];
         [self  addSubview:finishView];
-        videoPath = [[NSBundle mainBundle] pathForResource:@"popeye" ofType:@"mp4"];
-        moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:videoPath]];
+//        videoPath = [[NSBundle mainBundle] pathForResource:@"popeye" ofType:@"mp4"];
+        videoPath = @"";
+//        moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:videoPath]];
+        moviePlayer = [[MPMoviePlayerController alloc] init];
         [moviePlayer prepareToPlay];
         [moviePlayer.view setBackgroundColor:[UIColor blackColor]];
         [moviePlayer setShouldAutoplay:NO];
@@ -40,7 +42,8 @@
 
         animates  =[[NSMutableArray alloc] init];
         for (int i = 0; i < 20; i ++) {
-            UIImage *img = [self blurryImage:finishImg withBlurLevel:i*0.1];
+//            UIImage *img = [self blurryImage:finishImg withBlurLevel:i*0.1];
+            UIImage * img = [[UIImage alloc] init];
             [animates addObject:img];
         }
         [finishView setAlpha:0];

@@ -104,6 +104,9 @@
 //feedback
 #define kUrl_PostFeedback @"http://1.server4puman.sinaapp.com/feedBack.php"
 
+//upload
+#define kUrl_UploadToOSS @"http://2.server4puman.sinaapp.com/upload_oss"
+
 #define _puman_feedback_identifier_prefix @"_puman_"
 #define _puman_feedbackFailed_identifier_prefix @"_pumanFail_"
 

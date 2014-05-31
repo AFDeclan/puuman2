@@ -37,6 +37,7 @@ typedef enum {
 @property (nonatomic, retain) NSDictionary *userInfo;
 @property (nonatomic, retain) NSString *urlStr;
 @property (nonatomic, retain) NSMutableDictionary *params;
+@property (nonatomic, retain) NSMutableDictionary *datas;
 @property (nonatomic, retain) id resObj;
 @property (nonatomic, assign) NSInteger result;
 @property (nonatomic, assign) id<AFRequestDelegate> delegate;
@@ -44,6 +45,7 @@ typedef enum {
 @property (nonatomic, assign, readonly) AFHttpMethod httpMethod;
 @property (nonatomic, assign, readonly) ASIHTTPRequest *httpRequest;
 
+- (void)setData:(NSData *)data forKey:(NSString *)key;
 - (void)setParam:(id)param forKey:(id)key;
 - (void)setIntegerParam:(NSInteger)param forKey:(id)key;
 - (void)setFloatParam:(CGFloat)param forKey:(id)key;
