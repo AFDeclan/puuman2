@@ -15,11 +15,22 @@
 
 - (void)setWithDic:(NSDictionary *)dic
 {
-    _BID = [[dic valueForKey:@"BID"] integerValue];
+    if (![dic isKindOfClass:[NSDictionary class]]) return;
+    id tp;
+    tp = [dic valueForKey:@"BID"];
+    if (tp respondsToSelector:@selector(integerValue)) {
+        _BID = [[dic valueForKey:@"BID"] integerValue];
+    }
     _Nickname = [dic valueForKey:@"Nickname"];
     _WhetherBirth = [[dic valueForKey:@"Whetherbirth"] boolValue];
-    _Gender = [[dic valueForKey:@"Gender"] boolValue];
-    _Birthday = [DateFormatter dateFromString:[dic valueForKey:@"Birthday"]];
+    tp = [dic valueForKey:@"Gender"];
+    if (tp respondsToSelector:@selector(boolValue)) {
+        _Gender = [tp boolValue];
+    }
+    tp = [dic valueForKey:@"Birthday"];
+    if (tp) {
+        _Birthday = [DateFormatter dateFromString:tp];
+    }
     _PortraitUrl = [dic valueForKey:@"PortraitUrl"];
     _changedKeys = [[NSMutableSet alloc] init];
 }
@@ -92,7 +103,11 @@
 {
     PumanRequest * req = [self uploadReq];
     [req postSynchronous];
-    return req.result == PumanRequest_Succeeded;
+    if (req.result == PumanRequest_Succeeded) {
+        _changedKeys = [[NSMutableSet alloc] init];
+        return YES;
+    }
+    return NO;
 }
 
 - (void)uploadInfo
@@ -103,9 +118,10 @@
 
 - (void)requestEnded:(AFBaseRequest *)afRequest
 {
-    if (!_delegate respondsToSelector:@selector(infoUploadFinish:))
-        return
+    if (![_delegate respondsToSelector:@selector(infoUploadFinish:)])
+        return;
     if (afRequest.result == PumanRequest_Succeeded) {
+        _changedKeys = [[NSMutableSet alloc] init];
         [_delegate infoUploadFinish:YES];
     } else {
         [_delegate infoUploadFinish:NO];
