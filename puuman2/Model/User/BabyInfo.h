@@ -13,6 +13,8 @@
 @protocol BabyInfoDelegate <NSObject>
 
 - (void)portraitUploadFinish:(BOOL)suc;
+
+@optional
 - (void)infoUploadFinish:(BOOL)suc;
 
 @end

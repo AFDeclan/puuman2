@@ -24,11 +24,8 @@
     _UIDs = [data valueForKey:@"UIDs"];
     NSDictionary * baseInfo = [data valueForKey:@"BaseInfo"];
     if ([baseInfo isKindOfClass:[NSDictionary class]]) {
-        _BabyNick = [baseInfo valueForKey:uMeta_nickName];
-        _BabyBirth = [DateFormatter dateFromString:[baseInfo valueForKey:uMeta_birthDate]];
-        _BabyIsBoy = [[baseInfo valueForKey:uMeta_gender] isEqualToString:@"男宝宝"];
-        _BabyPortraitUrl = [baseInfo valueForKey:uMeta_portraitUrl];
-        _BabyHasBorn = [[baseInfo valueForKey:uMeta_whetherBirth] isEqualToString:@"生日"];
+        _babyInfo = [[BabyInfo alloc] init];
+        [_babyInfo setWithDic:baseInfo];
         tp = [baseInfo valueForKey:@"BabyHeight"];
         if ([tp respondsToSelector:@selector(doubleValue)]) _BabyHeight = [tp doubleValue]; else _BabyHeight = 0;
         tp = [baseInfo valueForKey:@"BabyWeight"];
