@@ -14,6 +14,7 @@
 #import "UniverseConstant.h"
 #import "AFNetwork.h"
 #import "BabyInfo.h"
+#import "ShareVideo.h"
 
 
 #define defaultUserID       -1
@@ -76,6 +77,8 @@ typedef enum inviteState {
 @property (retain) NSString*        pwd;
 //重发验证码倒计时
 @property (assign, nonatomic, readonly) NSInteger timeToResendVerifyMsg;
+
+@property (retain, nonatomic, readonly) ShareVideo * shareVideo;
 
 + (void)init;
 + (UserInfo *)sharedUserInfo;

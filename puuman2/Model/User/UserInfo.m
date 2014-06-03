@@ -288,81 +288,6 @@ static UserInfo *instance = nil;
 }
 
 #pragma mark - User Meta and Portrait
-- (BOOL)uploadBabyMeta:(NSDictionary *)uMeta
-{
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
-    [request setURL:[NSURL URLWithString:kUrl_SetBabyMeta]];
-    [request setHTTPMethod:@"POST"];
-    
-    //set headers
-    NSString *contentType = [NSString stringWithFormat:@"text/xml"];
-    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    //set body
-    NSMutableData *postBody = [NSMutableData data];
-    [postBody appendData:[[NSString stringWithFormat:@"<Request Action=\"setBabyMeta\">"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    for (NSString *key in [uMeta keyEnumerator])
-    {
-        [postBody appendData:[[NSString stringWithFormat:@"<UserMeta>"] dataUsingEncoding:NSUTF8StringEncoding]];
-        //UID
-        [postBody appendData:[[NSString stringWithFormat:@"<BID>%d</BID>", _BID] dataUsingEncoding:NSUTF8StringEncoding]];
-        //key
-        [postBody appendData:[[NSString stringWithFormat:@"<UMKey>%@</UMKey>", key] dataUsingEncoding:NSUTF8StringEncoding]];
-        //value
-        [postBody appendData:[[NSString stringWithFormat:@"<UMVal>%@</UMVal>", [uMeta valueForKey:key]] dataUsingEncoding:NSUTF8StringEncoding]];
-        [postBody appendData:[[NSString stringWithFormat:@"</UserMeta>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-    [postBody appendData:[[NSString stringWithFormat:@"</Request>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    //post
-    [request setHTTPBody:postBody];
-    [request setTimeoutInterval:5];
-    NSError *error;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-    if ([data length] > 0 && error == nil)
-    {
-        NSString *result = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"Response: %@", result);
-        for (NSString *key in [uMeta keyEnumerator])
-        {
-            [_meta setValue:[uMeta valueForKey:key] forKey:key];
-        }
-        [self saveToUserDefault];
-        PostNotification(Noti_UserInfoUpdated, nil);
-        [[MemberCache sharedInstance] removeMemberWithBID:_BID];
-        return YES;
-    }
-    else
-    {
-        if (error){
-            [ErrorLog errorLog:@"upload usermeta error" fromFile:@"UserInfo.m" error:error];
-            NSLog(@"upload usermeta error:%@",error.debugDescription);
-            
-        }
-        return NO;
-    }
-}
-
-- (BOOL)uploadBabyMetaVal:(NSString *)val forKey:(NSString *)key
-{
-    PumanRequest *request = [[PumanRequest alloc] init];
-    request.urlStr = kUrl_SetBabyMetaSingle;
-    [request setTimeOutSeconds:5];
-    [request setParam:val forKey:@"value"];
-    [request setParam:key forKey:@"key"];
-    [request setParam:@"set" forKey:@"mode"];
-    [request setParam:[NSNumber numberWithInteger:_BID] forKey:@"BID"];
-    [request postSynchronous];
-    
-    if (request.result == PumanRequest_Succeeded)
-    {
-        [_meta setValue:val forKey:key];
-        PostNotification(Noti_UserInfoUpdated, nil);
-        [[MemberCache sharedInstance] removeMemberWithBID:_BID];
-        return YES;
-    }
-    else return NO;
-}
 
 - (BOOL)uploadUserMetaVal:(NSString *)val forKey:(NSString *)key
 {
@@ -381,11 +306,6 @@ static UserInfo *instance = nil;
         return YES;
     }
     else return NO;
-}
-
-- (NSString *)portraitUrl
-{
-    return [_meta valueForKey:uMeta_portraitUrl];
 }
 
 - (BOOL)setAlipayAccount:(NSString *)alipayAccount
@@ -433,6 +353,8 @@ static UserInfo *instance = nil;
     _UCornsLocalAdded_daily = 0;
     _babyInfo = [[BabyInfo alloc] init];
     [_babyInfo setWithDic:[dic valueForKey:@"Baby"]];
+    _shareVideo = [[ShareVideo alloc] init];
+    [_shareVideo initWithData:[dic valueForKey:@"ShareInfo"]];
     NSMutableDictionary* mm = nil;
     tp = [dic objectForKey:@"Metas"];
     if( tp != nil ){
