@@ -71,8 +71,10 @@ static ImportStore * instance;
         {
             [ErrorLog errorLog:@"Save photo failed - 1" fromFile:@"DiaryFileManager.m" error:error];
         }
+        PostNotification(Noti_Imported, [NSNumber numberWithInt:i+1]);
         [paths addObject:filePath];
     }
+    
     if (title == nil) title = @"";
     diary = [[Diary alloc] init];
     diary.title = title;
@@ -97,6 +99,7 @@ static ImportStore * instance;
 
     
 }
+
 - (void)reset
 {
     photosArr = nil;

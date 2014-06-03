@@ -191,10 +191,9 @@ static TaskUploader *instance = nil;
     [request postSynchronous];
     if (request.result == PumanRequest_Succeeded)
     {
-        PostNotification(Noti_Imported, name);
         return YES;
     }else{
-        PostNotification(Noti_Imported, name);
+       
         return NO;
     }
     
