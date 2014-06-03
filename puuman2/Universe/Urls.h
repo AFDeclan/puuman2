@@ -75,9 +75,9 @@
 //user
 #define kUrl_SetUserIdentity @"http://1.server4puman.sinaapp.com/User/setIdentity.php"
 #define kUrl_SetUserMeta @"http://1.server4puman.sinaapp.com/User/UserMeta.php"
-#define kUrl_CheckUser @"http://1.server4puman.sinaapp.com/User/checkUser.php"
-#define kUrl_RegisterUser @"http://1.server4puman.sinaapp.com/User/registerUser.php"
-#define kUrl_RegisterUserWithCode @"http://1.server4puman.sinaapp.com/User/registerUserWithCode.php"
+#define kUrl_CheckUser @"http://2.server4puman.sinaapp.com/user/login"
+#define kUrl_RegisterUser @"http://2.server4puman.sinaapp.com/user/register"
+#define kUrl_RegisterUserWithCode @"http://2.server4puman.sinaapp.com/user/register_with_code"
 #define kUrl_SendRigisterInvitation @"http://1.server4puman.sinaapp.com/User/sendInvitation.php"
 #define kUrl_UpdateUserInfo @"http://2.server4puman.sinaapp.com/user/get_user_info"
 #define kUrl_VerifyUser @"http://1.server4puman.sinaapp.com/User/verifRequest.php"
@@ -93,6 +93,7 @@
 #define kUrl_SetBabyMetaSingle @"http://1.server4puman.sinaapp.com/User/Baby/BabyMetaSingle.php"
 #define kUrl_UpdateVaccine @"http://1.server4puman.sinaapp.com/User/Baby/UpdateVaccine.php"
 #define kUrl_UpdateBabyData @"http://1.server4puman.sinaapp.com/User/Baby/UpdateBabyData.php"
+#define kUrl_SetBabyInfo @"http://2.server4puman.sinaapp.com/baby/set_baby_info"
 //task
 #define kUrl_GetUserTask @"http://1.server4puman.sinaapp.com/Task/getUserTask.php"
 #define kUrl_UploadUserTask @"http://1.server4puman.sinaapp.com/Task/uploadTask.php"
@@ -103,6 +104,9 @@
 #define kUrl_SubmitPayback @"http://1.server4puman.sinaapp.com/Payback/submitPayBack.php"
 //feedback
 #define kUrl_PostFeedback @"http://1.server4puman.sinaapp.com/feedBack.php"
+
+//upload
+#define kUrl_UploadToOSS @"http://2.server4puman.sinaapp.com/upload_oss"
 
 #define _puman_feedback_identifier_prefix @"_puman_"
 #define _puman_feedbackFailed_identifier_prefix @"_pumanFail_"

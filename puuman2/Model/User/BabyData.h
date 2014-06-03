@@ -65,10 +65,6 @@
      kBabyData_Height   (CGFloat)身高
      kBabyData_Weight   (CGFLoat)体重
      */
-- (NSDate *)babyBirth; //宝宝出生日期
-- (NSString *)babyName; //宝宝姓名
-- (BOOL)babyIsBoy;  //宝宝性别
-- (BOOL)babyHasBorned; //是否已出生
 
 - (NSUInteger)vaccineCount;
 - (NSDictionary *)vaccineAtIndex:(NSUInteger)index;

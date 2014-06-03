@@ -18,6 +18,7 @@
 #import "Models.h"
 #import "NSString+VersionCompare.h"
 #import "EnterTutorialView.h"
+#import "TaskUploader.h"
 
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
@@ -30,6 +31,7 @@
     [self initWithContent];
     [self initialUmeng];
     [self initialSocialNetWork];
+    [TaskUploader init];
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -43,7 +43,8 @@
 
         animates  =[[NSMutableArray alloc] init];
         for (int i = 0; i < 20; i ++) {
-            UIImage *img = [self blurryImage:finishImg withBlurLevel:i*0.1];
+//            UIImage *img = [self blurryImage:finishImg withBlurLevel:i*0.1];
+            UIImage * img = [[UIImage alloc] init];
             [animates addObject:img];
         }
         [finishView setAlpha:0];

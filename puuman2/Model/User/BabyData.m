@@ -295,34 +295,6 @@ static BabyData * instance;
     return [_vaccine objectAtIndex:index];
 }
 
-- (NSDate *)babyBirth
-{
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSString *birthStr = [userInfo.meta valueForKey:uMeta_birthDate];
-    return [DateFormatter dateFromString:birthStr];
-}
-
-- (NSString *)babyName
-{
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSString *name = [userInfo.meta valueForKey:uMeta_nickName];
-    return name;
-}
-
-- (BOOL)babyIsBoy
-{
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSString *gender = [userInfo.meta valueForKey:uMeta_gender];
-    return [gender isEqualToString:@"男宝宝"];
-}
-
-- (BOOL)babyHasBorned
-{
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSString *born = [userInfo.meta valueForKey:uMeta_whetherBirth];
-    return [born isEqualToString:@"生日"];
-}
-
 #pragma mark - other
 
 - (NSString *)babydataTableName
