@@ -23,7 +23,7 @@
     self = [super initWithFrame:frame];
     if (self) {
          [self initialize];
-        [UserInfo sharedUserInfo].portraitUploadDelegate= self;
+        [[UserInfo sharedUserInfo] babyInfo].delegate= self;
     }
     return self;
 }
@@ -58,7 +58,7 @@
     portraitView.layer.masksToBounds = YES;
     portraitView.layer.shadowRadius =0.1;
     portraitView.contentMode = UIViewContentModeScaleAspectFill;
-    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:@"pic_pre_login.png"];
+    [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:@"pic_pre_login.png"];
     portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
     portraitView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[ UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapPortrait)];
@@ -84,10 +84,10 @@
     
     if ([[UserInfo sharedUserInfo] logined])
     {
-        name_textfield.text = [[BabyData sharedBabyData] babyName];
+        name_textfield.text = [[[UserInfo sharedUserInfo] babyInfo] Nickname];
         if (![[[UserInfo sharedUserInfo] babyInfo] WhetherBirth])
         {
-            [self selectDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday];
+            [self selectDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
         }
     }
 }
@@ -110,7 +110,7 @@
 {
     if (suc) {
         [[TaskCell sharedTaskCell] reloadPortrait];
-        [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+        [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
         portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
     }
     

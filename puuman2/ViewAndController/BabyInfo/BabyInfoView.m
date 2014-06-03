@@ -108,7 +108,7 @@
 - (void)resetBabyInfo
 {
     BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
-    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+    [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
      portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
     info_name.text = [babyInfo Nickname];
     info_age.text = [[NSDate date] ageStrFromDate:[babyInfo Birthday]];
@@ -137,7 +137,7 @@
 - (void)portraitUploadFinish:(BOOL)suc{
     if (suc) {
         [[TaskCell sharedTaskCell] reloadPortrait];
-         [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+         [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
         portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
     }
 

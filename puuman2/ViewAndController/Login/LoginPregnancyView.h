@@ -14,7 +14,7 @@
 #import "UserInfo.h"
 
 @protocol LoginPregnancyViewDelegate;
-@interface LoginPregnancyView : UIView<UITextFieldDelegate,PregnancyCalendarDelegate,NewTextSelectPhotoDelegate>
+@interface LoginPregnancyView : UIView<UITextFieldDelegate,PregnancyCalendarDelegate,NewTextSelectPhotoDelegate,BabyInfoDelegate>
 {
     CustomTextField *name_textfield;
     CustomTextField *birthday;

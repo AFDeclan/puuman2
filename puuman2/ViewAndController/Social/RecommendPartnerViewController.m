@@ -115,12 +115,12 @@
         [inviteBtn setAlpha:0];
     }
     [recommentTable reloadData];
-    if ([member BabyIsBoy]) {
-        [sex_name setTitle:member.BabyNick andImg:[UIImage imageNamed:@"icon_male_baby.png"] andButtonType:kButtonTypeSeven];
+    if ([[member babyInfo] Gender]) {
+        [sex_name setTitle:[member babyInfo].Nickname andImg:[UIImage imageNamed:@"icon_male_baby.png"] andButtonType:kButtonTypeSeven];
     }else{
-        [sex_name setTitle:member.BabyNick andImg:[UIImage imageNamed:@"icon_female_baby.png"] andButtonType:kButtonTypeSeven];
+        [sex_name setTitle:[member babyInfo].Nickname andImg:[UIImage imageNamed:@"icon_female_baby.png"] andButtonType:kButtonTypeSeven];
     }
-    [portrait getImage:[member BabyPortraitUrl] defaultImage:@"pic_default_topic.png"];
+    [portrait getImage:[[member babyInfo] PortraitUrl] defaultImage:@"pic_default_topic.png"];
      [recommentTable reloadData];
 }
 

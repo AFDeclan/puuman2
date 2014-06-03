@@ -67,11 +67,11 @@
             SetViewLeftUp(icon, 32, 36);
             SetViewLeftUp(label_second, 66, 40);
             SetViewLeftUp(label_compare, 432, 40);
-            if ([data BabyHasBorn]) {
-                label_first.text = [[NSDate date] ageStrFromDate:[data BabyBirth]];
-                label_second.text = [[data BabyBirth] constellation];
-                if ([userData BabyHasBorn]) {
-                    label_compare.text = [[userData BabyBirth] compareFromDate:[data BabyBirth]];
+            if ([[data babyInfo] WhetherBirth]) {
+                label_first.text = [[NSDate date] ageStrFromDate:[[data babyInfo] Birthday]];
+                label_second.text = [[[data babyInfo] Birthday] constellation];
+                if ([[userData babyInfo] WhetherBirth]) {
+                    label_compare.text = [[[userData babyInfo] Birthday] compareFromDate:[[data babyInfo] Birthday]];
                 }
             }else{
                 label_first.text = @"";

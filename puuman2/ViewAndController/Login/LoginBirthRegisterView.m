@@ -61,7 +61,7 @@
     portraitView.layer.masksToBounds = YES;
     portraitView.layer.shadowRadius =0.1;
     portraitView.contentMode = UIViewContentModeScaleAspectFill;
-    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:@"pic_born_login.png"];
+    [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:@"pic_born_login.png"];
      portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
      portraitView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[ UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapPortrait)];
@@ -144,7 +144,7 @@
 {
     if (suc) {
         [[TaskCell sharedTaskCell] reloadPortrait];
-        [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+        [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
          portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
     }
     

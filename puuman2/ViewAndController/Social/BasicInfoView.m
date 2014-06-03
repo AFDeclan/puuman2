@@ -88,11 +88,11 @@
     Member  *_member = [[MemberCache sharedInstance] getMemberWithUID:uid];
     NSLog(@"%@",[_member.UIDs objectAtIndex:0]);
     if (_member) {
-        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth] &&[_member BabyHasBorn]) {
-            [self setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[[[UserInfo sharedUserInfo] babyInfo] Birthday] relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
+        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth] &&[[_member babyInfo] WhetherBirth]) {
+            [self setInfoWithName:[_member babyInfo].Nickname andPortrailPath:[_member babyInfo].PortraitUrl andRelate:[[[[UserInfo sharedUserInfo] babyInfo] Birthday] relateFromDate:[_member babyInfo].Birthday andSex:[_member babyInfo].Gender] andIsBoy:[_member babyInfo].Gender];
             
         }else{
-            [self setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"" andIsBoy:_member.BabyIsBoy];
+            [self setInfoWithName:[_member babyInfo].Nickname andPortrailPath:[_member babyInfo].PortraitUrl andRelate:@"" andIsBoy:[_member babyInfo].Gender];
             
         }
     }
@@ -114,11 +114,11 @@
     }else{
         
         tapped = NO;
-        if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth] && [member BabyHasBorn]) {
-            [self setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:[[[[UserInfo sharedUserInfo] babyInfo] Birthday] relateFromDate:member.BabyBirth andSex:member.BabyIsBoy] andIsBoy:member.BabyIsBoy];
+        if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth] && [[member babyInfo] WhetherBirth]) {
+            [self setInfoWithName:[member babyInfo].Nickname andPortrailPath:[member babyInfo].PortraitUrl andRelate:[[[[UserInfo sharedUserInfo] babyInfo] Birthday] relateFromDate:[member babyInfo].Birthday andSex:[member babyInfo].Gender] andIsBoy:[member babyInfo].Gender];
             
         }else{
-            [self setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"" andIsBoy:member.BabyIsBoy];
+            [self setInfoWithName:[member babyInfo].Nickname andPortrailPath:[member babyInfo].PortraitUrl andRelate:@"" andIsBoy:[member babyInfo].Gender];
             
         }
     }

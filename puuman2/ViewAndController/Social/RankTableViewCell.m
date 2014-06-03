@@ -113,15 +113,15 @@
 //Member数据下载成功
 - (void)memberDownloaded:(Member *)member
 {
-    [portrait getImage:[member BabyPortraitUrl] defaultImage:@"pic_default_topic.png"];
-    [info_name setText: member.BabyNick];
+    [portrait getImage:[[member babyInfo] PortraitUrl] defaultImage:@"pic_default_topic.png"];
+    [info_name setText: [member babyInfo].Nickname];
     [info_name adjustSize];
     SetViewLeftUp(icon_sex, ViewWidth(info_name)+2, 0);
     [info_scroll setContentSize:CGSizeMake(ViewRightX(icon_sex), ViewHeight(info_scroll))];
     if (info_scroll.contentSize.width > ViewWidth(info_scroll)) {
         [self startAutoScroll];
     }
-    if (member.BabyIsBoy)
+    if ([[member babyInfo] Gender])
     {
         [icon_sex setImage:[UIImage imageNamed:@"icon_male_topic.png"]];
     }else{

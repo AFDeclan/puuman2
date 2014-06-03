@@ -335,7 +335,6 @@
                     babyInfo.Birthday = [pregnancy birthDate];
                     
                     if ([babyInfo uploadInfoSync])
-
                     {
 
                          [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
