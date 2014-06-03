@@ -120,8 +120,8 @@
     [rulerPumanUse setleadingOfBottom:72];
     [rulerPumanUse setleadingOfTop:72];
     [rulerPumanUse setDelegate:self];
-    [rulerPumanUse setDialRangeFrom:0 to:(int)([UserInfo sharedUserInfo].pumanQuan/10)+1];
-    [rulerPumanUse setDialScrollRangeFrom:0 To:[UserInfo sharedUserInfo].pumanQuan];
+    [rulerPumanUse setDialRangeFrom:0 to:(int)([UserInfo sharedUserInfo].UCorns/10)+1];
+    [rulerPumanUse setDialScrollRangeFrom:0 To:[UserInfo sharedUserInfo].UCorns];
     [rulerPumanUse setTheCurrentValue:0];
     [_content addSubview:rulerPumanUse];
 
@@ -131,8 +131,8 @@
 {
     pumanUsed = currentNumber;
     [label_use setText:[NSString stringWithFormat:@"%0.1f",currentNumber]];
-    float used_pumanQuan =  [UserInfo sharedUserInfo].pumanQuan - currentNumber;
-    [noti_have setText:[NSString stringWithFormat:@"剩余：%0.1f",used_pumanQuan]];
+    float used_UCorns =  [UserInfo sharedUserInfo].UCorns - currentNumber;
+    [noti_have setText:[NSString stringWithFormat:@"剩余：%0.1f",used_UCorns]];
     if (currentNumber == 0) {
         [_finishBtn setEnabled:NO];
         [_finishBtn setAlpha:0.5];

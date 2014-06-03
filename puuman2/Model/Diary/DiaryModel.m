@@ -196,6 +196,7 @@ static DiaryModel * instance;
     _sampleDiary = NO;
     [_diaries addObject:d];
     PostNotification(Noti_ReloadDiaryTable, nil);
+    [[UserInfo sharedUserInfo] addCorns:0.1];
     return YES;
 }
 

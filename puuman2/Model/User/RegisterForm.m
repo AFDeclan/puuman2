@@ -9,6 +9,7 @@
 #import "RegisterForm.h"
 #import "PumanRequest.h"
 #import "DateFormatter.h"
+#import "BabyInfo.h"
 
 static RegisterForm *instance;
 
@@ -99,24 +100,12 @@ static RegisterForm *instance;
 #pragma mark - babyMeta 设置
 - (void)buildBabyMeta
 {
-    [_babyMeta setValue:_nickName forKey:uMeta_nickName];
-    if (_whetherBirth)
-    {
-        [_babyMeta setValue:@"生日" forKey:uMeta_whetherBirth];
-    }
-    else
-    {
-        [_babyMeta setValue:@"预产期" forKey:uMeta_whetherBirth];
-    }
-    if (_isBoy)
-    {
-        [_babyMeta setValue:@"男宝宝" forKey:uMeta_gender];
-    }
-    else
-    {
-        [_babyMeta setValue:@"女宝宝" forKey:uMeta_gender];
-    }
-    [_babyMeta setValue:[DateFormatter stringFromDate:_birthDay] forKey:uMeta_birthDate];
+    BabyInfo * binfo = [[BabyInfo alloc] init];
+    binfo.Nickname = _nickName;
+    binfo.WhetherBirth = _whetherBirth;
+    binfo.Gender = _isBoy;
+    binfo.Birthday = _birthDay;
+    _babyMeta = [binfo getDic];
 }
 
 @end

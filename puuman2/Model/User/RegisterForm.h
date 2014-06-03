@@ -11,7 +11,7 @@
 
 @interface RegisterForm : NSObject
 {
-    NSMutableDictionary *_babyMeta;
+    NSDictionary *_babyMeta;
 }
 
 + (RegisterForm *)sharedForm;

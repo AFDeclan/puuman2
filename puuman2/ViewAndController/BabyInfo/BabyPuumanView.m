@@ -334,17 +334,17 @@
     _numLabel_record.text = @"";
     UserInfo *uInfo = [UserInfo sharedUserInfo];
     NSString *key = [NSString stringWithFormat:@"%@_%d", kUserDefaultKey_PumanCntShowed, uInfo.BID];
-    CGFloat newAdd = [uInfo pumanQuan] - [[NSUserDefaults standardUserDefaults] doubleForKey:key];
+    CGFloat newAdd = [uInfo UCorns] - [[NSUserDefaults standardUserDefaults] doubleForKey:key];
     _newAddLabel.text = [NSString stringWithFormat:@"%.1f", newAdd];
-    [[NSUserDefaults standardUserDefaults] setDouble:[uInfo pumanQuan] forKey:key];
+    [[NSUserDefaults standardUserDefaults] setDouble:[uInfo UCorns] forKey:key];
     if (newAdd > 0) _newAddView.alpha = 1; else _newAddView.alpha = 0;
 
     
      NSString *bookOut = [NSString stringWithFormat:@"%.1f", [PumanBookModel bookModel].outTotal];
     _numLabel_record.text = bookOut;
-    [[NSUserDefaults standardUserDefaults] setDouble:[uInfo pumanQuan] forKey:key];
+    [[NSUserDefaults standardUserDefaults] setDouble:[uInfo UCorns] forKey:key];
 
-    NSString *puuman = [NSString stringWithFormat:@"%.1f", uInfo.pumanQuan];
+    NSString *puuman = [NSString stringWithFormat:@"%.1f", uInfo.UCorns];
     [_numLabel_puuman setText:puuman];
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];

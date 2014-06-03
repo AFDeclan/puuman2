@@ -13,7 +13,7 @@
 #import "MobClick.h"
 #import "UniverseConstant.h"
 #import "AFNetwork.h"
-#import "ShareVideo.h"
+#import "BabyInfo.h"
 
 
 #define defaultUserID       -1
@@ -46,18 +46,16 @@ typedef enum inviteState {
 }InviteState;
 
 
-@protocol UserPortraitUploadDelegate <NSObject>
-- (void)portraitUploadFinish:(BOOL)suc;
-@end
-
 @interface UserInfo : NSObject <UploaderDelegate, ASIHTTPRequestDelegate, AFRequestDelegate>
 {
     BOOL logined;
-    UIImage *portraitUploading;
+    double _UCornsLocalAdded, _UCornsLocalAdded_daily;
+    NSDate * _addTime;
 }
 
 @property (assign, readonly) NSInteger        UID;
 @property (assign, readonly) NSInteger        BID;
+@property (retain, readonly) BabyInfo   *     babyInfo;
 @property (retain, readonly) NSString*        identityStr;
 @property (assign, readonly) enum userIdentity identity;
 @property (assign, readonly) enum inviteState inviteState;
@@ -65,20 +63,19 @@ typedef enum inviteState {
 @property (assign, readonly) NSInteger        status;
 @property (retain, readonly) NSDate*          createTime;
 @property (retain, readonly) NSMutableDictionary* meta;
-@property (assign, readonly) double           pumanQuan;
 @property (retain, readonly) NSString *       UMail;
 @property (retain, readonly) NSString *       UPhone;
-//@property (assign, readonly) double           pumanUsed;
+
+@property (assign, readonly) double           UCorns;
+@property (assign, readonly) double           UCornsUsed;
+@property (assign, readonly) double           UCornsBound;
+
 //登录时填充
 @property (retain) NSString*        mailAddr;
 @property (retain) NSString*        phoneNum;
 @property (retain) NSString*        pwd;
 //重发验证码倒计时
 @property (assign, nonatomic, readonly) NSInteger timeToResendVerifyMsg;
-
-@property (retain, nonatomic, readonly) ShareVideo * shareVideo;
-
-@property (assign, nonatomic) NSObject<UserPortraitUploadDelegate> *portraitUploadDelegate;
 
 + (void)init;
 + (UserInfo *)sharedUserInfo;
@@ -88,6 +85,9 @@ typedef enum inviteState {
 - (enum userActionResult)login;
 //登出
 - (void)logout;
+
+//新增扑满币，（单日超出上限后返回No）
+- (BOOL)addCorns:(double)add;
 
 //提交用户信息。
 - (BOOL)uploadBabyMeta:(NSDictionary *)uMeta;

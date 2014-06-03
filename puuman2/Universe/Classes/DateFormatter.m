@@ -61,7 +61,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Harbin"];
     [formatter setTimeZone:timeZone];
-    [formatter setDateFormat:@"yyyy.MM.dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     return [formatter stringFromDate:date];
 }
 
@@ -70,7 +70,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Harbin"];
     [formatter setTimeZone:timeZone];
-    [formatter setDateFormat:@"yyyy.MM.dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     return [formatter dateFromString:dateStr];
 }
 
