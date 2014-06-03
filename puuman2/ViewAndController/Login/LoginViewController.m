@@ -299,7 +299,7 @@
                     else
                     {
                         [babyInfo setWithDic:oldInfo];
-                        [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleRight];
+                        [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleNone];
                     }
                     return;
                 }

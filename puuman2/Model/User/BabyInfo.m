@@ -18,13 +18,13 @@
     if (![dic isKindOfClass:[NSDictionary class]]) return;
     id tp;
     tp = [dic valueForKey:@"BID"];
-    if (tp respondsToSelector:@selector(integerValue)) {
+    if ([tp respondsToSelector:@selector(integerValue)]) {
         _BID = [[dic valueForKey:@"BID"] integerValue];
     }
     _Nickname = [dic valueForKey:@"Nickname"];
     _WhetherBirth = [[dic valueForKey:@"Whetherbirth"] boolValue];
     tp = [dic valueForKey:@"Gender"];
-    if (tp respondsToSelector:@selector(boolValue)) {
+    if ([tp respondsToSelector:@selector(boolValue)]) {
         _Gender = [tp boolValue];
     }
     tp = [dic valueForKey:@"Birthday"];
