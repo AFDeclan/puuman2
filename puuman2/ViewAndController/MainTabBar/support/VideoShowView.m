@@ -43,8 +43,7 @@
 
         animates  =[[NSMutableArray alloc] init];
         for (int i = 0; i < 20; i ++) {
-//            UIImage *img = [self blurryImage:finishImg withBlurLevel:i*0.1];
-            UIImage * img = [[UIImage alloc] init];
+            UIImage *img = [self blurryImage:finishImg withBlurLevel:i*0.1];
             [animates addObject:img];
         }
         [finishView setAlpha:0];
@@ -100,6 +99,7 @@
         [timer invalidate];
         timer = nil;
     }
+    
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];
     scaleAnimation.toValue = [NSNumber numberWithFloat:1.06];
@@ -110,6 +110,7 @@
     [finishView.layer addAnimation:scaleAnimation forKey:@"transform.scale"];
     timer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(imgAnimate) userInfo:nil repeats:YES];
     [manageView showAnimate];
+    [manageView setFilepath:_filePath];
 }
 
 - (void)imgAnimate
@@ -157,14 +158,14 @@
             NSError *error;
             [[NSFileManager defaultManager] removeItemAtPath:_filePath error:&error];
     }
-    [self removeFromSuperview];
 }
 
 - (void)shareVideo
 {
-    [ShareSelectedViewController shareText:[[UserInfo sharedUserInfo] shareVideo].shareUrl title:@"ShareVideo" image:[DiaryFileManager imageForVideo:_filePath]];
+    
     [DiaryFileManager saveVideo:[NSURL fileURLWithPath:_filePath] withTitle:@"" andTaskInfo:nil];
     [self deleteVideo];
 }
+
 
 @end

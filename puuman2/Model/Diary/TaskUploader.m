@@ -131,7 +131,7 @@ static TaskUploader *instance = nil;
     NSString *dir1 = @"";
     NSString *dir2 = @"";
     
-    NSString *diaryCreateTime = [DateFormatter stringFromDatetime:[NSDate date]];
+    NSString *diaryCreateTime = [DateFormatter stringFromDatetime:diaryInfo.DCreateTime];
 
     if (diaryInfo && ![[info valueForKey:taskIDKey] isEqualToString:@"-1"])
     {

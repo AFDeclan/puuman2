@@ -62,24 +62,28 @@
 
 - (void)diaryLoadedcnt:(int)cnt totalCnt:(int)totalCnt
 {
-    if (!isFinished) {
+    
+    
+    if (cnt < totalCnt) {
         _totalCnt = totalCnt;
         _cnt = cnt;
        
         if (_cnt >_totalCnt) {
             _cnt = _totalCnt;
         }
+        
         if (!timer) {
-           
             timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshProgress) userInfo:nil repeats:YES];
         }
+
+    }else{
         if (cnt == totalCnt) {
-            [timer invalidate];
-            timer =nil;
+            if (timer) {
+                [timer invalidate];
+                timer =nil;
+            }
             [self finished];
         }
-        
-
     }
     
 }

@@ -26,6 +26,7 @@
     NSInteger index;
     NSMutableArray *animates;
     NSString *_filePath;
+    
 }
 
 @property(assign,nonatomic)id<VideoShowViewDelegate> delegate;

@@ -325,9 +325,7 @@
             
                 if (modifyMode)
                 {
-                    
-                  
-                    
+
                     NSDictionary *oldInfo = [[[UserInfo sharedUserInfo] babyInfo] getDic];
                     BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
                     babyInfo.WhetherBirth = NO;

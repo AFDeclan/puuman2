@@ -40,38 +40,26 @@
                 [imgView setImage:[UIImage imageWithCGImage:ref]];
             }
         }
+        
+        [imgView setAnimationImages:refs];
+        imgView.animationDuration=2.0;
+        imgView.animationRepeatCount=0;
     }
     return self;
 }
 
 -(void)startGif
 {
-    
-    [playBtn setEnabled:YES];
-    if (timer) {
-        [timer invalidate];
-        timer = nil;
-    }
-    
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(play) userInfo:nil repeats:YES];
-  // [timer fire];
+    [imgView startAnimating];
 }
 
 
-- (void)showGifAtIndex:(NSInteger)index
-{
-   // CGImageRef ref = CGImageSourceCreateImageAtIndex(gif, index, (__bridge CFDictionaryRef)gifProperties);
-    
-    [imgView setImage:[refs objectAtIndex:index]];
-   // CFRelease(ref);
 
-}
 
 -(void)play
 {
     currentProperty ++;
     currentProperty = currentProperty%countProperty;
-   [self showGifAtIndex:currentProperty];
     
 }
 
@@ -92,8 +80,8 @@
 
 - (void)stopGif
 {
-    [timer invalidate];
-    timer = nil;
+    [imgView stopAnimating];
+
 }
 
 - (void)setClickEnable:(BOOL)clickEnable
