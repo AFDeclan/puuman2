@@ -16,7 +16,9 @@
 {
     _shareUrl = [data valueForKey:@"ShareUrl"];
     _videoUrl = [data valueForKey:@"VideoUrl"];
-    _RID = [[data valueForKey:@"RID"] integerValue];
+    id tp = [data valueForKey:@"RID"];
+    if ([tp respondsToSelector:@selector(integerValue)])
+        _RID = [tp integerValue];
 }
 
 - (BOOL)toDiscard

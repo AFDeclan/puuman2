@@ -353,8 +353,10 @@ static UserInfo *instance = nil;
     _UCornsLocalAdded_daily = 0;
     _babyInfo = [[BabyInfo alloc] init];
     [_babyInfo setWithDic:[dic valueForKey:@"Baby"]];
-    _shareVideo = [[ShareVideo alloc] init];
-    [_shareVideo initWithData:[dic valueForKey:@"ShareInfo"]];
+    if ([[dic valueForKey:@"ShareInfo"] isKindOfClass:[NSDictionary class]]) {
+        _shareVideo = [[ShareVideo alloc] init];
+        [_shareVideo initWithData:[dic valueForKey:@"ShareInfo"]];
+    }
     NSMutableDictionary* mm = nil;
     tp = [dic objectForKey:@"Metas"];
     if( tp != nil ){
