@@ -74,11 +74,11 @@
 #define kUrl_SearchWareIds          @"http://1.server4puman.sinaapp.com/Ware/searchWareIds.php"
 //user
 #define kUrl_SetUserIdentity @"http://1.server4puman.sinaapp.com/User/setIdentity.php"
-#define kUrl_SetUserMeta @"http://1.server4puman.sinaapp.com/User/UserMeta.php"
+#define kUrl_SetUserMeta  @"http://2.server4puman.sinaapp.com/user/set_meta"
 #define kUrl_CheckUser @"http://2.server4puman.sinaapp.com/user/login"
 #define kUrl_RegisterUser @"http://2.server4puman.sinaapp.com/user/register"
 #define kUrl_RegisterUserWithCode @"http://2.server4puman.sinaapp.com/user/register_with_code"
-#define kUrl_SendRigisterInvitation @"http://1.server4puman.sinaapp.com/User/sendInvitation.php"
+#define kUrl_SendRigisterInvitation @"http://2.server4puman.sinaapp.com/user/send_invitation"
 #define kUrl_UpdateUserInfo @"http://2.server4puman.sinaapp.com/user/get_user_info"
 #define kUrl_VerifyUser @"http://1.server4puman.sinaapp.com/User/verifRequest.php"
 #define kUrl_VerifyPhoneWithCode @"http://1.server4puman.sinaapp.com/User/verifWithCode.php"

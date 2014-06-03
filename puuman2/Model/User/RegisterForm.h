@@ -11,7 +11,6 @@
 
 @interface RegisterForm : NSObject
 {
-    NSDictionary *_babyMeta;
 }
 
 + (RegisterForm *)sharedForm;
@@ -30,13 +29,6 @@
 
 //爸爸or妈妈
 @property (assign, nonatomic) UserIdentity relationIdentity;
-//生日（预产期)
-@property (retain, nonatomic) NSDate * birthDay;
-//是否已出生
-@property (assign, nonatomic) BOOL whetherBirth;
-//昵称
-@property (retain, nonatomic) NSString *nickName;
-//性别
-@property (assign, nonatomic) BOOL isBoy;
+@property (retain, nonatomic) BabyInfo * babyInfo;
 
 @end

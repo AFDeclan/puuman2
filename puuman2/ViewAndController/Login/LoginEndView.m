@@ -347,11 +347,11 @@
     if ([self usernameIsRight] && [self passWordIsRight])
     {
         RegisterForm *regForm = [RegisterForm sharedForm];
-        regForm.birthDay = self.birthDate;
-        regForm.isBoy = self.isBoy;
+        regForm.babyInfo.Birthday = self.birthDate;
+        regForm.babyInfo.WhetherBirth = self.whetherBirth;
+        regForm.babyInfo.Gender = self.isBoy;
+        regForm.babyInfo.Nickname = self.babyName;
         regForm.relationIdentity = self.identity;
-        regForm.whetherBirth = self.whetherBirth;
-        regForm.nickName = self.babyName;
         NSString *mail = @"";
         NSString *phoneNum = @"";
         if ([self usernameIsPhoneNum])
