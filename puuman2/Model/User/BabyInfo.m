@@ -104,7 +104,7 @@
 - (void)requestEnded:(AFBaseRequest *)afRequest
 {
     if (!_delegate respondsToSelector:@selector(infoUploadFinish:))
-        return;
+        return
     if (afRequest.result == PumanRequest_Succeeded) {
         [_delegate infoUploadFinish:YES];
     } else {
