@@ -10,7 +10,7 @@
 #import "AFImageView.h"
 #import "NewTextPhotoSelectedViewController.h"
 #import "UserInfo.h"
-@interface BabyInfoView : UIView<UserPortraitUploadDelegate>
+@interface BabyInfoView : UIView<BabyInfoDelegate>
 {
     UILabel  *info_name;
     UILabel  *info_age;

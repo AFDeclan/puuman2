@@ -31,7 +31,7 @@
     [titleLabel setFont:PMFont2];
     [titleLabel setTextColor:PMColor6];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
-    NSString *nickName =  [[BabyData sharedBabyData] babyName];
+    NSString *nickName =  [[[UserInfo sharedUserInfo] babyInfo] Nickname];
     NSString *nameStr;
     if (nickName) {
         if ([[UserInfo sharedUserInfo] identity] == Mother) {

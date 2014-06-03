@@ -24,7 +24,7 @@
     if (self) {
         // Initialization code
         [self initialization];
-        [UserInfo sharedUserInfo].portraitUploadDelegate = self;
+        [UserInfo sharedUserInfo].babyInfo.delegate = self;
     }
     return self;
 }
@@ -107,14 +107,14 @@
 
 - (void)resetBabyInfo
 {
-    BabyData *babyData = [BabyData sharedBabyData];
+    BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
     [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
      portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
-    info_name.text = [babyData babyName];
-    info_age.text = [[NSDate date] ageStrFromDate:[babyData babyBirth]];
-    if ([[BabyData sharedBabyData] babyHasBorned])
+    info_name.text = [babyInfo Nickname];
+    info_age.text = [[NSDate date] ageStrFromDate:[babyInfo Birthday]];
+    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth])
     {[info_name setFrame:CGRectMake(0, 50, 152, 24)];
-        if ([babyData babyIsBoy]) {
+        if ([babyInfo Gender]) {
             [sexIcon setImage:[UIImage imageNamed:@"icon_male_baby.png"]];
         }else
         {
@@ -126,8 +126,8 @@
         [sexIcon setImage:nil];
         [info_name setFrame:CGRectMake(0, 50, 180, 24)];
     }
-    NSString *birthStr = [DateFormatter stringFromDate:[babyData babyBirth]];
-    NSString *constellationStr = [[babyData babyBirth] constellation];
+    NSString *birthStr = [DateFormatter stringFromDate:[babyInfo Birthday]];
+    NSString *constellationStr = [[babyInfo Birthday] constellation];
     info_birthday.text = [NSString stringWithFormat:@"%@ %@", birthStr, constellationStr];
     NSDate *beginDate = [UserInfo sharedUserInfo].createTime;
     info_usedays.text = [NSString stringWithFormat:@"%d天的使用", [[NSDate date] daysFromDate:beginDate]];

@@ -11,7 +11,7 @@
 #import "BabyData.h"
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
-
+#import "UserInfo.h"
 @implementation VaccineInfoTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -79,7 +79,7 @@
     [info_name setText:name];
      NSDate *doneDate = [vacInfo valueForKey:kVaccine_DoneTime];
     if (doneDate) {
-        NSArray *age = [doneDate ageFromDate:[BabyData sharedBabyData].babyBirth];
+        NSArray *age = [doneDate ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
         if ([age count] == 3)
         {
             int year  = [[age objectAtIndex:0] integerValue];
@@ -91,7 +91,7 @@
         [self setDoneStyle];
 
     }else{
-        NSArray *age = [[NSDate date] ageFromDate:[BabyData sharedBabyData].babyBirth];
+        NSArray *age = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
         NSInteger month = 0;
         if ([age count] == 3)
         {

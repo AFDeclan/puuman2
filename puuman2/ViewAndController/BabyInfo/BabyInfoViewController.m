@@ -93,7 +93,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
             [babyBtn addTarget:self action:@selector(pressedControlBtn:) forControlEvents:UIControlEventTouchUpInside];
             SetViewLeftUp(babyBtn, 0, 96*i);
         
-        if ([[BabyData sharedBabyData] babyHasBorned]) {
+        if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
              [babyBtn setSelectedImg:[UIImage imageNamed:bornselectedBtnImgs[i]] andUnselectedImg:[UIImage imageNamed:bornunselectedBtnImgs[i]]];
              [babyBtn setType:bornBtnType[i]];
         }else{

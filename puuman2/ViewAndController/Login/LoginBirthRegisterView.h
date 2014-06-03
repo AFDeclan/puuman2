@@ -21,7 +21,7 @@ typedef enum{
     kGenderNone
 } BabyType;
 @protocol LoginBirthViewDelegate;
-@interface LoginBirthRegisterView : UIView<UITextFieldDelegate,BirthCalendarDelegate,NewTextSelectPhotoDelegate>
+@interface LoginBirthRegisterView : UIView<UITextFieldDelegate,BirthCalendarDelegate,NewTextSelectPhotoDelegate,BabyInfoDelegate>
 {
     CustomTextField *name_textfield;
     CustomTextField *age;

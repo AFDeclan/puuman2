@@ -101,7 +101,7 @@ static const float subDistanceOfY = 4;
     
     [_preBtn setAlpha:1];
     [_nextBtn setAlpha:0];
-    NSArray *ages = [[NSDate date] ageFromDate:[BabyData sharedBabyData].babyBirth];
+    NSArray *ages = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
       NSDate *date = [[[[DiaryModel sharedDiaryModel] diaries ] objectAtIndex:[[[DiaryModel sharedDiaryModel] diaries] count]-1] DCreateTime];
     if ([ages count] == 3) {
         NSDateComponents *comp_nowMonth = [[NSDateComponents alloc] init];
@@ -120,7 +120,7 @@ static const float subDistanceOfY = 4;
         month = now_month;
         
         
-        NSArray *availiavbleAge = [date ageFromDate:[BabyData sharedBabyData].babyBirth];
+        NSArray *availiavbleAge = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
         if ([availiavbleAge count] == 3) {
             if (month <= [[availiavbleAge objectAtIndex:0] integerValue]*12 + [[availiavbleAge objectAtIndex:1] integerValue]) {
                 [_preBtn setAlpha:0];
@@ -144,7 +144,7 @@ static const float subDistanceOfY = 4;
         now_day = [[[[NSDate date] ageFromDate:date_firstDay] objectAtIndex:2] intValue] +1;
         now_month = [[ages objectAtIndex:0] integerValue];
         month = now_month;
-        NSArray *availiavbleAge = [date ageFromDate:[BabyData sharedBabyData].babyBirth];
+        NSArray *availiavbleAge = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
         if ([availiavbleAge count] == 2) {
             if (month <= [[availiavbleAge objectAtIndex:0] integerValue]) {
                 [_preBtn setAlpha:0];
@@ -177,7 +177,7 @@ static const float subDistanceOfY = 4;
     [_nextBtn setAlpha:1];
     NSDate *date = [[[[DiaryModel sharedDiaryModel] diaries ] objectAtIndex:[[[DiaryModel sharedDiaryModel] diaries] count]-1] DCreateTime];
 
-    NSArray *availiavbleAge = [date ageFromDate:[BabyData sharedBabyData].babyBirth];
+    NSArray *availiavbleAge = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
     if ([availiavbleAge count] == 3) {
         if (month <= [[availiavbleAge objectAtIndex:0] integerValue]*12 + [[availiavbleAge objectAtIndex:1] integerValue]) {
             [_preBtn setAlpha:0];

@@ -11,6 +11,7 @@
 #import "ColorsAndFonts.h"
 #import "NSDate+Compute.h"
 #import "StandardLine.h"
+#import "UserInfo.h"
 
 #define showHeight 280
 #define lowestWeight 2
@@ -195,7 +196,7 @@
          nodeString = [[StandardLine alloc] getNodeStringStandardwithDate:date andValue:[[dic valueForKey:kBabyData_Weight] floatValue] andIsHeight:isHeight];
     }
     
-    NSArray *age = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday];
+    NSArray *age = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
     NSString *y ;
     NSString *m ;
     NSString *d ;

@@ -89,21 +89,16 @@ static TaskModel *instance;
 
 - (void)getNowTask
 {
-    NSDictionary *meta = [UserInfo sharedUserInfo].meta;
     NSInteger day = -99999, week = -99999, month = -99999;
-    if (meta && [meta valueForKey:uMeta_birthDate])
+    NSDate *birthDay = [[[UserInfo sharedUserInfo] babyInfo] Birthday];
+    if (birthDay)
     {
-        NSString *dateStr = [meta valueForKey:uMeta_birthDate];
-        NSDate *birthDay = [DateFormatter dateFromString:dateStr];
-        if (birthDay)
-        {
-            NSDate *curDate = [NSDate date];
-            day = [birthDay daysToDate:curDate];
-            week = day / 7;
-            month = [birthDay monthsToDate:curDate];
-        }
+        NSDate *curDate = [NSDate date];
+        day = [birthDay daysToDate:curDate];
+        week = day / 7;
+        month = [birthDay monthsToDate:curDate];
     }
-    NSLog(@"day:%d, week:%d, month:%d", day, week, month);
+    
     PumanRequest *request = [[PumanRequest alloc] init];
     request.urlStr = kUrl_GetUserTask;
     [request setParam:[MobClick getConfigParams:umeng_onlineConfig_authKey] forKey:@"authCode"];

@@ -22,7 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self initialize];
-        [UserInfo sharedUserInfo].portraitUploadDelegate = self;
+        [[UserInfo sharedUserInfo] babyInfo].delegate = self;
     }
     return self;
 }
@@ -45,7 +45,7 @@
 - (void) initialize
 {
     birthday = nil;
-    [[UserInfo sharedUserInfo] setPortraitUploadDelegate:self];
+    [[[UserInfo sharedUserInfo] babyInfo] setDelegate:self];
     UILabel *title=[[UILabel alloc] initWithFrame:CGRectMake(0, 16, 704, 16)];
     [title setFont:PMFont2];
     [title setText:@"请输入宝宝的基本信息"];
@@ -99,10 +99,10 @@
     
     if ([[UserInfo sharedUserInfo] logined])
     {
-        name_textfield.text = [[BabyData sharedBabyData] babyName];
-        if ([[BabyData sharedBabyData] babyHasBorned])
+        name_textfield.text = [[[UserInfo sharedUserInfo] babyInfo] Nickname];
+        if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth])
         {
-            [self selectDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday];
+            [self selectDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
             if ([[[UserInfo sharedUserInfo] babyInfo] Gender]) {
                 babyType = kGenderBoy;
                 [boy selected];

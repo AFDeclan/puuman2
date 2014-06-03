@@ -369,7 +369,6 @@ static UserInfo *instance = nil;
     _meta = mm;
     [_meta setValue:[dic objectForKey:uMeta_InviteStateKey] forKey:uMeta_InviteStateKey];
     [self updateInviteState];
-    _pumanQuan = [[_meta valueForKey:@"UPuman"] doubleValue];
     tp = [dic valueForKey:@"ShareInfo"];
     if (tp != nil && [tp isKindOfClass:[NSDictionary class]]) {
         

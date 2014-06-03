@@ -85,7 +85,7 @@
     if ([[UserInfo sharedUserInfo] logined])
     {
         name_textfield.text = [[BabyData sharedBabyData] babyName];
-        if (![[BabyData sharedBabyData] babyHasBorned])
+        if (![[[UserInfo sharedUserInfo] babyInfo] WhetherBirth])
         {
             [self selectDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday];
         }

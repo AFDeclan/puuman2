@@ -88,8 +88,8 @@
     Member  *_member = [[MemberCache sharedInstance] getMemberWithUID:uid];
     NSLog(@"%@",[_member.UIDs objectAtIndex:0]);
     if (_member) {
-        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned &&[_member BabyHasBorn]) {
-            [self setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
+        if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth] &&[_member BabyHasBorn]) {
+            [self setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:[[[[UserInfo sharedUserInfo] babyInfo] Birthday] relateFromDate:_member.BabyBirth andSex:_member.BabyIsBoy] andIsBoy:_member.BabyIsBoy];
             
         }else{
             [self setInfoWithName:_member.BabyNick andPortrailPath:_member.BabyPortraitUrl andRelate:@"" andIsBoy:_member.BabyIsBoy];
@@ -114,8 +114,8 @@
     }else{
         
         tapped = NO;
-        if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[BabyData sharedBabyData].babyHasBorned && [member BabyHasBorn]) {
-            [self setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:[[BabyData sharedBabyData].babyBirth relateFromDate:member.BabyBirth andSex:member.BabyIsBoy] andIsBoy:member.BabyIsBoy];
+        if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth] && [member BabyHasBorn]) {
+            [self setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:[[[[UserInfo sharedUserInfo] babyInfo] Birthday] relateFromDate:member.BabyBirth andSex:member.BabyIsBoy] andIsBoy:member.BabyIsBoy];
             
         }else{
             [self setInfoWithName:member.BabyNick andPortrailPath:member.BabyPortraitUrl andRelate:@"" andIsBoy:member.BabyIsBoy];
