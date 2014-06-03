@@ -94,7 +94,7 @@
     req.urlStr = kUrl_SetBabyInfo;
     [req setIntegerParam:_BID forKey:@"BID"];
     for (NSString * key in _changedKeys) {
-        [req setValue:[dic valueForKey:key] forKey:key];
+        [req setParam:[dic valueForKey:key] forKey:key];
     }
     return req;
 }
