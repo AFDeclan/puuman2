@@ -195,7 +195,7 @@
          nodeString = [[StandardLine alloc] getNodeStringStandardwithDate:date andValue:[[dic valueForKey:kBabyData_Weight] floatValue] andIsHeight:isHeight];
     }
     
-    NSArray *age = [date ageFromDate:[[BabyData sharedBabyData] babyBirth]];
+    NSArray *age = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday];
     NSString *y ;
     NSString *m ;
     NSString *d ;

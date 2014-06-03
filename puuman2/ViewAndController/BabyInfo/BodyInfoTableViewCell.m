@@ -115,7 +115,7 @@
         info_weight.text = [NSString stringWithFormat:@"%0.1f",record_weight];
     }
     info_date.text = [DateFormatter stringFromDate:[record valueForKey:kBabyData_Date]];
-    NSArray *age = [[record valueForKey:kBabyData_Date] ageFromDate:[[BabyData sharedBabyData] babyBirth]];
+    NSArray *age = [[record valueForKey:kBabyData_Date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday];
     if ([age count] == 3)
     {
         NSString *str_age = @"";

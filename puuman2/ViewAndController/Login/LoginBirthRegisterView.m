@@ -102,8 +102,8 @@
         name_textfield.text = [[BabyData sharedBabyData] babyName];
         if ([[BabyData sharedBabyData] babyHasBorned])
         {
-            [self selectDate:[[BabyData sharedBabyData] babyBirth]];
-            if ([[BabyData sharedBabyData] babyIsBoy]) {
+            [self selectDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday];
+            if ([[[UserInfo sharedUserInfo] babyInfo] Gender]) {
                 babyType = kGenderBoy;
                 [boy selected];
                 [girl unSelected];
