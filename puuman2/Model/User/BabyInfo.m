@@ -47,6 +47,7 @@
     return dic;
 }
 
+
 - (void)setNickname:(NSString *)Nickname
 {
     _Nickname = Nickname;

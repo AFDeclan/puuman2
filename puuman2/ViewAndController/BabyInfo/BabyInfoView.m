@@ -15,6 +15,8 @@
 #import "TaskCell.h"
 #import "DiaryModel.h"
 #import "UIImage+CroppedImage.h"
+#import "CustomNotiViewController.h"
+#import "TaskCell.h"
 
 @implementation BabyInfoView
 
@@ -88,28 +90,40 @@
     
 }
 
-//- (void)selectedPhoto
-//{
-//    NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
-//    [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
-//    [chooseView setDelegate:self];
-//    [chooseView setIsMiddle:YES];
-//    [chooseView setStyle:ConfirmError];
-//    [chooseView show];
-//    
-//}
 
-//- (void)selectedPhoto:(UIImage *)img
-//{
-//    [[UserInfo sharedUserInfo] uploadPortrait:img];
-//    
-//}
+- (void)portraitUploadFinish:(BOOL)suc
+{
+    if (suc) {
+        [[TaskCell sharedTaskCell] reloadPortrait];
+        [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
+    }
+}
+
+
+- (void)infoUploadFinish:(BOOL)suc
+{
+    if (suc) {
+        [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
+        [[TaskModel sharedTaskModel] updateTasks];
+        [[[UserInfo sharedUserInfo] babyInfo] setOriginInfo:nil];
+        [self resetBabyInfo];
+        
+    }else{
+        [[[UserInfo sharedUserInfo] babyInfo] setWithDic:[[[UserInfo sharedUserInfo] babyInfo] originInfo]];
+        [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleNone];
+        [[[UserInfo sharedUserInfo] babyInfo] setOriginInfo:nil];
+        
+        
+    }
+    
+    
+}
+
 
 - (void)resetBabyInfo
 {
     BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
     [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
-     portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
     info_name.text = [babyInfo Nickname];
     info_age.text = [[NSDate date] ageStrFromDate:[babyInfo Birthday]];
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth])
@@ -134,14 +148,6 @@
     info_diaryNum.text = [NSString stringWithFormat:@"%d条日记",[[DiaryModel sharedDiaryModel] diaryNotSampleNum]];
 }
 
-- (void)portraitUploadFinish:(BOOL)suc{
-    if (suc) {
-        [[TaskCell sharedTaskCell] reloadPortrait];
-         [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
-        portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
-    }
-
-}
 
 
 @end

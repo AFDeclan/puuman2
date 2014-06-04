@@ -79,7 +79,7 @@ static MBProgressHUD *hud;
     _videoShowed = NO;
     _hasShareVideo = NO;
     progress = 0;
-    videoPath = 0;
+    videoPath = @"";
     userInfo = [UserInfo sharedUserInfo];
    // _loadingVideo = YES;
     videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, -189, 189,180) fileName:@"animate_puuman"];

@@ -13,6 +13,7 @@
 #import "ErrorLog.h"
 #import "CustomAlertViewController.h"
 #import "CustomNotiViewController.h"
+#import "UIImage+CroppedImage.h"
 
 #define kWeiXinAppKey    @"wx8bc5e7464037f911"
 
@@ -150,11 +151,15 @@ static SocialNetwork * instance;
     {
         req.bText = NO;
         WXMediaMessage *message = [WXMediaMessage message];
-        WXImageObject *ext = [WXImageObject object];
-        ext.imageData = UIImageJPEGRepresentation(_shareImg, 1);
+        [message setThumbImage:[UIImage croppedImage:_shareImg WithHeight:96 andWidth:96]];
+        WXWebpageObject *ext = [WXWebpageObject object];
+        ext.webpageUrl = @"http://www.baidu.com";
+        
         message.mediaObject = ext;
 //        [message setThumbImage:_shareImg];
+        message.title =  [NSString stringWithFormat:@"%@ -- %@", _shareTitle, _shareText];
         req.message = message;
+
     }
     else
     {

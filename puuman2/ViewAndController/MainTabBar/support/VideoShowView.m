@@ -47,7 +47,7 @@
             [animates addObject:img];
         }
         [finishView setAlpha:0];
-        
+        index = 0;
         manageView = [[VideoManageView alloc] init];
         [manageView setDelegate:self];
         [self addSubview:manageView];
@@ -95,10 +95,7 @@
     [finishView setAlpha:1];
     [contentView removeFromSuperview];
     [manageView setAlpha:1];
-    if (timer) {
-        [timer invalidate];
-        timer = nil;
-    }
+  
     
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];
@@ -108,6 +105,10 @@
     scaleAnimation.removedOnCompletion =NO;
     scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [finishView.layer addAnimation:scaleAnimation forKey:@"transform.scale"];
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
     timer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(imgAnimate) userInfo:nil repeats:YES];
     [manageView showAnimate];
     [manageView setFilepath:_filePath];
@@ -116,12 +117,13 @@
 - (void)imgAnimate
 {
 
-    [finishView setImage:[animates objectAtIndex:index]];
-    NSLog(@"a");
-    index ++;
+   
     if (index >= 20) {
         [timer invalidate];
         timer = nil;
+    }else{
+        [finishView setImage:[animates objectAtIndex:index]];
+        index ++;
     }
 }
 

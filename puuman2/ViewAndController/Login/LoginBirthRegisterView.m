@@ -17,12 +17,12 @@
 #define _NAME_MAX_LENGTH_ 30
 @implementation LoginBirthRegisterView
 @synthesize delegate = _delegate;
+@synthesize selectedImg = _selectedImg;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self initialize];
-        [[UserInfo sharedUserInfo] babyInfo].delegate = self;
     }
     return self;
 }
@@ -44,8 +44,8 @@
 
 - (void) initialize
 {
+    _selectedImg = nil;
     birthday = nil;
-    [[[UserInfo sharedUserInfo] babyInfo] setDelegate:self];
     UILabel *title=[[UILabel alloc] initWithFrame:CGRectMake(0, 16, 704, 16)];
     [title setFont:PMFont2];
     [title setText:@"请输入宝宝的基本信息"];
@@ -109,7 +109,6 @@
                 [girl unSelected];
             }else{
                 
-                
                 babyType = kGenderGirl;
                 [girl selected];
                 [boy unSelected];
@@ -121,9 +120,10 @@
         babyType = kGenderNone;
     }
 }
+
 -(void)tapPortrait{
   
-    NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
+        NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
        [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
         [chooseView setDelegate:self];
         [chooseView setIsMiddle:YES];
@@ -132,23 +132,19 @@
 
 
 }
+
 -(void)selectedPhoto:(UIImage *)img{
+    _selectedImg = [UIImage croppedImage:img WithHeight:224 andWidth:224];
+    [portraitView setImage:_selectedImg];
+    if (birthday != nil &&
+        ![[name_textfield.text stringByReplacingOccurrencesOfString:@" " withString:@""] isEqualToString:@""] && babyType != kGenderNone)
+     {
+         [_delegate isFinished];
 
-    
-    [[UserInfo sharedUserInfo] uploadPortrait:img];
-    
-    
+     }
 }
 
-- (void)portraitUploadFinish:(BOOL)suc
-{
-    if (suc) {
-        [[TaskCell sharedTaskCell] reloadPortrait];
-        [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
-         portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
-    }
-    
-}
+
 
 -(void)setHorizontalFrame
 {
@@ -158,6 +154,7 @@
     [imgIcon setAlpha:0];
     [calendarView setFrame:CGRectMake(362, 169, 300, 490)];
 }
+
 -(void)setVerticalFrame
 {
     CGRect frame = _calendar.frame;
@@ -167,6 +164,7 @@
     [calendarView setFrame:CGRectMake(234, 583, 300, 490)];
     
 }
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
@@ -185,13 +183,14 @@
     
     return isAllowEdit;
 }
+
 - (BOOL)textFieldShouldClear:(UITextField *)textField
 {
     return YES;
 }
+
 - (void)resigntextField
 {
-    
     [calendarView setAlpha:0];
     [name_textfield resignFirstResponder];
 }
