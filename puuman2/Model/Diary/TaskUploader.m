@@ -175,7 +175,6 @@ static TaskUploader *instance = nil;
     
     PumanRequest *request = [[PumanRequest alloc] init];
     request.urlStr = kUrl_UploadUserTask;
-    [request setParam:[MobClick getConfigParams:umeng_onlineConfig_authKey] forKey:@"authCode"];
     [request setParam:userID forKey:@"UID"];
     [request setParam:[info valueForKey:taskIDKey] forKey:@"TID"];
     [request setParam:diaryInfo.title forKey:@"title"];
@@ -187,7 +186,7 @@ static TaskUploader *instance = nil;
     NSString *url2 = [NSString stringWithFormat:@"http://puman.oss.aliyuncs.com/%@", dir2];
     [request setParam:url1 forKey:@"url1"];
     [request setParam:url2 forKey:@"url2"];
-    [request setParam:diaryCreateTime forKey:@"createTime"];
+    [request setParam:diaryCreateTime forKey:@"DCreateTime"];
     [request postSynchronous];
     if (request.result == PumanRequest_Succeeded)
     {

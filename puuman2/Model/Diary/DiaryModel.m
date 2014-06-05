@@ -335,7 +335,7 @@ static DiaryModel * instance;
 
 - (void)requestEnded:(AFBaseRequest *)afRequest
 {
-    if (afRequest.resObj)
+    if (afRequest.result == PumanRequest_Succeeded && [afRequest.resObj isKindOfClass:[NSArray class]])
     {
         _toDownloadDiaries = [[NSMutableArray alloc] init];
         for (NSDictionary *dic in afRequest.resObj)

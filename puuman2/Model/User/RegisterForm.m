@@ -15,11 +15,6 @@ static RegisterForm *instance;
 
 @implementation RegisterForm
 
-@synthesize relationIdentity = _relationIdentity;
-@synthesize birthDay = _birthDay;
-@synthesize whetherBirth = _whetherBirth;
-@synthesize nickName = _nickName;
-@synthesize isBoy = _isBoy;
 
 + (RegisterForm *)sharedForm
 {
@@ -39,7 +34,7 @@ static RegisterForm *instance;
 {
     if (self = [super init])
     {
-        _babyMeta = [[NSMutableDictionary alloc] init];
+        _babyInfo = [[BabyInfo alloc] init];
     }
     return self;
 }
@@ -78,10 +73,10 @@ static RegisterForm *instance;
     [request setParam:phone forKey:@"UPhone"];
     [request setParam:mail forKey:@"UMail"];
     [request setParam:[MD5 md5: pwd] forKey:@"UPwd"];
-    [self buildBabyMeta];
-    for (NSString *key in _babyMeta.keyEnumerator)
+    NSDictionary * bDic = _babyInfo.getDic;
+    for (NSString *key in bDic)
     {
-        [request setParam:[_babyMeta valueForKey:key] forKey:key];
+        [request setParam:[bDic valueForKey:key] forKey:key];
     }
     switch (_relationIdentity) {
         case Father:
@@ -97,15 +92,5 @@ static RegisterForm *instance;
     return request.result;
 }
 
-#pragma mark - babyMeta 设置
-- (void)buildBabyMeta
-{
-    BabyInfo * binfo = [[BabyInfo alloc] init];
-    binfo.Nickname = _nickName;
-    binfo.WhetherBirth = _whetherBirth;
-    binfo.Gender = _isBoy;
-    binfo.Birthday = _birthDay;
-    _babyMeta = [binfo getDic];
-}
 
 @end

@@ -22,7 +22,7 @@
         _BID = [[dic valueForKey:@"BID"] integerValue];
     }
     _Nickname = [dic valueForKey:@"Nickname"];
-    _WhetherBirth = [[dic valueForKey:@"Whetherbirth"] boolValue];
+    _WhetherBirth = [[dic valueForKey:@"WhetherBirth"] boolValue];
     tp = [dic valueForKey:@"Gender"];
     if ([tp respondsToSelector:@selector(boolValue)]) {
         _Gender = [tp boolValue];

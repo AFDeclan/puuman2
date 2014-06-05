@@ -101,7 +101,6 @@ static TaskModel *instance;
     
     PumanRequest *request = [[PumanRequest alloc] init];
     request.urlStr = kUrl_GetUserTask;
-    [request setParam:[MobClick getConfigParams:umeng_onlineConfig_authKey] forKey:@"authCode"];
     [request setParam:[NSString stringWithFormat:@"%d", [UserInfo sharedUserInfo].BID] forKey:@"BID"];
     [request setParam:[NSString stringWithFormat:@"%d", day] forKey:@"DAY"];
     [request setParam:[NSString stringWithFormat:@"%d", week] forKey:@"WEEK"];
