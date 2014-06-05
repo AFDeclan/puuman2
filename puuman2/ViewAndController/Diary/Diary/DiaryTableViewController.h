@@ -15,7 +15,7 @@
 #import "VideoDiaryCell.h"
 #import "PhotoSingleDiaryCell.h"
 #import "PhotoMoreDiaryCell.h"
-#import "DiaryHeaderView.h"
+#import "DiaryProgressHeaderView.h"
 
 @interface DiaryTableViewController : UITableViewController<TaskClickDelegate,TextDiaryDelegate>
 {
@@ -23,8 +23,8 @@
     DiaryCell *_activeCell;
     int importNum;
     int importTotalNum;
-    DiaryHeaderView *importProgress;
-    DiaryHeaderView *headerview;
+    DiaryProgressHeaderView *importProgress;
+    DiaryProgressHeaderView *headerview;
     BOOL dragging;
 }
 - (void)diaryLoaded;

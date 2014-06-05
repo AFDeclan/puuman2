@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DiaryHeaderView : UIView
+@interface DiaryProgressHeaderView : UIView
 {
     UILabel *title;
     UIButton *button;
