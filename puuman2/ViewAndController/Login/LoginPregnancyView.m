@@ -18,12 +18,12 @@
 
 @implementation LoginPregnancyView
 @synthesize delegate = _delegate;
+@synthesize selectedImg = _selectedImg;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
          [self initialize];
-        [[UserInfo sharedUserInfo] babyInfo].delegate= self;
     }
     return self;
 }
@@ -91,6 +91,7 @@
         }
     }
 }
+
 -(void)tapPortrait{
 
     NewTextPhotoSelectedViewController *chooseView = [[NewTextPhotoSelectedViewController alloc] initWithNibName:nil bundle:nil];
@@ -102,18 +103,15 @@
 
 
 }
--(void)selectedPhoto:(UIImage *)img{
 
-    [[UserInfo sharedUserInfo] uploadPortrait:img];
-}
-- (void)portraitUploadFinish:(BOOL)suc
-{
-    if (suc) {
-        [[TaskCell sharedTaskCell] reloadPortrait];
-        [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
-        portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:224 andWidth:224];
+-(void)selectedPhoto:(UIImage *)img{
+    _selectedImg = [UIImage croppedImage:img WithHeight:224 andWidth:224];
+    [portraitView setImage:_selectedImg];
+    if (_date != nil) {
+        [_delegate isFinished];  
     }
-    
+  
+
 }
 
 -(void)setHorizontalFrame
@@ -125,6 +123,7 @@
   
     [calendarView setFrame:CGRectMake(362, 106, 300, 490)];
 }
+
 -(void)setVerticalFrame
 {
     CGRect frame = _calendar.frame;
@@ -134,6 +133,7 @@
     [calendarView setFrame:CGRectMake(234, 520, 300, 490)];
     
 }
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
   
@@ -158,11 +158,13 @@
         
     return isAllowEdit;
 }
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     [calendarView setAlpha:0];
     return YES;
 }
+
 - (void)resigntextField
 {
     [calendarView setAlpha:0];
@@ -192,6 +194,7 @@
     }
     
 }
+
 - (void)selectedBirthDay
 {
     
@@ -199,6 +202,7 @@
     [name_textfield resignFirstResponder];
     [self initWithCanlendar];
 }
+
 - (void)calendar:(PregnancyCalendar *)calendar selectedButton:(DateButton *)sender
 {
     if ([calendar dateIsAvailable:sender.date]||[calendar dateIsToday:sender.date]) {
@@ -217,6 +221,7 @@
     }
     [self isFinished];
 }
+
 - (void)selectDate:(NSDate *)date
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -224,6 +229,7 @@
     birthday.text = [dateFormatter stringFromDate:date];
     _date = date;
 }
+
 - (void)isFinished
 {
     if (_date != nil) {

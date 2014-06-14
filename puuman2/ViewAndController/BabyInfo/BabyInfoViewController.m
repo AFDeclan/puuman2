@@ -15,6 +15,7 @@
 #import "BabyPuumanView.h"
 #import "BabyVaccineView.h"
 
+
  NSString *bornselectedBtnImgs[4] = {@"btn_body1_baby.png",@"btn_vac1_baby.png",@"btn_equip1_baby.png",@"btn_bank1_baby.png"};
  NSString *bornunselectedBtnImgs[4] = {@"btn_body2_baby.png",@"btn_vac2_baby.png",@"btn_equip2_baby.png",@"btn_bank2_baby.png"};
  NSString *unbornselectedBtnImgs[4] = {@"btn_pre1_baby.png",@"btn_Bpre1_baby.png",@"btn_equip1_baby.png",@"btn_bank1_baby.png"};
@@ -34,6 +35,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
     if (self) {
         // Custom initialization
         [MyNotiCenter addObserver:self selector:@selector(updateBabyDate) name:Noti_BabyDataUpdated object:nil];
+        
     }
     return self;
 }
@@ -42,7 +44,7 @@ const BabyInfoButtonType unbornBtnType[4] = {kPreButton,kBpreButton,kPropButton,
 {
     [super viewDidLoad];
    	// Do any additional setup after loading the view.
-   
+
 }
 
 

@@ -19,7 +19,6 @@
     NSInteger currentProperty;
     UIImageView *gifImgView;
     NSInteger countProperty;
-    NSTimer *timer;
     UIButton *playBtn;
     UIImageView *imgView;
     NSMutableArray *refs;

@@ -282,25 +282,17 @@
             [birth resigntextField];
                 if (modifyMode)
                 {
-                    
-                    NSDictionary *oldInfo = [[[UserInfo sharedUserInfo] babyInfo] getDic];
                     BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
+                    [babyInfo setOriginInfo:[babyInfo getDic]];
                     babyInfo.WhetherBirth = YES;
                     babyInfo.Nickname = [birth babyName];
                     babyInfo.Birthday = [birth birthDate];
                     babyInfo.Gender = ([birth babyType] == kGenderBoy);
-                   
-                    if ([babyInfo uploadInfoSync])
-                    {
-                        [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
-                         [[TaskModel sharedTaskModel] updateTasks];
-                        [super finishBtnPressed];
+                    if ([birth selectedImg]) {
+                        [babyInfo uploadPortrait:birth.selectedImg];
                     }
-                    else
-                    {
-                        [babyInfo setWithDic:oldInfo];
-                        [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleNone];
-                    }
+                    [babyInfo uploadInfo];
+                    [super finishBtnPressed];
                     return;
                 }
                 isBirthView = YES;
@@ -325,14 +317,17 @@
             
                 if (modifyMode)
                 {
-                    
-                  
-                    
+
                     NSDictionary *oldInfo = [[[UserInfo sharedUserInfo] babyInfo] getDic];
                     BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
+                    [babyInfo setOriginInfo:[babyInfo getDic]];
                     babyInfo.WhetherBirth = NO;
                     babyInfo.Nickname = [pregnancy babyName];
                     babyInfo.Birthday = [pregnancy birthDate];
+                    
+                    if ([birth selectedImg]) {
+                        [babyInfo uploadPortrait:birth.selectedImg];
+                    }
                     
                     if ([babyInfo uploadInfoSync])
                     {
@@ -364,6 +359,8 @@
             break;
     }
 }
+
+
 
 
 

@@ -21,7 +21,7 @@ typedef enum{
     kGenderNone
 } BabyType;
 @protocol LoginBirthViewDelegate;
-@interface LoginBirthRegisterView : UIView<UITextFieldDelegate,BirthCalendarDelegate,NewTextSelectPhotoDelegate,BabyInfoDelegate>
+@interface LoginBirthRegisterView : UIView<UITextFieldDelegate,BirthCalendarDelegate,NewTextSelectPhotoDelegate>
 {
     CustomTextField *name_textfield;
     CustomTextField *age;
@@ -36,6 +36,8 @@ typedef enum{
 }
 @property (assign,nonatomic) id <LoginBirthViewDelegate> delegate;
 @property (nonatomic, assign) enum userIdentity identity;
+@property (nonatomic, retain) UIImage *selectedImg;
+
 - (void)resigntextField;
 -(void)setHorizontalFrame;
 -(void)setVerticalFrame;

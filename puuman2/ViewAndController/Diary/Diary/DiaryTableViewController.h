@@ -30,6 +30,7 @@
 - (void)diaryLoaded;
 - (void)setImportTotalNum:(NSInteger)num;
 - (void)tapWithPoint:(CGPoint)pos;
+- (void)autoImportShowed;
 + (BOOL)needLoadInfo;
 
 @end

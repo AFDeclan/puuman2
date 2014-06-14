@@ -9,14 +9,14 @@
 #import "ShareSelectedViewController.h"
 #import "ColorsAndFonts.h"
 #import "MainTabBarController.h"
-#import "SocialNetwork.h"
+
 
 @interface ShareSelectedViewController ()
 
 @end
 
 @implementation ShareSelectedViewController
-
+@synthesize shareDelegate = _shareDelegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -80,12 +80,14 @@
 
 - (void)weixinBtnPressed
 {
+    [_shareDelegate selectedShareType:Weixin];
     [[SocialNetwork sharedInstance] shareText:shareText title:shareTitle image:shareImg toSocial:Weixin];
 
 }
 
 - (void)weiboBtnPressed
 {
+    [_shareDelegate selectedShareType:Weibo];
     [[SocialNetwork sharedInstance] shareText:shareText title:shareTitle image:shareImg toSocial:Weibo];
 
 

@@ -43,12 +43,11 @@
 
         animates  =[[NSMutableArray alloc] init];
         for (int i = 0; i < 20; i ++) {
-//            UIImage *img = [self blurryImage:finishImg withBlurLevel:i*0.1];
-            UIImage * img = [[UIImage alloc] init];
+            UIImage *img = [self blurryImage:finishImg withBlurLevel:i*0.1];
             [animates addObject:img];
         }
         [finishView setAlpha:0];
-        
+        index = 0;
         manageView = [[VideoManageView alloc] init];
         [manageView setDelegate:self];
         [self addSubview:manageView];
@@ -96,10 +95,8 @@
     [finishView setAlpha:1];
     [contentView removeFromSuperview];
     [manageView setAlpha:1];
-    if (timer) {
-        [timer invalidate];
-        timer = nil;
-    }
+  
+    
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];
     scaleAnimation.toValue = [NSNumber numberWithFloat:1.06];
@@ -108,19 +105,25 @@
     scaleAnimation.removedOnCompletion =NO;
     scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [finishView.layer addAnimation:scaleAnimation forKey:@"transform.scale"];
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
     timer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(imgAnimate) userInfo:nil repeats:YES];
     [manageView showAnimate];
+    [manageView setFilepath:_filePath];
 }
 
 - (void)imgAnimate
 {
 
-    [finishView setImage:[animates objectAtIndex:index]];
-    NSLog(@"a");
-    index ++;
+   
     if (index >= 20) {
         [timer invalidate];
         timer = nil;
+    }else{
+        [finishView setImage:[animates objectAtIndex:index]];
+        index ++;
     }
 }
 
@@ -157,14 +160,14 @@
             NSError *error;
             [[NSFileManager defaultManager] removeItemAtPath:_filePath error:&error];
     }
-    [self removeFromSuperview];
 }
 
 - (void)shareVideo
 {
-    [ShareSelectedViewController shareText:[[UserInfo sharedUserInfo] shareVideo].shareUrl title:@"ShareVideo" image:[DiaryFileManager imageForVideo:_filePath]];
+    
     [DiaryFileManager saveVideo:[NSURL fileURLWithPath:_filePath] withTitle:@"" andTaskInfo:nil];
     [self deleteVideo];
 }
+
 
 @end

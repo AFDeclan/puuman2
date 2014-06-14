@@ -581,4 +581,8 @@ static DiaryViewController * instance;
     [diaryTableVC.tableView reloadData];
 }
 
+- (void)autoImportShowed
+{
+    [diaryTableVC autoImportShowed];
+}
 @end

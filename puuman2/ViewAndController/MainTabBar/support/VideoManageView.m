@@ -10,10 +10,11 @@
 #import "UniverseConstant.h"
 #import "ColorsAndFonts.h"
 #import "UserInfo.h"
-
+#import "DiaryFileManager.h"
 
 @implementation VideoManageView
 @synthesize delegate = _delegate;
+@synthesize filepath = _filepath;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -31,6 +32,7 @@
 
 - (void)initialization
 {
+    shareType = SocialNone;
     AnimateView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768)];
     AnimateView.backgroundColor = [UIColor clearColor];
     [self addSubview:AnimateView];
@@ -72,6 +74,12 @@
     [closeBtn setImage:[UIImage imageNamed:@"btn.png"] forState:UIControlStateNormal];
     [closeBtn addTarget:self action:@selector(closeBtnPressed)forControlEvents:UIControlEventTouchUpInside];
     [closeView addSubview:closeBtn];
+    
+    backBtn = [[UIButton alloc] initWithFrame:CGRectMake(768, 0, 128, 128)];
+    [backBtn setImage:[UIImage imageNamed:@"btn.png"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(backBtnPressed)forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:backBtn];
+    [backBtn setAlpha:0];
 }
 
 -(void)showShareView{
@@ -114,26 +122,44 @@
 
 - (void)share
 {
-    [[[UserInfo sharedUserInfo] shareVideo] toShare];
+    //[[[UserInfo sharedUserInfo] shareVideo] toShare];
     ShareSelectedViewController *shareVC = [[ShareSelectedViewController alloc] initWithNibName:nil bundle:nil];
     [self addSubview:shareVC.view];
-    [shareVC setShareText:nil];
-    [shareVC setShareTitle:nil];
-    [shareVC setShareImg:nil];
+    [shareVC setShareText:[[UserInfo sharedUserInfo] shareVideo].shareUrl];
+    [shareVC setShareTitle:@"ShareVideo"];
+    [shareVC setShareImg:[DiaryFileManager imageForVideo:_filepath]];
     [shareVC setStyle:ConfirmError];
     shareVC.delegate = self;
+    shareVC.shareDelegate = self;
     [shareVC show];
-    [_delegate shareVideo];
+    
+   
+}
+
+- (void)selectedShareType:(SocialType)type
+{
+    shareType = type;
 }
 
 - (void)popViewfinished
 {
+    [UIView animateWithDuration:0.5 animations:^{
+        [backBtn setAlpha:1];
+    }];
+   
+    
+}
 
+- (void)backBtnPressed
+{
+    if (shareType != SocialNone) {
+        [_delegate shareVideo];
+    }
 }
 
 -(void)closeBtnPressed
 {
-    [[[UserInfo sharedUserInfo] shareVideo] toDiscard];
+   // [[[UserInfo sharedUserInfo] shareVideo] toDiscard];
     [_delegate deleteVideo];
 }
 

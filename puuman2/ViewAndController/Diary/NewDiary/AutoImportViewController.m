@@ -133,19 +133,41 @@
 - (void)finishBtnPressed
 {
     //save the file
+    NSDate *startDate = [NSDate date];
     NSMutableArray *arr = [[NSMutableArray alloc] init];
+    NSMutableArray *arrImg = [[NSMutableArray alloc] init];
+    NSMutableArray *arrTime = [[NSMutableArray alloc] init];
     for (int i = 0; i < [dateArr count]; i++) {
         if ([[photoStatus valueForKey:[NSString stringWithFormat:@"%d",i]] boolValue]) {
             
             UIImage  *img =[UIImage imageWithCGImage:[[(ALAsset *)[assetsArr objectAtIndex:i] defaultRepresentation] fullScreenImage]];
-            [arr addObject:img];
+            NSDate  *date =  [(ALAsset *)[assetsArr objectAtIndex:i] valueForProperty:ALAssetPropertyDate ];
+            if (i == 0) {
+                startDate = date;
+            }
+            float hour = [date hoursFromDate:startDate];
+            if (hour < 2 ) {
+                [arrImg addObject:img];
+            }else{
+                NSArray *photos = [NSArray arrayWithArray:arrImg] ;
+                [arr addObject:photos];
+                [arrTime addObject:startDate];
+                [arrImg removeAllObjects];
+                [arrImg addObject:img];
+                startDate = date;
+            }
+
         }
     }
+    [arr addObject:arrImg];
+    [arrTime addObject:startDate];
+
     [super finishBtnPressed];
-    
-    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:arr,@"photos",titleTield.text,@"title", nil];
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:arr,@"photos",titleTield.text,@"title",[NSNumber numberWithInt:[dateArr count]],@"count",arrTime,@"createTime", nil];
     [self performSelector:@selector(updatePhotos:) withObject:dic afterDelay:1];
 }
+
+
 
 - (void)updatePhotos:(NSDictionary *)dic
 {

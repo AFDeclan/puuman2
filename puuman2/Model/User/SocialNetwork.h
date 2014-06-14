@@ -15,7 +15,8 @@ typedef enum e_SocialType{
     Weixin = 0,
     Weibo,
     QQ,
-    TencentWeibo
+    TencentWeibo,
+    SocialNone
 } SocialType;
 
 @interface SocialNetwork : NSObject <SinaWeiboDelegate, SinaWeiboRequestDelegate, WXApiDelegate, TencentSessionDelegate>

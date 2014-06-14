@@ -378,8 +378,11 @@ static UserInfo *instance = nil;
             _shareVideo = [[ShareVideo alloc] init];
             [_shareVideo initWithData:tp];
 
+
         }else{
-            _shareVideo = [[ShareVideo alloc] init];
+            if (!_shareVideo) {
+                _shareVideo = [[ShareVideo alloc] init];
+            }
             [_shareVideo initWithData:tp];
             PostNotification(Noti_HasShareVideo, nil);
         }

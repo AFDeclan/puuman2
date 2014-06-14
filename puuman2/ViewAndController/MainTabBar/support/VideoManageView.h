@@ -10,13 +10,18 @@
 #import "ShareSelectedViewController.h"
 
 @protocol VideoManageDelegate;
-@interface VideoManageView : UIView<PopViewDelegate>
+@interface VideoManageView : UIView<PopViewDelegate,ShareViewDelegate>
 {
     UIView *closeView;
     UIView *shareView;
     UIView *AnimateView;
     UILabel *mainLab;
+    SocialType shareType;
+    UIButton *backBtn;
+
 }
+
+@property(strong,nonatomic)NSString *filepath;
 @property(assign,nonatomic)id<VideoManageDelegate> delegate;
 - (void)showAnimate;
 @end

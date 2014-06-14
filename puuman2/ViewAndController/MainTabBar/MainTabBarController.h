@@ -39,12 +39,15 @@
 @property(assign,nonatomic) BOOL refresh_HV;
 @property(assign,nonatomic) BOOL isReply;
 @property(assign,nonatomic) BOOL videoShowed;
+@property(assign,nonatomic) BOOL hasShareVideo;
+
 //@property(assign,nonatomic) BOOL loadingVideo;
 
 + (MainTabBarController *)sharedMainViewController;
 + (void)showHud:(NSString *)text;
 + (void)showHudCanCancel:(NSString *)text;
 + (void)hideHud;
+- (void)startGif;
 - (void)goToShopWithParentIndex:(NSInteger)parentMenu andChildIndex:(NSInteger)childMenu;
 - (void)initautoImportView;
 - (void)removeAutoImportView;
