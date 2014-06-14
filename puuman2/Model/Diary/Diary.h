@@ -52,8 +52,6 @@ typedef void (^DiaryRecallBlock)(BOOL);
 @property (nonatomic, assign) BOOL sampleDiary;
 @property (nonatomic, retain) NSMutableDictionary * meta;
 
-@property (nonatomic, readonly, assign) NSInteger reqRet;
-
 - (BOOL)createdByBabyData;
 - (void)setCreatedByBabyData:(BOOL)whether;
 - (void)setUrls1WithMainUrl:(NSString *)url andSubcnt:(NSInteger)cnt;
@@ -66,6 +64,5 @@ typedef void (^DiaryRecallBlock)(BOOL);
 - (void)setInfoWithDictionary:(NSDictionary *)info;
 - (NSDictionary *)getInfoDictionary;
 
-- (NSString *)shareUrl;
 
 @end

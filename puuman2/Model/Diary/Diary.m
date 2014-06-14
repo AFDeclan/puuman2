@@ -277,18 +277,5 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
     return dic_diary;
 }
 
-- (NSString *)shareUrl
-{
-    PumanRequest *request = [[PumanRequest alloc] init];
-    request.urlStr = kUrl_ShareDiary;
-    [request setParam:[NSNumber numberWithInteger:[UserInfo sharedUserInfo].UID] forKey:@"UID"];
-    [request setParam:[DateFormatter stringFromDatetime:_DCreateTime] forKey:@"DCreateTime"];
-    [request setTimeOutSeconds:5];
-    [request postSynchronous];
-    _reqRet = request.result;
-    if (request.result == PumanRequest_Succeeded) {
-        return request.resObj;
-    } else return nil;
-}
 
 @end
