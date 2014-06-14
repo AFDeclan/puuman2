@@ -90,7 +90,7 @@
 #define kUrl_SetDeviceToken @"http://server.puuman.cn/index.php/server/user/set_device_token"
 //user/baby
 #define kUrl_UpdateVaccine @"http://server.puuman.cn/index.php/server/baby/update_vaccine"
-#define kUrl_UpdateBabyData @"http://1.server4puman.sinaapp.com/User/Baby/UpdateBabyData.php"
+#define kUrl_UpdateBabyData @"http://server.puuman.cn/index.php/server/baby/update_data"
 #define kUrl_SetBabyInfo @"http://server.puuman.cn/index.php/server/baby/set_baby_info"
 //diary
 #define kUrl_UpdateDiary @"http://server.puuman.cn/index.php/server/diary/update"
