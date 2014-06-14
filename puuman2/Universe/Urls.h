@@ -58,9 +58,10 @@
 
 #endif
 
-//shareVideo
+//share
 #define kUrl_VideoShare @"http://server.puuman.cn/index.php/server/makeShare/share_video"
 #define kUrl_VideoDiscard @"http://server.puuman.cn/index.php/server/makeShare/discard_video"
+#define kUrl_ShareDiary @"http://server.puuman.cn/index.php/server/makeShare/share_diary"
 
 //ware
 #define kUrl_GetWareFilterDb @"http://1.server4puman.sinaapp.com/Ware/getFilterDb.php"
@@ -96,7 +97,7 @@
 #define kUrl_UploadUserTask @"http://server.puuman.cn/index.php/server/diary/upload"
 #define kUrl_GetUserTask    @"http://server.puuman.cn/index.php/server/diary/get_task"
 
-//#define kUrl_GetCompletedTask @"http://1.server4puman.sinaapp.com/Task/getCompletedTask.php"
+#define kUrl_GetCompletedTask @"http://1.server4puman.sinaapp.com/Task/getCompletedTask.php"
 //payback
 #define kUrl_GetPayBack @"http://1.server4puman.sinaapp.com/Payback/getPayback.php"
 #define kUrl_SubmitPayback @"http://1.server4puman.sinaapp.com/Payback/submitPayBack.php"
