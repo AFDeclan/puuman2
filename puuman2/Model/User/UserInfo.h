@@ -93,11 +93,7 @@ typedef enum inviteState {
 - (BOOL)addCorns:(double)add;
 
 //提交用户信息。
-- (BOOL)uploadBabyMeta:(NSDictionary *)uMeta;
-- (BOOL)uploadBabyMetaVal:(NSString *)val forKey:(NSString *)key;
 - (BOOL)uploadUserMetaVal:(NSString *)val forKey:(NSString *)key;
-- (void)uploadPortrait:(UIImage *)portrait;
-- (NSString *)portraitUrl;
 - (NSString *)alipayAccount;
 - (BOOL)setAlipayAccount:(NSString *)alipayAccount;
 - (BOOL)mailVerified;

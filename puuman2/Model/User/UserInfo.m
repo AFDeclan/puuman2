@@ -508,7 +508,7 @@ static UserInfo *instance = nil;
 {
     PumanRequest *request = [[PumanRequest alloc] init];
     request.urlStr = kUrl_VerifyUser;
-    [request setParam:[NSNumber numberWithInt:_UID] forKey:@"UID"];
+    [request setIntegerParam:_UID forKey:@"UID"];
     if (verifMail)
         [request setParam:@"1" forKey:@"mode"];
     else [request setParam:@"0" forKey:@"mode"];

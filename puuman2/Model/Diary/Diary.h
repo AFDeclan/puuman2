@@ -63,4 +63,5 @@ typedef void (^DiaryRecallBlock)(BOOL);
 - (void)redownloadContent2AtIndex:(NSInteger)index withRecall:(DiaryRecallBlock)block;
 - (void)setInfoWithDictionary:(NSDictionary *)info;
 - (NSDictionary *)getInfoDictionary;
+
 @end
