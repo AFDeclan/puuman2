@@ -87,7 +87,7 @@
 #define kUrl_ChangePwd @"http://server.puuman.cn/index.php/server/user/change_pwd"
 #define kUrl_ChangeMailOrPhone @"http://server.puuman.cn/index.php/server/user/change_account"
 #define kUrl_ConnectUser @"http://server.puuman.cn/index.php/server/user/connect"
-#define kUrl_SetDeviceToken @"http://server.puuman.cn/index.php/server/user/set_device_token"
+#define kUrl_SetDeviceToken @"http://server.puuman.cn/index.php/server/user/set_device_token/iPad"
 //user/baby
 #define kUrl_UpdateVaccine @"http://server.puuman.cn/index.php/server/baby/update_vaccine"
 #define kUrl_UpdateBabyData @"http://server.puuman.cn/index.php/server/baby/update_data"

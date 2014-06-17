@@ -11,7 +11,6 @@
 
 #import "DiaryModel.h"
 #import "TaskModel.h"
-#import "TaskUploader.h"
 #import "PumanBookModel.h"
 #import "ShopModel.h"
 #import "CartModel.h"

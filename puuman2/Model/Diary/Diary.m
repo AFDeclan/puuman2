@@ -21,6 +21,8 @@
 #define kFilePath2Name  @"filePath2"
 #define kUrlName        @"url"
 #define kUrl2Name       @"url2"
+#define kUID            @"UID"
+#define kUTID           @"UTID"
 #define kDiaryUIdentity @"DiaryUIdentity"
 #define kDeletedDiary   @"deletedDiary"
 #define kDiaryMeta      @"DiaryMeta"
@@ -119,6 +121,16 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
 - (void)setCreatedByBabyData:(BOOL)whether
 {
     [_meta setValue:[NSNumber numberWithBool:whether] forKey:DiaryMetaKeyWhetherBabyData];
+}
+
+- (NSInteger)taskId
+{
+    return [[_meta valueForKey:DiaryMetaKeyTaskId] integerValue];
+}
+
+- (void)setTaskId:(NSInteger)tid
+{
+    [_meta setValue:[NSNumber numberWithInteger:tid] forKey:DiaryMetaKeyTaskId];
 }
 
 - (void)setUrls1WithMainUrl:(NSString *)url andSubcnt:(NSInteger)cnt
@@ -250,31 +262,86 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
     }
 }
 
-- (void)setInfoWithDictionary:(NSDictionary *)info
+- (BOOL)uploadDiary
 {
-    _title = [info valueForKey:kTitleName];
-    _DCreateTime = [info valueForKey:kDateName];
-    _filePaths1 = [info valueForKey:kFilePathName];
-    _filePaths2 = [info valueForKey:kFilePath2Name];
-    _type1 = [[info valueForKey:kTypeName] integerValue];
-    _type2 = [[info valueForKey:kType2Name] integerValue];
-    _type1Str = [info valueForKey:kTypeStr];
-    _type2Str = [info valueForKey:kType2Str];
-   
-}
+    FileUploader *fUploader = [[FileUploader alloc]init];
+    NSString *userDir = [NSString stringWithFormat:@"%ld", (long)_UID];
 
-- (NSDictionary *)getInfoDictionary
-{
-    NSMutableDictionary *dic_diary = [[NSMutableDictionary alloc] init];
-    [dic_diary setValue:_title forKey:kTitleName];
-    [dic_diary setValue:_DCreateTime forKey:kDateName];
-    [dic_diary setValue:_filePaths1 forKey:kFilePathName];
-    [dic_diary setValue:_filePaths2 forKey:kFilePath2Name];
-    [dic_diary setValue:_type1Str forKey:kTypeStr];
-    [dic_diary setValue:_type2Str forKey:kType2Str];
-    [dic_diary setValue:[NSNumber numberWithInt:_type1] forKey:kTypeName];
-    [dic_diary setValue:[NSNumber numberWithInt:_type2]  forKey:kType2Name];
-    return dic_diary;
+    NSInteger subCnt1 = 1;
+    NSInteger subCnt2 = 1;
+    NSString *type1 = @"";
+    NSString *type2 = @"";
+    NSString *name = @"";
+    NSString *dir1 = @"";
+    NSString *dir2 = @"";
+    
+    NSString *diaryCreateTime = [DateFormatter stringFromDatetime:_DCreateTime];
+    
+    NSInteger tid = [self taskId];
+    if (tid == 0) tid = 6;
+    
+    if (!_deleted)
+    {
+        type1 = _type1Str;
+        name = [DateFormatter stringFromDatetime:_DCreateTime];
+        NSArray *path1 = _filePaths1;
+        BOOL suc;
+        
+        if (_type1 != DiaryContentTypeNone && path1.count > 0)
+        {
+            subCnt1 = [path1 count];
+            for (int i=0; i<subCnt1; i++)
+            {
+                NSString *path = [path1 objectAtIndex:i];
+                dir1 = [userDir stringByAppendingPathComponent:type1];
+                dir1 = [dir1 stringByAppendingPathComponent:name];
+                suc = [fUploader uploadFile:path toDir:dir1 fileRename:[NSString stringWithFormat:@"%d", i]];
+                if (!suc) return NO;
+            }
+        }
+        
+        type2 = _type2Str;
+        NSArray * path2 = _filePaths2;
+        
+        if (_type2 != DiaryContentTypeNone && path2.count > 0)
+        {
+            subCnt2 = [path2 count];
+            for (int i=0; i<subCnt2; i++)
+            {
+                NSString *path = [path2 objectAtIndex:i];
+                dir2 = [userDir stringByAppendingPathComponent:type2];
+                dir2 = [dir2 stringByAppendingPathComponent:name];
+                suc = [fUploader uploadFile:path toDir:dir2 fileRename:[NSString stringWithFormat:@"%d", i]];
+                if (!suc) return NO;
+            }
+        }
+        
+    } else {
+        tid = -1;
+    }
+    
+    PumanRequest *request = [[PumanRequest alloc] init];
+    request.urlStr = kUrl_UploadUserTask;
+    [request setIntegerParam:_UID forKey:@"UID"];
+    [request setIntegerParam:tid forKey:@"TID"];
+    [request setParam:_title forKey:@"title"];
+    [request setParam:[NSString stringWithFormat:@"%d", subCnt1] forKey:@"subCnt1"];
+    [request setParam:[NSString stringWithFormat:@"%d", subCnt2] forKey:@"subCnt2"];
+    [request setParam:type1 forKey:@"type1"];
+    [request setParam:type2 forKey:@"type2"];
+    NSString *url1 = [NSString stringWithFormat:@"http://puman.oss.aliyuncs.com/%@", dir1];
+    NSString *url2 = [NSString stringWithFormat:@"http://puman.oss.aliyuncs.com/%@", dir2];
+    [request setParam:url1 forKey:@"url1"];
+    [request setParam:url2 forKey:@"url2"];
+    [request setParam:diaryCreateTime forKey:@"DCreateTime"];
+    [request postSynchronous];
+    if (request.result == PumanRequest_Succeeded)
+    {
+        return YES;
+    }else{
+        return NO;
+    }
+
 }
 
 

@@ -14,7 +14,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import "DiaryModel.h"
 #import "DateFormatter.h"
-#import "TaskUploader.h"
 #import "Forum.h"
 #import "ReplyForUpload.h"
 #import "Diary.h"
@@ -186,7 +185,7 @@
     return fixed;
 }
 
-+ (Diary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title   andIsTopic:(BOOL)isTopic andBabyData:(BOOL)babyData andTaskInfo:(NSDictionary *)taskInfo createDate:(NSDate *)date
++ (Diary *)saveText:(NSString *)text withPhoto:(UIImage *)photo withTitle:(NSString *)title  andIsTopic:(BOOL)isTopic andBabyData:(BOOL)babyData andTaskInfo:(NSDictionary *)taskInfo createDate:(NSDate *)date
 {
     //save the file
     if (isTopic) {
@@ -236,16 +235,18 @@
         d.DCreateTime = curDate;
     }
     d.UIdentity = [UserInfo sharedUserInfo].identity;
+    d.UID = [UserInfo sharedUserInfo].UID;
     d.type1 = DiaryContentTypeText;
     d.type2 = type2;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.filePaths2 = [NSArray arrayWithObject:filePath2];
     d.deleted = NO;
     [d setCreatedByBabyData:babyData];
+    if (taskInfo) {
+        [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
+    }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
     [MobClick endEvent:umeng_event_newdiary label:@"TextDiary"];
-    TaskUploader *uploader = [TaskUploader uploader];
-    [uploader addNewTaskWithDiaryInfo:d taskInfo:taskInfo];
     return d;
 }
 
@@ -295,15 +296,17 @@
     d.title = title;
     d.DCreateTime = curDate;
     d.UIdentity = [UserInfo sharedUserInfo].identity;
+    d.UID = [UserInfo sharedUserInfo].UID;
     d.type1 = DiaryContentTypePhoto;
     d.type2 = type2;
     d.filePaths1 = paths;
     d.filePaths2 = [NSArray arrayWithObject:filePath2];
     d.deleted = NO;
+    if (taskInfo) {
+        [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
+    }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
     [MobClick endEvent:umeng_event_newdiary label:@"PhotoDiary"];
-    TaskUploader *uploader = [TaskUploader uploader];
-    [uploader addNewTaskWithDiaryInfo:d taskInfo:taskInfo];
     return d;
 }
 
@@ -361,15 +364,17 @@
     d.title = title;
     d.DCreateTime = curDate;
     d.UIdentity = [UserInfo sharedUserInfo].identity;
+    d.UID = [UserInfo sharedUserInfo].UID;
     d.type1 = DiaryContentTypePhoto;
     d.type2 = type2;
     d.filePaths1 = paths;
     d.filePaths2 = [NSArray arrayWithObject:filePath2];
     d.deleted = NO;
+    if (taskInfo) {
+        [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
+    }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
     [MobClick endEvent:umeng_event_newdiary label:@"PhotoDiary"];
-    TaskUploader *uploader = [TaskUploader uploader];
-    [uploader addNewTaskWithDiaryInfo:d taskInfo:taskInfo];
     return d;
 }
 
@@ -409,14 +414,16 @@
     d.title = title;
     d.DCreateTime = curDate;
     d.UIdentity = [UserInfo sharedUserInfo].identity;
+    d.UID = [UserInfo sharedUserInfo].UID;
     d.type1 = DiaryContentTypeVideo;
     d.type2 = DiaryContentTypeNone;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.deleted = NO;
+    if (taskInfo) {
+        [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
+    }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
     [MobClick endEvent:umeng_event_newdiary label:@"VideoDiary"];
-    TaskUploader *uploader = [TaskUploader uploader];
-    [uploader addNewTaskWithDiaryInfo:d taskInfo:taskInfo];
     return d;
 }
 
@@ -440,15 +447,16 @@
     d.title = title;
     d.DCreateTime = curDate;
     d.UIdentity = [UserInfo sharedUserInfo].identity;
+    d.UID = [UserInfo sharedUserInfo].UID;
     d.type1 = DiaryContentTypeAudio;
     d.type2 = DiaryContentTypeNone;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.deleted = NO;
-
+    if (taskInfo) {
+        [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
+    }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
     [MobClick endEvent:umeng_event_newdiary label:@"AudioDiary"];
-    TaskUploader *uploader = [TaskUploader uploader];
-    [uploader addNewTaskWithDiaryInfo:d taskInfo:taskInfo];
     return d;
 }
 

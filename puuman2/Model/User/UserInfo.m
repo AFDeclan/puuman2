@@ -386,8 +386,6 @@ static UserInfo *instance = nil;
             [_shareVideo initWithData:tp];
             PostNotification(Noti_HasShareVideo, nil);
         }
-      
-        
         
     }
 

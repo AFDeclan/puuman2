@@ -9,7 +9,6 @@
 #import "ImportStore.h"
 #import "UniverseConstant.h"
 #import "UserInfo.h"
-#import "TaskUploader.h"
 #import "DiaryModel.h"
 #import "DateFormatter.h"
 #import <AVFoundation/AVFoundation.h>
@@ -89,12 +88,11 @@ static ImportStore * instance;
     diary.type1 = DiaryContentTypePhoto;
     diary.filePaths1 = paths;
     diary.UIdentity = [UserInfo sharedUserInfo].identity;
+    diary.UID = [UserInfo sharedUserInfo].UID;
     diary.type2 = DiaryContentTypeNone;
     diary.deleted = NO;
+    diary.uploaded = NO;
     [diaryArrs addObject:diary];
-    TaskUploader *uploader = [TaskUploader uploader];
-
-    [uploader addNewTaskWithDiaryInfo:diary taskInfo:nil];
 
 }
 
@@ -104,9 +102,7 @@ static ImportStore * instance;
         if (dy) {
             [[DiaryModel sharedDiaryModel] addNewDiary:dy];
         }
-       
     }
- 
 }
 
 - (void)reset

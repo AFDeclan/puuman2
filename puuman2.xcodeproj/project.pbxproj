@@ -44,7 +44,6 @@
 		14B8DF1E18BC37A30047C6B3 /* DiaryFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DE9418BC37A30047C6B3 /* DiaryFileManager.m */; };
 		14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DE9618BC37A30047C6B3 /* DiaryModel.m */; };
 		14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DE9A18BC37A30047C6B3 /* TaskModel.m */; };
-		14B8DF2218BC37A30047C6B3 /* TaskUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DE9C18BC37A30047C6B3 /* TaskUploader.m */; };
 		14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DEA018BC37A30047C6B3 /* PumanRequest.m */; };
 		14B8DF2418BC37A30047C6B3 /* PumanBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DEA318BC37A30047C6B3 /* PumanBookModel.m */; };
 		14B8DF2518BC37A30047C6B3 /* Readme.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 14B8DEA418BC37A30047C6B3 /* Readme.rtf */; };
@@ -822,8 +821,6 @@
 		14B8DE9618BC37A30047C6B3 /* DiaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryModel.m; sourceTree = "<group>"; };
 		14B8DE9918BC37A30047C6B3 /* TaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
 		14B8DE9A18BC37A30047C6B3 /* TaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
-		14B8DE9B18BC37A30047C6B3 /* TaskUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskUploader.h; sourceTree = "<group>"; };
-		14B8DE9C18BC37A30047C6B3 /* TaskUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskUploader.m; sourceTree = "<group>"; };
 		14B8DE9D18BC37A30047C6B3 /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
 		14B8DE9F18BC37A30047C6B3 /* PumanRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PumanRequest.h; sourceTree = "<group>"; };
 		14B8DEA018BC37A30047C6B3 /* PumanRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PumanRequest.m; sourceTree = "<group>"; };
@@ -2028,8 +2025,6 @@
 				14B8DE9618BC37A30047C6B3 /* DiaryModel.m */,
 				14B8DE9918BC37A30047C6B3 /* TaskModel.h */,
 				14B8DE9A18BC37A30047C6B3 /* TaskModel.m */,
-				14B8DE9B18BC37A30047C6B3 /* TaskUploader.h */,
-				14B8DE9C18BC37A30047C6B3 /* TaskUploader.m */,
 				1495A1B519189298006A64BA /* Diary.h */,
 				1495A1B619189298006A64BA /* Diary.m */,
 			);
@@ -4404,7 +4399,6 @@
 				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
 				54B6F42418D6E33E0055FC72 /* SettingAdviceViewController.m in Sources */,
 				5403CE4818D051A2004CAE22 /* BabyInfoView.m in Sources */,
-				14B8DF2218BC37A30047C6B3 /* TaskUploader.m in Sources */,
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				54B753B018D3020B002411CF /* PuumanInBookCell.m in Sources */,
 				54B4685F18E54D7200745F72 /* ExpandableButton.m in Sources */,
