@@ -75,7 +75,7 @@ static DiaryModel * instance;
     NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY, %@ TEXT, %@ REAL, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ INTEGER, %@ INTEGER)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate:sqlCreateTable])
     {
-         [ErrorLog errorLog:@"Create table failed!" fromFile:@"DiaryModel.m" error:nil];
+        [ErrorLog errorLog:@"Create table failed!" fromFile:@"DiaryModel.m" error:nil];
         NSLog(@"Create table failed!");
     }
     [_diaries removeAllObjects];
@@ -95,7 +95,9 @@ static DiaryModel * instance;
         diary.type1 = [rs intForColumn:kTypeName];
         diary.type2 = [rs intForColumn:kType2Name];
         diary.filePaths1 = [[rs dataForColumn:kFilePathName] objectFromJSONData];
+        if (diary.filePaths1.count == 0) continue;
         diary.filePaths2 = [[rs dataForColumn:kFilePath2Name] objectFromJSONData];
+        if (diary.type2 != DiaryContentTypeNone && diary.filePaths2.count == 0) continue;
         diary.urls1 = [[rs dataForColumn:kUrlName] objectFromJSONData];
         diary.urls2 = [[rs dataForColumn:kUrl2Name] objectFromJSONData];
         diary.UIdentity = [rs intForColumn:kDiaryUIdentity];
@@ -167,7 +169,7 @@ static DiaryModel * instance;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.filePaths2 = [NSArray arrayWithObject:filePath2];
     [_diaries addObject:d];
-
+    
     _downloadedDiaries = [[NSMutableArray alloc] init];
     
     if (!_uploading) {
@@ -390,7 +392,7 @@ static DiaryModel * instance;
             _downloadedDiaries = [[NSMutableArray alloc] init];
             [self performSelectorInBackground:@selector(downloadUpdateDiary) withObject:nil];
         }
-
+        
     }
 }
 

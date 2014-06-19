@@ -153,6 +153,7 @@ static TaskModel *instance;
 - (void)removeDoneTask:(NSDictionary *)taskInfo
 {
     NSInteger tid = [[taskInfo valueForKey:_task_ID] integerValue];
+    if (tid <= 6) return;
     for (NSInteger i=0; i<[nowTasks count]; i++)
     {
         NSDictionary *task = [nowTasks objectAtIndex:i];

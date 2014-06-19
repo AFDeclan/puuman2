@@ -17,6 +17,7 @@
 #import "Forum.h"
 #import "ReplyForUpload.h"
 #import "Diary.h"
+#import "TaskModel.h"
 
 @implementation DiaryFileManager
 
@@ -246,6 +247,7 @@
         [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
     }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
+    [[TaskModel sharedTaskModel] removeDoneTask:taskInfo];
     [MobClick endEvent:umeng_event_newdiary label:@"TextDiary"];
     return d;
 }
@@ -306,6 +308,7 @@
         [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
     }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
+    [[TaskModel sharedTaskModel] removeDoneTask:taskInfo];
     [MobClick endEvent:umeng_event_newdiary label:@"PhotoDiary"];
     return d;
 }
@@ -374,6 +377,7 @@
         [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
     }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
+    [[TaskModel sharedTaskModel] removeDoneTask:taskInfo];
     [MobClick endEvent:umeng_event_newdiary label:@"PhotoDiary"];
     return d;
 }
@@ -423,6 +427,7 @@
         [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
     }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
+    [[TaskModel sharedTaskModel] removeDoneTask:taskInfo];
     [MobClick endEvent:umeng_event_newdiary label:@"VideoDiary"];
     return d;
 }
@@ -456,6 +461,7 @@
         [d setTaskId:[[taskInfo valueForKey:_task_ID] integerValue]];
     }
     [[DiaryModel sharedDiaryModel] addNewDiary:d];
+    [[TaskModel sharedTaskModel] removeDoneTask:taskInfo];
     [MobClick endEvent:umeng_event_newdiary label:@"AudioDiary"];
     return d;
 }
