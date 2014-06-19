@@ -62,6 +62,8 @@
 #define kUrl_VideoShare @"http://server.puuman.cn/index.php/server/makeShare/share_video"
 #define kUrl_VideoDiscard @"http://server.puuman.cn/index.php/server/makeShare/discard_video"
 #define kUrl_ShareDiary @"http://server.puuman.cn/index.php/server/makeShare/share_diary"
+#define kUrl_SharePuuman @"http://server.puuman.cn/index.php/server/makeShare/share_puuman"
+#define kUrl_ShareMeasure @"http://server.puuman.cn/index.php/server/makeShare/share_measure"
 
 //ware
 #define kUrl_GetWareFilterDb @"http://1.server4puman.sinaapp.com/Ware/getFilterDb.php"

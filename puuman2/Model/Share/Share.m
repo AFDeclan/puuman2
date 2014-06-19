@@ -32,4 +32,30 @@ static NSInteger _reqRet;
     } else return nil;
 }
 
++ (NSString *)shareUrlForPuuman
+{
+    PumanRequest *request = [[PumanRequest alloc] init];
+    request.urlStr = kUrl_SharePuuman;
+    [request setParam:[NSNumber numberWithInteger:[UserInfo sharedUserInfo].UID] forKey:@"UID"];
+    [request setTimeOutSeconds:5];
+    [request postSynchronous];
+    _reqRet = request.result;
+    if (request.result == PumanRequest_Succeeded) {
+        return request.resObj;
+    } else return nil;
+}
+
++ (NSString *)shareUrlForMeasure
+{
+    PumanRequest *request = [[PumanRequest alloc] init];
+    request.urlStr = kUrl_ShareMeasure;
+    [request setParam:[NSNumber numberWithInteger:[UserInfo sharedUserInfo].UID] forKey:@"UID"];
+    [request setTimeOutSeconds:5];
+    [request postSynchronous];
+    _reqRet = request.result;
+    if (request.result == PumanRequest_Succeeded) {
+        return request.resObj;
+    } else return nil;
+}
+
 @end
