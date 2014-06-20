@@ -1,6 +1,6 @@
 //
 //  UserInfo.m
-//  puman
+//  puuman model
 //
 //  Created by 陈晔 on 13-4-13.
 //  Copyright (c) 2013年 ÂàõÂßã‰∫∫Âõ¢Èòü. All rights reserved.
@@ -12,6 +12,8 @@
 #import "ErrorLog.h"
 #import "PumanRequest.h"
 #import "MemberCache.h"
+#import "DiaryModel.h"
+#import "Diary.h"
 
 static UserInfo *instance = nil;
 
@@ -386,9 +388,11 @@ static UserInfo *instance = nil;
             [_shareVideo initWithData:tp];
             PostNotification(Noti_HasShareVideo, nil);
         }
-        
     }
-
+    for (Diary * d in [self rewardDiaryList]) {
+        [d setRewarded];
+        [[DiaryModel sharedDiaryModel] updateDiary:d needUpload:NO];
+    }
     [self saveToUserDefault];
 }
 
@@ -404,6 +408,7 @@ static UserInfo *instance = nil;
     if ([[invitedStr componentsSeparatedByString:@"#"] count] < 3) return nil;
     return [[invitedStr componentsSeparatedByString:@"#"] objectAtIndex:1];
 }
+
 - (enum userActionResult)acceptInvite
 {
     NSString *url = kUrl_ConnectUser;
@@ -434,6 +439,27 @@ static UserInfo *instance = nil;
     }
     else return otherError;
 }
+
+- (NSArray *)rewardDiaryList
+{
+    id tp = [[_meta valueForKey:uMeta_RewardList] objectFromJSONString];
+    if (!tp || ![tp isKindOfClass:[NSArray class]]) return nil;
+    NSMutableArray * list = [[NSMutableArray alloc] init];
+    for (NSString * str in tp) {
+        NSDate * createTime = [DateFormatter datetimeFromTimestampStr:str];
+        Diary * d = [[DiaryModel sharedDiaryModel] diaryAtDate:createTime];
+        if (d) {
+            [list addObject:d];
+        }
+    }
+    return list;
+}
+
+- (void)resetRewardList
+{
+    [self uploadUserMetaVal:@"[]" forKey:uMeta_RewardList];
+}
+
 - (enum userActionResult)rejectInvite
 {
     return [self uploadUserMetaVal:@"" forKey:uMeta_InvitedKey];

@@ -1,12 +1,13 @@
 //
 //  Diary.m
-//  puuman2
+//  puuman model
 //
 //  Created by Declan on 14-5-6.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
 #import "Diary.h"
+#import "DiaryModel.h"
 #import "DiaryFileManager.h"
 #import "DateFormatter.h"
 
@@ -126,6 +127,37 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
 - (NSInteger)taskId
 {
     return [[_meta valueForKey:DiaryMetaKeyTaskId] integerValue];
+}
+
+- (BOOL)rewarded
+{
+    return [[_meta valueForKey:DiaryMetaKeyRewarded] boolValue];
+}
+
+- (BOOL)reward:(CGFloat)cnt
+{
+    assert(_UIdentity != [UserInfo sharedUserInfo].identity);
+    assert(![self rewarded]);
+    PumanRequest * req = [[PumanRequest alloc] init];
+    req.urlStr = kUrl_RewardDiary;
+    [req setIntegerParam:[UserInfo sharedUserInfo].UID forKey:@"UID"];
+    [req setIntegerParam:[UserInfo sharedUserInfo].BID forKey:@"BID"];
+    [req setFloatParam:cnt forKey:@"cnt"];
+    [req setParam:[DateFormatter timestampStrFromDatetime:_DCreateTime] forKey:@"DCreateTime"];
+    [req setTimeOutSeconds:5];
+    [req postSynchronous];
+    if (req.result == PumanRequest_Succeeded) {
+        [_meta setValue:[NSNumber numberWithBool:YES] forKey:DiaryMetaKeyRewarded];
+        BOOL up = [[DiaryModel sharedDiaryModel] updateDiary:self needUpload:YES];
+        assert(up);
+        return YES;
+    }
+    return NO;
+}
+
+- (void)setRewarded
+{
+    [_meta setValue:[NSNumber numberWithBool:YES] forKey:DiaryMetaKeyRewarded];
 }
 
 - (void)setTaskId:(NSInteger)tid
@@ -334,6 +366,7 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
     [request setParam:url1 forKey:@"url1"];
     [request setParam:url2 forKey:@"url2"];
     [request setParam:diaryCreateTime forKey:@"DCreateTime"];
+    [request setParam:_meta forKey:@"Meta" usingFormat:AFDataFormat_Json];
     [request postSynchronous];
     if (request.result == PumanRequest_Succeeded)
     {
