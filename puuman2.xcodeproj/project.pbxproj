@@ -813,7 +813,7 @@
 		14B8DE9A18BC37A30047C6B3 /* TaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
 		14B8DE9B18BC37A30047C6B3 /* TaskUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskUploader.h; sourceTree = "<group>"; };
 		14B8DE9C18BC37A30047C6B3 /* TaskUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskUploader.m; sourceTree = "<group>"; };
-		14B8DE9D18BC37A30047C6B3 /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
+		14B8DE9D18BC37A30047C6B3 /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Models.h; path = ../../Model/Models.h; sourceTree = "<group>"; };
 		14B8DE9F18BC37A30047C6B3 /* PumanRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PumanRequest.h; sourceTree = "<group>"; };
 		14B8DEA018BC37A30047C6B3 /* PumanRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PumanRequest.m; sourceTree = "<group>"; };
 		14B8DEA218BC37A30047C6B3 /* PumanBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PumanBookModel.h; sourceTree = "<group>"; };
@@ -1983,7 +1983,6 @@
 				54AE2BA618E93FEB00D24F92 /* Friend */,
 				147756F618D7F47F00E08BD0 /* Forum */,
 				14B8DE9218BC37A30047C6B3 /* Diary */,
-				14B8DE9D18BC37A30047C6B3 /* Models.h */,
 				14B8DE9E18BC37A30047C6B3 /* Network */,
 				14B8DEA118BC37A30047C6B3 /* Puman */,
 				14B8DEA418BC37A30047C6B3 /* Readme.rtf */,
@@ -2103,6 +2102,7 @@
 		14B8DF0518BC37A30047C6B3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				14B8DE9D18BC37A30047C6B3 /* Models.h */,
 				14B8DF0618BC37A30047C6B3 /* CATransition+Custom.h */,
 				14B8DF0718BC37A30047C6B3 /* CATransition+Custom.m */,
 				14B8DF0818BC37A30047C6B3 /* DateFormatter.h */,
