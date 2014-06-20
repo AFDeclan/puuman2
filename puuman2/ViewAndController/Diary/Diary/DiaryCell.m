@@ -174,7 +174,7 @@
     _ageLabel1.alpha = 0;
     _ageLabel2.alpha = 0;
     _ageLabel3.alpha = 0;
-    NSArray *age = [date ageFromDate:[[BabyData sharedBabyData] babyBirth]];
+    NSArray *age = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
     NSMutableArray *ageStr = [[NSMutableArray alloc] init];
     NSString *unitStr = nil;
     [_delBtn setAlpha:1];

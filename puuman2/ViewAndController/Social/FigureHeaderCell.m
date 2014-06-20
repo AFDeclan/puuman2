@@ -125,14 +125,14 @@
 
 - (void)buildWithMemberInfo:(Member *)member
 {
-    [portrait getImage:member.BabyPortraitUrl defaultImage:@""];
-    if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[member BabyHasBorn]&&[BabyData sharedBabyData].babyHasBorned) {
-        info_compare.text =[[BabyData sharedBabyData].babyBirth compareFromDate:[member BabyBirth]];
+    [portrait getImage:[member babyInfo].PortraitUrl defaultImage:@""];
+    if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[[member babyInfo] WhetherBirth]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        info_compare.text =[[[[UserInfo sharedUserInfo] babyInfo] Birthday] compareFromDate:[[member babyInfo] Birthday]];
     }
-    if (member.BabyIsBoy) {
-        [name_sex setTitle:member.BabyNick andImg:[UIImage imageNamed:@"icon_male_topic.png"] andButtonType:kButtonTypeTen];
+    if ([[member babyInfo] Gender]) {
+        [name_sex setTitle:[member babyInfo].Nickname andImg:[UIImage imageNamed:@"icon_male_topic.png"] andButtonType:kButtonTypeTen];
     }else{
-        [name_sex setTitle:member.BabyNick andImg:[UIImage imageNamed:@"icon_female_topic.png"] andButtonType:kButtonTypeTen];
+        [name_sex setTitle:[member babyInfo].Nickname andImg:[UIImage imageNamed:@"icon_female_topic.png"] andButtonType:kButtonTypeTen];
     }
    
 }

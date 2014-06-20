@@ -318,8 +318,8 @@
         [info_upload setText:@""];
         Member *member_upload = [[MemberCache sharedInstance] getMemberWithUID:_topic.TUploadUID];
         if (member_upload) {
-            if (member_upload.BabyNick && ![member_upload.BabyNick isEqualToString:@""]) {
-                [info_upload setText:[NSString stringWithFormat:@"该话题由%@发起",member_upload.BabyNick]];
+            if ([member_upload babyInfo].Nickname && ![[member_upload babyInfo].Nickname isEqualToString:@""]) {
+                [info_upload setText:[NSString stringWithFormat:@"该话题由%@发起",[member_upload babyInfo].Nickname]];
             }
         }
         
@@ -478,8 +478,8 @@
 - (void)memberDownloaded:(Member *)member
 {
     if ([member belongsTo:_topic.TUploadUID]) {
-        if (member.BabyNick && ![member.BabyNick isEqualToString:@""]) {
-            [info_upload setText:[NSString stringWithFormat:@"该话题由%@发起",member.BabyNick]];
+        if ([member babyInfo].Nickname && ![[member babyInfo].Nickname isEqualToString:@""]) {
+            [info_upload setText:[NSString stringWithFormat:@"该话题由%@发起",[member babyInfo].Nickname]];
         }
     }
     

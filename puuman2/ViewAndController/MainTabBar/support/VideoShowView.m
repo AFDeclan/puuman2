@@ -11,14 +11,16 @@
 #import "ColorsAndFonts.h"
 #import "DiaryFileManager.h"
 #import "UIImage+CroppedImage.h"
+#import "DiaryFileManager.h"
+#import "UserInfo.h"
 
 @implementation VideoShowView
-
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame withVideoPath:(NSString *)filePath
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        _filePath = filePath;
         contentView = [[UIView alloc]initWithFrame:CGRectMake(0, -768, 1024, 768)];
         contentView.backgroundColor = [UIColor blueColor];
         //[contentView setAlpha:0.2];
@@ -26,17 +28,18 @@
         finishView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
         [finishView setImage:nil];
         [self  addSubview:finishView];
-        videoPath = [[NSBundle mainBundle] pathForResource:@"popeye" ofType:@"mp4"];
-        moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:videoPath]];
-        [moviePlayer prepareToPlay];
+        
+        moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:filePath]];
         [moviePlayer.view setBackgroundColor:[UIColor blackColor]];
         [moviePlayer setShouldAutoplay:NO];
         [moviePlayer setFullscreen:YES];
-        [moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
+        [moviePlayer setControlStyle:MPMovieControlStyleNone];
         [moviePlayer.view setFrame:CGRectMake(0, 0, 1024, 768)];
         [contentView addSubview:moviePlayer.view];
+        [moviePlayer prepareToPlay];
+
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:moviePlayer];
-        finishImg = [DiaryFileManager imageForVideo:videoPath withDuraTion:60];
+        finishImg = [DiaryFileManager imageForVideo:filePath withDuraTion:60];
 
         animates  =[[NSMutableArray alloc] init];
         for (int i = 0; i < 20; i ++) {
@@ -44,15 +47,24 @@
             [animates addObject:img];
         }
         [finishView setAlpha:0];
-        
+        index = 0;
         manageView = [[VideoManageView alloc] init];
         [manageView setDelegate:self];
         [self addSubview:manageView];
         [manageView setAlpha:0];
+        [MyNotiCenter addObserver:self selector:@selector(continueVideo) name:Noti_ContinueVideo object:nil];
       
     }
     return self;
 }
+
+- (void)continueVideo
+{
+    if ([moviePlayer playbackState] == MPMoviePlaybackStatePaused) {
+        [moviePlayer play];
+    }
+}
+
 - (void)showVideoView
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -83,10 +95,8 @@
     [finishView setAlpha:1];
     [contentView removeFromSuperview];
     [manageView setAlpha:1];
-    if (timer) {
-        [timer invalidate];
-        timer = nil;
-    }
+  
+    
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];
     scaleAnimation.toValue = [NSNumber numberWithFloat:1.06];
@@ -95,21 +105,25 @@
     scaleAnimation.removedOnCompletion =NO;
     scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [finishView.layer addAnimation:scaleAnimation forKey:@"transform.scale"];
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
     timer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(imgAnimate) userInfo:nil repeats:YES];
     [manageView showAnimate];
+    [manageView setFilepath:_filePath];
 }
 
 - (void)imgAnimate
 {
 
-    [finishView setImage:[animates objectAtIndex:index]];
-
-                
-    NSLog(@"a");
-    index ++;
+   
     if (index >= 20) {
         [timer invalidate];
         timer = nil;
+    }else{
+        [finishView setImage:[animates objectAtIndex:index]];
+        index ++;
     }
 }
 
@@ -126,6 +140,7 @@
 
 - (UIImage *)blurryImage:(UIImage *)image withBlurLevel:(CGFloat)blur {
     CIImage *inputImage = [CIImage imageWithCGImage:image.CGImage];
+    
     CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"
                                   keysAndValues:kCIInputImageKey, inputImage,
                         @"inputRadius", @(blur), nil];
@@ -140,12 +155,19 @@
 {
     SetViewLeftUp(contentView, 0, -768);
     [_delegate deleteVideo];
-    [self removeFromSuperview];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:_filePath])
+    {
+            NSError *error;
+            [[NSFileManager defaultManager] removeItemAtPath:_filePath error:&error];
+    }
 }
 
 - (void)shareVideo
 {
-
+    
+    [DiaryFileManager saveVideo:[NSURL fileURLWithPath:_filePath] withTitle:@"" andTaskInfo:nil];
+    [self deleteVideo];
 }
+
 
 @end

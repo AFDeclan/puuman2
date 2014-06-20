@@ -1,6 +1,6 @@
 //
 //  UserInfo.m
-//  puman
+//  puuman model
 //
 //  Created by 陈晔 on 13-4-13.
 //  Copyright (c) 2013年 ÂàõÂßã‰∫∫Âõ¢Èòü. All rights reserved.
@@ -12,7 +12,8 @@
 #import "ErrorLog.h"
 #import "PumanRequest.h"
 #import "MemberCache.h"
-
+#import "DiaryModel.h"
+#import "Diary.h"
 
 static UserInfo *instance = nil;
 
@@ -31,7 +32,7 @@ static UserInfo *instance = nil;
 @synthesize status = _status;
 @synthesize createTime = _createTime;
 @synthesize meta = _meta;
-@synthesize pumanQuan = _pumanQuan;
+@synthesize UCorns = _UCorns;
 @synthesize pwd_md5 = _pwd_md5;
 @synthesize UMail = _UMail;
 @synthesize UPhone = _UPhone;
@@ -89,7 +90,14 @@ static UserInfo *instance = nil;
             _identity = Mother;
         }
         _createTime = [uInfo valueForKey:userInfo_createTime];
-        _pumanQuan = [[uInfo valueForKey:userInfo_pumanQuan] doubleValue];
+        _UCorns = [[uInfo valueForKey:userInfo_UCorns] doubleValue];
+        _UCornsUsed = [[uInfo valueForKey:userInfo_UCornsUsed] doubleValue];
+        _UCornsBound = [[uInfo valueForKey:userInfo_pumanBound] doubleValue];
+        _UCornsLocalAdded = [[uInfo valueForKey:userInfo_pumanLocalAdded] doubleValue];
+        _UCornsLocalAdded_daily = [[uInfo valueForKey:userInfo_pumanLocalAddedDaily] doubleValue];
+        _babyInfo = [[BabyInfo alloc] init];
+        [_babyInfo setWithDic:[uInfo valueForKey:userInfo_Baby]];
+        _addTime = [uInfo valueForKey:userInfo_pumanLocalAddedTime];
         if( uMeta != nil ){
             _meta = [[NSMutableDictionary alloc] initWithDictionary:uMeta];
         }
@@ -138,7 +146,13 @@ static UserInfo *instance = nil;
     [uInfo setValue:_identityStr forKey:userInfo_identity];
     [uInfo setValue:[NSString stringWithFormat:@"%d", _UID] forKey:userInfo_uid];
     [uInfo setValue:[NSString stringWithFormat:@"%d", _BID] forKey:userInfo_bid];
-    [uInfo setValue:[NSString stringWithFormat:@"%f", _pumanQuan] forKey:userInfo_pumanQuan];
+    [uInfo setValue:[NSString stringWithFormat:@"%f", _UCorns] forKey:userInfo_UCorns];
+    [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsUsed] forKey:userInfo_UCornsUsed];
+    [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsBound] forKey:userInfo_pumanBound];
+    [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsLocalAdded] forKey:userInfo_pumanLocalAdded];
+    [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsLocalAdded_daily] forKey:userInfo_pumanLocalAddedDaily];
+    [uInfo setValue:[_babyInfo getDic] forKey:userInfo_Baby];
+    [uInfo setValue:_addTime forKey:userInfo_pumanLocalAddedTime];
     [uInfo setValue:_createTime forKey:userInfo_createTime];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:uInfo forKey:userInfoKey];
@@ -149,6 +163,19 @@ static UserInfo *instance = nil;
 - (BOOL)logined
 {
     return logined;
+}
+
+- (BOOL)addCorns:(double)add
+{
+    if ([[DateFormatter stringFromDate:_addTime] isEqualToString:[DateFormatter stringFromDate:[NSDate date]]]) {
+        if (_UCornsLocalAdded_daily >= _UCornsBound) {
+            return NO;
+        }
+        _UCornsLocalAdded_daily += add;
+    }
+    _UCornsLocalAdded += add;
+    _UCorns += add;
+    return YES;
 }
 
 - (enum userActionResult)login
@@ -186,7 +213,8 @@ static UserInfo *instance = nil;
     request.urlStr = kUrl_UpdateUserInfo;
     request.tag = 2;
     [request setTimeOutSeconds:5];
-    [request setParam:[NSString stringWithFormat:@"%d", _UID] forKey:@"UID"];
+    [request setIntegerParam:_UID forKey:@"UID"];
+    [request setIntegerParam:_UCornsLocalAdded forKey:@"UCornsLocalAdded"];
     request.resEncoding = PumanRequestRes_JsonEncoding;
     [request postAsynchronous];
 }
@@ -253,7 +281,7 @@ static UserInfo *instance = nil;
     _UID = defaultUserID;
     _meta = nil;
     self.mailAddr = nil;
-    _pumanQuan = 0.0;
+    _UCorns = 0.0;
     self.pwd = nil;
     _createTime = nil;
     [self saveToUserDefault];
@@ -262,82 +290,6 @@ static UserInfo *instance = nil;
 }
 
 #pragma mark - User Meta and Portrait
-- (BOOL)uploadBabyMeta:(NSDictionary *)uMeta
-{
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
-    [request setURL:[NSURL URLWithString:kUrl_SetBabyMeta]];
-    [request setHTTPMethod:@"POST"];
-    
-    //set headers
-    NSString *contentType = [NSString stringWithFormat:@"text/xml"];
-    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    //set body
-    NSMutableData *postBody = [NSMutableData data];
-    [postBody appendData:[[NSString stringWithFormat:@"<Request Action=\"setBabyMeta\">"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    for (NSString *key in [uMeta keyEnumerator])
-    {
-        [postBody appendData:[[NSString stringWithFormat:@"<UserMeta>"] dataUsingEncoding:NSUTF8StringEncoding]];
-        //UID
-        [postBody appendData:[[NSString stringWithFormat:@"<BID>%d</BID>", _BID] dataUsingEncoding:NSUTF8StringEncoding]];
-        //key
-        [postBody appendData:[[NSString stringWithFormat:@"<UMKey>%@</UMKey>", key] dataUsingEncoding:NSUTF8StringEncoding]];
-        //value
-        [postBody appendData:[[NSString stringWithFormat:@"<UMVal>%@</UMVal>", [uMeta valueForKey:key]] dataUsingEncoding:NSUTF8StringEncoding]];
-        [postBody appendData:[[NSString stringWithFormat:@"</UserMeta>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-    [postBody appendData:[[NSString stringWithFormat:@"</Request>"] dataUsingEncoding:NSUTF8StringEncoding]];
-    //post
-    [request setHTTPBody:postBody];
-    [request setTimeoutInterval:5];
-    NSError *error;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-    if ([data length] > 0 && error == nil)
-    {
-        NSString *result = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"Response: %@", result);
-        for (NSString *key in [uMeta keyEnumerator])
-        {
-            [_meta setValue:[uMeta valueForKey:key] forKey:key];
-        }
-        [self saveToUserDefault];
-        PostNotification(Noti_UserInfoUpdated, nil);
-        [[MemberCache sharedInstance] removeMemberWithBID:_BID];
-        return YES;
-    }
-    else
-    {
-        if (error){
-            [ErrorLog errorLog:@"upload usermeta error" fromFile:@"UserInfo.m" error:error];
-            NSLog(@"upload usermeta error:%@",error.debugDescription);
-            
-        }
-        return NO;
-    }
-}
-
-- (BOOL)uploadBabyMetaVal:(NSString *)val forKey:(NSString *)key
-{
-    PumanRequest *request = [[PumanRequest alloc] init];
-    request.urlStr = kUrl_SetBabyMetaSingle;
-    [request setTimeOutSeconds:5];
-    [request setParam:val forKey:@"value"];
-    [request setParam:key forKey:@"key"];
-    [request setParam:@"set" forKey:@"mode"];
-    [request setParam:[NSNumber numberWithInteger:_BID] forKey:@"BID"];
-    [request postSynchronous];
-    
-    if (request.result == PumanRequest_Succeeded)
-    {
-        [_meta setValue:val forKey:key];
-        PostNotification(Noti_UserInfoUpdated, nil);
-        [[MemberCache sharedInstance] removeMemberWithBID:_BID];
-        return YES;
-    }
-    else return NO;
-}
 
 - (BOOL)uploadUserMetaVal:(NSString *)val forKey:(NSString *)key
 {
@@ -356,39 +308,6 @@ static UserInfo *instance = nil;
         return YES;
     }
     else return NO;
-    
-}
-
-- (void)uploadPortrait:(UIImage *)portrait
-{
-    portraitUploading = portrait;
-    NSString *dir = [NSString stringWithFormat:@"%d", _UID];
-    NSString *name = [NSString stringWithFormat:@"portrait/%@.jpg", [DateFormatter stringFromDatetime:[NSDate date]]];
-    NSData *imagedata = UIImageJPEGRepresentation(portrait, 0.2);
-    FileUploader * uploader = [[FileUploader alloc] init];
-    uploader.delegate = self;
-    [uploader uploadData:imagedata toDir:dir fileName:name];
-}
-
-- (void)uploadResult:(BOOL)suc uploader:(FileUploader *)uploader
-{
-    if (!suc)
-    {
-        [self.portraitUploadDelegate portraitUploadFinish:NO];
-        return;
-    }
-    NSString *portraitUrl = uploader.targetUrl;
-    if ([self uploadBabyMetaVal:portraitUrl forKey:uMeta_portraitUrl] ||[self uploadUserMetaVal:portraitUrl forKey:uMeta_portraitUrl])
-    {
-        [self.portraitUploadDelegate portraitUploadFinish:YES];
-    }
-    else
-        [self.portraitUploadDelegate portraitUploadFinish:NO];
-}
-
-- (NSString *)portraitUrl
-{
-    return [_meta valueForKey:uMeta_portraitUrl];
 }
 
 - (BOOL)setAlipayAccount:(NSString *)alipayAccount
@@ -429,7 +348,17 @@ static UserInfo *instance = nil;
     _UPhone = [dic objectForKey:@"UPhone"];
     _UMail = [dic objectForKey:@"UMail"];
     _pwd_md5 = [dic objectForKey:@"UPwd"];
-    tp = [dic objectForKey:@"hasMeta"];
+    _UCorns = [[dic valueForKey:@"UCorns"] doubleValue];
+    _UCornsUsed = [[dic valueForKey:@"UCornsUsed"] doubleValue];
+    _UCornsBound = [[dic valueForKey:@"UCornsBound"] doubleValue];
+    _UCornsLocalAdded = 0;
+    _UCornsLocalAdded_daily = 0;
+    _babyInfo = [[BabyInfo alloc] init];
+    [_babyInfo setWithDic:[dic valueForKey:@"Baby"]];
+    if ([[dic valueForKey:@"ShareInfo"] isKindOfClass:[NSDictionary class]]) {
+        _shareVideo = [[ShareVideo alloc] init];
+        [_shareVideo initWithData:[dic valueForKey:@"ShareInfo"]];
+    }
     NSMutableDictionary* mm = nil;
     tp = [dic objectForKey:@"Metas"];
     if( tp != nil ){
@@ -444,9 +373,29 @@ static UserInfo *instance = nil;
     _meta = mm;
     [_meta setValue:[dic objectForKey:uMeta_InviteStateKey] forKey:uMeta_InviteStateKey];
     [self updateInviteState];
-    _pumanQuan = [[_meta valueForKey:@"UPuman"] doubleValue];
+    tp = [dic valueForKey:@"ShareInfo"];
+    if (tp != nil && [tp isKindOfClass:[NSDictionary class]]) {
+        
+        if (_shareVideo && _shareVideo.RID ==[[tp valueForKey:@"RID"] integerValue]) {
+            _shareVideo = [[ShareVideo alloc] init];
+            [_shareVideo initWithData:tp];
+
+
+        }else{
+            if (!_shareVideo) {
+                _shareVideo = [[ShareVideo alloc] init];
+            }
+            [_shareVideo initWithData:tp];
+            PostNotification(Noti_HasShareVideo, nil);
+        }
+    }
+    for (Diary * d in [self rewardDiaryList]) {
+        [d setRewarded];
+        [[DiaryModel sharedDiaryModel] updateDiary:d needUpload:NO];
+    }
     [self saveToUserDefault];
 }
+
 
 #pragma mark - 账号关联
 - (NSString *)invitedBy
@@ -459,6 +408,7 @@ static UserInfo *instance = nil;
     if ([[invitedStr componentsSeparatedByString:@"#"] count] < 3) return nil;
     return [[invitedStr componentsSeparatedByString:@"#"] objectAtIndex:1];
 }
+
 - (enum userActionResult)acceptInvite
 {
     NSString *url = kUrl_ConnectUser;
@@ -489,6 +439,27 @@ static UserInfo *instance = nil;
     }
     else return otherError;
 }
+
+- (NSArray *)rewardDiaryList
+{
+    id tp = [[_meta valueForKey:uMeta_RewardList] objectFromJSONString];
+    if (!tp || ![tp isKindOfClass:[NSArray class]]) return nil;
+    NSMutableArray * list = [[NSMutableArray alloc] init];
+    for (NSString * str in tp) {
+        NSDate * createTime = [DateFormatter datetimeFromTimestampStr:str];
+        Diary * d = [[DiaryModel sharedDiaryModel] diaryAtDate:createTime];
+        if (d) {
+            [list addObject:d];
+        }
+    }
+    return list;
+}
+
+- (void)resetRewardList
+{
+    [self uploadUserMetaVal:@"[]" forKey:uMeta_RewardList];
+}
+
 - (enum userActionResult)rejectInvite
 {
     return [self uploadUserMetaVal:@"" forKey:uMeta_InvitedKey];
@@ -564,7 +535,7 @@ static UserInfo *instance = nil;
 {
     PumanRequest *request = [[PumanRequest alloc] init];
     request.urlStr = kUrl_VerifyUser;
-    [request setParam:[NSNumber numberWithInt:_UID] forKey:@"UID"];
+    [request setIntegerParam:_UID forKey:@"UID"];
     if (verifMail)
         [request setParam:@"1" forKey:@"mode"];
     else [request setParam:@"0" forKey:@"mode"];

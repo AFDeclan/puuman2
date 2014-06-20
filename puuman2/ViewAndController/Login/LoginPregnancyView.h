@@ -14,7 +14,7 @@
 #import "UserInfo.h"
 
 @protocol LoginPregnancyViewDelegate;
-@interface LoginPregnancyView : UIView<UITextFieldDelegate,PregnancyCalendarDelegate,NewTextSelectPhotoDelegate,UserPortraitUploadDelegate>
+@interface LoginPregnancyView : UIView<UITextFieldDelegate,PregnancyCalendarDelegate,NewTextSelectPhotoDelegate>
 {
     CustomTextField *name_textfield;
     CustomTextField *birthday;
@@ -26,6 +26,7 @@
 }
 @property (assign,nonatomic) id <LoginPregnancyViewDelegate> delegate;
 @property (nonatomic, assign) enum userIdentity identity;
+@property (nonatomic, retain) UIImage *selectedImg;
 
 - (void)resigntextField;
 - (NSString *)babyName;

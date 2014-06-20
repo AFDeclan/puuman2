@@ -9,7 +9,6 @@
 #import "ImportStore.h"
 #import "UniverseConstant.h"
 #import "UserInfo.h"
-#import "TaskUploader.h"
 #import "DiaryModel.h"
 #import "DateFormatter.h"
 #import <AVFoundation/AVFoundation.h>
@@ -40,26 +39,31 @@ static ImportStore * instance;
 - (void)customInit
 {
     photosArr= [[NSMutableArray alloc] init];
+    diaryArrs = [[NSMutableArray alloc] init];
     progress = 0;
 }
 
 -(void)initWithImportData:(NSDictionary *)dataDic
 {
-   
+    count = 0;
     photosArr = [dataDic valueForKey:@"photos"];
     title = [dataDic valueForKey:@"title"];
-    [[DiaryViewController sharedDiaryViewController] setImportTotalNum:[photosArr count]];
-    [self writeAndStoreWithPhotos:photosArr andTitle:title];
+    total = [[dataDic valueForKey:@"count"] integerValue];
+    timeArrs = [dataDic valueForKey:@"createTime"];
+    [[DiaryViewController sharedDiaryViewController] setImportTotalNum:total];
+    for (NSArray *arr in photosArr) {
+        [self writeAndStoreWithPhotos:arr andTitle:title andCreateTime:[timeArrs objectAtIndex:[photosArr indexOfObject:arr]]];
+
+    }
 }
 
 
 
-- (void)writeAndStoreWithPhotos:(NSArray *)photos andTitle:(NSString *)title_
+- (void)writeAndStoreWithPhotos:(NSArray *)photos andTitle:(NSString *)title_ andCreateTime:(NSDate *)createTime
 {
     NSString *fileDir = [DiaryFileManager fileDirForDiaryType:DiaryTypeStrPhoto];
     if (!fileDir) return ;
-    NSDate *curDate = [NSDate date];
-    NSString *fileName = [DateFormatter stringFromDatetime:curDate];
+    NSString *fileName = [DateFormatter stringFromDatetime:createTime];
     NSMutableArray * paths = [[NSMutableArray alloc] initWithCapacity:photos.count];
     NSError *error;
     for (int i=0; i<[photos count]; i++)
@@ -71,32 +75,36 @@ static ImportStore * instance;
         {
             [ErrorLog errorLog:@"Save photo failed - 1" fromFile:@"DiaryFileManager.m" error:error];
         }
+        count ++;
+        PostNotification(Noti_Imported, [NSNumber numberWithInt:count]);
         [paths addObject:filePath];
     }
+    
     if (title == nil) title = @"";
-    diary = [[Diary alloc] init];
+    Diary *diary = [[Diary alloc] init];
     diary.title = title;
-    diary.DCreateTime = [NSDate date];
+    diary.DCreateTime = createTime;
     diary.type1Str = DiaryTypeStrPhoto;
     diary.type1 = DiaryContentTypePhoto;
     diary.filePaths1 = paths;
     diary.UIdentity = [UserInfo sharedUserInfo].identity;
+    diary.UID = [UserInfo sharedUserInfo].UID;
     diary.type2 = DiaryContentTypeNone;
     diary.deleted = NO;
-    TaskUploader *uploader = [TaskUploader uploader];
-    [uploader addNewTaskWithDiaryInfo:diary taskInfo:nil];
+    diary.uploaded = NO;
+    [diaryArrs addObject:diary];
 
-    
 }
 
 - (void)addNewDiary
 {
-    if (diary) {
-        [[DiaryModel sharedDiaryModel] addNewDiary:diary];
+    for (Diary *dy in diaryArrs) {
+        if (dy) {
+            [[DiaryModel sharedDiaryModel] addNewDiary:dy];
+        }
     }
-
-    
 }
+
 - (void)reset
 {
     photosArr = nil;

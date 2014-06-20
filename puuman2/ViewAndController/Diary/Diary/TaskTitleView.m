@@ -32,7 +32,7 @@ const NSTimeInterval AnimatedInterval = 0.3;
 {
     portraitView =[[AFImageView alloc] initWithFrame:CGRectMake(8, 8, 96, 96)];
     [portraitView setBackgroundColor:[UIColor clearColor]];
-    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:@""];
+    [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:@""];
     portraitView.layer.cornerRadius = 48;
     portraitView.layer.masksToBounds = YES;
     portraitView.layer.shadowRadius =0.1;
@@ -65,7 +65,7 @@ const NSTimeInterval AnimatedInterval = 0.3;
 
 - (void)reloadPortrait
 {
-    [portraitView getImage:[[UserInfo sharedUserInfo] portraitUrl] defaultImage:default_portrait_image];
+    [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
     portraitView.image =[UIImage croppedImage:portraitView.image WithHeight:192 andWidth:192];
 }
 

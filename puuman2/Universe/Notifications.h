@@ -26,6 +26,13 @@
 #define Noti_ReloadRankView                     @"Noti_ReloadRankView"
 #define Noti_ReloadWareFilterView               @"Noti_ReloadWareFilterView"
 #define Noti_RefreshMenu                        @"Noti_RefreshMenu"
+//video
+#define Noti_HasShareVideo                      @"Noti_HasShareVideo"
+#define Noti_RefreshProgressAutoVideo           @"Noti_RefreshProgressAutoVideo"
+#define Noti_FinishShareVideo                   @"Noti_FinishShareVideo"
+#define Noti_FailShareVideo                     @"Noti_FailShareVideo"
+#define Noti_ContinueVideo                      @"Noti_ContinueVideo"
+
 
 #define Noti_LoadDiaryCellInfo                  @"Noti_LoadDiaryCellInfo"
 #define Noti_PumanInBookUpdated                 @"Noti_PumanInBookUpdated"

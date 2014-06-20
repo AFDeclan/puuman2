@@ -295,34 +295,6 @@ static BabyData * instance;
     return [_vaccine objectAtIndex:index];
 }
 
-- (NSDate *)babyBirth
-{
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSString *birthStr = [userInfo.meta valueForKey:uMeta_birthDate];
-    return [DateFormatter dateFromString:birthStr];
-}
-
-- (NSString *)babyName
-{
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSString *name = [userInfo.meta valueForKey:uMeta_nickName];
-    return name;
-}
-
-- (BOOL)babyIsBoy
-{
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSString *gender = [userInfo.meta valueForKey:uMeta_gender];
-    return [gender isEqualToString:@"男宝宝"];
-}
-
-- (BOOL)babyHasBorned
-{
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSString *born = [userInfo.meta valueForKey:uMeta_whetherBirth];
-    return [born isEqualToString:@"生日"];
-}
-
 #pragma mark - other
 
 - (NSString *)babydataTableName
@@ -363,7 +335,7 @@ static BabyData * instance;
             [toUpload addObject:vaccine];
             NSMutableDictionary *vac2 = [[NSMutableDictionary alloc] initWithDictionary:vaccine];
             NSDate *date = [vaccine valueForKey:kVaccine_DoneTime];
-            [vac2 setValue:[DateFormatter stringFromDatetime:date] forKey:kVaccine_DoneTime];
+            [vac2 setValue:[DateFormatter timestampStrFromDatetime:date] forKey:kVaccine_DoneTime];
             [toUpload2 addObject:vac2];
         }
     }
@@ -445,7 +417,7 @@ static BabyData * instance;
             [toUpload addObject:record];
             NSMutableDictionary *record2 = [[NSMutableDictionary alloc] initWithDictionary:record];
             NSDate * date = [record valueForKey:kBabyData_Date];
-            [record2 setValue:[DateFormatter stringFromDatetime:date] forKey:kBabyData_Date];
+            [record2 setValue:[DateFormatter timestampStrFromDatetime:date] forKey:kBabyData_Date];
             [toUpload2 addObject:record2];
         }
     }

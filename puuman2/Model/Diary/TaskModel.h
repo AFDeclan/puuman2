@@ -51,11 +51,12 @@
 - (NSDictionary*)nowTaskAtIndex:(NSUInteger)index;
 - (NSData *)bgmData:(NSUInteger)index;
 - (NSInteger)taskCount;
-- (void)removeDoneTasks;
 - (void)updateTasks;
 - (BOOL)nowTasksReady; //是否已和服务器交互完毕
 - (BOOL)nowTasksFailed;
 - (BOOL)updating;
+
+- (void)removeDoneTask:(NSDictionary *)taskInfo;
 
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BabyInfo.h"
 
 
 @interface Member : NSObject
@@ -17,14 +18,10 @@
 @property (retain, nonatomic, readonly) NSArray * UIDs;
 @property (retain, nonatomic, readonly) NSDate * JoinTime;
 //base info:
-@property (retain, nonatomic, readonly) NSString * BabyNick;
-@property (assign, nonatomic, readonly) BOOL BabyIsBoy;
-@property (retain, nonatomic, readonly) NSDate * BabyBirth;
-@property (retain, nonatomic, readonly) NSString * BabyPortraitUrl;
+@property (retain, nonatomic, readonly) BabyInfo * babyInfo;
 @property (assign, nonatomic, readonly) CGFloat BabyHeight;
 @property (assign, nonatomic, readonly) CGFloat BabyWeight;
 @property (assign, nonatomic, readonly) CGFloat BabyPuuman;
-@property (assign, nonatomic, readonly) BOOL BabyHasBorn;
 //detail info:
 
 @property (retain, nonatomic) NSDictionary * data;

@@ -69,7 +69,7 @@
     [_controlView setContentSize:CGSizeMake( 40*816, 576)];
     [_controlView setSelectedIndex:selectedIndex];
     [bgScrollView addSubview:_controlView];
-    NSArray *ages = [[NSDate date] ageFromDate:[[BabyData sharedBabyData] babyBirth]];
+    NSArray *ages = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
     int age = 0;
     if ([ages count] == 2) {
     
@@ -295,7 +295,7 @@
 
 - (void)scrollToToday
 {
-    NSArray *ages = [[NSDate date] ageFromDate:[[BabyData sharedBabyData] babyBirth]];
+    NSArray *ages = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
     int age = 1;
     if ([ages count] == 2) {
         age = [[ages objectAtIndex:0] intValue];

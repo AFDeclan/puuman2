@@ -10,6 +10,9 @@
 #import "BabyData.h"
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
+#import "UserInfo.h"
+#import "BabyInfo.h"
+
 @implementation StandardLine
 
 - (NSString *)getNodeStringStandardwithDate:(NSDate *)date andHeightValue:(float)heightValue andWeightValue:(float)weightValue
@@ -41,7 +44,7 @@
     int nextStandard = 0;
     int preStandard = 0;
     
-    NSArray *age = [date ageFromDate:[[BabyData sharedBabyData] babyBirth]];
+    NSArray *age = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
     NSString *y = [age objectAtIndex:0];
     NSString *m = [age objectAtIndex:1];
     // NSString *d = [age objectAtIndex:2];
@@ -113,8 +116,7 @@
     
     int nextStandard = 0;
     int preStandard = 0;
-    
-    NSArray *age = [date ageFromDate:[[BabyData sharedBabyData] babyBirth]];
+    NSArray *age = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
     NSString *y = [age objectAtIndex:0];
     NSString *m = [age objectAtIndex:1];
    // NSString *d = [age objectAtIndex:2];
@@ -123,7 +125,6 @@
     if ([age count]== 2) {
         nowMonth = 0;
     }
-    
     nowMonth= nowMonth > 0?nowMonth:1;
     nowMonth = nowMonth == 0?1:nowMonth;
     if (nowMonth < 25) {
@@ -191,7 +192,7 @@
     float nextMaxheight = 0;
     float preMinheight = 0;
     float nextMinheight = 0;
-    if([[BabyData sharedBabyData] babyIsBoy])
+    if([[[UserInfo sharedUserInfo] babyInfo] Gender])
     {
         preMinheight = [standardHeightWeight[preStandard][5] floatValue];
         preMaxheight = [standardHeightWeight[preStandard][6] floatValue];
@@ -242,7 +243,7 @@
     float nextMaxWeight = 0;
     float preMinWeight = 0;
     float nextMinWeight = 0;
-    if([[BabyData sharedBabyData] babyIsBoy])
+    if([[[UserInfo sharedUserInfo] babyInfo] Gender])
     {
         preMinWeight = [standardHeightWeight[preStandard][1] floatValue];
         preMaxWeight = [standardHeightWeight[preStandard][2] floatValue];

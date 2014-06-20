@@ -19,7 +19,8 @@
 #import "MBProgressHUD.h"
 #import "ShopModel.h"
 #import "EnterTutorialView.h"
-
+#import "ShareVideo.h"
+#import "UpLoaderShareVideo.h"
 
 @interface MainTabBarController ()
 
@@ -31,7 +32,9 @@ static MBProgressHUD *hud;
 @synthesize isVertical = _isVertical;
 @synthesize refresh_HV = _refresh_HV;
 @synthesize isReply = _isReply;
-
+@synthesize videoShowed =_videoShowed;
+@synthesize hasShareVideo = _hasShareVideo;
+//@synthesize loadingVideo = _loadingVideo;
 + (MainTabBarController *)sharedMainViewController
 {
     if (!instance)
@@ -51,6 +54,11 @@ static MBProgressHUD *hud;
         [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
         [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
         [MyNotiCenter addObserver:self selector:@selector(showBottomInputView:) name:Noti_BottomInputViewShow object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(refreshProgressAutoVideo:) name:Noti_RefreshProgressAutoVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(downAutoVideo) name:Noti_HasShareVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(finishDownShareVideo:) name:Noti_FinishShareVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(failDownShareVideo) name:Noti_FailShareVideo object:nil];
+
         [self.tabBar removeFromSuperview];
         
     }
@@ -68,21 +76,109 @@ static MBProgressHUD *hud;
  
     [self initWithTabBar];
     _isReply = YES;
-    videoShowed = NO;
+    _videoShowed = NO;
+    _hasShareVideo = NO;
+    progress = 0;
+    videoPath = @"";
     userInfo = [UserInfo sharedUserInfo];
-    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(0, 0, 189,180) fileName:@"animate_puuman"];
+   // _loadingVideo = YES;
+    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, -189, 189,180) fileName:@"animate_puuman"];
     [videoBtn setDelegate:self];
     [self.view addSubview:videoBtn];
-    [videoBtn startGif];
+    [videoBtn setClickEnable:NO];
+    [videoBtn setAlpha:1];
 
-    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+
+}
+
+- (void)downAutoVideo
+{
+
+    SetViewLeftUp(videoBtn, 608, -189);
+    [videoBtn setClickEnable:NO];
+    if (!_isVertical) {
+        [videoBtn setAlpha:1];
+    }else{
+        [videoBtn setAlpha:0];
+
+    }
+    UpLoaderShareVideo *downloader = [[UpLoaderShareVideo alloc] init];
+    [downloader downloadDataFromUrl:[[UserInfo sharedUserInfo] shareVideo].videoUrl];
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshProgress) userInfo:nil repeats:YES];
+    _hasShareVideo = NO;
+   
+
+
+}
+
+- (void)refreshProgress
+{
+    [videoBtn setAlpha:1];
+    [UIView animateWithDuration:1 animations:^{
+        SetViewLeftUp(videoBtn, 608, -189*(1 - progress));
+    }];
+}
+
+
+- (void)refreshProgressAutoVideo:(NSNotification *)notification
+{
+
+    progress = [[notification object] floatValue];
+    
+   
+    
+}
+
+- (void)failDownShareVideo
+{
+   // _loadingVideo = NO;
+    SetViewLeftUp(videoBtn, 608, -189);
+    [videoBtn setAlpha:0];
+ 
+
+}
+
+
+
+- (void)finishDownShareVideo:(NSNotification *)notification
+{
+   // _loadingVideo = NO;
+    videoPath = [notification object];
+    _hasShareVideo = YES;
+    if (([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt]) && _hasShareVideo) {
+        [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
+    }
+}
+
+- (void)startGif
+{
+
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768) withVideoPath:videoPath];
     [videoView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:videoView];
     [videoView setDelegate:self];
     [videoView  setAlpha:0];
     [videoView.layer setMasksToBounds:YES];
- 
+    _hasShareVideo = NO;
+    [self performSelector:@selector(showBtnEnable) withObject:nil afterDelay:0];
+
 }
+
+- (void)showBtnEnable
+{
+    [videoBtn startGif];
+    [videoBtn setClickEnable:YES];
+
+}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -127,21 +223,26 @@ static MBProgressHUD *hud;
    // [videoBtn setAlpha:0];
     [videoView showVideoView];
     [videoView playVideo];
-    videoShowed = YES;
+     _videoShowed = YES;
 
 }
 
 - (void)deleteVideo
 {
-    [videoBtn startGif];
-    videoShowed = NO;
-    [videoView removeFromSuperview];
-   [videoBtn removeFromSuperview];
-  
+    [videoBtn stopGif];
+    _videoShowed = NO;
+    [videoView  removeFromSuperview];
+    videoView = nil;
+    SetViewLeftUp(videoBtn, 608, -189);
+    //[videoBtn showGifAtIndex:0];
+    [videoBtn setClickEnable:NO];
+    [videoBtn setAlpha:0];
+
 }
 
 - (void)startApp
 {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:Noti_TutorialFinshed object:nil];
     [self initautoImportView];
     
@@ -208,7 +309,7 @@ static MBProgressHUD *hud;
 
 - (BOOL)shouldAutorotate
 {
-    if (videoShowed) {
+    if (_videoShowed) {
         return NO;
     }else{
         return YES;

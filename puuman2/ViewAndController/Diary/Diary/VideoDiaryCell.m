@@ -14,7 +14,6 @@
 #import "UniverseConstant.h"
 
 
-
 @implementation VideoDiaryCell
 
 @synthesize reuseIdentifier = _reuseIdentifier;
@@ -118,6 +117,7 @@
     [self.diary redownloadContent1AtIndex:0 withRecall:^(BOOL finished){
         [self loadInfo];
     }];
+  
 }
 
 - (void)share:(id)sender

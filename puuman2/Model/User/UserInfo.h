@@ -1,6 +1,6 @@
 //
 //  UserInfo.h
-//  puman
+//  puuman model
 //
 //  Created by 陈晔 on 13-4-13.
 //  Copyright (c) 2013年 ÂàõÂßã‰∫∫Âõ¢Èòü. All rights reserved.
@@ -13,12 +13,38 @@
 #import "MobClick.h"
 #import "UniverseConstant.h"
 #import "AFNetwork.h"
+#import "BabyInfo.h"
+#import "ShareVideo.h"
 
 
 #define defaultUserID       -1
 
 #define kUserIdentity_Father    @"father"
 #define kUserIdentity_Mother    @"mother"
+
+#define userInfoKey                 @"userInfo"
+#define userInfo_uid                @"userID"
+#define userInfo_bid                @"userBID"
+#define userInfo_identity           @"userIdentity"
+#define userInfo_mail               @"usermailAddr"
+#define userInfo_phone              @"userPhoneNum"
+#define userInfo_UCorns             @"userPuman"
+#define userInfo_UCornsUsed         @"userUCornsUsed"
+#define userInfo_pumanBound         @"userPumanBound"
+#define userInfo_pumanLocalAdded    @"userPumanLocalAdded"
+#define userInfo_pumanLocalAddedDaily    @"userPumanLocalAddedDaily"
+#define userInfo_pumanLocalAddedTime    @"userPumanLocalTime"
+#define userInfo_Baby               @"userBaby"
+#define userInfo_pumanUsed          @"userPumanUsed"
+#define userInfo_meta               @"userMeta"
+#define userInfo_pwdMd5             @"userPwdMd5"
+#define userInfo_createTime         @"userCreateTime"
+
+#define uMetaKey                    @"_puman_UserMeta"
+#define uMeta_alipayAccount         @"AliPayAccount"
+#define uMeta_InviteStateKey        @"InviteState"
+#define uMeta_InvitedKey            @"Invited"
+#define uMeta_RewardList            @"RewardList"
 
 typedef enum userActionResult{
      //both
@@ -45,18 +71,16 @@ typedef enum inviteState {
 }InviteState;
 
 
-@protocol UserPortraitUploadDelegate <NSObject>
-- (void)portraitUploadFinish:(BOOL)suc;
-@end
-
 @interface UserInfo : NSObject <UploaderDelegate, ASIHTTPRequestDelegate, AFRequestDelegate>
 {
     BOOL logined;
-    UIImage *portraitUploading;
+    double _UCornsLocalAdded, _UCornsLocalAdded_daily;
+    NSDate * _addTime;
 }
 
 @property (assign, readonly) NSInteger        UID;
 @property (assign, readonly) NSInteger        BID;
+@property (retain, readonly) BabyInfo   *     babyInfo;
 @property (retain, readonly) NSString*        identityStr;
 @property (assign, readonly) enum userIdentity identity;
 @property (assign, readonly) enum inviteState inviteState;
@@ -64,10 +88,13 @@ typedef enum inviteState {
 @property (assign, readonly) NSInteger        status;
 @property (retain, readonly) NSDate*          createTime;
 @property (retain, readonly) NSMutableDictionary* meta;
-@property (assign, readonly) double           pumanQuan;
 @property (retain, readonly) NSString *       UMail;
 @property (retain, readonly) NSString *       UPhone;
-//@property (assign, readonly) double           pumanUsed;
+
+@property (assign, readonly) double           UCorns;
+@property (assign, readonly) double           UCornsUsed;
+@property (assign, readonly) double           UCornsBound;
+
 //登录时填充
 @property (retain) NSString*        mailAddr;
 @property (retain) NSString*        phoneNum;
@@ -75,7 +102,7 @@ typedef enum inviteState {
 //重发验证码倒计时
 @property (assign, nonatomic, readonly) NSInteger timeToResendVerifyMsg;
 
-@property (assign, nonatomic) NSObject<UserPortraitUploadDelegate> *portraitUploadDelegate;
+@property (retain, nonatomic, readonly) ShareVideo * shareVideo;
 
 + (void)init;
 + (UserInfo *)sharedUserInfo;
@@ -86,12 +113,11 @@ typedef enum inviteState {
 //登出
 - (void)logout;
 
+//新增扑满币，（单日超出上限后返回No）
+- (BOOL)addCorns:(double)add;
+
 //提交用户信息。
-- (BOOL)uploadBabyMeta:(NSDictionary *)uMeta;
-- (BOOL)uploadBabyMetaVal:(NSString *)val forKey:(NSString *)key;
 - (BOOL)uploadUserMetaVal:(NSString *)val forKey:(NSString *)key;
-- (void)uploadPortrait:(UIImage *)portrait;
-- (NSString *)portraitUrl;
 - (NSString *)alipayAccount;
 - (BOOL)setAlipayAccount:(NSString *)alipayAccount;
 - (BOOL)mailVerified;
@@ -110,6 +136,10 @@ typedef enum inviteState {
 - (NSString *)invitedBy;
 - (enum userActionResult)acceptInvite;
 - (enum userActionResult)rejectInvite;
+
+//打赏 新打赏的日记列表
+- (NSArray *)rewardDiaryList;
+- (void)resetRewardList;
 
 //邀请
 - (enum userActionResult)sendInvitationToMail:(NSString *)mail phoneNum:(NSString *)phone;

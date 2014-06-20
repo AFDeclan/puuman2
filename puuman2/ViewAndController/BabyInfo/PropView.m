@@ -37,7 +37,7 @@
     [self addSubview:propWare3];
     [self addSubview:propWare4];
     [self addSubview:propWare5];
-    if (![[BabyData sharedBabyData] babyHasBorned])
+    if (![[[UserInfo sharedUserInfo] babyInfo] WhetherBirth])
     {
         if ([UserInfo sharedUserInfo].identity == Mother) {
             [bg setImage:[UIImage imageNamed:@"pic2_equip_baby.png"]];

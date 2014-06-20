@@ -227,7 +227,7 @@ static CartModel *instance;
     NSMutableArray *ware3 =  [[NSMutableArray alloc] initWithCapacity:1];
     NSMutableArray *ware4 =  [[NSMutableArray alloc] initWithCapacity:1];
     NSMutableArray *ware5 =  [[NSMutableArray alloc] initWithCapacity:1];
-  if (![[BabyData sharedBabyData] babyHasBorned]) {
+  if (![[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
         if ([UserInfo sharedUserInfo].identity == Mother) {
             for (NSDictionary *dic in _cartWares_undo) {
                 Ware *w = [[Ware alloc] init];

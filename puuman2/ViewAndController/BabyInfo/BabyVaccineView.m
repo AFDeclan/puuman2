@@ -287,7 +287,7 @@
         date = doneDate;
     }
     else {
-        NSArray *age = [[NSDate date] ageFromDate:[BabyData sharedBabyData].babyBirth];
+        NSArray *age = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
         NSInteger month = 0;
         if ([age count] == 3)
         {
@@ -361,7 +361,7 @@
     
     NSInteger month = 0;
     if (date) {
-        NSArray *age = [date ageFromDate:[BabyData sharedBabyData].babyBirth];
+        NSArray *age = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
         if ([age count] == 3)
         {
             month = [[age objectAtIndex:0] integerValue] * 12 + [[age objectAtIndex:1] integerValue];

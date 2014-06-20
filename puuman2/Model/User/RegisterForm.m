@@ -9,16 +9,12 @@
 #import "RegisterForm.h"
 #import "PumanRequest.h"
 #import "DateFormatter.h"
+#import "BabyInfo.h"
 
 static RegisterForm *instance;
 
 @implementation RegisterForm
 
-@synthesize relationIdentity = _relationIdentity;
-@synthesize birthDay = _birthDay;
-@synthesize whetherBirth = _whetherBirth;
-@synthesize nickName = _nickName;
-@synthesize isBoy = _isBoy;
 
 + (RegisterForm *)sharedForm
 {
@@ -38,7 +34,7 @@ static RegisterForm *instance;
 {
     if (self = [super init])
     {
-        _babyMeta = [[NSMutableDictionary alloc] init];
+        _babyInfo = [[BabyInfo alloc] init];
     }
     return self;
 }
@@ -77,10 +73,10 @@ static RegisterForm *instance;
     [request setParam:phone forKey:@"UPhone"];
     [request setParam:mail forKey:@"UMail"];
     [request setParam:[MD5 md5: pwd] forKey:@"UPwd"];
-    [self buildBabyMeta];
-    for (NSString *key in _babyMeta.keyEnumerator)
+    NSDictionary * bDic = _babyInfo.getDic;
+    for (NSString *key in bDic)
     {
-        [request setParam:[_babyMeta valueForKey:key] forKey:key];
+        [request setParam:[bDic valueForKey:key] forKey:key];
     }
     switch (_relationIdentity) {
         case Father:
@@ -96,27 +92,5 @@ static RegisterForm *instance;
     return request.result;
 }
 
-#pragma mark - babyMeta 设置
-- (void)buildBabyMeta
-{
-    [_babyMeta setValue:_nickName forKey:uMeta_nickName];
-    if (_whetherBirth)
-    {
-        [_babyMeta setValue:@"生日" forKey:uMeta_whetherBirth];
-    }
-    else
-    {
-        [_babyMeta setValue:@"预产期" forKey:uMeta_whetherBirth];
-    }
-    if (_isBoy)
-    {
-        [_babyMeta setValue:@"男宝宝" forKey:uMeta_gender];
-    }
-    else
-    {
-        [_babyMeta setValue:@"女宝宝" forKey:uMeta_gender];
-    }
-    [_babyMeta setValue:[DateFormatter stringFromDate:_birthDay] forKey:uMeta_birthDate];
-}
 
 @end

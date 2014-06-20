@@ -23,9 +23,10 @@
 @interface DiaryModel : NSObject <AFRequestDelegate>
 {
     FMDatabase *db;
-    BOOL _sampleDiary;
+    BOOL _sampleDiary, _uploading;
     NSMutableArray *_toDownloadDiaries;
     NSMutableArray *_downloadedDiaries;
+    NSMutableArray *_toUploadDiaries;
 }
 
 //待更新日记数量
@@ -44,6 +45,10 @@
 - (BOOL)addNewDiary:(Diary *)d;
 //删除日记
 - (BOOL)deleteDiary:(Diary *)d;
+//更新日记
+- (BOOL)updateDiary:(Diary *)d needUpload:(BOOL)toUp;
+
+- (Diary *)diaryAtDate:(NSDate *)createDate;
 
 //关键字搜索
 - (NSUInteger)indexForDiarySearchedWithKeyword:(NSString *)keyword;

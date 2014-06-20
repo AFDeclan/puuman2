@@ -198,10 +198,7 @@ static JoinView * instance;
 }
 
 
-- (void)requestStarted:(ASIHTTPRequest *)request
-{
-//    NSLog(@"请求开始了");
-}
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
 //    NSLog(@"请求结束了");

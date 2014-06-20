@@ -10,6 +10,9 @@
 #import "DiaryModel.h"
 #import "CustomNotiViewController.h"
 #import "Diary.h"
+#import "MainTabBarController.h"
+#import "DiaryViewController.h"
+#import "ImportStore.h"
 
 @interface DiaryTableViewController ()
 
@@ -70,9 +73,17 @@ static BOOL needLoadInfo = YES;
         }
         
         [headerview diaryLoadedcnt:[[DiaryModel sharedDiaryModel] downloadedCnt] totalCnt:[[DiaryModel sharedDiaryModel] updateCnt]];
+        if ([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt] && [[MainTabBarController sharedMainViewController] hasShareVideo]) {
+            [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
+        }
     }
 }
 
+- (void)startGif
+{
+    [[MainTabBarController sharedMainViewController] startGif];
+
+}
 
 - (void)imported
 {
@@ -455,8 +466,8 @@ static BOOL needLoadInfo = YES;
     if (_activeCell) {
         CGRect frame1 = ((DiaryCell *)_activeCell).delScrollView.frame;
         CGRect frame2 = ((DiaryCell *)_activeCell).delBtn.frame;
-        frame1.origin.x += 80;
-        frame2.origin.x += 80;
+        frame1.origin.x  += 80;
+        frame2.origin.x  += 80;
         frame1.origin.y  += _activeCell.frame.origin.y-self.tableView.contentOffset.y ;
         frame2.origin.y  += _activeCell.frame.origin.y-self.tableView.contentOffset.y;
         if ((!CGRectContainsPoint(frame1, pos))&&(!CGRectContainsPoint(frame2, pos))) {
@@ -485,6 +496,16 @@ static BOOL needLoadInfo = YES;
     
 }
 
+- (void)autoImportShowed
+{
+    if (importTotalNum >0) {
+        [[DiaryViewController sharedDiaryViewController] setImportTotalNum:0];
+        [[ImportStore shareImportStore] addNewDiary];
+        [[DiaryViewController sharedDiaryViewController] refreshTable];
+        [[ImportStore shareImportStore] reset];
+    }
+   
+}
 
 
 @end

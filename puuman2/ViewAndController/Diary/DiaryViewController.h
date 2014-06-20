@@ -24,6 +24,7 @@
     DiaryTableViewController *diaryTableVC;
 }
 @property (assign,nonatomic) BOOL cameraModel;
+
 + (DiaryViewController *)sharedDiaryViewController;
 - (void)showDiaryAtIndex:(NSInteger) index;
 - (void)hideNewDiaryBtns;
@@ -36,4 +37,5 @@
 - (void)diaryLoaded;
 - (void)refreshTable;
 - (void)setImportTotalNum:(NSInteger)num;
+- (void)autoImportShowed;
 @end

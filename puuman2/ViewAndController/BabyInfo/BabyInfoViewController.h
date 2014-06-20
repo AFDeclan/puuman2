@@ -16,7 +16,6 @@
 #import "BabyPropView.h"
 #import "BabyPreView.h"
 
-
 @interface BabyInfoViewController : UIViewController
 {
 
@@ -32,7 +31,6 @@
     BabyPreView *preView;
     BabyInfoButtonType selectType;
 }
-
 
 - (void)refresh;
 @end

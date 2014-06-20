@@ -142,8 +142,9 @@
     [_closeBtn setAlpha:0];
     [_finishBtn setAlpha:0];
     if ([[UserInfo sharedUserInfo] logined]) {
-        if ([[BabyData sharedBabyData] babyHasBorned])
+        if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth])
         {
+            
             [self initBirthRegisterView];
             [changeView setContentOffset:CGPointMake(kLoginsubViewWidth, 0)];
             [_finishBtn setAlpha:0.5];
@@ -197,7 +198,7 @@
             if ([[UserInfo sharedUserInfo] logined])
             {
                
-                if ([[BabyData sharedBabyData] babyHasBorned]) {
+                if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
                      [super closeBtnPressed];
                 }else{
                     [_finishBtn setAlpha:0];
@@ -281,24 +282,17 @@
             [birth resigntextField];
                 if (modifyMode)
                 {
-                    NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
-                    [meta setValue:@"生日" forKey:uMeta_whetherBirth];
-                    [meta setValue:[birth babyName] forKey:uMeta_nickName];
-                    [meta setValue:[DateFormatter stringFromDate:[birth birthDate]] forKey:uMeta_birthDate];
-                    if ([birth babyType] == kGenderBoy)
-                        [meta setValue:@"男宝宝" forKey:uMeta_gender];
-                    else if([birth babyType] == kGenderGirl)
-                        [meta setValue:@"女宝宝" forKey:uMeta_gender];
-                    if ([[UserInfo sharedUserInfo] uploadBabyMeta:meta])
-                    {
-                        [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
-                         [[TaskModel sharedTaskModel] updateTasks];
-                        [super finishBtnPressed];
+                    BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
+                    [babyInfo setOriginInfo:[babyInfo getDic]];
+                    babyInfo.WhetherBirth = YES;
+                    babyInfo.Nickname = [birth babyName];
+                    babyInfo.Birthday = [birth birthDate];
+                    babyInfo.Gender = ([birth babyType] == kGenderBoy);
+                    if ([birth selectedImg]) {
+                        [babyInfo uploadPortrait:birth.selectedImg];
                     }
-                    else
-                    {
-                         [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleRight];
-                    }
+                    [babyInfo uploadInfo];
+                    [super finishBtnPressed];
                     return;
                 }
                 isBirthView = YES;
@@ -323,11 +317,19 @@
             
                 if (modifyMode)
                 {
-                    NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
-                    [meta setValue:@"预产期" forKey:uMeta_whetherBirth];
-                    [meta setValue:[pregnancy babyName] forKey:uMeta_nickName];
-                    [meta setValue:[DateFormatter stringFromDate:[pregnancy birthDate]] forKey:uMeta_birthDate];
-                    if ([[UserInfo sharedUserInfo] uploadBabyMeta:meta])
+
+                    NSDictionary *oldInfo = [[[UserInfo sharedUserInfo] babyInfo] getDic];
+                    BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
+                    [babyInfo setOriginInfo:[babyInfo getDic]];
+                    babyInfo.WhetherBirth = NO;
+                    babyInfo.Nickname = [pregnancy babyName];
+                    babyInfo.Birthday = [pregnancy birthDate];
+                    
+                    if ([birth selectedImg]) {
+                        [babyInfo uploadPortrait:birth.selectedImg];
+                    }
+                    
+                    if ([babyInfo uploadInfoSync])
                     {
 
                          [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
@@ -336,6 +338,7 @@
                     }
                     else
                     {
+                        [babyInfo setWithDic:oldInfo];
                          [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleRight];
                     }
                     return;
@@ -356,6 +359,8 @@
             break;
     }
 }
+
+
 
 
 

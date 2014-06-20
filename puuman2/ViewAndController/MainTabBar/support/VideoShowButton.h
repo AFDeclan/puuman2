@@ -17,12 +17,14 @@
     CGImageSourceRef gif;
     NSDictionary *gifProperties;
     NSInteger currentProperty;
+    UIImageView *gifImgView;
     NSInteger countProperty;
-    NSTimer *timer;
     UIButton *playBtn;
+    UIImageView *imgView;
     NSMutableArray *refs;
 }
 @property(nonatomic,assign)id<VideoShowButtonDelegate> delegate;
+@property(assign,nonatomic)BOOL clickEnable;
 
 - (id)initWithFrame:(CGRect)frame fileName:(NSString *)fileName;
 - (void)stopGif;

@@ -15,8 +15,11 @@
     NSString *title;
     NSInteger *progress;
    // NSDictionary *diaryInfo;
-    Diary *diary;
-    
+    NSInteger count;
+    NSInteger total;
+    NSMutableArray *diaryArrs;
+    NSMutableArray *timeArrs;
+
 }
 
 +(ImportStore *)shareImportStore;

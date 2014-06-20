@@ -104,12 +104,7 @@
     [self.view addSubview:partnerBtn];
     [self topicBtnPressed];
     
-
-
-    
-    
 }
-
 
 - (void)topicBtnPressed
 {

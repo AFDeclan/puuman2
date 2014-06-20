@@ -60,7 +60,7 @@
     
     }
     member= [[[Friend sharedInstance] myGroup] memberWithBid:chatInfo.ATargetBID];
-    [portrait getImage:[member BabyPortraitUrl] defaultImage:@"pic_default_topic.png"];
+    [portrait getImage:[[member babyInfo] PortraitUrl] defaultImage:@"pic_default_topic.png"];
     
     float disHeight = 0;
    // if (minite >= 0) {

@@ -8,7 +8,7 @@
 
 #import "AddInfoCalendar.h"
 #import "BabyData.h"
-
+#import "UserInfo.h"
 @implementation AddInfoCalendar
 @synthesize delegate = _delegate;
 - (id)initWithFrame:(CGRect)frame
@@ -17,7 +17,7 @@
     if (self) {
         self.nextButton.alpha = 0;
         [self setDefaultStyle];
-        [self initSelectViewWithFromDate:[[BabyData sharedBabyData] babyBirth] toDate:[NSDate date]];
+        [self initSelectViewWithFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday] toDate:[NSDate date]];
     }
     return self;
 }
@@ -34,7 +34,7 @@
 }
 - (BOOL)dateIsAvailable:(NSDate *)date
 {
-    NSDate *birthday = [[BabyData sharedBabyData] babyBirth];
+    NSDate *birthday = [[[UserInfo sharedUserInfo] babyInfo] Birthday];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSInteger unit = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
@@ -64,7 +64,7 @@
 - (void)moveCalendarToPreviousMonth {
     self.nextButton.alpha = 1;
     NSDate *date_m = [[self firstDayOfMonthContainingDate:self.monthShowing] dateByAddingTimeInterval:-100000];
-    NSDate *birthday = [[BabyData sharedBabyData] babyBirth];
+    NSDate *birthday = [[[UserInfo sharedUserInfo] babyInfo] Birthday];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSInteger unit = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
     NSDateComponents *comps_m = [calendar components:unit fromDate:date_m];
