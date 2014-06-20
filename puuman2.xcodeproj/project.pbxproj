@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14038C75194C401D00802BD5 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 14038C74194C401D00802BD5 /* Share.m */; };
+		14038C78194C403400802BD5 /* ShareVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14038C77194C403400802BD5 /* ShareVideo.m */; };
 		1405E0CE18FE97B300781B81 /* AsyncImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1405E0CD18FE97B300781B81 /* AsyncImgView.m */; };
-		143B82C419374B66003B4057 /* ShareVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 143B82C319374B66003B4057 /* ShareVideo.m */; };
 		145237F0193D5B5900A3A2BB /* BabyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 145237EF193D5B5900A3A2BB /* BabyInfo.m */; };
 		1455006218E042E100360EDF /* OtherUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455006118E042E100360EDF /* OtherUserInfo.m */; };
 		146A2C6E18DD810E0038A850 /* ReplyForUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A2C6D18DD810E0038A850 /* ReplyForUpload.m */; };
@@ -43,7 +44,6 @@
 		14B8DF1E18BC37A30047C6B3 /* DiaryFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DE9418BC37A30047C6B3 /* DiaryFileManager.m */; };
 		14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DE9618BC37A30047C6B3 /* DiaryModel.m */; };
 		14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DE9A18BC37A30047C6B3 /* TaskModel.m */; };
-		14B8DF2218BC37A30047C6B3 /* TaskUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DE9C18BC37A30047C6B3 /* TaskUploader.m */; };
 		14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DEA018BC37A30047C6B3 /* PumanRequest.m */; };
 		14B8DF2418BC37A30047C6B3 /* PumanBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DEA318BC37A30047C6B3 /* PumanBookModel.m */; };
 		14B8DF2518BC37A30047C6B3 /* Readme.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 14B8DEA418BC37A30047C6B3 /* Readme.rtf */; };
@@ -766,10 +766,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14038C73194C401D00802BD5 /* Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share.h; sourceTree = "<group>"; };
+		14038C74194C401D00802BD5 /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
+		14038C76194C403400802BD5 /* ShareVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareVideo.h; sourceTree = "<group>"; };
+		14038C77194C403400802BD5 /* ShareVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareVideo.m; sourceTree = "<group>"; };
 		1405E0CC18FE97B300781B81 /* AsyncImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImgView.h; sourceTree = "<group>"; };
 		1405E0CD18FE97B300781B81 /* AsyncImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImgView.m; sourceTree = "<group>"; };
-		143B82C219374B66003B4057 /* ShareVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareVideo.h; sourceTree = "<group>"; };
-		143B82C319374B66003B4057 /* ShareVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareVideo.m; sourceTree = "<group>"; };
 		145237EE193D5B5900A3A2BB /* BabyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfo.h; sourceTree = "<group>"; };
 		145237EF193D5B5900A3A2BB /* BabyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfo.m; sourceTree = "<group>"; };
 		1455006018E042E100360EDF /* OtherUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherUserInfo.h; sourceTree = "<group>"; };
@@ -819,8 +821,6 @@
 		14B8DE9618BC37A30047C6B3 /* DiaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryModel.m; sourceTree = "<group>"; };
 		14B8DE9918BC37A30047C6B3 /* TaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
 		14B8DE9A18BC37A30047C6B3 /* TaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
-		14B8DE9B18BC37A30047C6B3 /* TaskUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskUploader.h; sourceTree = "<group>"; };
-		14B8DE9C18BC37A30047C6B3 /* TaskUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskUploader.m; sourceTree = "<group>"; };
 		14B8DE9D18BC37A30047C6B3 /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
 		14B8DE9F18BC37A30047C6B3 /* PumanRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PumanRequest.h; sourceTree = "<group>"; };
 		14B8DEA018BC37A30047C6B3 /* PumanRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PumanRequest.m; sourceTree = "<group>"; };
@@ -1851,6 +1851,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14038C72194C401D00802BD5 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				14038C76194C403400802BD5 /* ShareVideo.h */,
+				14038C77194C403400802BD5 /* ShareVideo.m */,
+				14038C73194C401D00802BD5 /* Share.h */,
+				14038C74194C401D00802BD5 /* Share.m */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		147756F618D7F47F00E08BD0 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
@@ -1991,6 +2002,7 @@
 		14B8DE9118BC37A30047C6B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				14038C72194C401D00802BD5 /* Share */,
 				54AE2BA618E93FEB00D24F92 /* Friend */,
 				147756F618D7F47F00E08BD0 /* Forum */,
 				14B8DE9218BC37A30047C6B3 /* Diary */,
@@ -2013,8 +2025,6 @@
 				14B8DE9618BC37A30047C6B3 /* DiaryModel.m */,
 				14B8DE9918BC37A30047C6B3 /* TaskModel.h */,
 				14B8DE9A18BC37A30047C6B3 /* TaskModel.m */,
-				14B8DE9B18BC37A30047C6B3 /* TaskUploader.h */,
-				14B8DE9C18BC37A30047C6B3 /* TaskUploader.m */,
 				1495A1B519189298006A64BA /* Diary.h */,
 				1495A1B619189298006A64BA /* Diary.m */,
 			);
@@ -2073,8 +2083,6 @@
 				14B8DEBA18BC37A30047C6B3 /* UserInfo.m */,
 				145237EE193D5B5900A3A2BB /* BabyInfo.h */,
 				145237EF193D5B5900A3A2BB /* BabyInfo.m */,
-				143B82C219374B66003B4057 /* ShareVideo.h */,
-				143B82C319374B66003B4057 /* ShareVideo.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -4391,7 +4399,6 @@
 				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
 				54B6F42418D6E33E0055FC72 /* SettingAdviceViewController.m in Sources */,
 				5403CE4818D051A2004CAE22 /* BabyInfoView.m in Sources */,
-				14B8DF2218BC37A30047C6B3 /* TaskUploader.m in Sources */,
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				54B753B018D3020B002411CF /* PuumanInBookCell.m in Sources */,
 				54B4685F18E54D7200745F72 /* ExpandableButton.m in Sources */,
@@ -4447,6 +4454,7 @@
 				54012DE818E3050C00F11D97 /* PropWarePartnerDataView.m in Sources */,
 				54B4685818E54D5A00745F72 /* MenuView.m in Sources */,
 				54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */,
+				14038C78194C403400802BD5 /* ShareVideo.m in Sources */,
 				54B4681418E520F200745F72 /* TeachingView.m in Sources */,
 				54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */,
 				14B8DF1F18BC37A30047C6B3 /* DiaryModel.m in Sources */,
@@ -4525,6 +4533,7 @@
 				54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */,
 				5412BC64192C829E0033F322 /* DiaryShowCell.m in Sources */,
 				5421666F18E025EB005875F8 /* RewardTableViewCell.m in Sources */,
+				14038C75194C401D00802BD5 /* Share.m in Sources */,
 				88B51606192F52EE006A79AB /* MJRefreshConst.m in Sources */,
 				54ADB1B518E11E0F00FCCC83 /* FiguresHeaderView.m in Sources */,
 				5412BC4C192C80260033F322 /* TextDiaryCell.m in Sources */,
@@ -4598,7 +4607,6 @@
 				145237F0193D5B5900A3A2BB /* BabyInfo.m in Sources */,
 				5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */,
 				54ACB2DC18EBBFC500EE5F90 /* CompareInfoTableViewCell.m in Sources */,
-				143B82C419374B66003B4057 /* ShareVideo.m in Sources */,
 				5412BC55192C80450033F322 /* AuPhotoDiaryCell.m in Sources */,
 				54AC210718E4055B001C1357 /* SearchTextField.m in Sources */,
 				54AC1D2718EEC080005E2DCE /* BindAddButton.m in Sources */,

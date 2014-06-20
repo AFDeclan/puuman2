@@ -12,9 +12,6 @@
 #import "DateFormatter.h"
 #import "NSDate+Compute.h"
 #import "ErrorLog.h"
-#import "TaskUploader.h"
-
-NSString *taskHostUrlString = @"http://pumantest.sinaapp.com/Task/";
 
 static TaskModel *instance;
 
@@ -152,30 +149,23 @@ static TaskModel *instance;
             break;
     }
 }
-- (void)removeDoneTasks
+
+- (void)removeDoneTask:(NSDictionary *)taskInfo
 {
-    
-    NSArray *uploadingArr = [TaskUploader uploader].uploadList;
-    for (NSDictionary *item in uploadingArr)
+    NSInteger tid = [[taskInfo valueForKey:_task_ID] integerValue];
+    if (tid <= 6) return;
+    for (NSInteger i=0; i<[nowTasks count]; i++)
     {
-        NSInteger tid = [[item valueForKey:taskIDKey] integerValue];
-        if (tid != 6)
+        NSDictionary *task = [nowTasks objectAtIndex:i];
+        if ([[task valueForKey:_task_ID] integerValue] == tid)
         {
-            for (NSInteger i=0; i<[nowTasks count]; i++)
-            {
-                NSDictionary *task = [nowTasks objectAtIndex:i];
-                if ([[task valueForKey:_task_ID] integerValue] == tid)
-                {
-                   
-                   //[nowTasks removeObjectAtIndex:i];
-                    break;
-                }
-            }
+            [nowTasks removeObjectAtIndex:i];
+            break;
         }
     }
-    
     [self.delegate nowTaskDownloadSucceeded];
 }
+
 #pragma mark - downloader delegate
 
 - (void)downloadResult:(NSData *)data downLoader:(FileUploader *)downLoader

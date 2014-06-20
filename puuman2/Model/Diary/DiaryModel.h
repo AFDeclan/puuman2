@@ -23,9 +23,10 @@
 @interface DiaryModel : NSObject <AFRequestDelegate>
 {
     FMDatabase *db;
-    BOOL _sampleDiary;
+    BOOL _sampleDiary, _uploading;
     NSMutableArray *_toDownloadDiaries;
     NSMutableArray *_downloadedDiaries;
+    NSMutableArray *_toUploadDiaries;
 }
 
 //待更新日记数量

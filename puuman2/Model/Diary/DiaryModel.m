@@ -14,10 +14,10 @@
 #import "DateFormatter.h"
 #import <Reachability.h>
 #import "ErrorLog.h"
-#import "TaskUploader.h"
 #import "DiaryFileManager.h"
 #import "DiaryCell.h"
 #import "Diary.h"
+#import "TaskModel.h"
 #import <JSONKit.h>
 
 #define kDateName       @"date"
@@ -30,6 +30,7 @@
 #define kUrl2Name       @"url2"
 #define kDiaryUIdentity @"DiaryUIdentity"
 #define kDeletedDiary   @"deletedDiary"
+#define kUploaded       @"uploaded"
 #define kDiaryMeta      @"DiaryMeta"
 
 static DiaryModel * instance;
@@ -53,6 +54,7 @@ static DiaryModel * instance;
     {
         _diaries = [[NSMutableArray alloc] init];
         _deletedDiaries = [[NSMutableArray alloc] init];
+        _toUploadDiaries = [[NSMutableArray alloc] init];
         _updateCnt = 0;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documents = [paths objectAtIndex:0];
@@ -70,14 +72,15 @@ static DiaryModel * instance;
 - (void)reloadData
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY, %@ TEXT, %@ REAL, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ INTEGER)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary];
+    NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY, %@ TEXT, %@ REAL, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ INTEGER, %@ INTEGER)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate:sqlCreateTable])
     {
-         [ErrorLog errorLog:@"Create table failed!" fromFile:@"DiaryModel.m" error:nil];
+        [ErrorLog errorLog:@"Create table failed!" fromFile:@"DiaryModel.m" error:nil];
         NSLog(@"Create table failed!");
     }
     [_diaries removeAllObjects];
     [_deletedDiaries removeAllObjects];
+    [_toUploadDiaries removeAllObjects];
     NSString *sqlSelect = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC", tableName, kDateName];
     FMResultSet *rs = [db executeQuery: sqlSelect];
     while ([rs next])
@@ -92,11 +95,14 @@ static DiaryModel * instance;
         diary.type1 = [rs intForColumn:kTypeName];
         diary.type2 = [rs intForColumn:kType2Name];
         diary.filePaths1 = [[rs dataForColumn:kFilePathName] objectFromJSONData];
+        if (diary.filePaths1.count == 0) continue;
         diary.filePaths2 = [[rs dataForColumn:kFilePath2Name] objectFromJSONData];
+        if (diary.type2 != DiaryContentTypeNone && diary.filePaths2.count == 0) continue;
         diary.urls1 = [[rs dataForColumn:kUrlName] objectFromJSONData];
         diary.urls2 = [[rs dataForColumn:kUrl2Name] objectFromJSONData];
         diary.UIdentity = [rs intForColumn:kDiaryUIdentity];
         diary.deleted = [rs boolForColumn:kDeletedDiary];
+        diary.uploaded = [rs boolForColumn:kUploaded];
         NSData * metaData = [rs dataForColumn:kDiaryMeta];
         diary.meta = [metaData objectFromJSONData];
         if (diary.deleted)
@@ -106,6 +112,9 @@ static DiaryModel * instance;
         else
         {
             [_diaries addObject:diary];
+        }
+        if (!diary.uploaded) {
+            [_toUploadDiaries insertObject:diary atIndex:0];
         }
     }
     [rs close];
@@ -160,8 +169,12 @@ static DiaryModel * instance;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.filePaths2 = [NSArray arrayWithObject:filePath2];
     [_diaries addObject:d];
-
+    
     _downloadedDiaries = [[NSMutableArray alloc] init];
+    
+    if (!_uploading) {
+        [self performSelectorInBackground:@selector(uploadDiaries) withObject:nil];
+    }
 }
 
 - (NSUInteger)diaryNotSampleNum
@@ -177,7 +190,7 @@ static DiaryModel * instance;
 - (BOOL)addNewDiary:(Diary *)d
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,0)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary];
+    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate: sqlInsert,
           d.title,
           d.DCreateTime,
@@ -197,17 +210,17 @@ static DiaryModel * instance;
     [_diaries addObject:d];
     PostNotification(Noti_ReloadDiaryTable, nil);
     [[UserInfo sharedUserInfo] addCorns:0.1];
+    [self performSelectorInBackground:@selector(uploadDiary:) withObject:d];
     return YES;
 }
 
 - (BOOL)deleteDiary:(Diary *)d
 {
-    [[TaskUploader uploader] addNewTaskToDeleteDiary:d];
     //delete sqlite data
     NSDate *date = d.DCreateTime;
     if (date == nil) return  NO;
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlDel = [NSString stringWithFormat:@"UPDATE %@ SET %@ = 1 WHERE %@ = ?", tableName, kDeletedDiary, kDateName];
+    NSString *sqlDel = [NSString stringWithFormat:@"UPDATE %@ SET %@ = 1 AND %@ = 0 WHERE %@ = ?", tableName, kDeletedDiary, kUploaded, kDateName];
     if (![db executeUpdate:sqlDel, date]) return NO;
     //delete file
     for (NSString *filePath in d.filePaths1) {
@@ -233,8 +246,9 @@ static DiaryModel * instance;
     }
     if ([_diaries count] <=1) {
         [self reloadData];
+    } else {
+        [self performSelectorInBackground:@selector(uploadDiary:) withObject:d];
     }
-    
     return YES;
 }
 
@@ -271,8 +285,8 @@ static DiaryModel * instance;
 {
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSString *tableName;
-    if (userInfo.UID > -1) tableName = [NSString stringWithFormat:@"diaryTableForBaby%d_Version1", userInfo.BID];
-    else tableName = @"diaryTableForUnloginedUser_Version1";
+    if (userInfo.UID > -1) tableName = [NSString stringWithFormat:@"diaryTableForBaby%d_Version2", userInfo.BID];
+    else tableName = @"diaryTableForUnloginedUser_Version2";
     return tableName;
 }
 
@@ -316,6 +330,8 @@ static DiaryModel * instance;
     }
     return array;
 }
+
+#pragma mark - download diaries
 
 - (void)updateDiaryFromServer
 {
@@ -376,7 +392,7 @@ static DiaryModel * instance;
             _downloadedDiaries = [[NSMutableArray alloc] init];
             [self performSelectorInBackground:@selector(downloadUpdateDiary) withObject:nil];
         }
-
+        
     }
 }
 
@@ -435,7 +451,7 @@ static DiaryModel * instance;
 - (BOOL)addDownloadedDiary:(Diary *)d
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,0)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary];
+    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate: sqlInsert,
           d.title,
           d.DCreateTime,
@@ -465,6 +481,42 @@ static DiaryModel * instance;
 {
     _updateCnt = _updateCnt - _downloadedCnt;
     _downloadedCnt = 0;
+}
+
+
+#pragma mark - upload diaries
+
+- (BOOL)uploadDiary:(Diary *)d
+{
+    if ([d uploadDiary]) {
+        if (d.taskId > 0 && d.taskId != 6) {
+            TaskModel *taskModel = [TaskModel sharedTaskModel];
+            if (!taskModel.updating)
+                [taskModel updateTasks];
+        }
+        NSString *tableName = [self sqliteTableName];
+        NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET %@ = 1 WHERE %@ = ?", tableName, kUploaded, kDateName];
+        [db executeUpdate:sql, d.DCreateTime];
+        return YES;
+    }
+    return NO;
+}
+
+- (void)uploadDiaries
+{
+    _uploading = YES;
+    while (1) {
+        NSMutableArray * failed = [[NSMutableArray alloc] init];
+        for (Diary * d in _toUploadDiaries) {
+            if (![self uploadDiary:d]) {
+                [failed addObject:d];
+            }
+        }
+        if (failed.count == 0) break;
+        _toUploadDiaries = failed;
+        sleep(60);
+    }
+    _uploading = NO;
 }
 
 - (NSArray *)diaryInfoRelateArray

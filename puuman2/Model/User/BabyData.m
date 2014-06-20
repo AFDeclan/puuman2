@@ -335,7 +335,7 @@ static BabyData * instance;
             [toUpload addObject:vaccine];
             NSMutableDictionary *vac2 = [[NSMutableDictionary alloc] initWithDictionary:vaccine];
             NSDate *date = [vaccine valueForKey:kVaccine_DoneTime];
-            [vac2 setValue:[DateFormatter stringFromDatetime:date] forKey:kVaccine_DoneTime];
+            [vac2 setValue:[DateFormatter timestampStrFromDatetime:date] forKey:kVaccine_DoneTime];
             [toUpload2 addObject:vac2];
         }
     }
@@ -417,7 +417,7 @@ static BabyData * instance;
             [toUpload addObject:record];
             NSMutableDictionary *record2 = [[NSMutableDictionary alloc] initWithDictionary:record];
             NSDate * date = [record valueForKey:kBabyData_Date];
-            [record2 setValue:[DateFormatter stringFromDatetime:date] forKey:kBabyData_Date];
+            [record2 setValue:[DateFormatter timestampStrFromDatetime:date] forKey:kBabyData_Date];
             [toUpload2 addObject:record2];
         }
     }

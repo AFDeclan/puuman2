@@ -38,6 +38,9 @@
     [request setParam:[NSNumber numberWithInteger:_RID] forKey:@"RID"];
     [request setTimeOutSeconds:5];
     [request postSynchronous];
+    if (request.result == PumanRequest_Succeeded) {
+        _videoUrl = request.resObj;
+    }
     return request.result == PumanRequest_Succeeded;
 
 }
