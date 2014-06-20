@@ -98,6 +98,7 @@
 #define kUrl_UpdateDiary @"http://server.puuman.cn/index.php/server/diary/update"
 #define kUrl_UploadUserTask @"http://server.puuman.cn/index.php/server/diary/upload"
 #define kUrl_GetUserTask    @"http://server.puuman.cn/index.php/server/diary/get_task"
+#define kUrl_RewardDiary @"http://server.puuman.cn/index.php/server/diary/reward"
 
 #define kUrl_GetCompletedTask @"http://1.server4puman.sinaapp.com/Task/getCompletedTask.php"
 //payback
