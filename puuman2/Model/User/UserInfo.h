@@ -29,10 +29,11 @@
 #define userInfo_mail               @"usermailAddr"
 #define userInfo_phone              @"userPhoneNum"
 #define userInfo_UCorns             @"userPuman"
+#define userInfo_UCornsConnect      @"userPumanConnect"
 #define userInfo_UCornsUsed         @"userUCornsUsed"
-#define userInfo_pumanBound         @"userPumanBound"
-#define userInfo_pumanLocalAdded    @"userPumanLocalAdded"
-#define userInfo_pumanLocalAddedDaily    @"userPumanLocalAddedDaily"
+#define userInfo_pumanBound             @"userPumanBound"
+#define userInfo_pumanLocalAdded        @"userPumanLocalAdded"
+#define userInfo_pumanLocalAddedDaily   @"userPumanLocalAddedDaily"
 #define userInfo_pumanLocalAddedTime    @"userPumanLocalTime"
 #define userInfo_Baby               @"userBaby"
 #define userInfo_pumanUsed          @"userPumanUsed"
@@ -94,6 +95,8 @@ typedef enum inviteState {
 @property (assign, readonly) double           UCorns;
 @property (assign, readonly) double           UCornsUsed;
 @property (assign, readonly) double           UCornsBound;
+
+@property (assign, readonly) double           UCorns_connect;
 
 //登录时填充
 @property (retain) NSString*        mailAddr;
