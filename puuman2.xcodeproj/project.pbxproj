@@ -478,6 +478,13 @@
 		54B30AAC195D54EE00007DDC /* AgeCalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AAB195D54EE00007DDC /* AgeCalenderView.m */; };
 		54B30AB1195D5A0500007DDC /* CalenderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AB0195D5A0500007DDC /* CalenderTableViewCell.m */; };
 		54B30AB4195D5A1600007DDC /* AgeCalenderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AB3195D5A1600007DDC /* AgeCalenderTableViewCell.m */; };
+		54B30ABB195D5C9D00007DDC /* BabyShowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AB6195D5C9D00007DDC /* BabyShowButton.m */; };
+		54B30ABC195D5C9D00007DDC /* PuuamnShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AB8195D5C9D00007DDC /* PuuamnShowView.m */; };
+		54B30ABD195D5C9D00007DDC /* PuumanButtonAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */; };
+		54B30AC5195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */; };
+		54B30AC8195D644900007DDC /* BabyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AC7195D644900007DDC /* BabyView.m */; };
+		54B30ACB195D686500007DDC /* BabyInfoBornView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30ACA195D686500007DDC /* BabyInfoBornView.m */; };
+		54B30ACE195D687400007DDC /* BabyInfoPregnancyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30ACD195D687400007DDC /* BabyInfoPregnancyView.m */; };
 		54B4680018E5154C00745F72 /* ShopAllWareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */; };
 		54B4680518E520C500745F72 /* HealthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4680318E520C500745F72 /* HealthCell.m */; };
 		54B4680618E520C500745F72 /* HealthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B4680418E520C500745F72 /* HealthCell.xib */; };
@@ -1459,6 +1466,20 @@
 		54B30AB0195D5A0500007DDC /* CalenderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderTableViewCell.m; sourceTree = "<group>"; };
 		54B30AB2195D5A1600007DDC /* AgeCalenderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalenderTableViewCell.h; sourceTree = "<group>"; };
 		54B30AB3195D5A1600007DDC /* AgeCalenderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalenderTableViewCell.m; sourceTree = "<group>"; };
+		54B30AB5195D5C9D00007DDC /* BabyShowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyShowButton.h; sourceTree = "<group>"; };
+		54B30AB6195D5C9D00007DDC /* BabyShowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyShowButton.m; sourceTree = "<group>"; };
+		54B30AB7195D5C9D00007DDC /* PuuamnShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuuamnShowView.h; sourceTree = "<group>"; };
+		54B30AB8195D5C9D00007DDC /* PuuamnShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuuamnShowView.m; sourceTree = "<group>"; };
+		54B30AB9195D5C9D00007DDC /* PuumanButtonAnimateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuumanButtonAnimateView.h; sourceTree = "<group>"; };
+		54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuumanButtonAnimateView.m; sourceTree = "<group>"; };
+		54B30AC3195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+DragAnimation.h"; sourceTree = "<group>"; };
+		54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+DragAnimation.m"; sourceTree = "<group>"; };
+		54B30AC6195D644900007DDC /* BabyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyView.h; sourceTree = "<group>"; };
+		54B30AC7195D644900007DDC /* BabyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyView.m; sourceTree = "<group>"; };
+		54B30AC9195D686500007DDC /* BabyInfoBornView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoBornView.h; sourceTree = "<group>"; };
+		54B30ACA195D686500007DDC /* BabyInfoBornView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoBornView.m; sourceTree = "<group>"; };
+		54B30ACC195D687400007DDC /* BabyInfoPregnancyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoPregnancyView.h; sourceTree = "<group>"; };
+		54B30ACD195D687400007DDC /* BabyInfoPregnancyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoPregnancyView.m; sourceTree = "<group>"; };
 		54B467FE18E5154C00745F72 /* ShopAllWareHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAllWareHeaderView.h; sourceTree = "<group>"; };
 		54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAllWareHeaderView.m; sourceTree = "<group>"; };
 		54B4680218E520C500745F72 /* HealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthCell.h; sourceTree = "<group>"; };
@@ -3038,6 +3059,19 @@
 			name = subView;
 			sourceTree = "<group>";
 		};
+		54B30ABF195D5EEB00007DDC /* BabyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				54B30AC6195D644900007DDC /* BabyView.h */,
+				54B30AC7195D644900007DDC /* BabyView.m */,
+				54B30AC9195D686500007DDC /* BabyInfoBornView.h */,
+				54B30ACA195D686500007DDC /* BabyInfoBornView.m */,
+				54B30ACC195D687400007DDC /* BabyInfoPregnancyView.h */,
+				54B30ACD195D687400007DDC /* BabyInfoPregnancyView.m */,
+			);
+			path = BabyInfo;
+			sourceTree = "<group>";
+		};
 		54B4680118E520B600745F72 /* HealthCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3162,6 +3196,14 @@
 		54B4EB2218C576E5004489DA /* support */ = {
 			isa = PBXGroup;
 			children = (
+				54B30AC3195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.h */,
+				54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */,
+				54B30AB5195D5C9D00007DDC /* BabyShowButton.h */,
+				54B30AB6195D5C9D00007DDC /* BabyShowButton.m */,
+				54B30AB7195D5C9D00007DDC /* PuuamnShowView.h */,
+				54B30AB8195D5C9D00007DDC /* PuuamnShowView.m */,
+				54B30AB9195D5C9D00007DDC /* PuumanButtonAnimateView.h */,
+				54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */,
 				54BBE8A61936F6B20056390B /* VideoShowView.h */,
 				54BBE8A71936F6B20056390B /* VideoShowView.m */,
 				54BBE8A9193727E30056390B /* VideoManageView.h */,
@@ -3448,6 +3490,7 @@
 				54BB09E718D9494C00F805DD /* SkipViewController.m */,
 				54C2EA00192DE0EB0011AA0C /* EnterTutorialView.h */,
 				54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */,
+				54B30ABF195D5EEB00007DDC /* BabyInfo */,
 				54B4EB2218C576E5004489DA /* support */,
 			);
 			path = MainTabBar;
@@ -4555,6 +4598,7 @@
 				54AFAA7E18DA896B0067B8C1 /* AllWordsPopViewController.m in Sources */,
 				54AFBBC718D6938600861A69 /* LoginStartView.m in Sources */,
 				541970D818D195C10058FE64 /* LineChartCell.m in Sources */,
+				54B30ABC195D5C9D00007DDC /* PuuamnShowView.m in Sources */,
 				54AE2BB618E93FEB00D24F92 /* ActionForUpload.m in Sources */,
 				541970D218D1956D0058FE64 /* LineChart.m in Sources */,
 				54D1500D18CAF4EB0022E1F4 /* TaskCell.m in Sources */,
@@ -4563,6 +4607,7 @@
 				54ADE09718C8608700B166C4 /* NewAudioDiaryViewController.m in Sources */,
 				54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */,
 				54AE788618E00BD200AE558C /* PartnerDataTitleView.m in Sources */,
+				54B30ACE195D687400007DDC /* BabyInfoPregnancyView.m in Sources */,
 				54012DE818E3050C00F11D97 /* PropWarePartnerDataView.m in Sources */,
 				54B4685818E54D5A00745F72 /* MenuView.m in Sources */,
 				54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */,
@@ -4604,6 +4649,7 @@
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
 				54B30A92195D53EC00007DDC /* ToolsView.m in Sources */,
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
+				54B30AC5195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54B6F42118D6D72E0055FC72 /* SettingPassWordViewController.m in Sources */,
 				5447C4B718D98F5C00187BE6 /* PartnerChatView.m in Sources */,
@@ -4635,6 +4681,7 @@
 				54B30A8F195D53EC00007DDC /* ToolsInfoView.m in Sources */,
 				544419E618D3EAC800FBE69F /* BabyPropView.m in Sources */,
 				54B30AB1195D5A0500007DDC /* CalenderTableViewCell.m in Sources */,
+				54B30ABD195D5C9D00007DDC /* PuumanButtonAnimateView.m in Sources */,
 				88B5160B192F52EE006A79AB /* UIImage+CroppedImage.m in Sources */,
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
 				54AFBBCA18D6938600861A69 /* ProtocalPuumanViewController.m in Sources */,
@@ -4650,6 +4697,7 @@
 				54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */,
 				5421666F18E025EB005875F8 /* RewardTableViewCell.m in Sources */,
 				88B51606192F52EE006A79AB /* MJRefreshConst.m in Sources */,
+				54B30ACB195D686500007DDC /* BabyInfoBornView.m in Sources */,
 				54ADB1B518E11E0F00FCCC83 /* FiguresHeaderView.m in Sources */,
 				5412BC4C192C80260033F322 /* TextDiaryCell.m in Sources */,
 				54012DD818E3046400F11D97 /* PartnerDataCellView.m in Sources */,
@@ -4669,6 +4717,7 @@
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,
 				54B5AA331934421700805E63 /* VideoShowButton.m in Sources */,
 				54B30AA3195D546900007DDC /* InviteView.m in Sources */,
+				54B30AC8195D644900007DDC /* BabyView.m in Sources */,
 				5403CE4E18D06E87004CAE22 /* BabyInfoButton.m in Sources */,
 				54012DF618E3092E00F11D97 /* BodyPartnerDataCell.m in Sources */,
 				54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */,
@@ -4696,6 +4745,7 @@
 				54AFBBC218D6938600861A69 /* DateButton.m in Sources */,
 				54BBE8AB193727E30056390B /* VideoManageView.m in Sources */,
 				54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */,
+				54B30ABB195D5C9D00007DDC /* BabyShowButton.m in Sources */,
 				54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */,
 				54B753A018D2A7C7002411CF /* BabyVaccineView.m in Sources */,
 				54AE2BB718E93FEB00D24F92 /* ActionManager.m in Sources */,
