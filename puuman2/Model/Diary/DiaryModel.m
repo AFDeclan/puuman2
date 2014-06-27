@@ -252,6 +252,27 @@ static DiaryModel * instance;
     return YES;
 }
 
+- (BOOL)updateDiary:(Diary *)d needUpload:(BOOL)toUp
+{
+    NSString *tableName = [self sqliteTableName];
+    NSString *sqlUpdate = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?) WHERE %@ = ?", tableName, kTitleName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded, kDateName];
+    if (![db executeUpdate: sqlUpdate,
+          d.title,
+          d.DCreateTime,
+          [NSNumber numberWithInteger:d.type1],
+          [d.filePaths1 JSONData],
+          [d.urls1 JSONData],
+          [NSNumber numberWithInteger:d.type2],
+          [d.filePaths2 JSONData],
+          [d.urls2 JSONData],
+          [NSNumber numberWithInteger:[UserInfo sharedUserInfo].identity],
+          [d.meta JSONData],
+          [NSNumber numberWithBool:d.deleted],
+          [NSNumber numberWithBool:!toUp]])
+        return NO;
+    return YES;
+}
+
 
 //关键字搜索
 - (NSUInteger)indexForDiarySearchedWithKeyword:(NSString *)keyword
@@ -331,6 +352,18 @@ static DiaryModel * instance;
     return array;
 }
 
+
+- (Diary *)diaryAtDate:(NSDate *)createDate
+{
+    for (Diary * d in _diaries) {
+        NSDate *date = d.DCreateTime;
+        NSTimeInterval dt = [date timeIntervalSinceDate:createDate];
+        if (dt >= 0 && dt < 1)
+            return d;
+    }
+    return nil;
+}
+
 #pragma mark - download diaries
 
 - (void)updateDiaryFromServer
@@ -381,6 +414,7 @@ static DiaryModel * instance;
                     [d setUrls1WithMainUrl:[dic valueForKey:@"url1"] andSubcnt:[[dic valueForKey:@"subCnt1"] integerValue]];
                     [d setUrls2WithMainUrl:[dic valueForKey:@"url2"] andSubcnt:[[dic valueForKey:@"subCnt2"] integerValue]];
                     d.UTID = [[dic valueForKey:@"UTID"] integerValue];
+                    d.meta = [[dic valueForKey:@"Meta"] objectFromJSONString];
                     [_toDownloadDiaries addObject:d];
                 }
             }

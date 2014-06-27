@@ -87,33 +87,4 @@
 #define default_portrait_image @"btn_babyinfo3_diary.png"
 #define tasks_wait_for_upload       @"tasksWaitForUpload"
 
-#pragma mark - UserInfo
-#define userInfoKey                 @"userInfo"
-#define userInfo_uid                @"userID"
-#define userInfo_bid                @"userBID"
-#define userInfo_identity           @"userIdentity"
-#define userInfo_mail               @"usermailAddr"
-#define userInfo_phone              @"userPhoneNum"
-#define userInfo_UCorns             @"userPuman"
-#define userInfo_UCornsUsed         @"userUCornsUsed"
-#define userInfo_pumanBound         @"userPumanBound"
-#define userInfo_pumanLocalAdded    @"userPumanLocalAdded"
-#define userInfo_pumanLocalAddedDaily    @"userPumanLocalAddedDaily"
-#define userInfo_pumanLocalAddedTime    @"userPumanLocalTime"
-#define userInfo_Baby               @"userBaby"
-#define userInfo_pumanUsed          @"userPumanUsed"
-#define userInfo_meta               @"userMeta"
-#define userInfo_pwdMd5             @"userPwdMd5"
-#define userInfo_createTime         @"userCreateTime"
-
-#define uMetaKey                    @"_puman_UserMeta"
-#define uMeta_alipayAccount         @"AliPayAccount"
-#define uMeta_pendingTaskCount      @"PendingTaskCount"
-#define uMeta_processedTaskCount    @"ProcessedTaskCount"
-#define uMeta_InviteStateKey        @"InviteState"
-#define uMeta_InvitedKey            @"Invited"
-#define uMeta_PBLEFT    @"_puman_PayBackLeft"
-#define uMeta_PBLastCheck   @"_puman_PayBack_LastCheck"
-
-
 #endif
