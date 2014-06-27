@@ -1,6 +1,6 @@
 //
 //  UserInfo.m
-//  puman
+//  puuman model
 //
 //  Created by 陈晔 on 13-4-13.
 //  Copyright (c) 2013年 ÂàõÂßã‰∫∫Âõ¢Èòü. All rights reserved.
@@ -12,6 +12,8 @@
 #import "ErrorLog.h"
 #import "PumanRequest.h"
 #import "MemberCache.h"
+#import "DiaryModel.h"
+#import "Diary.h"
 
 static UserInfo *instance = nil;
 
@@ -89,6 +91,7 @@ static UserInfo *instance = nil;
         }
         _createTime = [uInfo valueForKey:userInfo_createTime];
         _UCorns = [[uInfo valueForKey:userInfo_UCorns] doubleValue];
+        _UCorns_connect = [[uInfo valueForKey:userInfo_UCornsConnect] doubleValue];
         _UCornsUsed = [[uInfo valueForKey:userInfo_UCornsUsed] doubleValue];
         _UCornsBound = [[uInfo valueForKey:userInfo_pumanBound] doubleValue];
         _UCornsLocalAdded = [[uInfo valueForKey:userInfo_pumanLocalAdded] doubleValue];
@@ -145,6 +148,7 @@ static UserInfo *instance = nil;
     [uInfo setValue:[NSString stringWithFormat:@"%d", _UID] forKey:userInfo_uid];
     [uInfo setValue:[NSString stringWithFormat:@"%d", _BID] forKey:userInfo_bid];
     [uInfo setValue:[NSString stringWithFormat:@"%f", _UCorns] forKey:userInfo_UCorns];
+    [uInfo setValue:[NSString stringWithFormat:@"%f", _UCorns_connect] forKey:userInfo_UCornsConnect];
     [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsUsed] forKey:userInfo_UCornsUsed];
     [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsBound] forKey:userInfo_pumanBound];
     [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsLocalAdded] forKey:userInfo_pumanLocalAdded];
@@ -347,12 +351,17 @@ static UserInfo *instance = nil;
     _UMail = [dic objectForKey:@"UMail"];
     _pwd_md5 = [dic objectForKey:@"UPwd"];
     _UCorns = [[dic valueForKey:@"UCorns"] doubleValue];
+    _UCorns_connect = [[dic valueForKey:@"UCorns_connect"] doubleValue];
     _UCornsUsed = [[dic valueForKey:@"UCornsUsed"] doubleValue];
     _UCornsBound = [[dic valueForKey:@"UCornsBound"] doubleValue];
     _UCornsLocalAdded = 0;
     _UCornsLocalAdded_daily = 0;
     _babyInfo = [[BabyInfo alloc] init];
     [_babyInfo setWithDic:[dic valueForKey:@"Baby"]];
+    if ([[dic valueForKey:@"ShareInfo"] isKindOfClass:[NSDictionary class]]) {
+        _shareVideo = [[ShareVideo alloc] init];
+        [_shareVideo initWithData:[dic valueForKey:@"ShareInfo"]];
+    }
     NSMutableDictionary* mm = nil;
     tp = [dic objectForKey:@"Metas"];
     if( tp != nil ){
@@ -373,8 +382,8 @@ static UserInfo *instance = nil;
         if (_shareVideo && _shareVideo.RID ==[[tp valueForKey:@"RID"] integerValue]) {
             _shareVideo = [[ShareVideo alloc] init];
             [_shareVideo initWithData:tp];
-
-
+            
+            
         }else{
             if (!_shareVideo) {
                 _shareVideo = [[ShareVideo alloc] init];
@@ -382,9 +391,11 @@ static UserInfo *instance = nil;
             [_shareVideo initWithData:tp];
             PostNotification(Noti_HasShareVideo, nil);
         }
-        
     }
-
+    for (Diary * d in [self rewardDiaryList]) {
+        [d setRewarded];
+        [[DiaryModel sharedDiaryModel] updateDiary:d needUpload:NO];
+    }
     [self saveToUserDefault];
 }
 
@@ -400,6 +411,7 @@ static UserInfo *instance = nil;
     if ([[invitedStr componentsSeparatedByString:@"#"] count] < 3) return nil;
     return [[invitedStr componentsSeparatedByString:@"#"] objectAtIndex:1];
 }
+
 - (enum userActionResult)acceptInvite
 {
     NSString *url = kUrl_ConnectUser;
@@ -430,6 +442,27 @@ static UserInfo *instance = nil;
     }
     else return otherError;
 }
+
+- (NSArray *)rewardDiaryList
+{
+    id tp = [[_meta valueForKey:uMeta_RewardList] objectFromJSONString];
+    if (!tp || ![tp isKindOfClass:[NSArray class]]) return nil;
+    NSMutableArray * list = [[NSMutableArray alloc] init];
+    for (NSString * str in tp) {
+        NSDate * createTime = [DateFormatter datetimeFromTimestampStr:str];
+        Diary * d = [[DiaryModel sharedDiaryModel] diaryAtDate:createTime];
+        if (d) {
+            [list addObject:d];
+        }
+    }
+    return list;
+}
+
+- (void)resetRewardList
+{
+    [self uploadUserMetaVal:@"[]" forKey:uMeta_RewardList];
+}
+
 - (enum userActionResult)rejectInvite
 {
     return [self uploadUserMetaVal:@"" forKey:uMeta_InvitedKey];

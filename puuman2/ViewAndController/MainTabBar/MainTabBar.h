@@ -14,7 +14,6 @@
 {
     UIView *selectedBoard;
     MainTabBarButton *diaryBtn;
-    MainTabBarButton *babyInfoBtn;
     MainTabBarButton *socialBtn;
     MainTabBarButton *shopBtn;
     MainTabBarButton *settingBtn;

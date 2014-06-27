@@ -1,6 +1,6 @@
 //
 //  UserInfo.h
-//  puman
+//  puuman model
 //
 //  Created by 陈晔 on 13-4-13.
 //  Copyright (c) 2013年 ÂàõÂßã‰∫∫Âõ¢Èòü. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FileUploader.h"
-#import "JSONKit.h" 
+#import "JSONKit.h"
 #import "MD5.h"
 #import "MobClick.h"
 #import "UniverseConstant.h"
@@ -22,8 +22,33 @@
 #define kUserIdentity_Father    @"father"
 #define kUserIdentity_Mother    @"mother"
 
+#define userInfoKey                 @"userInfo"
+#define userInfo_uid                @"userID"
+#define userInfo_bid                @"userBID"
+#define userInfo_identity           @"userIdentity"
+#define userInfo_mail               @"usermailAddr"
+#define userInfo_phone              @"userPhoneNum"
+#define userInfo_UCorns             @"userPuman"
+#define userInfo_UCornsConnect      @"userPumanConnect"
+#define userInfo_UCornsUsed         @"userUCornsUsed"
+#define userInfo_pumanBound             @"userPumanBound"
+#define userInfo_pumanLocalAdded        @"userPumanLocalAdded"
+#define userInfo_pumanLocalAddedDaily   @"userPumanLocalAddedDaily"
+#define userInfo_pumanLocalAddedTime    @"userPumanLocalTime"
+#define userInfo_Baby               @"userBaby"
+#define userInfo_pumanUsed          @"userPumanUsed"
+#define userInfo_meta               @"userMeta"
+#define userInfo_pwdMd5             @"userPwdMd5"
+#define userInfo_createTime         @"userCreateTime"
+
+#define uMetaKey                    @"_puman_UserMeta"
+#define uMeta_alipayAccount         @"AliPayAccount"
+#define uMeta_InviteStateKey        @"InviteState"
+#define uMeta_InvitedKey            @"Invited"
+#define uMeta_RewardList            @"RewardList"
+
 typedef enum userActionResult{
-     //both
+    //both
     succeeded = -1,
     otherError = 0,
     timeOut = 1,
@@ -71,6 +96,8 @@ typedef enum inviteState {
 @property (assign, readonly) double           UCornsUsed;
 @property (assign, readonly) double           UCornsBound;
 
+@property (assign, readonly) double           UCorns_connect;
+
 //登录时填充
 @property (retain) NSString*        mailAddr;
 @property (retain) NSString*        phoneNum;
@@ -113,16 +140,20 @@ typedef enum inviteState {
 - (enum userActionResult)acceptInvite;
 - (enum userActionResult)rejectInvite;
 
+//打赏 新打赏的日记列表
+- (NSArray *)rewardDiaryList;
+- (void)resetRewardList;
+
 //邀请
 - (enum userActionResult)sendInvitationToMail:(NSString *)mail phoneNum:(NSString *)phone;
 /*
- succeeded, timeOut, otherError, 
+ succeeded, timeOut, otherError,
  dumplicated: 被邀请用户已注册
  */
 - (enum userActionResult)verifyUser:(BOOL)verifMail;
 /*
-succeeded, timeOut, otherError
-*/
+ succeeded, timeOut, otherError
+ */
 - (enum userActionResult)verifyPhoneWithCode:verif;
 /*
  succeeded, timeOut, checkFaild（验证码有误）, otherError

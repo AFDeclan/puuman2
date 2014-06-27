@@ -51,8 +51,6 @@ static DiaryViewController * instance;
 
     diaryTableVC = [[DiaryTableViewController alloc] init];
     [self.view addSubview:diaryTableVC.view];
-
-    
     newBtn = [[DiaryNewButton alloc] initWithFrame:CGRectMake(0, 0, 56, 88)];
     [self.view addSubview:newBtn];
     [newBtn setCommonBtnType:[self newBtnType]];
@@ -68,38 +66,13 @@ static DiaryViewController * instance;
 
 }
 
-- (void)initActiveView
-{
-    
-    activeNewestView = [[UIView alloc] initWithFrame:CGRectMake(768, 0, 240, 656)];
-    [activeNewestView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview:activeNewestView];
-    
-    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 656)];
-    [bgImgView setImage:[UIImage imageNamed:@"bg_calendar_diary.png"]];
-    [activeNewestView addSubview:bgImgView];
-    
-    joinView = [[JoinView alloc] initWithFrame:CGRectMake(0, 0, 240, 288)];
-    [joinView setBackgroundColor:[UIColor clearColor]];
-    [activeNewestView addSubview:joinView];
-    
-    UIImageView *partingLineOne = [[UIImageView alloc] initWithFrame:CGRectMake(0, 288, 240, 2)];
-    [partingLineOne setImage:[UIImage imageNamed:@"line1_diary.png"]];
-    [partingLineOne setBackgroundColor:[UIColor clearColor]];
-    [activeNewestView addSubview:partingLineOne];
-    
-    calenderView = [[CalenderControlView alloc] initWithFrame:CGRectMake(0, 290, 240, 340)];
-    [calenderView setBackgroundColor:[UIColor clearColor]];
-    [activeNewestView addSubview:calenderView];
-    
 
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor clearColor]];
-    [self initActiveView];
+    [self initToolsView];
     [self initContent];
     
 	// Do any additional setup after loading the view.
@@ -127,6 +100,39 @@ static DiaryViewController * instance;
     [self performSelector:@selector(loadTable) withObject:nil afterDelay:0.1];
 }
 
+
+- (void)initToolsView
+{
+    toolsView = [[ToolsView alloc] initWithFrame:CGRectMake(768, 0, 240, 656)];
+    [self.view addSubview:toolsView];
+}
+
+- (void)initActiveView
+{
+    
+    
+    
+    
+   
+    
+  
+    
+    
+    
+//    UIImageView *partingLineOne = [[UIImageView alloc] initWithFrame:CGRectMake(0, 288, 240, 2)];
+//    [partingLineOne setImage:[UIImage imageNamed:@"line1_diary.png"]];
+//    [partingLineOne setBackgroundColor:[UIColor clearColor]];
+//    [activeNewestView addSubview:partingLineOne];
+//    
+//    calenderView = [[CalenderControlView alloc] initWithFrame:CGRectMake(0, 290, 240, 340)];
+//    [calenderView setBackgroundColor:[UIColor clearColor]];
+//    [activeNewestView addSubview:calenderView];
+    
+    
+}
+
+
+
 - (void)loadTable
 {
     PostNotification(Noti_LoadDiaryCellInfo, nil);
@@ -153,7 +159,7 @@ static DiaryViewController * instance;
 -(void)setVerticalFrame
 {
    
-    [activeNewestView setAlpha:0];
+    [toolsView setAlpha:0];
     [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 1024)];
     [newBtn setFrame:CGRectMake(680, 904, 56, 88)];
     
@@ -220,7 +226,7 @@ static DiaryViewController * instance;
 //横屏
 -(void)setHorizontalFrame
 {
-    [activeNewestView setAlpha:1];
+    [toolsView setAlpha:1];
     [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 768)];
     [newBtn setFrame:CGRectMake(936, 648, 56, 88)];
     
@@ -280,19 +286,10 @@ static DiaryViewController * instance;
             
         }
     }
-   SetViewLeftUp(activeNewestView, 768, -30);
-    [self performSelectorOnMainThread:@selector(animateWithActiveView) withObject:nil waitUntilDone:0];
+    [toolsView showAnimate];
 }
 
-- (void)animateWithActiveView
-{
-   
-    [UIView animateWithDuration:1 animations:^{
-        SetViewLeftUp(activeNewestView, 768, 0);
-    }completion:^(BOOL finished) {
-        [calenderView show];
-    }];
-}
+
 
 - (void)didReceiveMemoryWarning
 {
