@@ -36,7 +36,7 @@
     [bgImgView setImage:[UIImage imageNamed:@"bg_calendar_diary.png"]];
     [contentView addSubview:bgImgView];
     toolsInfo = [[ToolsInfoView alloc] initWithFrame:CGRectMake(0, 0, 240, 144)];
-    [self addSubview:toolsInfo];
+    [contentView addSubview:toolsInfo];
     
     
 }
@@ -107,26 +107,27 @@
 {
 
         if (!animated) {
-            animated = YES;
+        
             if (selectedIndex == flag) {
-                PostNotification(Noti_HiddenTools, [NSNumber numberWithInt:flag]);
-                
-                [UIView animateWithDuration:0.5 animations:^{
-                    [unitViews[flag] setFrame:CGRectMake(0, unitViews[flag].frame.origin.y, 240, 48)];
-                    [self movedFollowFlag:flag+1];
-                    
-                }completion:^(BOOL finished) {
-                    selectedIndex = -1;
-                    animated =  NO;
-                }];
+//                PostNotification(Noti_HiddenTools, [NSNumber numberWithInt:flag]);
+//                
+//                [UIView animateWithDuration:0.5 animations:^{
+//                    [unitViews[flag] setFrame:CGRectMake(0, unitViews[flag].frame.origin.y, 240, 48)];
+//                    [self movedFollowFlag:flag+1];
+//                    
+//                }completion:^(BOOL finished) {
+//                    selectedIndex = -1;
+//                    animated =  NO;
+//                }];
                 
             }else{
+                animated = YES;
                 PostNotification(Noti_ShowTools, [NSNumber numberWithInt:flag]);
                 [unitViews[flag] refreshInfo];
                 [UIView animateWithDuration:0.5 animations:^{
                     
                     if (flag < selectedIndex) {
-                        [unitViews[flag] setFrame:CGRectMake(0, 48*flag+56, 240, [ToolsUnitView heightWithTheIndex:flag])];
+                        [unitViews[flag] setFrame:CGRectMake(0, 48*flag+144, 240, [ToolsUnitView heightWithTheIndex:flag])];
                         [self movedFollowFlag:flag+1 ToIndex:selectedIndex];
                         [unitViews[selectedIndex] setFrame:CGRectMake(0, unitViews[selectedIndex-1].frame.origin.y+ unitViews[selectedIndex-1].frame.size.height, 240, 48)];
                         [self movedFollowFlag:selectedIndex+1 ToIndex:3];
@@ -137,7 +138,7 @@
                             [unitViews[selectedIndex] setFrame:CGRectMake(0, unitViews[selectedIndex].frame.origin.y, 240, 48)];
                             [self movedFollowFlag:selectedIndex+1 ToIndex:flag];
                         }
-                        [unitViews[flag] setFrame:CGRectMake(0, 48*flag+56, 240, [ToolsUnitView heightWithTheIndex:flag])];
+                        [unitViews[flag] setFrame:CGRectMake(0, 48*flag+144, 240, [ToolsUnitView heightWithTheIndex:flag])];
                         [self movedFollowFlag:flag+1 ToIndex:3];
                         
                     }

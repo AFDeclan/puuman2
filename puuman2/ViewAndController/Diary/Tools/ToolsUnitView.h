@@ -19,6 +19,7 @@
 @property(nonatomic,assign)id<ToolsUnitViewDelegate>delegate;
 @property(nonatomic,assign) NSInteger flagNum;
 - (void)refreshInfo;
+- (void)initialization;
 +(float)heightWithTheIndex:(NSInteger)index;
 @end
 @protocol ToolsUnitViewDelegate <NSObject>

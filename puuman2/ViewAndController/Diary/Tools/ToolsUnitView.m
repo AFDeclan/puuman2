@@ -21,19 +21,21 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self initialization];
-        [self setBackgroundColor:PMColor4];
+
     }
     return self;
 }
 
 - (void)initialization
 {
+
+    content = [[UIView alloc] initWithFrame:CGRectMake(0, 48, 240, self.frame.size.height-48)];
+    [self addSubview:content];
+    
     settingBtn = [[ToolsSelectedButton alloc] init];
     [settingBtn addTarget:self action:@selector(foldOrUnFold) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:settingBtn];
-    content = [[UIView alloc] initWithFrame:CGRectMake(0, 48, 240, self.frame.size.height-48)];
-    [self addSubview:content];
+    
 
 }
 

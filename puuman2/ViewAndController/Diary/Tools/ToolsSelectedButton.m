@@ -50,14 +50,14 @@
     [titleLabel setTextColor:[UIColor whiteColor]];
     [self addSubview:titleLabel];
     [titleLabel setFont:PMFont2];
-    [self setBackgroundColor:PMColor6];
+    [self setBackgroundColor:PMColor4];
 }
 
 - (void)hiddenTools:(NSNotification *)notification
 {
      if (_flagNum < 3) {
         [UIView animateWithDuration:0.5 animations:^{
-            [self setBackgroundColor:PMColor6];
+            [self setBackgroundColor:PMColor4];
             [titleLabel setTextColor:[UIColor whiteColor]];
             [triFlag setTransform:CGAffineTransformMakeRotation(0)];
             [triFlag2 setTransform:CGAffineTransformMakeRotation(0)];
@@ -91,7 +91,7 @@
             }];
         }else{
             [UIView animateWithDuration:0.5 animations:^{
-                [self setBackgroundColor:PMColor6];
+                [self setBackgroundColor:PMColor4];
                 [titleLabel setTextColor:[UIColor whiteColor]];
                 [triFlag setTransform:CGAffineTransformMakeRotation(0)];
                 [triFlag2 setTransform:CGAffineTransformMakeRotation(0)];

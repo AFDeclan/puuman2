@@ -16,18 +16,26 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setContentView];
-        self.layer.masksToBounds = YES;
+        [self initialization];
 
     }
     return self;
 }
 
+- (void)initialization
+{
+    self.layer.masksToBounds = YES;
+    [super initialization];
+    [self setContentView];
+
+}
+
 - (void)setContentView
 {
+    
     self.backgroundColor = PMColor4;
     joinView = [[JoinView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    [self addSubview:joinView];
+    [content addSubview:joinView];
     [joinView refreshStaus];
 
 

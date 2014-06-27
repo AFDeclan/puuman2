@@ -16,26 +16,33 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setContentView];
+        [self initialization];
 
     }
     return self;
 }
 
+- (void)initialization
+{
+    self.layer.masksToBounds = YES;
+    [super initialization];
+    [self setContentView];
+}
 - (void)setContentView
 {
-    pieView = [[PieView alloc] initWithFrame:CGRectMake(40, 60, 160, 180)];
-    [self addSubview:pieView];
+    
+    pieView = [[PieView alloc] initWithFrame:CGRectMake(40, 16, 160, 180)];
+    [content addSubview:pieView];
+    
     pieView.pieLayerDelegate = self;
-    self.layer.masksToBounds = YES;
     [pieView setBackgroundColor:[UIColor clearColor]];
     [pieView setAlpha:0];
-     [self animateStartEnd];
+    [self animateStartEnd];
     [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns] atIndex:0 color: PMColor6];
     [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns_connect] atIndex:1 color:PMColor8];
 
-    coinView = [[UIView alloc] initWithFrame:CGRectMake(40, 48, 160, 216)];
-    [self addSubview:coinView];
+    coinView = [[UIView alloc] initWithFrame:CGRectMake(40, 4, 160, 216)];
+    [content addSubview:coinView];
     [coinView setBackgroundColor:[UIColor clearColor]];
    
     coinMother = [[UILabel alloc] initWithFrame:CGRectMake(0, -4, 160, 20)];
