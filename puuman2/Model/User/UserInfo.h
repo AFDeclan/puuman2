@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FileUploader.h"
-#import "JSONKit.h" 
+#import "JSONKit.h"
 #import "MD5.h"
 #import "MobClick.h"
 #import "UniverseConstant.h"
@@ -29,10 +29,11 @@
 #define userInfo_mail               @"usermailAddr"
 #define userInfo_phone              @"userPhoneNum"
 #define userInfo_UCorns             @"userPuman"
+#define userInfo_UCornsConnect      @"userPumanConnect"
 #define userInfo_UCornsUsed         @"userUCornsUsed"
-#define userInfo_pumanBound         @"userPumanBound"
-#define userInfo_pumanLocalAdded    @"userPumanLocalAdded"
-#define userInfo_pumanLocalAddedDaily    @"userPumanLocalAddedDaily"
+#define userInfo_pumanBound             @"userPumanBound"
+#define userInfo_pumanLocalAdded        @"userPumanLocalAdded"
+#define userInfo_pumanLocalAddedDaily   @"userPumanLocalAddedDaily"
 #define userInfo_pumanLocalAddedTime    @"userPumanLocalTime"
 #define userInfo_Baby               @"userBaby"
 #define userInfo_pumanUsed          @"userPumanUsed"
@@ -47,7 +48,7 @@
 #define uMeta_RewardList            @"RewardList"
 
 typedef enum userActionResult{
-     //both
+    //both
     succeeded = -1,
     otherError = 0,
     timeOut = 1,
@@ -94,6 +95,8 @@ typedef enum inviteState {
 @property (assign, readonly) double           UCorns;
 @property (assign, readonly) double           UCornsUsed;
 @property (assign, readonly) double           UCornsBound;
+
+@property (assign, readonly) double           UCorns_connect;
 
 //登录时填充
 @property (retain) NSString*        mailAddr;
@@ -144,13 +147,13 @@ typedef enum inviteState {
 //邀请
 - (enum userActionResult)sendInvitationToMail:(NSString *)mail phoneNum:(NSString *)phone;
 /*
- succeeded, timeOut, otherError, 
+ succeeded, timeOut, otherError,
  dumplicated: 被邀请用户已注册
  */
 - (enum userActionResult)verifyUser:(BOOL)verifMail;
 /*
-succeeded, timeOut, otherError
-*/
+ succeeded, timeOut, otherError
+ */
 - (enum userActionResult)verifyPhoneWithCode:verif;
 /*
  succeeded, timeOut, checkFaild（验证码有误）, otherError

@@ -91,6 +91,7 @@ static UserInfo *instance = nil;
         }
         _createTime = [uInfo valueForKey:userInfo_createTime];
         _UCorns = [[uInfo valueForKey:userInfo_UCorns] doubleValue];
+        _UCorns_connect = [[uInfo valueForKey:userInfo_UCornsConnect] doubleValue];
         _UCornsUsed = [[uInfo valueForKey:userInfo_UCornsUsed] doubleValue];
         _UCornsBound = [[uInfo valueForKey:userInfo_pumanBound] doubleValue];
         _UCornsLocalAdded = [[uInfo valueForKey:userInfo_pumanLocalAdded] doubleValue];
@@ -147,6 +148,7 @@ static UserInfo *instance = nil;
     [uInfo setValue:[NSString stringWithFormat:@"%d", _UID] forKey:userInfo_uid];
     [uInfo setValue:[NSString stringWithFormat:@"%d", _BID] forKey:userInfo_bid];
     [uInfo setValue:[NSString stringWithFormat:@"%f", _UCorns] forKey:userInfo_UCorns];
+    [uInfo setValue:[NSString stringWithFormat:@"%f", _UCorns_connect] forKey:userInfo_UCornsConnect];
     [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsUsed] forKey:userInfo_UCornsUsed];
     [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsBound] forKey:userInfo_pumanBound];
     [uInfo setValue:[NSString stringWithFormat:@"%f", _UCornsLocalAdded] forKey:userInfo_pumanLocalAdded];
@@ -349,6 +351,7 @@ static UserInfo *instance = nil;
     _UMail = [dic objectForKey:@"UMail"];
     _pwd_md5 = [dic objectForKey:@"UPwd"];
     _UCorns = [[dic valueForKey:@"UCorns"] doubleValue];
+    _UCorns_connect = [[dic valueForKey:@"UCorns_connect"] doubleValue];
     _UCornsUsed = [[dic valueForKey:@"UCornsUsed"] doubleValue];
     _UCornsBound = [[dic valueForKey:@"UCornsBound"] doubleValue];
     _UCornsLocalAdded = 0;
@@ -379,8 +382,8 @@ static UserInfo *instance = nil;
         if (_shareVideo && _shareVideo.RID ==[[tp valueForKey:@"RID"] integerValue]) {
             _shareVideo = [[ShareVideo alloc] init];
             [_shareVideo initWithData:tp];
-
-
+            
+            
         }else{
             if (!_shareVideo) {
                 _shareVideo = [[ShareVideo alloc] init];

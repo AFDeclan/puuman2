@@ -15,6 +15,10 @@
 #import "SettingViewController.h"
 #import "VideoShowView.h"
 #import "VideoShowButton.h"
+#import "PuuamnShowView.h"
+#import "BabyView.h"
+#import "BabyShowButton.h"
+
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
 
@@ -32,6 +36,10 @@
     NSTimer *timer;
     float progress;
     NSString *videoPath;
+    PuuamnShowView *puumanView;
+    BabyView *infoView;
+    BabyShowButton *babyShowBtn;
+    UIButton *babyInfoBtn;
 
 }
 
@@ -53,4 +61,7 @@
 - (void)removeAutoImportView;
 - (void)showAutoImportView;
 - (void)hiddenBottomInputView;
+- (void)updatePuumanData;
+- (void)refreshBabyInfoView;
+
 @end

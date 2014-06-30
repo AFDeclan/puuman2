@@ -6,13 +6,13 @@
 //  Copyright (c) 2013年 创始人团队. All rights reserved.
 //
 
-#import "DiaryHeaderView.h"
+#import "DiaryProgressHeaderView.h"
 #import "DiaryViewController.h"
 #import "Device.h"
 #import "ColorsAndFonts.h"
 #import "ImportStore.h"
 
-@implementation DiaryHeaderView
+@implementation DiaryProgressHeaderView
 @synthesize isDiary =_isDiary;
 
 - (id)initWithFrame:(CGRect)frame

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14038C75194C401D00802BD5 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 14038C74194C401D00802BD5 /* Share.m */; };
 		14038C78194C403400802BD5 /* ShareVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14038C77194C403400802BD5 /* ShareVideo.m */; };
 		1405E0CE18FE97B300781B81 /* AsyncImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1405E0CD18FE97B300781B81 /* AsyncImgView.m */; };
 		145237F0193D5B5900A3A2BB /* BabyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 145237EF193D5B5900A3A2BB /* BabyInfo.m */; };
@@ -56,7 +55,6 @@
 		14B8DF2C18BC37A30047C6B3 /* BabyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DEB418BC37A30047C6B3 /* BabyData.m */; };
 		14B8DF2D18BC37A30047C6B3 /* RegisterForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DEB618BC37A30047C6B3 /* RegisterForm.m */; };
 		14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DEB818BC37A30047C6B3 /* SocialNetwork.m */; };
-		14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DEBA18BC37A30047C6B3 /* UserInfo.m */; };
 		14B8DF3018BC37A30047C6B3 /* sampleDiary_auphoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14B8DEBD18BC37A30047C6B3 /* sampleDiary_auphoto.jpg */; };
 		14B8DF3118BC37A30047C6B3 /* sampleDiary_auphoto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14B8DEBE18BC37A30047C6B3 /* sampleDiary_auphoto.mp3 */; };
 		14B8DF3218BC37A30047C6B3 /* sampleDiary_photo1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14B8DEBF18BC37A30047C6B3 /* sampleDiary_photo1.jpg */; };
@@ -87,10 +85,6 @@
 		54012DFC18E3095F00F11D97 /* VaccinePartnerDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54012DFB18E3095F00F11D97 /* VaccinePartnerDataCell.m */; };
 		54012DFF18E3097200F11D97 /* PuumanPartnerDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54012DFE18E3097200F11D97 /* PuumanPartnerDataCell.m */; };
 		5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */; };
-		5403CC6518D03B68004CAE22 /* JoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC6418D03B68004CAE22 /* JoinView.m */; };
-		5403CC7218D03B7D004CAE22 /* InviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC6818D03B7D004CAE22 /* InviteView.m */; };
-		5403CC7318D03B7D004CAE22 /* WaitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5403CC6A18D03B7D004CAE22 /* WaitView.m */; };
-		5403CC7618D03B7D004CAE22 /* DiaryShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5403CC6F18D03B7D004CAE22 /* DiaryShowCell.xib */; };
 		5403CD3018D03D39004CAE22 /* icon10_weather_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5403CD0C18D03D39004CAE22 /* icon10_weather_diary.png */; };
 		5403CD3118D03D39004CAE22 /* icon10_weather_diary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5403CD0D18D03D39004CAE22 /* icon10_weather_diary@2x.png */; };
 		5403CD3218D03D39004CAE22 /* icon11_weather_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5403CD0E18D03D39004CAE22 /* icon11_weather_diary.png */; };
@@ -181,8 +175,6 @@
 		5412BC5B192C80560033F322 /* PhotoSingleDiaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412BC59192C80560033F322 /* PhotoSingleDiaryCell.m */; };
 		5412BC5E192C80AD0033F322 /* ImportStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412BC5D192C80AD0033F322 /* ImportStore.m */; };
 		5412BC61192C818F0033F322 /* DiaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412BC60192C818F0033F322 /* DiaryTableViewController.m */; };
-		5412BC64192C829E0033F322 /* DiaryShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412BC63192C829E0033F322 /* DiaryShowCell.m */; };
-		5412BC66192C830E0033F322 /* DynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412BC65192C830E0033F322 /* DynamicView.m */; };
 		541970AA18D188F40058FE64 /* pic_body_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 541970A318D188F40058FE64 /* pic_body_blank.png */; };
 		541970AB18D188F40058FE64 /* pic_cart_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 541970A418D188F40058FE64 /* pic_cart_blank.png */; };
 		541970AC18D188F40058FE64 /* pic_diary_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 541970A518D188F40058FE64 /* pic_diary_blank.png */; };
@@ -392,7 +384,7 @@
 		54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1D918E1862A00FCCC83 /* AudioTopicCell.m */; };
 		54ADB1E318E1AA4C00FCCC83 /* AuToImportImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1E018E1AA4C00FCCC83 /* AuToImportImgCell.m */; };
 		54ADB1E618E1AC1D00FCCC83 /* AutoImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1E518E1AC1D00FCCC83 /* AutoImportViewController.m */; };
-		54ADB1EC18E1B39000FCCC83 /* DiaryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1EB18E1B39000FCCC83 /* DiaryHeaderView.m */; };
+		54ADB1EC18E1B39000FCCC83 /* DiaryProgressHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADB1EB18E1B39000FCCC83 /* DiaryProgressHeaderView.m */; };
 		54ADE07518C85B6B00B166C4 /* DiaryNewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */; };
 		54ADE07D18C85D1C00B166C4 /* btn_more_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE07718C85D1C00B166C4 /* btn_more_diary.png */; };
 		54ADE07E18C85D1C00B166C4 /* btn2_audio_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ADE07818C85D1C00B166C4 /* btn2_audio_diary.png */; };
@@ -463,6 +455,36 @@
 		54B06C2B1929C34000539EA5 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C2A1929C34000539EA5 /* block_photo_diary.png */; };
 		54B06C2D1929C37B00539EA5 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C2C1929C37B00539EA5 /* block_photo_diary.png */; };
 		54B06C321929F65600539EA5 /* btn_preinfo_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C311929F65600539EA5 /* btn_preinfo_baby.png */; };
+		54B30A6C195D4A9600007DDC /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A6B195D4A9500007DDC /* UserInfo.m */; };
+		54B30A70195D4C1600007DDC /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A6F195D4C1600007DDC /* Share.m */; };
+		54B30A88195D53EC00007DDC /* NSMutableArray+pieEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A73195D53EC00007DDC /* NSMutableArray+pieEx.m */; };
+		54B30A89195D53EC00007DDC /* PieElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A75195D53EC00007DDC /* PieElement.m */; };
+		54B30A8A195D53EC00007DDC /* PieLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A77195D53EC00007DDC /* PieLayer.m */; };
+		54B30A8B195D53EC00007DDC /* PieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A79195D53EC00007DDC /* PieView.m */; };
+		54B30A8C195D53EC00007DDC /* ToolsCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A7B195D53EC00007DDC /* ToolsCalendarView.m */; };
+		54B30A8D195D53EC00007DDC /* ToolsCoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A7D195D53EC00007DDC /* ToolsCoinView.m */; };
+		54B30A8E195D53EC00007DDC /* ToolsDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A7F195D53EC00007DDC /* ToolsDynamicView.m */; };
+		54B30A8F195D53EC00007DDC /* ToolsInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A81195D53EC00007DDC /* ToolsInfoView.m */; };
+		54B30A90195D53EC00007DDC /* ToolsSelectedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A83195D53EC00007DDC /* ToolsSelectedButton.m */; };
+		54B30A91195D53EC00007DDC /* ToolsUnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A85195D53EC00007DDC /* ToolsUnitView.m */; };
+		54B30A92195D53EC00007DDC /* ToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A87195D53EC00007DDC /* ToolsView.m */; };
+		54B30AA0195D546900007DDC /* DiaryShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A96195D546900007DDC /* DiaryShowCell.m */; };
+		54B30AA1195D546900007DDC /* DiaryShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B30A97195D546900007DDC /* DiaryShowCell.xib */; };
+		54B30AA2195D546900007DDC /* DynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A99195D546900007DDC /* DynamicView.m */; };
+		54B30AA3195D546900007DDC /* InviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A9B195D546900007DDC /* InviteView.m */; };
+		54B30AA4195D546900007DDC /* JoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A9D195D546900007DDC /* JoinView.m */; };
+		54B30AA5195D546900007DDC /* WaitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A9F195D546900007DDC /* WaitView.m */; };
+		54B30AA9195D54C300007DDC /* CalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AA8195D54C300007DDC /* CalenderView.m */; };
+		54B30AAC195D54EE00007DDC /* AgeCalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AAB195D54EE00007DDC /* AgeCalenderView.m */; };
+		54B30AB1195D5A0500007DDC /* CalenderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AB0195D5A0500007DDC /* CalenderTableViewCell.m */; };
+		54B30AB4195D5A1600007DDC /* AgeCalenderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AB3195D5A1600007DDC /* AgeCalenderTableViewCell.m */; };
+		54B30ABB195D5C9D00007DDC /* BabyShowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AB6195D5C9D00007DDC /* BabyShowButton.m */; };
+		54B30ABC195D5C9D00007DDC /* PuuamnShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AB8195D5C9D00007DDC /* PuuamnShowView.m */; };
+		54B30ABD195D5C9D00007DDC /* PuumanButtonAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */; };
+		54B30AC5195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */; };
+		54B30AC8195D644900007DDC /* BabyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AC7195D644900007DDC /* BabyView.m */; };
+		54B30ACB195D686500007DDC /* BabyInfoBornView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30ACA195D686500007DDC /* BabyInfoBornView.m */; };
+		54B30ACE195D687400007DDC /* BabyInfoPregnancyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30ACD195D687400007DDC /* BabyInfoPregnancyView.m */; };
 		54B4680018E5154C00745F72 /* ShopAllWareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */; };
 		54B4680518E520C500745F72 /* HealthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4680318E520C500745F72 /* HealthCell.m */; };
 		54B4680618E520C500745F72 /* HealthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B4680418E520C500745F72 /* HealthCell.xib */; };
@@ -768,8 +790,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		14038C73194C401D00802BD5 /* Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share.h; sourceTree = "<group>"; };
-		14038C74194C401D00802BD5 /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
 		14038C76194C403400802BD5 /* ShareVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareVideo.h; sourceTree = "<group>"; };
 		14038C77194C403400802BD5 /* ShareVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareVideo.m; sourceTree = "<group>"; };
 		1405E0CC18FE97B300781B81 /* AsyncImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImgView.h; sourceTree = "<group>"; };
@@ -847,8 +867,6 @@
 		14B8DEB618BC37A30047C6B3 /* RegisterForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterForm.m; sourceTree = "<group>"; };
 		14B8DEB718BC37A30047C6B3 /* SocialNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialNetwork.h; sourceTree = "<group>"; };
 		14B8DEB818BC37A30047C6B3 /* SocialNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialNetwork.m; sourceTree = "<group>"; };
-		14B8DEB918BC37A30047C6B3 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
-		14B8DEBA18BC37A30047C6B3 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		14B8DEBD18BC37A30047C6B3 /* sampleDiary_auphoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sampleDiary_auphoto.jpg; sourceTree = "<group>"; };
 		14B8DEBE18BC37A30047C6B3 /* sampleDiary_auphoto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sampleDiary_auphoto.mp3; sourceTree = "<group>"; };
 		14B8DEBF18BC37A30047C6B3 /* sampleDiary_photo1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sampleDiary_photo1.jpg; sourceTree = "<group>"; };
@@ -871,7 +889,6 @@
 		14B8DF1718BC37A30047C6B3 /* Readme.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 		14B8DF1918BC37A30047C6B3 /* UmengDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmengDefine.h; sourceTree = "<group>"; };
 		14B8DF1A18BC37A30047C6B3 /* UniverseConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniverseConstant.h; sourceTree = "<group>"; };
-		14B8DF1B18BC37A30047C6B3 /* Urls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Urls.h; sourceTree = "<group>"; };
 		14B8DF1C18BC37A30047C6B3 /* UserdefaultKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserdefaultKeys.h; sourceTree = "<group>"; };
 		14B8DF5B18BC3E250047C6B3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14B8DF5D18BC3E340047C6B3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -907,14 +924,6 @@
 		54012DFE18E3097200F11D97 /* PuumanPartnerDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuumanPartnerDataCell.m; sourceTree = "<group>"; };
 		5403CC5E18D006C7004CAE22 /* DetailShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailShowViewController.h; sourceTree = "<group>"; };
 		5403CC5F18D006C7004CAE22 /* DetailShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailShowViewController.m; sourceTree = "<group>"; };
-		5403CC6318D03B68004CAE22 /* JoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinView.h; sourceTree = "<group>"; };
-		5403CC6418D03B68004CAE22 /* JoinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinView.m; sourceTree = "<group>"; };
-		5403CC6718D03B7D004CAE22 /* InviteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteView.h; sourceTree = "<group>"; };
-		5403CC6818D03B7D004CAE22 /* InviteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteView.m; sourceTree = "<group>"; };
-		5403CC6918D03B7D004CAE22 /* WaitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitView.h; sourceTree = "<group>"; };
-		5403CC6A18D03B7D004CAE22 /* WaitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitView.m; sourceTree = "<group>"; };
-		5403CC6B18D03B7D004CAE22 /* DynamicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicView.h; sourceTree = "<group>"; };
-		5403CC6F18D03B7D004CAE22 /* DiaryShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryShowCell.xib; sourceTree = "<group>"; };
 		5403CD0C18D03D39004CAE22 /* icon10_weather_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon10_weather_diary.png; sourceTree = "<group>"; };
 		5403CD0D18D03D39004CAE22 /* icon10_weather_diary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon10_weather_diary@2x.png"; sourceTree = "<group>"; };
 		5403CD0E18D03D39004CAE22 /* icon11_weather_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon11_weather_diary.png; sourceTree = "<group>"; };
@@ -1016,9 +1025,6 @@
 		5412BC5D192C80AD0033F322 /* ImportStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportStore.m; sourceTree = "<group>"; };
 		5412BC5F192C818F0033F322 /* DiaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryTableViewController.h; sourceTree = "<group>"; };
 		5412BC60192C818F0033F322 /* DiaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryTableViewController.m; sourceTree = "<group>"; };
-		5412BC62192C829E0033F322 /* DiaryShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryShowCell.h; sourceTree = "<group>"; };
-		5412BC63192C829E0033F322 /* DiaryShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryShowCell.m; sourceTree = "<group>"; };
-		5412BC65192C830E0033F322 /* DynamicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicView.m; sourceTree = "<group>"; };
 		541970A318D188F40058FE64 /* pic_body_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_body_blank.png; sourceTree = "<group>"; };
 		541970A418D188F40058FE64 /* pic_cart_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_cart_blank.png; sourceTree = "<group>"; };
 		541970A518D188F40058FE64 /* pic_diary_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_diary_blank.png; sourceTree = "<group>"; };
@@ -1301,8 +1307,8 @@
 		54ADB1E018E1AA4C00FCCC83 /* AuToImportImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuToImportImgCell.m; sourceTree = "<group>"; };
 		54ADB1E418E1AC1D00FCCC83 /* AutoImportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoImportViewController.h; sourceTree = "<group>"; };
 		54ADB1E518E1AC1D00FCCC83 /* AutoImportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoImportViewController.m; sourceTree = "<group>"; };
-		54ADB1EA18E1B39000FCCC83 /* DiaryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryHeaderView.h; sourceTree = "<group>"; };
-		54ADB1EB18E1B39000FCCC83 /* DiaryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryHeaderView.m; sourceTree = "<group>"; };
+		54ADB1EA18E1B39000FCCC83 /* DiaryProgressHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryProgressHeaderView.h; sourceTree = "<group>"; };
+		54ADB1EB18E1B39000FCCC83 /* DiaryProgressHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryProgressHeaderView.m; sourceTree = "<group>"; };
 		54ADE07318C85B6B00B166C4 /* DiaryNewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryNewButton.h; sourceTree = "<group>"; };
 		54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryNewButton.m; sourceTree = "<group>"; };
 		54ADE07718C85D1C00B166C4 /* btn_more_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_more_diary.png; sourceTree = "<group>"; };
@@ -1416,6 +1422,66 @@
 		54B06C2A1929C34000539EA5 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		54B06C2C1929C37B00539EA5 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		54B06C311929F65600539EA5 /* btn_preinfo_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_preinfo_baby.png; sourceTree = "<group>"; };
+		54B30A6A195D4A9500007DDC /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		54B30A6B195D4A9500007DDC /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		54B30A6D195D4BDD00007DDC /* Urls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Urls.h; sourceTree = "<group>"; };
+		54B30A6E195D4C1600007DDC /* Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share.h; sourceTree = "<group>"; };
+		54B30A6F195D4C1600007DDC /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
+		54B30A72195D53EC00007DDC /* NSMutableArray+pieEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+pieEx.h"; sourceTree = "<group>"; };
+		54B30A73195D53EC00007DDC /* NSMutableArray+pieEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+pieEx.m"; sourceTree = "<group>"; };
+		54B30A74195D53EC00007DDC /* PieElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieElement.h; sourceTree = "<group>"; };
+		54B30A75195D53EC00007DDC /* PieElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieElement.m; sourceTree = "<group>"; };
+		54B30A76195D53EC00007DDC /* PieLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieLayer.h; sourceTree = "<group>"; };
+		54B30A77195D53EC00007DDC /* PieLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieLayer.m; sourceTree = "<group>"; };
+		54B30A78195D53EC00007DDC /* PieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieView.h; sourceTree = "<group>"; };
+		54B30A79195D53EC00007DDC /* PieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieView.m; sourceTree = "<group>"; };
+		54B30A7A195D53EC00007DDC /* ToolsCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsCalendarView.h; sourceTree = "<group>"; };
+		54B30A7B195D53EC00007DDC /* ToolsCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsCalendarView.m; sourceTree = "<group>"; };
+		54B30A7C195D53EC00007DDC /* ToolsCoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsCoinView.h; sourceTree = "<group>"; };
+		54B30A7D195D53EC00007DDC /* ToolsCoinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsCoinView.m; sourceTree = "<group>"; };
+		54B30A7E195D53EC00007DDC /* ToolsDynamicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsDynamicView.h; sourceTree = "<group>"; };
+		54B30A7F195D53EC00007DDC /* ToolsDynamicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsDynamicView.m; sourceTree = "<group>"; };
+		54B30A80195D53EC00007DDC /* ToolsInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsInfoView.h; sourceTree = "<group>"; };
+		54B30A81195D53EC00007DDC /* ToolsInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsInfoView.m; sourceTree = "<group>"; };
+		54B30A82195D53EC00007DDC /* ToolsSelectedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsSelectedButton.h; sourceTree = "<group>"; };
+		54B30A83195D53EC00007DDC /* ToolsSelectedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsSelectedButton.m; sourceTree = "<group>"; };
+		54B30A84195D53EC00007DDC /* ToolsUnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsUnitView.h; sourceTree = "<group>"; };
+		54B30A85195D53EC00007DDC /* ToolsUnitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsUnitView.m; sourceTree = "<group>"; };
+		54B30A86195D53EC00007DDC /* ToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsView.h; sourceTree = "<group>"; };
+		54B30A87195D53EC00007DDC /* ToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsView.m; sourceTree = "<group>"; };
+		54B30A95195D546900007DDC /* DiaryShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryShowCell.h; sourceTree = "<group>"; };
+		54B30A96195D546900007DDC /* DiaryShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryShowCell.m; sourceTree = "<group>"; };
+		54B30A97195D546900007DDC /* DiaryShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryShowCell.xib; sourceTree = "<group>"; };
+		54B30A98195D546900007DDC /* DynamicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicView.h; sourceTree = "<group>"; };
+		54B30A99195D546900007DDC /* DynamicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicView.m; sourceTree = "<group>"; };
+		54B30A9A195D546900007DDC /* InviteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteView.h; sourceTree = "<group>"; };
+		54B30A9B195D546900007DDC /* InviteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteView.m; sourceTree = "<group>"; };
+		54B30A9C195D546900007DDC /* JoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinView.h; sourceTree = "<group>"; };
+		54B30A9D195D546900007DDC /* JoinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinView.m; sourceTree = "<group>"; };
+		54B30A9E195D546900007DDC /* WaitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitView.h; sourceTree = "<group>"; };
+		54B30A9F195D546900007DDC /* WaitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitView.m; sourceTree = "<group>"; };
+		54B30AA7195D54C300007DDC /* CalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderView.h; sourceTree = "<group>"; };
+		54B30AA8195D54C300007DDC /* CalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderView.m; sourceTree = "<group>"; };
+		54B30AAA195D54EE00007DDC /* AgeCalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalenderView.h; sourceTree = "<group>"; };
+		54B30AAB195D54EE00007DDC /* AgeCalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalenderView.m; sourceTree = "<group>"; };
+		54B30AAF195D5A0500007DDC /* CalenderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderTableViewCell.h; sourceTree = "<group>"; };
+		54B30AB0195D5A0500007DDC /* CalenderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderTableViewCell.m; sourceTree = "<group>"; };
+		54B30AB2195D5A1600007DDC /* AgeCalenderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalenderTableViewCell.h; sourceTree = "<group>"; };
+		54B30AB3195D5A1600007DDC /* AgeCalenderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalenderTableViewCell.m; sourceTree = "<group>"; };
+		54B30AB5195D5C9D00007DDC /* BabyShowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyShowButton.h; sourceTree = "<group>"; };
+		54B30AB6195D5C9D00007DDC /* BabyShowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyShowButton.m; sourceTree = "<group>"; };
+		54B30AB7195D5C9D00007DDC /* PuuamnShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuuamnShowView.h; sourceTree = "<group>"; };
+		54B30AB8195D5C9D00007DDC /* PuuamnShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuuamnShowView.m; sourceTree = "<group>"; };
+		54B30AB9195D5C9D00007DDC /* PuumanButtonAnimateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuumanButtonAnimateView.h; sourceTree = "<group>"; };
+		54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuumanButtonAnimateView.m; sourceTree = "<group>"; };
+		54B30AC3195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+DragAnimation.h"; sourceTree = "<group>"; };
+		54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+DragAnimation.m"; sourceTree = "<group>"; };
+		54B30AC6195D644900007DDC /* BabyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyView.h; sourceTree = "<group>"; };
+		54B30AC7195D644900007DDC /* BabyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyView.m; sourceTree = "<group>"; };
+		54B30AC9195D686500007DDC /* BabyInfoBornView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoBornView.h; sourceTree = "<group>"; };
+		54B30ACA195D686500007DDC /* BabyInfoBornView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoBornView.m; sourceTree = "<group>"; };
+		54B30ACC195D687400007DDC /* BabyInfoPregnancyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoPregnancyView.h; sourceTree = "<group>"; };
+		54B30ACD195D687400007DDC /* BabyInfoPregnancyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoPregnancyView.m; sourceTree = "<group>"; };
 		54B467FE18E5154C00745F72 /* ShopAllWareHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAllWareHeaderView.h; sourceTree = "<group>"; };
 		54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAllWareHeaderView.m; sourceTree = "<group>"; };
 		54B4680218E520C500745F72 /* HealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthCell.h; sourceTree = "<group>"; };
@@ -1860,8 +1926,8 @@
 			children = (
 				14038C76194C403400802BD5 /* ShareVideo.h */,
 				14038C77194C403400802BD5 /* ShareVideo.m */,
-				14038C73194C401D00802BD5 /* Share.h */,
-				14038C74194C401D00802BD5 /* Share.m */,
+				54B30A6E195D4C1600007DDC /* Share.h */,
+				54B30A6F195D4C1600007DDC /* Share.m */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -2082,8 +2148,8 @@
 				14B8DEB618BC37A30047C6B3 /* RegisterForm.m */,
 				14B8DEB718BC37A30047C6B3 /* SocialNetwork.h */,
 				14B8DEB818BC37A30047C6B3 /* SocialNetwork.m */,
-				14B8DEB918BC37A30047C6B3 /* UserInfo.h */,
-				14B8DEBA18BC37A30047C6B3 /* UserInfo.m */,
+				54B30A6A195D4A9500007DDC /* UserInfo.h */,
+				54B30A6B195D4A9500007DDC /* UserInfo.m */,
 				145237EE193D5B5900A3A2BB /* BabyInfo.h */,
 				145237EF193D5B5900A3A2BB /* BabyInfo.m */,
 			);
@@ -2120,8 +2186,8 @@
 				14B8DF1818BC37A30047C6B3 /* UIEx */,
 				14B8DF1918BC37A30047C6B3 /* UmengDefine.h */,
 				14B8DF1A18BC37A30047C6B3 /* UniverseConstant.h */,
-				14B8DF1B18BC37A30047C6B3 /* Urls.h */,
 				14B8DF1C18BC37A30047C6B3 /* UserdefaultKeys.h */,
+				54B30A6D195D4BDD00007DDC /* Urls.h */,
 			);
 			path = Universe;
 			sourceTree = "<group>";
@@ -2186,32 +2252,6 @@
 				54012DFE18E3097200F11D97 /* PuumanPartnerDataCell.m */,
 			);
 			name = subCell;
-			sourceTree = "<group>";
-		};
-		5403CC6218D03B53004CAE22 /* Join */ = {
-			isa = PBXGroup;
-			children = (
-				5403CC6318D03B68004CAE22 /* JoinView.h */,
-				5403CC6418D03B68004CAE22 /* JoinView.m */,
-				5403CC6618D03B6C004CAE22 /* subView */,
-			);
-			name = Join;
-			sourceTree = "<group>";
-		};
-		5403CC6618D03B6C004CAE22 /* subView */ = {
-			isa = PBXGroup;
-			children = (
-				5403CC6718D03B7D004CAE22 /* InviteView.h */,
-				5403CC6818D03B7D004CAE22 /* InviteView.m */,
-				5403CC6918D03B7D004CAE22 /* WaitView.h */,
-				5403CC6A18D03B7D004CAE22 /* WaitView.m */,
-				5403CC6B18D03B7D004CAE22 /* DynamicView.h */,
-				5412BC65192C830E0033F322 /* DynamicView.m */,
-				5412BC62192C829E0033F322 /* DiaryShowCell.h */,
-				5412BC63192C829E0033F322 /* DiaryShowCell.m */,
-				5403CC6F18D03B7D004CAE22 /* DiaryShowCell.xib */,
-			);
-			name = subView;
 			sourceTree = "<group>";
 		};
 		5403CD0A18D03D39004CAE22 /* DiaryJoinImages */ = {
@@ -2935,6 +2975,107 @@
 			name = support;
 			sourceTree = "<group>";
 		};
+		54B30A71195D53EC00007DDC /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				54B30A80195D53EC00007DDC /* ToolsInfoView.h */,
+				54B30A81195D53EC00007DDC /* ToolsInfoView.m */,
+				54B30A86195D53EC00007DDC /* ToolsView.h */,
+				54B30A87195D53EC00007DDC /* ToolsView.m */,
+				54B30AAD195D550500007DDC /* UnitView */,
+				54B30AA6195D54A600007DDC /* Calender */,
+				54B30A94195D546900007DDC /* Join */,
+				54B30A93195D53F700007DDC /* subView */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		54B30A93195D53F700007DDC /* subView */ = {
+			isa = PBXGroup;
+			children = (
+				54B30A82195D53EC00007DDC /* ToolsSelectedButton.h */,
+				54B30A83195D53EC00007DDC /* ToolsSelectedButton.m */,
+				54B30A72195D53EC00007DDC /* NSMutableArray+pieEx.h */,
+				54B30A73195D53EC00007DDC /* NSMutableArray+pieEx.m */,
+				54B30A74195D53EC00007DDC /* PieElement.h */,
+				54B30A75195D53EC00007DDC /* PieElement.m */,
+				54B30A76195D53EC00007DDC /* PieLayer.h */,
+				54B30A77195D53EC00007DDC /* PieLayer.m */,
+				54B30A78195D53EC00007DDC /* PieView.h */,
+				54B30A79195D53EC00007DDC /* PieView.m */,
+			);
+			name = subView;
+			sourceTree = "<group>";
+		};
+		54B30A94195D546900007DDC /* Join */ = {
+			isa = PBXGroup;
+			children = (
+				54B30A95195D546900007DDC /* DiaryShowCell.h */,
+				54B30A96195D546900007DDC /* DiaryShowCell.m */,
+				54B30A97195D546900007DDC /* DiaryShowCell.xib */,
+				54B30A98195D546900007DDC /* DynamicView.h */,
+				54B30A99195D546900007DDC /* DynamicView.m */,
+				54B30A9A195D546900007DDC /* InviteView.h */,
+				54B30A9B195D546900007DDC /* InviteView.m */,
+				54B30A9C195D546900007DDC /* JoinView.h */,
+				54B30A9D195D546900007DDC /* JoinView.m */,
+				54B30A9E195D546900007DDC /* WaitView.h */,
+				54B30A9F195D546900007DDC /* WaitView.m */,
+			);
+			path = Join;
+			sourceTree = "<group>";
+		};
+		54B30AA6195D54A600007DDC /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				54B30AA7195D54C300007DDC /* CalenderView.h */,
+				54B30AA8195D54C300007DDC /* CalenderView.m */,
+				54B30AAA195D54EE00007DDC /* AgeCalenderView.h */,
+				54B30AAB195D54EE00007DDC /* AgeCalenderView.m */,
+				54B30AAE195D593300007DDC /* subView */,
+			);
+			path = Calender;
+			sourceTree = "<group>";
+		};
+		54B30AAD195D550500007DDC /* UnitView */ = {
+			isa = PBXGroup;
+			children = (
+				54B30A84195D53EC00007DDC /* ToolsUnitView.h */,
+				54B30A85195D53EC00007DDC /* ToolsUnitView.m */,
+				54B30A7C195D53EC00007DDC /* ToolsCoinView.h */,
+				54B30A7D195D53EC00007DDC /* ToolsCoinView.m */,
+				54B30A7E195D53EC00007DDC /* ToolsDynamicView.h */,
+				54B30A7F195D53EC00007DDC /* ToolsDynamicView.m */,
+				54B30A7A195D53EC00007DDC /* ToolsCalendarView.h */,
+				54B30A7B195D53EC00007DDC /* ToolsCalendarView.m */,
+			);
+			name = UnitView;
+			sourceTree = "<group>";
+		};
+		54B30AAE195D593300007DDC /* subView */ = {
+			isa = PBXGroup;
+			children = (
+				54B30AAF195D5A0500007DDC /* CalenderTableViewCell.h */,
+				54B30AB0195D5A0500007DDC /* CalenderTableViewCell.m */,
+				54B30AB2195D5A1600007DDC /* AgeCalenderTableViewCell.h */,
+				54B30AB3195D5A1600007DDC /* AgeCalenderTableViewCell.m */,
+			);
+			name = subView;
+			sourceTree = "<group>";
+		};
+		54B30ABF195D5EEB00007DDC /* BabyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				54B30AC6195D644900007DDC /* BabyView.h */,
+				54B30AC7195D644900007DDC /* BabyView.m */,
+				54B30AC9195D686500007DDC /* BabyInfoBornView.h */,
+				54B30ACA195D686500007DDC /* BabyInfoBornView.m */,
+				54B30ACC195D687400007DDC /* BabyInfoPregnancyView.h */,
+				54B30ACD195D687400007DDC /* BabyInfoPregnancyView.m */,
+			);
+			path = BabyInfo;
+			sourceTree = "<group>";
+		};
 		54B4680118E520B600745F72 /* HealthCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3059,6 +3200,14 @@
 		54B4EB2218C576E5004489DA /* support */ = {
 			isa = PBXGroup;
 			children = (
+				54B30AC3195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.h */,
+				54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */,
+				54B30AB5195D5C9D00007DDC /* BabyShowButton.h */,
+				54B30AB6195D5C9D00007DDC /* BabyShowButton.m */,
+				54B30AB7195D5C9D00007DDC /* PuuamnShowView.h */,
+				54B30AB8195D5C9D00007DDC /* PuuamnShowView.m */,
+				54B30AB9195D5C9D00007DDC /* PuumanButtonAnimateView.h */,
+				54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */,
 				54BBE8A61936F6B20056390B /* VideoShowView.h */,
 				54BBE8A71936F6B20056390B /* VideoShowView.m */,
 				54BBE8A9193727E30056390B /* VideoManageView.h */,
@@ -3319,12 +3468,13 @@
 			children = (
 				54CE111918C1BC6D00966396 /* DiaryViewController.h */,
 				54CE111A18C1BC6D00966396 /* DiaryViewController.m */,
-				54ADB1EA18E1B39000FCCC83 /* DiaryHeaderView.h */,
-				54ADB1EB18E1B39000FCCC83 /* DiaryHeaderView.m */,
+				54ADB1EA18E1B39000FCCC83 /* DiaryProgressHeaderView.h */,
+				54ADB1EB18E1B39000FCCC83 /* DiaryProgressHeaderView.m */,
 				54ADE07318C85B6B00B166C4 /* DiaryNewButton.h */,
 				54ADE07418C85B6B00B166C4 /* DiaryNewButton.m */,
 				5412BC5C192C80AD0033F322 /* ImportStore.h */,
 				5412BC5D192C80AD0033F322 /* ImportStore.m */,
+				54B30A71195D53EC00007DDC /* Tools */,
 				54F1D10C18C48DCA0005CDD9 /* Diary */,
 				54F1D10D18C48DCA0005CDD9 /* NewDiary */,
 			);
@@ -3334,16 +3484,17 @@
 		54CE111B18C1BC6D00966396 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				54CE111E18C1BC6D00966396 /* MainTabBarController.h */,
+				54CE111F18C1BC6D00966396 /* MainTabBarController.m */,
 				54CE111C18C1BC6D00966396 /* MainTabBar.h */,
 				54CE111D18C1BC6D00966396 /* MainTabBar.m */,
 				54CE119118C1CD7C00966396 /* MainTabBarButton.h */,
 				54CE119218C1CD7C00966396 /* MainTabBarButton.m */,
-				54CE111E18C1BC6D00966396 /* MainTabBarController.h */,
-				54CE111F18C1BC6D00966396 /* MainTabBarController.m */,
 				54BB09E618D9494C00F805DD /* SkipViewController.h */,
 				54BB09E718D9494C00F805DD /* SkipViewController.m */,
 				54C2EA00192DE0EB0011AA0C /* EnterTutorialView.h */,
 				54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */,
+				54B30ABF195D5EEB00007DDC /* BabyInfo */,
 				54B4EB2218C576E5004489DA /* support */,
 			);
 			path = MainTabBar;
@@ -3576,7 +3727,6 @@
 				5412BC5F192C818F0033F322 /* DiaryTableViewController.h */,
 				5412BC60192C818F0033F322 /* DiaryTableViewController.m */,
 				545EB7E418D7E66D00D8EB7F /* Calender */,
-				5403CC6218D03B53004CAE22 /* Join */,
 				54A8F43C18CD58FB00D0D523 /* DiaryCell */,
 				54D1500618CAF4E00022E1F4 /* Task */,
 			);
@@ -3956,7 +4106,6 @@
 				54B753A818D2CF12002411CF /* btn_blue4.png in Resources */,
 				54D64EFA18E7C39500B8899D /* btn_back_br_shop.png in Resources */,
 				54AB6CC818F2BA8D00E4269E /* check_diary.png in Resources */,
-				5403CC7618D03B7D004CAE22 /* DiaryShowCell.xib in Resources */,
 				5463759918C98493004B11EF /* tri_white_left.png in Resources */,
 				5447C46818D97D0800187BE6 /* pic_default_fri.png in Resources */,
 				541970C418D194070058FE64 /* chart_hei_baby_diary.png in Resources */,
@@ -4236,6 +4385,7 @@
 				54B4685218E527D700745F72 /* icon_wash_shop.png in Resources */,
 				54B97E5418FA2B1E00B6C4C9 /* icon3_insure_shop.png in Resources */,
 				54B97E8118FA572600B6C4C9 /* pic30_insure_shop.png in Resources */,
+				54B30AA1195D546900007DDC /* DiaryShowCell.xib in Resources */,
 				5403CD3318D03D39004CAE22 /* icon11_weather_diary@2x.png in Resources */,
 				54D14FFF18CAEFD70022E1F4 /* paper_task1_diary.png in Resources */,
 				54ADE07E18C85D1C00B166C4 /* btn2_audio_diary.png in Resources */,
@@ -4367,6 +4517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54B30AAC195D54EE00007DDC /* AgeCalenderView.m in Sources */,
 				88B3AF6E1932E3B800FAB2A0 /* SinglePhotoTopicVIew.m in Sources */,
 				88B51607192F52EE006A79AB /* MJRefreshFooterView.m in Sources */,
 				54ADB1CE18E16CD700FCCC83 /* Comment.m in Sources */,
@@ -4385,6 +4536,7 @@
 				541970D318D1956D0058FE64 /* StandardLine.m in Sources */,
 				54012DC118E2C09000F11D97 /* MyTopicViewController.m in Sources */,
 				5412BC5B192C80560033F322 /* PhotoSingleDiaryCell.m in Sources */,
+				54B30A70195D4C1600007DDC /* Share.m in Sources */,
 				88B515F3192F52EE006A79AB /* AFDataStore.m in Sources */,
 				88B515F8192F52EE006A79AB /* AFImageButton.m in Sources */,
 				54A8F46118CDCAE900D0D523 /* CameraAudioViewController.m in Sources */,
@@ -4392,6 +4544,7 @@
 				54AFBBC818D6938600861A69 /* LoginViewController.m in Sources */,
 				54A9288418C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m in Sources */,
 				14B8DF2D18BC37A30047C6B3 /* RegisterForm.m in Sources */,
+				54B30AB4195D5A1600007DDC /* AgeCalenderTableViewCell.m in Sources */,
 				5447C4BB18D99A3100187BE6 /* TopicSelectButton.m in Sources */,
 				147756FF18D7F4B800E08BD0 /* Reply.m in Sources */,
 				541970D518D1956D0058FE64 /* UIKit+DrawingHelpers.m in Sources */,
@@ -4405,14 +4558,17 @@
 				5421667618E032B5005875F8 /* VotingCell.m in Sources */,
 				54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */,
 				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
+				54B30AA5195D546900007DDC /* WaitView.m in Sources */,
 				54B6F42418D6E33E0055FC72 /* SettingAdviceViewController.m in Sources */,
 				5403CE4818D051A2004CAE22 /* BabyInfoView.m in Sources */,
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				54B753B018D3020B002411CF /* PuumanInBookCell.m in Sources */,
 				54B4685F18E54D7200745F72 /* ExpandableButton.m in Sources */,
 				54ACEE8918EAC2E70055562B /* CompareCartViewController.m in Sources */,
+				54B30A8D195D53EC00007DDC /* ToolsCoinView.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				54B4680518E520C500745F72 /* HealthCell.m in Sources */,
+				54B30AA0195D546900007DDC /* DiaryShowCell.m in Sources */,
 				5412BC5A192C80560033F322 /* PhotoMoreDiaryCell.m in Sources */,
 				88B515FB192F52EE006A79AB /* UIImageView+AnimateFade.m in Sources */,
 				14B8DF4F18BC37A40047C6B3 /* CATransition+Custom.m in Sources */,
@@ -4426,17 +4582,17 @@
 				14B8DF2918BC37A30047C6B3 /* ShopClassModel.m in Sources */,
 				14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */,
 				54AE2BB518E93FEB00D24F92 /* Action.m in Sources */,
-				14B8DF2F18BC37A30047C6B3 /* UserInfo.m in Sources */,
 				54AC1D2018EEAAD7005E2DCE /* ShareSelectedViewController.m in Sources */,
 				54AC210118E3FE99001C1357 /* RectWareView.m in Sources */,
 				54AFAA8818DA9B640067B8C1 /* RecommendPartnerViewController.m in Sources */,
-				54ADB1EC18E1B39000FCCC83 /* DiaryHeaderView.m in Sources */,
+				54ADB1EC18E1B39000FCCC83 /* DiaryProgressHeaderView.m in Sources */,
 				545EB7F318D7F22900D8EB7F /* AgeCalendarView.m in Sources */,
 				54B4681318E520F200745F72 /* CallingView.m in Sources */,
 				54A8F45E18CDC9A000D0D523 /* AudioViewController.m in Sources */,
 				54ADB1D718E1861700FCCC83 /* PhotoTopicCell.m in Sources */,
 				54AFBBC518D6938600861A69 /* LoginEndView.m in Sources */,
 				54ADE09C18C8608700B166C4 /* NewCameraViewController.m in Sources */,
+				54B30AA2195D546900007DDC /* DynamicView.m in Sources */,
 				146A2C7218DD8D1C0038A850 /* FileUploader.m in Sources */,
 				54AC211118E41223001C1357 /* RectHeadShowCell.m in Sources */,
 				54CCF1D818F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m in Sources */,
@@ -4446,11 +4602,11 @@
 				544419F918D40EE800FBE69F /* PuumanRulesViewController.m in Sources */,
 				54D14FD918CACC720022E1F4 /* CustomPopViewController.m in Sources */,
 				54AFBBCB18D6938600861A69 /* SelectButton.m in Sources */,
-				5412BC66192C830E0033F322 /* DynamicView.m in Sources */,
 				54B753AD18D2F9E5002411CF /* BabyPuumanView.m in Sources */,
 				54AFAA7E18DA896B0067B8C1 /* AllWordsPopViewController.m in Sources */,
 				54AFBBC718D6938600861A69 /* LoginStartView.m in Sources */,
 				541970D818D195C10058FE64 /* LineChartCell.m in Sources */,
+				54B30ABC195D5C9D00007DDC /* PuuamnShowView.m in Sources */,
 				54AE2BB618E93FEB00D24F92 /* ActionForUpload.m in Sources */,
 				541970D218D1956D0058FE64 /* LineChart.m in Sources */,
 				54D1500D18CAF4EB0022E1F4 /* TaskCell.m in Sources */,
@@ -4459,6 +4615,7 @@
 				54ADE09718C8608700B166C4 /* NewAudioDiaryViewController.m in Sources */,
 				54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */,
 				54AE788618E00BD200AE558C /* PartnerDataTitleView.m in Sources */,
+				54B30ACE195D687400007DDC /* BabyInfoPregnancyView.m in Sources */,
 				54012DE818E3050C00F11D97 /* PropWarePartnerDataView.m in Sources */,
 				54B4685818E54D5A00745F72 /* MenuView.m in Sources */,
 				54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */,
@@ -4473,14 +4630,16 @@
 				54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */,
 				54B4682C18E5213700745F72 /* InsuranceCellSubview.m in Sources */,
 				54B4680018E5154C00745F72 /* ShopAllWareHeaderView.m in Sources */,
+				54B30A8A195D53EC00007DDC /* PieLayer.m in Sources */,
 				54B6F41B18D6C32C0055FC72 /* SettingBindCellView.m in Sources */,
 				54BEB68E18E948E100AB3E27 /* PartnerDataOutGroupView.m in Sources */,
-				5403CC7218D03B7D004CAE22 /* InviteView.m in Sources */,
 				54BAD45D18D14B8A003822CC /* BabyInfoContentView.m in Sources */,
 				88B515F4192F52EE006A79AB /* AFBaseRequest.m in Sources */,
 				54B4682318E5210900745F72 /* HospitalBigView.m in Sources */,
 				88B51611192F558E006A79AB /* AFSelecedTextImgButton.m in Sources */,
 				54ADB1B818E1203A00FCCC83 /* FigureHeaderCell.m in Sources */,
+				54B30A6C195D4A9600007DDC /* UserInfo.m in Sources */,
+				54B30AA9195D54C300007DDC /* CalenderView.m in Sources */,
 				54AFBBC018D6938600861A69 /* BirthCalendar.m in Sources */,
 				541970E718D1A1C00058FE64 /* RulerView.m in Sources */,
 				54B4EB2F18C576E5004489DA /* NSObject+AFUtils.m in Sources */,
@@ -4496,19 +4655,20 @@
 				88B51608192F52EE006A79AB /* MJRefreshHeaderView.m in Sources */,
 				545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */,
 				14B8DF2318BC37A30047C6B3 /* PumanRequest.m in Sources */,
+				54B30A92195D53EC00007DDC /* ToolsView.m in Sources */,
 				14B8DF2118BC37A30047C6B3 /* TaskModel.m in Sources */,
+				54B30AC5195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54B6F42118D6D72E0055FC72 /* SettingPassWordViewController.m in Sources */,
 				5447C4B718D98F5C00187BE6 /* PartnerChatView.m in Sources */,
 				54AC211418E4123C001C1357 /* RectRankCell.m in Sources */,
-				5403CC6518D03B68004CAE22 /* JoinView.m in Sources */,
+				54B30A8B195D53EC00007DDC /* PieView.m in Sources */,
 				54AE2BBA18E93FEB00D24F92 /* Member.m in Sources */,
 				5447C4B418D98F1700187BE6 /* PartnerDataView.m in Sources */,
 				54B753B318D3021E002411CF /* PuumanOutBookCell.m in Sources */,
 				88B5160C192F52EE006A79AB /* UIImage+Scale.m in Sources */,
 				88B515FF192F52EE006A79AB /* SinaWeiboAuthorizeView.m in Sources */,
 				54ADB1D418E1860200FCCC83 /* TextTopicCell.m in Sources */,
-				5403CC7318D03B7D004CAE22 /* WaitView.m in Sources */,
 				54AC210418E3FEA8001C1357 /* AllWareView.m in Sources */,
 				54ADE0A018C8608700B166C4 /* TimeView.m in Sources */,
 				54AE2BB918E93FEB00D24F92 /* Group.m in Sources */,
@@ -4525,7 +4685,11 @@
 				549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */,
 				54012DC418E2C14300F11D97 /* SortTableViewController.m in Sources */,
 				54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */,
+				54B30A91195D53EC00007DDC /* ToolsUnitView.m in Sources */,
+				54B30A8F195D53EC00007DDC /* ToolsInfoView.m in Sources */,
 				544419E618D3EAC800FBE69F /* BabyPropView.m in Sources */,
+				54B30AB1195D5A0500007DDC /* CalenderTableViewCell.m in Sources */,
+				54B30ABD195D5C9D00007DDC /* PuumanButtonAnimateView.m in Sources */,
 				88B5160B192F52EE006A79AB /* UIImage+CroppedImage.m in Sources */,
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
 				54AFBBCA18D6938600861A69 /* ProtocalPuumanViewController.m in Sources */,
@@ -4539,10 +4703,9 @@
 				54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */,
 				54EB7A7118DBD6EF00D119A2 /* ChatInputTextView.m in Sources */,
 				54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */,
-				5412BC64192C829E0033F322 /* DiaryShowCell.m in Sources */,
 				5421666F18E025EB005875F8 /* RewardTableViewCell.m in Sources */,
-				14038C75194C401D00802BD5 /* Share.m in Sources */,
 				88B51606192F52EE006A79AB /* MJRefreshConst.m in Sources */,
+				54B30ACB195D686500007DDC /* BabyInfoBornView.m in Sources */,
 				54ADB1B518E11E0F00FCCC83 /* FiguresHeaderView.m in Sources */,
 				5412BC4C192C80260033F322 /* TextDiaryCell.m in Sources */,
 				54012DD818E3046400F11D97 /* PartnerDataCellView.m in Sources */,
@@ -4561,6 +4724,8 @@
 				54AF7DF818FBB3F400FC454C /* InsuranceInfoViewController.m in Sources */,
 				14B8DF2E18BC37A30047C6B3 /* SocialNetwork.m in Sources */,
 				54B5AA331934421700805E63 /* VideoShowButton.m in Sources */,
+				54B30AA3195D546900007DDC /* InviteView.m in Sources */,
+				54B30AC8195D644900007DDC /* BabyView.m in Sources */,
 				5403CE4E18D06E87004CAE22 /* BabyInfoButton.m in Sources */,
 				54012DF618E3092E00F11D97 /* BodyPartnerDataCell.m in Sources */,
 				54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */,
@@ -4588,6 +4753,7 @@
 				54AFBBC218D6938600861A69 /* DateButton.m in Sources */,
 				54BBE8AB193727E30056390B /* VideoManageView.m in Sources */,
 				54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */,
+				54B30ABB195D5C9D00007DDC /* BabyShowButton.m in Sources */,
 				54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */,
 				54B753A018D2A7C7002411CF /* BabyVaccineView.m in Sources */,
 				54AE2BB718E93FEB00D24F92 /* ActionManager.m in Sources */,
@@ -4598,6 +4764,7 @@
 				545EB7E718D7E6BD00D8EB7F /* CalenderControlView.m in Sources */,
 				88B5160A192F52EE006A79AB /* UIColumnView.m in Sources */,
 				54AFBBC918D6938600861A69 /* PregnancyCalendar.m in Sources */,
+				54B30A8C195D53EC00007DDC /* ToolsCalendarView.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
 				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
 				54ADB1E318E1AA4C00FCCC83 /* AuToImportImgCell.m in Sources */,
@@ -4608,6 +4775,7 @@
 				54ACB2EA18EC098200EE5F90 /* WarePumanScrollView.m in Sources */,
 				14CC106218F90BC5005B366E /* DiaryImageView.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
+				54B30AA4195D546900007DDC /* JoinView.m in Sources */,
 				54ADE09A18C8608700B166C4 /* NewAudioRecordView.m in Sources */,
 				88B515F7192F52EE006A79AB /* AFIconButton.m in Sources */,
 				54AE788218DFF87100AE558C /* TopicCell.m in Sources */,
@@ -4616,6 +4784,8 @@
 				5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */,
 				54ACB2DC18EBBFC500EE5F90 /* CompareInfoTableViewCell.m in Sources */,
 				5412BC55192C80450033F322 /* AuPhotoDiaryCell.m in Sources */,
+				54B30A89195D53EC00007DDC /* PieElement.m in Sources */,
+				54B30A8E195D53EC00007DDC /* ToolsDynamicView.m in Sources */,
 				54AC210718E4055B001C1357 /* SearchTextField.m in Sources */,
 				54AC1D2718EEC080005E2DCE /* BindAddButton.m in Sources */,
 				5412BC61192C818F0033F322 /* DiaryTableViewController.m in Sources */,
@@ -4629,10 +4799,12 @@
 				54AB6CCD18F2BAA300E4269E /* BindAlpayViewController.m in Sources */,
 				54B867F718E6B81A00BE5335 /* SinglepopViewController.m in Sources */,
 				88B515A4192F4AE1006A79AB /* CutViewController.m in Sources */,
+				54B30A88195D53EC00007DDC /* NSMutableArray+pieEx.m in Sources */,
 				5474A47E18C5B7100073B2FE /* AFTextImgButton.m in Sources */,
 				88B515FC192F52EE006A79AB /* UILabel+AdjustSize.m in Sources */,
 				54AC207318FCD14400650F79 /* ImportImgView.m in Sources */,
 				148D79EF18B8A71A001B4FA7 /* main.m in Sources */,
+				54B30A90195D53EC00007DDC /* ToolsSelectedButton.m in Sources */,
 				54ADE09918C8608700B166C4 /* NewAudioProgressView.m in Sources */,
 				14B8DF2418BC37A30047C6B3 /* PumanBookModel.m in Sources */,
 				54B6F41E18D6C8640055FC72 /* ReSendButton.m in Sources */,

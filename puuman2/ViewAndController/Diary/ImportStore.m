@@ -109,7 +109,7 @@ static ImportStore * instance;
 {
     photosArr = nil;
     title = @"";
-    //diaryInfo = nil;
+    diaryArrs = nil;
      progress = 0;
 }
 @end

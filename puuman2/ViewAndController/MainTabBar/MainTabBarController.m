@@ -21,6 +21,7 @@
 #import "EnterTutorialView.h"
 #import "ShareVideo.h"
 #import "UpLoaderShareVideo.h"
+#import "CAKeyframeAnimation+DragAnimation.h"
 
 @interface MainTabBarController ()
 
@@ -87,8 +88,21 @@ static MBProgressHUD *hud;
     [self.view addSubview:videoBtn];
     [videoBtn setClickEnable:NO];
     [videoBtn setAlpha:1];
+  
 
+}
 
+-(void)babyInfoBtnDown
+{
+    [infoView loadDataInfo];
+    [CAKeyframeAnimation dragAnimationWithView:infoView andDargPoint:CGPointMake(0, 768)];
+    [CAKeyframeAnimation dragAnimationWithView:babyInfoBtn andDargPoint:CGPointMake(0, 768)];
+    
+    SetViewLeftUp(babyInfoBtn, 1024 -16 - 56, 768);
+    
+    SetViewLeftUp(infoView, 0, 0);
+    
+    // [babyShowBtn addPuuman];
 }
 
 - (void)downAutoVideo
@@ -390,7 +404,7 @@ static MBProgressHUD *hud;
 //    if (settingVC) {
 //        [settingVC back];
 //    }
-   
+    [self refreshBabyInfoView];
 }
 
 - (void)showSettingView
@@ -515,6 +529,32 @@ static MBProgressHUD *hud;
     PostNotification(Noti_HudCanceled, nil);
 }
 
+- (void)updatePuumanData
+{
+    [puumanView updateData];
+}
 
+- (void)refreshBabyInfoView
+{
+    if (infoView) {
+        [infoView removeFromSuperview];
+    }
+    infoView = [[BabyView alloc] initWithFrame:CGRectMake(0, -768, 1024, 768)];
+    [self.view addSubview:infoView];
+    [infoView setBackgroundColor:[UIColor whiteColor]];
+    [infoView.layer setMasksToBounds:NO];
+    if (!babyShowBtn) {
+        babyShowBtn = [[BabyShowButton alloc] initWithFrame:CGRectMake(1024 -16 - 56, 768, 56, 56)];
+        [babyShowBtn setBackgroundColor:[UIColor clearColor]];
+    }
+    [infoView addSubview:babyShowBtn];
+    [babyShowBtn loadPortrait];
+    if (!babyInfoBtn) {
+        babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 56, 0, 56, 56)];
+        [babyInfoBtn addTarget:self action:@selector(babyInfoBtnDown) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:babyInfoBtn];
+    }
+    
+}
 
 @end

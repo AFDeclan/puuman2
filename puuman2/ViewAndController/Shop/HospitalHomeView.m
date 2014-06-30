@@ -235,7 +235,7 @@
     
        switch (_hospitalOnShow) {
         case kSmallHospital:
-                [[smallHospital layer]addAnimation:shrinkAnimation forKey:@"shrinkAnimation"];
+               [[smallHospital layer]addAnimation:shrinkAnimation forKey:@"shrinkAnimation"];
                [[smallHospital layer] addAnimation:fadeAnimation forKey:@"fadeAnimation"];
                [[bigHospital layer] addAnimation:fadeAnimation forKey:@"fadeAnimation"];
                [[privateHospital layer] addAnimation:fadeAnimation forKey:@"fadeAnimation"];
@@ -283,6 +283,7 @@
     [self performSelector:@selector(stopMyAnimate) withObject:nil afterDelay:0.95];
       [self performSelector:@selector(setTitles) withObject:nil afterDelay:1];
     CGPathRelease(positionPath);
+    
 }
 -(void)setTitles
 {

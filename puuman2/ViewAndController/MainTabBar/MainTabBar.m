@@ -39,22 +39,15 @@
     [diaryBtn setSelected:YES withAnimate:NO];
     [selectedBoard addSubview:diaryBtn];
     
-    babyInfoBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,104, 64, 80)];
-    babyInfoBtn.tag = 2;
-    [babyInfoBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    babyInfoBtn.normalImage = [UIImage imageNamed:@"btn_baby2_diary.png"];
-    babyInfoBtn.selectedImage = [UIImage imageNamed:@"btn_baby1_diary.png"];
-    [selectedBoard addSubview:babyInfoBtn];
-      [babyInfoBtn setSelected:NO];
-    socialBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,184, 64, 80)];
-    socialBtn.tag = 3;
+    socialBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,104, 64, 80)];
+    socialBtn.tag = 2;
     [socialBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
     socialBtn.normalImage = [UIImage imageNamed:@"btn_look2_diary.png"];
     socialBtn.selectedImage = [UIImage imageNamed:@"btn_look1_diary.png"];
     [selectedBoard addSubview:socialBtn];
       [socialBtn setSelected:NO];
-    shopBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,264, 64, 80)];
-    shopBtn.tag = 4;
+    shopBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,184, 64, 80)];
+    shopBtn.tag = 3;
     [shopBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
     shopBtn.normalImage = [UIImage imageNamed:@"btn_shop2_diary.png"];
     shopBtn.selectedImage = [UIImage imageNamed:@"btn_shop1_diary.png"];
@@ -113,16 +106,13 @@
     if (tag == 1) {
          [self clickedBtn:diaryBtn];
     }
+
     
     if (tag == 2) {
-        [self clickedBtn:babyInfoBtn];
-    }
-    
-    if (tag == 3) {
         [self clickedBtn:socialBtn];
     }
     
-    if (tag == 4) {
+    if (tag == 3) {
         [self clickedBtn:shopBtn];
     }
 }

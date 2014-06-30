@@ -12,9 +12,6 @@
 #import "DynamicView.h"
 @interface JoinView : UIView
 {
-    UIImageView *weatherImg;
-    UILabel  *temperatureLabel;
-    UILabel  *dateLabel;
     UIView  *contentView;
     NSString *intString;
     InviteView *invite;
