@@ -17,6 +17,7 @@
 #include "UserInfo.h"
 #import "ShareSelectedViewController.h"
 #import "Diary.h"
+#import "AFSelecedTextImgButton.h"
 #define kHeaderHeight    36
 #define kFooterHeight    24
 #define ContentWidth  512
@@ -49,6 +50,10 @@ typedef enum{
     BOOL delCanShow;
     BOOL shareCanShow;
     NSInteger indexRow;
+    AFSelecedTextImgButton *coinBtn;
+    UILabel *coinLabel;
+    
+
 }
 @property (assign, nonatomic)DiaryType diaryType;
 @property (strong, nonatomic)UIButton *delBtn;

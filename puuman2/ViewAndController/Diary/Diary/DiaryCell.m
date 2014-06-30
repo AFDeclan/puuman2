@@ -74,7 +74,6 @@
         _dateLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_dateLabel];
         
-
         _content = [[UIView alloc] init];
         _content.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_content];
@@ -112,6 +111,7 @@
     if ([DiaryTableViewController needLoadInfo]) {
         [self loadInfo];
     }
+      [self loadData];
 }
 
 - (void)initWithShareAndDelBtn
@@ -148,6 +148,30 @@
     }else{
         [_delBtn setEnabled:YES];
     }
+    
+    coinBtn = [[AFSelecedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"] andUnselectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
+    [coinBtn addTarget:self action:@selector(getCoin) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:coinBtn];
+    [coinBtn unSelected];
+    
+    coinLabel = [[UILabel alloc] init];
+    [coinLabel setFrame:CGRectMake(54, 8, 66, 24)];
+    [coinLabel setBackgroundColor:[UIColor clearColor]];
+    [coinLabel setFont:PMFont3];
+    [self.contentView addSubview:coinLabel];
+    
+}
+
+- (void)getCoin {
+    
+    [coinBtn selected];
+    
+    if ([_diary reward:1]) {
+        [coinBtn selected];
+    }
+
+
 }
 
 - (void)buildParentControl
@@ -162,9 +186,52 @@
     }
     [self buildAgeLabels];
     [self buildFromIdentity];
+  
+  
     
     
-    
+}
+
+- (void)loadData {
+
+   
+
+    if (_diary.sampleDiary) {
+        [coinBtn setAlpha:0];
+        [coinLabel setText:@""];
+
+    }else{
+        
+        if (_diary.UIdentity != [UserInfo sharedUserInfo].identity) {
+            
+            if ([_diary rewarded]) {
+                [coinBtn selected];
+                coinLabel.text = @"已打赏";
+            }else {
+                [coinBtn unSelected];
+                if (_diary.UIdentity == Father){
+                    coinLabel.text = @"赏给爸爸!";
+                    [coinLabel setTextColor:PMColor6];
+                    
+                } else {
+                    coinLabel.text = @"赏给妈妈!";
+                    [coinLabel setTextColor:RGBColor(239, 128, 123)];
+                }
+            }
+        }else{
+            [coinBtn unSelected];
+            if (_diary.UIdentity == Father) {
+                coinLabel.text = @"妈妈赏了你";
+                [coinLabel setTextColor:RGBColor(239, 128, 123)];
+            }
+            
+            else {
+                
+                [coinBtn setAlpha:0];
+               }
+        }
+   
+    }
 }
 
 - (void)buildAgeLabels
