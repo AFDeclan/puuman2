@@ -165,12 +165,18 @@
 
 - (void)getCoin {
     
-    [coinBtn selected];
-    
-    if ([_diary reward:1]) {
+    if (_diary.rewarded) {
         [coinBtn selected];
+    } else {
+    
+        [coinBtn unSelected];
+        if ([_diary reward:1]) {
+          
+            [coinBtn selected];
+            coinLabel.text = @"已打赏";
+            [coinLabel setTextColor:PMColor3];
+        }
     }
-
 
 }
 
@@ -192,18 +198,16 @@
     
 }
 
-- (void)loadData {
-
-   
+- (void)loadData
+{
 
     if (_diary.sampleDiary) {
         [coinBtn setAlpha:0];
         [coinLabel setText:@""];
-
-    }else{
         
+    }else{
         if (_diary.UIdentity != [UserInfo sharedUserInfo].identity) {
-            
+            [coinBtn setAlpha:1];
             if ([_diary rewarded]) {
                 [coinBtn selected];
                 coinLabel.text = @"已打赏";
@@ -220,18 +224,22 @@
             }
         }else{
             [coinBtn unSelected];
-            if (_diary.UIdentity == Father) {
-                coinLabel.text = @"妈妈赏了你";
-                [coinLabel setTextColor:RGBColor(239, 128, 123)];
-            }
-            
-            else {
+            [coinBtn setAlpha:0];
+            coinLabel.text = @"";
+            if ([_diary rewarded]) {
+                if (_diary.UIdentity == Father) {
+                    coinLabel.text = @"妈妈赏了你";
+                    [coinLabel setTextColor:RGBColor(239, 128, 123)];
+                }else {
+                    coinLabel.text = @"爸爸赏了你!";
+                    [coinLabel setTextColor:PMColor6];
+                    
+                }
                 
-                [coinBtn setAlpha:0];
-               }
+            }
         }
-   
     }
+
 }
 
 - (void)buildAgeLabels
