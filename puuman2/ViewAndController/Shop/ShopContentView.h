@@ -23,8 +23,8 @@
     BOOL menuShowed;
 }
 - (void)hiddenMenuWithTapPoint:(CGPoint)pos;
-- (void)goToAllShop;
-- (void)goToRectShop;
+- (void)showAllShop;
+- (void)showRectShop;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

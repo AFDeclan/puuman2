@@ -7,19 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuView.h"
-#import "RankView.h"
-@interface ShopMenuView : UIView
-{
-    RankView  *rankView;
-    MenuView  *menuView;
-    NSTimer *_timerToFoldDrawer;
+#import "ShopMenuCell.h"
 
+@interface ShopMenuView : UIView<UITableViewDataSource,UITableViewDelegate,ShopMenuDelegate>
+{
+    UITableView *menuTable;
 }
 
-- (void)updateRankView;
-- (void)reloadRankView;
 -(void)setVerticalFrame;
 -(void)setHorizontalFrame;
-- (void)selectedParentIndex:(NSInteger)parentIndex andChildIndex:(NSInteger)childIndex;
 @end

@@ -7,11 +7,10 @@
 //
 
 #import "ShopMenuView.h"
-#import "ColorsAndFonts.h"
+#import "UniverseConstant.h"
 #import "ShopViewController.h"
 #import "ShopModel.h"
 #import "MainTabBarController.h"
-
 
 @implementation ShopMenuView
 
@@ -21,54 +20,114 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-      
-        menuView = [[MenuView alloc] initWithFrame:CGRectMake(0,0, 216, 384 )];
-        [self addSubview:menuView];
-        rankView = [[RankView alloc] initWithFrame:CGRectMake(0,0, 216,304)];
-        [self addSubview:rankView];
-        [MyNotiCenter addObserver:self selector:@selector(refreshMenu) name:Noti_RefreshMenu object:nil];
-      
-     
+        [self initializaiton];
+        
     }
     return self;
 }
 
-- (void)refreshMenu
+- (void)initializaiton
 {
-    [menuView showShopWithTypeIndex:[ShopModel sharedInstance].sectionIndex andSubIndex:[ShopModel sharedInstance].subClassIndex];
-
+    [[ShopModel sharedInstance] setSectionIndex:-1];
+    menuTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
+    [menuTable setDataSource:self];
+    [menuTable setDelegate:self];
+    [self addSubview:menuTable];
+    [menuTable setBackgroundColor:PMColor6];
+    [menuTable setSeparatorColor:[UIColor clearColor]];
+    [menuTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [menuTable setShowsHorizontalScrollIndicator:NO];
+    [menuTable setShowsVerticalScrollIndicator:NO];
 }
 
 -(void)setVerticalFrame
 {
-    [rankView setFrame:CGRectMake(0,384, 216, 560 )];
-    [rankView setVerticalFrame];
-   
+    [menuTable setFrame:CGRectMake(0, 0, 216, 944)];
 }
 
 -(void)setHorizontalFrame
 {
-    [rankView setFrame:CGRectMake(0,384, 216 ,304 )];
-    [rankView setHorizontalFrame];
+    [menuTable setFrame:CGRectMake(0, 0, 216, 688)];
+
 }
 
 
 
-- (void)selectedParentIndex:(NSInteger)parentIndex andChildIndex:(NSInteger)childIndex
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [menuView selectedParentIndex:parentIndex andChildIndex:childIndex];
+    return [ShopModel sectionCnt]+1;
+    
 }
 
-
-- (void)reloadRankView
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     [rankView sortTableReload];
+        NSString *identifier = @"MenuCell";
+        ShopMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil)
+        {
+            cell = [[ShopMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            
+        }
+        [cell setFlagNum:[indexPath row]-1];
+        [cell setIndexPath:indexPath];
+        [cell setDelegate:self];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell.contentView setBackgroundColor:[UIColor clearColor]];
+        return cell;
 }
 
-- (void)updateRankView
+
+- (void)selectedMenuWithCell:(ShopMenuCell *)cell
 {
-    [rankView sortTableUpdate];
+    if (cell.flagNum == -1 && [ShopModel sharedInstance].sectionIndex == -1) {
+        
+    }else{
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        for (ShopMenuCell *view in [menuTable visibleCells]) {
+            if (view.flagNum == [ShopModel sharedInstance].sectionIndex) {
+                [view hiddenSubView];
+                [arr addObject:view.indexPath];
+            }
+        }
+        if (cell.flagNum != -1) {
+            [cell showSubView];
+            [arr addObject:cell.indexPath];
+        }
+        
+        [[ShopModel sharedInstance] setSectionIndex:cell.flagNum];
+        [[ShopModel sharedInstance] setSubClassIndex:-1];
+        if (cell.flagNum == -1 ) {
+            [[ShopViewController sharedShopViewController] showRectShop];
+        }else{
+            [[ShopViewController sharedShopViewController] showAllShop];
+        }
+        [menuTable reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationNone];
+        
+        
+
+    }
+
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (([ShopModel sharedInstance].sectionIndex == indexPath.row- 1) && indexPath.row != 0) {
+        NSInteger cnt = [ShopModel subTypeCntForSectionAtIndex:[indexPath row]-1];
+        if (cnt == 0) {
+            return 64;
+        }
+        cnt =  (cnt % 2) == 0 ? cnt/2 : cnt/2+1;
+        return cnt*88 + 64 +72 + 64;
+    }else{
+        return 64;
+    }
+
+
+}
+
+
+
 
 
 

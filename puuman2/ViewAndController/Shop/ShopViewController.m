@@ -15,9 +15,17 @@
 @interface ShopViewController ()
 
 @end
+static ShopViewController * instance;
 
 @implementation ShopViewController
 
+
++ (ShopViewController *)sharedShopViewController
+{
+    if (!instance)
+        instance = [[ShopViewController alloc] initWithNibName:nil bundle:nil];
+    return instance;
+}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -25,7 +33,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [MyNotiCenter addObserver:self selector:@selector(allWareBtnPressed) name:Noti_ToAllSHop object:nil];
     }
     return self;
 }
@@ -91,20 +98,22 @@
     bg_rightImageView = [[UIImageView alloc] init];
     [bg_rightImageView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:bg_rightImageView];
-    rectWareBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
-    [rectWareBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
-    [rectWareBtn addTarget:self action:@selector(rectWareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:rectWareBtn];
+
     
-    allWareBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
-    [allWareBtn setSelectedImg:[UIImage imageNamed:@"btn_all1_shop.png"] andUnselectedImg:[UIImage imageNamed:@"btn_all2_shop.png"]];
-    [allWareBtn addTarget:self action:@selector(allWareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:allWareBtn];
+    priceBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
+    [priceBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
+    [priceBtn addTarget:self action:@selector(priceBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:priceBtn];
     
-    searchBtn = [[ColorButton alloc] init];
-    [searchBtn initWithTitle:@"搜索" andIcon:[UIImage imageNamed:@"icon_search_shop.png"] andButtonType:kBlueLeft];
-    [searchBtn addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:searchBtn];
+    heatBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
+    [heatBtn setSelectedImg:[UIImage imageNamed:@"btn_all1_shop.png"] andUnselectedImg:[UIImage imageNamed:@"btn_all2_shop.png"]];
+    [heatBtn addTarget:self action:@selector(heatBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:heatBtn];
+    
+    timeBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
+    [timeBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
+    [timeBtn addTarget:self action:@selector(timeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:timeBtn];
     
     searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 184, 40)];
     [searchView setBackgroundColor:[UIColor clearColor]];
@@ -121,15 +130,19 @@
     [searchTextField setDelegate:self];
     [searchView addSubview:searchTextField];
     
+    searchBtn = [[ColorButton alloc] init];
+    [searchBtn initWithTitle:@"搜索" andIcon:[UIImage imageNamed:@"icon_search_shop.png"] andButtonType:kBlueLeft];
+    [searchBtn addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:searchBtn];
     
     contentShop = [[ShopContentView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
     [self.view addSubview:contentShop];
-    [self rectWareBtnPressed];
     cartBtn  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 56, 72)];
     [cartBtn setImage:[UIImage imageNamed:@"btn_cart_shop.png"] forState:UIControlStateNormal];
     [cartBtn addTarget:self action:@selector(showCart) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cartBtn];
-    
+    [self timeBtnPressed];
+
 }
 
 
@@ -154,10 +167,11 @@
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_shop.png"]];
     [bg_rightImageView setFrame:CGRectMake(688, 80, 64, 944)];
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_shop.png"]];
-    SetViewLeftUp(rectWareBtn, 688, 80);
-    SetViewLeftUp(allWareBtn, 688, 176);
-    SetViewLeftUp(searchBtn, 640, 28);
-    SetViewLeftUp(searchView, 456, 28);
+    SetViewLeftUp(priceBtn, 688, 80);
+    SetViewLeftUp(heatBtn, 688, 176);
+    SetViewLeftUp(timeBtn, 688, 272);
+    SetViewLeftUp(searchBtn, 464, 28);
+    SetViewLeftUp(searchView, 288, 28);
     SetViewLeftUp(cartBtn, 680, 678);
 }
 
@@ -171,51 +185,44 @@
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_h_shop.png"]];
     [bg_rightImageView setFrame:CGRectMake(944, 80, 64, 688)];
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_h_shop.png"]];
-    SetViewLeftUp(rectWareBtn, 944, 80);
-    SetViewLeftUp(allWareBtn, 944, 176);
-    SetViewLeftUp(searchBtn, 896, 28);
-    SetViewLeftUp(searchView, 712, 28);
+    SetViewLeftUp(priceBtn, 944, 80);
+    SetViewLeftUp(heatBtn, 944, 176);
+    SetViewLeftUp(timeBtn, 944, 272);
+    SetViewLeftUp(searchBtn, 592, 28);
+    SetViewLeftUp(searchView, 416, 28);
     SetViewLeftUp(cartBtn, 936, 678);
 }
 
-- (void)rectWareBtnPressed
+- (void)priceBtnPressed
 {
-   [contentShop goToRectShop];
-    [rectWareBtn selected];
-    [allWareBtn unSelected];
-    
+    [priceBtn selected];
+    [timeBtn unSelected];
+    [heatBtn unSelected];
    
 }
 
-- (void)allWareBtnPressed
+- (void)timeBtnPressed
 {
-    [contentShop goToAllShop];
-    [allWareBtn selected];
-    [rectWareBtn unSelected];
+    [timeBtn selected];
+    [priceBtn unSelected];
+    [heatBtn unSelected];
+}
+
+- (void)heatBtnPressed
+{
+    [heatBtn selected];
+    [timeBtn unSelected];
+    [priceBtn unSelected];
 }
 
 - (void)search
 {
     [searchTextField resignFirstResponder];
-    if (![searchTextField.text isEqualToString:@""]) {
-        [ShopModel sharedInstance].searchKey = searchTextField.text;
-        [searchTextField setPlaceholder:searchTextField.text];
-        [searchTextField setText:@""];
-    }else{
-        if (![searchTextField.placeholder isEqualToString:@"搜索商品"]) {
-             [ShopModel sharedInstance].searchKey = searchTextField.placeholder;
-        }else{
-            return;
-        }
-    }
-    PostNotification(Noti_ToAllSHop, nil);
-    PostNotification(Noti_ReloadShopMall, nil);
-    
+   
 }
 
 -(void)refresh
 {
-    [self rectWareBtnPressed];
     
 }
 
@@ -225,5 +232,12 @@
     return YES;
 }
 
-
+- (void)showAllShop
+{
+    [contentShop showAllShop];
+}
+- (void)showRectShop
+{
+    [contentShop showRectShop];
+}
 @end

@@ -11,9 +11,9 @@
 #import "CartTableViewCell.h"
 @interface ShopCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource,CartCellDelegate>
 {
-    ColorButton *btn_unpaid;
-    ColorButton *btn_paid;
-    ColorButton *btn_compared;
+    ColorButton *cartShowBtn;
+    ColorButton *orderShowBtn;
+    ColorButton *orderBtn;
     UITableView * cartTable;
     BOOL isPaid;
     NSInteger unfoldIndex;

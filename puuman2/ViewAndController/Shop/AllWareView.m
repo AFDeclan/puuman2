@@ -8,7 +8,6 @@
 
 #import "AllWareView.h"
 #import "ColorsAndFonts.h"
-#import "ShopAllWareHeaderView.h"
 #import "HealthCell.h"
 #import "InsuranceCell.h"
 #import "WareCell.h"
@@ -20,7 +19,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-         [MyNotiCenter addObserver:self selector:@selector(reloadShopMall) name:Noti_ReloadShopMall object:nil];
         [self setBackgroundColor:[UIColor clearColor]];
         _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 608, 688)];
         [_shopMallTable setDataSource:self];
@@ -54,7 +52,8 @@
         [noti_insurance setText:@"请在横屏下查看此页面"];
         [noti_insurance setAlpha:0];
         [_shopMallTable addSubview:noti_insurance];
-        
+        headView= [[ShopAllWareHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
+        [self addSubview:headView];
     }
     return self;
 }
@@ -84,9 +83,7 @@
         case ShopStateInsurance:
             return 2;
         case ShopStateNormal:
-            if ([data count] >= 6)
-                return 2;
-            else break;
+            return 0;
         default:
             break;
     }
@@ -211,25 +208,8 @@
 
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-   
-    return 56;
 
-}
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
- 
-    
-    ShopAllWareHeaderView  *headView= [[ShopAllWareHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
-
-    [headView setStatusWithKindIndex:section andUnfold:_shopState == ShopStateNormal?NO:YES];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(sectionHeaderTapped:)];
-    headView.tag =section;
-    [headView addGestureRecognizer:tap];
-    return headView;
-}
 
 
 #pragma mark - 获取相应section的数据
@@ -291,18 +271,17 @@
 
 -(void)reloadShopMall
 {
-    
+
     NSInteger type = [ShopModel sharedInstance].sectionIndex;
+    
     if (type < 0 && ![ShopModel sharedInstance].searchOn)
         _shopState = ShopStateNormal;
     else if (type == 11)
     {
         _shopState = ShopStateInsurance;
-        // [menu toAllPage];
     }
     else
     {
-       // [menu toAllPage];
         _shopState = ShopStateFiltered;
         _refreshFooter.alpha = 1;
         if ([[[ShopModel sharedInstance] filteredWares] count] <= 2)
@@ -311,6 +290,10 @@
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
     [_shopMallTable reloadData];
+    
+    [headView setStatusWithKindIndex:type andUnfold:_shopState == ShopStateNormal?NO:YES];
+
+    
 }
 
 

@@ -16,14 +16,18 @@
 {
     UIImageView *bg_topImageView;
     UIImageView *bg_rightImageView;
-    AFSelecedTextImgButton *rectWareBtn;
-  AFSelecedTextImgButton  *allWareBtn;
-    ColorButton *searchBtn;
+    AFSelecedTextImgButton *priceBtn;
+    AFSelecedTextImgButton *heatBtn;
+    AFSelecedTextImgButton *timeBtn;
     SearchTextField *searchTextField;
+    ColorButton *searchBtn;
     UIView *searchView;
     ShopContentView *contentShop;
     UIButton *cartBtn;
 }
 
+- (void)showAllShop;
+- (void)showRectShop;
++ (ShopViewController *)sharedShopViewController;
 
 @end

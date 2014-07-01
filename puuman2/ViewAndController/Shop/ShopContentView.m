@@ -114,8 +114,7 @@
     }];
 }
 
-
-- (void)goToAllShop
+- (void)showAllShop
 {
    
 
@@ -124,14 +123,13 @@
         [allView setAlpha:1];
         if (rectView) {
             [rectView setAlpha:0];
-            
         }
-        
     }];
+    [allView  reloadShopMall];
 
 }
 
-- (void)goToRectShop
+- (void)showRectShop
 {
 
     [ShopModel sharedInstance].sectionIndex = -1;
