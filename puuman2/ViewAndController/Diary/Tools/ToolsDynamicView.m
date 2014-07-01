@@ -32,8 +32,9 @@
 
 - (void)setContentView
 {
-    
-    self.backgroundColor = PMColor4;
+    [content setFrame:CGRectMake(0, 0, 240, 288+64)];
+
+
     joinView = [[JoinView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [content addSubview:joinView];
     [joinView refreshStaus];
@@ -62,7 +63,7 @@
 
 +(float)heightWithTheIndex:(NSInteger)index
 {
-    return 192;
+    return 288+64;
 }
 
 @end

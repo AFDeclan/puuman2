@@ -30,8 +30,9 @@
 }
 - (void)setContentView
 {
-    
-    pieView = [[PieView alloc] initWithFrame:CGRectMake(40, 16, 160, 180)];
+    [content setFrame:CGRectMake(0, 0, 240, 288+64)];
+
+    pieView = [[PieView alloc] initWithFrame:CGRectMake(40, 80, 160, 180)];
     [content addSubview:pieView];
     
     pieView.pieLayerDelegate = self;
@@ -41,7 +42,7 @@
     [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns] atIndex:0 color: PMColor6];
     [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns_connect] atIndex:1 color:PMColor8];
 
-    coinView = [[UIView alloc] initWithFrame:CGRectMake(40, 4, 160, 216)];
+    coinView = [[UIView alloc] initWithFrame:CGRectMake(40, 68, 160, 216)];
     [content addSubview:coinView];
     [coinView setBackgroundColor:[UIColor clearColor]];
    
@@ -147,7 +148,7 @@
 
 +(float)heightWithTheIndex:(NSInteger)index
 {
-    return 232;
+    return 288+64;
 }
 
 @end

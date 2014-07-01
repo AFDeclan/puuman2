@@ -37,7 +37,7 @@ static JoinView * instance;
 }
 - (void)initialization
 {
-    contentView =[[UIView alloc] initWithFrame:CGRectMake(0,64, 240, 240)];
+    contentView =[[UIView alloc] initWithFrame:CGRectMake(0,0, 240, 240)];
     [self addSubview:contentView];
 }
 - (void)resign

@@ -29,9 +29,10 @@
 - (void)initialization
 {
 
-    content = [[UIView alloc] initWithFrame:CGRectMake(0, 48, 240, self.frame.size.height-48)];
+    content = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 240, 0)];
     [self addSubview:content];
-    
+    [content setBackgroundColor:[UIColor clearColor]];
+    [content setAlpha:0];
     settingBtn = [[ToolsSelectedButton alloc] init];
     [settingBtn addTarget:self action:@selector(foldOrUnFold) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:settingBtn];
@@ -47,6 +48,26 @@
 - (void)foldOrUnFold
 {
     [_delegate foldOrUnFoldWithFlag:_flagNum];
+
+}
+
+- (void)foldTool
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        [content setAlpha:0];
+
+    }];
+    
+    [settingBtn foldTool];
+}
+
+- (void)unFoldTool
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        [content setAlpha:1];
+    
+    }];
+    [settingBtn unFoldTool];
 }
 
 - (void)setFlagNum:(NSInteger)flagNum
@@ -60,15 +81,11 @@
 {
     switch (index) {
         case 0:
-            return [ToolsDynamicView heightWithTheIndex:index]+48;
+            return [ToolsDynamicView heightWithTheIndex:index];
         case 1:
-            return [ToolsCoinView heightWithTheIndex:index]+48;
+            return [ToolsCoinView heightWithTheIndex:index];
         case 2:
-            return [ToolsCalendarView heightWithTheIndex:index]+48;
-        case 3:
-            return 48;
-
-            break;
+            return [ToolsCalendarView heightWithTheIndex:index];
         default:
             return 0;
             break;

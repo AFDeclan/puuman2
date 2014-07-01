@@ -20,6 +20,8 @@
 @property(nonatomic,assign) NSInteger flagNum;
 - (void)refreshInfo;
 - (void)initialization;
+- (void)foldTool;
+- (void)unFoldTool;
 +(float)heightWithTheIndex:(NSInteger)index;
 @end
 @protocol ToolsUnitViewDelegate <NSObject>

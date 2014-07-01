@@ -47,25 +47,25 @@
         switch (i) {
             case 0:
             {
-                unitViews[i] = [[ToolsDynamicView alloc] initWithFrame:CGRectMake(0, i *48+144, 240, 48)];
+                unitViews[i] = [[ToolsDynamicView alloc] initWithFrame:CGRectMake(0, i *64+144, 240, 64)];
                 
             }
                 break;
             case 1:
             {
-                unitViews[i] = [[ToolsCoinView alloc] initWithFrame:CGRectMake(0, i *48+144, 240, 48)];
+                unitViews[i] = [[ToolsCoinView alloc] initWithFrame:CGRectMake(0, i *64+144, 240, 64)];
                 
             }
                 break;
             case 2:
             {
-                unitViews[i] = [[ToolsCalendarView alloc] initWithFrame:CGRectMake(0, i *48+144, 240, 48)];
+                unitViews[i] = [[ToolsCalendarView alloc] initWithFrame:CGRectMake(0, i *64+144, 240, 64)];
             }
                 break;
 
             default:
             {
-                unitViews[i] = [[ToolsUnitView alloc] initWithFrame:CGRectMake(0, i *48+144, 240, 48)];
+                unitViews[i] = [[ToolsUnitView alloc] initWithFrame:CGRectMake(0, i *64+144, 240, 64)];
                 
             }
                 break;
@@ -107,38 +107,28 @@
 {
 
         if (!animated) {
-        
-            if (selectedIndex == flag) {
-//                PostNotification(Noti_HiddenTools, [NSNumber numberWithInt:flag]);
-//                
-//                [UIView animateWithDuration:0.5 animations:^{
-//                    [unitViews[flag] setFrame:CGRectMake(0, unitViews[flag].frame.origin.y, 240, 48)];
-//                    [self movedFollowFlag:flag+1];
-//                    
-//                }completion:^(BOOL finished) {
-//                    selectedIndex = -1;
-//                    animated =  NO;
-//                }];
-                
-            }else{
+            if (selectedIndex != flag) {
                 animated = YES;
                 PostNotification(Noti_ShowTools, [NSNumber numberWithInt:flag]);
                 [unitViews[flag] refreshInfo];
+                [unitViews[flag] unFoldTool];
+                [unitViews[selectedIndex] foldTool];
+                
                 [UIView animateWithDuration:0.5 animations:^{
                     
                     if (flag < selectedIndex) {
-                        [unitViews[flag] setFrame:CGRectMake(0, 48*flag+144, 240, [ToolsUnitView heightWithTheIndex:flag])];
+                        [unitViews[flag] setFrame:CGRectMake(0, 64*flag+144, 240, [ToolsUnitView heightWithTheIndex:flag])];
                         [self movedFollowFlag:flag+1 ToIndex:selectedIndex];
-                        [unitViews[selectedIndex] setFrame:CGRectMake(0, unitViews[selectedIndex-1].frame.origin.y+ unitViews[selectedIndex-1].frame.size.height, 240, 48)];
+                        [unitViews[selectedIndex] setFrame:CGRectMake(0, unitViews[selectedIndex-1].frame.origin.y+ unitViews[selectedIndex-1].frame.size.height, 240, 64)];
                         [self movedFollowFlag:selectedIndex+1 ToIndex:3];
                         
                     }else{
                         if(selectedIndex >=0)
                         {
-                            [unitViews[selectedIndex] setFrame:CGRectMake(0, unitViews[selectedIndex].frame.origin.y, 240, 48)];
+                            [unitViews[selectedIndex] setFrame:CGRectMake(0, unitViews[selectedIndex].frame.origin.y, 240, 64)];
                             [self movedFollowFlag:selectedIndex+1 ToIndex:flag];
                         }
-                        [unitViews[flag] setFrame:CGRectMake(0, 48*flag+144, 240, [ToolsUnitView heightWithTheIndex:flag])];
+                        [unitViews[flag] setFrame:CGRectMake(0, 64*flag+144, 240, [ToolsUnitView heightWithTheIndex:flag])];
                         [self movedFollowFlag:flag+1 ToIndex:3];
                         
                     }

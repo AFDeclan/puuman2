@@ -16,5 +16,7 @@
 
     UILabel *titleLabel;
 }
+- (void)foldTool;
+- (void)unFoldTool;
 @property(nonatomic,assign)NSInteger flagNum;
 @end
