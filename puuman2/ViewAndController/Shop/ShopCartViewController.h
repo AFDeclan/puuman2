@@ -8,15 +8,16 @@
 
 #import "CustomPopViewController.h"
 #import "ColorButton.h"
-#import "CartTableViewCell.h"
-@interface ShopCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource,CartCellDelegate>
+
+@interface ShopCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource>
 {
     ColorButton *cartShowBtn;
     ColorButton *orderShowBtn;
     ColorButton *orderBtn;
+    ColorButton *deleteBtn;
+
     UITableView * cartTable;
-    BOOL isPaid;
-    NSInteger unfoldIndex;
+    UITableView * orderTable;
     UILabel *noti_empty;
     UIView *emptyNotiView;
 }

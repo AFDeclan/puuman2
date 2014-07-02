@@ -151,7 +151,6 @@ static ShopViewController * instance;
     ShopCartViewController *cartVC =[[ShopCartViewController alloc] initWithNibName:nil bundle:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
     [cartVC setControlBtnType:kOnlyCloseButton];
-    [cartVC setTitle:@"购物车" withIcon:[UIImage imageNamed:@"icon_cart_shop.png"]];
     [cartVC show];
 }
 

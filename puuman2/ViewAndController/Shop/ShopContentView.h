@@ -19,7 +19,7 @@
     UIView *menuMask;
     ShopMenuView *menu;
     BabyInfoPageControlButton *showAndHiddenBtn;
-     NSTimer *_timerToFoldDrawer;
+    NSTimer *_timerToFoldDrawer;
     BOOL menuShowed;
 }
 - (void)hiddenMenuWithTapPoint:(CGPoint)pos;
