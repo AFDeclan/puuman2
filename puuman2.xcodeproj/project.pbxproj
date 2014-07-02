@@ -640,6 +640,8 @@
 		54C038D91963DF1F00BBC1E6 /* OrderWaresHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C038D61963DF1F00BBC1E6 /* OrderWaresHeaderView.m */; };
 		54C038DD1963ECAB00BBC1E6 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C038DC1963ECAB00BBC1E6 /* OrderDetailViewController.m */; };
 		54C038E11963FBAD00BBC1E6 /* PaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C038E01963FBAD00BBC1E6 /* PaidViewController.m */; };
+		54C038E4196405ED00BBC1E6 /* ShopWareInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C038E3196405ED00BBC1E6 /* ShopWareInfoView.m */; };
+		54C038E619640A3000BBC1E6 /* ware_info_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C038E519640A3000BBC1E6 /* ware_info_back.png */; };
 		54C2E9FA192DE0BA0011AA0C /* course_p1_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */; };
 		54C2E9FB192DE0BA0011AA0C /* course_p1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F5192DE0BA0011AA0C /* course_p1.png */; };
 		54C2E9FC192DE0BA0011AA0C /* course_p2_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */; };
@@ -1702,6 +1704,9 @@
 		54C038DC1963ECAB00BBC1E6 /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		54C038DF1963FBAD00BBC1E6 /* PaidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaidViewController.h; sourceTree = "<group>"; };
 		54C038E01963FBAD00BBC1E6 /* PaidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaidViewController.m; sourceTree = "<group>"; };
+		54C038E2196405ED00BBC1E6 /* ShopWareInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopWareInfoView.h; sourceTree = "<group>"; };
+		54C038E3196405ED00BBC1E6 /* ShopWareInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopWareInfoView.m; sourceTree = "<group>"; };
+		54C038E519640A3000BBC1E6 /* ware_info_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ware_info_back.png; sourceTree = "<group>"; };
 		54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p1_h.png; sourceTree = "<group>"; };
 		54C2E9F5192DE0BA0011AA0C /* course_p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p1.png; sourceTree = "<group>"; };
 		54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p2_h.png; sourceTree = "<group>"; };
@@ -2728,6 +2733,7 @@
 				54ACB2DD18EBE8F400EE5F90 /* icon_flag_shop.png */,
 				54C038CD1963B58400BBC1E6 /* icon_selected_cart.png */,
 				54C038CE1963B58400BBC1E6 /* icon_unselected_cart.png */,
+				54C038E519640A3000BBC1E6 /* ware_info_back.png */,
 				54D64EF018E7C38A00B8899D /* WareView */,
 				54D64F0618E8002300B8899D /* icon_time_shop.png */,
 				54B4683818E5274600745F72 /* allShop */,
@@ -2759,9 +2765,11 @@
 				54AC210318E3FEA8001C1357 /* AllWareView.m */,
 				54AC210518E4055B001C1357 /* SearchTextField.h */,
 				54AC210618E4055B001C1357 /* SearchTextField.m */,
+				54C038E2196405ED00BBC1E6 /* ShopWareInfoView.h */,
+				54C038E3196405ED00BBC1E6 /* ShopWareInfoView.m */,
+				54B4685318E54D5100745F72 /* Menu */,
 				54CB2A4D1962C76B005EBD3F /* Cart&Order */,
 				54B867F118E6B76D00BE5335 /* Ware */,
-				54B4685318E54D5100745F72 /* Menu */,
 				54AC210B18E40757001C1357 /* AllView */,
 				54AC210A18E4074E001C1357 /* RectView */,
 			);
@@ -4404,6 +4412,7 @@
 				54CCF1EB18F3E7A80081C149 /* btn_partner1_topic.png in Resources */,
 				5447C48818D97D1100187BE6 /* btn_like1_topic.png in Resources */,
 				5403CD3818D03D39004CAE22 /* icon14_weather_diary.png in Resources */,
+				54C038E619640A3000BBC1E6 /* ware_info_back.png in Resources */,
 				54ADE0AB18C861B700B166C4 /* btn_audio2_newdiary.png in Resources */,
 				54AC20EA18E3FD30001C1357 /* icon2_bottle_shop.png in Resources */,
 				88B515FD192F52EE006A79AB /* SinaWeibo.bundle in Resources */,
@@ -4712,6 +4721,7 @@
 				54B6F42118D6D72E0055FC72 /* SettingPassWordViewController.m in Sources */,
 				5447C4B718D98F5C00187BE6 /* PartnerChatView.m in Sources */,
 				54AC211418E4123C001C1357 /* RectRankCell.m in Sources */,
+				54C038E4196405ED00BBC1E6 /* ShopWareInfoView.m in Sources */,
 				54B30A8B195D53EC00007DDC /* PieView.m in Sources */,
 				54AE2BBA18E93FEB00D24F92 /* Member.m in Sources */,
 				5447C4B418D98F1700187BE6 /* PartnerDataView.m in Sources */,
