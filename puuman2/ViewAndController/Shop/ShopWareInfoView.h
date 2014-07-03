@@ -10,15 +10,17 @@
 #import "AFImageView.h"
 #import "SelectedButton.h"
 #import "ColorButton.h"
+#import "UIColumnView.h"
 
-@interface ShopWareInfoView : UIView<SelectedButtonDelegate>
+@interface ShopWareInfoView : UIView<SelectedButtonDelegate,UIColumnViewDataSource,UIColumnViewDelegate>
 {
     
     UIView *headView;
+    UIView *infoView;
+
     UILabel *titleLabel;
     UIButton *backBtn;
     AFImageView *wareImgView;
-    UITableView *singleProductTableView;
     UILabel *wareName;
     UILabel *priceLabel;
     SelectedButton *addCountBtn;
@@ -26,5 +28,9 @@
     UILabel *changeCountLabel;
     ColorButton *shareBtn;
     ColorButton *addToCart;
+    
+    UIColumnView *infoTableView;
+
 }
+
 @end

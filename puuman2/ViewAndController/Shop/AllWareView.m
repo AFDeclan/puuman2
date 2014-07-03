@@ -12,6 +12,7 @@
 #import "InsuranceCell.h"
 #import "WareCell.h"
 #import "MainTabBarController.h"
+
 @implementation AllWareView
 
 - (id)initWithFrame:(CGRect)frame
@@ -20,10 +21,14 @@
     if (self) {
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
-        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 608, 688)];
+        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 648, 688)];
         [_shopMallTable setDataSource:self];
         [_shopMallTable setDelegate:self];
-        [self addSubview:_shopMallTable];
+       // [self addSubview:_shopMallTable];
+        
+        infoView = [[ShopWareInfoView alloc] initWithFrame:CGRectMake(0, 0, 648, 688)];
+        [self addSubview:infoView];
+        
         [_shopMallTable setBackgroundColor:[UIColor clearColor]];
         [_shopMallTable setSeparatorColor:[UIColor clearColor]];
         [_shopMallTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];

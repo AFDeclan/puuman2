@@ -11,8 +11,6 @@
 #import "AFSelecedTextImgButton.h"
 #import "SocialContentView.h"
 
-
-
 @interface SocialViewController : UIViewController
 {
     UIImageView *bg_topImageView;
