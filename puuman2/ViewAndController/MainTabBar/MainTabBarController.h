@@ -40,6 +40,7 @@
     BabyView *infoView;
     BabyShowButton *babyShowBtn;
     UIButton *babyInfoBtn;
+    UIView *diaryTurorialView;
 
 }
 
