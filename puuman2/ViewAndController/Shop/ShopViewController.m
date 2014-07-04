@@ -52,7 +52,7 @@ static ShopViewController * instance;
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
-    
+ 
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -60,10 +60,10 @@ static ShopViewController * instance;
    
     [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
-    
+  
+
     
 }
-
 
 - (void)viewDidLoad
 {
@@ -74,8 +74,9 @@ static ShopViewController * instance;
     UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
     [gestureRecognizer setDelegate:self];
     [self.view addGestureRecognizer:gestureRecognizer];
-
+   
 }
+
 
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
@@ -98,23 +99,11 @@ static ShopViewController * instance;
     bg_rightImageView = [[UIImageView alloc] init];
     [bg_rightImageView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:bg_rightImageView];
-
     
-    priceBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
-    [priceBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
-    [priceBtn addTarget:self action:@selector(priceBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:priceBtn];
+    sectionView = [[ShopSectionView alloc] initWithFrame:CGRectMake(0, 0, 64, 96*3)];
+    [self.view addSubview:sectionView];
     
-    heatBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
-    [heatBtn setSelectedImg:[UIImage imageNamed:@"btn_all1_shop.png"] andUnselectedImg:[UIImage imageNamed:@"btn_all2_shop.png"]];
-    [heatBtn addTarget:self action:@selector(heatBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:heatBtn];
-    
-    timeBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
-    [timeBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
-    [timeBtn addTarget:self action:@selector(timeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:timeBtn];
-    
+       
     searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 184, 40)];
     [searchView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:searchView];
@@ -141,7 +130,6 @@ static ShopViewController * instance;
     [cartBtn setImage:[UIImage imageNamed:@"btn_cart_shop.png"] forState:UIControlStateNormal];
     [cartBtn addTarget:self action:@selector(showCart) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cartBtn];
-    [self timeBtnPressed];
 
 }
 
@@ -166,9 +154,7 @@ static ShopViewController * instance;
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_shop.png"]];
     [bg_rightImageView setFrame:CGRectMake(688, 80, 64, 944)];
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_shop.png"]];
-    SetViewLeftUp(priceBtn, 688, 80);
-    SetViewLeftUp(heatBtn, 688, 176);
-    SetViewLeftUp(timeBtn, 688, 272);
+    SetViewLeftUp(sectionView, 688, 80);
     SetViewLeftUp(searchBtn, 464, 28);
     SetViewLeftUp(searchView, 288, 28);
     SetViewLeftUp(cartBtn, 680, 678);
@@ -184,40 +170,20 @@ static ShopViewController * instance;
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_h_shop.png"]];
     [bg_rightImageView setFrame:CGRectMake(944, 80, 64, 688)];
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_h_shop.png"]];
-    SetViewLeftUp(priceBtn, 944, 80);
-    SetViewLeftUp(heatBtn, 944, 176);
-    SetViewLeftUp(timeBtn, 944, 272);
+  
+    SetViewLeftUp(sectionView, 944, 80);
+
     SetViewLeftUp(searchBtn, 592, 28);
     SetViewLeftUp(searchView, 416, 28);
     SetViewLeftUp(cartBtn, 936, 678);
 }
 
-- (void)priceBtnPressed
-{
-    [priceBtn selected];
-    [timeBtn unSelected];
-    [heatBtn unSelected];
-   
-}
 
-- (void)timeBtnPressed
-{
-    [timeBtn selected];
-    [priceBtn unSelected];
-    [heatBtn unSelected];
-}
-
-- (void)heatBtnPressed
-{
-    [heatBtn selected];
-    [timeBtn unSelected];
-    [priceBtn unSelected];
-}
 
 - (void)search
 {
     [searchTextField resignFirstResponder];
-   
+    PostNotification(Noti_ShowWareInfo, [NSNumber numberWithBool:YES]);
 }
 
 -(void)refresh
@@ -231,12 +197,5 @@ static ShopViewController * instance;
     return YES;
 }
 
-- (void)showAllShop
-{
-    [contentShop showAllShop];
-}
-- (void)showRectShop
-{
-    [contentShop showRectShop];
-}
+
 @end

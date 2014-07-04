@@ -13,7 +13,6 @@
 #import "UILabel+AdjustSize.h"
 
 @implementation ShopWareInfoView
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -24,6 +23,18 @@
     }
     return self;
 }
+
+- (void)refresh
+{
+    [infoView setFrame:CGRectMake(16, 88, (self.frame.size.width-32), 248)];
+    [infoTableView setFrame:CGRectMake(16, 352, (self.frame.size.width-32), 80)];
+    [infoTableView reloadData];
+    SetViewLeftUp(shareBtn, self.frame.size.width - ViewWidth(shareBtn), 578);
+    SetViewLeftUp(addToCart, self.frame.size.width - ViewWidth(shareBtn), 618);
+    SetViewLeftUp(backBtn, self.frame.size.width - 8- 54, 5);
+    [titleLabel setFrame:CGRectMake(0, 0, self.frame.size.width, 64)];
+}
+
 
 - (void)initialization
 {
@@ -68,7 +79,7 @@
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     [headView addSubview:titleLabel];
     
-    backBtn = [[UIButton alloc] initWithFrame:CGRectMake(8, 5, 54, 54)];
+    backBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 8- 54, 5, 54, 54)];
     [backBtn setImage:[UIImage imageNamed:@"ware_info_back.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [headView addSubview:backBtn];
@@ -167,7 +178,7 @@
 
 - (void)backBtnPressed
 {
-
+    PostNotification(Noti_ShowWareInfo, [NSNumber numberWithBool:NO]);
 }
 
 - (void)selectedButtonSelectedWithButton:(SelectedButton *)button
@@ -179,196 +190,6 @@
     
     }
 }
-
-
-//- (void)initMiddleView
-//{
-//    middleView = [[UIView alloc] initWithFrame:CGRectMake(0, ViewHeight(headView)+ViewHeight(titleView), kScreenWidth, 80)];
-//    [middleView setBackgroundColor:PMColor4];
-//    [singleProductTableView addSubview:middleView];
-//    
-//
-//    
-//    omitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [omitButton setBackgroundColor:[UIColor clearColor]];
-//    [omitButton setFrame:CGRectMake(75, 15 , 80, 24)];
-//    [omitButton.layer setMasksToBounds:YES];
-//    [omitButton.layer setCornerRadius:12];
-//    [omitButton.layer setBorderWidth:1.0];
-//    [omitButton.layer setBorderColor:[PMColor3 CGColor]];
-//    [omitButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-//    [omitButton setTag:100];
-//    [middleView addSubview:omitButton];
-//    
-//    omitLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 60, 20)];
-//    [omitLabel setText:@"内蒙古"];
-//    [omitLabel setTextColor:PMColor3];
-//    [omitLabel setFont:PMFont4];
-//    [omitLabel setBackgroundColor:[UIColor clearColor]];
-//    [omitButton addSubview:omitLabel];
-//    
-//    UIImageView *omitImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
-//    [omitImage setFrame:CGRectMake(72, 8, 6, 8)];
-//    [omitImage setBackgroundColor:PMColor3];
-//    [omitButton addSubview:omitImage];
-//    
-//    cityButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [cityButton setBackgroundColor:[UIColor clearColor]];
-//    [cityButton setFrame:CGRectMake(160, 15, 95, 24)];
-//    [cityButton.layer setMasksToBounds:YES];
-//    [cityButton.layer setCornerRadius:12];
-//    [cityButton.layer setBorderWidth:1.0];
-//    [cityButton.layer setBorderColor:[PMColor3 CGColor]];
-//    [cityButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-//    [cityButton setTag:101];
-//    [middleView addSubview:cityButton];
-//    
-//    cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 75, 20)];
-//    [cityLabel setText:@"鄂尔多私事"];
-//    [cityLabel setTextColor:PMColor3];
-//    [cityLabel setFont:PMFont4];
-//    [cityLabel setBackgroundColor:[UIColor clearColor]];
-//    [cityButton addSubview:cityLabel];
-//    
-//    UIImageView *cityImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
-//    [cityImage setFrame:CGRectMake(88, 8, 6, 8)];
-//    [cityImage setBackgroundColor:PMColor3];
-//    [omitButton addSubview:cityImage];
-//    
-//    
-//    chooseButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [chooseButton setBackgroundColor:PMColor6];
-//    [chooseButton setFrame:CGRectMake(260, 15, 50, 24)];
-//    [chooseButton.layer setMasksToBounds:YES];
-//    [chooseButton.layer setCornerRadius:12];
-//    [chooseButton setTitle:@"有货" forState:UIControlStateNormal];
-//    [chooseButton.titleLabel setFont:PMFont3];
-//    [chooseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [middleView addSubview:chooseButton];
-//    
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(75, 46, 180, 24)];
-//    
-//    [view.layer setMasksToBounds:YES];
-//    [view.layer setCornerRadius:12];
-//    [view.layer setBorderWidth:1.0];
-//    [view.layer setBorderColor:[PMColor3 CGColor]];
-//    [middleView addSubview:view];
-//    
-//
-//}
-//
-//- (void)initFootView
-//{
-//    footView = [[UIView alloc] initWithFrame:CGRectMake(0,ViewHeight(headView)+ViewHeight(middleView)+ViewHeight(titleView), kScreenWidth, kScreenHeight-ViewHeight(headView)-ViewHeight(middleView)-ViewHeight(titleView))];
-//    [footView setBackgroundColor:[UIColor whiteColor]];
-//    [singleProductTableView addSubview:footView];
-//    
-//    UIView *selectView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 300, 28)];
-//    [selectView.layer setMasksToBounds:YES];
-//    [selectView.layer setCornerRadius:14];
-//    [footView addSubview:selectView];
-//    
-//    productBtn = [[ImgTextButton alloc] initWithFrame:CGRectMake(0, 0, 150,28)];
-//    //[productBtn setTitle:@"商品描述" andImg:nil andimgSize:CGSizeZero andStyle:CustomBtnStyle_D2];
-//    [productBtn setTitle:@"商品描述"  andselectedImg:nil andunSelectedImg:nil  andimgSize:CGSizeZero andStyle:CustomBtnStyle_D2];
-//    [productBtn addTarget:self action:@selector(loadProduct) forControlEvents:UIControlEventTouchUpInside];
-//    [productBtn setBackgroundColor:PMColor4];
-//    [selectView addSubview:productBtn];
-//    
-//    userBtn = [[ImgTextButton alloc] initWithFrame:CGRectMake(150, 0, 150, 28)];
-//    //[userBtn setTitle:@"用户评价" andImg:nil andimgSize:CGSizeZero andStyle:CustomBtnStyle_D2];
-//    [userBtn setTitle:@"用户评价" andselectedImg:nil andunSelectedImg:nil andimgSize:CGSizeZero andStyle:CustomBtnStyle_D2];
-//    [userBtn addTarget:self action:@selector(loadUser) forControlEvents:UIControlEventTouchUpInside];
-//    [userBtn setBackgroundColor:PMColor4];
-//    [selectView addSubview:userBtn];
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//}
-
-//- (void)loadProduct
-//{
-//    [productBtn setActive:YES];
-//    [userBtn setActive:NO];
-//    
-//}
-//
-//- (void)loadUser
-//{
-//    [productBtn setActive:NO];
-//    [userBtn setActive:YES];
-//    
-//}
-//
-//- (void)close
-//{
-//    [closeBtn setActive:YES];
-//    [finishedBtn setActive:NO];
-//    
-//}
-//
-//- (void)finished
-//{
-//    [finishedBtn setActive:YES];
-//    [closeBtn setActive:NO];
-//    
-//    
-//}
-//
-//- (void)btnClick:(UIButton *)button
-//{
-//    
-//    
-//    
-//}
-//
-//- (void)selectedButtonSelectedWithButton:(SelectedButton *)button
-//{
-//    
-//    if (button == backBtn) {
-//        
-//        CATransition *transition = [CATransition pushFromLeft:self];
-//        [self.navigationController.view.layer addAnimation:transition forKey:nil];
-//        [self.navigationController popViewControllerAnimated:NO];
-//    } else if (button == addCountBtn) {
-//        
-//        count ++;
-//        changeCountLabel.text = [NSString stringWithFormat:@"%i",count];
-//        
-//    } else {
-//        
-//        if (count <= 0) {
-//            
-//            return;
-//        }
-//        count --;
-//        changeCountLabel.text = [NSString stringWithFormat:@"%i",count];
-//        
-//    }
-//}
-//
-//- (void)viewDidLoad
-//{
-//    [super viewDidLoad];
-//	// Do any additional setup after loading the view.
-//    singleProductTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
-//    [singleProductTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//    [singleProductTableView setSeparatorColor:[UIColor clearColor]];
-//    [singleProductTableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
-//    [singleProductTableView setDelegate:self];
-//    [singleProductTableView setDataSource:self];
-//    [self.view addSubview:singleProductTableView];
-//    [self initHeadView];
-//    [self initMiddleView];
-//    [self initFootView];
-//    
-//    
-//}
-//
 
 
 #pragma mark - UIColumnViewDelegate and UIColumnViewDataSource

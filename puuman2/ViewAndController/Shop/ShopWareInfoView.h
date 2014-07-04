@@ -28,9 +28,10 @@
     UILabel *changeCountLabel;
     ColorButton *shareBtn;
     ColorButton *addToCart;
-    
     UIColumnView *infoTableView;
 
 }
+- (void)refresh;
 
 @end
+

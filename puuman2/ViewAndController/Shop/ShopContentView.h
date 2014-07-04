@@ -7,24 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AllWareView.h"
-#import "RectWareView.h"
 #import "ShopMenuView.h"
 #import "BabyInfoPageControlButton.h"
+#import "ShopShowContentView.h"
 
 @interface ShopContentView : UIScrollView<UIGestureRecognizerDelegate>
 {
-    RectWareView *rectView;
-    AllWareView *allView;
+    
+    ShopShowContentView *contentView;
     UIView *menuMask;
     ShopMenuView *menu;
     BabyInfoPageControlButton *showAndHiddenBtn;
     NSTimer *_timerToFoldDrawer;
     BOOL menuShowed;
+
+    
 }
 - (void)hiddenMenuWithTapPoint:(CGPoint)pos;
-- (void)showAllShop;
-- (void)showRectShop;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

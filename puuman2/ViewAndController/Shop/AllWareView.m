@@ -20,14 +20,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
         [self setBackgroundColor:[UIColor clearColor]];
         _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 648, 688)];
         [_shopMallTable setDataSource:self];
         [_shopMallTable setDelegate:self];
        // [self addSubview:_shopMallTable];
         
-        infoView = [[ShopWareInfoView alloc] initWithFrame:CGRectMake(0, 0, 648, 688)];
-        [self addSubview:infoView];
+     
         
         [_shopMallTable setBackgroundColor:[UIColor clearColor]];
         [_shopMallTable setSeparatorColor:[UIColor clearColor]];
@@ -59,9 +59,14 @@
         [_shopMallTable addSubview:noti_insurance];
         headView= [[ShopAllWareHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
         [self addSubview:headView];
+        
+       
+        
     }
     return self;
 }
+
+
 
 #pragma mark - Tableview Delegate Methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -306,7 +311,9 @@
 
 - (void)setVerticalFrame
 {
-    [_shopMallTable setFrame:CGRectMake(0, 0, 608, 944)];
+ 
+    
+    [_shopMallTable setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     if (_shopState == ShopStateInsurance) {
         [noti_insurance setAlpha:1];
     }
@@ -314,16 +321,14 @@
 
 - (void)setHorizontalFrame
 {
-    [_shopMallTable setFrame:CGRectMake(0, 0, 648, 688)];
+   
+    
+    [_shopMallTable setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     if (_shopState == ShopStateInsurance) {
           [noti_insurance setAlpha:0];
     }
 }
 
-- (void)dealloc
-{
-    [MyNotiCenter removeObserver:self];
-}
 
 
 

@@ -725,6 +725,10 @@
 		54D1500D18CAF4EB0022E1F4 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1500818CAF4EB0022E1F4 /* TaskCell.m */; };
 		54D1501218CAF7B50022E1F4 /* TaskTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1501118CAF7B50022E1F4 /* TaskTitleView.m */; };
 		54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1501418CB1EB00022E1F4 /* TaskInfoViewController.m */; };
+		54D50ACF1966559E0009E3A7 /* ShopShowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D50ACE1966559E0009E3A7 /* ShopShowContentView.m */; };
+		54D50AD2196682B20009E3A7 /* ShopSortSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D50AD1196682B20009E3A7 /* ShopSortSectionView.m */; };
+		54D50AD5196686ED0009E3A7 /* ShopSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D50AD4196686ED0009E3A7 /* ShopSectionView.m */; };
+		54D50AD8196689E20009E3A7 /* WareInfoSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D50AD7196689E20009E3A7 /* WareInfoSectionView.m */; };
 		54D64EEF18E7BA2000B8899D /* ShopWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D64EEE18E7BA2000B8899D /* ShopWebViewController.m */; };
 		54D64EF718E7C39500B8899D /* btn_back2_br_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D64EF118E7C39500B8899D /* btn_back2_br_shop.png */; };
 		54D64EF818E7C39500B8899D /* btn_back3_br_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D64EF218E7C39500B8899D /* btn_back3_br_shop.png */; };
@@ -1816,6 +1820,14 @@
 		54D1501118CAF7B50022E1F4 /* TaskTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTitleView.m; sourceTree = "<group>"; };
 		54D1501318CB1EB00022E1F4 /* TaskInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskInfoViewController.h; sourceTree = "<group>"; };
 		54D1501418CB1EB00022E1F4 /* TaskInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskInfoViewController.m; sourceTree = "<group>"; };
+		54D50ACD1966559E0009E3A7 /* ShopShowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopShowContentView.h; sourceTree = "<group>"; };
+		54D50ACE1966559E0009E3A7 /* ShopShowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopShowContentView.m; sourceTree = "<group>"; };
+		54D50AD0196682B20009E3A7 /* ShopSortSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopSortSectionView.h; sourceTree = "<group>"; };
+		54D50AD1196682B20009E3A7 /* ShopSortSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopSortSectionView.m; sourceTree = "<group>"; };
+		54D50AD3196686ED0009E3A7 /* ShopSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopSectionView.h; sourceTree = "<group>"; };
+		54D50AD4196686ED0009E3A7 /* ShopSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopSectionView.m; sourceTree = "<group>"; };
+		54D50AD6196689E20009E3A7 /* WareInfoSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WareInfoSectionView.h; sourceTree = "<group>"; };
+		54D50AD7196689E20009E3A7 /* WareInfoSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WareInfoSectionView.m; sourceTree = "<group>"; };
 		54D64EED18E7BA2000B8899D /* ShopWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopWebViewController.h; sourceTree = "<group>"; };
 		54D64EEE18E7BA2000B8899D /* ShopWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopWebViewController.m; sourceTree = "<group>"; };
 		54D64EF118E7C39500B8899D /* btn_back2_br_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back2_br_shop.png; sourceTree = "<group>"; };
@@ -2761,8 +2773,16 @@
 		54AC20FE18E3FE68001C1357 /* contentView */ = {
 			isa = PBXGroup;
 			children = (
+				54D50AD3196686ED0009E3A7 /* ShopSectionView.h */,
+				54D50AD4196686ED0009E3A7 /* ShopSectionView.m */,
+				54D50AD0196682B20009E3A7 /* ShopSortSectionView.h */,
+				54D50AD1196682B20009E3A7 /* ShopSortSectionView.m */,
+				54D50AD6196689E20009E3A7 /* WareInfoSectionView.h */,
+				54D50AD7196689E20009E3A7 /* WareInfoSectionView.m */,
 				54AC210C18E40AED001C1357 /* ShopContentView.h */,
 				54AC210D18E40AED001C1357 /* ShopContentView.m */,
+				54D50ACD1966559E0009E3A7 /* ShopShowContentView.h */,
+				54D50ACE1966559E0009E3A7 /* ShopShowContentView.m */,
 				54AC20FF18E3FE99001C1357 /* RectWareView.h */,
 				54AC210018E3FE99001C1357 /* RectWareView.m */,
 				54AC210218E3FEA8001C1357 /* AllWareView.h */,
@@ -4763,6 +4783,7 @@
 				14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */,
 				54AFBBCA18D6938600861A69 /* ProtocalPuumanViewController.m in Sources */,
 				54CE112518C1BC6D00966396 /* DiaryViewController.m in Sources */,
+				54D50ACF1966559E0009E3A7 /* ShopShowContentView.m in Sources */,
 				54CE112418C1BC6D00966396 /* BabyInfoViewController.m in Sources */,
 				5412BC4F192C80330033F322 /* VideoDiaryCell.m in Sources */,
 				54AFAA9418DACD6D0067B8C1 /* ChatTableCell.m in Sources */,
@@ -4826,6 +4847,7 @@
 				54B753A018D2A7C7002411CF /* BabyVaccineView.m in Sources */,
 				54AE2BB718E93FEB00D24F92 /* ActionManager.m in Sources */,
 				54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */,
+				54D50AD8196689E20009E3A7 /* WareInfoSectionView.m in Sources */,
 				54AFBBC118D6938600861A69 /* ColorButton.m in Sources */,
 				88B515F6192F52EE006A79AB /* AFButton.m in Sources */,
 				54012DEE18E3053B00F11D97 /* PuumanRankPartnerDataView.m in Sources */,
@@ -4864,6 +4886,8 @@
 				545EB7F618D7F33F00D8EB7F /* AgeCalenderTitleButton.m in Sources */,
 				5412BC49192C7FF80033F322 /* DiaryCell.m in Sources */,
 				54CE112718C1BC6D00966396 /* MainTabBarController.m in Sources */,
+				54D50AD2196682B20009E3A7 /* ShopSortSectionView.m in Sources */,
+				54D50AD5196686ED0009E3A7 /* ShopSectionView.m in Sources */,
 				54ADB1BB18E1303300FCCC83 /* DataInfoScrollView.m in Sources */,
 				54AB6CCD18F2BAA300E4269E /* BindAlpayViewController.m in Sources */,
 				54B867F718E6B81A00BE5335 /* SinglepopViewController.m in Sources */,

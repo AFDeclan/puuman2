@@ -97,13 +97,12 @@
         [[ShopModel sharedInstance] setSectionIndex:cell.flagNum];
         [[ShopModel sharedInstance] setSubClassIndex:-1];
         if (cell.flagNum == -1 ) {
-            [[ShopViewController sharedShopViewController] showRectShop];
+            PostNotification(Noti_ShowAllShopView, [NSNumber numberWithBool:NO]);
         }else{
-            [[ShopViewController sharedShopViewController] showAllShop];
+            PostNotification(Noti_ShowAllShopView, [NSNumber numberWithBool:YES]);
         }
+        PostNotification(Noti_ShowWareInfo, [NSNumber numberWithBool:NO]);
         [menuTable reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationNone];
-        
-        
 
     }
 

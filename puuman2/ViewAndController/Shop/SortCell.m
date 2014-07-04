@@ -66,8 +66,10 @@
 
 - (void)selected
 {
+    PostNotification(Noti_HiddenMenu, nil);
+    PostNotification(Noti_ShowWareInfo, [NSNumber numberWithBool:NO]);
     [[ShopModel sharedInstance] setSubClassIndex:_flagTag];
-    [[ShopViewController sharedShopViewController] showAllShop];
+    PostNotification(Noti_ShowAllShopView, [NSNumber numberWithBool:YES]);
 }
 
 @end
