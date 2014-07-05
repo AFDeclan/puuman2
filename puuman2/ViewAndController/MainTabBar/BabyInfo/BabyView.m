@@ -147,15 +147,14 @@
     
             if (!cell) {
     
-                cell = [[BabyInfoBornViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                }
+                 cell = [[BabyInfoBornViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            }
         
-                [cell setBackgroundColor:[UIColor clearColor]];
-                [cell setDelegate:self];
-               [cell setBornDelegate:self];
-            
-            
-                return cell;
+            [cell setBackgroundColor:[UIColor clearColor]];
+            [cell setDelegate:self];
+            [cell setBornDelegate:self];
+            [cell refresh];
+            return cell;
     
         } else if ( index == 0) {
     
@@ -164,12 +163,12 @@
             BabyInfoBodyViewCell *cell = (BabyInfoBodyViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
         
             if (!cell) {
-        
-            cell = [[BabyInfoBodyViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        }
+                cell = [[BabyInfoBodyViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            }
     
             [cell setBackgroundColor:[UIColor clearColor]];
             [cell setDelegate:self];
+            [cell refresh];
             return cell;
             
         } else {
@@ -181,29 +180,26 @@
             BabyInfoVaciViewCell *cell = (BabyInfoVaciViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
         
             if (!cell) {
-        
-            cell = [[BabyInfoVaciViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        
-        }
+                cell = [[BabyInfoVaciViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            }
             [cell setBackgroundColor:[UIColor clearColor]];
-            
             [cell setDelegate:self];
-        
+            [cell refresh];
             return cell;
-            } else {
+        } else {
                 
                 NSString *cellIdentifier = @"propViewCell";
-                
+
                 BabyInfoPropViewCell *cell = (BabyInfoPropViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
                 
                 if (!cell) {
-                    
                     cell = [[BabyInfoPropViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                    
                 }
                 
                 [cell setBackgroundColor:[UIColor clearColor]];
                 [cell setDelegate:self];
+                [cell refresh];
+
                 return cell;
             }
         

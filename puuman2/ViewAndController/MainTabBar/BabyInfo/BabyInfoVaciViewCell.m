@@ -32,12 +32,19 @@
 - (void)initialization
 {
     
-    leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 590, 672)];
+    leftView = [[UIView alloc] initWithFrame:CGRectMake(48, 96, 542, 672)];
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
     rightView = [[UIView alloc] initWithFrame:CGRectMake(590,96,434, 672)];
     [rightView setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:rightView];
+    
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setFrame:CGRectMake(0, 96, 48, 672)];
+    [leftBtn setBackgroundColor:PMColor6];
+    [leftBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
+    [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:leftBtn];
     
 }
 
@@ -49,7 +56,6 @@
     [dataTable setDataSource:self];
     [dataTable setDelegate:self];
     [rightView addSubview:dataTable];
-    //[dataTable setBackgroundColor:[UIColor clearColor]];
     [dataTable setSeparatorColor:[UIColor clearColor]];
     [dataTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [dataTable setShowsHorizontalScrollIndicator:NO];
@@ -76,10 +82,11 @@
     [emptyView setAlpha:0];
     selectVaccine = -1;
     right = NO;
-    selectedDateBtn  = [[UIButton alloc] initWithFrame:CGRectMake(121, 126, 336, 48)];
+    selectedDateBtn  = [[UIButton alloc] initWithFrame:CGRectMake(72, 126, 336, 48)];
     [selectedDateBtn addTarget:self action:@selector(selectedDate)  forControlEvents:UIControlEventTouchUpInside];
     [selectedDateBtn setBackgroundColor:[UIColor clearColor]];
     [leftView addSubview:selectedDateBtn];
+    
     statusText = [[CustomTextField alloc] initWithFrame:CGRectMake(0, 0, 336, 48)];
     [statusText setEnabled:NO];
     [statusText setPlaceholder:@"建议在6月龄接种"];
@@ -87,28 +94,32 @@
     
     
     
-    nameLabel = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(121, 190, 336, 64)];
+    nameLabel = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(72, 190, 336, 64)];
     [nameLabel setBackgroundColor:[UIColor clearColor]];
     [leftView addSubview:nameLabel];
     
-    detail = [[UITextView alloc] initWithFrame:CGRectMake(121, 235, 336, 0)];
+    detail = [[UITextView alloc] initWithFrame:CGRectMake(72, 235, 336, 288)];
+
     [detail setBackgroundColor:[UIColor clearColor]];
     [detail setFont:PMFont2];
     [detail setEditable:NO];
     [detail setTextColor:PMColor2];
     [leftView addSubview:detail];
     
-    alreadyBtn = [[ColorButton alloc] init];
-    [alreadyBtn initWithTitle:@"已接种" andButtonType:kBlueLeftUp];
-    [alreadyBtn setFrame:CGRectMake(480, 590, 112, 40)];
-    [alreadyBtn addTarget:self action:@selector(alreadyBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
-    [leftView addSubview:alreadyBtn];
     
     notBtn = [[ColorButton alloc] init];
     [notBtn initWithTitle:@"未接种" andButtonType:kBlueLeftUp];
-    [notBtn setFrame:CGRectMake(480, 550,112, 40)];
+    [notBtn setFrame:CGRectMake(432, 550,112, 40)];
     [notBtn addTarget:self action:@selector(noBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:notBtn];
+    
+    alreadyBtn = [[ColorButton alloc] init];
+    [alreadyBtn initWithTitle:@"已接种" andButtonType:kBlueLeftDown];
+    [alreadyBtn setFrame:CGRectMake(432, 590, 112, 40)];
+    [alreadyBtn addTarget:self action:@selector(alreadyBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
+    [leftView addSubview:alreadyBtn];
+
+    
     
 //    backBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 48, 672)];
 //    [backBtn addTarget:self action:@selector(backBtnClick)  forControlEvents:UIControlEventTouchUpInside];
@@ -116,12 +127,7 @@
 //    //[backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_right.png"] andButtonType:kButtonTypeSix];
 //    [backBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
 //    //[backBtn setTransform:CGAffineTransformMakeRotation(M_PI)];
-     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 96, 47, 672)];
-    [leftBtn setBackgroundColor:PMColor6];
-    [leftBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
-    [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:leftBtn];
+   
     
     maskView = [[UIView alloc] init];
     [maskView setBackgroundColor:[UIColor clearColor]];
@@ -137,28 +143,20 @@
     _calendar = [[AddInfoCalendar alloc] initWithFrame:CGRectMake(0, 0, 300, 325)];
     [_calendar setAlpha:1];
     _calendar.delegate = self;
-    [self.contentView addSubview:_calendar];
+    [leftView addSubview:_calendar];
     if ([MainTabBarController sharedMainViewController].isVertical) {
         
-        SetViewLeftUp(_calendar, 162, 96);
+        SetViewLeftUp(_calendar, 121, 96);
     }else{
-        SetViewLeftUp(_calendar, 66, 96);
+        SetViewLeftUp(_calendar, 140, 96);
     }
     
 }
 
 - (void)leftBtnClick
 {
-    
-//    [maskView setAlpha:1];
-//    [UIView animateWithDuration:0.5 animations:^{
-//        //[self setContentOffset:CGPointMake(0, 0)];
-//    } completion:^(BOOL finished) {
-//        [maskView setAlpha:0];
-//    }];
-    
     [_delegate backTheBornView];
-//    
+   
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -197,61 +195,70 @@
     [self selectAtIndex:[indexPath row]];
     
 }
-//
-//-(void)setVerticalFrame
-//{
-//    //[super setVerticalFrame];
-////    [leftView setFrame:CGRectMake(0, 0, 608, 832)];
-////    [rightView setFrame:CGRectMake(608, 0, 608, 832)];
-//    [dataTable setFrame:CGRectMake(88, 0, 432, 832)];
-//    SetViewLeftUp(selectedDateBtn, 144, 48);
-//    SetViewLeftUp(nameLabel, 144, 96);
-//    SetViewLeftUp(alreadyBtn, 486, 736);
-//    SetViewLeftUp(notBtn, 486, 776);
-//    [detail setFrame:CGRectMake(144, 178, 336, 638)];
-//    [maskView setFrame:CGRectMake(0, 0, 608, 832)];
-//    if (selectVaccine != -1) {
-//        [self selectAtIndex:selectVaccine];
-//    }
-//    if (_calendar) {
-//        SetViewLeftUp(_calendar, 162, 96);;
-//    }
-//    [emptyView setAlpha:0];
-//}
 
-//-(void)setHorizontalFrame
-//{
-////    [super setHorizontalFrame];
-////    [leftView setFrame:CGRectMake(0, 0, 432, 576)];
-//    [dataTable setFrame:CGRectMake(0, 0, 432, 576)];
-//   // [rightView setFrame:CGRectMake(432, 0, 432, 576)];
-//    SetViewLeftUp(selectedDateBtn, 48, 48);
-//    SetViewLeftUp(nameLabel, 48, 96);
-//    SetViewLeftUp(alreadyBtn, 320, 480);
-//    SetViewLeftUp(notBtn, 320, 520);
-//    [detail setFrame:CGRectMake(48, 178, 336, 288)];
-//    //[backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_left.png"] andButtonType:kButtonTypeSix];
-//    [backBtn setEnabled:NO];
-//    SetViewLeftUp(backBtn, 0, 200);
-//    //    SetViewLeftUp(leftView, 0, -60);
-//    //    [self performSelectorOnMainThread:@selector(animateWithVaccineView) withObject:nil waitUntilDone:0];
-//    //[self setContentOffset:CGPointMake(0, 0)];
-//    [maskView setFrame:CGRectMake(0, 0, 864, 576)];
-//    if (selectVaccine == -1) {
-//        //[rightView setAlpha:0];
-//        [emptyView setAlpha:1];
-//        SetViewLeftUp(backBtn, 0, -156);
-//    }else{
-//        [emptyView setAlpha:0];
-//        [self selectAtIndex:selectVaccine];
-//    }
-//    if (_calendar) {
-//        SetViewLeftUp(_calendar, 66, 96);;
-//    }
-//    [emptyView setFrame:CGRectMake(592, 192, 136, 144)];
-//    
-//}
+-(void)setVerticalFrame
+{
+
+}
+
+-(void)setHorizontalFrame
+{
+}
+
+////-(void)setVerticalFrame
+////{
+////    //[super setVerticalFrame];
+//////    [leftView setFrame:CGRectMake(0, 0, 608, 832)];
+//////    [rightView setFrame:CGRectMake(608, 0, 608, 832)];
+////    [dataTable setFrame:CGRectMake(88, 0, 432, 832)];
+////    SetViewLeftUp(selectedDateBtn, 144, 48);
+////    SetViewLeftUp(nameLabel, 144, 96);
+////    SetViewLeftUp(alreadyBtn, 486, 736);
+////    SetViewLeftUp(notBtn, 486, 776);
+////    [detail setFrame:CGRectMake(144, 178, 336, 638)];
+////    [maskView setFrame:CGRectMake(0, 0, 608, 832)];
+////    if (selectVaccine != -1) {
+////        [self selectAtIndex:selectVaccine];
+////    }
+////    if (_calendar) {
+////        SetViewLeftUp(_calendar, 162, 96);;
+////    }
+////    [emptyView setAlpha:0];
+////}
 //
+////-(void)setHorizontalFrame
+////{
+//////    [super setHorizontalFrame];
+//////    [leftView setFrame:CGRectMake(0, 0, 432, 576)];
+////    [dataTable setFrame:CGRectMake(0, 0, 432, 576)];
+////   // [rightView setFrame:CGRectMake(432, 0, 432, 576)];
+////    SetViewLeftUp(selectedDateBtn, 48, 48);
+////    SetViewLeftUp(nameLabel, 48, 96);
+////    SetViewLeftUp(alreadyBtn, 320, 480);
+////    SetViewLeftUp(notBtn, 320, 520);
+////    [detail setFrame:CGRectMake(48, 178, 336, 288)];
+////    //[backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_left.png"] andButtonType:kButtonTypeSix];
+////    [backBtn setEnabled:NO];
+////    SetViewLeftUp(backBtn, 0, 200);
+////    //    SetViewLeftUp(leftView, 0, -60);
+////    //    [self performSelectorOnMainThread:@selector(animateWithVaccineView) withObject:nil waitUntilDone:0];
+////    //[self setContentOffset:CGPointMake(0, 0)];
+////    [maskView setFrame:CGRectMake(0, 0, 864, 576)];
+////    if (selectVaccine == -1) {
+////        //[rightView setAlpha:0];
+////        [emptyView setAlpha:1];
+////        SetViewLeftUp(backBtn, 0, -156);
+////    }else{
+////        [emptyView setAlpha:0];
+////        [self selectAtIndex:selectVaccine];
+////    }
+////    if (_calendar) {
+////        SetViewLeftUp(_calendar, 66, 96);;
+////    }
+////    [emptyView setFrame:CGRectMake(592, 192, 136, 144)];
+////    
+////}
+////
 
 - (void)refresh
 {

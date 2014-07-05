@@ -33,11 +33,15 @@
 //            [self setHorizontalFrame];
 //            
 //        }
-
+        [MyNotiCenter addObserver:self selector:@selector(refresh) name:Noti_BabyDataUpdated object:nil];
     }
     return self;
 }
 
+- (void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
+}
 
 - (void)initialization
 {

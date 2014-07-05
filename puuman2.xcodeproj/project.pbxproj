@@ -657,6 +657,7 @@
 		54CB2A4019629F2D005EBD3F /* ShopMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A3F19629F2D005EBD3F /* ShopMenuCell.m */; };
 		54CB2A4B1962A930005EBD3F /* DetailSortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A481962A930005EBD3F /* DetailSortTableViewCell.m */; };
 		54CB2A4C1962A930005EBD3F /* SortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A4A1962A930005EBD3F /* SortCell.m */; };
+		54CC5FD71967AE3C001E5CEE /* BabyCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CC5FD61967AE3C001E5CEE /* BabyCustomTableViewCell.m */; };
 		54CCF1D518F3CC220081C149 /* SelectPhotoImportTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CCF1D418F3CC220081C149 /* SelectPhotoImportTypeViewController.m */; };
 		54CCF1D818F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CCF1D718F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m */; };
 		54CCF1DD18F3E7170081C149 /* btn_baby1_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CCF1D918F3E7170081C149 /* btn_baby1_diary.png */; };
@@ -1765,6 +1766,8 @@
 		54CB2A481962A930005EBD3F /* DetailSortTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSortTableViewCell.m; sourceTree = "<group>"; };
 		54CB2A491962A930005EBD3F /* SortCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortCell.h; sourceTree = "<group>"; };
 		54CB2A4A1962A930005EBD3F /* SortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortCell.m; sourceTree = "<group>"; };
+		54CC5FD51967AE3C001E5CEE /* BabyCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCustomTableViewCell.h; sourceTree = "<group>"; };
+		54CC5FD61967AE3C001E5CEE /* BabyCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyCustomTableViewCell.m; sourceTree = "<group>"; };
 		54CCF1D318F3CC220081C149 /* SelectPhotoImportTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPhotoImportTypeViewController.h; sourceTree = "<group>"; };
 		54CCF1D418F3CC220081C149 /* SelectPhotoImportTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPhotoImportTypeViewController.m; sourceTree = "<group>"; };
 		54CCF1D618F3CE4A0081C149 /* TopicCellSelectedPohosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCellSelectedPohosViewController.h; sourceTree = "<group>"; };
@@ -3200,8 +3203,10 @@
 				88AF77701963B1F200E02B43 /* BabyInfoPregnancyViewCell.m */,
 				88AF50651966932C00EEC049 /* PregnancyTableViewCell.h */,
 				88AF50661966932C00EEC049 /* PregnancyTableViewCell.m */,
-				88AF777E1963EBB900E02B43 /* BabyInfoBornViewCell.m */,
+				54CC5FD51967AE3C001E5CEE /* BabyCustomTableViewCell.h */,
+				54CC5FD61967AE3C001E5CEE /* BabyCustomTableViewCell.m */,
 				88AF777F1963EBB900E02B43 /* BabyInfoBornViewCell.h */,
+				88AF777E1963EBB900E02B43 /* BabyInfoBornViewCell.m */,
 				88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */,
 				88AF77731963B23400E02B43 /* BabyInfoPropViewCell.m */,
 				88AF50631966439D00EEC049 /* BabyInfoPropEstiCell.m */,
@@ -4896,6 +4901,7 @@
 				54B30A91195D53EC00007DDC /* ToolsUnitView.m in Sources */,
 				54B30A8F195D53EC00007DDC /* ToolsInfoView.m in Sources */,
 				544419E618D3EAC800FBE69F /* BabyPropView.m in Sources */,
+				54CC5FD71967AE3C001E5CEE /* BabyCustomTableViewCell.m in Sources */,
 				54B30AB1195D5A0500007DDC /* CalenderTableViewCell.m in Sources */,
 				54B30ABD195D5C9D00007DDC /* PuumanButtonAnimateView.m in Sources */,
 				88B5160B192F52EE006A79AB /* UIImage+CroppedImage.m in Sources */,

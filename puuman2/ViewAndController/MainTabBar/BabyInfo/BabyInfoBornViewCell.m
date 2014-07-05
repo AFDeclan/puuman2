@@ -15,7 +15,6 @@
 #import "CustomNotiViewController.h"
 #import "UserInfo.h"
 #import "BabyData.h"
-#import "BabyInfoChooseButton.h"
 #import "AddBodyDataViewController.h"
 #import "CAKeyframeAnimation+DragAnimation.h"
 
@@ -56,8 +55,19 @@
     [bottomBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 480, 8, 480)];
     [bottomBtn addTarget:self action:@selector(disAppearInfoView) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:bottomBtn];
-    
-    
+    [MyNotiCenter addObserver:self selector:@selector(refresh) name:Noti_BabyDataUpdated object:nil];
+
+
+
+}
+
+
+- (void)refresh
+{
+    [weightBtn setType:kBabyInfoWeight];
+    [heightBtn setType:kBabyInfoHeight];
+    [vaciBtn setType:kBabyInfoVaci];
+    [propBtn setType:kBabyInfoProp];
 
 }
 
@@ -73,23 +83,19 @@
     [addRecordBtn addTarget:self action:@selector(addRecord) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:addRecordBtn];
     
-    BabyInfoChooseButton *heightBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(30, 262, 170, 68)];
-    [heightBtn setType:kBabyInfoHeight];
+    heightBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(30, 262, 170, 68)];
     [heightBtn addTarget:self action:@selector(heiBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:heightBtn];
     
-    BabyInfoChooseButton *weightBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(30, 332, 170, 68)];
-    [weightBtn setType:kBabyInfoWeight];
+    weightBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(30, 332, 170, 68)];
     [weightBtn addTarget:self action:@selector(weiBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:weightBtn];
     
-    BabyInfoChooseButton *vaciBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 140, 212, 100)];
-    [vaciBtn setType:kBabyInfoVaci];
+    vaciBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 140, 212, 100)];
     [vaciBtn addTarget:self action:@selector(vaciBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:vaciBtn];
     
-    BabyInfoChooseButton *propBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 380, 212, 80)];
-    [propBtn setType:kBabyInfoProp];
+    propBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 380, 212, 80)];
     [propBtn addTarget:self action:@selector(propBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:propBtn];
     
