@@ -46,6 +46,8 @@ typedef enum ShowTitles
 @property (nonatomic, assign) float startAngle;//default 0
 @property (nonatomic, assign) float endAngle;//default 360
 @property (nonatomic, assign) float animationDuration;//default 0.6
+@property (nonatomic, assign) BOOL finishLoad;//default 0.6
+
 @property (nonatomic, assign) ShowTitle showTitles;//defaul ShowTitleNever
 @property (nonatomic,assign) id <PieLayerDeleagate> pieLayerDelegate;
 @property (nonatomic, assign) NSString*(^transformTitleBlock)(PieElement* val);
@@ -61,7 +63,7 @@ typedef enum ShowTitles
 @end
 
 @protocol PieLayerDeleagate <NSObject>
-
+@optional
 - (void)finishedAnimate;
 
 @end

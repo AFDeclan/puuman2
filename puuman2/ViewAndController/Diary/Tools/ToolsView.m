@@ -37,7 +37,7 @@
     [contentView addSubview:bgImgView];
     toolsInfo = [[ToolsInfoView alloc] initWithFrame:CGRectMake(0, 0, 240, 144)];
     [contentView addSubview:toolsInfo];
-    
+    animated = YES;
     
 }
 
@@ -113,7 +113,6 @@
                 [unitViews[flag] refreshInfo];
                 [unitViews[flag] unFoldTool];
                 [unitViews[selectedIndex] foldTool];
-                
                 [UIView animateWithDuration:0.5 animations:^{
                     
                     if (flag < selectedIndex) {
@@ -137,15 +136,21 @@
                     selectedIndex = flag;
                     animated =  NO;
                     if (flag == 1) {
-                        [(ToolsCoinView *)unitViews[1] addPie];
-                        
+                        [self performSelector:@selector(addPie) withObject:nil afterDelay:0];
+
                     }
                     
                 }];
+
             }
         }
   
     
+}
+
+- (void)addPie
+{
+    [(ToolsCoinView *)unitViews[1] addPie];
 }
 
 - (void)movedFollowFlag:(NSInteger)flag
