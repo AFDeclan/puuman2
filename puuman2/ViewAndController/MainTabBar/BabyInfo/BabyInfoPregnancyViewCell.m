@@ -10,11 +10,15 @@
 #import "ColorsAndFonts.h"
 #import "LoginViewController.h"
 #import "MainTabBarController.h"
-#import "BabyInfoChooseButton.h"
 #import "CAKeyframeAnimation+DragAnimation.h"
+#import "NSDate+Compute.h"
+#import "PregnancyTableViewCell.h"
+
 
 @implementation BabyInfoPregnancyViewCell
 @synthesize delegate = _delegate;
+@synthesize columnImgBMode = _columnImgBMode;
+@synthesize PreDelegate = _PreDelegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,16 +26,15 @@
     if (self) {
         // Initialization code
         [self initialization];
+        [self initColumnView];
         [self initClearInfoView];
+        
     }
     return self;
 }
 
 - (void)initialization
 {
-    UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,1024,96)];
-    [iconView setBackgroundColor:PMColor5];
-    [self.contentView addSubview:iconView];
     
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 1024, 672)];
     [contentView setBackgroundColor:RGBColor(239, 215, 207)];
@@ -50,61 +53,24 @@
     [bottomBtn addTarget:self action:@selector(disAppearInfoView) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:bottomBtn];
     
-    modifyBtn = [[ColorButton alloc] initWithFrame:CGRectMake(916, 28, 108, 40)];
-    [modifyBtn initWithTitle:@"修改" andIcon:[UIImage imageNamed:@"icon_fix_baby.png"] andButtonType:kGrayLeft];
-    [modifyBtn addTarget:self action:@selector(changeBabyInfo) forControlEvents:UIControlEventTouchUpInside];
-    [iconView addSubview:modifyBtn];
-    
-    UIImageView *portraitBg = [[UIImageView alloc] initWithFrame:CGRectMake(50, 10, 180, 180)];
-    [portraitBg setImage:[UIImage imageNamed:@"circle_photo_babyInfo.png"]];
-    [self.contentView addSubview:portraitBg];
-    
-    portraitView = [[AFImageView alloc] initWithFrame:CGRectMake(24, 24, 150, 150)];
-    portraitView .layer.cornerRadius = 75;
-    portraitView.layer.masksToBounds = YES;
-    portraitView.layer.shadowRadius = 0.1;
-    portraitView.contentMode = UIViewContentModeScaleAspectFill;
-    [portraitBg addSubview:portraitView];
-    
-    info_sexIcon = [[UIImageView alloc] initWithFrame:CGRectMake(227, 60, 22, 22)];
-    [info_sexIcon setBackgroundColor:[UIColor clearColor]];
-    [iconView addSubview:info_sexIcon];
-    
-    info_name = [[UILabel alloc] initWithFrame:CGRectMake(256, 58, 65, 25)];
-    [info_name setTextAlignment:NSTextAlignmentLeft];
-    [info_name setTextColor:PMColor6];
-    [info_name setFont:PMFont1];
-    [info_name setText:@"扑满"];
-    [info_name setBackgroundColor:[UIColor clearColor]];
-    [iconView addSubview:info_name];
-    
-    info_age= [[UILabel alloc] initWithFrame:CGRectMake(325, 60, 110, 21)];
-    [info_age setTextAlignment:NSTextAlignmentLeft];
-    [info_age setTextColor:PMColor1];
-    [info_age setFont:PMFont2];
-    [info_age setText:@"孕期18周"];
-    [info_age setBackgroundColor:[UIColor clearColor]];
-    [iconView addSubview:info_age];
-    
-    
 }
 
 - (void)initClearInfoView
 {
     
-    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(265,60, 480, 540)];
-    [bgImageView setImage:[UIImage imageNamed:@"bg_pregnancy_image_babyInfo.png"]];
-    [clearInfoView addSubview:bgImageView];
+//    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(265,60, 480, 540)];
+//    [bgImageView setImage:[UIImage imageNamed:@"bg_pregnancy_image_babyInfo.png"]];
+//    [clearInfoView addSubview:bgImageView];
     
-    BabyInfoChooseButton *BModelBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(24, 118, 160, 24)];
-    [BModelBtn setType:kBabyInfoBModle];
-    [BModelBtn addTarget:self action:@selector(bModelBtn) forControlEvents:UIControlEventTouchUpInside];
-    [clearInfoView addSubview:BModelBtn];
+    changeModelBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(24, 118, 160, 24)];
+    [changeModelBtn setType:kBabyInfoBModle];
+    [changeModelBtn addTarget:self action:@selector(changeModelBtn) forControlEvents:UIControlEventTouchUpInside];
+    [clearInfoView addSubview:changeModelBtn];
     
-    BabyInfoChooseButton *modelBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 84, 220, 85)];
-    [modelBtn setType:kBabyInfoModle];
-    [modelBtn addTarget:self action:@selector(modelBtn) forControlEvents:UIControlEventTouchUpInside];
-    [clearInfoView addSubview:modelBtn];
+    BabyInfoChooseButton *propBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 84, 220, 85)];
+    [propBtn setType:kBabyInfoModle];
+    [propBtn addTarget:self action:@selector(propBtn) forControlEvents:UIControlEventTouchUpInside];
+    [clearInfoView addSubview:propBtn];
     
     UIImageView *grayLineRight = [[UIImageView alloc] initWithFrame:CGRectMake(24, 160, 240, 86)];
     [grayLineRight  setImage:[UIImage imageNamed:@"grayline_right_babyInfo.png"]];
@@ -118,18 +84,34 @@
     [nextPropView setImage:[UIImage imageNamed:@"gray_back_right_babyInfo"]];
     [clearInfoView addSubview:nextPropView];
     
-    UIButton *preBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    preBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [preBtn setFrame:CGRectMake(180, 310, 23, 42)];
     [preBtn setImage:[UIImage imageNamed:@"pre_pic_btn.png"] forState:UIControlStateNormal];
     [preBtn addTarget:self action:@selector(preBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:preBtn];
     
-    UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextBtn setFrame:CGRectMake(790, 310, 23, 42)];
     [nextBtn setImage:[UIImage imageNamed:@"next_pic_btn.png"] forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:nextBtn];
     
+    
+    UIView *bg_question = [[UIView alloc] initWithFrame:CGRectMake(624, 96, 60, 60)];
+    [bg_question setBackgroundColor:RGBColor(153, 193, 222)];
+     bg_question.layer.cornerRadius = 30.0f;
+     bg_question.layer.masksToBounds = YES;
+    [bg_question setAlpha:0.5];
+    [clearInfoView addSubview:bg_question];
+
+    questionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [questionBtn setFrame:CGRectMake(0, 0, 60, 60)];
+    [questionBtn setBackgroundColor:[UIColor clearColor]];
+    [questionBtn setImage:[UIImage imageNamed:@"btn_preinfo_baby.png"] forState:UIControlStateNormal];
+    [questionBtn addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchUpInside];
+    [bg_question addSubview:questionBtn];
+  
+   
     
     UIView *weekView = [[UIView alloc] initWithFrame:CGRectMake(300, 516, 62, 36)];
     [weekView setBackgroundColor:[UIColor redColor]];
@@ -137,49 +119,181 @@
     [weekView.layer setMasksToBounds:YES];
     [weekView.layer setCornerRadius:18.0];
     [clearInfoView addSubview:weekView];
+    
     weekLabel = [[UILabel alloc] initWithFrame:CGRectMake(300, 516, 62, 36)];
     [weekLabel setFont:PMFont(24)];
-    [weekLabel setText:@"18周"];
+    [weekLabel setText:@""];
+    [weekLabel setTextAlignment:NSTextAlignmentCenter];
     [weekLabel setTextColor:[UIColor whiteColor]];
     [clearInfoView addSubview:weekLabel];
     
 }
 
+- (void)initColumnView
+{
+    _columnImgBMode = NO;
+    [preBtn setAlpha:0];
+    [nextBtn setAlpha:1];
+    _columnView = [[UIColumnView alloc] initWithFrame:CGRectMake(265, 60, 480, 540)];
+    [_columnView setBackgroundColor:[UIColor clearColor]];
+    [_columnView setViewDataSource:self];
+    [_columnView setColumnViewDelegate:self];
+    [_columnView setPagingEnabled:YES];
+    [clearInfoView addSubview:_columnView];
+    [self reloadColumnView];
+
+
+}
+
+- (void) reloadColumnView
+{
+    [_columnView reloadData];
+//    NSArray *age = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo]babyInfo] Birthday]];
+//    if ([age count] == 2) {
+//    
+//        NSInteger weekAge = [[age objectAtIndex:0] integerValue];
+//        if (weekAge >  BABY_COLUMN_CNT) weekAge =  BABY_COLUMN_CNT;
+//        [self setWeekWithIndex:weekAge];
+//    
+//    } else {
+//    
+//        [self setWeekWithIndex:1];
+//    }
+//
+}
+
+- (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
+{
+
+    return  BABY_COLUMN_CNT;
+
+
+}
+- (CGFloat) columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
+{
+
+    return kPicWidth;
+
+}
+
+- (UITableViewCell *) columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
+{
+   NSString *identify = @"babyPreView";
+    
+   PregnancyTableViewCell  *cell = (PregnancyTableViewCell *)[columnView dequeueReusableCellWithIdentifier:identify];
+    if (!cell) {
+        cell = [[PregnancyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+    }
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell setColumnImgBMode:_columnImgBMode];
+    [cell setIndexNum:index];
+    return cell;
+}
+
+- (void)scrollViewDidScroll:(UIColumnView *)scrollView
+{
+    scrolling = YES;
+
+}
+- (void)scrollViewDidEndDecelerating:(UIColumnView *)scrollView
+{
+
+    scrolling = NO;
+    [self setWeekWithIndex:[self indexForColumnView]];
+    
+}
+- (void)scrollViewDidEndDragging:(UIColumnView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    scrolling = NO;
+    [self setWeekWithIndex:[self indexForColumnView]];
+
+}
+
+- (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
+{
+
+
+}
+
+- (NSInteger)indexForColumnView
+{
+
+    CGFloat offset = _columnView.contentOffset.x;
+    int index = offset/(kPicWidth/2);
+
+    return (int)(index / 2)+1;
+}
+
+- (void)setWeekWithIndex:(NSInteger)index
+{
+
+    columnIndex = index;
+    weekLabel.text = [NSString stringWithFormat:@"%d周",index];
+
+}
+
+- (void)setColumnImgBMode:(BOOL)columnImgBMode
+{
+
+    _columnImgBMode = columnImgBMode;
+    [_columnView setContentOffset:CGPointMake((columnIndex - 5)*kPicWidth, 0)];
+    [self reloadColumnView];
+    [_columnView setContentOffset:CGPointMake((columnIndex - 1)*kPicWidth, 0)];
+
+}
+
 - (void)disAppearInfoView
 {
     
-    [CAKeyframeAnimation dragAnimationWithView:self.contentView andDargPoint:CGPointMake(0, -1024)];
-    SetViewLeftUp(self.contentView, 0, -768);
+    [_PreDelegate disAppearBabyView];
     
 }
 
-- (void)bModelBtn
+- (void)changeModelBtn
 {
-    
-    
+    _columnImgBMode = !_columnImgBMode;
+    if (_columnImgBMode) {
+        
+     changeModelBtn.stateLabel.text = @"切换到图解";
+       
+    } else {
+     changeModelBtn.stateLabel.text = @"切换到B超";
+      
+    }
+    [_columnView reloadData];
 }
 
-- (void)modelBtn
+- (void)propBtn
 {
     
     [_delegate gotoTheNextPropView];
     
 }
 
+- (void)showInfo
+{
+
+
+
+}
+
 - (void)preBtnClick
 {
     
-    
+
+    [_columnView setContentOffset:CGPointMake((columnIndex - 1)*kPicWidth, 0) animated:NO];
+  
     
 }
 
 - (void)nextBtnClick
 {
-    
+   
+    [_columnView setContentOffset:CGPointMake((columnIndex +1)*kPicWidth, 0) animated:NO];
+   
     
     
 }
-
 - (void)changeBabyInfo
 {
     LoginViewController *modifyInfoVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
@@ -189,6 +303,13 @@
     [modifyInfoVC loginSetting];
     [modifyInfoVC show];
     
+}
+
+- (void) refreshBabyInfo
+{
+
+    [self setColumnImgBMode:NO];
+
 }
 
 

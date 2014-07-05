@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "PropView.h"
 #import "BabyInfoIconViewDelegate.h"
+#import "ColorButton.h"
 
-@interface BabyInfoPropViewCell : UITableViewCell<BabyInfoIconViewDelegate>
+@interface BabyInfoPropViewCell : UITableViewCell<BabyInfoIconViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     PropView *babyPropView;
     UIView *rightView;
     UIView *leftView;
-
+    UITextField *estiTextField;
+    UITableView *estiTableView;
+    ColorButton *estiBtn;
+    NSMutableArray *estiArrayData;
 }
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;

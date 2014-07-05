@@ -112,6 +112,11 @@
     [addDataBtn setFrame:CGRectMake(0, 590, 112, 40)];
     [addDataBtn addTarget:self action:@selector(addData) forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:addDataBtn];
+    shareBtn = [[ColorButton alloc] init];
+    [shareBtn initWithTitle:@"分享" andIcon:[UIImage imageNamed:@"share_image_babyInfo.png"] andButtonType:kGrayRight];
+    [shareBtn setFrame:CGRectMake(0, 550,112, 40)];
+    [shareBtn addTarget:self action:@selector(shareData) forControlEvents:UIControlEventTouchUpInside];
+    [leftView addSubview:shareBtn];
      noti_label = [[UILabel alloc] initWithFrame:CGRectMake(280,520,544, 18)];
     [noti_label setFont:PMFont2];
     [noti_label setTextColor:PMColor3];
@@ -128,6 +133,13 @@
     [addVC setTitle:@"添加记录" withIcon:nil];
     [[MainTabBarController sharedMainViewController].view addSubview:addVC.view];
     [addVC show];
+}
+
+- (void)shareData
+{
+
+  
+
 }
 
 - (void)refresh

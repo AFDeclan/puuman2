@@ -35,6 +35,7 @@ static MBProgressHUD *hud;
 @synthesize isReply = _isReply;
 @synthesize videoShowed =_videoShowed;
 @synthesize hasShareVideo = _hasShareVideo;
+@synthesize babyInfoBtn = _babyInfoBtn;
 //@synthesize loadingVideo = _loadingVideo;
 + (MainTabBarController *)sharedMainViewController
 {
@@ -96,9 +97,9 @@ static MBProgressHUD *hud;
 {
     [infoView loadDataInfo];
     [CAKeyframeAnimation dragAnimationWithView:infoView andDargPoint:CGPointMake(0, 768)];
-    [CAKeyframeAnimation dragAnimationWithView:babyInfoBtn andDargPoint:CGPointMake(0, 768)];
+    [CAKeyframeAnimation dragAnimationWithView:_babyInfoBtn andDargPoint:CGPointMake(0, 768)];
     
-    SetViewLeftUp(babyInfoBtn, 1024 -16 - 56, 768);
+    SetViewLeftUp(_babyInfoBtn, 1024 -16 - 56, 768);
     
     SetViewLeftUp(infoView, 0, 0);
     
@@ -549,12 +550,14 @@ static MBProgressHUD *hud;
     }
     [infoView addSubview:babyShowBtn];
     [babyShowBtn loadPortrait];
-    if (!babyInfoBtn) {
-        babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 56, 0, 56, 56)];
-        [babyInfoBtn addTarget:self action:@selector(babyInfoBtnDown) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:babyInfoBtn];
+    if (!_babyInfoBtn) {
+       _babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 56, 0, 56, 56)];
+        [_babyInfoBtn addTarget:self action:@selector(babyInfoBtnDown) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_babyInfoBtn];
     }
     
 }
+
+
 
 @end

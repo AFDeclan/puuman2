@@ -9,6 +9,7 @@
 #import "BabyInfoPropViewCell.h"
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
+#import "BabyInfoPropEstiCell.h"
 
 @implementation BabyInfoPropViewCell
 
@@ -41,7 +42,7 @@
 - (void)initWithLeftView
 {
     
-    babyPropView = [[PropView alloc] initWithFrame:CGRectMake(220, 140, 544, 448)];
+    babyPropView = [[PropView alloc] initWithFrame:CGRectMake(130, 140, 544, 448)];
     [leftView addSubview:babyPropView];
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setFrame:CGRectMake(0, 0, 47, 672)];
@@ -55,14 +56,88 @@
 
 - (void)initWithRightView
 {
+    estiTextField = [[UITextField alloc] initWithFrame:CGRectMake(ViewWidth(rightView)-216+10, 10, 216, 40)];
+    [estiTextField setBackgroundColor:[UIColor whiteColor]];
+    [estiTextField setPlaceholder:@"在此点击输入您的评价"];
+    [estiTextField setFont:PMFont2];
+    [estiTextField setTextAlignment:NSTextAlignmentLeft];
+    [rightView addSubview:estiTextField];
+    
+    UIView *estiView = [[UIView alloc] initWithFrame:CGRectMake(ViewWidth(rightView)-216, 50, 216,70)];
+    [estiView setBackgroundColor:PMColor4];
+    [rightView addSubview:estiView];
+    
+    estiBtn = [[ColorButton alloc] initWithFrame:CGRectMake(0, 15, 112, 40)];
+    [estiBtn initWithTitle:@"评价" andIcon:[UIImage imageNamed:@"esti_image_babyInfo.png"] andButtonType:kBlueRight];
+    [estiView addSubview:estiBtn];
+    
+    
+    estiTableView = [[UITableView alloc] initWithFrame:CGRectMake(ViewWidth(rightView)-216, 120, 216, ViewHeight(rightView)-120)];
+    [estiTableView setBackgroundColor:PMColor4];
+    [estiTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [estiTableView setShowsHorizontalScrollIndicator:NO];
+    [estiTableView setShowsVerticalScrollIndicator:NO];
+    [estiTableView setDelegate:self];
+    [estiTableView setDataSource:self];
+    [rightView addSubview:estiTableView];
+    
+    estiArrayData = [[NSMutableArray alloc] init];
+    
    
+    
+    
+    
+    
 }
 
 - (void)leftBtnClick
 {
+    if ([[[UserInfo sharedUserInfo] babyInfo]WhetherBirth]) {
 
     [_delegate backTheBornView];
+    
+    } else {
+    
+        [_delegate backThePregnancyView];
+    
+    }
+}
 
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+        
+    return 10;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSString *cellIdentifier = @"estiCell";
+   BabyInfoPropEstiCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+    
+        cell = [[BabyInfoPropEstiCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    
+    }
+    [cell setBackgroundColor:[UIColor clearColor]];
+    
+    [cell.estiLabel setTitle:@"使用感觉狠不错使用感觉狠不错使用感觉狠不错使用感觉狠不错使用感觉狠不错" withMaxWidth:180];
+    
+      UIView  *lineView = [[UIView alloc] initWithFrame:CGRectMake(15,ViewHeight(cell.estiLabel)+20 ,180,1)];
+      [lineView setBackgroundColor:PMColor5];
+      [cell.contentView addSubview:lineView];
+
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    return  200;
+   
 }
 
 - (void)refresh

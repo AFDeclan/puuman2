@@ -22,12 +22,14 @@
 
 @implementation BabyInfoBornViewCell
 @synthesize delegate= _delegate;
+@synthesize bornDelegate = _bornDelegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+     
         [self initialization];
         [self initClearInfoView];
     }
@@ -83,13 +85,11 @@
     
     BabyInfoChooseButton *vaciBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 140, 212, 100)];
     [vaciBtn setType:kBabyInfoVaci];
-    [vaciBtn setTag:100];
     [vaciBtn addTarget:self action:@selector(vaciBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:vaciBtn];
     
     BabyInfoChooseButton *propBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 380, 212, 80)];
     [propBtn setType:kBabyInfoProp];
-    [propBtn setTag:101];
     [propBtn addTarget:self action:@selector(propBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:propBtn];
     
@@ -116,8 +116,6 @@
     UIImageView *nextPropView = [[UIImageView alloc] initWithFrame:CGRectMake(1000,407, 10, 16)];
     [nextPropView setImage:[UIImage imageNamed:@"back_right_babyInfo"]];
     [clearInfoView addSubview:nextPropView];
-
-
 
 
 }
@@ -161,10 +159,8 @@
 
 - (void)disAppearInfoView
 {
-    [CAKeyframeAnimation dragAnimationWithView:self.contentView andDargPoint:CGPointMake(0, -1024)];
     
-    SetViewLeftUp(self.contentView, 0, -768);
-    
+    [_bornDelegate disAppearBabyView];
 }
 
 

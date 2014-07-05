@@ -738,6 +738,10 @@
 		54F1D13B18C48FA50005CDD9 /* icon_text2_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F1D12918C48FA50005CDD9 /* icon_text2_diary.png */; };
 		54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1D13D18C490A10005CDD9 /* PopUpViewController.m */; };
 		6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A163B769C9D646389F66C162 /* libPods.a */; };
+		8829DD0D196798F50023678D /* esti_image_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8829DD0C196798F50023678D /* esti_image_babyInfo.png */; };
+		8829DD0F19679D7E0023678D /* share_image_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8829DD0E19679D7E0023678D /* share_image_babyInfo.png */; };
+		88AF50641966439D00EEC049 /* BabyInfoPropEstiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF50631966439D00EEC049 /* BabyInfoPropEstiCell.m */; };
+		88AF50671966932C00EEC049 /* PregnancyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF50661966932C00EEC049 /* PregnancyTableViewCell.m */; };
 		88AF77711963B1F200E02B43 /* BabyInfoPregnancyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF77701963B1F200E02B43 /* BabyInfoPregnancyViewCell.m */; };
 		88AF77741963B23400E02B43 /* BabyInfoPropViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF77731963B23400E02B43 /* BabyInfoPropViewCell.m */; };
 		88AF77771963B24500E02B43 /* BabyInfoVaciViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF77761963B24500E02B43 /* BabyInfoVaciViewCell.m */; };
@@ -1836,6 +1840,12 @@
 		54F1D13C18C490A10005CDD9 /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
 		54F1D13D18C490A10005CDD9 /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
 		721904F09AE644A085A71BDA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8829DD0C196798F50023678D /* esti_image_babyInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = esti_image_babyInfo.png; sourceTree = "<group>"; };
+		8829DD0E19679D7E0023678D /* share_image_babyInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_image_babyInfo.png; sourceTree = "<group>"; };
+		88AF50621966439D00EEC049 /* BabyInfoPropEstiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoPropEstiCell.h; sourceTree = "<group>"; };
+		88AF50631966439D00EEC049 /* BabyInfoPropEstiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoPropEstiCell.m; sourceTree = "<group>"; };
+		88AF50651966932C00EEC049 /* PregnancyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PregnancyTableViewCell.h; sourceTree = "<group>"; };
+		88AF50661966932C00EEC049 /* PregnancyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PregnancyTableViewCell.m; sourceTree = "<group>"; };
 		88AF776F1963B1F200E02B43 /* BabyInfoPregnancyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoPregnancyViewCell.h; sourceTree = "<group>"; };
 		88AF77701963B1F200E02B43 /* BabyInfoPregnancyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoPregnancyViewCell.m; sourceTree = "<group>"; };
 		88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoPropViewCell.h; sourceTree = "<group>"; };
@@ -2363,6 +2373,8 @@
 		5403CDF818D04F51004CAE22 /* BabyInfoImages */ = {
 			isa = PBXGroup;
 			children = (
+				8829DD0E19679D7E0023678D /* share_image_babyInfo.png */,
+				8829DD0C196798F50023678D /* esti_image_babyInfo.png */,
 				88C965BF1962B5DE0058B842 /* gray_back_right_babyInfo.png */,
 				88C965BB1962B48F0058B842 /* grayline_right_babyInfo.png */,
 				88C965BC1962B48F0058B842 /* grayline_left_babyInfo.png */,
@@ -3137,12 +3149,16 @@
 				54B30AC7195D644900007DDC /* BabyView.m */,
 				88AF776F1963B1F200E02B43 /* BabyInfoPregnancyViewCell.h */,
 				88AF77701963B1F200E02B43 /* BabyInfoPregnancyViewCell.m */,
+				88AF50651966932C00EEC049 /* PregnancyTableViewCell.h */,
+				88AF50661966932C00EEC049 /* PregnancyTableViewCell.m */,
 				88AF777E1963EBB900E02B43 /* BabyInfoBornViewCell.m */,
 				88AF777F1963EBB900E02B43 /* BabyInfoBornViewCell.h */,
 				88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */,
 				88AF77731963B23400E02B43 /* BabyInfoPropViewCell.m */,
+				88AF50631966439D00EEC049 /* BabyInfoPropEstiCell.m */,
 				88AF77751963B24500E02B43 /* BabyInfoVaciViewCell.h */,
 				88AF77761963B24500E02B43 /* BabyInfoVaciViewCell.m */,
+				88AF50621966439D00EEC049 /* BabyInfoPropEstiCell.h */,
 				88AF777B1963B56900E02B43 /* BabyInfoBodyViewCell.h */,
 				88AF777C1963B56900E02B43 /* BabyInfoBodyViewCell.m */,
 				88C9A94A196171A100C25347 /* BabyInfoChooseButton.h */,
@@ -4287,6 +4303,7 @@
 				5403CD5D18D03DBD004CAE22 /* input_invite_diary.png in Resources */,
 				54CE116618C1C7BF00966396 /* btn_close1.png in Resources */,
 				5447C49C18D97D1100187BE6 /* icon_prize_topic.png in Resources */,
+				8829DD0D196798F50023678D /* esti_image_babyInfo.png in Resources */,
 				54AC212D18E42355001C1357 /* shopping_default.png in Resources */,
 				5403CD4718D03D39004CAE22 /* icon3_weather_diary@2x.png in Resources */,
 				5403CD3F18D03D39004CAE22 /* icon17_weather_diary@2x.png in Resources */,
@@ -4310,6 +4327,7 @@
 				88B51604192F52EE006A79AB /* MJRefresh.bundle in Resources */,
 				5447C49518D97D1100187BE6 /* icon_like1_topic.png in Resources */,
 				54B97E7F18FA572600B6C4C9 /* num4_insure_shop.png in Resources */,
+				8829DD0F19679D7E0023678D /* share_image_babyInfo.png in Resources */,
 				5463757D18C98476004B11EF /* btn_next_login.png in Resources */,
 				54B97E8718FA572600B6C4C9 /* pic25_insure_shop.png in Resources */,
 				54F1D13618C48FA50005CDD9 /* btn_video2_diary.png in Resources */,
@@ -4796,6 +4814,7 @@
 				5412BC52192C803E0033F322 /* AudioDiaryCell.m in Sources */,
 				54F1D13E18C490A10005CDD9 /* PopUpViewController.m in Sources */,
 				54EB7A7118DBD6EF00D119A2 /* ChatInputTextView.m in Sources */,
+				88AF50671966932C00EEC049 /* PregnancyTableViewCell.m in Sources */,
 				54ADB1DA18E1862A00FCCC83 /* AudioTopicCell.m in Sources */,
 				5421666F18E025EB005875F8 /* RewardTableViewCell.m in Sources */,
 				88B51606192F52EE006A79AB /* MJRefreshConst.m in Sources */,
@@ -4861,6 +4880,7 @@
 				54AFBBC918D6938600861A69 /* PregnancyCalendar.m in Sources */,
 				54B30A8C195D53EC00007DDC /* ToolsCalendarView.m in Sources */,
 				54CE119618C1E0D900966396 /* SocialViewController.m in Sources */,
+				88AF50641966439D00EEC049 /* BabyInfoPropEstiCell.m in Sources */,
 				54B4EB3018C576E5004489DA /* PopViewController.m in Sources */,
 				54ADB1E318E1AA4C00FCCC83 /* AuToImportImgCell.m in Sources */,
 				5461934419382A4B004FED04 /* UpLoaderShareVideo.m in Sources */,

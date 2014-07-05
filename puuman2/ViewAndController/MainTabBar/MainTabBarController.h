@@ -39,7 +39,7 @@
     PuuamnShowView *puumanView;
     BabyView *infoView;
     BabyShowButton *babyShowBtn;
-    UIButton *babyInfoBtn;
+    UIButton *_babyInfoBtn;
 
 }
 
@@ -48,6 +48,8 @@
 @property(assign,nonatomic) BOOL isReply;
 @property(assign,nonatomic) BOOL videoShowed;
 @property(assign,nonatomic) BOOL hasShareVideo;
+@property(retain,nonatomic) UIButton *babyInfoBtn;
+
 
 //@property(assign,nonatomic) BOOL loadingVideo;
 

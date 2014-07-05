@@ -11,4 +11,6 @@
 @interface AdaptiveLabel : UILabel
 
 - (void)setTitle:(NSString *)title withMaxWidth:(float)maxWidth;
+
+
 @end

@@ -11,7 +11,10 @@
 #import "AFImageView.h"
 #import "UIColumnView.h"
 #import "BabyInfoIconViewDelegate.h"
-@interface BabyInfoPregnancyViewCell : UITableViewCell<BabyInfoIconViewDelegate>
+#import "BabyInfoChooseButton.h"
+#import "BabyView.h"
+
+@interface BabyInfoPregnancyViewCell : UITableViewCell<BabyInfoIconViewDelegate,UIColumnViewDataSource,UIColumnViewDelegate,BabyViewDelegate>
 {
     UIView *clearInfoView;
     ColorButton *modifyBtn;
@@ -20,9 +23,20 @@
     UILabel *info_name;
     UILabel *info_age;
     UILabel *weekLabel;
-  
+    UIButton *preBtn;
+    UIButton *nextBtn;
+    UIColumnView *_columnView;
+    NSInteger columnIndex;
+    UIButton *questionBtn;
+    BOOL scrolling;
+    BabyInfoChooseButton *changeModelBtn;
+    
 }
 
 @property (nonatomic,assign)id<BabyInfoIconViewDelegate>delegate;
+@property (nonatomic,assign)id <BabyViewDelegate>PreDelegate;
+
+@property (nonatomic,assign) BOOL columnImgBMode;
+- (void)refreshBabyInfo;
 
 @end

@@ -11,8 +11,9 @@
 #import "AFImageView.h"
 #import "UserInfo.h"
 #import "BabyInfoIconViewDelegate.h"
+#import "BabyView.h"
 
-@interface BabyInfoBornViewCell : UITableViewCell<BabyInfoDelegate,BabyInfoIconViewDelegate>
+@interface BabyInfoBornViewCell : UITableViewCell<BabyInfoDelegate,BabyInfoIconViewDelegate,BabyViewDelegate>
 
 {
     UIView *clearInfoView;
@@ -20,6 +21,7 @@
 }
 
 @property (nonatomic,assign) id <BabyInfoIconViewDelegate>delegate;
+@property (nonatomic,assign) id <BabyViewDelegate>bornDelegate;
 
 - (void)refreshBabyInfo;
 

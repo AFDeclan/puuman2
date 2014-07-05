@@ -13,7 +13,14 @@
 #import "AFImageView.h"
 #import "BabyInfoIconViewDelegate.h"
 
-@interface BabyView : UIView <UIColumnViewDataSource,UIColumnViewDelegate,BabyInfoIconViewDelegate>
+
+@protocol BabyViewDelegate <NSObject>
+
+- (void) disAppearBabyView;
+
+@end
+
+@interface BabyView : UIView <UIColumnViewDataSource,UIColumnViewDelegate,BabyInfoIconViewDelegate,BabyViewDelegate>
 {
     UIView *babyInfoView;
     UIColumnView *BabyInfoColumnView;
@@ -25,7 +32,9 @@
     UILabel *info_birthday;
     BOOL flag;
    
+   
     
 }
+
 - (void)loadDataInfo;
 @end

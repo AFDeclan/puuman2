@@ -22,7 +22,7 @@ typedef enum{
 
 {
     UIImageView *iconView;
-    UILabel *stateLabel;
+    UILabel *_stateLabel;
     UILabel *detailLabel;
     UILabel *instLabel;
 
@@ -30,5 +30,6 @@ typedef enum{
 }
 
 @property (nonatomic,assign) BabyInfoType type;
+@property (nonatomic,retain) UILabel *stateLabel;
 
 @end

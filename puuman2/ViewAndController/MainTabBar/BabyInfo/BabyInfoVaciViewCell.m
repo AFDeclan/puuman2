@@ -110,13 +110,18 @@
     [notBtn addTarget:self action:@selector(noBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:notBtn];
     
-    backBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 48, 672)];
-    [backBtn addTarget:self action:@selector(backBtnClick)  forControlEvents:UIControlEventTouchUpInside];
-    [backBtn setBackgroundColor:PMColor6];
-    //[backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_right.png"] andButtonType:kButtonTypeSix];
-    [backBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
-    //[backBtn setTransform:CGAffineTransformMakeRotation(M_PI)];
-    [leftView addSubview:backBtn];
+//    backBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 48, 672)];
+//    [backBtn addTarget:self action:@selector(backBtnClick)  forControlEvents:UIControlEventTouchUpInside];
+//    [backBtn setBackgroundColor:PMColor6];
+//    //[backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_right.png"] andButtonType:kButtonTypeSix];
+//    [backBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
+//    //[backBtn setTransform:CGAffineTransformMakeRotation(M_PI)];
+     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setFrame:CGRectMake(0, 96, 47, 672)];
+    [leftBtn setBackgroundColor:PMColor6];
+    [leftBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
+    [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:leftBtn];
     
     maskView = [[UIView alloc] init];
     [maskView setBackgroundColor:[UIColor clearColor]];
@@ -142,7 +147,7 @@
     
 }
 
-- (void)backBtnClick
+- (void)leftBtnClick
 {
     
 //    [maskView setAlpha:1];
@@ -159,7 +164,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    // Return the number of rows in the section.
     return [[BabyData sharedBabyData] vaccineCount];
     
     
