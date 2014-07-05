@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AFImageView.h"
 
+#define  BABY_COLUMN_CNT   40
+#define kPicWidth 256
+#define kPicHeight 296
+
 @interface BabyPreTableViewCell : UITableViewCell
 {
     AFImageView *imgView;

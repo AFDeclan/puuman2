@@ -8,12 +8,31 @@
 
 #import <UIKit/UIKit.h>
 #import "BabyView.h"
-#import "BabyInfoBornView.h"
-#import "BabyInfoPregnancyView.h"
+#import "UIColumnView.h"
+#import "ColorButton.h"
+#import "AFImageView.h"
+#import "BabyInfoIconViewDelegate.h"
 
-@interface BabyView : UIView
+
+@protocol BabyViewDelegate <NSObject>
+
+- (void) disAppearBabyView;
+
+@end
+
+@interface BabyView : UIView <UIColumnViewDataSource,UIColumnViewDelegate,BabyInfoIconViewDelegate,BabyViewDelegate>
 {
     UIView *babyInfoView;
+    UIColumnView *BabyInfoColumnView;
+    ColorButton *modifyBtn;
+    AFImageView *portraitView;
+    UIImageView *info_sexIcon;
+    UILabel *info_name;
+    UILabel *info_age;
+    UILabel *info_birthday;
+    BOOL flag;
+   
+   
     
 }
 
