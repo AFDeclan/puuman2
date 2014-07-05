@@ -15,6 +15,7 @@
 @interface PieView : UIView<PieLayerDeleagate>
 @property (nonatomic, copy) void(^elemTapped)(PieElement*);
 @property (nonatomic,assign) id <PieLayerDeleagate> pieLayerDelegate;
+@property (nonatomic, assign) BOOL finishLoad;
 
 @end
 

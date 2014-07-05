@@ -22,7 +22,7 @@
     if (self) {
         // Initialization code
         [self initialization];
-        [self setBackgroundColor:PMColor5];
+        [self setBackgroundColor:[UIColor clearColor]];
     }
     return self;
 }

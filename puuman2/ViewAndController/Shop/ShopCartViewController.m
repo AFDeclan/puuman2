@@ -11,6 +11,10 @@
 #import "MainTabBarController.h"
 #import "CompareCartViewController.h"
 #import "SinglepopViewController.h"
+#import "ShopCartTableViewCell.h"
+#import "OrderWaresTableViewCell.h"
+#import "OrderWaresHeaderView.h"
+#import "OrderWaresFooterView.h"
 
 @interface ShopCartViewController ()
 
@@ -25,32 +29,41 @@
         // Custom initialization
         [self initWithContent];
         [MyNotiCenter addObserver:self selector:@selector(refreshCartTable) name:Noti_RefreshCartWare object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(unFoldAtIndex:) name:Noti_UnFoldCartWare object:nil];
     }
     return self;
 }
 
 - (void)initWithContent
 {
-    isPaid = NO;
-    unfoldIndex = -1;
-    btn_unpaid = [[ColorButton alloc] init];
-    [btn_unpaid initWithTitle:@"未付款"  andButtonType:kBlueLeftUp];
-    [btn_unpaid addTarget:self action:@selector(unpaidBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_content addSubview:btn_unpaid];
+    
+    cartShowBtn = [[ColorButton alloc] init];
+    [cartShowBtn initWithTitle:@"购物车"  andButtonType:kBlueLeftUp];
+    [cartShowBtn addTarget:self action:@selector(cartShowBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_content addSubview:cartShowBtn];
    
-    btn_paid= [[ColorButton alloc] init];
-    [btn_paid initWithTitle:@"已付款"  andButtonType:kBlueLeftDown];
-    [btn_paid addTarget:self action:@selector(paidBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_content addSubview:btn_paid];
-    btn_compared= [[ColorButton alloc] init];
-    [btn_compared initWithTitle:@"比一比"  andButtonType:kBlueLeft];
-    [btn_compared addTarget:self action:@selector(comparedBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_content addSubview:btn_compared];
-    SetViewLeftUp(btn_unpaid, 592, 480);
-    SetViewLeftUp(btn_paid, 592, 520);
-    SetViewLeftUp(btn_compared, 592, 112);
-    cartTable = [[UITableView alloc] initWithFrame:CGRectMake(48, 112, 528, 448)];
+    orderShowBtn= [[ColorButton alloc] init];
+    [orderShowBtn initWithTitle:@"订单"  andButtonType:kBlueLeftDown];
+    [orderShowBtn addTarget:self action:@selector(orderShowBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_content addSubview:orderShowBtn];
+    
+    deleteBtn = [[ColorButton alloc] init];
+    [deleteBtn initWithTitle:@"删除"  andButtonType:kRedLeftUp];
+    [deleteBtn addTarget:self action:@selector(deleteBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_content addSubview:deleteBtn];
+    
+    orderBtn = [[ColorButton alloc] init];
+    [orderBtn initWithTitle:@"下单"  andButtonType:kBlueLeftDown];
+    [orderBtn addTarget:self action:@selector(orderBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_content addSubview:orderBtn];
+    
+ 
+
+    SetViewLeftUp(cartShowBtn, 592, 112);
+    SetViewLeftUp(orderShowBtn, 592, 152);
+    SetViewLeftUp(deleteBtn, 592, 480);
+    SetViewLeftUp(orderBtn, 592, 520);
+
+    cartTable = [[UITableView alloc] initWithFrame:CGRectMake(32, 112, 540, 448)];
     [cartTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [cartTable setShowsVerticalScrollIndicator:NO];
     [cartTable setDelegate:self];
@@ -59,45 +72,62 @@
     [cartTable setBounces:YES];
     [cartTable setAlpha:1];
     [_content addSubview:cartTable];
-    emptyNotiView = [[UIView alloc] initWithFrame:CGRectMake(216, 256, 224, 144)];
-    [_content addSubview:emptyNotiView];
-    UIImageView  *icon_empty = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 224, 96)];
-    [icon_empty setImage:[UIImage imageNamed:@"pic_cart_blank.png"]];
-    [emptyNotiView addSubview:icon_empty];
-    noti_empty = [[UILabel alloc] initWithFrame:CGRectMake(0, 96, 224, 48)];
-    [noti_empty setFont:PMFont4];
-    [noti_empty setTextColor:PMColor3];
-    [noti_empty setTextAlignment:NSTextAlignmentCenter];
-    [noti_empty setBackgroundColor:[UIColor clearColor]];
-    [emptyNotiView addSubview:noti_empty];
     
-    [self unpaidBtnPressed];
+    orderTable = [[UITableView alloc] initWithFrame:CGRectMake(32, 112, 540, 448)];
+    [orderTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [orderTable setShowsVerticalScrollIndicator:NO];
+    [orderTable setDelegate:self];
+    [orderTable setDataSource:self];
+    [orderTable setBackgroundColor:[UIColor clearColor]];
+    [orderTable setBounces:YES];
+    [orderTable setAlpha:1];
+    [_content addSubview:orderTable];
+    [cartTable setAlpha:0];
+    [orderTable setAlpha:0];
+    
+//    emptyNotiView = [[UIView alloc] initWithFrame:CGRectMake(216, 256, 224, 144)];
+//    [_content addSubview:emptyNotiView];
+//    UIImageView  *icon_empty = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 224, 96)];
+//    [icon_empty setImage:[UIImage imageNamed:@"pic_cart_blank.png"]];
+//    [emptyNotiView addSubview:icon_empty];
+//    noti_empty = [[UILabel alloc] initWithFrame:CGRectMake(0, 96, 224, 48)];
+//    [noti_empty setFont:PMFont4];
+//    [noti_empty setTextColor:PMColor3];
+//    [noti_empty setTextAlignment:NSTextAlignmentCenter];
+//    [noti_empty setBackgroundColor:[UIColor clearColor]];
+//    [emptyNotiView addSubview:noti_empty];
+    
+    [self cartShowBtnPressed];
    
    
 }
 
 - (void)refreshCartTable
 {
-    unfoldIndex = -1;
-    [self emptyWithPaid:isPaid];
     [cartTable reloadData];
 }
 #pragma mark - UITableView Delegate Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if (tableView == cartTable) {
+        return 1;
+
+    }else{
+        return 6;
+
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 
 {
-    if (isPaid)
-    {
-        return [[CartModel sharedCart] DoneCount];
-    }else
-    {
-        return [[CartModel sharedCart] UndoCount];
+    if (tableView == cartTable) {
+        return 2;
+
+    }else{
+        return 3;
+
     }
     
 
@@ -106,81 +136,126 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   
-    static NSString *identify = @"ShopTableCell";
-    CartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-    if (cell == nil)
+    if(tableView == cartTable)
     {
-        cell =  [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-    }
-    if (isPaid) {
-         [cell setUnflod:NO];
-    }else{
-        if ([indexPath row] == unfoldIndex) {
-            [cell setUnflod:YES];
-        }else{
-            [cell setUnflod:NO];
+        NSString *identifier = @"CartCell";
+        ShopCartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil) {
+            cell = [[ShopCartTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
+        [cell setSelectedWare:YES];
+        [cell setBackgroundColor:[UIColor clearColor]];
+        [cell.contentView setBackgroundColor:[UIColor clearColor]];
+        return cell;
+    }else{
+        NSString *identifier = @"OrderCell";
+        OrderWaresTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil) {
+            cell = [[OrderWaresTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
+        return cell;
+      
+
     }
-    [cell setDelegate:self];
-    [cell buildCellWithPaid:isPaid andWareIndex:[indexPath row]];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell setBackgroundColor:[UIColor clearColor]];
-    return cell;
+
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 96;
+    if (tableView == cartTable) {
+        return 164;
+    }else{
+        return 80;
+    }
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    OrderWaresHeaderView *view = [[OrderWaresHeaderView alloc] initWithFrame:CGRectMake(0, 0, 528, 48)];
+    [view setSection:section];
+    return view;
+}
+
+- (float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (tableView == cartTable) {
+        return 0;
+    }
+    return 48;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (tableView == cartTable) {
+        return 0;
+    }else{
+        if(section == 1){
+            return 32;
+        }else{
+            return 56;
+            
+        }
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    OrderWaresFooterView *view = [[OrderWaresFooterView alloc] initWithFrame:CGRectMake(0, 0, 540, 56)];
+    [view setSection:section];
+    return view;
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (isPaid) {
-       // Ware* w = [[CartModel sharedCart] getDoneWareAtIndex:[indexPath row]];
-    }else{
-        Ware* w = [[CartModel sharedCart] getUndoWareAtIndex:[indexPath row]];
-        SinglepopViewController *singGoodVC = [[SinglepopViewController alloc] initWithNibName:nil bundle:nil];
-        [singGoodVC setControlBtnType:kOnlyCloseButton];
-        [singGoodVC setTitle:@"单品信息" withIcon:nil];
-        [singGoodVC setWare:w];
-        [[MainTabBarController sharedMainViewController].view addSubview:singGoodVC.view];
-        [singGoodVC show];
-    }
-    
-    
-}
-
-
-- (void)paidBtnPressed
-{
-    isPaid = YES;
-    [self emptyWithPaid:isPaid];
-    [btn_compared setAlpha:0];
-    [btn_unpaid unSelected];
-    [btn_paid selected];
-    [cartTable reloadData];
-    
-}
-
-- (void)unpaidBtnPressed
-{
-    
-    [btn_unpaid selected];
-    [btn_paid unSelected];
-    isPaid = NO;
-    [self emptyWithPaid:isPaid];
-    [cartTable reloadData];
    
+//        Ware* w = [[CartModel sharedCart] getUndoWareAtIndex:[indexPath row]];
+//        SinglepopViewController *singGoodVC = [[SinglepopViewController alloc] initWithNibName:nil bundle:nil];
+//        [singGoodVC setControlBtnType:kOnlyCloseButton];
+//        [singGoodVC setTitle:@"单品信息" withIcon:nil];
+//        [singGoodVC setWare:w];
+//        [[MainTabBarController sharedMainViewController].view addSubview:singGoodVC.view];
+//        [singGoodVC show];
+
 }
 
-- (void)comparedBtnPressed
+
+- (void)cartShowBtnPressed
+{
+    [self setTitle:@"购物车" withIcon:nil];
+    [orderShowBtn unSelected];
+    [cartShowBtn selected];
+    [cartTable reloadData];
+    [UIView animateWithDuration:0.2 animations:^{
+        [orderBtn setAlpha:1];
+        [cartTable setAlpha:1];
+        [orderTable setAlpha:0];
+        [deleteBtn setAlpha:1];
+    }];
+}
+
+- (void)orderShowBtnPressed
+{
+    [self setTitle:@"我的订单" withIcon:nil];
+    [orderShowBtn selected];
+    [cartShowBtn unSelected];
+    [cartTable reloadData];
+    [UIView animateWithDuration:0.2 animations:^{
+        [orderBtn setAlpha:0];
+        [cartTable setAlpha:0];
+        [orderTable setAlpha:1];
+        [deleteBtn setAlpha:0];
+    }];
+}
+
+
+- (void)orderBtnPressed
 {
    
-    CompareCartViewController *cartVC =[[CompareCartViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
-    [cartVC setControlBtnType:kOnlyCloseButton];
-    [cartVC setTitle:@"比一比" withIcon:[UIImage imageNamed:@"icon_compare3_shop.png"]];
-    [cartVC show];
+
 
 }
 
@@ -192,11 +267,6 @@
 }
 
 
-- (void)unFoldAtIndex:(NSNotification *)notification
-{
-
-    unfoldIndex = [[notification object] integerValue];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -209,7 +279,7 @@
     
     if (paid) {
         if ([[CartModel sharedCart] DoneCount] == 0) {
-            [noti_empty setText: @"您还没有已付款的商品哦~"];
+            [noti_empty setText: @"您还没有购买的商品哦~"];
             [emptyNotiView setAlpha:1];
         }else{
           [emptyNotiView setAlpha:0];
@@ -218,12 +288,19 @@
         if ([[CartModel sharedCart] UndoCount] == 0) {
             [noti_empty setText:@"还没给宝宝挑选商品哦~"];
               [emptyNotiView setAlpha:1];
-            [btn_compared setAlpha:0];
+            [orderBtn setAlpha:0];
         }else{
             [emptyNotiView setAlpha:0];
-            [btn_compared setAlpha:1];
+            [orderBtn setAlpha:1];
         }
     }
+}
+
+
+
+- (void)deleteBtnPressed
+{
+    
 }
 
 @end

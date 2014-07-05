@@ -45,7 +45,7 @@
     _rootTabBarC = [MainTabBarController sharedMainViewController];
     DiaryViewController *diaryVC = [DiaryViewController sharedDiaryViewController];
     SocialViewController *socialVC = [[SocialViewController alloc] init];
-    ShopViewController *shopVC = [[ShopViewController alloc] init];
+    ShopViewController *shopVC = [ShopViewController  sharedShopViewController];
     SkipViewController *skipVC = [[SkipViewController alloc] init];
     [_rootTabBarC addChildViewController:skipVC];
     [_rootTabBarC addChildViewController:diaryVC];

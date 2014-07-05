@@ -21,6 +21,7 @@
 
 @implementation PieView
 @synthesize pieLayerDelegate = _pieLayerDelegate;
+@synthesize finishLoad =_finishLoad;
 + (Class)layerClass
 {
     return [PieLayer class];
@@ -60,6 +61,7 @@
     self.layer.animationDuration = 0.6;
     self.layer.showTitles = ShowTitlesNever;
     self.layer.pieLayerDelegate = self;
+    self.layer.finishLoad = NO;
     if ([self.layer.self respondsToSelector:@selector(setContentsScale:)])
     {
         self.layer.contentsScale = [[UIScreen mainScreen] scale];
@@ -80,4 +82,21 @@
     }];
 }
 
+- (void)setFinishLoad:(BOOL)finishLoad
+{
+    _finishLoad = finishLoad;
+    [self.layer setFinishLoad:finishLoad];
+    if (!finishLoad) {
+        [self reloadLayer];
+    }
+}
+
+- (void)reloadLayer
+{
+    PieElement* elem =  [self.layer.values objectAtIndex:1];
+    elem.centrOffset = 0;
+    [UIView animateWithDuration:1 animations:^{
+        [elem setCentrOffset:0];
+    }];
+}
 @end

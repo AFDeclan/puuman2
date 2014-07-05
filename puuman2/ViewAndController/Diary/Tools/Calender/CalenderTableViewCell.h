@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface CalenderTableViewCell : UITableViewCell
-
+{
+    UILabel *labels[6][7];
+    UITapGestureRecognizer *gestureRecognizer[6][7];
+    NSDate *showDate, *startDate;
+    NSInteger weekCnt;
+}
+- (void)buildMonthWithCurrentIndex:(NSInteger)index;
 @end

@@ -11,10 +11,7 @@
 @interface ShopAllWareHeaderView : UIView
 {
     UIImageView *icon_ware;
-    UIImageView *icon_tri;
-    UIImageView *partLine;
     UILabel *wareLabel;
-    UILabel *moreLabel;
     
 }
 

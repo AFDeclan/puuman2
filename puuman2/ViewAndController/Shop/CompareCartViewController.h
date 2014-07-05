@@ -10,9 +10,9 @@
 #import "AFImageView.h"
 #import "ColorButton.h"
 #import "Ware.h"
-#import "CartTableViewCell.h"
 #import "AnimateShowLabel.h"
-@interface CompareCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource,CartCellDelegate>
+
+@interface CompareCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource>
 {
     AFImageView *first_ImgView;
     AFImageView *second_ImgView;

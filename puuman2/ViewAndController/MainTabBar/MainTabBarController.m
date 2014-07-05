@@ -406,7 +406,38 @@ static MBProgressHUD *hud;
 //        [settingVC back];
 //    }
     [self refreshBabyInfoView];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (![userDefaults boolForKey:@"DiarytutorialShowed"]){
+        [userDefaults setBool:YES forKey:@"DiarytutorialShowed"];
+        diaryTurorialView =[[UIView alloc] init];
+        UIImageView *diaryTurorial = [[UIImageView alloc] init];
+        if (_isVertical ) {
+            [diaryTurorialView setFrame:CGRectMake(0, 0, 768, 1024)];
+            [diaryTurorial setFrame:CGRectMake(0, 0, 768, 1024)];
+            [diaryTurorial setImage:[UIImage imageNamed:@"pic2_course2.png"]];
+
+        }else{
+            [diaryTurorialView setFrame:CGRectMake(0, 0, 1024, 768)];
+            [diaryTurorial setFrame:CGRectMake(0, 0, 1024, 768)];
+            [diaryTurorial setImage:[UIImage imageNamed:@"pic1_course1.png"]];
+
+        }
+      
+        [diaryTurorialView setAlpha:1];
+        [diaryTurorialView addSubview:diaryTurorial];
+        [self.view addSubview:diaryTurorialView];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDiaryTurorialView)];
+        [diaryTurorialView addGestureRecognizer:tap];
+    }
 }
+
+- (void)hiddenDiaryTurorialView
+{
+    [diaryTurorialView setAlpha:0];
+    [diaryTurorialView removeFromSuperview];
+}
+
 
 - (void)showSettingView
 {

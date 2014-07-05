@@ -17,5 +17,6 @@
     AgeCalenderView *ageCalenderView;
     ColorButton *ageBtn;
     ColorButton *timeBtn;
+    BOOL isAge;
 }
 @end

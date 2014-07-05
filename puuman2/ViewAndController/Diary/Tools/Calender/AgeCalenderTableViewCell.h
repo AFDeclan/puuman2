@@ -9,5 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface AgeCalenderTableViewCell : UITableViewCell
-
+{
+    NSDate *date_firstDay;
+    NSDate *date_nextFirstDay;
+    UILabel *labels[6][7];
+    UITapGestureRecognizer *gestureRecognizer[6][7];
+    NSInteger days;
+    NSInteger now_day;
+    NSInteger month;
+    NSInteger now_month;
+}
+- (void)buildMonthWithCurrentIndex:(NSInteger)index;
 @end

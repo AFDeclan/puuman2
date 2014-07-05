@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFSelecedTextImgButton.h"
 #import "ColorButton.h"
 #import "SearchTextField.h"
 #import "ShopContentView.h"
+#import "ShopSectionView.h"
 
 @interface ShopViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate>
 {
@@ -20,10 +20,14 @@
     AFSelecedTextImgButton  *allWareBtn;
     ColorButton *searchBtn;
     SearchTextField *searchTextField;
+    ColorButton *searchBtn;
     UIView *searchView;
     ShopContentView *contentShop;
     UIButton *cartBtn;
+    ShopSectionView *sectionView;
 }
 
+
++ (ShopViewController *)sharedShopViewController;
 
 @end

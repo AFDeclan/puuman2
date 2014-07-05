@@ -26,6 +26,12 @@
 
 - (void)setContentView
 {
+    ageLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, 136, 48)];
+    ageLabel.backgroundColor = [UIColor clearColor];
+    ageLabel.font = PMFont2;
+    ageLabel.textColor = PMColor6;
+    [self addSubview:ageLabel];
+    
     calendarColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 48, 240, 232)];
     [calendarColumnView setBackgroundColor:[UIColor clearColor]];
     [calendarColumnView setColumnViewDelegate:self];
@@ -40,9 +46,9 @@
     
     [calendarColumnView reloadData];
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]), 0) animated:YES];
+        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]), 0) animated:NO];
     }else{
-        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]), 0) animated:YES];
+        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]), 0) animated:NO];
         
     }
     
@@ -81,15 +87,41 @@
         cell = [[AgeCalenderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
     }
-//    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-//        [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
-//    }else{
-//        [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsToDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
-//    }
+    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
+    }else{
+        [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsToDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
+    }
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell.contentView.layer setMasksToBounds:YES];
     return cell;
     
+}
+
+
+- (void)scrollViewDidScroll:(UIColumnView *)scrollView
+{
+    
+    NSInteger num =  (int)(scrollView.contentOffset.x/240)+1;
+    
+    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        int year = num/12;
+        int month =  num%12;
+        
+        if (year > 0) {
+            if (month >0) {
+                [ageLabel setText:[NSString stringWithFormat:@"%d岁%d个月",year,month]];
+            }else{
+                [ageLabel setText:[NSString stringWithFormat:@"%d岁",year]];
+            }
+        }else{
+            [ageLabel setText:[NSString stringWithFormat:@"%d个月",month]];
+            
+        }
+        
+    }else{
+        [ageLabel setText:[NSString stringWithFormat:@"孕期%d周",(int)(scrollView.contentOffset.x/240)+1]];
+    }
 }
 
 @end

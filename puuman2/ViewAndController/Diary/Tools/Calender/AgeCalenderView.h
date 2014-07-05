@@ -11,7 +11,10 @@
 
 @interface AgeCalenderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate>
 {
+    UILabel *ageLabel;
     UIColumnView *calendarColumnView;
 
 }
+- (void)refreshInfo;
+
 @end

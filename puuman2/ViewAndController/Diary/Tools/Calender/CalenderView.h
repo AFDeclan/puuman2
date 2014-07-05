@@ -11,7 +11,8 @@
 
 @interface CalenderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate>
 {
+    UILabel *timeLabel;
     UIColumnView *calendarColumnView;
-
 }
+- (void)refreshInfo;
 @end

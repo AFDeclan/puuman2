@@ -68,6 +68,7 @@ static NSString * const _animationValuesKey = @"animationValues";
 @dynamic values, deletingIndexes, maxRadius, minRadius, font, transformTitleBlock, startAngle, endAngle, isFakeAngleAnimation, showTitles;
 @synthesize animationDuration, animationBeginState, animationEndState, animationDeletingIndexes;
 @synthesize pieLayerDelegate= _pieLayerDelegate;
+@synthesize finishLoad = _finishLoad;
 #pragma mark - Init
 - (id)init
 {
@@ -310,22 +311,7 @@ static NSString * const _animationValuesKey = @"animationValues";
     }
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)finished
-{
-    if(!finished)
-        return;
-    
-    if ([anim isKindOfClass:[CAAnimationGroup class]]) {
-        [_pieLayerDelegate finishedAnimate];
-    }
-    BOOL isValuesAnimation = [anim isKindOfClass:[CAPropertyAnimation class]] &&
-                             [((CAPropertyAnimation*)anim).keyPath isEqualToString:@"values"];
-    if(isValuesAnimation){
-        self.deletingIndexes = nil;
-    } else {//angle animation
-        self.isFakeAngleAnimation = NO;
-    }
-}
+
 
 - (void)setMaxRadius:(float)maxRadius minRadius:(float)minRadius animated:(BOOL)isAnimated
 {
@@ -373,6 +359,7 @@ static NSString * const _animationValuesKey = @"animationValues";
     self.minRadius = minRadius;
 }
 
+
 - (void)animateFromStartAngle:(float)fromStartAngle
                  toStartAngle:(float)toStartAngle
                  fromEndAngle:(float)fromEndAngle
@@ -409,6 +396,25 @@ static NSString * const _animationValuesKey = @"animationValues";
     group.animations = [NSArray arrayWithObjects:animStart, animEnd, nil];
     [group setDelegate:self];
     [self addAnimation:group forKey:@"animationStartEndAngle"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)finished
+{
+    if(!finished)
+        return;
+    
+    if ([anim isKindOfClass:[CAAnimationGroup class]] &&_finishLoad) {
+         if([_pieLayerDelegate respondsToSelector:@selector(finishedAnimate)]){
+             [_pieLayerDelegate finishedAnimate];
+         }
+    }
+    BOOL isValuesAnimation = [anim isKindOfClass:[CAPropertyAnimation class]] &&
+    [((CAPropertyAnimation*)anim).keyPath isEqualToString:@"values"];
+    if(isValuesAnimation){
+        self.deletingIndexes = nil;
+    } else {//angle animation
+        self.isFakeAngleAnimation = NO;
+    }
 }
 
 - (void)setStartAngle:(float)startAngle endAngle:(float)endAngle animated:(BOOL)isAnimated

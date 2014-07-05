@@ -10,7 +10,6 @@
 #define puman_Urls_h
 
 #pragma mark - 各类网址
-
 #define AF_DEBUG
 
 #ifdef AF_DEBUG
