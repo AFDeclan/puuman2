@@ -30,6 +30,11 @@
     UIButton *questionBtn;
     BOOL scrolling;
     BabyInfoChooseButton *changeModelBtn;
+    UIView *contentView;
+    UIButton *bottomBtn;
+    BabyInfoChooseButton *propBtn;
+    UIView *weekView;
+    UIView *picView;
     
 }
 

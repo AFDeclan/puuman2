@@ -18,10 +18,17 @@
 
 {
     UIView *clearInfoView;
+    UIView *contentView;
+    UIButton *bottomBtn;
+    BabyInfoChooseButton *heightBtn;
     BabyInfoChooseButton *weightBtn;
     BabyInfoChooseButton *vaciBtn;
     BabyInfoChooseButton *propBtn;
-    BabyInfoChooseButton *heightBtn;
+    UIButton *addRecordBtn;
+    UIImageView *preView;
+    UIImageView *nextNaciView;
+    UIImageView *nextPropView;
+    
 }
 
 @property (nonatomic,assign) id <BabyInfoIconViewDelegate>delegate;
