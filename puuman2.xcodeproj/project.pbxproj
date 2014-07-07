@@ -1237,6 +1237,7 @@
 		547F7646196A7DAC004D4F77 /* BabyInfoBornViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoBornViewCell.m; sourceTree = "<group>"; };
 		547F7647196A7DAC004D4F77 /* BabyInfoPregnancyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoPregnancyViewCell.h; sourceTree = "<group>"; };
 		547F7648196A7DAC004D4F77 /* BabyInfoPregnancyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoPregnancyViewCell.m; sourceTree = "<group>"; };
+		547F764B196A7F34004D4F77 /* BabyCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCustomTableViewCell.h; sourceTree = "<group>"; };
 		547F9B4F18D162A600486337 /* BodyInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyInfoTableViewCell.h; sourceTree = "<group>"; };
 		547F9B5018D162A600486337 /* BodyInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyInfoTableViewCell.m; sourceTree = "<group>"; };
 		548D3A3518F4E3D1006CC6D6 /* pic_default_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_default_diary.png; sourceTree = "<group>"; };
@@ -2799,8 +2800,9 @@
 			children = (
 				547F7641196A7D96004D4F77 /* PregnancyTableViewCell.h */,
 				547F7642196A7D96004D4F77 /* PregnancyTableViewCell.m */,
-				88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */,
+				547F764B196A7F34004D4F77 /* BabyCustomTableViewCell.h */,
 				547F7640196A7D96004D4F77 /* BabyCustomTableViewCell.m */,
+				88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */,
 				88AF77731963B23400E02B43 /* BabyInfoPropViewCell.m */,
 				88AF50631966439D00EEC049 /* BabyInfoPropEstiCell.m */,
 				88AF77751963B24500E02B43 /* BabyInfoVaciViewCell.h */,
