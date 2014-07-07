@@ -14,7 +14,7 @@
 #import "BabyView.h"
 #import "BabyInfoChooseButton.h"
 
-@interface BabyInfoBornViewCell : UITableViewCell<BabyInfoDelegate,BabyInfoIconViewDelegate,BabyViewDelegate>
+@interface BabyInfoBornViewCell : UITableViewCell<BabyInfoDelegate,BabyInfoIconViewDelegate>
 
 {
     UIView *clearInfoView;
@@ -25,7 +25,6 @@
 }
 
 @property (nonatomic,assign) id <BabyInfoIconViewDelegate>delegate;
-@property (nonatomic,assign) id <BabyViewDelegate>bornDelegate;
 
 - (void)refresh;
 

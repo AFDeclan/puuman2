@@ -18,7 +18,6 @@
 @implementation BabyInfoPregnancyViewCell
 @synthesize delegate = _delegate;
 @synthesize columnImgBMode = _columnImgBMode;
-@synthesize PreDelegate = _PreDelegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -244,9 +243,7 @@
 
 - (void)disAppearInfoView
 {
-    
-    [_PreDelegate disAppearBabyView];
-    
+    [[MainTabBarController sharedMainViewController] hiddenBabyView];
 }
 
 - (void)changeModelBtn
@@ -294,16 +291,7 @@
     
     
 }
-- (void)changeBabyInfo
-{
-    LoginViewController *modifyInfoVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:modifyInfoVC.view];
-    [modifyInfoVC setControlBtnType:kCloseAndFinishButton];
-    [modifyInfoVC setTitle:@"欢迎使用扑满日记！" withIcon:nil];
-    [modifyInfoVC loginSetting];
-    [modifyInfoVC show];
-    
-}
+
 
 - (void) refreshBabyInfo
 {

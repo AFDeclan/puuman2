@@ -37,11 +37,12 @@
     float progress;
     NSString *videoPath;
     PuuamnShowView *puumanView;
+    
     BabyView *infoView;
     BabyShowButton *babyShowBtn;
     UIButton *babyInfoBtn;
     UIView *diaryTurorialView;
-
+    BOOL babyInfoShowed;
 }
 
 @property(assign,nonatomic) BOOL isVertical;
@@ -49,7 +50,7 @@
 @property(assign,nonatomic) BOOL isReply;
 @property(assign,nonatomic) BOOL videoShowed;
 @property(assign,nonatomic) BOOL hasShareVideo;
-@property(retain,nonatomic) UIButton *babyInfoBtn;
+@property(assign,nonatomic) BOOL babyInfoShowed;
 
 
 //@property(assign,nonatomic) BOOL loadingVideo;
@@ -63,6 +64,8 @@
 - (void)initautoImportView;
 - (void)removeAutoImportView;
 - (void)showAutoImportView;
+- (void)hiddenBabyView;
+- (void)showBabyView;
 - (void)hiddenBottomInputView;
 - (void)updatePuumanData;
 - (void)refreshBabyInfoView;

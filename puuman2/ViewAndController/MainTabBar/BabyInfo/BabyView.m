@@ -31,41 +31,37 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self refreshBabyInfo];
-        [self initContentView];
         [self initialization];
+        [self setBackgroundColor:[UIColor clearColor]];
 
-        
       
     }
     return self;
 }
 
-- (void)initialization {
+- (void)initialization
+{
+    [self initContentView];
+    [self initTitleInfoView];
+    [self refreshBabyInfo];
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
+    }
 
-    UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,1024,96)];
-    [iconView setBackgroundColor:PMColor5];
-    [self addSubview:iconView];
-    
-    modifyBtn = [[ColorButton alloc] initWithFrame:CGRectMake(916, 28, 108, 40)];
-    [modifyBtn initWithTitle:@"修改" andIcon:[UIImage imageNamed:@"icon_fix_baby.png"] andButtonType:kGrayLeft];
-    [modifyBtn addTarget:self action:@selector(changeBabyInfo) forControlEvents:UIControlEventTouchUpInside];
-    [iconView addSubview:modifyBtn];
-    
-    UIImageView *portraitBg = [[UIImageView alloc] initWithFrame:CGRectMake(50, 10, 180, 180)];
-    [portraitBg setImage:[UIImage imageNamed:@"circle_photo_babyInfo.png"]];
-    [self addSubview:portraitBg];
-    
-    portraitView = [[AFImageView alloc] initWithFrame:CGRectMake(15, 12, 150, 150)];
-    portraitView .layer.cornerRadius = 75;
-    portraitView.layer.masksToBounds = YES;
-    portraitView.layer.shadowRadius = 0.1;
-    portraitView.contentMode = UIViewContentModeScaleAspectFill;
-    [portraitBg addSubview:portraitView];
-    
+
+}
+
+- (void)initTitleInfoView
+{
+    titleInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,1024,96)];
+    [titleInfoView setBackgroundColor:PMColor5];
+    [self addSubview:titleInfoView];
+
     info_sexIcon = [[UIImageView alloc] initWithFrame:CGRectMake(230, 60, 22, 22)];
     [info_sexIcon setBackgroundColor:[UIColor clearColor]];
-    [iconView addSubview:info_sexIcon];
+    [titleInfoView addSubview:info_sexIcon];
     
     info_name = [[UILabel alloc] initWithFrame:CGRectMake(256, 58, 65, 25)];
     [info_name setTextAlignment:NSTextAlignmentLeft];
@@ -73,7 +69,7 @@
     [info_name setFont:PMFont1];
     [info_name setText:@"扑满"];
     [info_name setBackgroundColor:[UIColor clearColor]];
-    [iconView addSubview:info_name];
+    [titleInfoView addSubview:info_name];
     
     info_age= [[UILabel alloc] initWithFrame:CGRectMake(325, 64, 110, 21)];
     [info_age setTextAlignment:NSTextAlignmentLeft];
@@ -81,8 +77,7 @@
     [info_age setFont:PMFont2];
     [info_age setText:@"一岁8个月"];
     [info_age setBackgroundColor:[UIColor clearColor]];
-    [iconView addSubview:info_age];
-    
+    [titleInfoView addSubview:info_age];
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
         info_birthday = [[UILabel alloc] initWithFrame:CGRectMake(436, 64, 200, 21)];
         [info_birthday setTextAlignment:NSTextAlignmentLeft];
@@ -90,22 +85,43 @@
         [info_birthday setFont:PMFont2];
         [info_birthday setText:@"水瓶座  酉鸡"];
         [info_birthday setBackgroundColor:[UIColor clearColor]];
-        [iconView addSubview:info_birthday];
+        [titleInfoView addSubview:info_birthday];
     }
-   
-  
+    
+    modifyBtn = [[ColorButton alloc] init];
+    [modifyBtn initWithTitle:@"修改" andIcon:[UIImage imageNamed:@"icon_fix_baby.png"] andButtonType:kGrayLeft];
+    [modifyBtn addTarget:self action:@selector(changeBabyInfo) forControlEvents:UIControlEventTouchUpInside];
+    [titleInfoView addSubview:modifyBtn];
 
+    portraitBg = [[UIImageView alloc] initWithFrame:CGRectMake(50, 10, 180, 180)];
+    [portraitBg setImage:[UIImage imageNamed:@"circle_photo_babyInfo.png"]];
+    [self addSubview:portraitBg];
+    portraitView = [[AFImageView alloc] initWithFrame:CGRectMake(15, 12, 150, 150)];
+    portraitView .layer.cornerRadius = 75;
+    portraitView.layer.masksToBounds = YES;
+    portraitView.layer.shadowRadius = 0.1;
+    portraitView.contentMode = UIViewContentModeScaleAspectFill;
+    [portraitBg addSubview:portraitView];
+
+    
 }
+
 
 -(void)initContentView
 {
-    BabyInfoColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
-    [BabyInfoColumnView setBackgroundColor:[UIColor clearColor]];
-    [BabyInfoColumnView setColumnViewDelegate:self];
-    [BabyInfoColumnView  setViewDataSource:self];
-    [BabyInfoColumnView setPagingEnabled:YES];
-    [BabyInfoColumnView setScrollEnabled:NO];
-    [self addSubview:BabyInfoColumnView];
+    if ([[[UserInfo sharedUserInfo]babyInfo] WhetherBirth]) {
+        currentNum = 1;
+    }else{
+        currentNum = 0;
+
+    }
+    babyInfoColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    [babyInfoColumnView setBackgroundColor:[UIColor clearColor]];
+    [babyInfoColumnView setColumnViewDelegate:self];
+    [babyInfoColumnView  setViewDataSource:self];
+    [babyInfoColumnView setPagingEnabled:YES];
+    [babyInfoColumnView setScrollEnabled:NO];
+    [self addSubview:babyInfoColumnView];
 
 
 }
@@ -118,8 +134,11 @@
 
 - (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
 {
-
-    return 1024;
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        return 768;
+    }else{
+        return 1024;
+    }
 
 }
 
@@ -134,11 +153,12 @@
     }
 
 }
+
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
         
-        
+
         if (index == 1) {
         
             NSString *cellIdentifier = @"BabyInfoBornViewCell";
@@ -152,7 +172,6 @@
         
             [cell setBackgroundColor:[UIColor clearColor]];
             [cell setDelegate:self];
-            [cell setBornDelegate:self];
             [cell refresh];
             return cell;
     
@@ -223,7 +242,6 @@
             [cell setBackgroundColor:[UIColor clearColor]];
             
             [cell setDelegate:self];
-            [cell setPreDelegate:self];
          
         
              return cell;
@@ -261,7 +279,7 @@
     
     flag = YES;
     
-    [BabyInfoColumnView setContentOffset:CGPointMake(1024*2, 0) animated:YES];
+    [babyInfoColumnView setContentOffset:CGPointMake(1024*2, 0) animated:YES];
     
 }
 
@@ -270,39 +288,53 @@
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
     flag = NO;
     
-    [BabyInfoColumnView setContentOffset:CGPointMake(1024*2, 0) animated:YES];
+    [babyInfoColumnView setContentOffset:CGPointMake(1024*2, 0) animated:YES];
     } else {
     
-        [BabyInfoColumnView setContentOffset:CGPointMake(1024, 0) animated:YES];
+        [babyInfoColumnView setContentOffset:CGPointMake(1024, 0) animated:YES];
     
     }
 }
 
 - (void)gotoThePreView
 {
-    [BabyInfoColumnView setContentOffset:CGPointMake(0, 0) animated:YES];
-
+    [babyInfoColumnView setContentOffset:CGPointMake(0, 0) animated:YES];
+    if (currentNum>0) {
+        currentNum -- ;
+    }
 }
 
 - (void)backTheBornView {
 
-    [BabyInfoColumnView setContentOffset:CGPointMake(1024, 0) animated:YES];
+    [babyInfoColumnView setContentOffset:CGPointMake(1024, 0) animated:YES];
+    if (currentNum > 0) {
+        currentNum --;
+    }else{
+        currentNum ++;
 
+    }
 }
+
 - (void)backThePregnancyView
 {
-    [BabyInfoColumnView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [babyInfoColumnView setContentOffset:CGPointMake(0, 0) animated:YES];
+    if (currentNum > 0) {
+        currentNum --;
+    }
 }
 
 
 - (void)changeBabyInfo
 {
-    LoginViewController *modifyInfoVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:modifyInfoVC.view];
-    [modifyInfoVC setControlBtnType:kCloseAndFinishButton];
-    [modifyInfoVC setTitle:@"欢迎使用扑满日记！" withIcon:nil];
-    [modifyInfoVC loginSetting];
-    [modifyInfoVC show];
+    if ([MainTabBarController sharedMainViewController].babyInfoShowed) {
+        LoginViewController *modifyInfoVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+        [[MainTabBarController sharedMainViewController].view addSubview:modifyInfoVC.view];
+        [modifyInfoVC setControlBtnType:kCloseAndFinishButton];
+        [modifyInfoVC setTitle:@"欢迎使用扑满日记！" withIcon:nil];
+        [modifyInfoVC loginSetting];
+        [modifyInfoVC show];
+
+    }
     
 }
 
@@ -359,17 +391,12 @@
         NSString *constellationStr = [[babyInfo Birthday] constellation];
         info_birthday.text = [NSString stringWithFormat:@"%@ %@", birthStr, constellationStr];
   
-    [BabyInfoColumnView reloadData];
+    [babyInfoColumnView reloadData];
 }
 
 -(void) disAppearBabyView
 {
-    [CAKeyframeAnimation dragAnimationWithView:self andDargPoint:CGPointMake(0, -1024)];
-    SetViewLeftUp(self, 0, -768);
-    [CAKeyframeAnimation dragAnimationWithView:[[MainTabBarController sharedMainViewController]babyInfoBtn] andDargPoint:CGPointMake(0, -768)];
     
-    SetViewLeftUp([[MainTabBarController sharedMainViewController]babyInfoBtn], 1024 -16 - 56, 0);
-  
 }
 
 
@@ -377,12 +404,42 @@
 {
    
     [self refreshBabyInfo];
-    if ([[[UserInfo sharedUserInfo]babyInfo] WhetherBirth]) {
-        [BabyInfoColumnView setContentOffset:CGPointMake(1024, 0)];
-    } else {
     
-        [BabyInfoColumnView setContentOffset:CGPointMake(0, 0)];
+    if ([[[UserInfo sharedUserInfo]babyInfo] WhetherBirth]) {
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            [babyInfoColumnView setContentOffset:CGPointMake(768, 0)];
+            
+        }else{
+            [babyInfoColumnView setContentOffset:CGPointMake(1024, 0)];
+
+        }
+    } else {
+
+        [babyInfoColumnView setContentOffset:CGPointMake(0, 0)];
+ 
     }
 }
+
+-(void)setHorizontalFrame
+{
+    [titleInfoView setFrame:CGRectMake(0, 0, 1024, 96)];
+    SetViewLeftUp(modifyBtn, 912, 28);
+    [babyInfoColumnView setFrame:CGRectMake(0, 0, 1024, 768)];
+    [babyInfoColumnView reloadData];
+    [babyInfoColumnView setContentOffset:CGPointMake(1024*currentNum, 0)];
+ 
+}
+
+-(void)setVerticalFrame
+{
+    [titleInfoView setFrame:CGRectMake(0, 0, 768, 96)];
+    SetViewLeftUp(modifyBtn, 656, 28);
+    [babyInfoColumnView setFrame:CGRectMake(0, 0, 768, 1024)];
+    [babyInfoColumnView reloadData];
+    [babyInfoColumnView setContentOffset:CGPointMake(currentNum*768, 0)];
+
+}
+
+
 
 @end

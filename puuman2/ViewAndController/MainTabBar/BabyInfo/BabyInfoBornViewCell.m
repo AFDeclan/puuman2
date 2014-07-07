@@ -21,7 +21,6 @@
 
 @implementation BabyInfoBornViewCell
 @synthesize delegate= _delegate;
-@synthesize bornDelegate = _bornDelegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -37,8 +36,6 @@
 
 - (void)initialization
 {
-    
-    
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 1024, 672)];
     [contentView setBackgroundColor:RGBColor(7, 117, 202)];
     [self.contentView addSubview:contentView];
@@ -56,9 +53,7 @@
     [bottomBtn addTarget:self action:@selector(disAppearInfoView) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:bottomBtn];
     [MyNotiCenter addObserver:self selector:@selector(refresh) name:Noti_BabyDataUpdated object:nil];
-
-
-
+  
 }
 
 
@@ -165,8 +160,7 @@
 
 - (void)disAppearInfoView
 {
-    
-    [_bornDelegate disAppearBabyView];
+    [[MainTabBarController sharedMainViewController] hiddenBabyView];
 }
 
 
@@ -176,6 +170,16 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+
+-(void)setHorizontalFrame
+{
+  
+}
+
+- (void)showLoginView
+{
 }
 
 @end

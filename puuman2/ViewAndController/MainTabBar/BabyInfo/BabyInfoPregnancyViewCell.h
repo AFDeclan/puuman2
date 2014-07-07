@@ -14,7 +14,7 @@
 #import "BabyInfoChooseButton.h"
 #import "BabyView.h"
 
-@interface BabyInfoPregnancyViewCell : UITableViewCell<BabyInfoIconViewDelegate,UIColumnViewDataSource,UIColumnViewDelegate,BabyViewDelegate>
+@interface BabyInfoPregnancyViewCell : UITableViewCell<BabyInfoIconViewDelegate,UIColumnViewDataSource,UIColumnViewDelegate>
 {
     UIView *clearInfoView;
     ColorButton *modifyBtn;
@@ -34,7 +34,6 @@
 }
 
 @property (nonatomic,assign)id<BabyInfoIconViewDelegate>delegate;
-@property (nonatomic,assign)id <BabyViewDelegate>PreDelegate;
 
 @property (nonatomic,assign) BOOL columnImgBMode;
 - (void)refreshBabyInfo;

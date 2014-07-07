@@ -14,16 +14,13 @@
 #import "BabyInfoIconViewDelegate.h"
 
 
-@protocol BabyViewDelegate <NSObject>
 
-- (void) disAppearBabyView;
 
-@end
-
-@interface BabyView : UIView <UIColumnViewDataSource,UIColumnViewDelegate,BabyInfoIconViewDelegate,BabyViewDelegate>
+@interface BabyView : UIView <UIColumnViewDataSource,UIColumnViewDelegate,BabyInfoIconViewDelegate>
 {
-    UIView *babyInfoView;
-    UIColumnView *BabyInfoColumnView;
+    UIView *titleInfoView;
+    UIImageView *portraitBg;
+    UIColumnView *babyInfoColumnView;
     ColorButton *modifyBtn;
     AFImageView *portraitView;
     UIImageView *info_sexIcon;
@@ -31,10 +28,10 @@
     UILabel *info_age;
     UILabel *info_birthday;
     BOOL flag;
-   
-   
-    
+    NSInteger currentNum;
 }
 
+- (void)setHorizontalFrame;
+- (void)setVerticalFrame;
 - (void)loadDataInfo;
 @end

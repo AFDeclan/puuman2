@@ -35,7 +35,8 @@ static MBProgressHUD *hud;
 @synthesize isReply = _isReply;
 @synthesize videoShowed =_videoShowed;
 @synthesize hasShareVideo = _hasShareVideo;
-@synthesize babyInfoBtn = _babyInfoBtn;
+@synthesize babyInfoShowed = _babyInfoShowed;
+
 //@synthesize loadingVideo = _loadingVideo;
 + (MainTabBarController *)sharedMainViewController
 {
@@ -75,7 +76,8 @@ static MBProgressHUD *hud;
 //    for (UIView *view in [self.view subviews]) {
 //        [view removeFromSuperview];
 //    }
- 
+    babyInfoShowed = NO;
+    _babyInfoShowed = NO;
     [self initWithTabBar];
     _isReply = YES;
     _videoShowed = NO;
@@ -89,22 +91,13 @@ static MBProgressHUD *hud;
     [self.view addSubview:videoBtn];
     [videoBtn setClickEnable:NO];
     [videoBtn setAlpha:1];
+    [self.view.layer setMasksToBounds:YES];
   
 
 }
 
--(void)babyInfoBtnDown
-{
-    [infoView loadDataInfo];
-    [CAKeyframeAnimation dragAnimationWithView:infoView andDargPoint:CGPointMake(0, 768)];
-    [CAKeyframeAnimation dragAnimationWithView:_babyInfoBtn andDargPoint:CGPointMake(0, 768)];
-    
-    SetViewLeftUp(_babyInfoBtn, 1024 -16 - 56, 768);
-    
-    SetViewLeftUp(infoView, 0, 0);
-    
-    // [babyShowBtn addPuuman];
-}
+
+
 
 - (void)downAutoVideo
 {
@@ -284,6 +277,7 @@ static MBProgressHUD *hud;
     transitionView.frame = CGRectMake(0, 0, 1024, 1024);
     bgImgView = [[UIImageView alloc] init];
     [self.view insertSubview:bgImgView atIndex:0];
+    
 }
 
  -(void)selectedWithTag:(NSInteger)tag
@@ -361,6 +355,29 @@ static MBProgressHUD *hud;
     [tabBar setVerticalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_V]];
     [bgImgView setFrame:CGRectMake(0, 0, 768, 1024)];
+    if (infoView) {
+        if (babyInfoShowed) {
+            [infoView setFrame:CGRectMake(0, 0, 768, 1024)];
+        }else{
+            [infoView setFrame:CGRectMake(0, -1024, 768, 1024)];
+
+        }
+        [infoView setVerticalFrame];
+    }
+    
+    if (babyInfoBtn) {
+        if (babyInfoShowed) {
+            SetViewLeftUp(babyInfoBtn,768 -16 - 56, 1024);
+        }else{
+            SetViewLeftUp(babyInfoBtn,768 -16 - 56, 0);
+        }
+    }
+    
+    if (babyShowBtn) {
+        SetViewLeftUp(babyShowBtn,768 -16 - 56, 1024);
+        
+    }
+    
     
 }
 
@@ -374,6 +391,27 @@ static MBProgressHUD *hud;
     [tabBar setHorizontalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 1024)];
+    if (infoView) {
+        if (babyInfoShowed) {
+            [infoView setFrame:CGRectMake(0, 0, 1024,768 )];
+        }else{
+            [infoView setFrame:CGRectMake(0, -768, 1024, 768)];
+            
+        }
+        [infoView setHorizontalFrame];
+    }
+    
+    if (babyInfoBtn) {
+        if (babyInfoShowed) {
+            SetViewLeftUp(babyInfoBtn,1024 -16 - 56,768);
+        }else{
+            SetViewLeftUp(babyInfoBtn,1024 -16 - 56, 0);
+        }
+    }
+    
+    if (babyShowBtn) {
+        SetViewLeftUp(babyShowBtn,1024 -16 - 56, 768);
+    }
 }
 
 - (void)showLoginView
@@ -385,6 +423,8 @@ static MBProgressHUD *hud;
     [loginViewC setTitle:@"欢迎使用扑满日记！" withIcon:nil];
     [loginViewC loginSetting];
     [loginViewC show];
+    
+  
 }
 
 - (void)userChanged
@@ -402,12 +442,8 @@ static MBProgressHUD *hud;
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [tabBar selectedWithTag:1];
-//    if (settingVC) {
-//        [settingVC back];
-//    }
     [self refreshBabyInfoView];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
     if (![userDefaults boolForKey:@"DiarytutorialShowed"]){
         [userDefaults setBool:YES forKey:@"DiarytutorialShowed"];
         diaryTurorialView =[[UIView alloc] init];
@@ -573,21 +609,94 @@ static MBProgressHUD *hud;
     }
     infoView = [[BabyView alloc] initWithFrame:CGRectMake(0, -768, 1024, 768)];
     [self.view addSubview:infoView];
-    [infoView setBackgroundColor:[UIColor whiteColor]];
     [infoView.layer setMasksToBounds:NO];
     if (!babyShowBtn) {
         babyShowBtn = [[BabyShowButton alloc] initWithFrame:CGRectMake(1024 -16 - 56, 768, 56, 56)];
         [babyShowBtn setBackgroundColor:[UIColor clearColor]];
     }
     [infoView addSubview:babyShowBtn];
+    
     [babyShowBtn loadPortrait];
-    if (!_babyInfoBtn) {
-       _babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 56, 0, 56, 56)];
-        [_babyInfoBtn addTarget:self action:@selector(babyInfoBtnDown) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:_babyInfoBtn];
+    if (!babyInfoBtn) {
+        babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 56, 0, 56, 56)];
+        [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:babyInfoBtn];
+    }
+    
+    if (_isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
     }
     
 }
+
+-(void)showBabyView
+{
+    [infoView loadDataInfo];
+    float posX = 0;
+    float posY = 0;
+    
+    if (_isVertical) {
+        posX = 768;
+        posY = 1024;
+    }else{
+        posX = 1024;
+        posY = 768;
+    }
+    SetViewLeftUp(babyInfoBtn, posX -16 - 56, posY);
+
+    [self dragAnimationWithView:infoView andDargPoint:CGPointMake(0, posY)];
+    SetViewLeftUp(infoView, 0, 0);
+    babyInfoShowed = YES;
+    // [babyShowBtn addPuuman];
+}
+
+- (void)hiddenBabyView
+{
+    float posX = 0;
+    float posY = 0;
+    
+    if (_isVertical) {
+        posX = 768;
+        posY = -1024;
+    }else{
+        posX = 1024;
+        posY = -768;
+    }
+    [self dragAnimationWithView:infoView andDargPoint:CGPointMake(0, posY)];
+    SetViewLeftUp(infoView, 0, posY);
+    SetViewLeftUp(babyInfoBtn, posX -16 - 56, 0);
+
+    babyInfoShowed = NO;
+
+}
+
+-(void)dragAnimationWithView:(UIView *)view andDargPoint:(CGPoint)pos
+{
+    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    //    positionAnimation.fillMode = kCAFillModeForwards;
+    //    positionAnimation.removedOnCompletion =NO;
+    positionAnimation.duration = 1;
+    CGMutablePathRef positionPath = CGPathCreateMutable();
+    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [positionAnimation setBeginTime:0];
+    CGPathMoveToPoint(positionPath, NULL, [view layer].position.x, [view layer].position.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [view layer].position.x, [view layer].position.y, [view layer].position.x +pos.x,[view layer].position.y+pos.y);
+    positionAnimation.path = positionPath;
+    [positionAnimation setDelegate:self];
+    [view.layer addAnimation:positionAnimation forKey:@"position"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (!flag) {
+        return;
+    }
+   _babyInfoShowed = babyInfoShowed;
+    
+}
+
 
 
 
