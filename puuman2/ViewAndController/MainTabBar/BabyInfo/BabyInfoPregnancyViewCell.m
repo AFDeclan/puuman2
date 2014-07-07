@@ -28,6 +28,13 @@
         [self initialization];
         [self initColumnView];
         [self initClearInfoView];
+        if ([[MainTabBarController sharedMainViewController] isVertical]) {
+          
+            [self setVerticalFrame];
+        } else {
+        
+            [self setHorizontalFrame];
+        }
         
     }
     return self;
@@ -36,7 +43,7 @@
 - (void)initialization
 {
     
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 1024, 672)];
+    contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 1024, 672)];
     [contentView setBackgroundColor:RGBColor(239, 215, 207)];
     [self.contentView addSubview:contentView];
     
@@ -44,7 +51,7 @@
     [clearInfoView setBackgroundColor:[UIColor clearColor]];
     [contentView addSubview:clearInfoView];
     
-    UIButton *bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+     bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [bottomBtn setFrame:CGRectMake(0, 720, 1024, 48)];
     [bottomBtn setBackgroundColor:[UIColor whiteColor]];
     [bottomBtn setAlpha:0.5];
@@ -67,10 +74,14 @@
     [changeModelBtn addTarget:self action:@selector(changeModelBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:changeModelBtn];
     
-    BabyInfoChooseButton *propBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 84, 220, 85)];
+    propBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 84, 220, 85)];
     [propBtn setType:kBabyInfoModle];
     [propBtn addTarget:self action:@selector(propBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:propBtn];
+    
+    picView = [[UIView alloc] initWithFrame:CGRectMake(180, 60,636, 540)];
+    [picView setBackgroundColor:[UIColor clearColor]];
+    [clearInfoView addSubview:picView];
     
     UIImageView *grayLineRight = [[UIImageView alloc] initWithFrame:CGRectMake(24, 160, 240, 86)];
     [grayLineRight  setImage:[UIImage imageNamed:@"grayline_right_babyInfo.png"]];
@@ -85,24 +96,22 @@
     [clearInfoView addSubview:nextPropView];
     
     preBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [preBtn setFrame:CGRectMake(180, 310, 23, 42)];
     [preBtn setImage:[UIImage imageNamed:@"pre_pic_btn.png"] forState:UIControlStateNormal];
     [preBtn addTarget:self action:@selector(preBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [clearInfoView addSubview:preBtn];
+    [picView addSubview:preBtn];
     
     nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextBtn setFrame:CGRectMake(790, 310, 23, 42)];
     [nextBtn setImage:[UIImage imageNamed:@"next_pic_btn.png"] forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [clearInfoView addSubview:nextBtn];
+    [picView addSubview:nextBtn];
     
     
-    UIView *bg_question = [[UIView alloc] initWithFrame:CGRectMake(624, 96, 60, 60)];
+    UIView *bg_question = [[UIView alloc] initWithFrame:CGRectMake(445, 36, 60, 60)];
     [bg_question setBackgroundColor:RGBColor(153, 193, 222)];
      bg_question.layer.cornerRadius = 30.0f;
      bg_question.layer.masksToBounds = YES;
     [bg_question setAlpha:0.5];
-    [clearInfoView addSubview:bg_question];
+    [picView addSubview:bg_question];
 
     questionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [questionBtn setFrame:CGRectMake(0, 0, 60, 60)];
@@ -113,19 +122,19 @@
   
    
     
-    UIView *weekView = [[UIView alloc] initWithFrame:CGRectMake(300, 516, 62, 36)];
+     weekView = [[UIView alloc] initWithFrame:CGRectMake(120, 456, 62, 36)];
     [weekView setBackgroundColor:[UIColor redColor]];
     [weekView setAlpha:0.1];
     [weekView.layer setMasksToBounds:YES];
     [weekView.layer setCornerRadius:18.0];
-    [clearInfoView addSubview:weekView];
+    [picView addSubview:weekView];
     
-    weekLabel = [[UILabel alloc] initWithFrame:CGRectMake(300, 516, 62, 36)];
+    weekLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 456, 62, 36)];
     [weekLabel setFont:PMFont(24)];
     [weekLabel setText:@""];
     [weekLabel setTextAlignment:NSTextAlignmentCenter];
     [weekLabel setTextColor:[UIColor whiteColor]];
-    [clearInfoView addSubview:weekLabel];
+    [picView addSubview:weekLabel];
     
 }
 
@@ -134,14 +143,46 @@
     _columnImgBMode = NO;
     [preBtn setAlpha:0];
     [nextBtn setAlpha:1];
-    _columnView = [[UIColumnView alloc] initWithFrame:CGRectMake(265, 60, 480, 540)];
+    _columnView = [[UIColumnView alloc] initWithFrame:CGRectMake(85, 60, 480, 540)];
     [_columnView setBackgroundColor:[UIColor clearColor]];
     [_columnView setViewDataSource:self];
     [_columnView setColumnViewDelegate:self];
     [_columnView setPagingEnabled:YES];
-    [clearInfoView addSubview:_columnView];
+    [picView addSubview:_columnView];
     [self reloadColumnView];
 
+}
+
+- (void)setVerticalFrame
+{
+    [contentView setFrame:CGRectMake(0, 96, 768, 928)];
+    [clearInfoView setFrame:CGRectMake(0, 0, 768, 928)];
+    [bottomBtn setFrame:CGRectMake(0, 976, 768, 48)];
+    [changeModelBtn setFrame:CGRectMake(24, 118, 160, 24)];
+    [propBtn setFrame:CGRectMake(780, 84, 220, 85)];
+    [picView setFrame:CGRectMake(66, 170, 636, 540)];
+//    [preBtn setFrame:CGRectMake(180, 310, 23, 42)];
+//    [nextBtn setFrame:CGRectMake(790, 310, 23, 42)];
+//    [weekView setFrame:CGRectMake(300, 516, 62, 36)];
+//    [weekLabel setFrame:CGRectMake(300, 516, 62, 36)];
+ //   [_columnView setFrame:CGRectMake(85, 60, 480, 540)];
+
+
+}
+
+- (void)setHorizontalFrame
+{
+    [contentView setFrame:CGRectMake(0, 96, 1024, 672)];
+    [clearInfoView setFrame:CGRectMake(0, 0, 1024, 672)];
+    [bottomBtn setFrame:CGRectMake(0, 720, 1024, 48)];
+    [changeModelBtn setFrame:CGRectMake(24, 118, 160, 24)];
+    [propBtn setFrame:CGRectMake(780, 84, 220, 85)];
+    [picView setFrame:CGRectMake(180, 60, 636, 540)];
+//    [preBtn setFrame:CGRectMake(180, 310, 23, 42)];
+//    [nextBtn setFrame:CGRectMake(790, 310, 23, 42)];
+//    [weekView setFrame:CGRectMake(300, 516, 62, 36)];
+//    [weekLabel setFrame:CGRectMake(300, 516, 62, 36)];
+ //   [_columnView setFrame:CGRectMake(85, 60, 480, 540)];
 
 }
 

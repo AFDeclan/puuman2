@@ -15,7 +15,6 @@
 #import "CustomNotiViewController.h"
 #import "UserInfo.h"
 #import "BabyData.h"
-#import "BabyInfoChooseButton.h"
 #import "AddBodyDataViewController.h"
 #import "CAKeyframeAnimation+DragAnimation.h"
 
@@ -32,6 +31,13 @@
      
         [self initialization];
         [self initClearInfoView];
+        if ([[MainTabBarController sharedMainViewController] isVertical]) {
+            
+            [self setVerticalFrame];
+        } else {
+            
+            [self setHorizontalFrame];
+        }
     }
     return self;
 }
@@ -40,20 +46,18 @@
 {
     
     
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 1024, 672)];
+     contentView = [[UIView alloc] init];
     [contentView setBackgroundColor:RGBColor(7, 117, 202)];
     [self.contentView addSubview:contentView];
     
-    clearInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 672)];
+    clearInfoView = [[UIView alloc] init];
     [clearInfoView setBackgroundColor:[UIColor clearColor]];
     [contentView addSubview:clearInfoView];
     
-    UIButton *bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [bottomBtn setFrame:CGRectMake(0, 720, 1024, 48)];
+     bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [bottomBtn setBackgroundColor:[UIColor whiteColor]];
     [bottomBtn setAlpha:0.5];
     [bottomBtn setImage:[UIImage imageNamed:@"back_up_babyInfo.png"] forState:UIControlStateNormal];
-    [bottomBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 480, 8, 480)];
     [bottomBtn addTarget:self action:@selector(disAppearInfoView) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:bottomBtn];
     
@@ -67,28 +71,27 @@
     [bgImageView setImage:[UIImage imageNamed:@"bg_sleeping_babyInfo.png"]];
     [clearInfoView addSubview:bgImageView];
     
-    UIButton *addRecordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [addRecordBtn setFrame:CGRectMake(230, 262, 32, 32)];
+     addRecordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [addRecordBtn setImage:[UIImage imageNamed:@"add_record_babyInfo.png"] forState:UIControlStateNormal];
     [addRecordBtn addTarget:self action:@selector(addRecord) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:addRecordBtn];
     
-    BabyInfoChooseButton *heightBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(30, 262, 170, 68)];
+    heightBtn = [[BabyInfoChooseButton alloc] init];
     [heightBtn setType:kBabyInfoHeight];
     [heightBtn addTarget:self action:@selector(heiBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:heightBtn];
     
-    BabyInfoChooseButton *weightBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(30, 332, 170, 68)];
+    weightBtn = [[BabyInfoChooseButton alloc] init];
     [weightBtn setType:kBabyInfoWeight];
     [weightBtn addTarget:self action:@selector(weiBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:weightBtn];
     
-    BabyInfoChooseButton *vaciBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 140, 212, 100)];
+    vaciBtn = [[BabyInfoChooseButton alloc] init];
     [vaciBtn setType:kBabyInfoVaci];
     [vaciBtn addTarget:self action:@selector(vaciBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:vaciBtn];
     
-    BabyInfoChooseButton *propBtn = [[BabyInfoChooseButton alloc] initWithFrame:CGRectMake(780, 380, 212, 80)];
+    propBtn = [[BabyInfoChooseButton alloc] init];
     [propBtn setType:kBabyInfoProp];
     [propBtn addTarget:self action:@selector(propBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:propBtn];
@@ -105,20 +108,54 @@
     [propLineView setImage:[UIImage imageNamed:@"line_left_babyinfo.png"]];
     [clearInfoView addSubview:propLineView];
     
-    UIImageView *preView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 320, 10, 16)];
+     preView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 320, 10, 16)];
     [preView setImage:[UIImage imageNamed:@"back_left_babyInfo.png"]];
     [clearInfoView addSubview:preView];
     
-    UIImageView *nextNaciView = [[UIImageView alloc] initWithFrame:CGRectMake(1000,180, 10, 16)];
+    nextNaciView = [[UIImageView alloc] init];
     [nextNaciView setImage:[UIImage imageNamed:@"back_right_babyInfo.png"]];
     [clearInfoView addSubview:nextNaciView];
     
-    UIImageView *nextPropView = [[UIImageView alloc] initWithFrame:CGRectMake(1000,407, 10, 16)];
+    nextPropView = [[UIImageView alloc] init];
     [nextPropView setImage:[UIImage imageNamed:@"back_right_babyInfo"]];
     [clearInfoView addSubview:nextPropView];
 
 
 }
+
+- (void)setVerticalFrame
+{
+    [contentView setFrame:CGRectMake(0, 96, 768, 928)];
+    [clearInfoView setFrame:CGRectMake(0, 0, 768, 928)];
+    [bottomBtn setFrame:CGRectMake(0, 976, 768, 48)];
+    [bottomBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 352, 8, 352)];
+    [heightBtn setFrame:CGRectMake(20, 262, 80, 68)];
+    [weightBtn setFrame:CGRectMake(20, 332, 80, 68)];
+    [vaciBtn setFrame:CGRectMake(640, 140, 100, 100)];
+    [propBtn setFrame:CGRectMake(640, 380, 212, 80)];
+    [addRecordBtn setFrame:CGRectMake(100, 262, 32, 32)];
+    [nextNaciView setFrame:CGRectMake(744,180, 10, 16)];
+    [nextPropView setFrame:CGRectMake(744,407, 10, 16)];
+
+
+}
+- (void)setHorizontalFrame
+{
+    [contentView setFrame:CGRectMake(0, 96, 1024, 672)];
+    [clearInfoView setFrame:CGRectMake(0, 0, 1024, 672)];
+    [bottomBtn setFrame:CGRectMake(0, 720, 1024, 48)];
+    [bottomBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 480, 8, 480)];
+    [heightBtn setFrame:CGRectMake(30, 262, 170, 68)];
+    [weightBtn setFrame:CGRectMake(30, 332, 170, 68)];
+    [vaciBtn setFrame:CGRectMake(780, 140, 212, 100)];
+    [propBtn setFrame:CGRectMake(780, 380, 212, 80)];
+    [addRecordBtn setFrame:CGRectMake(230, 262, 32, 32)];
+    [nextNaciView setFrame:CGRectMake(1000,180, 10, 16)];
+    [nextPropView setFrame:CGRectMake(1000,407, 10, 16)];
+
+
+}
+
 - (void)heiBtn
 {
     [_delegate gotoThePreView];

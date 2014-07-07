@@ -323,6 +323,7 @@
     [DiaryFileManager saveText:content withPhoto:nil withTitle:@"宝宝成长记录"  andIsTopic:NO andBabyData:YES andTaskInfo:nil createDate:date];
     [super finishBtnPressed];
     PostNotification(Noti_ReloadDiaryTable, nil);
+    
 
 }
 

@@ -62,6 +62,7 @@
     portraitView.layer.shadowRadius = 0.1;
     portraitView.contentMode = UIViewContentModeScaleAspectFill;
     [portraitBg addSubview:portraitView];
+    [self loadDataInfo];
     
     info_sexIcon = [[UIImageView alloc] initWithFrame:CGRectMake(230, 60, 22, 22)];
     [info_sexIcon setBackgroundColor:[UIColor clearColor]];

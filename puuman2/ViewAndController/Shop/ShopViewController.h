@@ -16,9 +16,7 @@
 {
     UIImageView *bg_topImageView;
     UIImageView *bg_rightImageView;
-    AFSelecedTextImgButton *rectWareBtn;
-    AFSelecedTextImgButton  *allWareBtn;
-    ColorButton *searchBtn;
+
     SearchTextField *searchTextField;
     ColorButton *searchBtn;
     UIView *searchView;

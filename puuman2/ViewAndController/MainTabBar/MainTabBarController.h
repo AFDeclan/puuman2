@@ -39,7 +39,8 @@
     PuuamnShowView *puumanView;
     BabyView *infoView;
     BabyShowButton *babyShowBtn;
-    UIButton *_babyInfoBtn;
+    UIButton *babyInfoBtn;
+    UIView *diaryTurorialView;
 
 }
 
