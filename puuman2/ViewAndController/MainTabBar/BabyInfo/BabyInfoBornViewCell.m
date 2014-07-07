@@ -122,26 +122,26 @@
 }
 - (void)heiBtn
 {
-    [_delegate gotoThePreView];
+    [_delegate gotoPreCell];
     
 }
 
 - (void)weiBtn
 {
-    [_delegate gotoThePreView];
+    [_delegate gotoPreCell];
 
 }
 
 - (void)vaciBtn
 {
-    [_delegate gotoTheNextVaciView];
+    [_delegate gotoNextCellWithProp:NO];
     
 }
 
 - (void)propBtn
 {
     
-    [_delegate gotoTheNextPropView];
+    [_delegate gotoNextCellWithProp:YES];
     
 }
 

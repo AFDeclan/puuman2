@@ -192,12 +192,27 @@
             
         } else {
             
-          if(flag) {
+          if(prop) {
+            
+              NSString *cellIdentifier = @"propViewCell";
+              
+              BabyInfoPropViewCell *cell = (BabyInfoPropViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+              
+              if (!cell) {
+                  cell = [[BabyInfoPropViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+              }
+              
+              [cell setBackgroundColor:[UIColor clearColor]];
+              [cell setDelegate:self];
+              [cell refresh];
+              
+              return cell;
+        } else {
             
             NSString *cellIdentifier = @"vaciViewCell";
-        
+            
             BabyInfoVaciViewCell *cell = (BabyInfoVaciViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-        
+            
             if (!cell) {
                 cell = [[BabyInfoVaciViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
@@ -205,21 +220,7 @@
             [cell setDelegate:self];
             [cell refresh];
             return cell;
-        } else {
-                
-                NSString *cellIdentifier = @"propViewCell";
-
-                BabyInfoPropViewCell *cell = (BabyInfoPropViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-                
-                if (!cell) {
-                    cell = [[BabyInfoPropViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                }
-                
-                [cell setBackgroundColor:[UIColor clearColor]];
-                [cell setDelegate:self];
-                [cell refresh];
-
-                return cell;
+            
             }
         
         }
@@ -274,21 +275,69 @@
     return nil;
 }
 
+- (void)gotoNextCellWithProp:(BOOL)isProp
+{
+    prop = isProp;
+    currentNum ++ ;
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        
+        [babyInfoColumnView setContentOffset:CGPointMake(currentNum*768, 0) animated:YES];
+    }else{
+        [babyInfoColumnView setContentOffset:CGPointMake(currentNum*1024, 0) animated:YES];
+
+    }
+
+}
+
+- (void)gotoPreCell
+{
+    currentNum -- ;
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        
+        [babyInfoColumnView setContentOffset:CGPointMake(currentNum*768, 0) animated:YES];
+    }else{
+        [babyInfoColumnView setContentOffset:CGPointMake(currentNum*1024, 0) animated:YES];
+        
+    }
+}
+
+- (void)backToMianCell
+{
+    
+    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        currentNum = 1;
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            
+            [babyInfoColumnView setContentOffset:CGPointMake(768, 0) animated:YES];
+        }else{
+            [babyInfoColumnView setContentOffset:CGPointMake(1024, 0) animated:YES];
+            
+        }
+    }else{
+        currentNum = 0;
+        [babyInfoColumnView setContentOffset:CGPointMake(0, 0) animated:YES];
+        
+    }
+    
+    
+    
+    
+}
+
 - (void)gotoTheNextVaciView
 {
     
-    flag = YES;
-    
-    [babyInfoColumnView setContentOffset:CGPointMake(1024*2, 0) animated:YES];
+    prop = YES;
+    currentNum ++;
+
     
 }
 
 - (void)gotoTheNextPropView
 {
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-    flag = NO;
-    
-    [babyInfoColumnView setContentOffset:CGPointMake(1024*2, 0) animated:YES];
+        prop = NO;
+        [babyInfoColumnView setContentOffset:CGPointMake(1024*2, 0) animated:YES];
     } else {
     
         [babyInfoColumnView setContentOffset:CGPointMake(1024, 0) animated:YES];

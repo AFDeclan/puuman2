@@ -12,14 +12,8 @@
 
 @optional
 
-- (void)gotoTheNextVaciView;
-
-- (void)gotoThePreView;
-
-- (void)gotoTheNextPropView;
-
-- (void)backTheBornView;
-
-- (void)backThePregnancyView;
+- (void)gotoNextCellWithProp:(BOOL)isProp;
+- (void)gotoPreCell;
+- (void)backToMianCell;
 
 @end

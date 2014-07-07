@@ -263,7 +263,7 @@
 - (void)propBtn
 {
     
-    [_delegate gotoTheNextPropView];
+    [_delegate gotoNextCellWithProp:YES];
     
 }
 

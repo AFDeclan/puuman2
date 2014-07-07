@@ -27,7 +27,7 @@
     UILabel *info_name;
     UILabel *info_age;
     UILabel *info_birthday;
-    BOOL flag;
+    BOOL prop;
     NSInteger currentNum;
 }
 

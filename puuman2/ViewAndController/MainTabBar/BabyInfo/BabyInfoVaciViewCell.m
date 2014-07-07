@@ -155,7 +155,7 @@
 
 - (void)leftBtnClick
 {
-    [_delegate backTheBornView];
+    [_delegate backToMianCell];
    
 }
 

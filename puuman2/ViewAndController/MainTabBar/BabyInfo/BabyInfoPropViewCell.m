@@ -92,15 +92,10 @@
 
 - (void)leftBtnClick
 {
-    if ([[[UserInfo sharedUserInfo] babyInfo]WhetherBirth]) {
 
-    [_delegate backTheBornView];
+    [_delegate gotoPreCell];
+
     
-    } else {
-    
-        [_delegate backThePregnancyView];
-    
-    }
 }
 
 
