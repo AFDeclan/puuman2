@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ShopModel.h"
 #import "MJRefreshFooterView.h"
+#import "ShopAllWareHeaderView.h"
 
 typedef enum ShopState {
     ShopStateNormal,
@@ -19,11 +20,15 @@ typedef enum ShopState {
 
 @interface AllWareView : UIView<UITableViewDataSource,UITableViewDelegate,MJRefreshBaseViewDelegate>
 {
+    ShopAllWareHeaderView *headView;
     UITableView *_shopMallTable;
     ShopState _shopState;
-     MJRefreshFooterView *_refreshFooter;
+    MJRefreshFooterView *_refreshFooter;
     UILabel *noti_insurance;
+ 
 }
+
+-(void)reloadShopMall;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

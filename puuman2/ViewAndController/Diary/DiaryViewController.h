@@ -11,6 +11,7 @@
 #import "DiaryTableViewController.h"
 #import "JoinView.h"
 #import "CalenderControlView.h"
+#import "ToolsView.h"
 
 @interface DiaryViewController : UIViewController<UIGestureRecognizerDelegate>
 {
@@ -20,8 +21,8 @@
     NSTimer *timer;
     JoinView *joinView;
     CalenderControlView *calenderView;
-    UIView *activeNewestView;
     DiaryTableViewController *diaryTableVC;
+    ToolsView *toolsView;
 }
 @property (assign,nonatomic) BOOL cameraModel;
 

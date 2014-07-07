@@ -216,40 +216,24 @@
     
     if (tableView == cartTable) {
         static NSString *identify = @"ShopTableCell";
-        CartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
         if (cell == nil)
         {
-            cell =  [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+            cell =  [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         }
-        
-        NSInteger tureNum =  [[availableCarts valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] integerValue];
-        [cell buildCellWithPaid:NO andWareIndex:tureNum];
-        [cell setIsCompare:YES];
-        [cell setUnflod:NO];
-        [cell setDelegate:self];
-        [cell setIndexPath:indexPath];
-        if (tureNum == firstIndex ||tureNum == secondIndex) {
-            [cell setChooseToCompared:YES];
-        }else{
-            [cell setChooseToCompared:NO];
-        }
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+      
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
     }else{
         static NSString *identify = @"ShopInfoTableCell";
-        CompareInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
         if (cell == nil)
         {
-            cell =  [[CompareInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+            cell =  [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
            
             
         }
-        NSString *key = [_propertyKeys objectAtIndex:indexPath.row];
-        NSString *v1 = [firstWare.WMeta valueForKey:key];
-        NSString *v2 = [secondWare.WMeta valueForKey:key];
-        NSString *keyName = [[key componentsSeparatedByString:@"|"] objectAtIndex:1];
-        [cell buildCompareCellWithKeyName:keyName value1:v1 value2:v2 ];
+      
 
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setBackgroundColor:[UIColor clearColor]];
@@ -272,58 +256,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (tableView != infoTable) {
-            CartTableViewCell *cell = (CartTableViewCell *)[cartTable cellForRowAtIndexPath:indexPath];
-            if ([[availableCarts valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] integerValue]== firstIndex) {
-                [cell setChooseToCompared:NO];
-                firstWare =nil;
-                firstIndex = -1;
-                [first_ImgView setImage:nil];
-                [availableCarts removeAllObjects];
-                for (int i = 0; i < [[CartModel sharedCart] UndoCount]; i ++) {
-                    [availableCarts setObject:[NSNumber numberWithInt:i] forKey:[NSString stringWithFormat:@"%d",i]];
-                }
-                [cartTable reloadData];
-            }else if([[availableCarts valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] integerValue] == secondIndex){
-                [cell setChooseToCompared:NO];
-                secondWare = nil;
-                secondIndex = -1;
-                [second_ImgView setImage:nil];
-            }else{
-                if (!firstWare) {
-                     firstWare = [[CartModel sharedCart] getUndoWareAtIndex:[[availableCarts valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] integerValue]];
-                    firstIndex = [[availableCarts valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] integerValue];
-                    [first_ImgView getImage:firstWare.WPicLink defaultImage:@""];
-                     int j  =  0 ;
-                    [availableCarts removeAllObjects];
-                    for (int  i = 0;  i <[[CartModel sharedCart] UndoCount]; i++) {
-                        if ([[CartModel sharedCart] getUndoWareAtIndex:i].WType == firstWare.WType && [[CartModel sharedCart] getUndoWareAtIndex:i].WType2 == firstWare.WType2) {
-                            [availableCarts setObject:[NSNumber numberWithInt:i] forKey:[NSString stringWithFormat:@"%d",j]];
-                            j++;
-                        }
-                   
-                    }
-                    [cartTable reloadData];
-                }else if(!secondWare){
-                    secondWare = [[CartModel sharedCart] getUndoWareAtIndex:[[availableCarts valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] integerValue]];
-                    secondIndex = [[availableCarts valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] integerValue];
-                    [second_ImgView getImage:secondWare.WPicLink defaultImage:@""];
-                }
-                [cell setChooseToCompared:YES];
-                if (firstWare &&secondWare) {
-                    [self setInfoDta];
-                    [self setCompareData];
-                }
-                
-                
-                
-            }
-        
-        
- 
-    }
-
-   
+    
 
 }
 

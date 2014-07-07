@@ -40,6 +40,5 @@
 - (NSDictionary *)getDic;
 - (void)uploadInfo;
 - (BOOL)uploadInfoSync;
-- (void)uploadPortrait:(UIImage *)portrait;
 
 @end

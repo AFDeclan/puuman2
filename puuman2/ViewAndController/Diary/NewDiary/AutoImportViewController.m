@@ -353,6 +353,7 @@
     return cell;
     
 }
+
 - (BOOL)hasNewPic
 {
     if ([dateArr count] >0) {
@@ -361,6 +362,7 @@
         return NO;
     }
 }
+
 -(void)clickedWithAdd:(BOOL)add andFlag:(NSInteger)num
 {
     

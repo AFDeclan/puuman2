@@ -44,13 +44,11 @@
 {
     _rootTabBarC = [MainTabBarController sharedMainViewController];
     DiaryViewController *diaryVC = [DiaryViewController sharedDiaryViewController];
-    BabyInfoViewController *babyInfoVC = [[BabyInfoViewController alloc] init];
     SocialViewController *socialVC = [[SocialViewController alloc] init];
-    ShopViewController *shopVC = [[ShopViewController alloc] init];
+    ShopViewController *shopVC = [ShopViewController  sharedShopViewController];
     SkipViewController *skipVC = [[SkipViewController alloc] init];
     [_rootTabBarC addChildViewController:skipVC];
     [_rootTabBarC addChildViewController:diaryVC];
-    [_rootTabBarC addChildViewController:babyInfoVC];
     [_rootTabBarC addChildViewController:socialVC];
     [_rootTabBarC addChildViewController:shopVC];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

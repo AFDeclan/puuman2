@@ -382,8 +382,8 @@ static UserInfo *instance = nil;
         if (_shareVideo && _shareVideo.RID ==[[tp valueForKey:@"RID"] integerValue]) {
             _shareVideo = [[ShareVideo alloc] init];
             [_shareVideo initWithData:tp];
-
-
+            
+            
         }else{
             if (!_shareVideo) {
                 _shareVideo = [[ShareVideo alloc] init];

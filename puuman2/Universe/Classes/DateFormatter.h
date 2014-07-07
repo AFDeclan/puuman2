@@ -22,6 +22,8 @@
 
 + (NSString *)stringFromDate:(NSDate *)date;
 
++ (NSString *)stringFromDate2:(NSDate *)date;
+
 + (NSDate *)dateFromString:(NSString *)dateStr;
 
 @end

@@ -13,6 +13,7 @@
 #import "MainTabBarController.h"
 #import "DiaryViewController.h"
 #import "ImportStore.h"
+#import "DiaryProgressHeaderView.h"
 
 @interface DiaryTableViewController ()
 
@@ -68,7 +69,7 @@ static BOOL needLoadInfo = YES;
         if ([DiaryModel sharedDiaryModel].downloadedCnt == 0) [self  diaryLoading];
         if (!headerview)
         {
-            headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
+            headerview = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
             [headerview setIsDiary:YES];
         }
         
@@ -90,7 +91,7 @@ static BOOL needLoadInfo = YES;
     if (importTotalNum >0) {
         if (importNum == 0)[self  diaryLoading];
         if (!importProgress){
-            importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
+            importProgress = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
             [importProgress setIsDiary:NO];
         }
         
@@ -364,7 +365,7 @@ static BOOL needLoadInfo = YES;
             if (!headerview)
             {
                 
-                headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
+                headerview = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
                 [headerview setIsDiary:YES];
             }
             
@@ -374,7 +375,7 @@ static BOOL needLoadInfo = YES;
         if (importTotalNum >0) {
             if (!importProgress)
             {
-                importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, (num-1)*40, 672, 40)];
+                importProgress = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(0, (num-1)*40, 672, 40)];
                 [importProgress setIsDiary:NO];
             }
             [view addSubview:importProgress];
@@ -395,9 +396,7 @@ static BOOL needLoadInfo = YES;
 
 - (void)reloadTable
 {
-   
     [[DiaryModel sharedDiaryModel] reloadData];
-
     [self.tableView reloadData];
 }
 

@@ -220,7 +220,7 @@ static DiaryModel * instance;
     NSDate *date = d.DCreateTime;
     if (date == nil) return  NO;
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlDel = [NSString stringWithFormat:@"UPDATE %@ SET %@ = 1 AND %@ = 0 WHERE %@ = ?", tableName, kDeletedDiary, kUploaded, kDateName];
+    NSString *sqlDel = [NSString stringWithFormat:@"UPDATE %@ SET %@ = 1 , %@ = 0 WHERE %@ = ?", tableName, kDeletedDiary, kUploaded, kDateName];
     if (![db executeUpdate:sqlDel, date]) return NO;
     //delete file
     for (NSString *filePath in d.filePaths1) {

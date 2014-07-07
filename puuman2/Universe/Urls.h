@@ -10,7 +10,6 @@
 #define puman_Urls_h
 
 #pragma mark - 各类网址
-
 #define AF_DEBUG
 
 #ifdef AF_DEBUG
@@ -89,7 +88,7 @@
 #define kUrl_ChangePwd @"http://server.puuman.cn/index.php/server/user/change_pwd"
 #define kUrl_ChangeMailOrPhone @"http://server.puuman.cn/index.php/server/user/change_account"
 #define kUrl_ConnectUser @"http://server.puuman.cn/index.php/server/user/connect"
-#define kUrl_SetDeviceToken @"http://server.puuman.cn/index.php/server/user/set_device_token/iPad"
+#define kUrl_SetDeviceToken @"http://server.puuman.cn/index.php/server/user/set_device_token/iPhone"
 //user/baby
 #define kUrl_UpdateVaccine @"http://server.puuman.cn/index.php/server/baby/update_vaccine"
 #define kUrl_UpdateBabyData @"http://server.puuman.cn/index.php/server/baby/update_data"
@@ -112,7 +111,6 @@
 
 #define _puman_feedback_identifier_prefix @"_puman_"
 #define _puman_feedbackFailed_identifier_prefix @"_pumanFail_"
-
 #define kPumanPicUrl_Christmas_H    @"http://appui.oss-cn-hangzhou.aliyuncs.com/%E6%89%91%E6%BB%A1%E9%A1%B5%E9%9D%A2%E7%8C%AA%E5%9B%BE%E7%89%87/%E5%9C%A3%E8%AF%9E%E7%8C%AA%E6%A8%AA%E5%B1%8F.png"
 #define kPumanPicUrl_Christmas_V    @"http://appui.oss-cn-hangzhou.aliyuncs.com/%E6%89%91%E6%BB%A1%E9%A1%B5%E9%9D%A2%E7%8C%AA%E5%9B%BE%E7%89%87/%E5%9C%A3%E8%AF%9E%E7%8C%AA%E7%AB%96%E5%B1%8F.png"
 #define kPumanPicUrl_NewYear_H    @"http://appui.oss-cn-hangzhou.aliyuncs.com/%E6%89%91%E6%BB%A1%E9%A1%B5%E9%9D%A2%E7%8C%AA%E5%9B%BE%E7%89%87/%E5%85%83%E6%97%A6%E7%8C%AA%E6%A9%AB%E5%B1%8F.png"
