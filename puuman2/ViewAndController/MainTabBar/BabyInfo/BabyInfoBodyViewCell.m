@@ -186,7 +186,7 @@
 -(void)setHorizontalFrame
 {
     //[super setHorizontalFrame];
-    [rightView setFrame:CGRectMake(735,96,289, 672)];
+    [rightView setFrame:CGRectMake(736,96,288, 672)];
     [leftView setFrame:CGRectMake(0, 96, 735, 672)];
     [showAndHiddenBtn setAlpha:0];
     [dataTable setFrame:CGRectMake(0, 0, 224,672)];
