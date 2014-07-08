@@ -14,4 +14,6 @@
     AFSelecedTextImgButton *describeBtn;
     AFSelecedTextImgButton *evaluateBtn;
 }
+
+- (void)refresh;
 @end

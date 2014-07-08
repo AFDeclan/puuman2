@@ -2800,9 +2800,9 @@
 			children = (
 				547F7641196A7D96004D4F77 /* PregnancyTableViewCell.h */,
 				547F7642196A7D96004D4F77 /* PregnancyTableViewCell.m */,
+				88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */,
 				547F764B196A7F34004D4F77 /* BabyCustomTableViewCell.h */,
 				547F7640196A7D96004D4F77 /* BabyCustomTableViewCell.m */,
-				88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */,
 				88AF77731963B23400E02B43 /* BabyInfoPropViewCell.m */,
 				88AF50631966439D00EEC049 /* BabyInfoPropEstiCell.m */,
 				88AF77751963B24500E02B43 /* BabyInfoVaciViewCell.h */,

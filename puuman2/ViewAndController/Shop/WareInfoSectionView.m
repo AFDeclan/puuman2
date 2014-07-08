@@ -32,6 +32,11 @@
     [evaluateBtn addTarget:self action:@selector(evaluateBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:evaluateBtn];
     
+    
+}
+
+- (void)refresh
+{
     [self describeBtnPressed];
     
 }

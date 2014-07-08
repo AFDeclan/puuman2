@@ -45,7 +45,7 @@
         [titleLabel setText:@"为您推荐"];
         SetViewLeftUp(titleLabel, 56, 0);
         self.backgroundColor = PMColor6;
-
+        
     }else{
         [iconView setImage:[ShopModel iconForSectionAtIndex:flagNum]];
         [titleLabel setText:[ShopModel titleForSectionAtIndex:flagNum]];
