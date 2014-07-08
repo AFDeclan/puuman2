@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ColorButton.h"
 #import "BabyInfoIconViewDelegate.h"
+#import "BabyInfoPageControlButton.h"
 
 @interface BabyInfoBodyViewCell : UITableViewCell<UITableViewDelegate,UITableViewDataSource,BabyInfoIconViewDelegate>
 
@@ -21,7 +22,8 @@
     UILabel *noti_label;
     UIView  *leftView;
     UIView  *rightView;
-    
+    BabyInfoPageControlButton *showAndHiddenBtn;
+    UIButton *rightBtn;
     
 }
 

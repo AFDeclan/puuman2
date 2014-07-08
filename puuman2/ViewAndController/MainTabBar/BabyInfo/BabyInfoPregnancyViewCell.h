@@ -35,7 +35,9 @@
     BabyInfoChooseButton *propBtn;
     UIView *weekView;
     UIView *picView;
-    
+    UIImageView *grayLineRight;
+    UIImageView *grayLineLeft;
+    UIImageView *nextPropView;
 }
 
 @property (nonatomic,assign)id<BabyInfoIconViewDelegate>delegate;

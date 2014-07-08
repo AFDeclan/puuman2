@@ -23,6 +23,13 @@
         [self initialization];
         [self initWithLeftView];
         [self initWithRightView];
+        if ([[MainTabBarController sharedMainViewController] isVertical]) {
+        
+            [self setVerticalFrame];
+        }else {
+        
+            [self setHorizontalFrame];
+        }
     }
     return self;
 }
@@ -31,10 +38,10 @@
 - (void)initialization
 {
     
-    leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 807, 672)];
+    leftView = [[UIView alloc] init];
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
-    rightView = [[UIView alloc] initWithFrame:CGRectMake(807,96,217, 672)];
+    rightView = [[UIView alloc] init];
     [rightView setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:rightView];
     
@@ -42,10 +49,9 @@
 - (void)initWithLeftView
 {
     
-    babyPropView = [[PropView alloc] initWithFrame:CGRectMake(130, 140, 544, 448)];
+    babyPropView = [[PropView alloc] init];
     [leftView addSubview:babyPropView];
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 0, 47, 672)];
+     leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setBackgroundColor:PMColor6];
     [leftBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -56,14 +62,14 @@
 
 - (void)initWithRightView
 {
-    estiTextField = [[UITextField alloc] initWithFrame:CGRectMake(ViewWidth(rightView)-216+10, 10, 216, 40)];
+    estiTextField = [[UITextField alloc] init];
     [estiTextField setBackgroundColor:[UIColor whiteColor]];
     [estiTextField setPlaceholder:@"在此点击输入您的评价"];
     [estiTextField setFont:PMFont2];
     [estiTextField setTextAlignment:NSTextAlignmentLeft];
     [rightView addSubview:estiTextField];
     
-    UIView *estiView = [[UIView alloc] initWithFrame:CGRectMake(ViewWidth(rightView)-216, 50, 216,70)];
+     estiView = [[UIView alloc] init];
     [estiView setBackgroundColor:PMColor4];
     [rightView addSubview:estiView];
     
@@ -72,7 +78,7 @@
     [estiView addSubview:estiBtn];
     
     
-    estiTableView = [[UITableView alloc] initWithFrame:CGRectMake(ViewWidth(rightView)-216, 120, 216, ViewHeight(rightView)-120)];
+    estiTableView = [[UITableView alloc] init];
     [estiTableView setBackgroundColor:PMColor4];
     [estiTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [estiTableView setShowsHorizontalScrollIndicator:NO];
@@ -139,24 +145,32 @@
 {
     
 }
-//-(void)setVerticalFrame
-//{
-//    //[super setVerticalFrame];
-//   // [leftView setFrame:CGRectMake(-216, 0, 256, 832)];
-//    // [showAndHiddenBtn setAlpha:1];
-//    SetViewLeftUp(babyPropView, 32, 192);
-//    
-//}
-//
-//-(void)setHorizontalFrame
-//{
-//   // [super setHorizontalFrame];
-//    ///[leftView setFrame:CGRectMake(0, 0, 216, 576)];
-//    // [showAndHiddenBtn setAlpha:0];
-//    SetViewLeftUp(babyPropView, 160, 64);
-//    
-//}
-//
+-(void)setVerticalFrame
+{
+    //[super setVerticalFrame];
+   [leftView setFrame:CGRectMake(0, 96, 768, 928)];
+    [leftBtn setFrame:CGRectMake(0, 0, 47, 928)];
+    [babyPropView setFrame:CGRectMake(130, 280, 544, 448)];
+    // [showAndHiddenBtn setAlpha:1];
+    
+}
+
+-(void)setHorizontalFrame
+{
+   // [super setHorizontalFrame];
+    [leftView setFrame:CGRectMake(0, 96, 807, 672)];
+    [rightView setFrame:CGRectMake(807,96,217, 672)];
+    [babyPropView setFrame:CGRectMake(130, 140, 544, 448)];
+    [leftBtn setFrame:CGRectMake(0, 0, 47, 672)];
+    [estiTextField setFrame:CGRectMake(ViewWidth(rightView)-216, 0, 216, 50)];
+    [estiView setFrame:CGRectMake(ViewWidth(rightView)-216, 50, 216,70)];
+    [estiTableView setFrame:CGRectMake(ViewWidth(rightView)-216, 120, 216, ViewHeight(rightView)-120)];
+    
+    // [showAndHiddenBtn setAlpha:0];
+    //SetViewLeftUp(babyPropView, 160, 64);
+    
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

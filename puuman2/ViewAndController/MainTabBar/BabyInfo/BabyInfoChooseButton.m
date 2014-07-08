@@ -41,8 +41,8 @@
     [detailLabel setFont:PMFont2];
     [self addSubview:detailLabel];
     
-    instLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,24, 210, 46)];
-    [instLabel setNumberOfLines:2];
+    instLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,24, 180, 46)];
+    [instLabel setNumberOfLines:3];
     [self addSubview:instLabel];
 
 }

@@ -25,6 +25,14 @@
         [self initialization];
         [self initWithLeftView];
         [self initWithRightView];
+        if ([[MainTabBarController sharedMainViewController] isVertical]) {
+        
+            [self setVerticalFrame];
+        
+        }else {
+        
+            [self setHorizontalFrame];
+        }
     }
     return self;
 }
@@ -32,15 +40,14 @@
 - (void)initialization
 {
     
-    leftView = [[UIView alloc] initWithFrame:CGRectMake(48, 96, 542, 672)];
+    leftView = [[UIView alloc] init];
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
-    rightView = [[UIView alloc] initWithFrame:CGRectMake(590,96,434, 672)];
+    rightView = [[UIView alloc] init];
     [rightView setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:rightView];
     
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 96, 48, 672)];
+    leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setBackgroundColor:PMColor6];
     [leftBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -51,7 +58,7 @@
 - (void)initWithRightView
 {
     
-    dataTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 432, 672)];
+    dataTable = [[UITableView alloc] init];
     [dataTable setBackgroundColor:PMColor6];
     [dataTable setDataSource:self];
     [dataTable setDelegate:self];
@@ -66,7 +73,6 @@
 {
     emptyView = [[UIView alloc] init];
     [emptyView setBackgroundColor:[UIColor clearColor]];
-    [emptyView setFrame:CGRectMake(192, 292, 136, 144)];
     [self addSubview:emptyView];
     
     UIImageView *iconBg = [[UIImageView alloc] initWithFrame:CGRectMake(12, 0, 112, 112)];
@@ -109,13 +115,11 @@
     
     notBtn = [[ColorButton alloc] init];
     [notBtn initWithTitle:@"未接种" andButtonType:kBlueLeftUp];
-    [notBtn setFrame:CGRectMake(432, 550,112, 40)];
     [notBtn addTarget:self action:@selector(noBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:notBtn];
     
     alreadyBtn = [[ColorButton alloc] init];
     [alreadyBtn initWithTitle:@"已接种" andButtonType:kBlueLeftDown];
-    [alreadyBtn setFrame:CGRectMake(432, 590, 112, 40)];
     [alreadyBtn addTarget:self action:@selector(alreadyBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:alreadyBtn];
 
@@ -198,11 +202,26 @@
 
 -(void)setVerticalFrame
 {
-
+    [leftView setFrame:CGRectMake(48, 96, 720, 928)];
+    //[rightView setFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)]
+    [leftBtn setFrame:CGRectMake(0, 96, 48, 928)];
+    SetViewLeftUp(notBtn, 608, 550);
+    SetViewLeftUp(alreadyBtn, 608, 590);
+    
+   
 }
 
 -(void)setHorizontalFrame
 {
+    [leftView setFrame:CGRectMake(48, 96, 542, 672)];
+     [rightView setFrame:CGRectMake(590,96,434, 672)];
+    [dataTable setFrame: CGRectMake(0, 0, 432, 672)];
+   
+    [emptyView setFrame:CGRectMake(192, 292, 136, 144)];
+    [leftBtn setFrame:CGRectMake(0, 96, 48, 672)];
+    [notBtn setFrame:CGRectMake(432, 550,112, 40)];
+    [alreadyBtn setFrame:CGRectMake(432, 590, 112, 40)];
+    
 }
 
 ////-(void)setVerticalFrame
