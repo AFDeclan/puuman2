@@ -38,7 +38,8 @@
     portraitView.layer.shadowRadius =0.1;
     [self addSubview:portraitView];
     [self loadAnimateView];
-    
+    [MyNotiCenter addObserver:self selector:@selector(addPuuman) name:Noti_AddCorns object:nil];
+
 
 }
 
@@ -199,4 +200,8 @@
   [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
 }
 
+-(void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
+}
 @end

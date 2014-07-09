@@ -307,8 +307,6 @@
 }
 
 
-
-
 - (void)setVerticalFrame
 {
     

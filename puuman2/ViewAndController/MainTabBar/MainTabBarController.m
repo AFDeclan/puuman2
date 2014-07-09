@@ -490,6 +490,7 @@ static MBProgressHUD *hud;
 {
     
     if (improtAutoVC) {
+        [improtAutoVC.view removeFromSuperview];
         improtAutoVC = nil;
     }
     improtAutoVC = [[AutoImportViewController alloc] initWithNibName:nil bundle:nil];
@@ -501,7 +502,7 @@ static MBProgressHUD *hud;
 - (void)showAutoImportView
 {
     
-    if (improtAutoVC) {
+    if (improtAutoVC && !_videoShowed) {
         [self.view addSubview:improtAutoVC.view];
         [improtAutoVC show];
     }
@@ -512,7 +513,6 @@ static MBProgressHUD *hud;
 - (void)removeAutoImportView
 {
     if (improtAutoVC) {
-
         [improtAutoVC.view removeFromSuperview];
         improtAutoVC = nil;
     }
@@ -649,7 +649,6 @@ static MBProgressHUD *hud;
     [self dragAnimationWithView:infoView andDargPoint:CGPointMake(0, posY)];
     SetViewLeftUp(infoView, 0, 0);
     babyInfoShowed = YES;
-    // [babyShowBtn addPuuman];
 }
 
 - (void)hiddenBabyView
