@@ -9,5 +9,5 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface CAKeyframeAnimation (DragAnimation)
-+ (void)dragAnimationWithView:(UIView *)view andDargPoint:(CGPoint)pos;
++ (CAKeyframeAnimation *)dragAnimationWithView:(UIView *)view andDargPoint:(CGPoint)pos;
 @end

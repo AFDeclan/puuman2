@@ -48,7 +48,8 @@
 #define Noti_VaccineUpdated                     @"Noti_VaccineUpdated"
 #define Noti_RecomWaresUpdated                  @"Noti_RecomWaresUpdated"
 #define Noti_AddCorns                           @"Noti_AddCorns"
-
+#define Noti_PreBabyShowInfo                    @"Noti_PreBabyShowInfo"
+#define Noti_PreBabyHiddenInfo                  @"Noti_PreBabyHiddenInfo"
 
 #define Noti_ShowAlert                          @"Noti_ShowAlert"
 #define Noti_ShowHud                            @"Noti_ShowHud"

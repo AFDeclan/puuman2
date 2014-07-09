@@ -63,7 +63,6 @@
 		14B8DF5018BC37A40047C6B3 /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF0918BC37A30047C6B3 /* DateFormatter.m */; };
 		14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF0B18BC37A30047C6B3 /* ErrorLog.m */; };
 		14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF0F18BC37A30047C6B3 /* MD5.m */; };
-		14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF1118BC37A30047C6B3 /* NSDate+Compute.m */; };
 		14B8DF5518BC37A40047C6B3 /* UserNameCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B8DF1318BC37A30047C6B3 /* UserNameCheck.m */; };
 		14B8DF5618BC37A40047C6B3 /* Readme.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 14B8DF1718BC37A30047C6B3 /* Readme.rtf */; };
 		14B8DF5C18BC3E250047C6B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8DF5B18BC3E250047C6B3 /* QuartzCore.framework */; };
@@ -460,6 +459,8 @@
 		54B06C2B1929C34000539EA5 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C2A1929C34000539EA5 /* block_photo_diary.png */; };
 		54B06C2D1929C37B00539EA5 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C2C1929C37B00539EA5 /* block_photo_diary.png */; };
 		54B06C321929F65600539EA5 /* btn_preinfo_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C311929F65600539EA5 /* btn_preinfo_baby.png */; };
+		54B1ACE1196D24E50045B369 /* NSDate+Compute.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1ACE0196D24E50045B369 /* NSDate+Compute.m */; };
+		54B1ACE4196D303B0045B369 /* AgePreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1ACE3196D303B0045B369 /* AgePreTableViewCell.m */; };
 		54B30A6C195D4A9600007DDC /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A6B195D4A9500007DDC /* UserInfo.m */; };
 		54B30A70195D4C1600007DDC /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A6F195D4C1600007DDC /* Share.m */; };
 		54B30A88195D53EC00007DDC /* NSMutableArray+pieEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A73195D53EC00007DDC /* NSMutableArray+pieEx.m */; };
@@ -923,7 +924,6 @@
 		14B8DF0E18BC37A30047C6B3 /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5.h; sourceTree = "<group>"; };
 		14B8DF0F18BC37A30047C6B3 /* MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5.m; sourceTree = "<group>"; };
 		14B8DF1018BC37A30047C6B3 /* NSDate+Compute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Compute.h"; sourceTree = "<group>"; };
-		14B8DF1118BC37A30047C6B3 /* NSDate+Compute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Compute.m"; sourceTree = "<group>"; };
 		14B8DF1218BC37A30047C6B3 /* UserNameCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNameCheck.h; sourceTree = "<group>"; };
 		14B8DF1318BC37A30047C6B3 /* UserNameCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNameCheck.m; sourceTree = "<group>"; };
 		14B8DF1418BC37A30047C6B3 /* ColorsAndFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorsAndFonts.h; sourceTree = "<group>"; };
@@ -1474,6 +1474,9 @@
 		54B06C2A1929C34000539EA5 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		54B06C2C1929C37B00539EA5 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		54B06C311929F65600539EA5 /* btn_preinfo_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_preinfo_baby.png; sourceTree = "<group>"; };
+		54B1ACE0196D24E50045B369 /* NSDate+Compute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Compute.m"; sourceTree = "<group>"; };
+		54B1ACE2196D303B0045B369 /* AgePreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgePreTableViewCell.h; sourceTree = "<group>"; };
+		54B1ACE3196D303B0045B369 /* AgePreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgePreTableViewCell.m; sourceTree = "<group>"; };
 		54B30A6A195D4A9500007DDC /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		54B30A6B195D4A9500007DDC /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		54B30A6D195D4BDD00007DDC /* Urls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Urls.h; sourceTree = "<group>"; };
@@ -2310,7 +2313,7 @@
 				14B8DF0E18BC37A30047C6B3 /* MD5.h */,
 				14B8DF0F18BC37A30047C6B3 /* MD5.m */,
 				14B8DF1018BC37A30047C6B3 /* NSDate+Compute.h */,
-				14B8DF1118BC37A30047C6B3 /* NSDate+Compute.m */,
+				54B1ACE0196D24E50045B369 /* NSDate+Compute.m */,
 				14B8DF1218BC37A30047C6B3 /* UserNameCheck.h */,
 				14B8DF1318BC37A30047C6B3 /* UserNameCheck.m */,
 			);
@@ -2800,9 +2803,9 @@
 			children = (
 				547F7641196A7D96004D4F77 /* PregnancyTableViewCell.h */,
 				547F7642196A7D96004D4F77 /* PregnancyTableViewCell.m */,
-				88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */,
 				547F764B196A7F34004D4F77 /* BabyCustomTableViewCell.h */,
 				547F7640196A7D96004D4F77 /* BabyCustomTableViewCell.m */,
+				88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */,
 				88AF77731963B23400E02B43 /* BabyInfoPropViewCell.m */,
 				88AF77751963B24500E02B43 /* BabyInfoVaciViewCell.h */,
 				88AF77761963B24500E02B43 /* BabyInfoVaciViewCell.m */,
@@ -3212,6 +3215,8 @@
 				54B30AB0195D5A0500007DDC /* CalenderTableViewCell.m */,
 				54B30AB2195D5A1600007DDC /* AgeCalenderTableViewCell.h */,
 				54B30AB3195D5A1600007DDC /* AgeCalenderTableViewCell.m */,
+				54B1ACE2196D303B0045B369 /* AgePreTableViewCell.h */,
+				54B1ACE3196D303B0045B369 /* AgePreTableViewCell.m */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -4785,6 +4790,7 @@
 				54CB2A3D19626309005EBD3F /* MenuTitleButton.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				54B4680518E520C500745F72 /* HealthCell.m in Sources */,
+				54B1ACE4196D303B0045B369 /* AgePreTableViewCell.m in Sources */,
 				54B30AA0195D546900007DDC /* DiaryShowCell.m in Sources */,
 				5412BC5A192C80560033F322 /* PhotoMoreDiaryCell.m in Sources */,
 				88B515FB192F52EE006A79AB /* UIImageView+AnimateFade.m in Sources */,
@@ -4902,7 +4908,6 @@
 				88B51605192F52EE006A79AB /* MJRefreshBaseView.m in Sources */,
 				54B6F42718D6EAF00055FC72 /* VideoPlayerController.m in Sources */,
 				54AE2BBB18E93FEB00D24F92 /* MemberCache.m in Sources */,
-				14B8DF5418BC37A40047C6B3 /* NSDate+Compute.m in Sources */,
 				54AFAA9118DAC3BF0067B8C1 /* AdaptiveLabel.m in Sources */,
 				549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */,
 				54012DC418E2C14300F11D97 /* SortTableViewController.m in Sources */,
@@ -5008,6 +5013,7 @@
 				54B30AA4195D546900007DDC /* JoinView.m in Sources */,
 				54ADE09A18C8608700B166C4 /* NewAudioRecordView.m in Sources */,
 				88B515F7192F52EE006A79AB /* AFIconButton.m in Sources */,
+				54B1ACE1196D24E50045B369 /* NSDate+Compute.m in Sources */,
 				54AE788218DFF87100AE558C /* TopicCell.m in Sources */,
 				88B51609192F52EE006A79AB /* TextLayoutLabel.m in Sources */,
 				145237F0193D5B5900A3A2BB /* BabyInfo.m in Sources */,

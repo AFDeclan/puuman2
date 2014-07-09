@@ -93,14 +93,12 @@ static const float subDistanceOfY = 4;
 - (void)buildMonthWithCurrentIndex:(NSInteger)index
 {
     [self nowMonth];
-    
     if (index != 0) {
         for (int i = 0; i > index; i--) {
            [self preMonth];
         }
-        
     }
-     [self refresh];
+    [self refresh];
 }
 
 - (void)preMonth
@@ -113,6 +111,7 @@ static const float subDistanceOfY = 4;
     [compPreMonth setMonth:-1];
     date_firstDay = [[NSCalendar currentCalendar] dateByAddingComponents:compPreMonth toDate:date_firstDay options:0];
     days = [[[date_lastDay ageFromDate:date_firstDay] objectAtIndex:2] intValue] ;
+
     month --;
 }
 
@@ -122,44 +121,20 @@ static const float subDistanceOfY = 4;
 {
     
     NSArray *ages = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
-    if ([ages count] == 3) {
-        NSDateComponents *comp_nowMonth = [[NSDateComponents alloc] init];
-        [comp_nowMonth setDay:[[ages objectAtIndex:2] intValue]*(-1)+1];
-        date_firstDay = [[NSCalendar currentCalendar] dateByAddingComponents:comp_nowMonth toDate:[NSDate date] options:0];
-        NSDateComponents* compNextMonth = [[NSDateComponents alloc]init];
-        [compNextMonth setMonth:1];
-        date_nextFirstDay = [[NSCalendar currentCalendar] dateByAddingComponents:compNextMonth toDate:date_firstDay options:0];
-        NSDateComponents *comp_lastDay = [[NSDateComponents alloc] init];
-        [comp_lastDay setDay:-1];
-        NSDate *date_lastDay = [[NSCalendar currentCalendar] dateByAddingComponents:comp_lastDay toDate:date_nextFirstDay options:0];
-        days = [[[date_lastDay ageFromDate:date_firstDay] objectAtIndex:2] intValue];
-        
-        now_day = [[[[NSDate date] ageFromDate:date_firstDay] objectAtIndex:2] intValue];
-        now_month = [[ages objectAtIndex:0] integerValue]*12 +[[ages objectAtIndex:1] integerValue];
-        month = now_month;
-        
-    }else{
-        
-        NSDateComponents *comp_nowMonth = [[NSDateComponents alloc] init];
-        [comp_nowMonth setDay:[[ages objectAtIndex:1] intValue]*(-1)-1];
-        date_firstDay = [[NSCalendar currentCalendar] dateByAddingComponents:comp_nowMonth toDate:[NSDate date] options:0];
-        NSDateComponents* compNextMonth = [[NSDateComponents alloc]init];
-        [compNextMonth setMonth:1];
-        date_nextFirstDay = [[NSCalendar currentCalendar] dateByAddingComponents:compNextMonth toDate:date_firstDay options:0];
-        NSDateComponents *comp_lastDay = [[NSDateComponents alloc] init];
-        [comp_lastDay setDay:-1];
-        NSDate *date_lastDay = [[NSCalendar currentCalendar] dateByAddingComponents:comp_lastDay toDate:date_nextFirstDay options:0];
-        days = [[[date_lastDay ageFromDate:date_firstDay] objectAtIndex:2] intValue] +1;
-        
-        now_day = [[[[NSDate date] ageFromDate:date_firstDay] objectAtIndex:2] intValue] +1;
-        now_month = [[ages objectAtIndex:0] integerValue];
-        month = now_month;
+    NSDateComponents *comp_nowMonth = [[NSDateComponents alloc] init];
+    [comp_nowMonth setDay:[[ages objectAtIndex:2] intValue]*(-1)+1];
+    date_firstDay = [[NSCalendar currentCalendar] dateByAddingComponents:comp_nowMonth toDate:[NSDate date] options:0];
+    NSDateComponents* compNextMonth = [[NSDateComponents alloc]init];
+    [compNextMonth setMonth:1];
+    date_nextFirstDay = [[NSCalendar currentCalendar] dateByAddingComponents:compNextMonth toDate:date_firstDay options:0];
+    NSDateComponents *comp_lastDay = [[NSDateComponents alloc] init];
+    [comp_lastDay setDay:-1];
+    NSDate *date_lastDay = [[NSCalendar currentCalendar] dateByAddingComponents:comp_lastDay toDate:date_nextFirstDay options:0];
+    days = [[[date_lastDay ageFromDate:date_firstDay] objectAtIndex:2] intValue];
+    now_day = [[[[NSDate date] ageFromDate:date_firstDay] objectAtIndex:2] intValue];
+    now_month = [[ages objectAtIndex:0] integerValue]*12 +[[ages objectAtIndex:1] integerValue];
+    month = now_month;
 
-    }
-    
-    
-    
-   
 }
 
 -(void)refresh

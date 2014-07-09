@@ -14,7 +14,7 @@
 #import "BabyView.h"
 #import "BabyInfoChooseButton.h"
 
-@interface BabyInfoBornViewCell : UITableViewCell<BabyInfoDelegate,BabyInfoIconViewDelegate>
+@interface BabyInfoBornViewCell : UITableViewCell<BabyInfoIconViewDelegate>
 
 {
     UIView *clearInfoView;

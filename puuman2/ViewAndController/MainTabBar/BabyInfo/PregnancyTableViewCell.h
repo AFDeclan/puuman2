@@ -15,6 +15,11 @@
 @interface PregnancyTableViewCell : UITableViewCell
 {
     AFImageView *imageView;
+    UITextView *infoTextView;
+    UIView *infoView;
+    UIButton *questionBtn;
+    UIView *questionView;
+    BOOL showInfo;
 }
 
 @property (nonatomic,assign)BOOL columnImgBMode;

@@ -17,17 +17,12 @@
 @interface BabyInfoPregnancyViewCell : UITableViewCell<BabyInfoIconViewDelegate,UIColumnViewDataSource,UIColumnViewDelegate>
 {
     UIView *clearInfoView;
-    ColorButton *modifyBtn;
-    AFImageView *portraitView;
-    UIImageView *info_sexIcon;
-    UILabel *info_name;
-    UILabel *info_age;
     UILabel *weekLabel;
     UIButton *preBtn;
     UIButton *nextBtn;
     UIColumnView *_columnView;
+    UIView *babyShowView;
     NSInteger columnIndex;
-    UIButton *questionBtn;
     BOOL scrolling;
     BabyInfoChooseButton *changeModelBtn;
     UIView *contentView;
@@ -38,6 +33,7 @@
     UIImageView *grayLineRight;
     UIImageView *grayLineLeft;
     UIImageView *nextPropView;
+    UIView *tapView;
 }
 
 @property (nonatomic,assign)id<BabyInfoIconViewDelegate>delegate;

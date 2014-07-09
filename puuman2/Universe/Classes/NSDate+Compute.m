@@ -7,6 +7,7 @@
 //
 
 #import "NSDate+Compute.h"
+#import "UserInfo.h"
 
 @implementation NSDate(Compute)
 
@@ -57,7 +58,11 @@
 
 - (NSInteger)monthsToDate:(NSDate *)endDate
 {
-    return [NSDate monthsFromDate:self toDate:endDate];
+    
+    NSDate *pregnancyDate = [endDate dateByAddingTimeInterval:-280*24*60*60];
+    return [NSDate monthsFromDate:pregnancyDate toDate: self];
+
+   
 }
 
 - (BOOL)isSameDayWithDate:(NSDate *)date
@@ -68,8 +73,8 @@
 
 - (NSArray *)ageFromDate:(NSDate *)birth
 {
-    if ([self earlierDate:birth] == self)
-    {   //孕期
+    if (![[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        //孕期
         NSDate *pregnancyDate = [birth dateByAddingTimeInterval:-280*24*60*60];
         NSInteger day = [pregnancyDate daysToDate:self];
         NSInteger week = day / 7;
@@ -77,7 +82,9 @@
         NSArray *age = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", week],
                         [NSString stringWithFormat:@"%d", day], nil];
         return age;
+ 
     }
+
     NSInteger y1, m1, d1, y2, m2, d2;
     NSInteger year, month, day;
     NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -116,7 +123,7 @@
 
 - (NSString *)ageStrFromDate:(NSDate *)birth
 {
-    NSArray *age = [[NSDate date] ageFromDate:birth];
+    NSArray *age = [self ageFromDate:birth];
     NSString *ageStr = @"";
     if ([age count] == 3)
     {
@@ -236,11 +243,11 @@
     int ageSelf = [[NSDate date] daysFromDate:self];
     int ageTarget = [[NSDate date] daysFromDate:date];
     if (ageSelf > ageTarget) {
-        return [NSString stringWithFormat:@"比我小%d天",ageSelf - ageTarget];
+        return [NSString stringWithFormat:@"小%d天",ageSelf - ageTarget];
     }else if (ageSelf == ageTarget){
         return @"一样大";
     }else{
-        return [NSString stringWithFormat:@"比我大%d天",ageTarget - ageSelf];
+        return [NSString stringWithFormat:@"大%d天",ageTarget - ageSelf];
     }
 }
 

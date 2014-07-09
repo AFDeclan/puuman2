@@ -8,6 +8,7 @@
 
 #import "AgeCalenderView.h"
 #import "AgeCalenderTableViewCell.h"
+#import "AgePreTableViewCell.h"
 #import "NSDate+Compute.h"
 #import "UserInfo.h"
 
@@ -71,30 +72,45 @@
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+
         return [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]+1;
     }else{
-        return [[NSDate date] monthsToDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]+1;
+        NSArray *ages = [[NSDate date] ageFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]];
+        return [[ages objectAtIndex:0] intValue] +1;
     }
 }
 
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
-    
-    NSString * cellIdentifier = @"ToolsCalendar";
-    AgeCalenderTableViewCell *cell = (AgeCalenderTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[AgeCalenderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        
-    }
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        NSString * cellIdentifier = @"ToolsCalendar";
+        AgeCalenderTableViewCell *cell = (AgeCalenderTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[AgeCalenderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            
+        }
+        
         [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
+        [cell setBackgroundColor:[UIColor clearColor]];
+        [cell.contentView.layer setMasksToBounds:YES];
+        return cell;
+
     }else{
-        [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsToDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
+        NSString * cellIdentifier = @"ToolsCalendar";
+        AgePreTableViewCell *cell = (AgePreTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[AgePreTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            
+        }
+       
+        //   [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsToDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
+        [cell setBackgroundColor:[UIColor clearColor]];
+        [cell.contentView.layer setMasksToBounds:YES];
+        return cell;
+
     }
-    [cell setBackgroundColor:[UIColor clearColor]];
-    [cell.contentView.layer setMasksToBounds:YES];
-    return cell;
     
 }
 
