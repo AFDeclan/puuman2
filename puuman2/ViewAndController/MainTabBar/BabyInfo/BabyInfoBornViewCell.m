@@ -71,8 +71,8 @@
 
 - (void)initClearInfoView
 {
-    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(270,75, 500, 600)];
-    [bgImageView setImage:[UIImage imageNamed:@"bg_sleeping_babyInfo.png"]];
+     bgImageView = [[UIImageView alloc] init];
+    [bgImageView setImage:[UIImage imageNamed:@"baby_born_background.png"]];
     [clearInfoView addSubview:bgImageView];
     
      addRecordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -100,19 +100,19 @@
     [propBtn addTarget:self action:@selector(propBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:propBtn];
     
-    UIImageView *heiLineView = [[UIImageView alloc] initWithFrame:CGRectMake(30, 400, 240, 86)];
+    heiLineView = [[UIImageView alloc] init];
     [heiLineView setImage:[UIImage imageNamed:@"line_right_babyInfo.png"]];
     [clearInfoView addSubview:heiLineView];
     
-    UIImageView *vaciLineView = [[UIImageView alloc] initWithFrame:CGRectMake(780, 230, 240, 86)];
+     vaciLineView = [[UIImageView alloc] init];
     [vaciLineView setImage:[UIImage imageNamed:@"line_left_babyinfo.png"]];
     [clearInfoView addSubview:vaciLineView];
     
-    UIImageView *propLineView = [[UIImageView alloc] initWithFrame:CGRectMake(780, 456, 240, 86)];
+     propLineView = [[UIImageView alloc] init];
     [propLineView setImage:[UIImage imageNamed:@"line_left_babyinfo.png"]];
     [clearInfoView addSubview:propLineView];
     
-     preView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 320, 10, 16)];
+     preView = [[UIImageView alloc] init];
     [preView setImage:[UIImage imageNamed:@"back_left_babyInfo.png"]];
     [clearInfoView addSubview:preView];
     
@@ -129,18 +129,33 @@
 
 - (void)setVerticalFrame
 {
+    
     [contentView setFrame:CGRectMake(0, 96, 768, 928)];
     [clearInfoView setFrame:CGRectMake(0, 0, 768, 928)];
     [bottomBtn setFrame:CGRectMake(0, 976, 768, 48)];
     [bottomBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 352, 8, 352)];
-    [heightBtn setFrame:CGRectMake(20, 262, 80, 68)];
-    [weightBtn setFrame:CGRectMake(20, 332, 80, 68)];
-    [vaciBtn setFrame:CGRectMake(640, 140, 100, 100)];
-    [propBtn setFrame:CGRectMake(640, 380, 212, 80)];
-    [addRecordBtn setFrame:CGRectMake(100, 262, 32, 32)];
-    [nextNaciView setFrame:CGRectMake(744,180, 10, 16)];
-    [nextPropView setFrame:CGRectMake(744,407, 10, 16)];
-
+//    [bgImageView setFrame:CGRectMake(134, 140, 500, 600)];
+//    [heightBtn setFrame:CGRectMake(20, 300, 80, 68)];
+//    [weightBtn setFrame:CGRectMake(20, 370, 80, 68)];
+//    [vaciBtn setFrame:CGRectMake(540, 140, 192, 100)];
+//    [propBtn setFrame:CGRectMake(600, 380, 192, 80)];
+//    [addRecordBtn setFrame:CGRectMake(140, 300, 32, 32)];
+//    [nextNaciView setFrame:CGRectMake(744,180, 10, 16)];
+//    [nextPropView setFrame:CGRectMake(744,407, 10, 16)];
+//    [preView setFrame:CGRectMake(5, 350, 10, 16)];
+    [bgImageView setFrame:CGRectMake(80, 35, 500, 800)];
+    [heightBtn setFrame:CGRectMake(30, 450, 80, 68)];
+    [weightBtn setFrame:CGRectMake(30, 520, 80, 68)];
+    [vaciBtn setFrame:CGRectMake(565, 280, 180, 100)];
+    [propBtn setFrame:CGRectMake(565, 520, 180, 80)];
+    [addRecordBtn setFrame:CGRectMake(150, 450, 32, 32)];
+    [nextNaciView setFrame:CGRectMake(744, 320, 10, 16)];
+    [nextPropView setFrame:CGRectMake(744, 547, 10, 16)];
+    [preView setFrame:CGRectMake(5, 500, 10, 16)];
+    [heiLineView setFrame:CGRectMake(0, 600, 240, 86)];
+    [vaciLineView setFrame:CGRectMake(565, 380, 240, 86)];
+    [propLineView setFrame:CGRectMake(565, 600, 240, 86)];
+ 
 
 }
 - (void)setHorizontalFrame
@@ -149,6 +164,7 @@
     [clearInfoView setFrame:CGRectMake(0, 0, 1024, 672)];
     [bottomBtn setFrame:CGRectMake(0, 720, 1024, 48)];
     [bottomBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 480, 8, 480)];
+    [bgImageView setFrame:CGRectMake(270,75, 500, 800)];
     [heightBtn setFrame:CGRectMake(30, 262, 170, 68)];
     [weightBtn setFrame:CGRectMake(30, 332, 170, 68)];
     [vaciBtn setFrame:CGRectMake(780, 140, 212, 100)];
@@ -156,7 +172,10 @@
     [addRecordBtn setFrame:CGRectMake(230, 262, 32, 32)];
     [nextNaciView setFrame:CGRectMake(1000,180, 10, 16)];
     [nextPropView setFrame:CGRectMake(1000,407, 10, 16)];
-
+    [preView setFrame:CGRectMake(10, 320, 10, 16)];
+    [heiLineView setFrame:CGRectMake(30, 400, 240, 86)];
+    [vaciLineView setFrame:CGRectMake(780, 230, 240, 86)];
+    [propLineView setFrame:CGRectMake(780, 456, 240, 86)];
 
 }
 

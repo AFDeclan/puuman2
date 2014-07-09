@@ -27,12 +27,12 @@
         [self initialization];
         [self initWithLeftView];
         [self initWithRightView];
-//        if ([MainTabBarController sharedMainViewController].isVertical) {
-//            [self setVerticalFrame];
-//        }else{
-//            [self setHorizontalFrame];
-//            
-//        }
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            [self setVerticalFrame];
+        }else{
+            [self setHorizontalFrame];
+            
+        }
         [MyNotiCenter addObserver:self selector:@selector(refresh) name:Noti_BabyDataUpdated object:nil];
     }
     return self;
@@ -46,10 +46,10 @@
 - (void)initialization
 {
 
-    leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 735, 672)];
+    leftView = [[UIView alloc] init];
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
-    rightView = [[UIView alloc] initWithFrame:CGRectMake(735,96,289, 672)];
+    rightView = [[UIView alloc] init];
     [rightView setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:rightView];
 
@@ -71,9 +71,8 @@
     [emptyView setBackgroundColor:[UIColor clearColor]];
     [rightView addSubview:emptyView];
     
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBtn setBackgroundColor:PMColor7];
-    [rightBtn setFrame:CGRectMake(224, 0, 64, 672)];
     [rightBtn setImage:[UIImage imageNamed:@"back_right_babyInfo.png"] forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [rightView addSubview:rightBtn];
@@ -113,12 +112,12 @@
     
     addDataBtn = [[ColorButton alloc] init];
     [addDataBtn initWithTitle:@"+ 添加"  andButtonType:kBlueRight];
-    [addDataBtn setFrame:CGRectMake(0, 590, 112, 40)];
+    [addDataBtn setFrame:CGRectMake(0, 0, 112, 40)];
     [addDataBtn addTarget:self action:@selector(addData) forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:addDataBtn];
     shareBtn = [[ColorButton alloc] init];
     [shareBtn initWithTitle:@"分享" andIcon:[UIImage imageNamed:@"share_image_babyInfo.png"] andButtonType:kGrayRight];
-    [shareBtn setFrame:CGRectMake(0, 550,112, 40)];
+    [shareBtn setFrame:CGRectMake(0, 0,112, 40)];
     [shareBtn addTarget:self action:@selector(shareData) forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:shareBtn];
      noti_label = [[UILabel alloc] initWithFrame:CGRectMake(280,520,544, 18)];
@@ -169,31 +168,35 @@
     
 }
 
-//-(void)setVerticalFrame
-//{
-////    [super setVerticalFrame];
-////    [leftView setFrame:CGRectMake(-216, 0, 256, 832)];
-////    [showAndHiddenBtn setAlpha:1];
-//    [dataTable setFrame:CGRectMake(0, 0, 216, 832)];
-//    [_lineChartView setFrame:CGRectMake(56, 184, 544, 408)];
-//    [emptyView setFrame:CGRectMake(64, 320, 88, 112)];
-//    SetViewLeftUp(noti_label, 56, 560);
-//    SetViewLeftUp(addDataBtn, 496, 768);
-//    
-//}
+-(void)setVerticalFrame
+{
+    //[super setVerticalFrame];
+    [rightView setFrame:CGRectMake(704, 96, 64, 928)];
+    [leftView setFrame:CGRectMake(0, 96, 704, 928)];
+    [showAndHiddenBtn setAlpha:1];
+    [dataTable setFrame:CGRectMake(0, 0, 224, 928)];
+    [_lineChartView setFrame:CGRectMake(90, 140, 544, 408)];
+    [emptyView setFrame:CGRectMake(64, 192, 88, 112)];
+    [rightBtn setFrame:CGRectMake(0, 0, 64, 928)];
+    SetViewLeftUp(shareBtn, 0, 706);
+    SetViewLeftUp(addDataBtn, 0, 746);
+    
+}
 
 -(void)setHorizontalFrame
 {
-//    [super setHorizontalFrame];
-//    [leftView setFrame:CGRectMake(0, 0, 216, 576)];
-//    [showAndHiddenBtn setAlpha:0];
-//    [dataTable setFrame:CGRectMake(0, 0, 216, 576)];
-//    [_lineChartView setFrame:CGRectMake(312, 54, 544, 408)];
-//    [emptyView setFrame:CGRectMake(64, 192, 88, 112)];
-//    SetViewLeftUp(noti_label, 312, 430);
-//    SetViewLeftUp(addDataBtn, 752, 512);
-    
-    
+    //[super setHorizontalFrame];
+    [rightView setFrame:CGRectMake(736,96,288, 672)];
+    [leftView setFrame:CGRectMake(0, 96, 735, 672)];
+    [showAndHiddenBtn setAlpha:0];
+    [dataTable setFrame:CGRectMake(0, 0, 224,672)];
+    [_lineChartView setFrame:CGRectMake(90, 140, 544, 408)];
+    [emptyView setFrame:CGRectMake(64, 192, 88, 112)];
+    [noti_label setFrame:CGRectMake(280,520,544,18)];
+    [rightBtn setFrame:CGRectMake(224, 0, 64, 672)];
+    SetViewLeftUp(shareBtn, 0, 550);
+    SetViewLeftUp(addDataBtn, 0, 590);
+
 }
 
 - (void)rightBtnClick

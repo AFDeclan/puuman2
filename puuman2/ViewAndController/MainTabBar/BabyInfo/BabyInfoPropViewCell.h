@@ -20,6 +20,8 @@
     UITableView *estiTableView;
     ColorButton *estiBtn;
     NSMutableArray *estiArrayData;
+    UIButton *leftBtn;
+    UIView *estiView;
 }
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;

@@ -28,6 +28,10 @@
     UIImageView *preView;
     UIImageView *nextNaciView;
     UIImageView *nextPropView;
+    UIImageView *heiLineView;
+    UIImageView *vaciLineView;
+    UIImageView *propLineView;
+    UIImageView *bgImageView;
     
 }
 
