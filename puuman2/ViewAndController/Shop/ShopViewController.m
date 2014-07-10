@@ -126,7 +126,7 @@ static ShopViewController * instance;
     
     contentShop = [[ShopContentView alloc] initWithFrame:CGRectMake(80, 80, 0, 0)];
     [self.view addSubview:contentShop];
-    cartBtn  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 56, 72)];
+    cartBtn  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 56, 78)];
     [cartBtn setImage:[UIImage imageNamed:@"btn_cart_shop.png"] forState:UIControlStateNormal];
     [cartBtn addTarget:self action:@selector(showCart) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cartBtn];
@@ -154,7 +154,7 @@ static ShopViewController * instance;
     [bg_topImageView setImage:[UIImage imageNamed:@"paper_top_shop.png"]];
     [bg_rightImageView setFrame:CGRectMake(688, 80, 64, 944)];
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_shop.png"]];
-    SetViewLeftUp(sectionView, 688, 80);
+    SetViewLeftUp(sectionView, 688, 100);
     SetViewLeftUp(searchBtn, 464, 28);
     SetViewLeftUp(searchView, 288, 28);
     SetViewLeftUp(cartBtn, 680, 678);
@@ -171,7 +171,7 @@ static ShopViewController * instance;
     [bg_rightImageView setFrame:CGRectMake(944, 80, 64, 688)];
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_h_shop.png"]];
   
-    SetViewLeftUp(sectionView, 944, 80);
+    SetViewLeftUp(sectionView, 944, 100);
 
     SetViewLeftUp(searchBtn, 592, 28);
     SetViewLeftUp(searchView, 416, 28);

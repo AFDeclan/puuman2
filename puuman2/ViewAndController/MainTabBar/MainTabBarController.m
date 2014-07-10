@@ -374,7 +374,7 @@ static MBProgressHUD *hud;
     }
     
     if (babyShowBtn) {
-        SetViewLeftUp(babyShowBtn,768 -16 - 56, 1024);
+        SetViewLeftUp(babyShowBtn,768 -16 - 80, 1024);
         
     }
     
@@ -410,7 +410,7 @@ static MBProgressHUD *hud;
     }
     
     if (babyShowBtn) {
-        SetViewLeftUp(babyShowBtn,1024 -16 - 56, 768);
+        SetViewLeftUp(babyShowBtn,1024 -16 - 80, 768);
     }
 }
 
@@ -611,14 +611,14 @@ static MBProgressHUD *hud;
     [self.view addSubview:infoView];
     [infoView.layer setMasksToBounds:NO];
     if (!babyShowBtn) {
-        babyShowBtn = [[BabyShowButton alloc] initWithFrame:CGRectMake(1024 -16 - 56, 768, 56, 56)];
+        babyShowBtn = [[BabyShowButton alloc] initWithFrame:CGRectMake(1024 -16 - 80, 768, 80, 100)];
         [babyShowBtn setBackgroundColor:[UIColor clearColor]];
     }
     [infoView addSubview:babyShowBtn];
     
     [babyShowBtn loadPortrait];
     if (!babyInfoBtn) {
-        babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 56, 0, 56, 56)];
+        babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 80, 0, 80, 100)];
         [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:babyInfoBtn];
     }

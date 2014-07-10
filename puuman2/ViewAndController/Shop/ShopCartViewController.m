@@ -242,7 +242,7 @@
     [self setTitle:@"我的订单" withIcon:nil];
     [orderShowBtn selected];
     [cartShowBtn unSelected];
-    [cartTable reloadData];
+    [orderTable reloadData];
     [UIView animateWithDuration:0.2 animations:^{
         [orderBtn setAlpha:0];
         [cartTable setAlpha:0];

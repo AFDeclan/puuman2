@@ -24,17 +24,17 @@
 - (void)initialization
 {
     priceBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
-    [priceBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
+    [priceBtn setSelectedImg:[UIImage imageNamed:@"btn_price_shop1.png"] andUnselectedImg:[UIImage imageNamed:@"btn_price_shop.png"]];
     [priceBtn addTarget:self action:@selector(priceBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:priceBtn];
     
     heatBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 96, 64, 96)];
-    [heatBtn setSelectedImg:[UIImage imageNamed:@"btn_all1_shop.png"] andUnselectedImg:[UIImage imageNamed:@"btn_all2_shop.png"]];
+    [heatBtn setSelectedImg:[UIImage imageNamed:@"btn_heat_shop1.png"] andUnselectedImg:[UIImage imageNamed:@"btn_heat_shop.png"]];
     [heatBtn addTarget:self action:@selector(heatBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:heatBtn];
     
     timeBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 96*2, 64, 96)];
-    [timeBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
+    [timeBtn setSelectedImg:[UIImage imageNamed:@"btn_time_shop1.png"] andUnselectedImg:[UIImage imageNamed:@"btn_time_shop.png"]];
     [timeBtn addTarget:self action:@selector(timeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:timeBtn];
 }

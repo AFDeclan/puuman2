@@ -149,7 +149,7 @@
 {
     //[super setVerticalFrame];
    [leftView setFrame:CGRectMake(0, 96, 768, 928)];
-    [leftBtn setFrame:CGRectMake(0, 0, 47, 928)];
+    [leftBtn setFrame:CGRectMake(0, 0, 48, 928)];
     [babyPropView setFrame:CGRectMake(130, 280, 544, 448)];
     // [showAndHiddenBtn setAlpha:1];
     
@@ -158,10 +158,10 @@
 -(void)setHorizontalFrame
 {
    // [super setHorizontalFrame];
-    [leftView setFrame:CGRectMake(0, 96, 807, 672)];
-    [rightView setFrame:CGRectMake(807,96,217, 672)];
+    [leftView setFrame:CGRectMake(0, 96, 808, 672)];
+    [rightView setFrame:CGRectMake(808,96,216, 672)];
     [babyPropView setFrame:CGRectMake(130, 140, 544, 448)];
-    [leftBtn setFrame:CGRectMake(0, 0, 47, 672)];
+    [leftBtn setFrame:CGRectMake(0, 0, 48, 672)];
     [estiTextField setFrame:CGRectMake(ViewWidth(rightView)-216, 0, 216, 50)];
     [estiView setFrame:CGRectMake(ViewWidth(rightView)-216, 50, 216,70)];
     [estiTableView setFrame:CGRectMake(ViewWidth(rightView)-216, 120, 216, ViewHeight(rightView)-120)];
