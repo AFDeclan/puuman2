@@ -91,13 +91,14 @@
     [coinView setAlpha:0];
     [self animateChangeVal:0 andIndex:0];
     [self animateChangeVal:0 andIndex:1];
+    [self animateStartEnd];
+
 }
 
 - (void)addPie
 {
+
     if ([UserInfo sharedUserInfo].identity == Mother) {
-//        [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns] atIndex:0 color: PMColor6];
-//        [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns_connect] atIndex:1 color:PMColor8];
         [self animateChangeVal:[[UserInfo sharedUserInfo] UCorns] andIndex:0];
         [self animateChangeVal:[[UserInfo sharedUserInfo] UCorns_connect] andIndex:1];
         
@@ -107,8 +108,6 @@
     }else{
         [self animateChangeVal:[[UserInfo sharedUserInfo] UCorns_connect] andIndex:0];
         [self animateChangeVal:[[UserInfo sharedUserInfo] UCorns] andIndex:1];
-//        [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns] atIndex:0 color: PMColor6];
-//        [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns_connect] atIndex:1 color:PMColor8];
         [coinMother setText:[NSString stringWithFormat:@"妈妈%0.1f",[[UserInfo sharedUserInfo] UCorns_connect]]];
         [coinFather setText:[NSString stringWithFormat:@"爸爸%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
 
@@ -116,7 +115,6 @@
     [totalCoin setText:[NSString stringWithFormat:@"%0.1f",[[UserInfo sharedUserInfo] UCorns]+[[UserInfo sharedUserInfo] UCorns_connect]]];
 
     [pieView setAlpha:1];
-    [self animateStartEnd];
     [pieView setFinishLoad:YES];
 
 }

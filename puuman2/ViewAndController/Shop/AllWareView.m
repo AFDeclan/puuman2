@@ -25,7 +25,7 @@
         _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 648, 688)];
         [_shopMallTable setDataSource:self];
         [_shopMallTable setDelegate:self];
-       // [self addSubview:_shopMallTable];
+        [self addSubview:_shopMallTable];
         
      
         
@@ -307,12 +307,11 @@
 }
 
 
-
-
 - (void)setVerticalFrame
 {
- 
     
+    [headView setFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
+    [headView setVerticalFrame];
     [_shopMallTable setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     if (_shopState == ShopStateInsurance) {
         [noti_insurance setAlpha:1];
@@ -322,7 +321,8 @@
 - (void)setHorizontalFrame
 {
    
-    
+    [headView setFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
+    [headView setHorizontalFrame];
     [_shopMallTable setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     if (_shopState == ShopStateInsurance) {
           [noti_insurance setAlpha:0];

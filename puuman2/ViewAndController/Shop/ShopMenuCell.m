@@ -61,6 +61,7 @@
     _flagNum = flagNum;
     [titleButton setFlagNum:flagNum];
     if ([[ShopModel sharedInstance] sectionIndex] == flagNum ) {
+        [self showSubView];
         NSInteger cnt = [ShopModel subTypeCntForSectionAtIndex:flagNum ];
         if (cnt != 0) {
             cnt = (cnt % 2) == 0 ? cnt/2 : cnt/2+1;
@@ -68,6 +69,9 @@
             [subTable reloadData];
         }
       
+    }else{
+        [self hiddenSubView];
+
     }
 
 }

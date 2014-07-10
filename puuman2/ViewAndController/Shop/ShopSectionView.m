@@ -45,10 +45,12 @@
         if (showWareInfo) {
             [wareInfoView setAlpha:1];
             [sortView setAlpha:0];
+            [wareInfoView refresh];
         }else{
             [wareInfoView setAlpha:0];
             if (showAllShop) {
                 [sortView setAlpha:1];
+                [sortView refresh];
             }
 
         }
@@ -62,6 +64,7 @@
     if (showWareInfo) {
         [wareInfoView setAlpha:0];
         [sortView setAlpha:1];
+        [sortView refresh];
     }else{
         [sortView setAlpha:0];
     

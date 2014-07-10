@@ -8,6 +8,8 @@
 
 #import "AgeCalenderView.h"
 #import "AgeCalenderTableViewCell.h"
+#import "AgePreTableViewCell.h"
+#import "AgeBornPreTableViewCell.h"
 #import "NSDate+Compute.h"
 #import "UserInfo.h"
 
@@ -46,9 +48,25 @@
     
     [calendarColumnView reloadData];
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]), 0) animated:NO];
+        if ([[[UserInfo sharedUserInfo] createTime] LaterThanDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]] ) {
+            
+            [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo] createTime]]), 0) animated:NO];
+
+        }else{
+            NSInteger days = [[[UserInfo sharedUserInfo] createTime] daysToDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+            NSInteger week = days%7 == 0 ? days/7:days/7+1;
+            
+            [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]+ week - 1), 0) animated:NO];
+
+        }
+    
+        
     }else{
-        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]), 0) animated:NO];
+        
+        NSArray *ages1 = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+        NSArray *ages2 = [[[UserInfo sharedUserInfo] createTime]  ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+        
+        [calendarColumnView setContentOffset:CGPointMake(240*( [[ages1 objectAtIndex:0] intValue] - [[ages2 objectAtIndex:0] integerValue]-1), 0) animated:NO];
         
     }
     
@@ -71,30 +89,100 @@
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-        return [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]+1;
+
+        if ([[[UserInfo sharedUserInfo] createTime] LaterThanDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]] ) {
+             return [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo] createTime]]+1;
+        }else{
+            NSInteger days = [[[UserInfo sharedUserInfo] createTime] daysToDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+            NSInteger week = days%7 == 0 ? days/7:days/7+1;
+            
+            return [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]+ week;
+        }
+        
+        
+        
+       
     }else{
-        return [[NSDate date] monthsToDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]+1;
+        NSArray *ages1 = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+        NSArray *ages2 = [[[UserInfo sharedUserInfo] createTime]  ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+        return [[ages1 objectAtIndex:0] intValue] - [[ages2 objectAtIndex:0] integerValue];
     }
 }
 
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
-    
-    NSString * cellIdentifier = @"ToolsCalendar";
-    AgeCalenderTableViewCell *cell = (AgeCalenderTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[AgeCalenderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        
-    }
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-        [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
+        
+        
+        if ([[[UserInfo sharedUserInfo] createTime] LaterThanDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]] ) {
+            NSString * cellIdentifier = @"BornCalendar";
+            
+            AgeCalenderTableViewCell *cell = (AgeCalenderTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+            if (cell == nil)
+            {
+                cell = [[AgeCalenderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                
+            }
+            
+            [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo] createTime]] ];
+            [cell setBackgroundColor:[UIColor clearColor]];
+            [cell.contentView.layer setMasksToBounds:YES];
+            return cell;
+
+        }else{
+            NSInteger days = [[[UserInfo sharedUserInfo] createTime] daysToDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+            NSInteger week = days%7 == 0 ? days/7:days/7+1;
+
+            
+            if (index < week) {
+                NSString * cellIdentifier = @"BornPreCalendar";
+                AgeBornPreTableViewCell *cell = (AgeBornPreTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+                if (cell == nil)
+                {
+                    cell = [[AgeBornPreTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                    
+                }
+                
+                
+                [cell buildWeekWithCurrentIndex:index];
+                [cell setBackgroundColor:[UIColor clearColor]];
+                [cell.contentView.layer setMasksToBounds:YES];
+                return cell;
+
+            }else{
+                NSString * cellIdentifier = @"BornCalendar";
+                
+                AgeCalenderTableViewCell *cell = (AgeCalenderTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+                if (cell == nil)
+                {
+                    cell = [[AgeCalenderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                    
+                }
+                
+                [cell buildMonthWithCurrentIndex:index - week-1];
+                [cell setBackgroundColor:[UIColor clearColor]];
+                [cell.contentView.layer setMasksToBounds:YES];
+                return cell;
+
+            }
+        }
+        
     }else{
-        [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsToDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
+        NSString * cellIdentifier = @"PreCalendar";
+        AgePreTableViewCell *cell = (AgePreTableViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[AgePreTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            
+        }
+       
+        
+        [cell buildWeekWithCurrentIndex:index];
+        [cell setBackgroundColor:[UIColor clearColor]];
+        [cell.contentView.layer setMasksToBounds:YES];
+        return cell;
+
     }
-    [cell setBackgroundColor:[UIColor clearColor]];
-    [cell.contentView.layer setMasksToBounds:YES];
-    return cell;
     
 }
 
@@ -102,25 +190,65 @@
 - (void)scrollViewDidScroll:(UIColumnView *)scrollView
 {
     
-    NSInteger num =  (int)(scrollView.contentOffset.x/240)+1;
     
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-        int year = num/12;
-        int month =  num%12;
         
-        if (year > 0) {
-            if (month >0) {
-                [ageLabel setText:[NSString stringWithFormat:@"%d岁%d个月",year,month]];
+        if ([[[UserInfo sharedUserInfo] createTime] LaterThanDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]] ) {
+            NSInteger num = [[[UserInfo sharedUserInfo] createTime] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]] + (int)(scrollView.contentOffset.x/240)-1;
+            NSLog(@"%@",[[UserInfo sharedUserInfo] createTime]);
+            int year = num/12;
+            int month =  num%12+1;
+            
+            if (year > 0) {
+                if (month >0) {
+                    [ageLabel setText:[NSString stringWithFormat:@"%d岁%d个月",year,month]];
+                }else{
+                    [ageLabel setText:[NSString stringWithFormat:@"%d岁",year]];
+                }
             }else{
-                [ageLabel setText:[NSString stringWithFormat:@"%d岁",year]];
+                [ageLabel setText:[NSString stringWithFormat:@"%d个月",month]];
+                
             }
+
+            
+            
         }else{
-            [ageLabel setText:[NSString stringWithFormat:@"%d个月",month]];
+            NSInteger days = [[[UserInfo sharedUserInfo] createTime] daysToDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+            NSInteger week = days%7 == 0 ? days/7:days/7+1;
+            
+            NSInteger num =  (int)(scrollView.contentOffset.x/240) +1;
+            if (num <= week) {
+                
+                [ageLabel setText:[NSString stringWithFormat:@"孕期%d周",40-(week -num)]];
+                
+            }else{
+                num -= week;
+                int year = num/12;
+                int month =  num%12;
+                
+                if (year > 0) {
+                    if (month >0) {
+                        [ageLabel setText:[NSString stringWithFormat:@"%d岁%d个月",year,month]];
+                    }else{
+                        [ageLabel setText:[NSString stringWithFormat:@"%d岁",year]];
+                    }
+                }else{
+                    [ageLabel setText:[NSString stringWithFormat:@"%d个月",month]];
+                    
+                }
+                
+            }
+ 
             
         }
         
+
+        
     }else{
-        [ageLabel setText:[NSString stringWithFormat:@"孕期%d周",(int)(scrollView.contentOffset.x/240)+1]];
+        
+        NSArray *ages = [[[UserInfo sharedUserInfo] createTime] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+        
+        [ageLabel setText:[NSString stringWithFormat:@"孕期%d周",(int)(scrollView.contentOffset.x/240)+1 +[[ages objectAtIndex:0] intValue]]];
     }
 }
 

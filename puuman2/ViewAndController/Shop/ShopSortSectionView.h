@@ -15,4 +15,6 @@
     AFSelecedTextImgButton *heatBtn;
     AFSelecedTextImgButton *timeBtn;
 }
+
+- (void)refresh;
 @end

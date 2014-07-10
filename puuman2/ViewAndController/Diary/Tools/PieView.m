@@ -9,7 +9,7 @@
 #import "PieView.h"
 #import "PieElement.h"
 #import "PieLayer.h"
-
+#import "UserInfo.h"
 @interface PieView ()
 {
     CGPoint panNormalizedVector;
@@ -73,13 +73,16 @@
 
 - (void)finishedAnimate
 {
-    
-    PieElement* elem =  [self.layer.values objectAtIndex:1];
-    elem.centrOffset = 0;
-    [UIView animateWithDuration:1 animations:^{
-        [elem setCentrOffset:4];
-        [_pieLayerDelegate finishedAnimate];
-    }];
+    if (([[UserInfo sharedUserInfo] UCorns_connect] != 0) && ([[UserInfo sharedUserInfo] UCorns] != 0))
+    {
+        PieElement* elem =  [self.layer.values objectAtIndex:1];
+        elem.centrOffset = 0;
+        [UIView animateWithDuration:1 animations:^{
+            [elem setCentrOffset:4];
+           
+        }];
+    }
+     [_pieLayerDelegate finishedAnimate];
 }
 
 - (void)setFinishLoad:(BOOL)finishLoad

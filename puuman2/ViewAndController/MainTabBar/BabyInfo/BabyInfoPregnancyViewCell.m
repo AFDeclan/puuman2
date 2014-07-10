@@ -25,9 +25,7 @@
     if (self) {
         // Initialization code
         [self initialization];
-       
-        [self initColumnView];
-         [self initClearInfoView];
+        [self initClearInfoView];
       
         if ([[MainTabBarController sharedMainViewController] isVertical]) {
           
@@ -44,6 +42,8 @@
 - (void)initialization
 {
     
+
+    
     contentView = [[UIView alloc] init];
     [contentView setBackgroundColor:RGBColor(239, 215, 207)];
     [self.contentView addSubview:contentView];
@@ -51,6 +51,14 @@
     clearInfoView = [[UIView alloc] init];
     [clearInfoView setBackgroundColor:[UIColor clearColor]];
     [contentView addSubview:clearInfoView];
+    
+    tapView = [[UIView alloc] init];
+    [clearInfoView addSubview:tapView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenInfo)];
+    [tapView addGestureRecognizer:tap];
+
+    
     
      bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [bottomBtn setBackgroundColor:[UIColor whiteColor]];
@@ -62,14 +70,16 @@
     picView = [[UIView alloc] init];
     [picView setBackgroundColor:[UIColor clearColor]];
     [clearInfoView addSubview:picView];
+    [MyNotiCenter addObserver:self selector:@selector(showInfo) name:Noti_PreBabyShowInfo object:nil];
+    
     
 }
 
+
+
 - (void)initClearInfoView
 {
-    
-  
-    
+
     changeModelBtn = [[BabyInfoChooseButton alloc] init];
     [changeModelBtn setType:kBabyInfoBModle];
     [changeModelBtn addTarget:self action:@selector(changeModelBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -103,25 +113,11 @@
     [nextBtn setImage:[UIImage imageNamed:@"next_pic_btn.png"] forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [picView addSubview:nextBtn];
-    
-    
-    UIView *bg_question = [[UIView alloc] initWithFrame:CGRectMake(445, 36, 60, 60)];
-    [bg_question setBackgroundColor:RGBColor(153, 193, 222)];
-     bg_question.layer.cornerRadius = 30.0f;
-     bg_question.layer.masksToBounds = YES;
-    [bg_question setAlpha:0.5];
-    [picView addSubview:bg_question];
 
-    questionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [questionBtn setFrame:CGRectMake(0, 0, 60, 60)];
-    [questionBtn setBackgroundColor:[UIColor clearColor]];
-    [questionBtn setImage:[UIImage imageNamed:@"btn_preinfo_baby.png"] forState:UIControlStateNormal];
-    [questionBtn addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchUpInside];
-    [bg_question addSubview:questionBtn];
-  
-   
+    babyShowView = [[UIView alloc] initWithFrame:CGRectMake(85, 0, 480, 540)];
+    [picView addSubview:babyShowView];
     
-     weekView = [[UIView alloc] initWithFrame:CGRectMake(110,456, 62, 36)];
+    weekView = [[UIView alloc] initWithFrame:CGRectMake(110,456, 62, 36)];
     [weekView setBackgroundColor:[UIColor redColor]];
     [weekView setAlpha:0.1];
     [weekView.layer setMasksToBounds:YES];
@@ -141,14 +137,20 @@
 {
     _columnImgBMode = NO;
     [preBtn setAlpha:0];
-    [nextBtn setAlpha:1];
-    _columnView = [[UIColumnView alloc] initWithFrame:CGRectMake(85, 0, 480, 540)];
+    [nextBtn setAlpha:0];
+    if (_columnView) {
+        [_columnView removeFromSuperview];
+        _columnView = nil;
+    }
+    
+    _columnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 480, 540)];
     [_columnView setBackgroundColor:[UIColor clearColor]];
     [_columnView setViewDataSource:self];
     [_columnView setColumnViewDelegate:self];
     [_columnView setPagingEnabled:YES];
-    [picView addSubview:_columnView];
+    [babyShowView addSubview:_columnView];
     [self reloadColumnView];
+    
 
 }
 
@@ -156,6 +158,7 @@
 {
     [contentView setFrame:CGRectMake(0, 96, 768, 928)];
     [clearInfoView setFrame:CGRectMake(0, 0, 768, 928)];
+    [tapView setFrame:CGRectMake(0, 0, 768, 928)];
     [bottomBtn setFrame:CGRectMake(0, 976, 768, 48)];
     [bottomBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 352, 8, 352)];
     [changeModelBtn setFrame:CGRectMake(24, 118, 160, 24)];
@@ -176,6 +179,7 @@
 {
     [contentView setFrame:CGRectMake(0, 96, 1024, 672)];
     [clearInfoView setFrame:CGRectMake(0, 0, 1024, 672)];
+    [tapView setFrame:CGRectMake(0, 0, 1024, 672)];
     [bottomBtn setFrame:CGRectMake(0, 720, 1024, 48)];
     [bottomBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 480, 8, 480)];
     [changeModelBtn setFrame:CGRectMake(24, 118, 160, 24)];
@@ -195,18 +199,18 @@
 - (void) reloadColumnView
 {
     [_columnView reloadData];
-//    NSArray *age = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo]babyInfo] Birthday]];
-//    if ([age count] == 2) {
-//    
-//        NSInteger weekAge = [[age objectAtIndex:0] integerValue];
-//        if (weekAge >  BABY_COLUMN_CNT) weekAge =  BABY_COLUMN_CNT;
-//        [self setWeekWithIndex:weekAge];
-//    
-//    } else {
-//    
-//        [self setWeekWithIndex:1];
-//    }
-//
+    NSArray *age = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo]babyInfo] Birthday]];
+    if ([age count] == 2) {
+    
+        NSInteger weekAge = [[age objectAtIndex:0] integerValue];
+        if (weekAge >  BABY_COLUMN_CNT) weekAge =  BABY_COLUMN_CNT;
+        [self setWeekWithIndex:weekAge];
+    
+    } else {
+    
+        [self setWeekWithIndex:1];
+    }
+
 }
 
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
@@ -240,8 +244,9 @@
 - (void)scrollViewDidScroll:(UIColumnView *)scrollView
 {
     scrolling = YES;
-
+    [self setWeekWithIndex:[self indexForColumnView]];
 }
+
 - (void)scrollViewDidEndDecelerating:(UIColumnView *)scrollView
 {
 
@@ -249,6 +254,7 @@
     [self setWeekWithIndex:[self indexForColumnView]];
     
 }
+
 - (void)scrollViewDidEndDragging:(UIColumnView *)scrollView willDecelerate:(BOOL)decelerate
 {
     scrolling = NO;
@@ -268,6 +274,7 @@
     CGFloat offset = _columnView.contentOffset.x;
     int index = offset/(kPicWidth/2);
 
+
     return (int)(index / 2)+1;
 }
 
@@ -275,6 +282,20 @@
 {
 
     columnIndex = index;
+    [nextBtn setAlpha:1];
+    [preBtn setAlpha:1];
+
+    if (columnIndex >= 40) {
+
+        [nextBtn setAlpha:0];
+        
+    }else if (columnIndex <=  1) {
+        
+        [preBtn setAlpha:0];
+    }
+    [_columnView setScrollEnabled:YES];
+
+    
     weekLabel.text = [NSString stringWithFormat:@"%d周",index];
 
 }
@@ -317,29 +338,32 @@
     
 }
 
-- (void)showInfo
-{
-
-
-
-}
 
 - (void)preBtnClick
 {
     
+    if (columnIndex > 1) {
+        [nextBtn setAlpha:1];
+        [_columnView setContentOffset:CGPointMake((columnIndex - 2)*kPicWidth, 0) animated:YES];
+    }else{
+        [preBtn setAlpha:0];
 
-    [_columnView setContentOffset:CGPointMake((columnIndex - 1)*kPicWidth, 0) animated:NO];
-  
+    }
+    
     
 }
 
 - (void)nextBtnClick
 {
+    if (columnIndex < 40) {
+        [preBtn setAlpha:1];
+        [_columnView setContentOffset:CGPointMake((columnIndex )*kPicWidth, 0) animated:YES];
+
+    }else{
+        [nextBtn setAlpha:0];
+
+    }
    
-    [_columnView setContentOffset:CGPointMake((columnIndex +1)*kPicWidth, 0) animated:NO];
-   
-    
-    
 }
 - (void)changeBabyInfo
 {
@@ -354,9 +378,10 @@
 
 - (void) refreshBabyInfo
 {
-
+    [self initColumnView];
+    [self.contentView bringSubviewToFront:picView];
     [self setColumnImgBMode:NO];
-
+    [self scrollToToday];
 }
 
 
@@ -366,5 +391,34 @@
 
     // Configure the view for the selected state
 }
+
+- (void)showInfo
+{
+    [_columnView setScrollEnabled:NO];
+}
+
+- (void)hiddenInfo
+{
+    PostNotification(Noti_PreBabyHiddenInfo, nil);
+    
+}
+
+- (void)scrollToToday
+{
+    NSArray *ages = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+    int age = 1;
+    if ([ages count] == 2) {
+        age = [[ages objectAtIndex:0] intValue];
+    }
+    
+    age = age>1?age:1;
+    age = age>40?40:age;
+
+    [UIView animateWithDuration:0.5 animations:^{
+        [_columnView setContentOffset:CGPointMake(kPicWidth*(age-1), 0) ];
+    }];
+    
+}
+
 
 @end

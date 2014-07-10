@@ -37,7 +37,13 @@
     [timeBtn setSelectedImg:[UIImage imageNamed:@"btn_time_shop1.png"] andUnselectedImg:[UIImage imageNamed:@"btn_time_shop.png"]];
     [timeBtn addTarget:self action:@selector(timeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:timeBtn];
+}
+
+
+- (void)refresh
+{
     [self priceBtnPressed];
+
 }
 
 - (void)priceBtnPressed

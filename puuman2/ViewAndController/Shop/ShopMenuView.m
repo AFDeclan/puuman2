@@ -80,7 +80,7 @@
 - (void)selectedMenuWithCell:(ShopMenuCell *)cell
 {
     if (cell.flagNum == -1 && [ShopModel sharedInstance].sectionIndex == -1) {
-        
+
     }else{
         NSMutableArray *arr = [[NSMutableArray alloc] init];
         for (ShopMenuCell *view in [menuTable visibleCells]) {
@@ -89,8 +89,9 @@
                 [arr addObject:view.indexPath];
             }
         }
+         [cell showSubView];
         if (cell.flagNum != -1) {
-            [cell showSubView];
+           
             [arr addObject:cell.indexPath];
         }
         

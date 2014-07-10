@@ -93,9 +93,12 @@
     [modifyBtn addTarget:self action:@selector(changeBabyInfo) forControlEvents:UIControlEventTouchUpInside];
     [titleInfoView addSubview:modifyBtn];
 
-    portraitBg = [[UIImageView alloc] initWithFrame:CGRectMake(50, 10, 180, 180)];
+    UIView *portrait = [[UIView alloc] initWithFrame:CGRectMake(50, 10, 180, 180)];
+    [self addSubview:portrait];
+    portraitBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180, 180)];
     [portraitBg setImage:[UIImage imageNamed:@"circle_photo_babyInfo.png"]];
-    [self addSubview:portraitBg];
+    [portrait addSubview:portraitBg];
+    
     portraitView = [[AFImageView alloc] initWithFrame:CGRectMake(15, 12, 150, 150)];
     portraitView .layer.cornerRadius = 75;
     portraitView.layer.masksToBounds = YES;
@@ -243,7 +246,7 @@
             [cell setBackgroundColor:[UIColor clearColor]];
             
             [cell setDelegate:self];
-         
+            [cell refreshBabyInfo];
         
              return cell;
             
@@ -263,7 +266,7 @@
             [cell setBackgroundColor:[UIColor clearColor]];
             
             [cell setDelegate:self];
-            
+            [cell refresh];
             return cell;
         
         } else {
@@ -417,6 +420,7 @@
 
 - (void)refreshBabyInfo
 {
+    
     BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
     [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
     info_name.text = [babyInfo Nickname];

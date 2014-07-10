@@ -38,4 +38,7 @@
 - (NSString *)relateFromDate:(NSDate *)date andSex:(BOOL)isBoy;
 
 - (NSString *)compareFromDate:(NSDate *)date;
+
+- (BOOL)LaterThanDate:(NSDate *)date;
+
 @end
