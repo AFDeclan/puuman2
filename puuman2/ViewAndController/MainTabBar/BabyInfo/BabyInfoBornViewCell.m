@@ -148,7 +148,7 @@
     [weightBtn setFrame:CGRectMake(30, 520, 80, 68)];
     [vaciBtn setFrame:CGRectMake(565, 280, 180, 100)];
     [propBtn setFrame:CGRectMake(565, 520, 180, 80)];
-    [addRecordBtn setFrame:CGRectMake(150, 450, 32, 32)];
+    [addRecordBtn setFrame:CGRectMake(160, 450, 32, 32)];
     [nextNaciView setFrame:CGRectMake(744, 320, 10, 16)];
     [nextPropView setFrame:CGRectMake(744, 547, 10, 16)];
     [preView setFrame:CGRectMake(5, 500, 10, 16)];

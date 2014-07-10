@@ -80,12 +80,6 @@
     [propBtn addTarget:self action:@selector(propBtn) forControlEvents:UIControlEventTouchUpInside];
     [clearInfoView addSubview:propBtn];
     
-  
-    
-//    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(95,0, 480, 540)];
-//    [bgImageView setImage:[UIImage imageNamed:@"bg_pregnancy_image_babyInfo.png"]];
-//    [picView addSubview:bgImageView];
-    
     grayLineRight = [[UIImageView alloc] init];
     [grayLineRight  setImage:[UIImage imageNamed:@"grayline_right_babyInfo.png"]];
     [clearInfoView addSubview:grayLineRight];

@@ -14,9 +14,11 @@
 #import "AddBodyDataViewController.h"
 #import "MainTabBarController.h"
 #import "ColorsAndFonts.h"
+#import "DiaryFileManager.h"
 
 @implementation BabyInfoBodyViewCell
 @synthesize delegate = _delegate;
+@synthesize filePath = _filePath;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -141,7 +143,21 @@
 - (void)shareData
 {
 
-  
+    ShareSelectedViewController *shareVC = [[ShareSelectedViewController alloc] initWithNibName:nil bundle:nil];
+    [self addSubview:shareVC.view];
+    [shareVC setShareText:[[UserInfo sharedUserInfo] babyInfo].PortraitUrl];
+    [shareVC setShareTitle:@"我想要分享链接"];
+    [shareVC setShareImg:[DiaryFileManager imageForVideo:_filePath]];
+    [shareVC setStyle:ConfirmError];
+    //shareVC.delegate = self;
+     shareVC.shareDelegate = self;
+    [shareVC show];
+
+}
+
+-(void)selectedShareType:(SocialType)type
+{
+    shareType = type;
 
 }
 

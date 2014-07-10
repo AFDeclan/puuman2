@@ -63,7 +63,7 @@
     [info_sexIcon setBackgroundColor:[UIColor clearColor]];
     [titleInfoView addSubview:info_sexIcon];
     
-    info_name = [[UILabel alloc] initWithFrame:CGRectMake(256, 58, 65, 25)];
+    info_name = [[UILabel alloc] initWithFrame:CGRectMake(256, 58, 144, 25)];
     [info_name setTextAlignment:NSTextAlignmentLeft];
     [info_name setTextColor:PMColor6];
     [info_name setFont:PMFont1];
@@ -71,7 +71,7 @@
     [info_name setBackgroundColor:[UIColor clearColor]];
     [titleInfoView addSubview:info_name];
     
-    info_age= [[UILabel alloc] initWithFrame:CGRectMake(325, 64, 110, 21)];
+    info_age= [[UILabel alloc] initWithFrame:CGRectMake(405, 64, 110, 21)];
     [info_age setTextAlignment:NSTextAlignmentLeft];
     [info_age setTextColor:PMColor1];
     [info_age setFont:PMFont2];
@@ -79,7 +79,7 @@
     [info_age setBackgroundColor:[UIColor clearColor]];
     [titleInfoView addSubview:info_age];
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-        info_birthday = [[UILabel alloc] initWithFrame:CGRectMake(436, 64, 200, 21)];
+        info_birthday = [[UILabel alloc] initWithFrame:CGRectMake(520, 64, 130, 21)];
         [info_birthday setTextAlignment:NSTextAlignmentLeft];
         [info_birthday setTextColor:PMColor3];
         [info_birthday setFont:PMFont2];
