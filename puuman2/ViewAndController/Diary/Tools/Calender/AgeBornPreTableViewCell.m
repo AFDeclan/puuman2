@@ -1,12 +1,12 @@
 //
-//  AgePreTableViewCell.m
+//  AgeBornPreTableViewCell.m
 //  puuman2
 //
-//  Created by Ra.（祁文龙） on 14-7-9.
+//  Created by Ra.（祁文龙） on 14-7-10.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "AgePreTableViewCell.h"
+#import "AgeBornPreTableViewCell.h"
 #import "UniverseConstant.h"
 #import "DiaryModel.h"
 #import "DiaryViewController.h"
@@ -17,9 +17,7 @@ static const float dayCellHeight = 32;
 static const float startDayCellOfX = 18;
 static const float startDayCellOfY = 0;
 static const float subDistanceOfX = 2;
-
-@implementation AgePreTableViewCell
-
+@implementation AgeBornPreTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -35,7 +33,7 @@ static const float subDistanceOfX = 2;
 {
     CGFloat x = startDayCellOfX;
     CGFloat y = startDayCellOfY;
-  
+    
     for (int i=0; i<7; i++) {
         labels[i] = [[UILabel alloc] initWithFrame:CGRectMake(x+2, y-1, dayCellWidth, dayCellHeight)];
         [labels[i] setAlpha:1];
@@ -50,8 +48,8 @@ static const float subDistanceOfX = 2;
         [labels[i] addGestureRecognizer:gestureRecognizer[i]];
     }
     
-  
-
+    
+    
 }
 
 - (void)awakeFromNib
@@ -62,7 +60,7 @@ static const float subDistanceOfX = 2;
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -93,46 +91,31 @@ static const float subDistanceOfX = 2;
 
 -(void)refresh
 {
-    NSArray *times = [[[UserInfo sharedUserInfo] createTime] ageFromDate:[[UserInfo sharedUserInfo] babyInfo].Birthday];
-    NSInteger startDay = [[times objectAtIndex:0 ] intValue]*7 +[[times objectAtIndex:1] intValue];
-    NSArray *ages = [[NSDate date] ageFromDate:[[UserInfo sharedUserInfo] babyInfo].Birthday];
-    NSInteger endDay = [[ages objectAtIndex:0 ] intValue]*7 +[[ages objectAtIndex:1] intValue];
+    
+    NSInteger days = [[[UserInfo sharedUserInfo] createTime] daysToDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+    NSInteger week = days/7;
 
     for (int i = 0; i < 7; i ++) {
-        
-        [labels[i] setText:[NSString stringWithFormat:@"%d",i+1 ]];
-        if ((weekNum*7 + i >= [[times objectAtIndex:1] integerValue])&&(weekNum* 7 + i + startDay<= endDay ))
-        {
+       
+        if ( (week - weekNum)*7+7-i < days) {
             [labels[i] setTextColor:PMColor6];
             [labels[i] setBackgroundColor:[UIColor clearColor]];
         }else{
             [labels[i] setTextColor:PMColor2];
             [labels[i] setBackgroundColor:[UIColor clearColor]];
-
         }
-        
-   
-        
-        if (weekNum* 7 + i + startDay == endDay) {
-            [labels[i] setTextColor:[UIColor whiteColor]];
-            [labels[i] setBackgroundColor:PMColor6];
-        }
-        
-        if (weekNum*7 +i == 280) {
-            [labels[i] setTextColor:[UIColor whiteColor]];
-            [labels[i] setBackgroundColor:PMColor7];
-        }
+        [labels[i] setText:[NSString stringWithFormat:@"%d",i+1 ]];
         
         
         NSDateComponents *comp_day = [[NSDateComponents alloc] init];
-        [comp_day setDay:weekNum*7+i];
-        NSDate *date_day = [[NSCalendar currentCalendar] dateByAddingComponents:comp_day toDate:[[UserInfo sharedUserInfo] createTime] options:0];
+        [comp_day setDay:-1*((week - weekNum)*7+7-i)];
+        NSDate *date_day = [[NSCalendar currentCalendar] dateByAddingComponents:comp_day toDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday] options:0];
         if ([[DiaryModel sharedDiaryModel] indexForDiaryInDay:date_day ] >= 0) {
             [labels[i] setTextColor:[UIColor whiteColor]];
             [labels[i] setBackgroundColor:PMColor6];
         }
     }
-
+    
     
 }
 

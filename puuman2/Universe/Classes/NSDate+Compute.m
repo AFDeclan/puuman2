@@ -251,5 +251,17 @@
     }
 }
 
+- (BOOL)LaterThanDate:(NSDate *)date
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSInteger unit = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *comp_ = [calendar components:unit fromDate:self];
+    NSDateComponents *comp_now = [calendar components:unit fromDate:date];
+    if ([comp_ year] > [comp_now year] ||
+        ([comp_ year] == [comp_now year] && [comp_ month] > [comp_now month]) ||
+        ([comp_ year] == [comp_now year] && [comp_ month] == [comp_now month] && [comp_ day] > [comp_now day]))
+        return YES;
+    else return NO;
+}
 
 @end

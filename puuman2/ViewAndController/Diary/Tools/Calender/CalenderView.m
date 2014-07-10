@@ -47,9 +47,9 @@
     
     [calendarColumnView reloadData];
     if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]), 0) animated:NO];
+        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo] createTime]]), 0) animated:NO];
     }else{
-        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]), 0) animated:NO];
+        [calendarColumnView setContentOffset:CGPointMake(240*( [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo] createTime]]), 0) animated:NO];
     }
     
 }
@@ -72,11 +72,7 @@
 
 - (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
 {
-    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-        return [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]+1;
-    }else{
-        return [[NSDate date] monthsToDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]+1;
-    }
+    return  [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo] createTime]]+1;
 }
 
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
@@ -89,11 +85,7 @@
         cell = [[CalenderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
     }
-    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
-        [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
-    }else{
-        [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsToDate:[[UserInfo sharedUserInfo].babyInfo Birthday]]];
-    }
+    [cell buildMonthWithCurrentIndex:index - [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo] createTime]]];
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell.contentView.layer setMasksToBounds:YES];
     return cell;
@@ -102,8 +94,8 @@
 
 - (void)scrollViewDidScroll:(UIColumnView *)scrollView
 {
-    
-    NSInteger num = [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo].babyInfo Birthday]] - (int)(scrollView.contentOffset.x/240);
+  
+    NSInteger num = [[NSDate date] monthsFromDate:[[UserInfo sharedUserInfo] createTime]] - (int)(scrollView.contentOffset.x/240);
     [self buildMonthWithCurrentIndex:num];
 }
 

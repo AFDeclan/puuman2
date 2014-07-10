@@ -527,6 +527,7 @@
 		54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB3818C57C1D004489DA /* CustomTextField.m */; };
 		54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */; };
 		54B5206F18F4E1B700EF5DC4 /* pic_future_topic.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B5206E18F4E1B700EF5DC4 /* pic_future_topic.png */; };
+		54B592F1196E4B0600D33DC0 /* AgeBornPreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B592F0196E4B0600D33DC0 /* AgeBornPreTableViewCell.m */; };
 		54B5AA331934421700805E63 /* VideoShowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B5AA321934421700805E63 /* VideoShowButton.m */; };
 		54B5AA351934443700805E63 /* animate_puuman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 54B5AA341934443700805E63 /* animate_puuman.gif */; };
 		54B5AA3919347ABB00805E63 /* btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B5AA3719347ABB00805E63 /* btn1.png */; };
@@ -1594,6 +1595,8 @@
 		54B4EB4018C58D9E004489DA /* CustomAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertViewController.h; sourceTree = "<group>"; };
 		54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertViewController.m; sourceTree = "<group>"; };
 		54B5206E18F4E1B700EF5DC4 /* pic_future_topic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_future_topic.png; sourceTree = "<group>"; };
+		54B592EF196E4B0600D33DC0 /* AgeBornPreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeBornPreTableViewCell.h; sourceTree = "<group>"; };
+		54B592F0196E4B0600D33DC0 /* AgeBornPreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeBornPreTableViewCell.m; sourceTree = "<group>"; };
 		54B5AA311934421700805E63 /* VideoShowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShowButton.h; sourceTree = "<group>"; };
 		54B5AA321934421700805E63 /* VideoShowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoShowButton.m; sourceTree = "<group>"; };
 		54B5AA341934443700805E63 /* animate_puuman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = animate_puuman.gif; sourceTree = "<group>"; };
@@ -3215,6 +3218,8 @@
 				54B30AB0195D5A0500007DDC /* CalenderTableViewCell.m */,
 				54B30AB2195D5A1600007DDC /* AgeCalenderTableViewCell.h */,
 				54B30AB3195D5A1600007DDC /* AgeCalenderTableViewCell.m */,
+				54B592EF196E4B0600D33DC0 /* AgeBornPreTableViewCell.h */,
+				54B592F0196E4B0600D33DC0 /* AgeBornPreTableViewCell.m */,
 				54B1ACE2196D303B0045B369 /* AgePreTableViewCell.h */,
 				54B1ACE3196D303B0045B369 /* AgePreTableViewCell.m */,
 			);
@@ -4822,6 +4827,7 @@
 				54CCF1D818F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m in Sources */,
 				5447C4B118D98EED00187BE6 /* MyTopicView.m in Sources */,
 				54CB2A4019629F2D005EBD3F /* ShopMenuCell.m in Sources */,
+				54B592F1196E4B0600D33DC0 /* AgeBornPreTableViewCell.m in Sources */,
 				54B4682D18E5213700745F72 /* InsuranceCell.m in Sources */,
 				54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */,
 				544419F918D40EE800FBE69F /* PuumanRulesViewController.m in Sources */,
