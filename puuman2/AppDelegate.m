@@ -11,7 +11,6 @@
 #import "DiaryViewController.h"
 //#import "PuumanViewController.h"
 #import "ShopViewController.h"
-#import "BabyInfoViewController.h"
 #import "SocialViewController.h"
 #import "SkipViewController.h"
 #import "CustomAlertViewController.h"

@@ -646,8 +646,8 @@ static MBProgressHUD *hud;
     }
     SetViewLeftUp(babyInfoBtn, posX -16 - 56, posY);
 
-    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation dragAnimationWithView:infoView andDargPoint:CGPointMake(0, posY)];
-    [positionAnimation setDelegate:self];    SetViewLeftUp(infoView, 0, 0);
+    [self dragAnimationWithView:infoView andDargPoint:CGPointMake(0, posY)];
+    SetViewLeftUp(infoView, 0, 0);
     babyInfoShowed = YES;
 }
 
@@ -664,8 +664,7 @@ static MBProgressHUD *hud;
         posY = -768;
     }
     
-    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation dragAnimationWithView:infoView andDargPoint:CGPointMake(0, posY)];
-    [positionAnimation setDelegate:self];
+    [self dragAnimationWithView:infoView andDargPoint:CGPointMake(0, posY)];
     SetViewLeftUp(infoView, 0, posY);
     SetViewLeftUp(babyInfoBtn, posX -16 - 56, 0);
 
@@ -673,21 +672,21 @@ static MBProgressHUD *hud;
 
 }
 
-//-(void)dragAnimationWithView:(UIView *)view andDargPoint:(CGPoint)pos
-//{
-//    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-//    //    positionAnimation.fillMode = kCAFillModeForwards;
-//    //    positionAnimation.removedOnCompletion =NO;
-//    positionAnimation.duration = 1;
-//    CGMutablePathRef positionPath = CGPathCreateMutable();
-//    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-//    [positionAnimation setBeginTime:0];
-//    CGPathMoveToPoint(positionPath, NULL, [view layer].position.x, [view layer].position.y);
-//    CGPathAddQuadCurveToPoint(positionPath, NULL, [view layer].position.x, [view layer].position.y, [view layer].position.x +pos.x,[view layer].position.y+pos.y);
-//    positionAnimation.path = positionPath;
-//    [positionAnimation setDelegate:self];
-//    [view.layer addAnimation:positionAnimation forKey:@"position"];
-//}
+-(void)dragAnimationWithView:(UIView *)view andDargPoint:(CGPoint)pos
+{
+    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    //    positionAnimation.fillMode = kCAFillModeForwards;
+    //    positionAnimation.removedOnCompletion =NO;
+    positionAnimation.duration = 1;
+    CGMutablePathRef positionPath = CGPathCreateMutable();
+    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [positionAnimation setBeginTime:0];
+    CGPathMoveToPoint(positionPath, NULL, [view layer].position.x, [view layer].position.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [view layer].position.x, [view layer].position.y, [view layer].position.x +pos.x,[view layer].position.y+pos.y);
+    positionAnimation.path = positionPath;
+    [positionAnimation setDelegate:self];
+    [view.layer addAnimation:positionAnimation forKey:@"position"];
+}
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
