@@ -25,6 +25,7 @@
     UIView *estiView;
     BabyInfoPageControlButton *showAndHiddenBtn;
     UIView *lineView;
+    BOOL evaShowed;
 }
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;

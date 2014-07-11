@@ -10,4 +10,5 @@
 
 @interface BabyInfoPageControlButton : PageControlButton
 @property(nonatomic,assign)BOOL isFold;
+@property(nonatomic,assign)BOOL isLeft;
 @end
