@@ -38,7 +38,7 @@
 - (void)initialization
 {
     
-    showAndHiddenBtn = [[BabyInfoPageControlButton alloc] init];
+    
     lineView =[[UIView alloc] init];
     [lineView setBackgroundColor:PMColor6];
     [self.contentView addSubview:lineView];
@@ -48,8 +48,10 @@
     rightView = [[UIView alloc] init];
     [rightView setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:rightView];
+   
     
 }
+
 - (void)initWithLeftView
 {
     
@@ -93,11 +95,31 @@
     
     estiArrayData = [[NSMutableArray alloc] init];
     
-   
+    showAndHiddenBtn = [[BabyInfoPageControlButton alloc] init];
+    [showAndHiddenBtn addTarget:self action:@selector(showOrHiddenEvaluateView)  forControlEvents:UIControlEventTouchUpInside];
+    [showAndHiddenBtn setIsLeft:NO];
+    [rightView addSubview:showAndHiddenBtn];
     
+}
+
+-(void)showOrHiddenEvaluateView
+{
     
-    
-    
+    if (evaShowed) {
+        evaShowed = NO;
+        [showAndHiddenBtn foldWithDuration:0.5];
+        [UIView animateWithDuration:0.5 animations:^{
+            SetViewLeftUp(rightView,728, 98);
+        }];
+        return;
+    }else{
+        evaShowed = YES;
+        [showAndHiddenBtn unfoldWithDuration:0.5];
+        [UIView animateWithDuration:0.5 animations:^{
+            SetViewLeftUp(rightView,728 - 216 , 98);
+        }];
+        return;
+    }
 }
 
 - (void)leftBtnClick
@@ -147,17 +169,26 @@
 
 - (void)refresh
 {
+    evaShowed = NO;
+    [showAndHiddenBtn foldWithDuration:0.5];
     
 }
+
 -(void)setVerticalFrame
 {
     //[super setVerticalFrame];
     [lineView setFrame:CGRectMake(0, 96, 768, 2)];
-   [leftView setFrame:CGRectMake(0, 98, 768, 926)];
-    [leftBtn setFrame:CGRectMake(0, 0, 48, 926)];
+    [leftView setFrame:CGRectMake(0, 98, 768, 926)];
+    [rightView setFrame:CGRectMake(728, 98, 256, 926)];
+    
+    [estiTableView setFrame:CGRectMake(40, 120, 216, ViewHeight(rightView)-120)];
     [babyPropView setFrame:CGRectMake(130, 280, 544, 448)];
+    [leftBtn setFrame:CGRectMake(0, 0, 48, 926)];
+    [estiTextField setFrame:CGRectMake(40, 0, 216, 50)];
+    [estiView setFrame:CGRectMake(40, 50, 216,70)];
     [showAndHiddenBtn setAlpha:1];
-    [showAndHiddenBtn setFrame:CGRectMake(728, 360, 50, 100)];
+    SetViewLeftUp(showAndHiddenBtn, 0, (ViewHeight(rightView)-80)/2);
+
 }
 
 -(void)setHorizontalFrame
@@ -165,14 +196,16 @@
    // [super setHorizontalFrame];
     [lineView setFrame:CGRectMake(0, 96, 1024, 2)];
     [leftView setFrame:CGRectMake(0, 98, 808, 670)];
-    [rightView setFrame:CGRectMake(808,98,216, 670)];
+    [rightView setFrame:CGRectMake(768,98,256, 670)];
+    
     [babyPropView setFrame:CGRectMake(130, 140, 544, 448)];
     [leftBtn setFrame:CGRectMake(0, 0, 48, 670)];
-    [estiTextField setFrame:CGRectMake(ViewWidth(rightView)-216, 0, 216, 50)];
-    [estiView setFrame:CGRectMake(ViewWidth(rightView)-216, 50, 216,70)];
-    [estiTableView setFrame:CGRectMake(ViewWidth(rightView)-216, 120, 216, ViewHeight(rightView)-120)];
+    [estiTextField setFrame:CGRectMake(40, 0, 216, 50)];
+    [estiView setFrame:CGRectMake(40, 50, 216,70)];
+    [estiTableView setFrame:CGRectMake(40, 120, 216, ViewHeight(rightView)-120)];
     [showAndHiddenBtn setAlpha:0];
-   
+    SetViewLeftUp(showAndHiddenBtn, 0, (ViewHeight(rightView)-80)/2);
+
     
 }
 

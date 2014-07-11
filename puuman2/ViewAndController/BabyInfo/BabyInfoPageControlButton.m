@@ -9,13 +9,15 @@
 #import "BabyInfoPageControlButton.h"
 
 @implementation BabyInfoPageControlButton
-@synthesize isFold= _isFold;
+@synthesize isFold = _isFold;
+@synthesize isLeft = _isLeft;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setWithbgImage:[UIImage imageNamed:@"btn_circle_baby.png"] andIconImage:[UIImage imageNamed:@"tri_white_right.png"]];
+      
         [bgImgView setFrame:CGRectMake(0, 0, 40, 80)];
         [iconImgView setFrame:CGRectMake(12, 26, 16, 28)];
         _isFold = YES;
@@ -49,5 +51,14 @@
     }];
 }
 
+- (void)setIsLeft:(BOOL)isLeft
+{
+    _isLeft = isLeft;
+    if (isLeft) {
+        [self setWithbgImage:[UIImage imageNamed:@"btn_circle_baby.png"] andIconImage:[UIImage imageNamed:@"tri_white_right.png"]];
+    }else{
+        [self setWithbgImage:[UIImage imageNamed:@"btn_circle2_baby.png"] andIconImage:[UIImage imageNamed:@"tri_white_left.png"]];
+    }
+}
 
 @end
