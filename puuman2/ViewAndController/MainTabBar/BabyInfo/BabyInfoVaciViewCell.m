@@ -98,7 +98,7 @@
     [statusText setPlaceholder:@"建议在6月龄接种"];
     [selectedDateBtn addSubview:statusText];
     
-    
+   
     
     nameLabel = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(72, 190, 336, 64)];
     [nameLabel setBackgroundColor:[UIColor clearColor]];
@@ -370,7 +370,12 @@
     }
     
     
-    
+    NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:detail.text];
+    NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle1 setLineSpacing:16];
+    [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [detail.text length])];
+    [detail setAttributedText:attributedString1];
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
