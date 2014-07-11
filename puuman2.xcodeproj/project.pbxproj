@@ -528,7 +528,6 @@
 		54B4EB4218C58D9E004489DA /* CustomAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4EB4118C58D9E004489DA /* CustomAlertViewController.m */; };
 		54B5206F18F4E1B700EF5DC4 /* pic_future_topic.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B5206E18F4E1B700EF5DC4 /* pic_future_topic.png */; };
 		54B592F1196E4B0600D33DC0 /* AgeBornPreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B592F0196E4B0600D33DC0 /* AgeBornPreTableViewCell.m */; };
-		54B592F5196E8C4400D33DC0 /* icon_babyInfo_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B592F4196E8C4400D33DC0 /* icon_babyInfo_btn.png */; };
 		54B592F9196E935B00D33DC0 /* WareInfoPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B592F8196E935B00D33DC0 /* WareInfoPopViewController.m */; };
 		54B5AA331934421700805E63 /* VideoShowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B5AA321934421700805E63 /* VideoShowButton.m */; };
 		54B5AA351934443700805E63 /* animate_puuman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 54B5AA341934443700805E63 /* animate_puuman.gif */; };
@@ -771,12 +770,6 @@
 		88B2829319542033006641AC /* coin_diary_receive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2829119542033006641AC /* coin_diary_receive.png */; };
 		88B29778196A95E40050EDE2 /* baby_born_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B29777196A95E40050EDE2 /* baby_born_background.png */; };
 		88B3AE93196E3A4800955499 /* btn_cart_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AE92196E3A4800955499 /* btn_cart_shop.png */; };
-		88B3AEA6196E4AD700955499 /* btn_price_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AEA0196E4AD700955499 /* btn_price_shop.png */; };
-		88B3AEA7196E4AD700955499 /* btn_heat_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AEA1196E4AD700955499 /* btn_heat_shop.png */; };
-		88B3AEA8196E4AD700955499 /* btn_time_shop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AEA2196E4AD700955499 /* btn_time_shop1.png */; };
-		88B3AEA9196E4AD700955499 /* btn_price_shop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AEA3196E4AD700955499 /* btn_price_shop1.png */; };
-		88B3AEAA196E4AD700955499 /* btn_time_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AEA4196E4AD700955499 /* btn_time_shop.png */; };
-		88B3AEAB196E4AD700955499 /* btn_heat_shop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AEA5196E4AD700955499 /* btn_heat_shop1.png */; };
 		88B3AF6E1932E3B800FAB2A0 /* SinglePhotoTopicVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */; };
 		88B515A4192F4AE1006A79AB /* CutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515A3192F4AE1006A79AB /* CutViewController.m */; };
 		88B515AA192F50C2006A79AB /* BabyPhotoSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515A9192F50C2006A79AB /* BabyPhotoSelectedViewController.m */; };
@@ -1605,7 +1598,6 @@
 		54B5206E18F4E1B700EF5DC4 /* pic_future_topic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_future_topic.png; sourceTree = "<group>"; };
 		54B592EF196E4B0600D33DC0 /* AgeBornPreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeBornPreTableViewCell.h; sourceTree = "<group>"; };
 		54B592F0196E4B0600D33DC0 /* AgeBornPreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeBornPreTableViewCell.m; sourceTree = "<group>"; };
-		54B592F4196E8C4400D33DC0 /* icon_babyInfo_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_babyInfo_btn.png; sourceTree = "<group>"; };
 		54B592F7196E935B00D33DC0 /* WareInfoPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WareInfoPopViewController.h; sourceTree = "<group>"; };
 		54B592F8196E935B00D33DC0 /* WareInfoPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WareInfoPopViewController.m; sourceTree = "<group>"; };
 		54B5AA311934421700805E63 /* VideoShowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShowButton.h; sourceTree = "<group>"; };
@@ -1922,12 +1914,6 @@
 		88B2829119542033006641AC /* coin_diary_receive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_receive.png; sourceTree = "<group>"; };
 		88B29777196A95E40050EDE2 /* baby_born_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_born_background.png; sourceTree = "<group>"; };
 		88B3AE92196E3A4800955499 /* btn_cart_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_cart_shop.png; sourceTree = "<group>"; };
-		88B3AEA0196E4AD700955499 /* btn_price_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_price_shop.png; sourceTree = "<group>"; };
-		88B3AEA1196E4AD700955499 /* btn_heat_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_heat_shop.png; sourceTree = "<group>"; };
-		88B3AEA2196E4AD700955499 /* btn_time_shop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_time_shop1.png; sourceTree = "<group>"; };
-		88B3AEA3196E4AD700955499 /* btn_price_shop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_price_shop1.png; sourceTree = "<group>"; };
-		88B3AEA4196E4AD700955499 /* btn_time_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_time_shop.png; sourceTree = "<group>"; };
-		88B3AEA5196E4AD700955499 /* btn_heat_shop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_heat_shop1.png; sourceTree = "<group>"; };
 		88B515A2192F4AE1006A79AB /* CutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutViewController.h; sourceTree = "<group>"; };
 		88B515A3192F4AE1006A79AB /* CutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutViewController.m; sourceTree = "<group>"; };
 		88B515A8192F50C2006A79AB /* BabyPhotoSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPhotoSelectedViewController.h; sourceTree = "<group>"; };
@@ -2442,7 +2428,6 @@
 		5403CDF818D04F51004CAE22 /* BabyInfoImages */ = {
 			isa = PBXGroup;
 			children = (
-				54B592F4196E8C4400D33DC0 /* icon_babyInfo_btn.png */,
 				88B29777196A95E40050EDE2 /* baby_born_background.png */,
 				8829DD0E19679D7E0023678D /* share_image_babyInfo.png */,
 				8829DD0C196798F50023678D /* esti_image_babyInfo.png */,
@@ -2877,12 +2862,6 @@
 		54AC20C318E3FD1F001C1357 /* ShopImages */ = {
 			isa = PBXGroup;
 			children = (
-				88B3AEA0196E4AD700955499 /* btn_price_shop.png */,
-				88B3AEA1196E4AD700955499 /* btn_heat_shop.png */,
-				88B3AEA4196E4AD700955499 /* btn_time_shop.png */,
-				88B3AEA2196E4AD700955499 /* btn_time_shop1.png */,
-				88B3AEA3196E4AD700955499 /* btn_price_shop1.png */,
-				88B3AEA5196E4AD700955499 /* btn_heat_shop1.png */,
 				88B3AE92196E3A4800955499 /* btn_cart_shop.png */,
 				54B97E2518FA2B0600B6C4C9 /* hospital */,
 				54ACB2DD18EBE8F400EE5F90 /* icon_flag_shop.png */,
@@ -4250,7 +4229,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54B592F5196E8C4400D33DC0 /* icon_babyInfo_btn.png in Resources */,
 				5403CE3318D04F5E004CAE22 /* icon_judge_baby.png in Resources */,
 				14B8DF3318BC37A30047C6B3 /* sampleDiary_photo2.jpg in Resources */,
 				54B97E8418FA572600B6C4C9 /* pic33_insure_shop.png in Resources */,
@@ -4444,11 +4422,9 @@
 				54B97E5718FA2B1E00B6C4C9 /* sheep_insure_shop.png in Resources */,
 				54B97E5018FA2B1E00B6C4C9 /* pic10_insure_shop.png in Resources */,
 				54CE115D18C1C7BF00966396 /* bg_prompt.png in Resources */,
-				88B3AEA8196E4AD700955499 /* btn_time_shop1.png in Resources */,
 				5403CD5D18D03DBD004CAE22 /* input_invite_diary.png in Resources */,
 				54C038CF1963B58400BBC1E6 /* icon_selected_cart.png in Resources */,
 				54CE116618C1C7BF00966396 /* btn_close1.png in Resources */,
-				88B3AEA7196E4AD700955499 /* btn_heat_shop.png in Resources */,
 				5447C49C18D97D1100187BE6 /* icon_prize_topic.png in Resources */,
 				8829DD0D196798F50023678D /* esti_image_babyInfo.png in Resources */,
 				54AC212D18E42355001C1357 /* shopping_default.png in Resources */,
@@ -4569,7 +4545,6 @@
 				146FB10A18FFEA2E002EABA7 /* Icon.png in Resources */,
 				54AC20E318E3FD30001C1357 /* btn_delete_shop.png in Resources */,
 				54D64EF818E7C39500B8899D /* btn_back3_br_shop.png in Resources */,
-				88B3AEAA196E4AD700955499 /* btn_time_shop.png in Resources */,
 				54B97E8A18FA572600B6C4C9 /* pic28_insure_shop.png in Resources */,
 				88C965AB19629FAC0058B842 /* icon_weight_babyInfo.png in Resources */,
 				5403CE3E18D04F5E004CAE22 /* line3_baby.png in Resources */,
@@ -4584,7 +4559,6 @@
 				54AC20EB18E3FD30001C1357 /* icon_cart_shop.png in Resources */,
 				54CCF1DD18F3E7170081C149 /* btn_baby1_diary.png in Resources */,
 				54ACB2D918EBB63600EE5F90 /* pic_com_shop.png in Resources */,
-				88B3AEAB196E4AD700955499 /* btn_heat_shop1.png in Resources */,
 				54C038D01963B58400BBC1E6 /* icon_unselected_cart.png in Resources */,
 				5403CE3518D04F5E004CAE22 /* icon_out_baby.png in Resources */,
 				54B97EB318FA594B00B6C4C9 /* pic_minan_shop.png in Resources */,
@@ -4715,7 +4689,6 @@
 				88B2829319542033006641AC /* coin_diary_receive.png in Resources */,
 				54B97EA318FA586800B6C4C9 /* triangle_insure_shop.png in Resources */,
 				5403CE3618D04F5E004CAE22 /* icon_share_baby.png in Resources */,
-				88B3AEA9196E4AD700955499 /* btn_price_shop1.png in Resources */,
 				5447C4A418D97D1100187BE6 /* pic_start_topic.png in Resources */,
 				54B97E5918FA2B1E00B6C4C9 /* block2_insure_shop.png in Resources */,
 				5403CD5518D03D84004CAE22 /* btn_invite_diary.png in Resources */,
@@ -4727,7 +4700,6 @@
 				54B97E9B18FA583F00B6C4C9 /* title1_insure_shop.png in Resources */,
 				54AC20E118E3FD30001C1357 /* btn_all1_shop.png in Resources */,
 				5403CD5118D03D39004CAE22 /* icon8_weather_diary@2x.png in Resources */,
-				88B3AEA6196E4AD700955499 /* btn_price_shop.png in Resources */,
 				54AF7E0E18FBEC5000FC454C /* btn_record_diary.png in Resources */,
 				5474A48018C5C0630073B2FE /* btn_finish2.png in Resources */,
 				88B51602192F52EE006A79AB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
