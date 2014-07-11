@@ -611,14 +611,14 @@ static MBProgressHUD *hud;
     [self.view addSubview:infoView];
     [infoView.layer setMasksToBounds:NO];
     if (!babyShowBtn) {
-        babyShowBtn = [[BabyShowButton alloc] initWithFrame:CGRectMake(1024 -16 - 80, 768, 80, 100)];
+        babyShowBtn = [[BabyShowButton alloc] initWithFrame:CGRectMake(1024 -16 - 80, 768, 80, 80)];
         [babyShowBtn setBackgroundColor:[UIColor clearColor]];
     }
     [infoView addSubview:babyShowBtn];
     
     [babyShowBtn loadPortrait];
     if (!babyInfoBtn) {
-        babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 80, 0, 80, 100)];
+        babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 80, 0, 80, 80)];
         [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:babyInfoBtn];
     }

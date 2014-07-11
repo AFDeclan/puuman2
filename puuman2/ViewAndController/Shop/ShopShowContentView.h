@@ -9,15 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "AllWareView.h"
 #import "RectWareView.h"
-#import "ShopWareInfoView.h"
 
 @interface ShopShowContentView : UIView
 {
     RectWareView *rectView;
     AllWareView *allView;
-    ShopWareInfoView *infoView;
-    UIScrollView *wareInfoScrollView;
-    BOOL wareInfoShowed;
 }
 
 - (void)setVerticalFrame;

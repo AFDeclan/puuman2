@@ -26,7 +26,6 @@
 #define Noti_ReloadRankView                     @"Noti_ReloadRankView"
 #define Noti_ReloadWareFilterView               @"Noti_ReloadWareFilterView"
 #define Noti_RefreshMenu                        @"Noti_RefreshMenu"
-#define Noti_ShowWareInfo                       @"Noti_ShowWareInfo"
 #define Noti_ShowAllShopView                    @"Noti_ShowAllShopView"
 
 //video

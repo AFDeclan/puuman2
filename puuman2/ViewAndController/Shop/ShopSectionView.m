@@ -25,44 +25,21 @@
 - (void)initialization
 {
     showAllShop = YES;
-    showWareInfo = NO;
     sortView = [[ShopSortSectionView alloc] initWithFrame:CGRectMake(0, 0, 64, 96*3)];
     [self addSubview:sortView];
     [sortView setAlpha:0];
     
-    wareInfoView = [[WareInfoSectionView alloc] initWithFrame:CGRectMake(0, 0, 64, 96*2)];
-    [self addSubview:wareInfoView];
-    [wareInfoView setAlpha:0];
+ 
 
-    [MyNotiCenter addObserver:self selector:@selector(showWareInfo:) name:Noti_ShowWareInfo object:nil];
     [MyNotiCenter addObserver:self selector:@selector(showAllShop:) name:Noti_ShowAllShopView object:nil];
 }
 
-- (void)showWareInfo:(NSNotification *)notification
-{
-    showWareInfo = [[notification object] boolValue];
-    [UIView animateWithDuration:0.5 animations:^{
-        if (showWareInfo) {
-            [wareInfoView setAlpha:1];
-            [sortView setAlpha:0];
-            [wareInfoView refresh];
-        }else{
-            [wareInfoView setAlpha:0];
-            if (showAllShop) {
-                [sortView setAlpha:1];
-                [sortView refresh];
-            }
 
-        }
-    }];
- 
-}
 
 - (void)showAllShop:(NSNotification *)notification
 {
     showAllShop = [[notification object] boolValue];
-    if (showWareInfo) {
-        [wareInfoView setAlpha:0];
+    if (showAllShop) {
         [sortView setAlpha:1];
         [sortView refresh];
     }else{

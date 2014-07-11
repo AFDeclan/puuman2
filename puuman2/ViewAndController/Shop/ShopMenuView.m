@@ -102,7 +102,6 @@
         }else{
             PostNotification(Noti_ShowAllShopView, [NSNumber numberWithBool:YES]);
         }
-        PostNotification(Noti_ShowWareInfo, [NSNumber numberWithBool:NO]);
         [menuTable reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationNone];
 
     }

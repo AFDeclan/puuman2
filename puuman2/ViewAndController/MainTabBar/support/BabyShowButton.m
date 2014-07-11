@@ -26,11 +26,12 @@
 - (void)initialization
 {
     status = PuumanAnimateNone;
-    bg_babybutton = [[UIImageView alloc ]initWithFrame:CGRectMake(0, 0, 80, 100)];
+    
+    bg_babybutton = [[UIImageView alloc ]initWithFrame:CGRectMake(0, 0, 80, 80)];
     [bg_babybutton setImage:[UIImage imageNamed:@"icon_babyInfo_btn.png"] ];
     [self addSubview:bg_babybutton];
     
-    portraitView =[[AFImageView alloc] initWithFrame:CGRectMake(8, 28, 64, 64)];
+    portraitView =[[AFImageView alloc] initWithFrame:CGRectMake(8, 8, 64, 64)];
     [portraitView setContentMode:UIViewContentModeScaleAspectFill];
     [portraitView setBackgroundColor:[UIColor clearColor]];
     portraitView.layer.cornerRadius = 32.5f;

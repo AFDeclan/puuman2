@@ -20,4 +20,5 @@
 
 }
 - (void)showAnimate;
+- (void)reloadView;
 @end

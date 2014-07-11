@@ -551,8 +551,7 @@ static DiaryViewController * instance;
     [joinView refreshStaus];
     [diaryTableVC.tableView reloadData];
     [diaryTableVC.tableView setContentOffset:CGPointMake(0, 0)];
-    
-
+    [toolsView reloadView];
 }
 
 - (void)diaryLoaded

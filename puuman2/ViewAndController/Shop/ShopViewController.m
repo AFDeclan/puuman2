@@ -183,7 +183,6 @@ static ShopViewController * instance;
 - (void)search
 {
     [searchTextField resignFirstResponder];
-    PostNotification(Noti_ShowWareInfo, [NSNumber numberWithBool:YES]);
 }
 
 -(void)refresh

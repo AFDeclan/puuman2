@@ -7,6 +7,8 @@
 //
 
 #import "OrderWaresTableViewCell.h"
+#import "WareInfoPopViewController.h"
+#import "MainTabBarController.h"
 
 @implementation OrderWaresTableViewCell
 @synthesize ware = _ware;
@@ -54,6 +56,10 @@
     [orderNum setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:orderNum];
     [self.contentView setBackgroundColor:PMColor5];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 540, 80)];
+    [self.contentView addSubview:btn];
+    [btn setBackgroundColor:[UIColor clearColor]];
+    [btn addTarget:self action:@selector(showDetailWare) forControlEvents:UIControlEventTouchUpInside];
 
 }
 
@@ -77,4 +83,14 @@
     priceLabel.text = [NSString stringWithFormat:@"%f",ware.WPriceLB];
     
 }
+
+- (void)showDetailWare
+{
+    WareInfoPopViewController *cartVC =[[WareInfoPopViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
+    [cartVC setControlBtnType:kOnlyCloseButton];
+    [cartVC show];
+    
+}
+
 @end

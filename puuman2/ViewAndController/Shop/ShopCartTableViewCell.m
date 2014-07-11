@@ -7,6 +7,8 @@
 //
 
 #import "ShopCartTableViewCell.h"
+#import "WareInfoPopViewController.h"
+#import "MainTabBarController.h"
 
 @implementation ShopCartTableViewCell
 @synthesize ware = _ware;
@@ -44,6 +46,7 @@
     [wareName setText:@"牛真牛牌牛奶粉"];
     [wareName setNumberOfLines:2];
     [content addSubview:wareName];
+
     
     UIImageView *icon_price = [[UIImageView alloc] initWithFrame:CGRectMake(160, 84, 10, 12)];
     [icon_price setImage:[UIImage imageNamed:@"icon_rmb_shop.png"]];
@@ -55,6 +58,11 @@
     [priceLabel setBackgroundColor:[UIColor clearColor]];
     [priceLabel setText:@"234.00"];
     [content addSubview:priceLabel];
+    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(66, 12, 450, 96)];
+    [content addSubview:btn];
+    [btn setBackgroundColor:[UIColor clearColor]];
+    [btn addTarget:self action:@selector(showDetailWare) forControlEvents:UIControlEventTouchUpInside];
     
     UILabel *total_label= [[UILabel alloc] initWithFrame:CGRectMake(420, 118, 64, 16)];
     [total_label setTextColor:PMColor2];
@@ -169,6 +177,15 @@
         [selectedBtn setImage:[UIImage imageNamed:@"icon_unselected_cart.png"] forState:UIControlStateNormal];
 
     }
+}
+
+- (void)showDetailWare
+{
+    WareInfoPopViewController *cartVC =[[WareInfoPopViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
+    [cartVC setControlBtnType:kOnlyCloseButton];
+    [cartVC show];
+
 }
 
 @end

@@ -70,7 +70,6 @@
         [[ShopModel sharedInstance] setSubClassIndex:_flagTag];
         PostNotification(Noti_HiddenMenu, nil);
         PostNotification(Noti_ShowAllShopView, [NSNumber numberWithBool:YES]);
-        PostNotification(Noti_ShowWareInfo, [NSNumber numberWithBool:NO]);
         PostNotification(Noti_ReloadShopMall, nil);
 
     }

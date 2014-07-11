@@ -30,6 +30,7 @@
 
 - (void)initialization
 {
+    selectedIndex = 0;
     contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [self addSubview:contentView];
     UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 656)];
@@ -101,7 +102,18 @@
     
 }
 
+- (void)reloadView
+{
+    animated = NO;
 
+    [unitViews[selectedIndex] refreshInfo];
+    if (selectedIndex == 1) {
+        [self performSelector:@selector(addPie) withObject:nil afterDelay:1];
+        
+    }
+    
+
+}
 
 - (void)foldOrUnFoldWithFlag:(NSInteger)flag
 {
@@ -109,7 +121,7 @@
         if (!animated) {
             if (selectedIndex != flag) {
                 animated = YES;
-                PostNotification(Noti_ShowTools, [NSNumber numberWithInt:flag]);
+               // PostNotification(Noti_ShowTools, [NSNumber numberWithInt:flag]);
                 [unitViews[flag] refreshInfo];
                 [unitViews[flag] unFoldTool];
                 [unitViews[selectedIndex] foldTool];

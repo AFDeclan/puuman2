@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ShopSortSectionView.h"
-#import "WareInfoSectionView.h"
 
 @interface ShopSectionView : UIView
 {
     ShopSortSectionView *sortView;
-    WareInfoSectionView *wareInfoView;
     BOOL showAllShop;
-    BOOL showWareInfo;
 }
 @end
