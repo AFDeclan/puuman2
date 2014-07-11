@@ -34,6 +34,7 @@
     UIView *leftView;
     UIView *rightView;
     UIButton *leftBtn;
+    UIView *lineView;
     
 }
 

@@ -156,7 +156,7 @@
     [coinBtn unSelected];
     
     coinLabel = [[UILabel alloc] init];
-    [coinLabel setFrame:CGRectMake(54, 8, 66, 24)];
+    [coinLabel setFrame:CGRectMake(0, 0, 66, 24)];
     [coinLabel setBackgroundColor:[UIColor clearColor]];
     [coinLabel setFont:PMFont3];
     [self.contentView addSubview:coinLabel];
@@ -184,6 +184,9 @@
 {
     SetViewLeftUp(_delBtn,632, 24);
     SetViewLeftUp(_shareBtn,632, ViewY(_content)+ViewHeight(_content)-24);
+    SetViewLeftUp(coinBtn, 20, ViewY(_content) +ViewHeight(_content)-10);
+    SetViewLeftUp(coinLabel, 54, ViewY(_content) + ViewHeight(_content));
+    
     SetViewRightCenter(_delScrollView, ViewX(_delBtn), ViewY(_delBtn)+ViewHeight(_delBtn)/2);
     if (self.indexPath.row == 0) {
         [_timeLine setFrame:CGRectMake(86, 32, 1, kHeaderHeight + kFooterHeight + ViewHeight(_content) )];

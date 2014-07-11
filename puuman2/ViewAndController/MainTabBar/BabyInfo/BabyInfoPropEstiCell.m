@@ -30,8 +30,15 @@
     //[_estiLabel setText:@"使用感觉不错!"];
     [_estiLabel setTextColor:PMColor2];
     [_estiLabel setFont:PMFont1];
-    [_estiLabel setTitle:@"使用感觉还不错!" withMaxWidth:180];
-    [self.contentView addSubview:_estiLabel];
+    [_estiLabel setTitle:@"使用感觉还不错" withMaxWidth:180];
+
+//    NSMutableAttributedString *attributedString1= [[NSMutableAttributedString alloc] initWithString:_estiLabel.text];
+//    NSMutableParagraphStyle *paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+//    [paragraphStyle1 setLineSpacing:20];
+//    [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [_estiLabel.text length])];
+//    [_estiLabel setAttributedText:attributedString1];
+//    [_estiLabel sizeToFit];
+//    [self.contentView addSubview:_estiLabel];
     
 //    lineView = [[UIView alloc] initWithFrame:CGRectMake(15, , 180,1)];
 //    [lineView setBackgroundColor:PMColor5];

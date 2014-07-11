@@ -26,6 +26,7 @@
     BabyInfoPageControlButton *showAndHiddenBtn;
     UIButton *rightBtn;
     SocialType shareType;
+    UIView *lineView;
     
 }
 
