@@ -102,6 +102,7 @@
     
    
     
+    
     nameLabel = [[AnimateShowLabel alloc] init];
     [nameLabel setBackgroundColor:[UIColor clearColor]];
     [leftView addSubview:nameLabel];

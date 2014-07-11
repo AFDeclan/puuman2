@@ -665,6 +665,13 @@
 		54CB2A4C1962A930005EBD3F /* SortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A4A1962A930005EBD3F /* SortCell.m */; };
 		54CC76DF196F874200373B35 /* WareEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CC76DE196F874200373B35 /* WareEvaluationView.m */; };
 		54CC76E2196F875800373B35 /* WareInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CC76E1196F875800373B35 /* WareInfoView.m */; };
+		54CC76E4196FBEFA00373B35 /* icon_babyInfo_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CC76E3196FBEFA00373B35 /* icon_babyInfo_btn.png */; };
+		54CC76EB196FBF8800373B35 /* btn_heat_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CC76E5196FBF8800373B35 /* btn_heat_shop.png */; };
+		54CC76EC196FBF8800373B35 /* btn_heat_shop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CC76E6196FBF8800373B35 /* btn_heat_shop1.png */; };
+		54CC76ED196FBF8800373B35 /* btn_price_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CC76E7196FBF8800373B35 /* btn_price_shop.png */; };
+		54CC76EE196FBF8800373B35 /* btn_price_shop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CC76E8196FBF8800373B35 /* btn_price_shop1.png */; };
+		54CC76EF196FBF8800373B35 /* btn_time_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CC76E9196FBF8800373B35 /* btn_time_shop.png */; };
+		54CC76F0196FBF8800373B35 /* btn_time_shop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CC76EA196FBF8800373B35 /* btn_time_shop1.png */; };
 		54CCF1D518F3CC220081C149 /* SelectPhotoImportTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CCF1D418F3CC220081C149 /* SelectPhotoImportTypeViewController.m */; };
 		54CCF1D818F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CCF1D718F3CE4A0081C149 /* TopicCellSelectedPohosViewController.m */; };
 		54CCF1DD18F3E7170081C149 /* btn_baby1_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CCF1D918F3E7170081C149 /* btn_baby1_diary.png */; };
@@ -1785,6 +1792,13 @@
 		54CC76DE196F874200373B35 /* WareEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WareEvaluationView.m; sourceTree = "<group>"; };
 		54CC76E0196F875800373B35 /* WareInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WareInfoView.h; sourceTree = "<group>"; };
 		54CC76E1196F875800373B35 /* WareInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WareInfoView.m; sourceTree = "<group>"; };
+		54CC76E3196FBEFA00373B35 /* icon_babyInfo_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_babyInfo_btn.png; sourceTree = "<group>"; };
+		54CC76E5196FBF8800373B35 /* btn_heat_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_heat_shop.png; sourceTree = "<group>"; };
+		54CC76E6196FBF8800373B35 /* btn_heat_shop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_heat_shop1.png; sourceTree = "<group>"; };
+		54CC76E7196FBF8800373B35 /* btn_price_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_price_shop.png; sourceTree = "<group>"; };
+		54CC76E8196FBF8800373B35 /* btn_price_shop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_price_shop1.png; sourceTree = "<group>"; };
+		54CC76E9196FBF8800373B35 /* btn_time_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_time_shop.png; sourceTree = "<group>"; };
+		54CC76EA196FBF8800373B35 /* btn_time_shop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_time_shop1.png; sourceTree = "<group>"; };
 		54CCF1D318F3CC220081C149 /* SelectPhotoImportTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPhotoImportTypeViewController.h; sourceTree = "<group>"; };
 		54CCF1D418F3CC220081C149 /* SelectPhotoImportTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPhotoImportTypeViewController.m; sourceTree = "<group>"; };
 		54CCF1D618F3CE4A0081C149 /* TopicCellSelectedPohosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCellSelectedPohosViewController.h; sourceTree = "<group>"; };
@@ -2428,6 +2442,7 @@
 		5403CDF818D04F51004CAE22 /* BabyInfoImages */ = {
 			isa = PBXGroup;
 			children = (
+				54CC76E3196FBEFA00373B35 /* icon_babyInfo_btn.png */,
 				88B29777196A95E40050EDE2 /* baby_born_background.png */,
 				8829DD0E19679D7E0023678D /* share_image_babyInfo.png */,
 				8829DD0C196798F50023678D /* esti_image_babyInfo.png */,
@@ -2862,6 +2877,12 @@
 		54AC20C318E3FD1F001C1357 /* ShopImages */ = {
 			isa = PBXGroup;
 			children = (
+				54CC76E5196FBF8800373B35 /* btn_heat_shop.png */,
+				54CC76E6196FBF8800373B35 /* btn_heat_shop1.png */,
+				54CC76E7196FBF8800373B35 /* btn_price_shop.png */,
+				54CC76E8196FBF8800373B35 /* btn_price_shop1.png */,
+				54CC76E9196FBF8800373B35 /* btn_time_shop.png */,
+				54CC76EA196FBF8800373B35 /* btn_time_shop1.png */,
 				88B3AE92196E3A4800955499 /* btn_cart_shop.png */,
 				54B97E2518FA2B0600B6C4C9 /* hospital */,
 				54ACB2DD18EBE8F400EE5F90 /* icon_flag_shop.png */,
@@ -4245,6 +4266,7 @@
 				54AC20F518E3FD30001C1357 /* icon2_milk_shop.png in Resources */,
 				5403CD4418D03D39004CAE22 /* icon2_weather_diary.png in Resources */,
 				88C965B21962A2C60058B842 /* back_right_babyInfo.png in Resources */,
+				54CC76F0196FBF8800373B35 /* btn_time_shop1.png in Resources */,
 				5447C44C18D9785600187BE6 /* paper_top_h_shop.png in Resources */,
 				54CE116E18C1C7BF00966396 /* btn_red2.png in Resources */,
 				54B97E8E18FA572600B6C4C9 /* pic20_insure_shop.png in Resources */,
@@ -4285,6 +4307,7 @@
 				5403CD3018D03D39004CAE22 /* icon10_weather_diary.png in Resources */,
 				5403CD4C18D03D39004CAE22 /* icon6_weather_diary.png in Resources */,
 				5447C49218D97D1100187BE6 /* icon_height_topic.png in Resources */,
+				54CC76EB196FBF8800373B35 /* btn_heat_shop.png in Resources */,
 				54ADE08018C85D1C00B166C4 /* btn2_input_diary.png in Resources */,
 				549B62CD18CAC79800AFEEAB /* check_status.png in Resources */,
 				54B97E4B18FA2B1E00B6C4C9 /* pic38_insure_shop.png in Resources */,
@@ -4514,6 +4537,7 @@
 				54CCF1DE18F3E7170081C149 /* btn_baby2_diary.png in Resources */,
 				541970AA18D188F40058FE64 /* pic_body_blank.png in Resources */,
 				5447C46218D97D0800187BE6 /* icon_vac_fri.png in Resources */,
+				54CC76E4196FBEFA00373B35 /* icon_babyInfo_btn.png in Resources */,
 				54B97E8818FA572600B6C4C9 /* pic26_insure_shop.png in Resources */,
 				5403CE2818D04F5E004CAE22 /* btn_pre1_baby.png in Resources */,
 				54AF7DFC18FBCD8A00FC454C /* left_arrow.png in Resources */,
@@ -4546,6 +4570,7 @@
 				54AC20E318E3FD30001C1357 /* btn_delete_shop.png in Resources */,
 				54D64EF818E7C39500B8899D /* btn_back3_br_shop.png in Resources */,
 				54B97E8A18FA572600B6C4C9 /* pic28_insure_shop.png in Resources */,
+				54CC76EF196FBF8800373B35 /* btn_time_shop.png in Resources */,
 				88C965AB19629FAC0058B842 /* icon_weight_babyInfo.png in Resources */,
 				5403CE3E18D04F5E004CAE22 /* line3_baby.png in Resources */,
 				54B97E9418FA572600B6C4C9 /* pic16_insure_shop.png in Resources */,
@@ -4556,6 +4581,7 @@
 				54012DC618E2CB8B00F11D97 /* line2_topic.png in Resources */,
 				5447C46418D97D0800187BE6 /* pic_coin_fri.png in Resources */,
 				54AC20F218E3FD30001C1357 /* icon2_food_shop.png in Resources */,
+				54CC76EC196FBF8800373B35 /* btn_heat_shop1.png in Resources */,
 				54AC20EB18E3FD30001C1357 /* icon_cart_shop.png in Resources */,
 				54CCF1DD18F3E7170081C149 /* btn_baby1_diary.png in Resources */,
 				54ACB2D918EBB63600EE5F90 /* pic_com_shop.png in Resources */,
@@ -4630,6 +4656,7 @@
 				54B97E4D18FA2B1E00B6C4C9 /* pic7_insure_shop.png in Resources */,
 				5447C49F18D97D1100187BE6 /* icon_time1_topic.png in Resources */,
 				54B6F40C18D6A5030055FC72 /* icon_safe_set.png in Resources */,
+				54CC76ED196FBF8800373B35 /* btn_price_shop.png in Resources */,
 				54AC20E618E3FD30001C1357 /* frame_search_shop.png in Resources */,
 				5463759218C98493004B11EF /* tri_blue_right.png in Resources */,
 				54D1500018CAEFD70022E1F4 /* paper_task2_diary.png in Resources */,
@@ -4688,6 +4715,7 @@
 				54AC212118E414EA001C1357 /* icon4_rec_shop.png in Resources */,
 				88B2829319542033006641AC /* coin_diary_receive.png in Resources */,
 				54B97EA318FA586800B6C4C9 /* triangle_insure_shop.png in Resources */,
+				54CC76EE196FBF8800373B35 /* btn_price_shop1.png in Resources */,
 				5403CE3618D04F5E004CAE22 /* icon_share_baby.png in Resources */,
 				5447C4A418D97D1100187BE6 /* pic_start_topic.png in Resources */,
 				54B97E5918FA2B1E00B6C4C9 /* block2_insure_shop.png in Resources */,
