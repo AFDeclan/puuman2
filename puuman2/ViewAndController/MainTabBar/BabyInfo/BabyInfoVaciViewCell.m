@@ -39,7 +39,9 @@
 
 - (void)initialization
 {
-    
+    lineView = [[UIView alloc] init];
+    [lineView setBackgroundColor:PMColor6];
+    [self.contentView addSubview:lineView];
     leftView = [[UIView alloc] init];
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
@@ -88,23 +90,23 @@
     [emptyView setAlpha:0];
     selectVaccine = -1;
     right = NO;
-    selectedDateBtn  = [[UIButton alloc] initWithFrame:CGRectMake(72, 126, 336, 48)];
+    selectedDateBtn  = [[UIButton alloc] init];
     [selectedDateBtn addTarget:self action:@selector(selectedDate)  forControlEvents:UIControlEventTouchUpInside];
     [selectedDateBtn setBackgroundColor:[UIColor clearColor]];
     [leftView addSubview:selectedDateBtn];
     
-    statusText = [[CustomTextField alloc] initWithFrame:CGRectMake(0, 0, 336, 48)];
+    statusText = [[CustomTextField alloc] init];
     [statusText setEnabled:NO];
     [statusText setPlaceholder:@"建议在6月龄接种"];
     [selectedDateBtn addSubview:statusText];
     
    
     
-    nameLabel = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(72, 190, 336, 64)];
+    nameLabel = [[AnimateShowLabel alloc] init];
     [nameLabel setBackgroundColor:[UIColor clearColor]];
     [leftView addSubview:nameLabel];
     
-    detail = [[UITextView alloc] initWithFrame:CGRectMake(72, 235, 336, 288)];
+    detail = [[UITextView alloc] init];
 
     [detail setBackgroundColor:[UIColor clearColor]];
     [detail setFont:PMFont2];
@@ -202,18 +204,25 @@
 
 -(void)setVerticalFrame
 {
-    [leftView setFrame:CGRectMake(48, 96, 720, 928)];
-    //[rightView setFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)]
+    [lineView setFrame:CGRectMake(0, 96, 768, 2)];
+    [leftView setFrame:CGRectMake(48, 98, 286, 926)];
+    [rightView setFrame:CGRectMake(336, 96, 432, 928)];
+    [dataTable setFrame:CGRectMake(0, 0, 432, 928)];
     [leftBtn setFrame:CGRectMake(0, 96, 48, 928)];
-    SetViewLeftUp(notBtn, 608, 550);
-    SetViewLeftUp(alreadyBtn, 608, 590);
+    [selectedDateBtn setFrame:CGRectMake(32, 82, 224, 48)];
+    [nameLabel setFrame:CGRectMake(32, 146, 224, 64)];
+    [detail setFrame:CGRectMake(32, 190, 224, 400)];
+    [statusText setFrame:CGRectMake(0, 0, 224, 48)];
+    SetViewLeftUp(notBtn, 174, 815);
+    SetViewLeftUp(alreadyBtn, 174, 855);
     
    
 }
 
 -(void)setHorizontalFrame
 {
-    [leftView setFrame:CGRectMake(48, 96, 542, 672)];
+    [lineView setFrame:CGRectMake(0, 96, 1024, 2)];
+    [leftView setFrame:CGRectMake(48, 98, 542, 670)];
      [rightView setFrame:CGRectMake(590,96,434, 672)];
     [dataTable setFrame: CGRectMake(0, 0, 432, 672)];
    
@@ -221,7 +230,10 @@
     [leftBtn setFrame:CGRectMake(0, 96, 48, 672)];
     [notBtn setFrame:CGRectMake(432, 550,112, 40)];
     [alreadyBtn setFrame:CGRectMake(432, 590, 112, 40)];
-    
+    [selectedDateBtn setFrame:CGRectMake(72, 126, 336, 48)];
+    [nameLabel setFrame:CGRectMake(72, 190, 336, 64)];
+    [detail setFrame:CGRectMake(72, 235, 336, 288)];
+    [statusText setFrame:CGRectMake(0, 0, 336, 48)];
 }
 
 ////-(void)setVerticalFrame

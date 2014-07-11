@@ -10,6 +10,7 @@
 #import "PropView.h"
 #import "BabyInfoIconViewDelegate.h"
 #import "ColorButton.h"
+#import "BabyInfoPageControlButton.h"
 
 @interface BabyInfoPropViewCell : UITableViewCell<BabyInfoIconViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -22,6 +23,8 @@
     NSMutableArray *estiArrayData;
     UIButton *leftBtn;
     UIView *estiView;
+    BabyInfoPageControlButton *showAndHiddenBtn;
+    UIView *lineView;
 }
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;

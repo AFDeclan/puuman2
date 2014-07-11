@@ -143,18 +143,18 @@
 //    [nextNaciView setFrame:CGRectMake(744,180, 10, 16)];
 //    [nextPropView setFrame:CGRectMake(744,407, 10, 16)];
 //    [preView setFrame:CGRectMake(5, 350, 10, 16)];
-    [bgImageView setFrame:CGRectMake(80, 35, 500, 800)];
-    [heightBtn setFrame:CGRectMake(30, 450, 80, 68)];
-    [weightBtn setFrame:CGRectMake(30, 520, 80, 68)];
-    [vaciBtn setFrame:CGRectMake(565, 280, 180, 100)];
-    [propBtn setFrame:CGRectMake(565, 520, 180, 80)];
-    [addRecordBtn setFrame:CGRectMake(160, 450, 32, 32)];
-    [nextNaciView setFrame:CGRectMake(744, 320, 10, 16)];
-    [nextPropView setFrame:CGRectMake(744, 547, 10, 16)];
-    [preView setFrame:CGRectMake(5, 500, 10, 16)];
-    [heiLineView setFrame:CGRectMake(0, 600, 240, 86)];
-    [vaciLineView setFrame:CGRectMake(565, 380, 240, 86)];
-    [propLineView setFrame:CGRectMake(565, 600, 240, 86)];
+    [bgImageView setFrame:CGRectMake(72, 248, 500, 800)];
+    [heightBtn setFrame:CGRectMake(24, 150, 80, 68)];
+    [weightBtn setFrame:CGRectMake(24, 220, 80, 68)];
+    [vaciBtn setFrame:CGRectMake(525, 186, 180, 100)];
+    [propBtn setFrame:CGRectMake(525, 630, 180, 80)];
+    [addRecordBtn setFrame:CGRectMake(220, 150, 32, 32)];
+    [nextNaciView setFrame:CGRectMake(744, 226, 10, 16)];
+    [nextPropView setFrame:CGRectMake(744, 665, 10, 16)];
+    [preView setFrame:CGRectMake(5, 210, 10, 16)];
+    [heiLineView setFrame:CGRectMake(24, 290, 240, 86)];
+    [vaciLineView setFrame:CGRectMake(525, 285, 240, 86)];
+    [propLineView setFrame:CGRectMake(525, 705, 240, 86)];
  
 
 }

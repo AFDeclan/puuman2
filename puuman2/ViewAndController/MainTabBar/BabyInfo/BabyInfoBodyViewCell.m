@@ -24,7 +24,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-       // SetViewLeftUp(showAndHiddenBtn, 216, 350);
+        
+      // SetViewLeftUp(showAndHiddenBtn, 216, 350);
         
         [self initialization];
         [self initWithLeftView];
@@ -47,7 +48,9 @@
 
 - (void)initialization
 {
-
+     lineView = [[UIView alloc] init];
+    [lineView setBackgroundColor:PMColor6];
+    [self.contentView addSubview:lineView];
     leftView = [[UIView alloc] init];
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
@@ -187,13 +190,14 @@
 -(void)setVerticalFrame
 {
     //[super setVerticalFrame];
-    [rightView setFrame:CGRectMake(704, 96, 64, 928)];
-    [leftView setFrame:CGRectMake(0, 96, 704, 928)];
+    [lineView setFrame:CGRectMake(0, 96, 768, 2)];
+    [rightView setFrame:CGRectMake(704, 98, 64, 926)];
+    [leftView setFrame:CGRectMake(0, 98, 704, 926)];
     [showAndHiddenBtn setAlpha:1];
-    [dataTable setFrame:CGRectMake(0, 0, 224, 928)];
+    [dataTable setFrame:CGRectMake(0, 0, 224, 926)];
     [_lineChartView setFrame:CGRectMake(90, 140, 544, 408)];
     [emptyView setFrame:CGRectMake(64, 192, 88, 112)];
-    [rightBtn setFrame:CGRectMake(0, 0, 64, 928)];
+    [rightBtn setFrame:CGRectMake(0, 0, 64, 926)];
     SetViewLeftUp(shareBtn, 0, 706);
     SetViewLeftUp(addDataBtn, 0, 746);
     
@@ -202,14 +206,15 @@
 -(void)setHorizontalFrame
 {
     //[super setHorizontalFrame];
-    [rightView setFrame:CGRectMake(736,96,288, 672)];
-    [leftView setFrame:CGRectMake(0, 96, 735, 672)];
+    [lineView setFrame:CGRectMake(0, 96, 1024, 2)];
+    [rightView setFrame:CGRectMake(736,98,288, 670)];
+    [leftView setFrame:CGRectMake(0, 98, 735, 670)];
     [showAndHiddenBtn setAlpha:0];
-    [dataTable setFrame:CGRectMake(0, 0, 224,672)];
+    [dataTable setFrame:CGRectMake(0, 0, 224,670)];
     [_lineChartView setFrame:CGRectMake(90, 140, 544, 408)];
     [emptyView setFrame:CGRectMake(64, 192, 88, 112)];
     [noti_label setFrame:CGRectMake(280,520,544,18)];
-    [rightBtn setFrame:CGRectMake(224, 0, 64, 672)];
+    [rightBtn setFrame:CGRectMake(224, 0, 64, 670)];
     SetViewLeftUp(shareBtn, 0, 550);
     SetViewLeftUp(addDataBtn, 0, 590);
 
@@ -275,15 +280,15 @@
 {
     //[showAndHiddenBtn foldWithDuration:0.3];
     [UIView animateWithDuration:0.3 animations:^{
-       // SetViewLeftUp(leftView, -216, 0);
+   // SetViewLeftUp(leftView, -216, 0);
     }];
 }
 
 - (void)unfold
 {
-   // [showAndHiddenBtn unfoldWithDuration:0.3];
+    //[showAndHiddenBtn unfoldWithDuration:0.3];
     [UIView animateWithDuration:1 animations:^{
-       // SetViewLeftUp(leftView, 0, 0);
+    //SetViewLeftUp(leftView, 0, 0);
     }];
     
     

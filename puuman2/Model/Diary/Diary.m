@@ -147,7 +147,7 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
     [req setTimeOutSeconds:5];
     [req postSynchronous];
     if (req.result == PumanRequest_Succeeded) {
-        [_meta setValue:[NSNumber numberWithBool:YES] forKey:DiaryMetaKeyRewarded];
+       [_meta setValue:[NSNumber numberWithBool:YES] forKey:DiaryMetaKeyRewarded];
         BOOL up = [[DiaryModel sharedDiaryModel] updateDiary:self needUpload:YES];
         assert(up);
         return YES;

@@ -19,7 +19,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-       // [showAndHiddenBtn setAlpha:0];
+        [showAndHiddenBtn setAlpha:0];
         [self initialization];
         [self initWithLeftView];
         [self initWithRightView];
@@ -38,6 +38,10 @@
 - (void)initialization
 {
     
+    showAndHiddenBtn = [[BabyInfoPageControlButton alloc] init];
+    lineView =[[UIView alloc] init];
+    [lineView setBackgroundColor:PMColor6];
+    [self.contentView addSubview:lineView];
     leftView = [[UIView alloc] init];
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
@@ -124,11 +128,11 @@
     }
     [cell setBackgroundColor:[UIColor clearColor]];
     
-    [cell.estiLabel setTitle:@"使用感觉狠不错使用感觉狠不错使用感觉狠不错使用感觉狠不错使用感觉狠不错" withMaxWidth:180];
+     [cell.estiLabel setTitle:@"使用感觉狠不错使用感觉狠不错使用感觉狠不错使用感觉狠不错使用感觉狠不错" withMaxWidth:180];
     
-      UIView  *lineView = [[UIView alloc] initWithFrame:CGRectMake(15,ViewHeight(cell.estiLabel)+20 ,180,1)];
-      [lineView setBackgroundColor:PMColor5];
-      [cell.contentView addSubview:lineView];
+      UIView  *adjustLineView = [[UIView alloc] initWithFrame:CGRectMake(15,ViewHeight(cell.estiLabel)+20 ,180,1)];
+      [adjustLineView setBackgroundColor:PMColor5];
+      [cell.contentView addSubview:adjustLineView];
 
     
     return cell;
@@ -148,26 +152,27 @@
 -(void)setVerticalFrame
 {
     //[super setVerticalFrame];
-   [leftView setFrame:CGRectMake(0, 96, 768, 928)];
-    [leftBtn setFrame:CGRectMake(0, 0, 48, 928)];
+    [lineView setFrame:CGRectMake(0, 96, 768, 2)];
+   [leftView setFrame:CGRectMake(0, 98, 768, 926)];
+    [leftBtn setFrame:CGRectMake(0, 0, 48, 926)];
     [babyPropView setFrame:CGRectMake(130, 280, 544, 448)];
-    // [showAndHiddenBtn setAlpha:1];
-    
+    [showAndHiddenBtn setAlpha:1];
+    [showAndHiddenBtn setFrame:CGRectMake(728, 360, 50, 100)];
 }
 
 -(void)setHorizontalFrame
 {
    // [super setHorizontalFrame];
-    [leftView setFrame:CGRectMake(0, 96, 808, 672)];
-    [rightView setFrame:CGRectMake(808,96,216, 672)];
+    [lineView setFrame:CGRectMake(0, 96, 1024, 2)];
+    [leftView setFrame:CGRectMake(0, 98, 808, 670)];
+    [rightView setFrame:CGRectMake(808,98,216, 670)];
     [babyPropView setFrame:CGRectMake(130, 140, 544, 448)];
-    [leftBtn setFrame:CGRectMake(0, 0, 48, 672)];
+    [leftBtn setFrame:CGRectMake(0, 0, 48, 670)];
     [estiTextField setFrame:CGRectMake(ViewWidth(rightView)-216, 0, 216, 50)];
     [estiView setFrame:CGRectMake(ViewWidth(rightView)-216, 50, 216,70)];
     [estiTableView setFrame:CGRectMake(ViewWidth(rightView)-216, 120, 216, ViewHeight(rightView)-120)];
-    
-    // [showAndHiddenBtn setAlpha:0];
-    //SetViewLeftUp(babyPropView, 160, 64);
+    [showAndHiddenBtn setAlpha:0];
+   
     
 }
 
