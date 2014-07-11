@@ -9,8 +9,6 @@
 #import "ShopCartViewController.h"
 #import "CartModel.h"
 #import "MainTabBarController.h"
-#import "CompareCartViewController.h"
-#import "SinglepopViewController.h"
 #import "ShopCartTableViewCell.h"
 #import "OrderWaresTableViewCell.h"
 #import "OrderWaresHeaderView.h"
