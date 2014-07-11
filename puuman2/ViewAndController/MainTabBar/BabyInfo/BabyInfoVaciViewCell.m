@@ -46,14 +46,15 @@
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
     rightView = [[UIView alloc] init];
-    [rightView setBackgroundColor:[UIColor clearColor]];
+    [rightView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:rightView];
-    
+
     leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setBackgroundColor:PMColor6];
     [leftBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:leftBtn];
+
     
 }
 

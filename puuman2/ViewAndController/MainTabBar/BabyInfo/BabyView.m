@@ -119,7 +119,7 @@
 
     }
     babyInfoColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
-    [babyInfoColumnView setBackgroundColor:[UIColor clearColor]];
+    [babyInfoColumnView setBackgroundColor:[UIColor whiteColor]];
     [babyInfoColumnView setColumnViewDelegate:self];
     [babyInfoColumnView  setViewDataSource:self];
     [babyInfoColumnView setPagingEnabled:YES];
