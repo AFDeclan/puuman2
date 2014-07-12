@@ -296,15 +296,23 @@
 - (void)refresh
 {
     [dataTable reloadData];
-    [dataTable setContentOffset:CGPointMake(0, 80)];
+    
     [self performSelectorOnMainThread:@selector(animateWithVaccineView) withObject:nil waitUntilDone:0];
     
 }
+
 -(void)animateWithVaccineView{
     
+    NSInteger startIndex = [[BabyData sharedBabyData] startAtIndex];
+    
+    NSLog(@"%d",[[BabyData sharedBabyData] vaccineCount]);
+    startIndex =  (startIndex*96 - ViewHeight(dataTable)/2)/96;
+    startIndex = startIndex < 0 ? 0:startIndex;
+    NSInteger max =  ([[BabyData sharedBabyData] vaccineCount]*96 - ViewHeight(dataTable))/96;
+    startIndex = startIndex > max ? max:startIndex;
+    
     [UIView animateWithDuration:0.5 animations:^{
-        [dataTable setContentOffset:CGPointMake(0, 0)];
-    } completion:^(BOOL finished){
+        [dataTable setContentOffset:CGPointMake(0, startIndex*96)];
     }];
     
 }

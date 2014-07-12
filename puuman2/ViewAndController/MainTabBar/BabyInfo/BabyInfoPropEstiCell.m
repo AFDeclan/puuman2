@@ -38,7 +38,7 @@
 //    [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [_estiLabel.text length])];
 //    [_estiLabel setAttributedText:attributedString1];
 //    [_estiLabel sizeToFit];
-//    [self.contentView addSubview:_estiLabel];
+    [self.contentView addSubview:_estiLabel];
     
 //    lineView = [[UIView alloc] initWithFrame:CGRectMake(15, , 180,1)];
 //    [lineView setBackgroundColor:PMColor5];
