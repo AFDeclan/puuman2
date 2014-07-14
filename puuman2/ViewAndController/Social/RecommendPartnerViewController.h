@@ -7,7 +7,7 @@
 //
 
 #import "CustomPopViewController.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "Member.h"
 #import "Friend.h"
 #import "AFImageView.h"
@@ -17,8 +17,8 @@
 @interface RecommendPartnerViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,FriendDelegate>
 {
     UITableView *recommentTable;
-    ColorButton *changeBtn;
-    ColorButton *inviteBtn;
+    AFColorButton *changeBtn;
+    AFColorButton *inviteBtn;
     Member *_memberInfo;
     Member *_userInfo;
     AFImageView *portrait;

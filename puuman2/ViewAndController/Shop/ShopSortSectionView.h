@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFSelecedTextImgButton.h"
+#import "AFSelectedTextImgButton.h"
 
 @interface ShopSortSectionView : UIView
 {
-    AFSelecedTextImgButton *priceBtn;
-    AFSelecedTextImgButton *heatBtn;
-    AFSelecedTextImgButton *timeBtn;
+    AFSelectedTextImgButton *priceBtn;
+    AFSelectedTextImgButton *heatBtn;
+    AFSelectedTextImgButton *timeBtn;
 }
 
 - (void)refresh;

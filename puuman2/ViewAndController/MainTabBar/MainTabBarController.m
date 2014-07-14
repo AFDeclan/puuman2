@@ -280,11 +280,12 @@ static MBProgressHUD *hud;
     
 }
 
- -(void)selectedWithTag:(NSInteger)tag
+ -(void)selectedWithTag:(TypeTabBarButton)tag
 {
-    if (tag == 1) {
+    if (tag == kTypeTabBarOfDiary) {
         [[DiaryViewController alloc] refresh];
     }
+    
     [self setSelectedIndex:tag];
 }
 
@@ -441,7 +442,7 @@ static MBProgressHUD *hud;
     [SocialNetwork initSocialNetwork];
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
-    [tabBar selectedWithTag:1];
+    [tabBar selectedWithTag:kTypeTabBarOfDiary];
     [self refreshBabyInfoView];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (![userDefaults boolForKey:@"DiarytutorialShowed"]){
@@ -521,7 +522,7 @@ static MBProgressHUD *hud;
 
 - (void)goToShopWithParentIndex:(NSInteger)parentMenu andChildIndex:(NSInteger)childMenu
 {
-    [tabBar selectedWithTag:4];
+    [tabBar selectedWithTag:kTypeTabBarOfSetting];
     [ShopModel sharedInstance].sectionIndex = parentMenu;
     [ShopModel sharedInstance].subClassIndex = childMenu;
      PostNotification(Noti_RefreshMenu, nil);

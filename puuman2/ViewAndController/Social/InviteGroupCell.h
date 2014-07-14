@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIColumnView.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "Group.h"
 #import "Friend.h"
 
@@ -17,7 +17,7 @@
     UILabel *noti_Title;
     UILabel *date_invite;
     UIColumnView *figuresColumnView;
-    ColorButton *addBtn;
+    AFColorButton *addBtn;
     Group *inviteGroup;
     NSArray *groupMembers;
    

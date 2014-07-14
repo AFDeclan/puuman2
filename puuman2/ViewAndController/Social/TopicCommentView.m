@@ -32,8 +32,14 @@
         [commentText setDelegate:self];
         [self addSubview:commentText];
         
-        createBtn = [[ColorButton alloc] init];
-        [createBtn initWithTitle:@"留言" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
+        createBtn = [[AFColorButton alloc] init];
+        [createBtn.title setText:@"留言"];
+        [createBtn setIconImg:[UIImage imageNamed:@"icon_reply_topic.png"]];
+        [createBtn setIconSize:CGSizeMake(16, 16)];
+        [createBtn adjustLayout];
+        [createBtn setColorType:kColorButtonBlueColor];
+        [createBtn setDirectionType:kColorButtonLeft];
+        [createBtn resetColorButton];
         [self addSubview:createBtn];
         [createBtn addTarget:self action:@selector(replayed) forControlEvents:UIControlEventTouchUpInside];
         SetViewLeftUp(createBtn, 496, 4);
@@ -45,10 +51,11 @@
             [comments[i] setAlpha:0];
         }
         scanMoreReplay = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 608, 48)];
-        [scanMoreReplay setTitle:@"点击查看更多留言" andImg:nil andButtonType:kButtonTypeOne];
-        [scanMoreReplay setTitleLabelColor:PMColor3];
+        [scanMoreReplay.title setText:@"点击查看更多留言"];
+        [scanMoreReplay.title setFont:PMFont3];
+        [scanMoreReplay.title setTextColor:PMColor3];
+      //  [scanMoreReplay adjustLayout];
         [scanMoreReplay addTarget:self action:@selector(scanMore) forControlEvents:UIControlEventTouchUpInside];
-        [scanMoreReplay setTitleFont:PMFont3];
         [self addSubview:scanMoreReplay];
         [scanMoreReplay setAlpha:0];
         [MyNotiCenter addObserver:self selector:@selector(hiddenKeyBopard) name:Noti_HiddenCommentKeyBoard object:nil];

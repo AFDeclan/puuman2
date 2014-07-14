@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BabyView.h"
 #import "UIColumnView.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "AFImageView.h"
 #import "BabyInfoIconViewDelegate.h"
 
@@ -21,7 +21,7 @@
     UIView *titleInfoView;
     UIImageView *portraitBg;
     UIColumnView *babyInfoColumnView;
-    ColorButton *modifyBtn;
+    AFColorButton *modifyBtn;
     AFImageView *portraitView;
     UIImageView *info_sexIcon;
     UILabel *info_name;

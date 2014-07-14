@@ -75,14 +75,22 @@ static TaskCell * instance;
 
     
     
-    infoButton = [[ColorButton alloc] init];
-    [infoButton initWithTitle:@"资讯" andIcon:[UIImage imageNamed:@"icon_info_diary.png"] andButtonType:kGrayLeftUp];
+    infoButton = [[AFColorButton alloc] init];
+    [infoButton.title setText:@"资讯"];
+    [infoButton setIconImg:[UIImage imageNamed:@"icon_info_diary.png"]];
+    [infoButton setIconSize:CGSizeMake(16, 16)];
+    [infoButton setColorType:kColorButtonGrayColor];
+    [infoButton setDirectionType:kColorButtonLeftUp];
+    [infoButton resetColorButton];
     [infoButton addTarget:self action:@selector(showInfo:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:infoButton];
     SetViewLeftUp(infoButton, 544, 224);
 
-    
-    startButton = [[ColorButton alloc] init];
+    startButton = [[AFColorButton alloc] init];
+    [startButton.title setText:@"开始"];
+    [startButton setColorType:kColorButtonGrayColor];
+    [startButton setDirectionType:kColorButtonLeftDown];
+    [startButton resetColorButton];
     [self.contentView addSubview:startButton];
     [startButton addTarget:self action:@selector(toStartTask:) forControlEvents:UIControlEventTouchUpInside];
     SetViewLeftUp(startButton, 544, 264);
@@ -241,9 +249,9 @@ static TaskCell * instance;
                 iconImageName = @"";
                 break;
         }
-        
-        [startButton initWithTitle:@"开始" andIcon:[UIImage imageNamed:iconImageName] andButtonType:kBlueLeftDown];
-       
+        [startButton setIconImg:[UIImage imageNamed:iconImageName]];
+        [startButton setIconSize:CGSizeMake(16, 16)];
+        [startButton adjustLayout];
         if ([taskInfo valueForKey:@"info"])
         {
             if (!_taskFolded) infoButton.alpha = 1;

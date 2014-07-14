@@ -8,7 +8,7 @@
 
 #import "CustomPopViewController.h"
 #import "CustomTextField.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "Reply.h"
 #import "Forum.h"
 #import "MJRefreshFooterView.h"
@@ -19,7 +19,7 @@
 {
     CustomTextField *talkTextField;
     UITableView *talksTable;
-    ColorButton *createTalkBtn;
+    AFColorButton *createTalkBtn;
     MJRefreshFooterView *_refreshFooter;
     MJRefreshHeaderView *_refreshHeader;
    NSInteger commentNum;

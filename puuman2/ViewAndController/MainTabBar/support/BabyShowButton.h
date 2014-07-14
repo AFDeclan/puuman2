@@ -27,5 +27,6 @@ typedef enum
 }
 - (void)addPuuman;
 - (void)minusPuuman;
--(void)loadPortrait;
+- (void)loadPortrait;
+
 @end

@@ -7,15 +7,15 @@
 //
 
 #import "CustomPopViewController.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 @interface OrderDetailViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource>
 {
     UITableView * detailTable;
     UITableView * cartTable;
 
-    ColorButton *paidBtn;
-    ColorButton *deleteBtn;
+    AFColorButton *paidBtn;
+    AFColorButton *deleteBtn;
     UILabel *priceLabel;
 }
 @end

@@ -41,17 +41,25 @@
     [title setBackgroundColor:[UIColor clearColor]];
     [self addSubview:title];
     goBirthViewButton=[[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 255, 224)];
-    [goBirthViewButton setTitle:@"已出生" andImg:[UIImage imageNamed:@"pic_born_login.png"] andButtonType:kButtonTypeThree];
-    [goBirthViewButton setTitleLabelColor:PMColor1];
+    [goBirthViewButton.title setText:@"已出生"];
+    [goBirthViewButton.title setTextColor:PMColor1];
+    [goBirthViewButton.title setFont:PMFont2];
+    [goBirthViewButton setIconImg:[UIImage imageNamed:@"pic_born_login.png"]];
+    [goBirthViewButton adjustLayout];
     [goBirthViewButton addTarget:self action:@selector(goBirthView:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:goBirthViewButton];
-    
+    [goBirthViewButton setBackgroundColor:PMColor5];
+
     goPregnancyViewButton=[[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 255, 224)];
-    [goPregnancyViewButton setTitle:@"怀孕中" andImg:[UIImage imageNamed:@"pic_pre_login.png"] andButtonType:kButtonTypeThree];
-    [goPregnancyViewButton setTitleLabelColor:PMColor1];
+    [goPregnancyViewButton.title setText:@"怀孕中"];
+    [goPregnancyViewButton.title setTextColor:PMColor1];
+    [goPregnancyViewButton.title setFont:PMFont2];
+    [goPregnancyViewButton setIconImg:[UIImage imageNamed:@"pic_pre_login.png"]];
+    [goPregnancyViewButton adjustLayout];
     [goPregnancyViewButton addTarget:self action:@selector(goPregnancyView:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:goPregnancyViewButton];
-    
+    [goPregnancyViewButton setBackgroundColor:PMColor5];
+
     if ([[UserInfo sharedUserInfo] logined])
     {
         SetViewLeftUp(title, 0, 80);
@@ -72,19 +80,32 @@
         [self addSubview:relate];
         
         mother = [[AFTextImgButton alloc] initWithFrame:CGRectMake(80, 48, 256, 40)];
-        [mother setTitle:@"妈妈" andImg:[UIImage imageNamed:@"icon_mom_diary.png"] andButtonType:kButtonTypeTwo];
-        [mother setTitleLabelColor:PMColor1];
+        [mother.title setText:@"妈妈"];
+        [mother.title setTextColor:PMColor1];
+        [mother.title setFont:PMFont2];
+        [mother setIconImg:[UIImage imageNamed:@"icon_mom_diary.png"]];
+        [mother adjustLayout];
+        [mother setBackgroundColor:PMColor5];
         [mother addTarget:self action:@selector(motherSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:mother];
         
         father=[[AFTextImgButton alloc] initWithFrame:CGRectMake(368, 48, 256, 40)];
-        [father setTitle:@"爸爸" andImg:[UIImage imageNamed:@"icon_dad_diary.png"] andButtonType:kButtonTypeTwo];
-        [father setTitleLabelColor:PMColor1];
+        [father.title setText:@"爸爸"];
+        [father.title setTextColor:PMColor1];
+        [father.title setFont:PMFont2];
+        [father setIconImg:[UIImage imageNamed:@"icon_dad_diary.png"]];
+        [father adjustLayout];
+        [father setBackgroundColor:PMColor5];
         [father addTarget:self action:@selector(fatherSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:father];
+        
         AFTextImgButton *goLoginViewButton=[[AFTextImgButton alloc] initWithFrame:CGRectMake(80, 424, 544, 40)];
-        [goLoginViewButton setTitle:@"我已经有账号或邀请码" andImg:[UIImage imageNamed:@"tri_white_right.png"] andButtonType:kButtonTypeFour];
-        [goLoginViewButton setTitleLabelColor:[UIColor whiteColor]];
+        [goLoginViewButton.title setText:@"我已经有账号或邀请码"];
+        [goLoginViewButton.title setTextColor:[UIColor whiteColor]];
+        [goLoginViewButton.title setFont:PMFont2];
+        [goLoginViewButton setIconImg:[UIImage imageNamed:@"tri_white_right.png"]];
+        [goLoginViewButton adjustLayout];
+        [goLoginViewButton setBackgroundColor:PMColor6];
         [goLoginViewButton addTarget:self action:@selector(goLoginloadView:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:goLoginViewButton];
 
@@ -96,8 +117,8 @@
 - (void)motherSelected:(UIButton *)sender
 {
     [MobClick event:umeng_event_click label:@"Mother_LoginStartView"];
-    [mother selected];
-    [father unSelected];
+    [mother selectedButton];
+    [father unSelectedButton];
     _relation = Relate_mother;
     switch (stateSelf) {
         case State_birth:
@@ -117,8 +138,8 @@
 - (void)fatherSelected:(UIButton *)sender
 {
    [MobClick event:umeng_event_click label:@"Father_LoginStartView"];
-      [father  selected];
-      [mother  unSelected];
+      [father  selectedButton];
+      [mother  unSelectedButton];
       _relation = Relate_father;
       switch (stateSelf) {
         case State_birth:
@@ -149,8 +170,8 @@
         
             [MobClick event:umeng_event_click label:@"Birth_LoginStartView"];
                 stateSelf =State_birth;
-                [goBirthViewButton selected];
-                [goPregnancyViewButton unSelected];
+                [goBirthViewButton selectedButton];
+                [goPregnancyViewButton unSelectedButton];
                if ([[UserInfo sharedUserInfo] logined])
                 {
                  [_delegate selectLoginView:kLoginBirthRegisterView];
@@ -175,8 +196,8 @@
         
         [MobClick event:umeng_event_click label:@"Birth_LoginStartView"];
         stateSelf =State_birth;
-        [goBirthViewButton selected];
-        [goPregnancyViewButton unSelected];
+        [goBirthViewButton selectedButton];
+        [goPregnancyViewButton unSelectedButton];
         if ([[UserInfo sharedUserInfo] logined])
         {
             [_delegate selectLoginView:kLoginBirthRegisterView];
@@ -201,8 +222,8 @@
 - (void)goPregnancyView:(UIButton *)sender
 {
         [MobClick event:umeng_event_click label:@"Pregnancy_LoginStartView"];
-        [goPregnancyViewButton selected];
-        [goBirthViewButton unSelected];
+        [goPregnancyViewButton selectedButton];
+        [goBirthViewButton unSelectedButton];
         stateSelf =  State_pre;
         if ([[UserInfo sharedUserInfo] logined])
         {

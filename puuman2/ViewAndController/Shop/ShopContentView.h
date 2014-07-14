@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ShopMenuView.h"
-#import "BabyInfoPageControlButton.h"
+#import "ChangePageControlButton.h"
 #import "ShopShowContentView.h"
 
 @interface ShopContentView : UIScrollView<UIGestureRecognizerDelegate>
@@ -17,7 +17,7 @@
     ShopShowContentView *contentView;
     UIView *menuMask;
     ShopMenuView *menu;
-    BabyInfoPageControlButton *showAndHiddenBtn;
+    ChangePageControlButton *showAndHiddenBtn;
     NSTimer *_timerToFoldDrawer;
     BOOL menuShowed;
 

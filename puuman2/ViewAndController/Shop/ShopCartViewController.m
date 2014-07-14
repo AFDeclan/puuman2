@@ -34,23 +34,35 @@
 - (void)initWithContent
 {
     
-    cartShowBtn = [[ColorButton alloc] init];
-    [cartShowBtn initWithTitle:@"购物车"  andButtonType:kBlueLeftUp];
+    cartShowBtn = [[AFColorButton alloc] init];
+    [cartShowBtn.title setText:@"购物车" ];
+    [cartShowBtn setColorType:kColorButtonBlueColor];
+    [cartShowBtn setDirectionType:kColorButtonLeftUp];
+    [cartShowBtn resetColorButton];
     [cartShowBtn addTarget:self action:@selector(cartShowBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:cartShowBtn];
    
-    orderShowBtn= [[ColorButton alloc] init];
-    [orderShowBtn initWithTitle:@"订单"  andButtonType:kBlueLeftDown];
+    orderShowBtn= [[AFColorButton alloc] init];
+    [orderShowBtn.title setText:@"订单车" ];
+    [orderShowBtn setColorType:kColorButtonBlueColor];
+    [orderShowBtn setDirectionType:kColorButtonLeftDown];
+    [orderShowBtn resetColorButton];
     [orderShowBtn addTarget:self action:@selector(orderShowBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:orderShowBtn];
     
-    deleteBtn = [[ColorButton alloc] init];
-    [deleteBtn initWithTitle:@"删除"  andButtonType:kRedLeftUp];
+    deleteBtn = [[AFColorButton alloc] init];
+    [deleteBtn.title setText:@"删除" ];
+    [deleteBtn setColorType:kColorButtonRedColor];
+    [deleteBtn setDirectionType:kColorButtonLeftUp];
+    [deleteBtn resetColorButton];
     [deleteBtn addTarget:self action:@selector(deleteBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:deleteBtn];
     
-    orderBtn = [[ColorButton alloc] init];
-    [orderBtn initWithTitle:@"下单"  andButtonType:kBlueLeftDown];
+    orderBtn = [[AFColorButton alloc] init];
+    [orderBtn.title setText:@"下单" ];
+    [orderBtn setColorType:kColorButtonBlueColor];
+    [orderBtn setDirectionType:kColorButtonLeftDown];
+    [orderBtn resetColorButton];
     [orderBtn addTarget:self action:@selector(orderBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:orderBtn];
     

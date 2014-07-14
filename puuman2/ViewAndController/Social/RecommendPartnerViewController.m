@@ -46,12 +46,19 @@
     [recommentTable setShowsVerticalScrollIndicator:NO];
     [_content addSubview:recommentTable];
     
-    changeBtn = [[ColorButton alloc] init];
-    [changeBtn  initWithTitle:@"换一个"  andButtonType:kGrayLeftUp];
+    changeBtn = [[AFColorButton alloc] init];
+    [changeBtn.title setText:@"换一个"];
+    //[changeBtn adjustLayout];
+    [changeBtn setColorType:kColorButtonGrayColor];
+    [changeBtn setDirectionType:kColorButtonLeftUp];
+    [changeBtn resetColorButton];
     [changeBtn addTarget:self action:@selector(changed) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:changeBtn];
     
-    inviteBtn = [[ColorButton alloc] init];
+    inviteBtn = [[AFColorButton alloc] init];
+    [inviteBtn.title setText:@"邀请"];
+    //[inviteBtn adjustLayout];
+    [inviteBtn setColorType:kColorButtonBlueColor];
     [inviteBtn addTarget:self action:@selector(invite) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:inviteBtn];
     [inviteBtn setAlpha:0];
@@ -77,7 +84,8 @@
 
     sex_name = [[AFTextImgButton alloc] initWithFrame:CGRectMake(192, 224, 112, 40)];
     [_content addSubview:sex_name];
-    [sex_name setTitleLabelColor:PMColor6];
+    [sex_name.title setTextColor:PMColor6];
+    [sex_name setIconSize:CGSizeMake(24, 24)];
 
     info_my = [[UILabel alloc] initWithFrame:CGRectMake(432, 240, 144, 32)];
     [info_my setTextColor:PMColor3];
@@ -115,11 +123,14 @@
         [inviteBtn setAlpha:0];
     }
     [recommentTable reloadData];
+    [sex_name.title setText:[member babyInfo].Nickname];
+
     if ([[member babyInfo] Gender]) {
-        [sex_name setTitle:[member babyInfo].Nickname andImg:[UIImage imageNamed:@"icon_male_baby.png"] andButtonType:kButtonTypeSeven];
+        [sex_name setIconImg:[UIImage imageNamed:@"icon_male_baby.png"]];
     }else{
-        [sex_name setTitle:[member babyInfo].Nickname andImg:[UIImage imageNamed:@"icon_female_baby.png"] andButtonType:kButtonTypeSeven];
+        [sex_name setIconImg:[UIImage imageNamed:@"icon_female_baby.png"]];
     }
+    [sex_name adjustLayout];
     [portrait getImage:[[member babyInfo] PortraitUrl] defaultImage:@"pic_default_topic.png"];
      [recommentTable reloadData];
 }
@@ -225,12 +236,18 @@
     _recommend = recommend;
     if (recommend) {
         [changeBtn setAlpha:1];
-         [inviteBtn  initWithTitle:@"邀请" andButtonType:kBlueLeftDown];
+        [inviteBtn setDirectionType:kColorButtonLeftDown];
+        [inviteBtn resetColorButton];
         [inviteBtn setAlpha:1];
          SetViewLeftUp(inviteBtn, 592, 152);
     }else{
         [changeBtn setAlpha:0];
-        [inviteBtn  initWithTitle:@"邀请" andIcon:[UIImage imageNamed:@"icon_invite_topic.png"] andButtonType:kBlueLeft];
+        [inviteBtn setIconImg:[UIImage imageNamed:@"icon_invite_topic.png"]];
+        [inviteBtn setIconSize:CGSizeMake(16, 16)];
+        [inviteBtn adjustLayout];
+        [inviteBtn setDirectionType:kColorButtonLeft];
+        [inviteBtn resetColorButton];
+
         [inviteBtn setAlpha:1];
          SetViewLeftUp(inviteBtn, 592, 112);
     }

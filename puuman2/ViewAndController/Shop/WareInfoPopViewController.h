@@ -7,8 +7,8 @@
 //
 
 #import "CustomPopViewController.h"
-#import "AFSelecedTextImgButton.h"
-#import "ColorButton.h"
+#import "AFSelectedTextImgButton.h"
+#import "AFColorButton.h"
 #import "AFImageView.h"
 #import "SelectedButton.h"
 #import "WareInfoView.h"
@@ -23,10 +23,10 @@
     UILabel *wareName;
     UILabel *priceLabel;
     
-    AFSelecedTextImgButton *describeBtn;
-    AFSelecedTextImgButton *evaluateBtn;
-    ColorButton *shareBtn;
-    ColorButton *addToCart;
+    AFSelectedTextImgButton *describeBtn;
+    AFSelectedTextImgButton *evaluateBtn;
+    AFColorButton *shareBtn;
+    AFColorButton *addToCart;
     SelectedButton *addCountBtn;
     SelectedButton *reduceCountBtn;
     UILabel *changeCountLabel;

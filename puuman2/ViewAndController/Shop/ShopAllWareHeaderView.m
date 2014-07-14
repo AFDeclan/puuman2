@@ -29,8 +29,11 @@
         [wareLabel setTextColor:PMColor6];
         [self addSubview:wareLabel];
         
-        filtrateBtn = [[ColorButton alloc] init];
-        [filtrateBtn initWithTitle:@"筛选" andButtonType:kGrayLeft];
+        filtrateBtn = [[AFColorButton alloc] init];
+        [filtrateBtn.title setText:@"筛选"];
+        [filtrateBtn setColorType:kColorButtonGrayColor];
+        [filtrateBtn setDirectionType:kColorButtonLeft];
+        [filtrateBtn resetColorButton];
         [self addSubview:filtrateBtn];
         [filtrateBtn addTarget:self action:@selector(filtrate) forControlEvents:UIControlEventTouchUpInside];
 

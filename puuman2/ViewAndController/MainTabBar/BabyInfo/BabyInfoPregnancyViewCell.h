@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "AFImageView.h"
 #import "UIColumnView.h"
 #import "BabyInfoIconViewDelegate.h"

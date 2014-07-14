@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 
 @interface OrderWaresFooterView : UIView
 {
     UILabel *priceLabel;
     UILabel *infolabel;
-    ColorButton *selectedBtn;
+    AFColorButton *selectedBtn;
     UIButton *button;
 }
 @property(nonatomic,assign)NSInteger section;

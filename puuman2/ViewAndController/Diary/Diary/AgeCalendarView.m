@@ -63,12 +63,16 @@ static const float subDistanceOfY = 4;
     }
 
     _preBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 52, 64)];
-    [_preBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_gray_left.png"]  andButtonType:kButtonTypeSix];
+    [_preBtn setIconImg:[UIImage imageNamed:@"tri_gray_left.png"]];
+    [_preBtn setIconSize:CGSizeMake(16, 28)];
+    [_preBtn adjustLayout];
     [_preBtn addTarget:self action:@selector(preMonth) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_preBtn];
     
     _nextBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(188, 0, 52, 64)];
-    [_nextBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_gray_right.png"]  andButtonType:kButtonTypeSix];
+    [_preBtn setIconImg:[UIImage imageNamed:@"tri_gray_right.png"]];
+    [_preBtn setIconSize:CGSizeMake(16, 28)];
+    [_preBtn adjustLayout];
     [_nextBtn addTarget:self action:@selector(nextMonth) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_nextBtn];
     

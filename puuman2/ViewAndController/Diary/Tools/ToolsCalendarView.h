@@ -9,14 +9,14 @@
 #import "ToolsUnitView.h"
 #import "CalenderView.h"
 #import "AgeCalenderView.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 @interface ToolsCalendarView : ToolsUnitView
 {
     CalenderView *calender;
     AgeCalenderView *ageCalenderView;
-    ColorButton *ageBtn;
-    ColorButton *timeBtn;
+    AFColorButton *ageBtn;
+    AFColorButton *timeBtn;
     BOOL isAge;
 }
 @end

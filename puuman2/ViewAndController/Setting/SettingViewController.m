@@ -61,13 +61,18 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     [_content addSubview:settingTable];
     
     backBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 56, 48)];
-    [backBtn setTitle:nil andImg:[UIImage imageNamed:@"btn_back_set.png"] andButtonType:kButtonTypeNine];
+    [backBtn setIconImg:[UIImage imageNamed:@"btn_back_set.png"]];
+    [backBtn setIconSize:CGSizeMake(37, 18)];
+    [backBtn adjustLayout];
     [backBtn setBackgroundColor:[UIColor clearColor]];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:backBtn];
     
-    logOut = [[ColorButton alloc] init];
-    [logOut initWithTitle:@"注销登录" andButtonType:kRedLeft];
+    logOut = [[AFColorButton alloc] init];
+    [logOut.title setText:@"注销登录"];
+    [logOut setColorType:kColorButtonRedColor];
+    [logOut setDirectionType:kColorButtonLeft];
+    [logOut resetColorButton];
     [logOut addTarget:self action:@selector(logOutBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:logOut];
     
@@ -187,8 +192,12 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 248, 32)];
     
     AFTextImgButton *titleView = [[AFTextImgButton alloc] initWithFrame:CGRectMake(20, 0, 96, 32)];
-    [titleView setTitle:titles[section] andImg:[UIImage imageNamed:titleIcons[section]] andButtonType:kButtonTypeEight];
-    [titleView setTitleLabelColor:PMColor7];
+    [titleView.title setText:titles[section]];
+    [titleView.title setTextColor:PMColor7];
+    [titleView setIconImg:[UIImage imageNamed:titleIcons[section]]];
+    [titleView setIconSize:CGSizeMake(12, 12)];
+    [titleView adjustLayout];
+    [titleView setBackgroundColor:[UIColor clearColor]];
     [titleView setEnabled:NO];
     [headView addSubview:titleView];
     UIImageView *partLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 30, 248, 2)];

@@ -75,26 +75,42 @@
     [self addSubview:_pwdField];
     
     
-    _registerBtn = [[ColorButton alloc] init];
-    [_registerBtn initWithTitle:@"注册" andButtonType:kBlueLeft];
+    _registerBtn = [[AFColorButton alloc] init];
+    [_registerBtn.title setText:@"注册"];
+   // [_registerBtn adjustLayout];
+    [_registerBtn setColorType:kColorButtonBlueColor];
+    [_registerBtn setDirectionType:kColorButtonLeft];
+    [_registerBtn resetColorButton];
     [_registerBtn addTarget:self action:@selector(registerButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_registerBtn];
     SetViewLeftCenter(_registerBtn, 592, 443);
     
-    _loginBtn = [[ColorButton alloc] init];
-    [_loginBtn initWithTitle:@"登陆"  andButtonType:kBlueLeftDown];
+    _loginBtn = [[AFColorButton alloc] init];
+    [_loginBtn.title setText:@"登陆"];
+    // [_loginBtn adjustLayout];
+    [_loginBtn setColorType:kColorButtonBlueColor];
+    [_loginBtn setDirectionType:kColorButtonLeftDown];
+    [_loginBtn resetColorButton];
     [_loginBtn addTarget:self action:@selector(loginButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_loginBtn];
      SetViewLeftCenter(_loginBtn, 592, 443);
     
-    _resetPwdBtn = [[ColorButton alloc] init];
-    [_resetPwdBtn initWithTitle:@"  忘记密码？" andButtonType:kGrayLeft];
+    _resetPwdBtn = [[AFColorButton alloc] init];
+    [_resetPwdBtn.title setText:@"  忘记密码？"];
+    // [_resetPwdBtn adjustLayout];
+    [_resetPwdBtn setColorType:kColorButtonGrayColor];
+    [_resetPwdBtn setDirectionType:kColorButtonLeft];
+    [_resetPwdBtn resetColorButton];
     [_resetPwdBtn addTarget:self action:@selector(forgetBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_resetPwdBtn];
      SetViewLeftCenter(_resetPwdBtn, 592, 331);
     
-    _inviteCodeBtn = [[ColorButton alloc ]init];
-    [_inviteCodeBtn initWithTitle:@"我有邀请码" andButtonType:kRedLeftUp];
+    _inviteCodeBtn = [[AFColorButton alloc ]init];
+    [_inviteCodeBtn.title setText:@"我有邀请码"];
+    // [_resetPwdBtn adjustLayout];
+    [_inviteCodeBtn setColorType:kColorButtonRedColor];
+    [_inviteCodeBtn setDirectionType:kColorButtonLeftUp];
+    [_inviteCodeBtn resetColorButton];
     [_inviteCodeBtn addTarget:self action:@selector(inviteBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_inviteCodeBtn];
     _hasInviteCode = NO;
@@ -148,7 +164,8 @@
             _userField.placeholder = @"输入您的邀请码";
             _passwordLabel.text = @"设置密码";
             _inviteCodeLabel.text = @"我没有邀请码";
-            [_inviteCodeBtn initWithTitle:@"我没有邀请码" andButtonType:kRedLeftUp];
+            [_inviteCodeBtn.title setText:@"我没有邀请码"];
+            [_inviteCodeBtn adjustLayout];
             [_loginBtn setImage:[UIImage imageNamed:@"btn_reg_login_diary.png"] forState:UIControlStateNormal];
             UILabel *title = (UILabel *)[self viewWithTag:10];
             [title setText:@"用邀请码注册您的扑满日记账号吧！"];
@@ -156,7 +173,8 @@
         }
         else
         {
-              [_inviteCodeBtn initWithTitle:@"我有邀请码" andButtonType:kRedLeftUp];
+            [_inviteCodeBtn.title setText:@"我有邀请码"];
+            [_inviteCodeBtn adjustLayout];
             _userNameLabel.text = @"用户名";
             _userField.placeholder = @"常用邮箱或手机";
             _passwordLabel.text = @"密码";

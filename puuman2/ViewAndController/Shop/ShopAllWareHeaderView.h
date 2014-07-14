@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 @interface ShopAllWareHeaderView : UIView
 {
     UIImageView *icon_ware;
     UILabel *wareLabel;
-    ColorButton *filtrateBtn;
+    AFColorButton *filtrateBtn;
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

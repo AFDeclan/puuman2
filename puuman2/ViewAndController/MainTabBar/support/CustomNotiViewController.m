@@ -41,7 +41,7 @@
     [notiView setEnabled:NO];
     [notiView setBackgroundColor:[UIColor clearColor]];
     [_content addSubview:notiView];
-    [notiView unSelected];
+    [notiView unSelectedButton];
   
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
@@ -96,21 +96,30 @@
 
 - (void)initWithTitle:(NSString *)title andStyle:(NotiTypeStyle)typeStyle
 {
+    [notiView.title setText:title];
+    [notiView.title setFont:PMFont2];
+    [notiView.title setTextColor:[UIColor whiteColor]];
+    [notiView setBackgroundColor:[UIColor clearColor]];
+
     switch (typeStyle) {
         case kNotiTypeStyleRight:
-            [notiView setTitle:title andImg:[UIImage imageNamed:@"check_status.png"] andButtonType:kButtonTypeFive];
-            [notiView setBackgroundColor:[UIColor clearColor]];
-            [notiView setTitleLabelColor:[UIColor whiteColor]];
+        {
+            [notiView setBackgroundColor:[UIColor whiteColor]];
+            [notiView setIconImg:[UIImage imageNamed:@"check_status.png"]];
+        }
+          
             break;
         case kNotiTypeStyleNone:
-            [notiView setTitle:title andImg:nil andButtonType:kButtonTypeTwo];
-            [notiView setBackgroundColor:[UIColor clearColor]];
-             [notiView setTitleLabelColor:[UIColor whiteColor]];
+        {
+            [notiView setIconImg:nil];
+            [notiView setBackgroundColor:PMColor5];
+
+        }
             break;
         default:
             break;
     }
-   
+    [notiView adjustLayout];
     
 }
 

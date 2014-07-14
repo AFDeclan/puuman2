@@ -37,7 +37,6 @@
     float progress;
     NSString *videoPath;
     PuuamnShowView *puumanView;
-    
     BabyView *infoView;
     BabyShowButton *babyShowBtn;
     UIButton *babyInfoBtn;

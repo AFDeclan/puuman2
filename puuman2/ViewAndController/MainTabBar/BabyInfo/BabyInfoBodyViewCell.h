@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "BabyInfoIconViewDelegate.h"
-#import "BabyInfoPageControlButton.h"
+#import "ChangePageControlButton.h"
 #import "ShareSelectedViewController.h"
 
 @interface BabyInfoBodyViewCell : UITableViewCell<UITableViewDelegate,UITableViewDataSource,BabyInfoIconViewDelegate,ShareViewDelegate>
@@ -18,12 +18,12 @@
     UITableView *dataTable;
     UIView *emptyView;
     UITableView *_lineChartView;
-    ColorButton *addDataBtn;
-    ColorButton *shareBtn;
+    AFColorButton *addDataBtn;
+    AFColorButton *shareBtn;
     UILabel *noti_label;
     UIView  *leftView;
     UIView  *rightView;
-    BabyInfoPageControlButton *showAndHiddenBtn;
+    ChangePageControlButton *showAndHiddenBtn;
     UIButton *rightBtn;
     SocialType shareType;
     UIView *lineView;

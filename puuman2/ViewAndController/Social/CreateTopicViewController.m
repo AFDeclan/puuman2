@@ -44,8 +44,12 @@
 //    [instructionBtn  initWithTitle:@"说明" andIcon:[UIImage imageNamed:@"icon_info_diary.png"] andButtonType:kGrayLeftUp];
 //    [instructionBtn addTarget:self action:@selector(instruction) forControlEvents:UIControlEventTouchUpInside];
 //    [_content  addSubview:instructionBtn];
-    createBtn = [[ColorButton alloc] init];
-    [createBtn  initWithTitle:@"发起" andIcon:[UIImage imageNamed:@"icon_start_topic.png"] andButtonType:kBlueLeftDown];
+    createBtn = [[AFColorButton alloc] init];
+    [createBtn.title setText:@"发起"];
+    [createBtn setIconImg:[UIImage imageNamed:@"icon_start_topic.png"]];
+    [createBtn setColorType:kColorButtonBlueColor];
+    [createBtn setDirectionType:kColorButtonLeftDown];
+    [createBtn resetColorButton];
     [createBtn addTarget:self action:@selector(createTopic) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:createBtn];
     SetViewLeftUp(instructionBtn, 592, 256);

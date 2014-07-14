@@ -35,7 +35,10 @@
         [votedNum_label setTextAlignment:NSTextAlignmentRight];
 
         [self.contentView addSubview:votedNum_label];
-        voteBtn = [[ColorButton alloc] init];
+        voteBtn = [[AFColorButton alloc] init];
+        [voteBtn setColorType:kColorButtonGrayColor];
+        [voteBtn setDirectionType:kColorButtonLeft];
+        [voteBtn resetColorButton];
         SetViewLeftUp(voteBtn, 496, 44);
         [voteBtn addTarget:self action:@selector(voted) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:voteBtn];
@@ -64,9 +67,9 @@
     [infoView setInfoWithUid:voteTopic.TUploadUID andIsTopic:NO];
    [votedNum_label setText:[NSString stringWithFormat:@"%d票",voteTopic.voteCnt]];
     if (voteTopic.voted) {
-        [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
+        [voteBtn.title setText:@"已经投了"];
     }else{
-        [voteBtn initWithTitle:@"投Ta一票" andButtonType:kGrayLeft];
+        [voteBtn.title setText:@"投Ta一票"];
     }
     [votingTopic_label setText:votingTopic.TTitle];
 
@@ -85,7 +88,7 @@
         return;
     }
         [votedNum_label setText:[NSString stringWithFormat:@"%d票",topic.voteCnt]];
-        [voteBtn initWithTitle:@"已经投了" andButtonType:kGrayLeft];
+        [voteBtn.title setText:@"已经投了"];
 
 }
 

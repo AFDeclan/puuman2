@@ -61,8 +61,11 @@
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [settingButton addSubview:titleLabel];
     
-    modify = [[ColorButton alloc] init];
-    [modify initWithTitle:@"修改" andButtonType:kBlueLeft];
+    modify = [[AFColorButton alloc] init];
+    [modify.title setText:@"修改"];
+    [modify setColorType:kColorButtonBlueColor];
+    [modify setDirectionType:kColorButtonLeft];
+    [modify resetColorButton];
     [self addSubview:modify];
     [modify addTarget:self action:@selector(modify:) forControlEvents:UIControlEventTouchUpInside];
     SetViewLeftUp(modify, 560, 4);
