@@ -50,13 +50,15 @@
     [ageBtn resetColorButton];
     [ageBtn addTarget:self action:@selector(selectedAge) forControlEvents:UIControlEventTouchUpInside];
     [content addSubview:ageBtn];
+    
     timeBtn = [[AFColorButton alloc] init];
     [timeBtn.title setText:@"按时间"];
     [timeBtn setColorType:kColorButtonBlueColor];
-    [timeBtn setDirectionType:kColorButtonLeft];
+    [timeBtn setDirectionType:kColorButtonRight];
     [timeBtn resetColorButton];
     [timeBtn addTarget:self action:@selector(selectedTime) forControlEvents:UIControlEventTouchUpInside];
     [content addSubview:timeBtn];
+    
     SetViewLeftUp(ageBtn, 8, 286);
     SetViewLeftUp(timeBtn, 120, 286);
     [self selectedAge];

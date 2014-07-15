@@ -71,15 +71,15 @@
     [evaluationView setBackgroundColor:PMColor5];
     [evaluationView setAlpha:0];
 
-    describeBtn = [[AFSelectedTextImgButton alloc] initWithFrame:CGRectMake(640, 112, 64, 96)];
+    describeBtn = [[AFSelectedImgButton alloc] initWithFrame:CGRectMake(640, 112, 64, 96)];
     [describeBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"]];
     [describeBtn setUnSelectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
     [describeBtn addTarget:self action:@selector(describeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:describeBtn];
     
-    evaluateBtn = [[AFSelectedTextImgButton alloc] initWithFrame:CGRectMake(640, 208, 64, 96)];
-    [describeBtn setSelectedImg:[UIImage imageNamed:@"btn_all1_shop.png"]];
-    [describeBtn setUnSelectedImg:[UIImage imageNamed:@"btn_all2_shop.png"]];
+    evaluateBtn = [[AFSelectedImgButton alloc] initWithFrame:CGRectMake(640, 208, 64, 96)];
+    [evaluateBtn setSelectedImg:[UIImage imageNamed:@"btn_all1_shop.png"]];
+    [evaluateBtn setUnSelectedImg:[UIImage imageNamed:@"btn_all2_shop.png"]];
     [evaluateBtn addTarget:self action:@selector(evaluateBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:evaluateBtn];
 

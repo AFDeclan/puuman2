@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AFColorButton.h"
-#import "AFSelectedTextImgButton.h"
+#import "AFSelectedImgButton.h"
 #import "SocialContentView.h"
 
 @interface SocialViewController : UIViewController
@@ -17,8 +17,8 @@
     UIImageView *bg_rightImageView;
     AFColorButton *leftBtn;
     AFColorButton *rightBtn;
-    AFSelectedTextImgButton *topicBtn;
-    AFSelectedTextImgButton *partnerBtn;
+    AFSelectedImgButton *topicBtn;
+    AFSelectedImgButton *partnerBtn;
     SocialContentView *contnetView;
     BOOL selectedTopic;
 

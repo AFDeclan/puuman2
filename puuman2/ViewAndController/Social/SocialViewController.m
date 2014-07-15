@@ -87,20 +87,26 @@
     contnetView = [[SocialContentView alloc] init];
     [self.view addSubview:contnetView];
     leftBtn = [[AFColorButton alloc] init];
-    
+    [leftBtn setColorType:kColorButtonBlueColor];
+    [leftBtn setDirectionType:kColorButtonLeft];
+    [leftBtn resetColorButton];
     [leftBtn addTarget:self action:@selector(leftBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftBtn];
     
     rightBtn = [[AFColorButton alloc] init];
+    [rightBtn setColorType:kColorButtonBlueColor];
+    [rightBtn setDirectionType:kColorButtonRight];
+    [rightBtn resetColorButton];
     [rightBtn addTarget:self action:@selector(rightBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rightBtn];
-    topicBtn = [[AFSelectedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
+    
+    topicBtn = [[AFSelectedImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
     [topicBtn setSelectedImg:[UIImage imageNamed:@"btn_topic1_topic.png"]];
     [topicBtn setUnSelectedImg:[UIImage imageNamed:@"btn_topic2_topic.png"]];
     [topicBtn addTarget:self action:@selector(topicBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:topicBtn];
     
-    partnerBtn = [[AFSelectedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
+    partnerBtn = [[AFSelectedImgButton alloc] initWithFrame:CGRectMake(0, 0, 64, 96)];
     [partnerBtn setSelectedImg:[UIImage imageNamed:@"btn_partner1_topic.png"]];
     [partnerBtn setUnSelectedImg:[UIImage imageNamed:@"btn_partner2_topic.png"]];
     [partnerBtn addTarget:self action:@selector(partnerBtnPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -118,6 +124,8 @@
     [partnerBtn unSelected];
     [leftBtn.title setText:@"所有"];
     [rightBtn.title setText:@"我参与的"];
+    [leftBtn adjustLayout];
+    [rightBtn adjustLayout];
     [self leftBtnPressed];
 
     
@@ -133,7 +141,8 @@
     [partnerBtn selected];
     [leftBtn.title setText:@"数据"];
     [rightBtn.title setText:@"闲聊"];
-
+    [leftBtn adjustLayout];
+    [rightBtn adjustLayout];
     [self leftBtnPressed];
 
 }

@@ -20,12 +20,30 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.adjustsImageWhenDisabled = NO;
+        
+        
     }
     return self;
 }
 
+- (void)setSelectedImg:(UIImage *)selectedImg
+{
+    _selectedImg = selectedImg;
+    [self setIconImg:_selectedImg];
+}
+
+- (void)setUnSelectedImg:(UIImage *)unSelectedImg
+{
+    _unSelectedImg = unSelectedImg;
+    [self setIconImg:_unSelectedImg];
+
+}
+
+
 - (void)selected
 {
+    self.enabled = NO;
     [self setIconImg:_selectedImg];
     [self.title setTextColor:_selectedColor];
     [self setBackgroundColor:PMColor6];
@@ -33,6 +51,7 @@
 
 - (void)unSelected
 {
+    self.enabled = YES;
     [self setIconImg:_unSelectedImg];
     [self.title setTextColor:_unSelectedColor];
     [self setBackgroundColor:[UIColor clearColor]];

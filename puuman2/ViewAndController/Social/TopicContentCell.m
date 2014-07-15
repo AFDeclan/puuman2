@@ -90,7 +90,7 @@
     [initiateBtn setIconImg:[UIImage imageNamed:@"icon_start_topic.png"]];
     [initiateBtn setIconSize:CGSizeMake(16, 16)];
     [initiateBtn setColorType:kColorButtonBlueColor];
-    [initiateBtn setDirectionType:kColorButtonLeftDown];
+    [initiateBtn setDirectionType:kColorButtonLeft];
     [initiateBtn resetColorButton];
     [initiateBtn addTarget:self action:@selector(initiate) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:initiateBtn];
@@ -106,20 +106,28 @@
     right_sortBtn = [[AFSelectedTextImgButton alloc] initWithFrame:CGRectMake(304, 0, 304, 24)];
     [right_sortBtn addTarget:self action:@selector(rightSortSelected) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:right_sortBtn];
+    [right_sortBtn setIconSize:CGSizeMake(12, 12)];
+    [right_sortBtn setUnSelectedColor:PMColor6];
+    [right_sortBtn setSelectedColor:[UIColor whiteColor]];
+    [right_sortBtn adjustLayout];
     
     left_sortBtn = [[AFSelectedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 304, 24)];
     [left_sortBtn addTarget:self action:@selector(leftSortSelected) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:left_sortBtn];
-    
+    [left_sortBtn setIconSize:CGSizeMake(12, 12)];
+    [left_sortBtn setSelectedColor:[UIColor whiteColor]];
+    [left_sortBtn setUnSelectedColor:PMColor6];
+    [left_sortBtn adjustLayout];
+
     leftBtn = [[TopicSelectButton alloc] init];
     [leftBtn addTarget:self action:@selector(preTopic) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:leftBtn];
     [leftBtn setDirection:NO];
+    
     rightBtn = [[TopicSelectButton alloc] init];
     [rightBtn addTarget:self action:@selector(nextTopic) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:rightBtn];
     [rightBtn setDirection:YES];
-    
     
     status = TopicStatus_On;
 
@@ -277,14 +285,17 @@
         [info_title setTextColor:PMColor6];
         [info_upload setText:@"发起或投票选出你最喜欢的话题吧！"];
         [topicAllVC setVoting:YES];
+        
         [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"]];
         [right_sortBtn setUnSelectedImg:[UIImage imageNamed:@"icon_like2_topic.png"]];
         [right_sortBtn.title setText:@"最多投票"];
         [right_sortBtn adjustLayout];
+        
         [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"]];
         [left_sortBtn setUnSelectedImg:[UIImage imageNamed:@"icon_time2_topic.png"]];
         [left_sortBtn.title setText:@"最新发起"];
         [left_sortBtn adjustLayout];
+        
         [self leftSortSelected];
         if([MainTabBarController sharedMainViewController].isVertical)
         {

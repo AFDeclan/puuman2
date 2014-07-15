@@ -35,7 +35,7 @@
     [content setFrame:CGRectMake(0, 0, 240, 288+64)];
 
 
-    joinView = [[JoinView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    joinView = [[JoinView alloc] initWithFrame:CGRectMake(0, 0,240,288+64)];
     [content addSubview:joinView];
     [joinView refreshStaus];
 

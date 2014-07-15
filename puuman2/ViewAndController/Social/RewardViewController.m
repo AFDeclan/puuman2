@@ -94,7 +94,7 @@
     [empty_rank setAlpha:0];
     
     createBtn = [[AFColorButton alloc] init];
-    [createBtn.title setText:@"取消订单"];
+    [createBtn.title setText:@"参与"];
     [createBtn setIconImg:[UIImage imageNamed:@"icon_start_topic.png"]];
     [createBtn setIconSize:CGSizeMake(16, 16)];
     [createBtn adjustLayout];

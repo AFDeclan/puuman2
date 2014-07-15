@@ -18,7 +18,6 @@ static NSString *backgroundColorImages[3][6] = {
 @implementation AFColorButton
 @synthesize colorType = _colorType;
 @synthesize directionType = _directionType;
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -27,6 +26,7 @@ static NSString *backgroundColorImages[3][6] = {
         _colorType = kColorButtonBlueColor;
         _directionType = kColorButtonLeft;
         [self.title setFont:PMFont2];
+        [self.title setTextColor:[UIColor whiteColor]];
 
     }
     return self;
@@ -37,19 +37,26 @@ static NSString *backgroundColorImages[3][6] = {
     return [self initWithFrame:CGRectMake(0, 0, 112, 40)];
 }
 
-- (void)resetColorButton
+- (void)setColorType:(ColorButtonColorType)colorType
 {
-
-    [self adjustLayout];
-    [self setImage:[UIImage imageNamed:backgroundColorImages[_colorType][_directionType]] forState:UIControlStateNormal];
-    if (_colorType == kColorButtonGrayColor) {
-        [self.title setTextColor:PMColor2];
+    _colorType = colorType;
+    if (colorType == kColorButtonGrayColor) {
+        [self.title setTextColor:PMColor1];
+        self.selectedColor = [UIColor whiteColor];
+        self.unSelectedColor = PMColor1;
 
     }else{
         [self.title setTextColor:[UIColor whiteColor]];
-
-
+        self.selectedColor = [UIColor whiteColor];
+        self.unSelectedColor = PMColor6;
     }
+    
+}
+- (void)resetColorButton
+{
+    [self adjustLayout];
+    [self setImage:[UIImage imageNamed:backgroundColorImages[_colorType][_directionType]] forState:UIControlStateNormal];
+  
 }
 
 - (void)selected

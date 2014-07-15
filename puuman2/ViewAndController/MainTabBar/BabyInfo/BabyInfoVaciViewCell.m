@@ -310,7 +310,8 @@
 -(void)animateWithVaccineView{
     
     NSInteger startIndex = [[BabyData sharedBabyData] startAtIndex];
-    
+    [self selectAtIndex:startIndex];
+
     NSLog(@"%d",[[BabyData sharedBabyData] vaccineCount]);
     startIndex =  (startIndex*96 - ViewHeight(dataTable)/2)/96;
     startIndex = startIndex < 0 ? 0:startIndex;
@@ -320,7 +321,6 @@
     [UIView animateWithDuration:0.5 animations:^{
         [dataTable setContentOffset:CGPointMake(0, startIndex*96)];
     }];
-    
 }
 
 - (void)selectAtIndex:(NSInteger)index

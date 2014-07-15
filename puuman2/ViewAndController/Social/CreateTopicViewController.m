@@ -48,7 +48,7 @@
     [createBtn.title setText:@"发起"];
     [createBtn setIconImg:[UIImage imageNamed:@"icon_start_topic.png"]];
     [createBtn setColorType:kColorButtonBlueColor];
-    [createBtn setDirectionType:kColorButtonLeftDown];
+    [createBtn setDirectionType:kColorButtonLeft];
     [createBtn resetColorButton];
     [createBtn addTarget:self action:@selector(createTopic) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:createBtn];

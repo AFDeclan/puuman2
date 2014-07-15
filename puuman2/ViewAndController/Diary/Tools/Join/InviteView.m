@@ -75,10 +75,10 @@
      [relateNum setPlaceholder:@"输入对方的邮箱或电话号"];
      [self addSubview:relateNum];
      inviteBtn = [[AFColorButton alloc] init];
-    [inviteBtn.title setText:@"邀请"];
-    [inviteBtn setColorType:kColorButtonBlueColor];
-    [inviteBtn setDirectionType:kColorButtonLeft];
-    [inviteBtn resetColorButton];
+     [inviteBtn.title setText:@"邀请"];
+     [inviteBtn setColorType:kColorButtonBlueColor];
+     [inviteBtn setDirectionType:kColorButtonLeft];
+     [inviteBtn resetColorButton];
      SetViewLeftUp(inviteBtn, 128, 144);
      [inviteBtn addTarget:self action:@selector(invite:) forControlEvents:UIControlEventTouchUpInside];
      [self addSubview:inviteBtn];

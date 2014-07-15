@@ -71,6 +71,7 @@
     }else{
         [voteBtn.title setText:@"投Ta一票"];
     }
+    [voteBtn adjustLayout];
     [votingTopic_label setText:votingTopic.TTitle];
 
 }
