@@ -8,6 +8,7 @@
 
 #import "CustomPopViewController.h"
 #import "ColorButton.h"
+#import "Ware.h"
 
 @interface PaidViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource>
 {
@@ -15,5 +16,18 @@
     ColorButton *leftBtn;
     ColorButton *rightBtn;
     UILabel *priceLabel;
+    UIView *goldView ;
+    UIView *usePumanView;
+    UIView *usingPumanView;
+    UIView *modifyPumanView;
+    int goldCount ;
+    UIButton *reduceCountBtn;
+    UIButton *addCountBtn;
+    UILabel *changeCountLabel;
+    int count;
+    UILabel *modifyLabel;
+    UIView *modifyView;
+    
+   
 }
 @end

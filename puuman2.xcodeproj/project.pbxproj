@@ -757,6 +757,7 @@
 		88B2829219542033006641AC /* coin_diary_noreceive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2829019542033006641AC /* coin_diary_noreceive.png */; };
 		88B2829319542033006641AC /* coin_diary_receive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2829119542033006641AC /* coin_diary_receive.png */; };
 		88B29778196A95E40050EDE2 /* baby_born_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B29777196A95E40050EDE2 /* baby_born_background.png */; };
+		88B2E5781973D6CF0095504B /* icon_gold_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2E5771973D6CF0095504B /* icon_gold_image.png */; };
 		88B3AE93196E3A4800955499 /* btn_cart_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AE92196E3A4800955499 /* btn_cart_shop.png */; };
 		88B3AF6E1932E3B800FAB2A0 /* SinglePhotoTopicVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */; };
 		88B515A4192F4AE1006A79AB /* CutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515A3192F4AE1006A79AB /* CutViewController.m */; };
@@ -790,6 +791,8 @@
 		88B5160C192F52EE006A79AB /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515EA192F52EE006A79AB /* UIImage+Scale.m */; };
 		88B5160D192F52EE006A79AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EC192F52EE006A79AB /* libMobClickLibrary.a */; };
 		88B51611192F558E006A79AB /* AFSelecedTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */; };
+		88C163591974CE0A00F86DD1 /* img_add_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C163571974CE0A00F86DD1 /* img_add_count.png */; };
+		88C1635A1974CE0A00F86DD1 /* img_reduce_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C163581974CE0A00F86DD1 /* img_reduce_count.png */; };
 		88C965A5196293B80058B842 /* line_right_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C965A3196293B80058B842 /* line_right_babyInfo.png */; };
 		88C965A6196293B80058B842 /* line_left_babyinfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C965A4196293B80058B842 /* line_left_babyinfo.png */; };
 		88C965AB19629FAC0058B842 /* icon_weight_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C965A719629FAC0058B842 /* icon_weight_babyInfo.png */; };
@@ -1869,6 +1872,7 @@
 		88B2829019542033006641AC /* coin_diary_noreceive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_noreceive.png; sourceTree = "<group>"; };
 		88B2829119542033006641AC /* coin_diary_receive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_receive.png; sourceTree = "<group>"; };
 		88B29777196A95E40050EDE2 /* baby_born_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_born_background.png; sourceTree = "<group>"; };
+		88B2E5771973D6CF0095504B /* icon_gold_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_gold_image.png; sourceTree = "<group>"; };
 		88B3AE92196E3A4800955499 /* btn_cart_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_cart_shop.png; sourceTree = "<group>"; };
 		88B515A2192F4AE1006A79AB /* CutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutViewController.h; sourceTree = "<group>"; };
 		88B515A3192F4AE1006A79AB /* CutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutViewController.m; sourceTree = "<group>"; };
@@ -1933,6 +1937,8 @@
 		88B5160F192F558E006A79AB /* AFSelecedTextImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSelecedTextImgButton.h; sourceTree = "<group>"; };
 		88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSelecedTextImgButton.m; sourceTree = "<group>"; };
 		88B794BE1964F6D5000B3406 /* BabyInfoIconViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BabyInfoIconViewDelegate.h; sourceTree = "<group>"; };
+		88C163571974CE0A00F86DD1 /* img_add_count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_add_count.png; sourceTree = "<group>"; };
+		88C163581974CE0A00F86DD1 /* img_reduce_count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_reduce_count.png; sourceTree = "<group>"; };
 		88C965A3196293B80058B842 /* line_right_babyInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line_right_babyInfo.png; sourceTree = "<group>"; };
 		88C965A4196293B80058B842 /* line_left_babyinfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line_left_babyinfo.png; sourceTree = "<group>"; };
 		88C965A719629FAC0058B842 /* icon_weight_babyInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_weight_babyInfo.png; sourceTree = "<group>"; };
@@ -2820,6 +2826,9 @@
 		54AC20C318E3FD1F001C1357 /* ShopImages */ = {
 			isa = PBXGroup;
 			children = (
+				88C163571974CE0A00F86DD1 /* img_add_count.png */,
+				88C163581974CE0A00F86DD1 /* img_reduce_count.png */,
+				88B2E5771973D6CF0095504B /* icon_gold_image.png */,
 				54CC76E5196FBF8800373B35 /* btn_heat_shop.png */,
 				54CC76E6196FBF8800373B35 /* btn_heat_shop1.png */,
 				54CC76E7196FBF8800373B35 /* btn_price_shop.png */,
@@ -4223,6 +4232,7 @@
 				544419F218D3EE2D00FBE69F /* pic3_equip_baby.png in Resources */,
 				54CE116718C1C7BF00966396 /* btn_close2.png in Resources */,
 				54B4684B18E527D700745F72 /* icon_diaper_shop.png in Resources */,
+				88B2E5781973D6CF0095504B /* icon_gold_image.png in Resources */,
 				5403CD3D18D03D39004CAE22 /* icon16_weather_diary@2x.png in Resources */,
 				5403CD4618D03D39004CAE22 /* icon3_weather_diary.png in Resources */,
 				541970B018D188F40058FE64 /* pic2_bank_blank.png in Resources */,
@@ -4299,6 +4309,7 @@
 				54B6F40A18D6A5030055FC72 /* icon_check_set.png in Resources */,
 				54AC20F018E3FD30001C1357 /* icon2_diaper_shop.png in Resources */,
 				5403CD4F18D03D39004CAE22 /* icon7_weather_diary@2x.png in Resources */,
+				88C1635A1974CE0A00F86DD1 /* img_reduce_count.png in Resources */,
 				54F1D12A18C48FA50005CDD9 /* block_photo__h_diary.png in Resources */,
 				54B97E5218FA2B1E00B6C4C9 /* icon1_insure_shop.png in Resources */,
 				54D1500218CAEFD70022E1F4 /* pic_timeline_diary.png in Resources */,
@@ -4415,6 +4426,7 @@
 				544419F418D3F42900FBE69F /* pic_default_baby_ware.png in Resources */,
 				54AC20E418E3FD30001C1357 /* btn_rec1_shop.png in Resources */,
 				5463759A18C98493004B11EF /* tri_white_right.png in Resources */,
+				88C163591974CE0A00F86DD1 /* img_add_count.png in Resources */,
 				54B97E4918FA2B1E00B6C4C9 /* pic36_insure_shop.png in Resources */,
 				54B97E5A18FA2B1E00B6C4C9 /* ear_insure_shop.png in Resources */,
 				88C9A944196147E300C25347 /* circle_photo_babyInfo.png in Resources */,
