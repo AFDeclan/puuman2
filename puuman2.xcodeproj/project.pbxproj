@@ -656,6 +656,8 @@
 		54C9C96A19751386009BACE3 /* btn_gray5.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C9C96719751386009BACE3 /* btn_gray5.png */; };
 		54C9C96B19751386009BACE3 /* btn_gray6.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C9C96819751386009BACE3 /* btn_gray6.png */; };
 		54C9C96E197516E9009BACE3 /* AFSelectedImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C9C96D197516E9009BACE3 /* AFSelectedImgButton.m */; };
+		54C9C97219752848009BACE3 /* LocationSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C9C97119752848009BACE3 /* LocationSelectedView.m */; };
+		54C9C97819752BA7009BACE3 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C9C97719752BA7009BACE3 /* LocationCell.m */; };
 		54CB2A3D19626309005EBD3F /* MenuTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A3C19626309005EBD3F /* MenuTitleButton.m */; };
 		54CB2A4019629F2D005EBD3F /* ShopMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A3F19629F2D005EBD3F /* ShopMenuCell.m */; };
 		54CB2A4B1962A930005EBD3F /* DetailSortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A481962A930005EBD3F /* DetailSortTableViewCell.m */; };
@@ -1758,6 +1760,10 @@
 		54C9C96819751386009BACE3 /* btn_gray6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_gray6.png; sourceTree = "<group>"; };
 		54C9C96C197516E9009BACE3 /* AFSelectedImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSelectedImgButton.h; sourceTree = "<group>"; };
 		54C9C96D197516E9009BACE3 /* AFSelectedImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSelectedImgButton.m; sourceTree = "<group>"; };
+		54C9C97019752848009BACE3 /* LocationSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSelectedView.h; sourceTree = "<group>"; };
+		54C9C97119752848009BACE3 /* LocationSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSelectedView.m; sourceTree = "<group>"; };
+		54C9C97619752BA7009BACE3 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		54C9C97719752BA7009BACE3 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		54CB2A3B19626309005EBD3F /* MenuTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTitleButton.h; sourceTree = "<group>"; };
 		54CB2A3C19626309005EBD3F /* MenuTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTitleButton.m; sourceTree = "<group>"; };
 		54CB2A3E19629F2D005EBD3F /* ShopMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopMenuCell.h; sourceTree = "<group>"; };
@@ -3573,8 +3579,20 @@
 			children = (
 				54C038DF1963FBAD00BBC1E6 /* PaidViewController.h */,
 				54C038E01963FBAD00BBC1E6 /* PaidViewController.m */,
+				54C9C96F197526FD009BACE3 /* subView */,
 			);
 			name = Paid;
+			sourceTree = "<group>";
+		};
+		54C9C96F197526FD009BACE3 /* subView */ = {
+			isa = PBXGroup;
+			children = (
+				54C9C97019752848009BACE3 /* LocationSelectedView.h */,
+				54C9C97119752848009BACE3 /* LocationSelectedView.m */,
+				54C9C97619752BA7009BACE3 /* LocationCell.h */,
+				54C9C97719752BA7009BACE3 /* LocationCell.m */,
+			);
+			name = subView;
 			sourceTree = "<group>";
 		};
 		54CB2A4D1962C76B005EBD3F /* Cart&Order */ = {
@@ -4775,6 +4793,7 @@
 				54B592F1196E4B0600D33DC0 /* AgeBornPreTableViewCell.m in Sources */,
 				54B4682D18E5213700745F72 /* InsuranceCell.m in Sources */,
 				54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */,
+				54C9C97819752BA7009BACE3 /* LocationCell.m in Sources */,
 				544419F918D40EE800FBE69F /* PuumanRulesViewController.m in Sources */,
 				54D14FD918CACC720022E1F4 /* CustomPopViewController.m in Sources */,
 				54AFBBCB18D6938600861A69 /* SelectButton.m in Sources */,
@@ -4992,6 +5011,7 @@
 				54CE119318C1CD7C00966396 /* MainTabBarButton.m in Sources */,
 				54B753A618D2BEB0002411CF /* AnimateShowLabel.m in Sources */,
 				54BAD46418D15087003822CC /* PageControlButton.m in Sources */,
+				54C9C97219752848009BACE3 /* LocationSelectedView.m in Sources */,
 				146A2C6E18DD810E0038A850 /* ReplyForUpload.m in Sources */,
 				54B4682618E5210900745F72 /* HospitalEndView.m in Sources */,
 				54B4681218E520F200745F72 /* HealthHowView.m in Sources */,

@@ -43,7 +43,7 @@
     [_content addSubview:cartShowBtn];
    
     orderShowBtn= [[AFColorButton alloc] init];
-    [orderShowBtn.title setText:@"订单车" ];
+    [orderShowBtn.title setText:@"订单" ];
     [orderShowBtn setColorType:kColorButtonBlueColor];
     [orderShowBtn setDirectionType:kColorButtonLeftDown];
     [orderShowBtn resetColorButton];

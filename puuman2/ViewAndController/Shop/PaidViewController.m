@@ -61,6 +61,7 @@
     [leftBtn resetColorButton];
     [leftBtn addTarget:self action:@selector(leftBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:leftBtn];
+    [leftBtn setAlpha:0];
     
     rightBtn = [[AFColorButton alloc] init];
     [rightBtn.title setText:@"上一步" ];
@@ -82,6 +83,10 @@
     [priceLabel setFont:PMFont2];
     [priceLabel setText:@"￥2345.00"];
     [priceView addSubview:priceLabel];
+    
+    
+    locationView = [[LocationSelectedView alloc] initWithFrame:CGRectMake(312, 240, 156, 300)];
+    [_content addSubview:locationView];
 }
 
 - (void)leftBtnPressed
