@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomTextField.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 @interface InviteView : UIView<UITextFieldDelegate>
 {
     UILabel *titleLabel;
     UILabel *detailLabel;
     CustomTextField *relateNum;
-    ColorButton *inviteBtn;
+    AFColorButton *inviteBtn;
     
 }
 -(void)resign;

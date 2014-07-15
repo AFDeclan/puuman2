@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Topic.h"
 #import "TopicSelectButton.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "TopicAllTableViewController.h"
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
 #import "Forum.h"
-#import "AFSelecedTextImgButton.h"
+#import "AFSelectedTextImgButton.h"
 #import "TopicCellSelectedPohosViewController.h"
 #import "AFImageView.h"
 #import "NewTextDiaryViewController.h"
@@ -28,16 +28,16 @@
     UILabel *info_upload;
     TopicSelectButton *leftBtn;
     TopicSelectButton *rightBtn;
-    ColorButton *toNewestBtn;
-    ColorButton *rewardBtn;
-    ColorButton *participateBtn;
-    ColorButton *initiateBtn;
+    AFColorButton *toNewestBtn;
+    AFColorButton *rewardBtn;
+    AFColorButton *participateBtn;
+    AFColorButton *initiateBtn;
     TopicAllTableViewController *topicAllVC;
     BOOL currentTopicOrAfter;
     TopicStatus status;
     Topic *_topic;
-    AFSelecedTextImgButton *left_sortBtn;
-    AFSelecedTextImgButton *right_sortBtn;
+    AFSelectedTextImgButton *left_sortBtn;
+    AFSelectedTextImgButton *right_sortBtn;
     BOOL leftSelected;
     NSInteger _topicNum;
     

@@ -27,6 +27,7 @@
 #define Noti_ReloadWareFilterView               @"Noti_ReloadWareFilterView"
 #define Noti_RefreshMenu                        @"Noti_RefreshMenu"
 #define Noti_ShowAllShopView                    @"Noti_ShowAllShopView"
+#define Noti_SelectedLocation                   @"Noti_SelectedLocation"
 
 //video
 #define Noti_HasShareVideo                      @"Noti_HasShareVideo"

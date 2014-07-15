@@ -1,5 +1,5 @@
 //
-//  BabyInfoPageControlButton.h
+//  ChangePageControlButton.h
 //  puuman2
 //
 //  Created by Ra.（祁文龙） on 14-3-13.
@@ -8,7 +8,7 @@
 
 #import "PageControlButton.h"
 
-@interface BabyInfoPageControlButton : PageControlButton
+@interface ChangePageControlButton : PageControlButton
 @property(nonatomic,assign)BOOL isFold;
 @property(nonatomic,assign)BOOL isLeft;
 @end

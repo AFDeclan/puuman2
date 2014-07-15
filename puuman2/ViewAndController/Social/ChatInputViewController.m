@@ -51,11 +51,18 @@
         minHeight = 36;
         preheight =19;
         maxHeight = 19+6*minHeight;
-        createBtn = [[ColorButton alloc] init];
+        createBtn = [[AFColorButton alloc] init];
         [_content addSubview:createBtn];
         [createBtn addTarget:self action:@selector(create) forControlEvents:UIControlEventTouchUpInside];
         createBtn.enabled = NO;
         createBtn.alpha = 0.5;
+        [createBtn setIconImg:[UIImage imageNamed:@"icon_reply_topic.png"]];
+        [createBtn setIconSize:CGSizeMake(16, 16)];
+        [createBtn setColorType:kColorButtonBlueColor];
+        [createBtn setDirectionType:kColorButtonLeft];
+        [createBtn resetColorButton];
+        
+        
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
         }else{
@@ -361,13 +368,12 @@
     
     _sendIsHidden = sendIsHidden;
     if (sendIsHidden) {
-      
-        [createBtn initWithTitle:@"留言" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
-      
+        [createBtn.title setText:@"留言"];
     }else{
-        
-        [createBtn initWithTitle:@"发送" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
+        [createBtn.title setText:@"发送"];
+
     }
+    [createBtn adjustLayout];
 }
 
 //更多评论加载成功

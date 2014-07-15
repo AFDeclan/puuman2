@@ -15,7 +15,6 @@
 }
 
 - (void)setWithbgImage:(UIImage *)bgImg andIconImage:(UIImage *)icon;
-
 - (void)foldWithDuration:(NSTimeInterval)time;
 - (void)unfoldWithDuration:(NSTimeInterval)time;
 @end

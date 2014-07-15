@@ -32,7 +32,7 @@
     [leftView setBackgroundColor:[UIColor clearColor]];
     [self addSubview:leftView];
     [self setBackgroundColor:[UIColor clearColor]];
-    showAndHiddenBtn = [[BabyInfoPageControlButton alloc] init];
+    showAndHiddenBtn = [[ChangePageControlButton alloc] init];
     [showAndHiddenBtn addTarget:self action:@selector(showOrHidden) forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:showAndHiddenBtn];
 

@@ -46,11 +46,17 @@
 {
   
     
-    shareBtn = [[ColorButton alloc] init];
-    [shareBtn initWithTitle:@"分享" andIcon:nil andButtonType:kGrayLeftUp];
+    shareBtn = [[AFColorButton alloc] init];
+    [shareBtn.title setText:@"分享"];
+    [shareBtn setColorType:kColorButtonBlueColor];
+    [shareBtn setDirectionType:kColorButtonLeftUp];
+    [shareBtn resetColorButton];
     [_content addSubview:shareBtn];
-    addToCart = [[ColorButton alloc] init];
-    [addToCart initWithTitle:@"+加入购物车" andButtonType:kBlueLeftDown];
+    addToCart = [[AFColorButton alloc] init];
+    [addToCart.title setText:@"+加入购物车"];
+    [addToCart setColorType:kColorButtonBlueColor];
+    [addToCart setDirectionType:kColorButtonLeftDown];
+    [addToCart resetColorButton];
     [_content addSubview:addToCart];
     SetViewLeftUp(shareBtn,592, 480);
     SetViewLeftUp(addToCart, 592, 520);
@@ -65,13 +71,15 @@
     [evaluationView setBackgroundColor:PMColor5];
     [evaluationView setAlpha:0];
 
-    describeBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(640, 112, 64, 96)];
-    [describeBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"] andUnselectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
+    describeBtn = [[AFSelectedImgButton alloc] initWithFrame:CGRectMake(640, 112, 64, 96)];
+    [describeBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"]];
+    [describeBtn setUnSelectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
     [describeBtn addTarget:self action:@selector(describeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:describeBtn];
     
-    evaluateBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(640, 208, 64, 96)];
-    [evaluateBtn setSelectedImg:[UIImage imageNamed:@"btn_all1_shop.png"] andUnselectedImg:[UIImage imageNamed:@"btn_all2_shop.png"]];
+    evaluateBtn = [[AFSelectedImgButton alloc] initWithFrame:CGRectMake(640, 208, 64, 96)];
+    [evaluateBtn setSelectedImg:[UIImage imageNamed:@"btn_all1_shop.png"]];
+    [evaluateBtn setUnSelectedImg:[UIImage imageNamed:@"btn_all2_shop.png"]];
     [evaluateBtn addTarget:self action:@selector(evaluateBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:evaluateBtn];
 

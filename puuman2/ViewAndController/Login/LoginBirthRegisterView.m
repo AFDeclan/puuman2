@@ -76,16 +76,27 @@
     name_textfield.returnKeyType = UIReturnKeyNext;
     name_textfield.delegate = self;
     [self addSubview:name_textfield];
-     boy = [[AFTextImgButton alloc] initWithFrame:CGRectMake(224, 312, 120, 48)];
-    [boy setTitle:@"男宝宝" andImg:[UIImage imageNamed:@"icon_male_baby.png"] andButtonType:kButtonTypeTwo];
+     boy = [[AFSelectedButton alloc] initWithFrame:CGRectMake(224, 312, 120, 48)];
+    [boy.title setText:@"男宝宝"];
+    [boy.title setFont:PMFont2];
+    [boy.title setTextColor:PMColor1];
+
+    [boy setIconImg:[UIImage imageNamed:@"icon_male_baby.png"]];
+    [boy adjustLayout];
+    
     [boy setBackgroundColor:PMColor5];
     [boy addTarget:self action:@selector(gender:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:boy];
     
-    girl = [[AFTextImgButton alloc] initWithFrame:CGRectMake(360, 312, 120, 48)];
-    [girl setTitle:@"女宝宝" andImg:[UIImage imageNamed:@"icon_female_baby.png"] andButtonType:kButtonTypeTwo];
-    [girl addTarget:self action:@selector(gender:) forControlEvents:UIControlEventTouchUpInside];
+    girl = [[AFSelectedButton alloc] initWithFrame:CGRectMake(360, 312, 120, 48)];
+    [girl.title setText:@"女宝宝"];
+    [girl.title setFont:PMFont2];
+    [girl.title setTextColor:PMColor1];
+
+    [girl setIconImg:[UIImage imageNamed:@"icon_female_baby.png"]];
+    [girl adjustLayout];
     [girl setBackgroundColor:PMColor5];
+    [girl addTarget:self action:@selector(gender:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:girl];
     
     age = [[CustomTextField alloc] initWithFrame:CGRectMake(224, 376,256, 48)];
@@ -105,13 +116,13 @@
             [self selectDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
             if ([[[UserInfo sharedUserInfo] babyInfo] Gender]) {
                 babyType = kGenderBoy;
-                [boy selected];
-                [girl unSelected];
+                [boy selectedButton];
+                [girl unSelectedButton];
             }else{
                 
                 babyType = kGenderGirl;
-                [girl selected];
-                [boy unSelected];
+                [girl selectedButton];
+                [boy unSelectedButton];
             }
         }
         
@@ -200,13 +211,13 @@
     
     if (sender==girl) {
         babyType = kGenderGirl;
-        [girl selected];
-        [boy unSelected];
+        [girl selectedButton];
+        [boy unSelectedButton];
     }else{
         
         babyType = kGenderBoy;
-        [boy selected];
-        [girl unSelected];
+        [boy selectedButton];
+        [girl unSelectedButton];
     }
     [self isFinished];
     [calendarView setAlpha:0];

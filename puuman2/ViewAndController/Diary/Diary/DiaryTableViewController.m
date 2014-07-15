@@ -124,7 +124,7 @@ static BOOL needLoadInfo = YES;
 {
     switch (section) {
         case 0:
-            return 2;
+            return 1;
         case 1:
             return  [[[DiaryModel sharedDiaryModel]diaries]count];
         case 2:

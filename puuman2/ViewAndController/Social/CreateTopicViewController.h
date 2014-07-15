@@ -7,14 +7,14 @@
 //
 
 #import "CustomPopViewController.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "CustomTextField.h"
 #import "Forum.h"
 
 @interface CreateTopicViewController : CustomPopViewController<ForumDelegate,UITextFieldDelegate>
 {
-    ColorButton *instructionBtn;
-    ColorButton *createBtn;
+    AFColorButton *instructionBtn;
+    AFColorButton *createBtn;
     CustomTextField *inputTextFied;
     UIImageView *bgTitleImageView;
 }

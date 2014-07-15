@@ -115,16 +115,24 @@
     [_lineChartView setScrollEnabled:NO];
     
     
-    addDataBtn = [[ColorButton alloc] init];
-    [addDataBtn initWithTitle:@"+ 添加"  andButtonType:kBlueRight];
-    [addDataBtn setFrame:CGRectMake(0, 0, 112, 40)];
+    addDataBtn = [[AFColorButton alloc] init];
+    [addDataBtn.title setText:@"+ 添加"];
+    [addDataBtn setColorType:kColorButtonBlueColor];
+    [addDataBtn setDirectionType:kColorButtonRightDown];
+    [addDataBtn resetColorButton];
     [addDataBtn addTarget:self action:@selector(addData) forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:addDataBtn];
-    shareBtn = [[ColorButton alloc] init];
-    [shareBtn initWithTitle:@"分享" andIcon:[UIImage imageNamed:@"share_image_babyInfo.png"] andButtonType:kGrayRight];
-    [shareBtn setFrame:CGRectMake(0, 0,112, 40)];
+    shareBtn = [[AFColorButton alloc] init];
+    [shareBtn.title setText:@"分享"];
+    [shareBtn setIconImg:[UIImage imageNamed:@"share_image_babyInfo.png"]];
+    [shareBtn setIconSize:CGSizeMake(16, 16)];
+    
+    [shareBtn setColorType:kColorButtonGrayColor];
+    [shareBtn setDirectionType:kColorButtonRightUp];
+    [shareBtn resetColorButton];
     [shareBtn addTarget:self action:@selector(shareData) forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:shareBtn];
+    
      noti_label = [[UILabel alloc] initWithFrame:CGRectMake(280,520,544, 18)];
     [noti_label setFont:PMFont2];
     [noti_label setTextColor:PMColor3];

@@ -7,7 +7,7 @@
 //
 
 #import "CustomPopViewController.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "Forum.h"
 #import "TopicCellSelectedPohosViewController.h"
 #import "NewTextDiaryViewController.h"
@@ -15,8 +15,8 @@
 
 @interface RewardViewController : CustomPopViewController<UITableViewDataSource,UITableViewDelegate,ForumDelegate,SelectPhotoDelegate,PopViewDelegate>
 {
-    ColorButton *instructionBtn;
-    ColorButton *createBtn;
+    AFColorButton *instructionBtn;
+    AFColorButton *createBtn;
     UITableView *rewardTable;
     UITableView *rankTable;
     UILabel *empty_rank;

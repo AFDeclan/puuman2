@@ -72,11 +72,18 @@
     [pwd_new_textfield addSubview:flag_new_pwd];
     flag_pwd = [[AFTextImgButton alloc] initWithFrame:CGRectMake(592, 0, 48, 48)];
     [pwd_textfield addSubview:flag_pwd];
-
-
-   
     
-
+    [flag_old_pwd setIconSize:CGSizeMake(16, 16)];
+    [flag_old_pwd.title setFont:PMFont2];
+    [flag_old_pwd setBackgroundColor:PMColor5];
+    
+    [flag_new_pwd setIconSize:CGSizeMake(16, 16)];
+    [flag_new_pwd.title setFont:PMFont2];
+    [flag_new_pwd setBackgroundColor:PMColor5];
+    
+    [flag_pwd setIconSize:CGSizeMake(16, 16)];
+    [flag_pwd.title setFont:PMFont2];
+    [flag_pwd setBackgroundColor:PMColor5];
 }
 
 - (void)viewDidLoad
@@ -132,7 +139,8 @@
     {
         
         if ( [[UserInfo sharedUserInfo] checkPwd:password] ) {
-            [flag_old_pwd setTitle:nil andImg:[UIImage imageNamed:@"icon_check_set.png"] andButtonType:kButtonTypeTwo];
+            [flag_old_pwd setIconImg:[UIImage imageNamed:@"icon_check_set.png"] ];
+            [flag_old_pwd adjustLayout];
             [pwd_new_textfield setAlpha:1];
             [pwd_textfield setAlpha:0.5];
             [pwd_textfield setEnabled:NO];
@@ -141,7 +149,8 @@
             [pwd_new_textfield setText:@""];
         }else
         {
-            [flag_old_pwd setTitle:nil andImg:[UIImage imageNamed:@"icon_cross_set.png"] andButtonType:kButtonTypeTwo];
+            [flag_old_pwd setIconImg:[UIImage imageNamed:@"icon_cross_set.png"] ];
+            [flag_old_pwd adjustLayout];
             [_finishBtn setAlpha:0.5];
             [_finishBtn setEnabled:NO];
             [flag_new_pwd setAlpha:0];
@@ -176,16 +185,19 @@
             
         }else{
             [flag_new_pwd setAlpha:1];
-            [flag_new_pwd setTitle:nil andImg:[UIImage imageNamed:@"icon_check_set.png"] andButtonType:kButtonTypeTwo];
+            [flag_new_pwd setIconImg:[UIImage imageNamed:@"icon_check_set.png"] ];
+            [flag_new_pwd adjustLayout];
             [pwd_textfield setAlpha:1];
             [pwd_textfield setEnabled:YES];
             if ([password isEqualToString:pwd_textfield.text]) {
-                [flag_pwd setTitle:nil andImg:[UIImage imageNamed:@"icon_check_set.png"] andButtonType:kButtonTypeTwo];
+                [flag_pwd setIconImg:[UIImage imageNamed:@"icon_check_set.png"] ];
+                [flag_pwd adjustLayout];
                 [_finishBtn setAlpha:1];
                 [_finishBtn setEnabled:YES];
                 
             }else{
-                [flag_pwd setTitle:nil andImg:[UIImage imageNamed:@"icon_cross_set.png"] andButtonType:kButtonTypeTwo];
+                [flag_pwd setIconImg:[UIImage imageNamed:@"icon_cross_set.png"] ];
+                [flag_pwd adjustLayout];
                 [_finishBtn setAlpha:0.5];
                 [_finishBtn setEnabled:NO];
             }
@@ -194,12 +206,14 @@
     {
         [flag_pwd setAlpha:1];
         if ([pwd_new_textfield.text isEqualToString:password]) {
-            [flag_pwd setTitle:nil andImg:[UIImage imageNamed:@"icon_check_set.png"] andButtonType:kButtonTypeTwo];
+            [flag_pwd setIconImg:[UIImage imageNamed:@"icon_check_set.png"] ];
+            [flag_pwd adjustLayout];
             [_finishBtn setAlpha:1];
             [_finishBtn setEnabled:YES];
             
         }else{
-            [flag_pwd setTitle:nil andImg:[UIImage imageNamed:@"icon_cross_set.png"] andButtonType:kButtonTypeTwo];
+            [flag_pwd setIconImg:[UIImage imageNamed:@"icon_cross_set.png"] ];
+            [flag_pwd adjustLayout];
             [_finishBtn setAlpha:0.5];
             [_finishBtn setEnabled:NO];
         }

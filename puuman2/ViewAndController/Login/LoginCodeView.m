@@ -13,7 +13,7 @@
 #import <ASIFormDataRequest.h>
 #import "ErrorLog.h"
 #import "UserInfo.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 @implementation LoginCodeView
 
@@ -46,8 +46,12 @@
     [userLabel setBackgroundColor:[UIColor clearColor]];
     [userLabel setTextColor:PMColor2];
     [self addSubview:userLabel];
-    ColorButton  *send = [[ColorButton alloc] init];
-    [send initWithTitle:@"发送" andButtonType:kBlueLeft];
+    AFColorButton  *send = [[AFColorButton alloc] init];
+    [send.title setText:@"发送"];
+    //[send adjustLayout];
+    [send setColorType:kColorButtonBlueColor];
+    [send setDirectionType:kColorButtonLeft];
+    [send resetColorButton];
     [send addTarget:self action:@selector(sendNums:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:send];
     SetViewLeftUp(send,592 , 423);

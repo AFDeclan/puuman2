@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "AFTextImgButton.h"
 #import "Reply.h"
 #import "Forum.h"
@@ -17,7 +17,7 @@
     UITextField *commentText;
     
     UITableView *commentsTable;
-    ColorButton *createBtn;
+    AFColorButton *createBtn;
     AFTextImgButton *scanMoreReplay;
     TopicCommentCell*comments[5];
     Reply *_reply;

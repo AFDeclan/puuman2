@@ -30,9 +30,10 @@
         [self addSubview:menuMask];
         
         menuShowed = NO;
-        showAndHiddenBtn = [[BabyInfoPageControlButton alloc] init];
+        showAndHiddenBtn = [[ChangePageControlButton alloc] init];
         [showAndHiddenBtn addTarget:self action:@selector(showOrHidden) forControlEvents:UIControlEventTouchUpInside];
         [menuMask addSubview:showAndHiddenBtn];
+        [showAndHiddenBtn setIsLeft:YES];
         SetViewLeftUp(showAndHiddenBtn, 216, 452);
         menu  =[[ShopMenuView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
         [menuMask addSubview:menu];

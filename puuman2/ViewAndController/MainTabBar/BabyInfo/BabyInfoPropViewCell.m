@@ -79,8 +79,13 @@
     [estiView setBackgroundColor:PMColor4];
     [rightView addSubview:estiView];
     
-    estiBtn = [[ColorButton alloc] initWithFrame:CGRectMake(0, 15, 112, 40)];
-    [estiBtn initWithTitle:@"评价" andIcon:[UIImage imageNamed:@"esti_image_babyInfo.png"] andButtonType:kBlueRight];
+    estiBtn = [[AFColorButton alloc] initWithFrame:CGRectMake(0, 15, 112, 40)];
+    [estiBtn.title setText:@"评价" ];
+    [estiBtn setIconImg:[UIImage imageNamed:@"esti_image_babyInfo.png"]];
+    [estiBtn setIconSize:CGSizeMake(16, 16)];
+    [estiBtn setColorType:kColorButtonBlueColor];
+    [estiBtn setDirectionType:kColorButtonRight];
+    [estiBtn resetColorButton];
     [estiView addSubview:estiBtn];
     
     
@@ -95,7 +100,7 @@
     
     estiArrayData = [[NSMutableArray alloc] init];
     
-    showAndHiddenBtn = [[BabyInfoPageControlButton alloc] init];
+    showAndHiddenBtn = [[ChangePageControlButton alloc] init];
     [showAndHiddenBtn addTarget:self action:@selector(showOrHiddenEvaluateView)  forControlEvents:UIControlEventTouchUpInside];
     [showAndHiddenBtn setIsLeft:NO];
     [rightView addSubview:showAndHiddenBtn];

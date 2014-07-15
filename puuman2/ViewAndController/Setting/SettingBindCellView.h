@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomTextField.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 typedef enum{
     Status_NotAdded,
@@ -32,7 +32,7 @@ typedef enum{
     CustomTextField *numTextField;
     UILabel *titleLabel;
     UILabel  *codeLabel;
-    ColorButton *modify;
+    AFColorButton *modify;
     UIButton *conformBtn;
     UIImageView *settingBgImgView;
     BOOL isCheck;

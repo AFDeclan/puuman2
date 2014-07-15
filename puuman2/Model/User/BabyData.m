@@ -534,6 +534,35 @@ static BabyData * instance;
     }
 }
 
+- (NSInteger)startAtIndex
+{
+    for (NSDictionary *vacInfo in _vaccine) {
+        NSDate *doneDate = [vacInfo valueForKey:kVaccine_DoneTime];
+        if (!doneDate) {
+            NSArray *age = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+            NSInteger month = 0;
+            if ([age count] == 3)
+            {
+                month = [[age objectAtIndex:0] integerValue] * 12 + [[age objectAtIndex:1] integerValue];
+            }
+            NSArray *suitMonths = [[vacInfo valueForKey:kVaccine_SuitMonth] componentsSeparatedByString:@"~"];
+            NSInteger startMonth = 0, endMonth = 0;
+            if ([suitMonths count] == 2)
+            {
+                startMonth = [[suitMonths objectAtIndex:0] integerValue];
+                endMonth = [[suitMonths objectAtIndex:1] integerValue];
+            }
+            
+            if(month<startMonth) {
+                return [_vaccine indexOfObject:vacInfo] ;
+            }
+            
+
+        }
+    }
+    return 0;
+}
+
 - (void)dealloc
 {
     [self closeDb];

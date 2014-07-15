@@ -129,12 +129,15 @@
     if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[[member babyInfo] WhetherBirth]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
         info_compare.text =[[[[UserInfo sharedUserInfo] babyInfo] Birthday] compareFromDate:[[member babyInfo] Birthday]];
     }
+    [name_sex.title  setText:[member babyInfo].Nickname];
+
     if ([[member babyInfo] Gender]) {
-        [name_sex setTitle:[member babyInfo].Nickname andImg:[UIImage imageNamed:@"icon_male_topic.png"] andButtonType:kButtonTypeTen];
+        [name_sex setIconImg:[UIImage imageNamed:@"icon_male_topic.png"]];
     }else{
-        [name_sex setTitle:[member babyInfo].Nickname andImg:[UIImage imageNamed:@"icon_female_topic.png"] andButtonType:kButtonTypeTen];
+        [name_sex setIconImg:[UIImage imageNamed:@"icon_female_topic.png"]];
+
     }
-   
+    [name_sex adjustLayout];
 }
 
 - (void)dealloc

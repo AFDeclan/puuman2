@@ -53,7 +53,9 @@
     [childTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
     backBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 96, 32, 64)];
-    [backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_left.png"] andButtonType:kButtonTypeSix];
+    [backBtn setIconImg:[UIImage imageNamed:@"tri_blue_left.png"]];
+    [backBtn setIconSize:CGSizeMake(16, 28)];
+    [backBtn adjustLayout];
     [backBtn addTarget:self action:@selector(backBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:backBtn];
     [backBtn setAlpha:0];

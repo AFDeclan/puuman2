@@ -149,8 +149,9 @@
         [_delBtn setEnabled:YES];
     }
     
-    coinBtn = [[AFSelecedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
-    [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"] andUnselectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
+    coinBtn = [[AFSelectedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
+    [coinBtn setUnSelectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
     [coinBtn addTarget:self action:@selector(getCoin) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:coinBtn];
     [coinBtn unSelected];

@@ -8,7 +8,7 @@
 
 #import "PopViewController.h"
 #import "ChatInputTextView.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "Reply.h"
 #import "ReplyForUpload.h"
 #import "Forum.h"
@@ -18,7 +18,7 @@
 
 {
     ChatInputTextView *inputTextView;
-    ColorButton *createBtn;
+    AFColorButton *createBtn;
     UIView *bg_inputView;
     BOOL input_now;
     float maxHeight;

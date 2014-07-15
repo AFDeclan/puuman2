@@ -24,8 +24,11 @@
         [dataInfoView setBounces:NO];
         [dataInfoView setContentSize:CGSizeMake(608, 672)];//1432
         [self addSubview:dataInfoView];
-        manageBtn = [[ColorButton alloc] init];
-        [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];
+        manageBtn = [[AFColorButton alloc] init];
+        [manageBtn.title setText:@"管理"];
+        [manageBtn setColorType:kColorButtonGrayColor];
+        [manageBtn setDirectionType:kColorButtonLeft];
+        [manageBtn resetColorButton];
         [manageBtn addTarget:self action:@selector(managePartner) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:manageBtn];
     }
@@ -54,19 +57,23 @@
 {
     manage = !manage;
     if (manage) {
-        [manageBtn initWithTitle:@"保存" andButtonType:kGrayLeft];
+        [manageBtn.title setText:@"保存"];
        PostNotification(Noti_manangePartnerData, nil);
         
     }else{
-        [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];
+        [manageBtn.title setText:@"管理"];
+
      PostNotification(Noti_manangedPartnerData, nil);
     }
+    [manageBtn adjustLayout];
+    
 }
 
 - (void)loadViewInfo
 {
     manage = NO;
-    [manageBtn initWithTitle:@"管理" andButtonType:kGrayLeft];
+    [manageBtn.title setText:@"管理"];
+    [manageBtn adjustLayout];
   //  PostNotification(Noti_manangedPartnerData, nil);
     [figuresHeader reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
     [dataInfoView reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];

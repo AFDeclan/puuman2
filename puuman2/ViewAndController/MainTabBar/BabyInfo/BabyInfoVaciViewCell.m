@@ -46,14 +46,15 @@
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
     rightView = [[UIView alloc] init];
-    [rightView setBackgroundColor:[UIColor clearColor]];
+    [rightView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:rightView];
-    
+
     leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setBackgroundColor:PMColor6];
     [leftBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:leftBtn];
+
     
 }
 
@@ -116,13 +117,19 @@
     [leftView addSubview:detail];
     
     
-    notBtn = [[ColorButton alloc] init];
-    [notBtn initWithTitle:@"未接种" andButtonType:kBlueLeftUp];
+    notBtn = [[AFColorButton alloc] init];
+    [notBtn.title setText:@"未接种"];
+    [notBtn setColorType:kColorButtonBlueColor];
+    [notBtn setDirectionType:kColorButtonLeftUp];
+    [notBtn resetColorButton];
     [notBtn addTarget:self action:@selector(noBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:notBtn];
     
-    alreadyBtn = [[ColorButton alloc] init];
-    [alreadyBtn initWithTitle:@"已接种" andButtonType:kBlueLeftDown];
+    alreadyBtn = [[AFColorButton alloc] init];
+    [alreadyBtn.title setText:@"已接种"];
+    [alreadyBtn setColorType:kColorButtonBlueColor];
+    [alreadyBtn setDirectionType:kColorButtonLeftDown];
+    [alreadyBtn resetColorButton];
     [alreadyBtn addTarget:self action:@selector(alreadyBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:alreadyBtn];
 
@@ -295,17 +302,25 @@
 - (void)refresh
 {
     [dataTable reloadData];
-    [dataTable setContentOffset:CGPointMake(0, 80)];
+    
     [self performSelectorOnMainThread:@selector(animateWithVaccineView) withObject:nil waitUntilDone:0];
     
 }
+
 -(void)animateWithVaccineView{
     
-    [UIView animateWithDuration:0.5 animations:^{
-        [dataTable setContentOffset:CGPointMake(0, 0)];
-    } completion:^(BOOL finished){
-    }];
+    NSInteger startIndex = [[BabyData sharedBabyData] startAtIndex];
+    [self selectAtIndex:startIndex];
+
+    NSLog(@"%d",[[BabyData sharedBabyData] vaccineCount]);
+    startIndex =  (startIndex*96 - ViewHeight(dataTable)/2)/96;
+    startIndex = startIndex < 0 ? 0:startIndex;
+    NSInteger max =  ([[BabyData sharedBabyData] vaccineCount]*96 - ViewHeight(dataTable))/96;
+    startIndex = startIndex > max ? max:startIndex;
     
+    [UIView animateWithDuration:0.5 animations:^{
+        [dataTable setContentOffset:CGPointMake(0, startIndex*96)];
+    }];
 }
 
 - (void)selectAtIndex:(NSInteger)index

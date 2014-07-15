@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PropView.h"
 #import "BabyInfoIconViewDelegate.h"
-#import "ColorButton.h"
-#import "BabyInfoPageControlButton.h"
+#import "AFColorButton.h"
+#import "ChangePageControlButton.h"
 
 @interface BabyInfoPropViewCell : UITableViewCell<BabyInfoIconViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -19,11 +19,11 @@
     UIView *leftView;
     UITextField *estiTextField;
     UITableView *estiTableView;
-    ColorButton *estiBtn;
+    AFColorButton *estiBtn;
     NSMutableArray *estiArrayData;
     UIButton *leftBtn;
     UIView *estiView;
-    BabyInfoPageControlButton *showAndHiddenBtn;
+    ChangePageControlButton *showAndHiddenBtn;
     UIView *lineView;
     BOOL evaShowed;
 }

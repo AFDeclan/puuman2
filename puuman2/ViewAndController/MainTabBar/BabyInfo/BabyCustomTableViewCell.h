@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BabyInfoPageControlButton.h"
+#import "ChangePageControlButton.h"
 
 @interface BabyCustomTableViewCell : UITableViewCell
 {
     
     UIView *leftView;
     UIView *rightView;
-    BabyInfoPageControlButton *showAndHiddenBtn;
+    ChangePageControlButton *showAndHiddenBtn;
 }
 
 - (void)fold;

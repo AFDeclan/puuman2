@@ -61,13 +61,21 @@
     [detailTable setBounces:YES];
     [_content addSubview:detailTable];
     
-    deleteBtn = [[ColorButton alloc] init];
-    [deleteBtn initWithTitle:@"取消订单"  andButtonType:kGrayLeftUp];
+    deleteBtn = [[AFColorButton alloc] init];
+    [deleteBtn.title setText:@"取消订单"];
+    [deleteBtn adjustLayout];
+    [deleteBtn setColorType:kColorButtonGrayColor];
+    [deleteBtn setDirectionType:kColorButtonLeftUp];
+    [deleteBtn resetColorButton];
     [deleteBtn addTarget:self action:@selector(deleteBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:deleteBtn];
     
-    paidBtn = [[ColorButton alloc] init];
-    [paidBtn initWithTitle:@"付款"  andButtonType:kBlueLeftDown];
+    paidBtn = [[AFColorButton alloc] init];
+    [deleteBtn.title setText:@"付款"];
+    [deleteBtn adjustLayout];
+    [deleteBtn setColorType:kColorButtonGrayColor];
+    [deleteBtn setDirectionType:kColorButtonLeftDown];
+    [deleteBtn resetColorButton];
     [paidBtn addTarget:self action:@selector(paidBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:paidBtn];
     SetViewLeftUp(deleteBtn, 592, 480);

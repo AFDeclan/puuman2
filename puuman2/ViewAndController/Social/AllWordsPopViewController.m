@@ -46,8 +46,13 @@
     [talksTable setShowsVerticalScrollIndicator:NO];
     [_content addSubview:talksTable];
     
-    createTalkBtn = [[ColorButton alloc] init];
-    [createTalkBtn initWithTitle:@"留言" andIcon:[UIImage imageNamed:@"icon_reply_topic.png"] andButtonType:kBlueLeft];
+    createTalkBtn = [[AFColorButton alloc] init];
+    [createTalkBtn.title setText:@"留言"];
+    [createTalkBtn setIconImg:[UIImage imageNamed:@"icon_reply_topic.png"]];
+    [createTalkBtn setIconSize:CGSizeMake(16, 16)];
+    [createTalkBtn setColorType:kColorButtonBlueColor];
+    [createTalkBtn setDirectionType:kColorButtonLeft];
+    [createTalkBtn resetColorButton];
     [_content addSubview:createTalkBtn];
     [createTalkBtn addTarget:self action:@selector(replayed) forControlEvents:UIControlEventTouchUpInside];
     SetViewLeftUp(createTalkBtn, 592, 112);

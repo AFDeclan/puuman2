@@ -88,8 +88,13 @@
         [titleInfoView addSubview:info_birthday];
     }
     
-    modifyBtn = [[ColorButton alloc] init];
-    [modifyBtn initWithTitle:@"修改" andIcon:[UIImage imageNamed:@"icon_fix_baby.png"] andButtonType:kGrayLeft];
+    modifyBtn = [[AFColorButton alloc] init];
+    [modifyBtn.title  setText:@"修改"];
+    [modifyBtn setIconImg:[UIImage imageNamed:@"icon_fix_baby.png"]];
+    [modifyBtn setIconSize:CGSizeMake(16, 16)];
+    [modifyBtn setColorType:kColorButtonGrayColor];
+    [modifyBtn setDirectionType:kColorButtonLeft];
+    [modifyBtn resetColorButton];
     [modifyBtn addTarget:self action:@selector(changeBabyInfo) forControlEvents:UIControlEventTouchUpInside];
     [titleInfoView addSubview:modifyBtn];
 
@@ -119,7 +124,7 @@
 
     }
     babyInfoColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
-    [babyInfoColumnView setBackgroundColor:[UIColor clearColor]];
+    [babyInfoColumnView setBackgroundColor:[UIColor whiteColor]];
     [babyInfoColumnView setColumnViewDelegate:self];
     [babyInfoColumnView  setViewDataSource:self];
     [babyInfoColumnView setPagingEnabled:YES];

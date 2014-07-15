@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BasicInfoView.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "Topic.h"
 #import "Forum.h"
 #import "Friend.h"
@@ -18,7 +18,7 @@
     BasicInfoView *infoView;
     UILabel *votingTopic_label;
     UILabel *votedNum_label;
-    ColorButton *voteBtn;
+    AFColorButton *voteBtn;
     UIView *bgView;
     Topic *votingTopic;
 }

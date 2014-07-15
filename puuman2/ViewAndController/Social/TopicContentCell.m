@@ -58,20 +58,40 @@
     [info_upload setFont:PMFont2];
     [info_upload setTextColor:PMColor3];
     [self addSubview:info_upload];
-    rewardBtn = [[ColorButton alloc] init];
-    [rewardBtn initWithTitle:@"奖励" andIcon:[UIImage imageNamed:@"icon_prize_topic.png"] andButtonType:kGrayLeftUp];
+    rewardBtn = [[AFColorButton alloc] init];
+    [rewardBtn.title setText:@"奖励"];
+    [rewardBtn setIconImg:[UIImage imageNamed:@"icon_prize_topic.png"]];
+    [rewardBtn setIconSize:CGSizeMake(16, 16)];
+    [rewardBtn setColorType:kColorButtonGrayColor];
+    [rewardBtn setDirectionType:kColorButtonLeftUp];
+    [rewardBtn resetColorButton];
     [rewardBtn addTarget:self action:@selector(reward) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:rewardBtn];
-    participateBtn = [[ColorButton alloc] init];
-    [participateBtn initWithTitle:@"参与" andIcon:[UIImage imageNamed:@"icon_join_topic.png"] andButtonType:kBlueLeftDown];
+    participateBtn = [[AFColorButton alloc] init];
+    [participateBtn.title setText:@"参与"];
+    [participateBtn setIconImg:[UIImage imageNamed:@"icon_join_topic.png"]];
+    [participateBtn setIconSize:CGSizeMake(16, 16)];
+    [participateBtn setColorType:kColorButtonBlueColor];
+    [participateBtn setDirectionType:kColorButtonLeftDown];
+    [participateBtn resetColorButton];
     [participateBtn addTarget:self action:@selector(participate) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:participateBtn];
-    toNewestBtn = [[ColorButton alloc] init];
-    [toNewestBtn initWithTitle:@"本期" andIcon:[UIImage imageNamed:@"icon_present_topic.png"] andButtonType:kBlueLeftDown];
+    toNewestBtn = [[AFColorButton alloc] init];
+    [toNewestBtn.title setText:@"本期"];
+    [toNewestBtn setIconImg:[UIImage imageNamed:@"icon_present_topic.png"]];
+    [toNewestBtn setIconSize:CGSizeMake(16, 16)];
+    [toNewestBtn setColorType:kColorButtonBlueColor];
+    [toNewestBtn setDirectionType:kColorButtonLeftDown];
+    [toNewestBtn resetColorButton];
     [toNewestBtn addTarget:self action:@selector(currentTopic) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:toNewestBtn];
-    initiateBtn = [[ColorButton alloc] init];
-    [initiateBtn initWithTitle:@"发起" andIcon:[UIImage imageNamed:@"icon_start_topic.png"] andButtonType:kBlueLeftDown];
+    initiateBtn = [[AFColorButton alloc] init];
+    [initiateBtn.title setText:@"发起"];
+    [initiateBtn setIconImg:[UIImage imageNamed:@"icon_start_topic.png"]];
+    [initiateBtn setIconSize:CGSizeMake(16, 16)];
+    [initiateBtn setColorType:kColorButtonBlueColor];
+    [initiateBtn setDirectionType:kColorButtonLeft];
+    [initiateBtn resetColorButton];
     [initiateBtn addTarget:self action:@selector(initiate) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:initiateBtn];
     [initiateBtn setAlpha:0];
@@ -83,23 +103,31 @@
     [topicAllVC.view setBackgroundColor:[UIColor clearColor]];
     [self addSubview:topicAllVC.view];
     
-    right_sortBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(304, 0, 304, 24)];
+    right_sortBtn = [[AFSelectedTextImgButton alloc] initWithFrame:CGRectMake(304, 0, 304, 24)];
     [right_sortBtn addTarget:self action:@selector(rightSortSelected) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:right_sortBtn];
+    [right_sortBtn setIconSize:CGSizeMake(12, 12)];
+    [right_sortBtn setUnSelectedColor:PMColor6];
+    [right_sortBtn setSelectedColor:[UIColor whiteColor]];
+    [right_sortBtn adjustLayout];
     
-    left_sortBtn = [[AFSelecedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 304, 24)];
+    left_sortBtn = [[AFSelectedTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 304, 24)];
     [left_sortBtn addTarget:self action:@selector(leftSortSelected) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:left_sortBtn];
-    
+    [left_sortBtn setIconSize:CGSizeMake(12, 12)];
+    [left_sortBtn setSelectedColor:[UIColor whiteColor]];
+    [left_sortBtn setUnSelectedColor:PMColor6];
+    [left_sortBtn adjustLayout];
+
     leftBtn = [[TopicSelectButton alloc] init];
     [leftBtn addTarget:self action:@selector(preTopic) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:leftBtn];
     [leftBtn setDirection:NO];
+    
     rightBtn = [[TopicSelectButton alloc] init];
     [rightBtn addTarget:self action:@selector(nextTopic) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:rightBtn];
     [rightBtn setDirection:YES];
-    
     
     status = TopicStatus_On;
 
@@ -257,8 +285,17 @@
         [info_title setTextColor:PMColor6];
         [info_upload setText:@"发起或投票选出你最喜欢的话题吧！"];
         [topicAllVC setVoting:YES];
-        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多投票" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新发起" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
+        
+        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"]];
+        [right_sortBtn setUnSelectedImg:[UIImage imageNamed:@"icon_like2_topic.png"]];
+        [right_sortBtn.title setText:@"最多投票"];
+        [right_sortBtn adjustLayout];
+        
+        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"]];
+        [left_sortBtn setUnSelectedImg:[UIImage imageNamed:@"icon_time2_topic.png"]];
+        [left_sortBtn.title setText:@"最新发起"];
+        [left_sortBtn adjustLayout];
+        
         [self leftSortSelected];
         if([MainTabBarController sharedMainViewController].isVertical)
         {
@@ -272,9 +309,16 @@
         
         
     }else{
-        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_like2_topic.png"] andTitle:@"最多喜欢" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"] andUnselectedImg:[UIImage imageNamed:@"icon_time2_topic.png"] andTitle:@"最新参与" andButtonType:kButtonTypeTwo andSelectedType:kBlueAndClear];
-         [topicAllVC setVoting:NO];
+        [right_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_like1_topic.png"]];
+        [right_sortBtn setUnSelectedImg:[UIImage imageNamed:@"icon_like2_topic.png"]];
+        [right_sortBtn.title setText:@"最多喜欢"];
+        [right_sortBtn adjustLayout];
+        [left_sortBtn setSelectedImg:[UIImage imageNamed:@"icon_time1_topic.png"]];
+        [left_sortBtn setUnSelectedImg:[UIImage imageNamed:@"icon_time2_topic.png"]];
+        [left_sortBtn.title setText:@"最新参与"];
+        [left_sortBtn adjustLayout];
+
+        [topicAllVC setVoting:NO];
         [info_title setTextColor:PMColor1];
         [rightBtn setAlpha:1];
        

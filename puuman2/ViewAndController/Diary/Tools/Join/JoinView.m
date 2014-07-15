@@ -49,7 +49,6 @@ static JoinView * instance;
 }
 - (void)refreshStaus
 {
-    
     switch ([UserInfo sharedUserInfo].inviteState) {
         case noInvite:
             [self initInviteView];

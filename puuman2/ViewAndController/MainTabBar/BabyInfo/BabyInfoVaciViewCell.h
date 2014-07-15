@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomTextField.h"
 #import "AnimateShowLabel.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "AddInfoCalendar.h"
 #import "BabyInfoIconViewDelegate.h"
 
@@ -22,8 +22,8 @@
     UIButton *selectedDateBtn;
     UITextView *detail;
     AnimateShowLabel *nameLabel;
-    ColorButton *alreadyBtn;
-    ColorButton *notBtn;
+    AFColorButton *alreadyBtn;
+    AFColorButton *notBtn;
     AFTextImgButton *backBtn;
     UIView *maskView;
     BOOL  right;

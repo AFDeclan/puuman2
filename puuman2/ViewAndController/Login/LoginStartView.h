@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFTextImgButton.h"
+#import "LoginStartStatusSelectedButton.h"
 
 @protocol LoginStartViewDelegate;
 typedef enum
@@ -35,10 +35,10 @@ typedef enum
 }State;
 @interface LoginStartView : UIView
 {
-    AFTextImgButton *mother;
-    AFTextImgButton *father;
-    AFTextImgButton *goBirthViewButton;
-    AFTextImgButton *goPregnancyViewButton;
+    AFSelectedButton *mother;
+    AFSelectedButton *father;
+    LoginStartStatusSelectedButton *goBirthViewButton;
+    LoginStartStatusSelectedButton *goPregnancyViewButton;
     State stateSelf;
 }
 @property (nonatomic, weak) id<LoginStartViewDelegate> delegate;

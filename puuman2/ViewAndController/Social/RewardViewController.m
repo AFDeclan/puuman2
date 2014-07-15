@@ -93,10 +93,18 @@
     [rankTable addSubview:empty_rank];
     [empty_rank setAlpha:0];
     
-    createBtn = [[ColorButton alloc] init];
-    [createBtn  initWithTitle:@"参与" andIcon:[UIImage imageNamed:@"icon_start_topic.png"] andButtonType:kBlueLeft];
+    createBtn = [[AFColorButton alloc] init];
+    [createBtn.title setText:@"参与"];
+    [createBtn setIconImg:[UIImage imageNamed:@"icon_start_topic.png"]];
+    [createBtn setIconSize:CGSizeMake(16, 16)];
+    [createBtn adjustLayout];
+    [createBtn setColorType:kColorButtonGrayColor];
+    [createBtn setDirectionType:kColorButtonLeft];
+    [createBtn resetColorButton];
     [createBtn addTarget:self action:@selector(participate) forControlEvents:UIControlEventTouchUpInside];
     [_content  addSubview:createBtn];
+
+    
     SetViewLeftUp(instructionBtn, 592, 480);
     SetViewLeftUp(createBtn, 592, 520);
     

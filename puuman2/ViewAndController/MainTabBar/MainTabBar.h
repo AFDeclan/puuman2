@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MainTabBarButton.h"
 
+
 @protocol MainTabBarDelegate;
-@interface MainTabBar : UIView
+@interface MainTabBar : UIView<AFButtonDelegate>
 {
     UIView *selectedBoard;
     MainTabBarButton *diaryBtn;
@@ -19,15 +20,15 @@
     MainTabBarButton *settingBtn;
     MainTabBarButton *selectedBtn;
     UIImageView *bg_Btn;
-    BOOL animating;
+    
 }
 @property(assign,nonatomic)id<MainTabBarDelegate> delegate;
-- (void)selectedWithTag:(NSInteger)tag;
+- (void)selectedWithTag:(TypeTabBarButton )tag;
 -(void)setVerticalFrame;
 -(void)setHorizontalFrame;
 @end
 
 @protocol MainTabBarDelegate <NSObject>
-- (void)selectedWithTag:(NSInteger)tag;
+- (void)selectedWithTag:(TypeTabBarButton)tag;
 - (void)showSettingView;
 @end
