@@ -119,8 +119,12 @@ static ShopViewController * instance;
     [searchTextField setDelegate:self];
     [searchView addSubview:searchTextField];
     
-    searchBtn = [[ColorButton alloc] init];
-    [searchBtn initWithTitle:@"搜索" andIcon:[UIImage imageNamed:@"icon_search_shop.png"] andButtonType:kBlueLeft];
+    searchBtn = [[AFColorButton alloc] init];
+    [searchBtn.title setText:@"搜索"];
+    [searchBtn setIconImg:[UIImage imageNamed:@"icon_search_shop.png"] ];
+    [searchBtn setColorType:kColorButtonBlueColor];
+    [searchBtn setDirectionType:kColorButtonLeft];
+    [searchBtn resetColorButton];
     [searchBtn addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:searchBtn];
     

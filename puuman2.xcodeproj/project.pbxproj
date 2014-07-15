@@ -635,6 +635,7 @@
 		54C038DD1963ECAB00BBC1E6 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C038DC1963ECAB00BBC1E6 /* OrderDetailViewController.m */; };
 		54C038E11963FBAD00BBC1E6 /* PaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C038E01963FBAD00BBC1E6 /* PaidViewController.m */; };
 		54C038E619640A3000BBC1E6 /* ware_info_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C038E519640A3000BBC1E6 /* ware_info_back.png */; };
+		54C110941974D90400415EE3 /* LoginStartSelectedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C110931974D90400415EE3 /* LoginStartSelectedButton.m */; };
 		54C2E9FA192DE0BA0011AA0C /* course_p1_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */; };
 		54C2E9FB192DE0BA0011AA0C /* course_p1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F5192DE0BA0011AA0C /* course_p1.png */; };
 		54C2E9FC192DE0BA0011AA0C /* course_p2_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */; };
@@ -1718,6 +1719,8 @@
 		54C038DF1963FBAD00BBC1E6 /* PaidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaidViewController.h; sourceTree = "<group>"; };
 		54C038E01963FBAD00BBC1E6 /* PaidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaidViewController.m; sourceTree = "<group>"; };
 		54C038E519640A3000BBC1E6 /* ware_info_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ware_info_back.png; sourceTree = "<group>"; };
+		54C110921974D90400415EE3 /* LoginStartSelectedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginStartSelectedButton.h; sourceTree = "<group>"; };
+		54C110931974D90400415EE3 /* LoginStartSelectedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginStartSelectedButton.m; sourceTree = "<group>"; };
 		54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p1_h.png; sourceTree = "<group>"; };
 		54C2E9F5192DE0BA0011AA0C /* course_p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p1.png; sourceTree = "<group>"; };
 		54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p2_h.png; sourceTree = "<group>"; };
@@ -2042,7 +2045,6 @@
 				148D7A0118B8A71A001B4FA7 /* puuman2Tests */,
 				148D79E118B8A71A001B4FA7 /* Frameworks */,
 				148D79E018B8A71A001B4FA7 /* Products */,
-				721904F09AE644A085A71BDA /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2058,6 +2060,7 @@
 		148D79E118B8A71A001B4FA7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				721904F09AE644A085A71BDA /* Pods.xcconfig */,
 				54AB6CB418F24C4600E4269E /* CoreMedia.framework */,
 				54AB6CB218F24C2100E4269E /* MediaPlayer.framework */,
 				54AB6CB018F24B5A00E4269E /* ImageIO.framework */,
@@ -2738,6 +2741,8 @@
 				54AFBBBD18D6938600861A69 /* SelectButton.m */,
 				54AFBBAA18D6938600861A69 /* DateButton.h */,
 				54AFBBAB18D6938600861A69 /* DateButton.m */,
+				54C110921974D90400415EE3 /* LoginStartSelectedButton.h */,
+				54C110931974D90400415EE3 /* LoginStartSelectedButton.m */,
 			);
 			name = support;
 			path = ..;
@@ -4703,6 +4708,7 @@
 				88B515FE192F52EE006A79AB /* SinaWeibo.m in Sources */,
 				5421666918E00DAF005875F8 /* PartnerPortraitDataViewCell.m in Sources */,
 				54CCF1D518F3CC220081C149 /* SelectPhotoImportTypeViewController.m in Sources */,
+				54C110941974D90400415EE3 /* LoginStartSelectedButton.m in Sources */,
 				54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */,
 				54BBE8A81936F6B20056390B /* VideoShowView.m in Sources */,
 				54ADB1E618E1AC1D00FCCC83 /* AutoImportViewController.m in Sources */,

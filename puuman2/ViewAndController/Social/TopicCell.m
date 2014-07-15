@@ -90,6 +90,9 @@
     
     likeBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(304, 0, 304, 40)];
     [likeBtn addTarget:self action:@selector(likeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [likeBtn.title setFont:PMFont2];
+    [likeBtn setBackgroundColor:PMColor5];
+    [likeBtn setIconSize:CGSizeMake(20, 20)];
     
     [footerView addSubview:replayBtn];
     [footerView addSubview:likeBtn];
@@ -184,12 +187,12 @@
 
     }
 
-    
-    [replayBtn setTitle:[NSString stringWithFormat:@"%d",reply.RCommentCnt] andImg:[UIImage imageNamed:@"btn_reply1z_topic.png"] andButtonType:kButtonTypeTwo];
-    [replayBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
-
-    
-   
+    [replayBtn.title setText:[NSString stringWithFormat:@"%d",reply.RCommentCnt]];
+    [replayBtn.title setFont:PMFont2];
+    [replayBtn setBackgroundColor:PMColor5];
+    [replayBtn setIconImg:[UIImage imageNamed:@"btn_reply1z_topic.png"]];
+    [replayBtn setIconSize:CGSizeMake(20, 20)];
+    [replayBtn adjustLayout];
     
     CGRect frame = headerView.frame;
     if (![reply.RTitle isEqualToString:@""]) {
@@ -202,15 +205,17 @@
        [title_label setAlpha:0];
     }
     if (_reply.TID == [[Forum sharedInstance] onTopic].TID){
+       
+        [likeBtn.title setText:[NSString stringWithFormat:@"%d",reply.RCommentCnt]];
+
+
         if (_reply.voted) {
             [likeBtn setEnabled:NO];
-            [likeBtn setTitle:[NSString stringWithFormat:@"%d",reply.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like1_topic.png"] andButtonType:kButtonTypeTwo];
-            [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
+            [likeBtn setIconImg:[UIImage imageNamed:@"btn_like1_topic.png"]];
         }else{
             [likeBtn setEnabled:YES];
-            [likeBtn setTitle:[NSString stringWithFormat:@"%d",reply.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like2_topic.png"] andButtonType:kButtonTypeTwo];
-            [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
         }
+        [likeBtn adjustLayout];
 
     }else{
         [likeBtn setEnabled:NO];
@@ -314,14 +319,14 @@
     }
     if (_reply.voted) {
         [likeBtn setEnabled:NO];
-        [likeBtn setTitle:[NSString stringWithFormat:@"%d",_reply.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like1_topic.png"] andButtonType:kButtonTypeTwo];
-        [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
+        [likeBtn setIconImg:[UIImage imageNamed:@"btn_like1_topic.png"]];
+
     }else{
         [likeBtn setEnabled:YES];
-        [likeBtn setTitle:[NSString stringWithFormat:@"%d",_reply.RVoteCnt] andImg:[UIImage imageNamed:@"btn_like2_topic.png"] andButtonType:kButtonTypeTwo];
-        [likeBtn setIconFrame:CGRectMake(0, 0, 20, 20)];
-    }
+        [likeBtn setIconImg:[UIImage imageNamed:@"btn_like2_topic.png"]];
 
+    }
+    [likeBtn adjustLayout];
    
     
 }

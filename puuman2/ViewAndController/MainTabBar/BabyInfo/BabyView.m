@@ -88,8 +88,13 @@
         [titleInfoView addSubview:info_birthday];
     }
     
-    modifyBtn = [[ColorButton alloc] init];
-    [modifyBtn initWithTitle:@"修改" andIcon:[UIImage imageNamed:@"icon_fix_baby.png"] andButtonType:kGrayLeft];
+    modifyBtn = [[AFColorButton alloc] init];
+    [modifyBtn.title  setText:@"修改"];
+    [modifyBtn setIconImg:[UIImage imageNamed:@"icon_fix_baby.png"]];
+    [modifyBtn setIconSize:CGSizeMake(16, 16)];
+    [modifyBtn setColorType:kColorButtonGrayColor];
+    [modifyBtn setDirectionType:kColorButtonLeft];
+    [modifyBtn resetColorButton];
     [modifyBtn addTarget:self action:@selector(changeBabyInfo) forControlEvents:UIControlEventTouchUpInside];
     [titleInfoView addSubview:modifyBtn];
 

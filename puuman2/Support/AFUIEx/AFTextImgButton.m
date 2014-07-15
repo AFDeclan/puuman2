@@ -46,7 +46,7 @@
     [mark setAlpha:0.3];
 }
 
-- (void)unSelectedutton
+- (void)unSelectedButton
 {
     [mark setAlpha:0];
 }

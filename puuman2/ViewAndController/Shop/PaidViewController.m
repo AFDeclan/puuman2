@@ -54,13 +54,19 @@
     
    
     
-    leftBtn = [[ColorButton alloc] init];
-    [leftBtn initWithTitle:@"下一步"  andButtonType:kBlueRight];
+    leftBtn = [[AFColorButton alloc] init];
+    [leftBtn.title setText:@"下一步" ];
+    [leftBtn setColorType:kColorButtonBlueColor];
+    [leftBtn setDirectionType:kColorButtonRight];
+    [leftBtn resetColorButton];
     [leftBtn addTarget:self action:@selector(leftBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:leftBtn];
     
-    rightBtn = [[ColorButton alloc] init];
-    [rightBtn initWithTitle:@"上一步"  andButtonType:kBlueLeft];
+    rightBtn = [[AFColorButton alloc] init];
+    [rightBtn.title setText:@"上一步" ];
+    [rightBtn setColorType:kColorButtonBlueColor];
+    [rightBtn setDirectionType:kColorButtonLeft];
+    [rightBtn resetColorButton];
     [rightBtn addTarget:self action:@selector(rightBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:rightBtn];
     SetViewLeftUp(leftBtn, 0, 520);

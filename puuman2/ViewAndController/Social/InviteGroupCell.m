@@ -43,8 +43,11 @@
     
         [self addSubview:date_invite];
 
-        addBtn = [[ColorButton alloc] init];
-        [addBtn initWithTitle:@"加入" andButtonType:kGrayLeft];
+        addBtn = [[AFColorButton alloc] init];
+        [addBtn.title setText:@"加入"];
+        [addBtn setColorType:kColorButtonGrayColor];
+        [addBtn setDirectionType:kColorButtonLeft];
+        [addBtn resetColorButton];
         SetViewLeftUp(addBtn, 496, 144);
         [addBtn addTarget:self action:@selector(acceptInvite) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:addBtn];

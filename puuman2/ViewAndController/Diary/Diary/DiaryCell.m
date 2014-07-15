@@ -149,11 +149,12 @@
         [_delBtn setEnabled:YES];
     }
     
-    coinBtn = [[AFSelecedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
-    [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"] andUnselectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
+    coinBtn = [[AFSelectedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
+    [coinBtn setUnSelectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
     [coinBtn addTarget:self action:@selector(getCoin) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:coinBtn];
-    [coinBtn unSelected];
+    [coinBtn unSelectedButton];
     
     coinLabel = [[UILabel alloc] init];
     [coinLabel setFrame:CGRectMake(0, 0, 66, 24)];
@@ -166,13 +167,13 @@
 - (void)getCoin {
     
     if (_diary.rewarded) {
-        [coinBtn selected];
+        [coinBtn selectedButton];
     } else {
     
-        [coinBtn unSelected];
+        [coinBtn unSelectedButton];
         if ([_diary reward:1]) {
           
-            [coinBtn selected];
+            [coinBtn selectedButton];
             coinLabel.text = @"已打赏";
             [coinLabel setTextColor:PMColor3];
         }
@@ -212,10 +213,10 @@
         if (_diary.UIdentity != [UserInfo sharedUserInfo].identity) {
             [coinBtn setAlpha:1];
             if ([_diary rewarded]) {
-                [coinBtn selected];
+                [coinBtn selectedButton];
                 coinLabel.text = @"已打赏";
             }else {
-                [coinBtn unSelected];
+                [coinBtn unSelectedButton];
                 if (_diary.UIdentity == Father){
                     coinLabel.text = @"赏给爸爸!";
                     [coinLabel setTextColor:PMColor6];
@@ -226,7 +227,7 @@
                 }
             }
         }else{
-            [coinBtn unSelected];
+            [coinBtn unSelectedButton];
             [coinBtn setAlpha:0];
             coinLabel.text = @"";
             if ([_diary rewarded]) {

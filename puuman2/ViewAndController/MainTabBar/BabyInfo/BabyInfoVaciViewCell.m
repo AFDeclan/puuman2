@@ -117,13 +117,19 @@
     [leftView addSubview:detail];
     
     
-    notBtn = [[ColorButton alloc] init];
-    [notBtn initWithTitle:@"未接种" andButtonType:kBlueLeftUp];
+    notBtn = [[AFColorButton alloc] init];
+    [notBtn.title setText:@"未接种"];
+    [notBtn setColorType:kColorButtonBlueColor];
+    [notBtn setDirectionType:kColorButtonLeftUp];
+    [notBtn resetColorButton];
     [notBtn addTarget:self action:@selector(noBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:notBtn];
     
-    alreadyBtn = [[ColorButton alloc] init];
-    [alreadyBtn initWithTitle:@"已接种" andButtonType:kBlueLeftDown];
+    alreadyBtn = [[AFColorButton alloc] init];
+    [alreadyBtn.title setText:@"已接种"];
+    [alreadyBtn setColorType:kColorButtonBlueColor];
+    [alreadyBtn setDirectionType:kColorButtonLeftDown];
+    [alreadyBtn resetColorButton];
     [alreadyBtn addTarget:self action:@selector(alreadyBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:alreadyBtn];
 

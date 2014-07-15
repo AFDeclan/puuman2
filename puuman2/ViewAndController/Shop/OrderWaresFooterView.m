@@ -26,7 +26,10 @@
 
 - (void)initialization
 {
-    selectedBtn = [[ColorButton alloc] init];
+    selectedBtn = [[AFColorButton alloc] init];
+    [selectedBtn setColorType:kColorButtonBlueColor];
+    [selectedBtn setDirectionType:kColorButtonRight];
+    [selectedBtn resetColorButton];
     [self addSubview:selectedBtn];
     SetViewLeftUp(selectedBtn, 0, 8);
     [selectedBtn addTarget:self action:@selector(selectedButtonSelectedWithButton) forControlEvents:UIControlEventTouchUpInside];
@@ -62,7 +65,8 @@
         [priceLabel setAlpha:1];
         [selectedBtn setAlpha:1];
         [infolabel setAlpha:0];
-        [selectedBtn initWithTitle:@"付款" andButtonType:kBlueRight];
+        [selectedBtn.title setText:@"付款"];
+        [selectedBtn adjustLayout];
         [button setAlpha:0];
     }else if(section  == 1)
     {
@@ -75,7 +79,8 @@
         [infolabel setAlpha:0];
         [priceLabel setAlpha:0];
         [selectedBtn setAlpha:1];
-        [selectedBtn initWithTitle:@"评价" andButtonType:kBlueRight];
+        [selectedBtn.title setText:@"评价"];
+        [selectedBtn adjustLayout];
         [button setAlpha:0];
 
     }

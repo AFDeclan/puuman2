@@ -96,13 +96,22 @@
 - (void)initCloseAndFinishBtn
 {
     _closeBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 192, 224, 64)];
-    [_closeBtn setTitle:@"取消" andImg:[UIImage imageNamed:@"btn_close2.png"] andButtonType:kButtonTypeOne];
-    [_closeBtn setTitleLabelColor:PMColor8];
+    [_closeBtn.title setText:@"取消"];
+    [_closeBtn.title setTextColor:PMColor8];
+    [_closeBtn.title setFont:PMFont1];
+    [_closeBtn setIconImg:[UIImage imageNamed:@"btn_close2.png"]];
+    [_closeBtn setIconSize:CGSizeMake(32, 32)];
+    [_closeBtn adjustLayout];
     [_closeBtn addTarget:self action:@selector(closeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:_closeBtn];
+    
     _finishBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(224, 192, 224, 64)];
-    [_finishBtn setTitle:@"确定" andImg:[UIImage imageNamed:@"btn_finish2.png"] andButtonType:kButtonTypeOne];
-    [_finishBtn setTitleLabelColor:PMColor6];
+    [_finishBtn.title setText:@"确定"];
+    [_finishBtn.title setTextColor:PMColor6];
+    [_finishBtn.title setFont:PMFont1];
+    [_finishBtn setIconImg:[UIImage imageNamed:@"btn_finish2.png"]];
+    [_finishBtn setIconSize:CGSizeMake(32, 32)];
+    [_finishBtn adjustLayout];
     [_finishBtn addTarget:self action:@selector(finishBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:_finishBtn];
     
@@ -111,8 +120,12 @@
 - (void)initCloseBtn
 {
     _closeBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 192, 448, 64)];
-    [_closeBtn setTitle:@"取消" andImg:[UIImage imageNamed:@"btn_close2.png"] andButtonType:kButtonTypeOne];
-    [_closeBtn setTitleLabelColor:PMColor8];
+    [_closeBtn.title setText:@"取消"];
+    [_closeBtn.title setTextColor:PMColor8];
+    [_closeBtn.title setFont:PMFont1];
+    [_closeBtn setIconImg:[UIImage imageNamed:@"btn_close2.png"]];
+    [_closeBtn setIconSize:CGSizeMake(32, 32)];
+    [_closeBtn adjustLayout];
     [_closeBtn addTarget:self action:@selector(closeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:_closeBtn];
 }
@@ -120,8 +133,12 @@
 - (void)initFinishBtn
 {
     _finishBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 192, 448, 64)];
-    [_finishBtn setTitle:@"确定" andImg:[UIImage imageNamed:@"btn_finish2.png"] andButtonType:kButtonTypeOne];
-    [_finishBtn setTitleLabelColor:PMColor6];
+    [_finishBtn.title setText:@"确定"];
+    [_finishBtn.title setTextColor:PMColor6];
+    [_finishBtn.title setFont:PMFont1];
+    [_finishBtn setIconImg:[UIImage imageNamed:@"btn_finish2.png"]];
+    [_finishBtn setIconSize:CGSizeMake(32, 32)];
+    [_finishBtn adjustLayout];
     [_finishBtn addTarget:self action:@selector(finishBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:_finishBtn];
 }

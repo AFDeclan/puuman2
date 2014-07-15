@@ -43,12 +43,18 @@
     [ageCalenderView setAlpha:0];
     [ageCalenderView setBackgroundColor:[UIColor clearColor]];
 
-    ageBtn = [[ColorButton alloc] init];
-    [ageBtn initWithTitle:@"按年龄" andButtonType:kBlueLeft];
+    ageBtn = [[AFColorButton alloc] init];
+    [ageBtn.title setText:@"按年龄"];
+    [ageBtn setColorType:kColorButtonBlueColor];
+    [ageBtn setDirectionType:kColorButtonLeft];
+    [ageBtn resetColorButton];
     [ageBtn addTarget:self action:@selector(selectedAge) forControlEvents:UIControlEventTouchUpInside];
     [content addSubview:ageBtn];
-    timeBtn = [[ColorButton alloc] init];
-    [timeBtn initWithTitle:@"按时间" andButtonType:kBlueRight];
+    timeBtn = [[AFColorButton alloc] init];
+    [timeBtn.title setText:@"按时间"];
+    [timeBtn setColorType:kColorButtonBlueColor];
+    [timeBtn setDirectionType:kColorButtonLeft];
+    [timeBtn resetColorButton];
     [timeBtn addTarget:self action:@selector(selectedTime) forControlEvents:UIControlEventTouchUpInside];
     [content addSubview:timeBtn];
     SetViewLeftUp(ageBtn, 8, 286);
