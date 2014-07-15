@@ -11,7 +11,6 @@
 @interface AFTextImgButton : AFButton
 {
     UIImageView *iconView;
-    UIImageView *mark;
 
 }
 
@@ -19,7 +18,6 @@
 @property(nonatomic,retain)UIImage *iconImg;
 @property(nonatomic,retain)UILabel *title;
 
-- (void)selectedButton;
-- (void)unSelectedButton;
+- (void)setIconLocation:(CGPoint)pos;
 - (void)adjustLayout;
 @end

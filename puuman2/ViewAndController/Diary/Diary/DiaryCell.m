@@ -154,7 +154,7 @@
     [coinBtn setUnSelectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
     [coinBtn addTarget:self action:@selector(getCoin) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:coinBtn];
-    [coinBtn unSelectedButton];
+    [coinBtn unSelected];
     
     coinLabel = [[UILabel alloc] init];
     [coinLabel setFrame:CGRectMake(0, 0, 66, 24)];
@@ -167,13 +167,13 @@
 - (void)getCoin {
     
     if (_diary.rewarded) {
-        [coinBtn selectedButton];
+        [coinBtn selected];
     } else {
     
-        [coinBtn unSelectedButton];
+        [coinBtn unSelected];
         if ([_diary reward:1]) {
           
-            [coinBtn selectedButton];
+            [coinBtn selected];
             coinLabel.text = @"已打赏";
             [coinLabel setTextColor:PMColor3];
         }
@@ -213,10 +213,10 @@
         if (_diary.UIdentity != [UserInfo sharedUserInfo].identity) {
             [coinBtn setAlpha:1];
             if ([_diary rewarded]) {
-                [coinBtn selectedButton];
+                [coinBtn selected];
                 coinLabel.text = @"已打赏";
             }else {
-                [coinBtn unSelectedButton];
+                [coinBtn unSelected];
                 if (_diary.UIdentity == Father){
                     coinLabel.text = @"赏给爸爸!";
                     [coinLabel setTextColor:PMColor6];
@@ -227,7 +227,7 @@
                 }
             }
         }else{
-            [coinBtn unSelectedButton];
+            [coinBtn unSelected];
             [coinBtn setAlpha:0];
             coinLabel.text = @"";
             if ([_diary rewarded]) {

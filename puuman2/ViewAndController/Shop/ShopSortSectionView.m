@@ -51,24 +51,24 @@
 
 - (void)priceBtnPressed
 {
-    [priceBtn selectedButton];
-    [timeBtn unSelectedButton];
-    [heatBtn unSelectedButton];
+    [priceBtn selected];
+    [timeBtn unSelected];
+    [heatBtn unSelected];
     
 }
 
 - (void)timeBtnPressed
 {
-    [timeBtn selectedButton];
-    [priceBtn unSelectedButton];
-    [heatBtn unSelectedButton];
+    [timeBtn selected];
+    [priceBtn unSelected];
+    [heatBtn unSelected];
 }
 
 - (void)heatBtnPressed
 {
-    [heatBtn selectedButton];
-    [timeBtn unSelectedButton];
-    [priceBtn unSelectedButton];
+    [heatBtn selected];
+    [timeBtn unSelected];
+    [priceBtn unSelected];
 }
 
 @end

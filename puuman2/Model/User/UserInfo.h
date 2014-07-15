@@ -110,7 +110,7 @@ typedef enum inviteState {
 + (void)init;
 + (UserInfo *)sharedUserInfo;
 
-//登陆
+//登录
 - (BOOL)loginFromUserDefault;
 - (enum userActionResult)login;
 //登出

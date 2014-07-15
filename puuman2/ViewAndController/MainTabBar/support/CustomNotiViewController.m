@@ -41,7 +41,6 @@
     [notiView setEnabled:NO];
     [notiView setBackgroundColor:[UIColor clearColor]];
     [_content addSubview:notiView];
-    [notiView unSelectedButton];
   
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
@@ -104,7 +103,6 @@
     switch (typeStyle) {
         case kNotiTypeStyleRight:
         {
-            [notiView setBackgroundColor:[UIColor whiteColor]];
             [notiView setIconImg:[UIImage imageNamed:@"check_status.png"]];
         }
           
@@ -112,7 +110,6 @@
         case kNotiTypeStyleNone:
         {
             [notiView setIconImg:nil];
-            [notiView setBackgroundColor:PMColor5];
 
         }
             break;

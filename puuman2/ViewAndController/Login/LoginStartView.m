@@ -40,25 +40,17 @@
     [title setTextColor:PMColor3];
     [title setBackgroundColor:[UIColor clearColor]];
     [self addSubview:title];
-    goBirthViewButton=[[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 255, 224)];
+    goBirthViewButton=[[LoginStartStatusSelectedButton alloc] initWithFrame:CGRectMake(0, 0, 255, 224)];
     [goBirthViewButton.title setText:@"已出生"];
-    [goBirthViewButton.title setTextColor:PMColor1];
-    [goBirthViewButton.title setFont:PMFont2];
     [goBirthViewButton setIconImg:[UIImage imageNamed:@"pic_born_login.png"]];
-    [goBirthViewButton adjustLayout];
     [goBirthViewButton addTarget:self action:@selector(goBirthView:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:goBirthViewButton];
-    [goBirthViewButton setBackgroundColor:PMColor5];
 
-    goPregnancyViewButton=[[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 255, 224)];
+    goPregnancyViewButton=[[LoginStartStatusSelectedButton alloc] initWithFrame:CGRectMake(0, 0, 255, 224)];
     [goPregnancyViewButton.title setText:@"怀孕中"];
-    [goPregnancyViewButton.title setTextColor:PMColor1];
-    [goPregnancyViewButton.title setFont:PMFont2];
     [goPregnancyViewButton setIconImg:[UIImage imageNamed:@"pic_pre_login.png"]];
-    [goPregnancyViewButton adjustLayout];
     [goPregnancyViewButton addTarget:self action:@selector(goPregnancyView:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:goPregnancyViewButton];
-    [goPregnancyViewButton setBackgroundColor:PMColor5];
 
     if ([[UserInfo sharedUserInfo] logined])
     {
@@ -79,22 +71,25 @@
         [relate setTextColor:PMColor3];
         [self addSubview:relate];
         
-        mother = [[AFTextImgButton alloc] initWithFrame:CGRectMake(80, 48, 256, 40)];
+        mother = [[AFSelectedButton alloc] initWithFrame:CGRectMake(80, 48, 256, 40)];
         [mother.title setText:@"妈妈"];
         [mother.title setTextColor:PMColor1];
         [mother.title setFont:PMFont2];
         [mother setIconImg:[UIImage imageNamed:@"icon_mom_diary.png"]];
+        [mother setIconSize:CGSizeMake(16, 16)];
         [mother adjustLayout];
         [mother setBackgroundColor:PMColor5];
         [mother addTarget:self action:@selector(motherSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:mother];
         
-        father=[[AFTextImgButton alloc] initWithFrame:CGRectMake(368, 48, 256, 40)];
+        father=[[AFSelectedButton alloc] initWithFrame:CGRectMake(368, 48, 256, 40)];
         [father.title setText:@"爸爸"];
         [father.title setTextColor:PMColor1];
         [father.title setFont:PMFont2];
         [father setIconImg:[UIImage imageNamed:@"icon_dad_diary.png"]];
+        [father setIconSize:CGSizeMake(16, 16)];
         [father adjustLayout];
+        
         [father setBackgroundColor:PMColor5];
         [father addTarget:self action:@selector(fatherSelected:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:father];
@@ -103,8 +98,10 @@
         [goLoginViewButton.title setText:@"我已经有账号或邀请码"];
         [goLoginViewButton.title setTextColor:[UIColor whiteColor]];
         [goLoginViewButton.title setFont:PMFont2];
-        [goLoginViewButton setIconImg:[UIImage imageNamed:@"tri_white_right.png"]];
         [goLoginViewButton adjustLayout];
+        [goLoginViewButton setIconSize:CGSizeMake(16, 28)];
+        [goLoginViewButton setIconImg:[UIImage imageNamed:@"tri_white_right.png"]];
+        [goLoginViewButton setIconLocation:CGPointMake(520, 6)];
         [goLoginViewButton setBackgroundColor:PMColor6];
         [goLoginViewButton addTarget:self action:@selector(goLoginloadView:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:goLoginViewButton];

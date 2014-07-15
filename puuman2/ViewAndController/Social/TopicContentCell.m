@@ -486,8 +486,8 @@
     }else{
         [topicAllVC setReplyOrder:TopicReplyOrder_Time];
     }
-    [left_sortBtn selectedButton];
-    [right_sortBtn unSelectedButton];
+    [left_sortBtn selected];
+    [right_sortBtn unSelected];
     [topicAllVC.tableView reloadData];
 }
 
@@ -499,8 +499,8 @@
         [topicAllVC setReplyOrder:TopicReplyOrder_Vote];
     
     }
-    [right_sortBtn selectedButton];
-    [left_sortBtn unSelectedButton];
+    [right_sortBtn selected];
+    [left_sortBtn unSelected];
     [topicAllVC.tableView reloadData];
 }
 

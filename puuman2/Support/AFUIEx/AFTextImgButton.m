@@ -34,22 +34,10 @@
     [_title setBackgroundColor:[UIColor clearColor]];
     [self addSubview:_title];
     [self setBackgroundColor:[UIColor clearColor]];
-    mark  =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    [mark setBackgroundColor:[UIColor blackColor]];
-    [mark setAlpha:0];
-    [self addSubview:mark];
+  
 
 }
 
-- (void)selectedButton
-{
-    [mark setAlpha:0.3];
-}
-
-- (void)unSelectedButton
-{
-    [mark setAlpha:0];
-}
 
 - (void)setIconImg:(UIImage *)iconImg
 {
@@ -82,6 +70,11 @@
         SetViewLeftCenter(_title, x, y);
     }
 
+}
+
+- (void)setIconLocation:(CGPoint)pos
+{
+    SetViewLeftUp(iconView, pos.x, pos.y);
 }
 
 

@@ -635,7 +635,11 @@
 		54C038DD1963ECAB00BBC1E6 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C038DC1963ECAB00BBC1E6 /* OrderDetailViewController.m */; };
 		54C038E11963FBAD00BBC1E6 /* PaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C038E01963FBAD00BBC1E6 /* PaidViewController.m */; };
 		54C038E619640A3000BBC1E6 /* ware_info_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C038E519640A3000BBC1E6 /* ware_info_back.png */; };
-		54C110941974D90400415EE3 /* LoginStartSelectedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C110931974D90400415EE3 /* LoginStartSelectedButton.m */; };
+		54C110971974DA5500415EE3 /* AFSelectedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C110961974DA5500415EE3 /* AFSelectedButton.m */; };
+		54C1109A1974DB5400415EE3 /* LoginStartStatusSelectedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C110991974DB5400415EE3 /* LoginStartStatusSelectedButton.m */; };
+		54C110A11974E89C00415EE3 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C1109C1974E89C00415EE3 /* TaskCell.m */; };
+		54C110A21974E89C00415EE3 /* TaskInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C1109E1974E89C00415EE3 /* TaskInfoViewController.m */; };
+		54C110A31974E89C00415EE3 /* TaskTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C110A01974E89C00415EE3 /* TaskTitleView.m */; };
 		54C2E9FA192DE0BA0011AA0C /* course_p1_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */; };
 		54C2E9FB192DE0BA0011AA0C /* course_p1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F5192DE0BA0011AA0C /* course_p1.png */; };
 		54C2E9FC192DE0BA0011AA0C /* course_p2_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */; };
@@ -723,9 +727,6 @@
 		54D1500218CAEFD70022E1F4 /* pic_timeline_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D14FEE18CAEFD70022E1F4 /* pic_timeline_diary.png */; };
 		54D1500318CAEFD70022E1F4 /* pic1_circle_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D14FEF18CAEFD70022E1F4 /* pic1_circle_diary.png */; };
 		54D1500518CAEFD70022E1F4 /* tri_pink_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D14FF118CAEFD70022E1F4 /* tri_pink_diary.png */; };
-		54D1500D18CAF4EB0022E1F4 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1500818CAF4EB0022E1F4 /* TaskCell.m */; };
-		54D1501218CAF7B50022E1F4 /* TaskTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1501118CAF7B50022E1F4 /* TaskTitleView.m */; };
-		54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1501418CB1EB00022E1F4 /* TaskInfoViewController.m */; };
 		54D50ACF1966559E0009E3A7 /* ShopShowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D50ACE1966559E0009E3A7 /* ShopShowContentView.m */; };
 		54D50AD2196682B20009E3A7 /* ShopSortSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D50AD1196682B20009E3A7 /* ShopSortSectionView.m */; };
 		54D50AD5196686ED0009E3A7 /* ShopSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D50AD4196686ED0009E3A7 /* ShopSectionView.m */; };
@@ -1719,8 +1720,16 @@
 		54C038DF1963FBAD00BBC1E6 /* PaidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaidViewController.h; sourceTree = "<group>"; };
 		54C038E01963FBAD00BBC1E6 /* PaidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaidViewController.m; sourceTree = "<group>"; };
 		54C038E519640A3000BBC1E6 /* ware_info_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ware_info_back.png; sourceTree = "<group>"; };
-		54C110921974D90400415EE3 /* LoginStartSelectedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginStartSelectedButton.h; sourceTree = "<group>"; };
-		54C110931974D90400415EE3 /* LoginStartSelectedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginStartSelectedButton.m; sourceTree = "<group>"; };
+		54C110951974DA5500415EE3 /* AFSelectedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSelectedButton.h; sourceTree = "<group>"; };
+		54C110961974DA5500415EE3 /* AFSelectedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSelectedButton.m; sourceTree = "<group>"; };
+		54C110981974DB5400415EE3 /* LoginStartStatusSelectedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginStartStatusSelectedButton.h; sourceTree = "<group>"; };
+		54C110991974DB5400415EE3 /* LoginStartStatusSelectedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginStartStatusSelectedButton.m; sourceTree = "<group>"; };
+		54C1109B1974E89C00415EE3 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
+		54C1109C1974E89C00415EE3 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		54C1109D1974E89C00415EE3 /* TaskInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskInfoViewController.h; sourceTree = "<group>"; };
+		54C1109E1974E89C00415EE3 /* TaskInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskInfoViewController.m; sourceTree = "<group>"; };
+		54C1109F1974E89C00415EE3 /* TaskTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTitleView.h; sourceTree = "<group>"; };
+		54C110A01974E89C00415EE3 /* TaskTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTitleView.m; sourceTree = "<group>"; };
 		54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p1_h.png; sourceTree = "<group>"; };
 		54C2E9F5192DE0BA0011AA0C /* course_p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p1.png; sourceTree = "<group>"; };
 		54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_p2_h.png; sourceTree = "<group>"; };
@@ -1830,12 +1839,6 @@
 		54D14FEE18CAEFD70022E1F4 /* pic_timeline_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_timeline_diary.png; sourceTree = "<group>"; };
 		54D14FEF18CAEFD70022E1F4 /* pic1_circle_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic1_circle_diary.png; sourceTree = "<group>"; };
 		54D14FF118CAEFD70022E1F4 /* tri_pink_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri_pink_diary.png; sourceTree = "<group>"; };
-		54D1500718CAF4EB0022E1F4 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
-		54D1500818CAF4EB0022E1F4 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
-		54D1501018CAF7B50022E1F4 /* TaskTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTitleView.h; sourceTree = "<group>"; };
-		54D1501118CAF7B50022E1F4 /* TaskTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTitleView.m; sourceTree = "<group>"; };
-		54D1501318CB1EB00022E1F4 /* TaskInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskInfoViewController.h; sourceTree = "<group>"; };
-		54D1501418CB1EB00022E1F4 /* TaskInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskInfoViewController.m; sourceTree = "<group>"; };
 		54D50ACD1966559E0009E3A7 /* ShopShowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopShowContentView.h; sourceTree = "<group>"; };
 		54D50ACE1966559E0009E3A7 /* ShopShowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopShowContentView.m; sourceTree = "<group>"; };
 		54D50AD0196682B20009E3A7 /* ShopSortSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopSortSectionView.h; sourceTree = "<group>"; };
@@ -2741,8 +2744,8 @@
 				54AFBBBD18D6938600861A69 /* SelectButton.m */,
 				54AFBBAA18D6938600861A69 /* DateButton.h */,
 				54AFBBAB18D6938600861A69 /* DateButton.m */,
-				54C110921974D90400415EE3 /* LoginStartSelectedButton.h */,
-				54C110931974D90400415EE3 /* LoginStartSelectedButton.m */,
+				54C110981974DB5400415EE3 /* LoginStartStatusSelectedButton.h */,
+				54C110991974DB5400415EE3 /* LoginStartStatusSelectedButton.m */,
 			);
 			name = support;
 			path = ..;
@@ -3215,6 +3218,8 @@
 				88B515BB192F52EE006A79AB /* AFButton.m */,
 				54B427DD1973CF1300BD2B82 /* AFTextImgButton.h */,
 				54B427DE1973CF1300BD2B82 /* AFTextImgButton.m */,
+				54C110951974DA5500415EE3 /* AFSelectedButton.h */,
+				54C110961974DA5500415EE3 /* AFSelectedButton.m */,
 				540020371973DDE7000C0336 /* AFSelectedTextImgButton.h */,
 				540020381973DDE7000C0336 /* AFSelectedTextImgButton.m */,
 				54B427E01973D26E00BD2B82 /* AFColorButton.h */,
@@ -3803,19 +3808,6 @@
 			name = DiaryShow;
 			sourceTree = "<group>";
 		};
-		54D1500618CAF4E00022E1F4 /* Task */ = {
-			isa = PBXGroup;
-			children = (
-				54D1500718CAF4EB0022E1F4 /* TaskCell.h */,
-				54D1500818CAF4EB0022E1F4 /* TaskCell.m */,
-				54D1501018CAF7B50022E1F4 /* TaskTitleView.h */,
-				54D1501118CAF7B50022E1F4 /* TaskTitleView.m */,
-				54D1501318CB1EB00022E1F4 /* TaskInfoViewController.h */,
-				54D1501418CB1EB00022E1F4 /* TaskInfoViewController.m */,
-			);
-			name = Task;
-			sourceTree = "<group>";
-		};
 		54D64EF018E7C38A00B8899D /* WareView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3849,9 +3841,14 @@
 			children = (
 				5412BC5F192C818F0033F322 /* DiaryTableViewController.h */,
 				5412BC60192C818F0033F322 /* DiaryTableViewController.m */,
+				54C1109B1974E89C00415EE3 /* TaskCell.h */,
+				54C1109C1974E89C00415EE3 /* TaskCell.m */,
+				54C1109D1974E89C00415EE3 /* TaskInfoViewController.h */,
+				54C1109E1974E89C00415EE3 /* TaskInfoViewController.m */,
+				54C1109F1974E89C00415EE3 /* TaskTitleView.h */,
+				54C110A01974E89C00415EE3 /* TaskTitleView.m */,
 				545EB7E418D7E66D00D8EB7F /* Calender */,
 				54A8F43C18CD58FB00D0D523 /* DiaryCell */,
-				54D1500618CAF4E00022E1F4 /* Task */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -4684,6 +4681,7 @@
 				5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */,
 				1405E0CE18FE97B300781B81 /* AsyncImgView.m in Sources */,
 				54B4682218E5210900745F72 /* HospitalHomeView.m in Sources */,
+				54C110971974DA5500415EE3 /* AFSelectedButton.m in Sources */,
 				54AFAA8E18DAA4220067B8C1 /* RewardViewController.m in Sources */,
 				14B8DF2B18BC37A30047C6B3 /* Ware.m in Sources */,
 				54B4681518E520F200745F72 /* TeachedView.m in Sources */,
@@ -4692,6 +4690,7 @@
 				54012DFC18E3095F00F11D97 /* VaccinePartnerDataCell.m in Sources */,
 				541970D318D1956D0058FE64 /* StandardLine.m in Sources */,
 				54012DC118E2C09000F11D97 /* MyTopicViewController.m in Sources */,
+				54C110A11974E89C00415EE3 /* TaskCell.m in Sources */,
 				5412BC5B192C80560033F322 /* PhotoSingleDiaryCell.m in Sources */,
 				54B30A70195D4C1600007DDC /* Share.m in Sources */,
 				88B515F3192F52EE006A79AB /* AFDataStore.m in Sources */,
@@ -4708,7 +4707,6 @@
 				88B515FE192F52EE006A79AB /* SinaWeibo.m in Sources */,
 				5421666918E00DAF005875F8 /* PartnerPortraitDataViewCell.m in Sources */,
 				54CCF1D518F3CC220081C149 /* SelectPhotoImportTypeViewController.m in Sources */,
-				54C110941974D90400415EE3 /* LoginStartSelectedButton.m in Sources */,
 				54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */,
 				54BBE8A81936F6B20056390B /* VideoShowView.m in Sources */,
 				54ADB1E618E1AC1D00FCCC83 /* AutoImportViewController.m in Sources */,
@@ -4768,7 +4766,6 @@
 				54B30ABC195D5C9D00007DDC /* PuuamnShowView.m in Sources */,
 				54AE2BB618E93FEB00D24F92 /* ActionForUpload.m in Sources */,
 				541970D218D1956D0058FE64 /* LineChart.m in Sources */,
-				54D1500D18CAF4EB0022E1F4 /* TaskCell.m in Sources */,
 				54ADE09818C8608700B166C4 /* NewAudioPlayView.m in Sources */,
 				54ADE09718C8608700B166C4 /* NewAudioDiaryViewController.m in Sources */,
 				54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */,
@@ -4804,6 +4801,7 @@
 				88B515F5192F52EE006A79AB /* NSString+VersionCompare.m in Sources */,
 				54C038D91963DF1F00BBC1E6 /* OrderWaresHeaderView.m in Sources */,
 				54AFBBD018D6946900861A69 /* SettingViewController.m in Sources */,
+				54C110A21974E89C00415EE3 /* TaskInfoViewController.m in Sources */,
 				541970EB18D1A3710058FE64 /* AddInfoCalendar.m in Sources */,
 				88B51600192F52EE006A79AB /* SinaWeiboRequest.m in Sources */,
 				54AFAA8B18DA9E750067B8C1 /* RecommentPartnerTableViewCell.m in Sources */,
@@ -4928,7 +4926,6 @@
 				54ADB1E318E1AA4C00FCCC83 /* AuToImportImgCell.m in Sources */,
 				5461934419382A4B004FED04 /* UpLoaderShareVideo.m in Sources */,
 				5448D58C18FE2F2300DA696C /* SocialContentView.m in Sources */,
-				54D1501518CB1EB00022E1F4 /* TaskInfoViewController.m in Sources */,
 				541970D418D1956D0058FE64 /* InfoView.m in Sources */,
 				14CC106218F90BC5005B366E /* DiaryImageView.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
@@ -4941,6 +4938,7 @@
 				88B51609192F52EE006A79AB /* TextLayoutLabel.m in Sources */,
 				145237F0193D5B5900A3A2BB /* BabyInfo.m in Sources */,
 				5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */,
+				54C1109A1974DB5400415EE3 /* LoginStartStatusSelectedButton.m in Sources */,
 				5412BC55192C80450033F322 /* AuPhotoDiaryCell.m in Sources */,
 				54B30A89195D53EC00007DDC /* PieElement.m in Sources */,
 				54B30A8E195D53EC00007DDC /* ToolsDynamicView.m in Sources */,
@@ -4953,6 +4951,7 @@
 				545EB7F618D7F33F00D8EB7F /* AgeCalenderTitleButton.m in Sources */,
 				5412BC49192C7FF80033F322 /* DiaryCell.m in Sources */,
 				54CE112718C1BC6D00966396 /* MainTabBarController.m in Sources */,
+				54C110A31974E89C00415EE3 /* TaskTitleView.m in Sources */,
 				54D50AD2196682B20009E3A7 /* ShopSortSectionView.m in Sources */,
 				54D50AD5196686ED0009E3A7 /* ShopSectionView.m in Sources */,
 				54ADB1BB18E1303300FCCC83 /* DataInfoScrollView.m in Sources */,
@@ -4971,7 +4970,6 @@
 				54ACEE8518EA64B80055562B /* Award.m in Sources */,
 				54AC15CB18ED4C84009CE045 /* Topic.m in Sources */,
 				54C038E11963FBAD00BBC1E6 /* PaidViewController.m in Sources */,
-				54D1501218CAF7B50022E1F4 /* TaskTitleView.m in Sources */,
 				54CC76DF196F874200373B35 /* WareEvaluationView.m in Sources */,
 				54CE119318C1CD7C00966396 /* MainTabBarButton.m in Sources */,
 				54B753A618D2BEB0002411CF /* AnimateShowLabel.m in Sources */,

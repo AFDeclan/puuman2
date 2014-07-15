@@ -114,8 +114,8 @@
     [leftBtn setAlpha:1];
     [rightBtn setAlpha:1];
     selectedTopic = YES;
-    [topicBtn selectedButton];
-    [partnerBtn unSelectedButton];
+    [topicBtn selected];
+    [partnerBtn unSelected];
     [leftBtn.title setText:@"所有"];
     [rightBtn.title setText:@"我参与的"];
     [self leftBtnPressed];
@@ -129,8 +129,8 @@
 {
     
     selectedTopic = NO;
-    [topicBtn unSelectedButton];
-    [partnerBtn selectedButton];
+    [topicBtn unSelected];
+    [partnerBtn selected];
     [leftBtn.title setText:@"数据"];
     [rightBtn.title setText:@"闲聊"];
 
@@ -140,9 +140,9 @@
 
 - (void)leftBtnPressed
 {
-    [leftBtn selectedButton];
+    [leftBtn selected];
     [leftBtn setEnabled:NO];
-    [rightBtn unSelectedButton];
+    [rightBtn unSelected];
     [rightBtn setEnabled:YES];
     if (selectedTopic) {
         [contnetView selectWithType:kAllTopicView];

@@ -7,6 +7,8 @@
 //
 
 #import "AFColorButton.h"
+#import "UniverseConstant.h"
+
 static NSString *backgroundColorImages[3][6] = {
     {@"btn_red1.png",@"btn_red2.png",@"btn_red3.png",@"btn_red4.png",@"btn_red5.png",@"btn_red6.png"},
     {@"btn_blue1.png",@"btn_blue2.png",@"btn_blue3.png",@"btn_blue4.png",@"btn_blue5.png",@"btn_blue6.png"},
@@ -24,6 +26,8 @@ static NSString *backgroundColorImages[3][6] = {
         // Initialization code
         _colorType = kColorButtonBlueColor;
         _directionType = kColorButtonLeft;
+        [self.title setFont:PMFont2];
+
     }
     return self;
 }
@@ -38,6 +42,14 @@ static NSString *backgroundColorImages[3][6] = {
 
     [self adjustLayout];
     [self setImage:[UIImage imageNamed:backgroundColorImages[_colorType][_directionType]] forState:UIControlStateNormal];
+    if (_colorType == kColorButtonGrayColor) {
+        [self.title setTextColor:PMColor2];
+
+    }else{
+        [self.title setTextColor:[UIColor whiteColor]];
+
+
+    }
 }
 
 - (void)selected

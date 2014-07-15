@@ -86,7 +86,7 @@
     SetViewLeftCenter(_registerBtn, 592, 443);
     
     _loginBtn = [[AFColorButton alloc] init];
-    [_loginBtn.title setText:@"登陆"];
+    [_loginBtn.title setText:@"登录"];
     // [_loginBtn adjustLayout];
     [_loginBtn setColorType:kColorButtonBlueColor];
     [_loginBtn setDirectionType:kColorButtonLeftDown];
@@ -146,7 +146,7 @@
     [_loginBtn setAlpha:1];
     [_inviteCodeBtn setAlpha:1];
     UILabel *title = (UILabel *)[self viewWithTag:10];
-    [title setText:@"登陆您的扑满日记账号吧！"];
+    [title setText:@"登录您的扑满日记账号吧！"];
 }
 
 
@@ -166,7 +166,6 @@
             _inviteCodeLabel.text = @"我没有邀请码";
             [_inviteCodeBtn.title setText:@"我没有邀请码"];
             [_inviteCodeBtn adjustLayout];
-            [_loginBtn setImage:[UIImage imageNamed:@"btn_reg_login_diary.png"] forState:UIControlStateNormal];
             UILabel *title = (UILabel *)[self viewWithTag:10];
             [title setText:@"用邀请码注册您的扑满日记账号吧！"];
           
@@ -179,9 +178,8 @@
             _userField.placeholder = @"常用邮箱或手机";
             _passwordLabel.text = @"密码";
             _inviteCodeLabel.text = @"我有邀请码";
-            [_loginBtn setImage:[UIImage imageNamed:@"btn2_login_diary.png"] forState:UIControlStateNormal];
             UILabel *title = (UILabel *)[self viewWithTag:10];
-            [title setText:@"登陆您的扑满日记账号吧！"];
+            [title setText:@"登录您的扑满日记账号吧！"];
         
         }
         [UIView animateWithDuration:0.2 animations:^{self.alpha = 1;}];
@@ -250,7 +248,7 @@
         }
 
          userInfo.pwd = _pwdField.text;
-        [MainTabBarController showHud:@"登陆中..."];
+        [MainTabBarController showHud:@"登录中..."];
         UserActionResult result = [userInfo login];
         [MainTabBarController hideHud];
         switch (result) {
@@ -258,12 +256,12 @@
                 [CustomNotiViewController showNotiWithTitle:@"登录成功" withTypeStyle:kNotiTypeStyleNone];
                 break;
             case checkFailed:
-                [CustomAlertViewController showAlertWithTitle:@"登陆失败，用户名或密码错误。" confirmRightHandler:^{
+                [CustomAlertViewController showAlertWithTitle:@"登录失败，用户名或密码错误。" confirmRightHandler:^{
                    
                 }];
                 break;
             case timeOut:
-                [CustomAlertViewController showAlertWithTitle:@"登陆失败，请检查联网状态。" confirmRightHandler:^{
+                [CustomAlertViewController showAlertWithTitle:@"登录失败，请检查联网状态。" confirmRightHandler:^{
                    
                 }];
                 break;
@@ -275,7 +273,7 @@
     }
     else
     {
-        [CustomAlertViewController showAlertWithTitle:@"账号不存在或密码错误,请检查后登陆" confirmRightHandler:^{
+        [CustomAlertViewController showAlertWithTitle:@"账号不存在或密码错误,请检查后登录" confirmRightHandler:^{
            
         }];
   
