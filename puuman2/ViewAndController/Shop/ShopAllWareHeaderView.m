@@ -102,13 +102,11 @@
 
 - (void)setVerticalFrame
 {
-    SetViewLeftUp(filtrateBtn,ViewWidth(self)- ViewWidth(filtrateBtn), 16);
 
 }
 
 - (void)setHorizontalFrame
 {
-    SetViewLeftUp(filtrateBtn, ViewWidth(self)- ViewWidth(filtrateBtn), 16);
 
 }
 

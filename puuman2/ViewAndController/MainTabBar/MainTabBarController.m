@@ -8,13 +8,8 @@
 
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
-#import "BabyData.h"
-#import "TaskModel.h"
-#import "PumanBookModel.h"
-#import "CartModel.h"
 #import "SocialNetwork.h"
 #import "SettingViewController.h"
-#import "DiaryViewController.h"
 #import "CustomNotiViewController.h"
 #import "MBProgressHUD.h"
 #import "ShopModel.h"
@@ -22,7 +17,7 @@
 #import "ShareVideo.h"
 #import "UpLoaderShareVideo.h"
 #import "CAKeyframeAnimation+DragAnimation.h"
-
+#import "DiaryModel.h"
 @interface MainTabBarController ()
 
 @end
@@ -53,10 +48,7 @@ static MBProgressHUD *hud;
         // Custom initialization
         [self setDelegate:self];
         _isVertical = YES;
-        [MyNotiCenter addObserver:self selector:@selector(userChanged) name:Noti_UserLogined object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(showBottomInputView:) name:Noti_BottomInputViewShow object:nil];
+
         [MyNotiCenter addObserver:self selector:@selector(refreshProgressAutoVideo:) name:Noti_RefreshProgressAutoVideo object:nil];
         [MyNotiCenter addObserver:self selector:@selector(downAutoVideo) name:Noti_HasShareVideo object:nil];
         [MyNotiCenter addObserver:self selector:@selector(finishDownShareVideo:) name:Noti_FinishShareVideo object:nil];
@@ -72,10 +64,7 @@ static MBProgressHUD *hud;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    UIView *transitionView = [self.view.subviews firstObject];
-//    for (UIView *view in [self.view subviews]) {
-//        [view removeFromSuperview];
-//    }
+
     babyInfoShowed = NO;
     _babyInfoShowed = NO;
     [self initWithTabBar];
@@ -108,7 +97,6 @@ static MBProgressHUD *hud;
         [videoBtn setAlpha:1];
     }else{
         [videoBtn setAlpha:0];
-
     }
     UpLoaderShareVideo *downloader = [[UpLoaderShareVideo alloc] init];
     [downloader downloadDataFromUrl:[[UserInfo sharedUserInfo] shareVideo].videoUrl];
@@ -118,8 +106,6 @@ static MBProgressHUD *hud;
     }
     timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshProgress) userInfo:nil repeats:YES];
     _hasShareVideo = NO;
-   
-
 
 }
 
@@ -146,7 +132,6 @@ static MBProgressHUD *hud;
    // _loadingVideo = NO;
     SetViewLeftUp(videoBtn, 608, -189);
     [videoBtn setAlpha:0];
- 
 
 }
 
@@ -203,7 +188,7 @@ static MBProgressHUD *hud;
         if (![userInfo logined]) {
             if (![userInfo loginFromUserDefault])
             {
-                [self showLoginView];
+                PostNotification(Noti_UserLogouted, nil);
             }
             
         }
@@ -257,7 +242,7 @@ static MBProgressHUD *hud;
     if (![userInfo logined]) {
         if (![userInfo loginFromUserDefault])
         {
-            [self showLoginView];
+            PostNotification(Noti_UserLogouted, nil);
         }
         
     }
@@ -282,10 +267,6 @@ static MBProgressHUD *hud;
 
  -(void)selectedWithTag:(TypeTabBarButton)tag
 {
-    if (tag == kTypeTabBarOfDiary) {
-        [[DiaryViewController alloc] refresh];
-    }
-    
     [self setSelectedIndex:tag];
 }
 
@@ -373,12 +354,7 @@ static MBProgressHUD *hud;
             SetViewLeftUp(babyInfoBtn,768 -16 - 56, 0);
         }
     }
-    
-    if (babyShowBtn) {
-        SetViewLeftUp(babyShowBtn,768 -16 - 80, 1024);
-        
-    }
-    
+ 
     
 }
 
@@ -410,69 +386,7 @@ static MBProgressHUD *hud;
         }
     }
     
-    if (babyShowBtn) {
-        SetViewLeftUp(babyShowBtn,1024 -16 - 80, 768);
-    }
-}
-
-- (void)showLoginView
-{
-    [self setSelectedIndex:0];
-    loginViewC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
-    [self.view addSubview:loginViewC.view];
-    [loginViewC setControlBtnType:kCloseAndFinishButton];
-    [loginViewC setTitle:@"欢迎使用扑满日记！" withIcon:nil];
-    [loginViewC loginSetting];
-    [loginViewC show];
-    
-  
-}
-
-- (void)userChanged
-{
-
-    if (loginViewC) {
-        [loginViewC loginSucceed];
-    }
-   
-    [[BabyData sharedBabyData] reloadData];
-    [[TaskModel sharedTaskModel] updateTasks];
-    [[PumanBookModel bookModel] initialize];
-    [[CartModel sharedCart] update:NO];
-    [SocialNetwork initSocialNetwork];
-    [[DiaryModel sharedDiaryModel] reloadData];
-    [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
-    [tabBar selectedWithTag:kTypeTabBarOfDiary];
-    [self refreshBabyInfoView];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if (![userDefaults boolForKey:@"DiarytutorialShowed"]){
-        [userDefaults setBool:YES forKey:@"DiarytutorialShowed"];
-        diaryTurorialView =[[UIView alloc] init];
-        UIImageView *diaryTurorial = [[UIImageView alloc] init];
-        if (_isVertical ) {
-            [diaryTurorialView setFrame:CGRectMake(0, 0, 768, 1024)];
-            [diaryTurorial setFrame:CGRectMake(0, 0, 768, 1024)];
-            [diaryTurorial setImage:[UIImage imageNamed:@"pic2_course2.png"]];
-
-        }else{
-            [diaryTurorialView setFrame:CGRectMake(0, 0, 1024, 768)];
-            [diaryTurorial setFrame:CGRectMake(0, 0, 1024, 768)];
-            [diaryTurorial setImage:[UIImage imageNamed:@"pic1_course1.png"]];
-
-        }
-      
-        [diaryTurorialView setAlpha:1];
-        [diaryTurorialView addSubview:diaryTurorial];
-        [self.view addSubview:diaryTurorialView];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDiaryTurorialView)];
-        [diaryTurorialView addGestureRecognizer:tap];
-    }
-}
-
-- (void)hiddenDiaryTurorialView
-{
-    [diaryTurorialView setAlpha:0];
-    [diaryTurorialView removeFromSuperview];
+ 
 }
 
 
@@ -520,43 +434,6 @@ static MBProgressHUD *hud;
     
 }
 
-- (void)goToShopWithParentIndex:(NSInteger)parentMenu andChildIndex:(NSInteger)childMenu
-{
-    [tabBar selectedWithTag:kTypeTabBarOfSetting];
-    [ShopModel sharedInstance].sectionIndex = parentMenu;
-    [ShopModel sharedInstance].subClassIndex = childMenu;
-     PostNotification(Noti_RefreshMenu, nil);
-}
-
-- (void)showBottomInputView:(NSNotification *)notification
-{
-  //  if (!inputVC) {
-        inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
-        [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
-        [inputVC setActionParent:[notification object]];
-        [inputVC setSendIsHidden:_isReply];
-        [inputVC setDelegate:self];
-        [inputVC show];
-  //  }
- 
-}
-
-
-
-- (void)hiddenBottomInputView
-{
-    if (inputVC) {
-        [inputVC hidden];
-        inputVC = nil;
-    }
-}
-
-- (void)popViewfinished
-{
-    [inputVC.view removeFromSuperview];
-    inputVC = nil;
-}
-
 + (void)showHud:(NSString *)text
 {
     MainTabBarController *viewCon = [self sharedMainViewController];
@@ -598,26 +475,18 @@ static MBProgressHUD *hud;
     PostNotification(Noti_HudCanceled, nil);
 }
 
-- (void)updatePuumanData
-{
-    [puumanView updateData];
-}
 
 - (void)refreshBabyInfoView
 {
     if (infoView) {
         [infoView removeFromSuperview];
     }
+    
     infoView = [[BabyView alloc] initWithFrame:CGRectMake(0, -768, 1024, 768)];
     [self.view addSubview:infoView];
     [infoView.layer setMasksToBounds:NO];
-    if (!babyShowBtn) {
-        babyShowBtn = [[BabyShowButton alloc] initWithFrame:CGRectMake(1024 -16 - 80, 768, 80, 80)];
-        [babyShowBtn setBackgroundColor:[UIColor clearColor]];
-    }
-    [infoView addSubview:babyShowBtn];
     
-    [babyShowBtn loadPortrait];
+    
     if (!babyInfoBtn) {
         babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(1024 -16 - 80, 0, 80, 80)];
         [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
@@ -673,6 +542,7 @@ static MBProgressHUD *hud;
 
 }
 
+
 -(void)dragAnimationWithView:(UIView *)view andDargPoint:(CGPoint)pos
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -698,7 +568,17 @@ static MBProgressHUD *hud;
     
 }
 
+- (void)showDiary
+{
+    [tabBar selectedWithTag:kTypeTabBarOfDiary];
+}
 
+- (void)showShop
+{
+    [tabBar selectedWithTag:kTypeTabBarOfShop];
+    PostNotification(Noti_RefreshMenu, nil);
+    
+}
 
 
 @end

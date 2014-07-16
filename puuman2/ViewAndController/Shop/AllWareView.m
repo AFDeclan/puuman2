@@ -21,6 +21,7 @@
     if (self) {
         // Initialization code
         
+        filtrateShow = NO;
         [self setBackgroundColor:[UIColor clearColor]];
         _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 648,474)];
         [_shopMallTable setDataSource:self];
@@ -65,6 +66,54 @@
 }
 
 
+- (void)hiddenFiltrate
+{
+    if (filtrateShow) {
+        [self filtrate];
+    }
+
+}
+
+- (void)filtrate
+{
+    if (filtrateShow) {
+        [UIView animateWithDuration:0.5 animations:^{
+            [filtrate setFrame:CGRectMake(48, 56, 610, 40)];
+            [filtrate hidden];
+        }completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 animations:^{
+                [filtrate setFrame:CGRectMake(38+610-112, 56, 118, 40)];
+            }completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.5 animations:^{
+                    SetViewLeftUp(filtrate, 38+610-112, 16);
+                }completion:^(BOOL finished) {
+                    [filtrateBtn setAlpha:1];
+                }];
+            }];
+        }];
+    }else{
+        [filtrateBtn setAlpha:0];
+
+        [UIView animateWithDuration:0.5 animations:^{
+            SetViewLeftUp(filtrate, 38+610-112, 56);
+
+        }completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 animations:^{
+                [filtrate setFrame:CGRectMake(48, 56, 610, 40)];
+                
+            }completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.5 animations:^{
+                    [filtrate setFrame:CGRectMake(48, 56, 610, 210)];
+                    [filtrate show];
+                    
+                }];
+            }];
+        }];
+        
+    }
+    filtrateShow = !filtrateShow;
+    
+}
 
 #pragma mark - Tableview Delegate Methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -108,9 +157,7 @@
     
     switch (_shopState) {
         case ShopStateInsurance:
-            
-           
-            
+
             if (row == 0) {
                 NSString *identifier = @"HealthCell";
                 HealthCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -314,6 +361,7 @@
     if (_shopState == ShopStateInsurance) {
         [noti_insurance setAlpha:1];
     }
+
 }
 
 - (void)setHorizontalFrame
@@ -325,9 +373,8 @@
     if (_shopState == ShopStateInsurance) {
           [noti_insurance setAlpha:0];
     }
+
 }
-
-
 
 
 

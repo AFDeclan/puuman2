@@ -9,12 +9,12 @@
 #import "AFButton.h"
 
 typedef enum{
-    
-    kTypeTabBarOfDiary = 1,
+    kTypeTabBarOfSkip,
+    kTypeTabBarOfDiary,
     kTypeTabBarOfSocial,
     kTypeTabBarOfShop,
     kTypeTabBarOfSetting,
-    kTypeTabBarOfNone
+    
 }TypeTabBarButton;
 
 #define MainTabBarButtonanimateTime 0.5

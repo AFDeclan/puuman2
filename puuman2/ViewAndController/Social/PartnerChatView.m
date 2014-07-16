@@ -22,7 +22,7 @@
     if (self) {
         // Initialization code
         [MyNotiCenter addObserver:self selector:@selector(refreshChatTable) name:Noti_RefreshChatTable object:nil];
-    
+        [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
         [self initialization];
     }
     return self;
@@ -45,7 +45,6 @@
     [bgHeadView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_talk_fri.png"]]];
     [self addSubview:bgHeadView];
     
-    
     icon_head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
     [icon_head setImage:[UIImage imageNamed:@"block_name_fri.png"]];
     [self addSubview:icon_head];
@@ -66,17 +65,23 @@
     [self addSubview:noti_label];
    // [self reloadChatData];
     [self refreshChatTable];
-
+    inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
 }
 
 - (void)reloadChatData
 {
    
-    
     [[Friend sharedInstance] removeDelegateObject:self];
     [[Friend sharedInstance] addDelegateObject:self];
     [[[Friend sharedInstance] myGroup] startUpdateAction];
+    [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
+    [inputVC show];
+    
+}
 
+- (void)hiddenBottomInputView
+{
+    [inputVC hidden];
 }
 
 - (void)goOut
@@ -194,4 +199,9 @@
     }
 }
 
+-(void)dealloc
+{
+    [inputVC hidden];
+    [MyNotiCenter removeObserver:self];
+}
 @end

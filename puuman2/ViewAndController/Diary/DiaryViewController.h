@@ -23,6 +23,8 @@
     CalenderControlView *calenderView;
     DiaryTableViewController *diaryTableVC;
     ToolsView *toolsView;
+    UIView *diaryTurorialView;
+    UIImageView *diaryTurorial;
 }
 @property (assign,nonatomic) BOOL cameraModel;
 
@@ -39,4 +41,6 @@
 - (void)refreshTable;
 - (void)setImportTotalNum:(NSInteger)num;
 - (void)autoImportShowed;
+- (void)showTurorialView;
+
 @end

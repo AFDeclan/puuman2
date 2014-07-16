@@ -39,8 +39,7 @@
     portraitView.layer.shadowRadius =0.1;
     [self addSubview:portraitView];
     [self loadAnimateView];
-    [MyNotiCenter addObserver:self selector:@selector(addPuuman) name:Noti_AddCorns object:nil];
-
+    [MyNotiCenter addObserver:self selector:@selector(addPuuman:) name:Noti_AddCorns object:nil];
 
 }
 
@@ -124,8 +123,7 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    [[MainTabBarController sharedMainViewController] updatePuumanData];
-
+    PostNotification(Noti_UpdatePuumanShow, nil);
     if ([anim isKindOfClass:[CABasicAnimation class]]) {
         if (flag) {
             [self animateFinished];
@@ -177,10 +175,21 @@
     }
 }
 
+- (void)addPuuman:(NSNotification *)notification
+{
+    float addCoins = [[notification object] floatValue];
+    
+    if (addCoins > 0) {
+        [showLabel setText:[NSString stringWithFormat:@"+%0.1f",addCoins]];
+        [self addPuuman];
+    }else{
+        [showLabel setText:[NSString stringWithFormat:@"%0.1f",addCoins]];
+        [self minusPuuman];
+    }
+}
 
 - (void)addPuuman
 {
-    [showLabel setText:@"+1"];
     if (status == PuumanAnimateNone) {
         status = PuumanAnimateAdd;
         [self addAnimation];
@@ -188,17 +197,16 @@
 }
 - (void)minusPuuman
 {
-    [showLabel setText:@"-1"];
 
     if (status == PuumanAnimateNone) {
-        status = PuumanAnimateAdd;
-        [self addAnimation];
+        status = PuumanAnimateMinus;
+        [self minusPuuman];
     }
 }
 
 -(void)loadPortrait
 {
-  [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
+    [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
 }
 
 -(void)dealloc

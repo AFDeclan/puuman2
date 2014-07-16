@@ -10,6 +10,7 @@
 #import "ShopModel.h"
 #import "MJRefreshFooterView.h"
 #import "ShopAllWareHeaderView.h"
+#import "FiltrateView.h"
 
 typedef enum ShopState {
     ShopStateNormal,

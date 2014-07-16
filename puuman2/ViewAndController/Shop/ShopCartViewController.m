@@ -306,6 +306,35 @@
     }
 }
 
+- (void)show
+{
+    [bgView setAlpha:0];
+    [UIView animateWithDuration:0.4 animations:^{
+        [bgView setAlpha:0.3];
+    }];
+    [_content showInFrom:kAFanimationFromRight inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:nil];
+ 
+    
+}
+
+- (void)hidden
+{
+    [UIView animateWithDuration:0.4 animations:^{
+        [bgView setAlpha:0];
+    }];
+    [_content hiddenOutTo:kAFanimationFromRight inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
+    
+}
+
+- (void)finishOut
+{
+    [super dismiss];
+    if ([self.delegate respondsToSelector:@selector(popViewfinished)]) {
+        [self.delegate popViewfinished];
+    }
+    [self.view removeFromSuperview];
+}
+
 
 
 - (void)deleteBtnPressed

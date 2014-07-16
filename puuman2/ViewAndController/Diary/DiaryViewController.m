@@ -154,143 +154,6 @@ static DiaryViewController * instance;
     
 }
 
-
-//竖屏
--(void)setVerticalFrame
-{
-   
-    [toolsView setAlpha:0];
-    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 1024)];
-    [newBtn setFrame:CGRectMake(680, 904, 56, 88)];
-    
-    if ([newBtn directionChangedWithVertical:YES] &&isFirst == NO) {
-        isFirst = YES;
-        [newBtn setShowStatus];
-        [newBtn setNewBtnShowed:YES];
-        
-        for (int i=0; i<5; i++)
-        {
-            if (newBtn.commonBtnType >i ) {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else if(newBtn.commonBtnType < i )
-            {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else{
-                newDiaryBtn[i].alpha = 0;
-            }
-            
-        }
-        if (timer) {
-            [timer invalidate];
-            timer = nil;
-        }
-        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
-
-        
-    }
-    if (newBtn.newBtnShowed) {
-        for (int i=0; i<5; i++)
-        {
-            if (newBtn.commonBtnType >i ) {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else if(newBtn.commonBtnType < i )
-            {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else{
-                newDiaryBtn[i].alpha = 0;
-            }
-            
-        }
-        if (timer) {
-            [timer invalidate];
-            timer = nil;
-        }
-        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
-
-        
-    }else{
-        for (int i=0; i<5; i++)
-        {
-            newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x, newBtn.frame.origin.y, 56,56);
-            [newDiaryBtn[i] setAlpha:0];
-            
-        }
-    }
-
-}
-
-//横屏
--(void)setHorizontalFrame
-{
-    [toolsView setAlpha:1];
-    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 768)];
-    [newBtn setFrame:CGRectMake(936, 648, 56, 88)];
-    
-    if ([newBtn directionChangedWithVertical:NO]&&isFirst == NO) {
-        [newBtn setShowStatus];
-        isFirst = YES;
-        [newBtn setNewBtnShowed:YES];
-        for (int i=0; i<5; i++)
-        {
-            if (newBtn.commonBtnType >i ) {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else if(newBtn.commonBtnType < i )
-            {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else{
-                newDiaryBtn[i].alpha = 0;
-            }
-            
-        }
-        if (timer) {
-            [timer invalidate];
-            timer = nil;
-        }
-         timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
-
-        
-    }
-    if (newBtn.newBtnShowed) {
-        for (int i=0; i<5; i++)
-        {
-            if (newBtn.commonBtnType >i ) {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else if(newBtn.commonBtnType < i )
-            {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else{
-                newDiaryBtn[i].alpha = 0;
-            }
-            
-        }
-        if (timer) {
-            [timer invalidate];
-            timer = nil;
-        }
-        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
-
-        
-    }else{
-        for (int i=0; i<5; i++)
-        {
-            newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x, newBtn.frame.origin.y, 56,56);
-            [newDiaryBtn[i] setAlpha:0];
-            
-        }
-    }
-    [toolsView showAnimate];
-}
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -484,8 +347,6 @@ static DiaryViewController * instance;
 
 -(void)setTaskInfo:(NSDictionary *)taskInfo
 {
-    
-    
     switch ([[taskInfo valueForKey:_task_TaskType] integerValue]) {
         case 2:
         case 7:
@@ -581,4 +442,179 @@ static DiaryViewController * instance;
 {
     [diaryTableVC autoImportShowed];
 }
+
+- (void)showTurorialView
+{
+    diaryTurorialView =[[UIView alloc] init];
+   diaryTurorial = [[UIImageView alloc] init];
+    if ([MainTabBarController sharedMainViewController].isVertical ) {
+        [diaryTurorialView setFrame:CGRectMake(0, 0, 768, 1024)];
+        [diaryTurorial setFrame:CGRectMake(0, 0, 768, 1024)];
+        [diaryTurorial setImage:[UIImage imageNamed:@"pic2_course2.png"]];
+        
+    }else{
+        [diaryTurorialView setFrame:CGRectMake(0, 0, 1024, 768)];
+        [diaryTurorial setFrame:CGRectMake(0, 0, 1024, 768)];
+        [diaryTurorial setImage:[UIImage imageNamed:@"pic1_course1.png"]];
+        
+    }
+    
+    [diaryTurorialView setAlpha:1];
+    [diaryTurorialView addSubview:diaryTurorial];
+    [self.view addSubview:diaryTurorialView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDiaryTurorialView)];
+    [diaryTurorialView addGestureRecognizer:tap];
+}
+
+- (void)hiddenDiaryTurorialView
+{
+    [diaryTurorialView setAlpha:0];
+    [diaryTurorialView removeFromSuperview];
+}
+
+
+
+//竖屏
+-(void)setVerticalFrame
+{
+    [diaryTurorialView setFrame:CGRectMake(0, 0, 768, 1024)];
+    [diaryTurorial setFrame:CGRectMake(0, 0, 768, 1024)];
+    [diaryTurorial setImage:[UIImage imageNamed:@"pic2_course2.png"]];
+    [toolsView setAlpha:0];
+    
+    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 1024)];
+    [newBtn setFrame:CGRectMake(680, 904, 56, 88)];
+    
+    if ([newBtn directionChangedWithVertical:YES] &&isFirst == NO) {
+        isFirst = YES;
+        [newBtn setShowStatus];
+        [newBtn setNewBtnShowed:YES];
+        
+        for (int i=0; i<5; i++)
+        {
+            if (newBtn.commonBtnType >i ) {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else if(newBtn.commonBtnType < i )
+            {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else{
+                newDiaryBtn[i].alpha = 0;
+            }
+            
+        }
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
+        
+        
+    }
+    if (newBtn.newBtnShowed) {
+        for (int i=0; i<5; i++)
+        {
+            if (newBtn.commonBtnType >i ) {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else if(newBtn.commonBtnType < i )
+            {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else{
+                newDiaryBtn[i].alpha = 0;
+            }
+            
+        }
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
+        
+        
+    }else{
+        for (int i=0; i<5; i++)
+        {
+            newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x, newBtn.frame.origin.y, 56,56);
+            [newDiaryBtn[i] setAlpha:0];
+            
+        }
+    }
+    
+}
+
+//横屏
+-(void)setHorizontalFrame
+{
+    [diaryTurorialView setFrame:CGRectMake(0, 0, 1024, 768)];
+    [diaryTurorial setFrame:CGRectMake(0, 0, 1024, 768)];
+    [diaryTurorial setImage:[UIImage imageNamed:@"pic1_course1.png"]];
+
+    [toolsView setAlpha:1];
+    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 768)];
+    [newBtn setFrame:CGRectMake(936, 648, 56, 88)];
+    
+    if ([newBtn directionChangedWithVertical:NO]&&isFirst == NO) {
+        [newBtn setShowStatus];
+        isFirst = YES;
+        [newBtn setNewBtnShowed:YES];
+        for (int i=0; i<5; i++)
+        {
+            if (newBtn.commonBtnType >i ) {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else if(newBtn.commonBtnType < i )
+            {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else{
+                newDiaryBtn[i].alpha = 0;
+            }
+            
+        }
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
+        
+        
+    }
+    if (newBtn.newBtnShowed) {
+        for (int i=0; i<5; i++)
+        {
+            if (newBtn.commonBtnType >i ) {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else if(newBtn.commonBtnType < i )
+            {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else{
+                newDiaryBtn[i].alpha = 0;
+            }
+            
+        }
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
+        
+        
+    }else{
+        for (int i=0; i<5; i++)
+        {
+            newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x, newBtn.frame.origin.y, 56,56);
+            [newDiaryBtn[i] setAlpha:0];
+            
+        }
+    }
+    [toolsView showAnimate];
+}
+
+
+
 @end

@@ -63,7 +63,6 @@
         [myTopic setAlpha:1];
         if (allTopic) {
             [allTopic setAlpha:0];
-            PostNotification(Noti_BottomInputViewHidden, nil);
         }
     }];
     
@@ -132,7 +131,6 @@
         [partnerData setAlpha:1];
         if (partnerChat) {
             [partnerChat setAlpha:0];
-            PostNotification(Noti_BottomInputViewHidden, nil);
         }
     }];
 }
@@ -151,7 +149,6 @@
     [partnerChat setAlpha:0];
     [partnerChat reloadChatData];
     [[MainTabBarController sharedMainViewController] setIsReply:NO];
-    PostNotification(Noti_BottomInputViewShow, [[Friend sharedInstance] myGroup]);
     [UIView animateWithDuration:0.5 animations:^{
         [partnerChat setAlpha:1];
         if (partnerData) {
@@ -195,8 +192,6 @@
         default:
             break;
     }
-    
-   PostNotification(Noti_BottomInputViewHidden, nil);
     switch (type) {
         case kAllTopicView:
             [self selectedAll];

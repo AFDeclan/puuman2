@@ -11,8 +11,9 @@
 #import "SearchTextField.h"
 #import "ShopContentView.h"
 #import "ShopSectionView.h"
+#import "ShopCartViewController.h"
 
-@interface ShopViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate>
+@interface ShopViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate,PopViewDelegate>
 {
     UIImageView *bg_topImageView;
     UIImageView *bg_rightImageView;

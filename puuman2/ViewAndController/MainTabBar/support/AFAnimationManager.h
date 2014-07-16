@@ -35,7 +35,8 @@ typedef enum _FTAnimationDirection {
     kAFAnimationTopRight,
     kAFAnimationBottomLeft,
     kAFAnimationBottomRight,
-    kAFAnimationNone
+    kAFAnimationNone,
+    kAFanimationFromRight
 } AFAnimationDirection;
 
 static inline CGPoint FTAnimationOutOfViewCenterPoint(CGRect enclosingViewFrame, CGRect viewFrame, CGPoint viewCenter, AFAnimationDirection direction) {
@@ -88,6 +89,11 @@ static inline CGPoint FTAnimationOutOfViewCenterPoint(CGRect enclosingViewFrame,
 			return CGPointMake(viewCenter.x,viewCenter.y);
 			break;
 		}
+        case kAFanimationFromRight:{
+            CGFloat extraOffset = viewFrame.size.width / 2;
+			return CGPointMake(enclosingViewFrame.size.width + extraOffset, viewCenter.y);
+			break;
+        }
        
 	}
 	return CGPointZero;

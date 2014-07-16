@@ -8,16 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MainTabBar.h"
-#import "LoginViewController.h"
 #import "UserInfo.h"
 #import "AutoImportViewController.h"
-#import "ChatInputViewController.h"
 #import "SettingViewController.h"
 #import "VideoShowView.h"
 #import "VideoShowButton.h"
-#import "PuuamnShowView.h"
 #import "BabyView.h"
-#import "BabyShowButton.h"
 
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
@@ -26,21 +22,16 @@
 {
     MainTabBar *tabBar;
     UIImageView *bgImgView;
-    LoginViewController *loginViewC;
     UserInfo *userInfo;
     AutoImportViewController *improtAutoVC;
-    ChatInputViewController *inputVC;
     SettingViewController *settingVC;
     VideoShowView *videoView;
     VideoShowButton *videoBtn;
     NSTimer *timer;
     float progress;
     NSString *videoPath;
-    PuuamnShowView *puumanView;
     BabyView *infoView;
-    BabyShowButton *babyShowBtn;
     UIButton *babyInfoBtn;
-    UIView *diaryTurorialView;
     BOOL babyInfoShowed;
 }
 
@@ -59,14 +50,12 @@
 + (void)showHudCanCancel:(NSString *)text;
 + (void)hideHud;
 - (void)startGif;
-- (void)goToShopWithParentIndex:(NSInteger)parentMenu andChildIndex:(NSInteger)childMenu;
 - (void)initautoImportView;
 - (void)removeAutoImportView;
 - (void)showAutoImportView;
 - (void)hiddenBabyView;
 - (void)showBabyView;
-- (void)hiddenBottomInputView;
-- (void)updatePuumanData;
 - (void)refreshBabyInfoView;
-
+- (void)showDiary;
+- (void)showShop;
 @end

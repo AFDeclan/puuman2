@@ -34,12 +34,13 @@ static AFAnimationManager *sharedAnimationManager = nil;
                       startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector
 {
     
+
     CGPoint path[3] = {
-		FTAnimationOutOfViewCenterPoint(enclosingView.bounds, view.frame, view.center, direction),
-		[self overshootPointFor:view.center withDirection:direction threshold:(_overshootThreshold * 1.15)],
-		view.center
-	};
-	
+        FTAnimationOutOfViewCenterPoint(enclosingView.bounds, view.frame, view.center, direction),
+        [self overshootPointFor:view.center withDirection:direction threshold:(_overshootThreshold * 1.15)],
+        view.center
+    };
+
 	CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
 	CGMutablePathRef thePath = CGPathCreateMutable();
 	CGPathAddLines(thePath, NULL, path, 3);
@@ -73,7 +74,8 @@ static AFAnimationManager *sharedAnimationManager = nil;
                          startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector
 {
 
-  
+    
+
     CGPoint path[3] = {
 		view.center,
 		[self overshootPointFor:view.center withDirection:direction threshold:_overshootThreshold],
@@ -126,6 +128,8 @@ static AFAnimationManager *sharedAnimationManager = nil;
         overshootPoint = CGPointMake(point.x + threshold, point.y - threshold);
     } else if (direction == kAFAnimationBottomRight){
         overshootPoint = CGPointMake(point.x - threshold, point.y - threshold);
+    }else if (direction == kAFanimationFromRight){
+        overshootPoint = point;
     }
     
     return overshootPoint;

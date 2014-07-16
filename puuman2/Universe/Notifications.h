@@ -13,6 +13,9 @@
 #define NOTIFICATION_Horizontal                 @"NOTIFICATION_Horizontal"
 #define NOTIFICATION_Vertical                   @"NOTIFICATION_Vertical"
 
+//MianTabBar
+#define Noti_SelectedTabBar                     @"Noti_SelectedTabBar"
+
 
 
 #define Noti_CartDoneReceived                   @"Noti_CartDoneReceived"
@@ -48,8 +51,11 @@
 #define Noti_VaccineUpdated                     @"Noti_VaccineUpdated"
 #define Noti_RecomWaresUpdated                  @"Noti_RecomWaresUpdated"
 #define Noti_AddCorns                           @"Noti_AddCorns"
+#define Noti_UpdatePuumanShow                   @"Noti_UpdatePuumanShow"
 #define Noti_PreBabyShowInfo                    @"Noti_PreBabyShowInfo"
 #define Noti_PreBabyHiddenInfo                  @"Noti_PreBabyHiddenInfo"
+#define Noti_UpdatePortrait                     @"Noti_UpdatePortrait"
+
 
 #define Noti_ShowAlert                          @"Noti_ShowAlert"
 #define Noti_ShowHud                            @"Noti_ShowHud"
@@ -76,14 +82,12 @@
 #define Noti_manangePartnerData                 @"Noti_manangePartnerData"
 #define Noti_manangedPartnerData                @"Noti_manangedPartnerData"
 #define Noti_GoOutDataView                      @"Noti_GoOutDataView"
-#define Noti_BottomInputViewShow                @"Noti_BottomInputViewShow"
 #define Noti_BottomInputViewHidden              @"Noti_BottomInputViewHidden"
 #define Noti_RefreshTopicTable                  @"Noti_RefreshTopicTable"
 #define Noti_RefreshInviteStatus                @"Noti_RefreshInviteStatus"
 #define Noti_InOrOutGroup                       @"Noti_InOrOutGroup"
 #define Noti_RefreshChatTable                   @"Noti_RefreshChatTable"
 #define Noti_RefreshVoteTabe                    @"Noti_RefreshVoteTabe"
-#define Noti_RemoveFriendDelegate               @"Noti_RemoveFriendDelegate"
 #define Noti_BackFromSelectedView               @"Noti_BackFromSelectedView"
 #define Noti_ReplyRemoveForumDelgate            @"Noti_ReplyRemoveForumDelgate"
 #define Noti_RefreshTextTopicCell               @"Noti_RefreshTextTopicCell"

@@ -11,6 +11,7 @@
 #import "TextLayoutLabel.h"
 #import "Friend.h"
 #import "Group.h"
+#import "ChatInputViewController.h"
 
 @interface PartnerChatView : UIView<UITableViewDataSource,UITableViewDelegate,FriendDelegate>
 {
@@ -20,6 +21,7 @@
     UILabel *noti_label;
     UILabel *info_title;
     Group *myGroup;
+    ChatInputViewController *inputVC;
 }
 
 - (void)reloadChatData;

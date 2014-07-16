@@ -1,5 +1,5 @@
 //
-//  PuuamnShowView.h
+//  PuumanShowView.h
 //  PuumanForPhone
 //
 //  Created by Ra.（祁文龙） on 14-6-26.
@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PuuamnShowView : UIView
+@interface PuumanShowView : UIView
 {
 
     UILabel *coin_num;
     UILabel *coin_label;
-    float num;
 }
 - (void)updateData;
 @end

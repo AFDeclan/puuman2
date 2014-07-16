@@ -24,7 +24,7 @@ static NSString *unselectedBtnImageName[4] = {@"btn_diary2_diary.png",@"btn_look
     if (self) {
         // Initialization code
         _animate = YES;
-        _flagTag = kTypeTabBarOfNone;
+        _flagTag = kTypeTabBarOfSkip;
         flagImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 31, 37, 18)];
         [self addSubview:flagImageView];
         [self addTarget:self action:@selector(pressed) forControlEvents:UIControlEventTouchUpInside];
