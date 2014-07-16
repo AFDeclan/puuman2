@@ -10,6 +10,7 @@
 #import "ShopModel.h"
 #import "MJRefreshFooterView.h"
 #import "ShopAllWareHeaderView.h"
+#import "FiltrateView.h"
 
 typedef enum ShopState {
     ShopStateNormal,
@@ -25,7 +26,10 @@ typedef enum ShopState {
     ShopState _shopState;
     MJRefreshFooterView *_refreshFooter;
     UILabel *noti_insurance;
- 
+    FiltrateView *filtrate;
+    UIButton *filtrateBtn;
+    BOOL filtrateShow;
+    
 }
 
 -(void)reloadShopMall;

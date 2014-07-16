@@ -28,24 +28,11 @@
         [wareLabel setFont:PMFont1];
         [wareLabel setTextColor:PMColor6];
         [self addSubview:wareLabel];
-        
-        filtrateBtn = [[AFColorButton alloc] init];
-        [filtrateBtn.title setText:@"筛选"];
-        [filtrateBtn setColorType:kColorButtonGrayColor];
-        [filtrateBtn setDirectionType:kColorButtonLeft];
-        [filtrateBtn resetColorButton];
-        [self addSubview:filtrateBtn];
-        [filtrateBtn addTarget:self action:@selector(filtrate) forControlEvents:UIControlEventTouchUpInside];
-
-      
     }
     return self;
 }
 
-- (void)filtrate
-{
 
-}
 
 - (void)setStatusWithKindIndex:(NSInteger)index andUnfold:(BOOL)unfold
 {
@@ -73,13 +60,11 @@
 
 - (void)setVerticalFrame
 {
-    SetViewLeftUp(filtrateBtn,ViewWidth(self)- ViewWidth(filtrateBtn), 16);
 
 }
 
 - (void)setHorizontalFrame
 {
-    SetViewLeftUp(filtrateBtn, ViewWidth(self)- ViewWidth(filtrateBtn), 16);
 
 }
 

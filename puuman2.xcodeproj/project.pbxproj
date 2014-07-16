@@ -613,6 +613,7 @@
 		54B97EB318FA594B00B6C4C9 /* pic_minan_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EB018FA594B00B6C4C9 /* pic_minan_shop.png */; };
 		54B97EB418FA594B00B6C4C9 /* pic_redefining_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EB118FA594B00B6C4C9 /* pic_redefining_shop.png */; };
 		54B97EB518FA594B00B6C4C9 /* pic_cigna_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EB218FA594B00B6C4C9 /* pic_cigna_shop.png */; };
+		54BA8476197672F500B3A01D /* FiltrateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BA8475197672F500B3A01D /* FiltrateView.m */; };
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* ChangePageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* ChangePageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
@@ -1686,6 +1687,8 @@
 		54B97EB018FA594B00B6C4C9 /* pic_minan_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_minan_shop.png; sourceTree = "<group>"; };
 		54B97EB118FA594B00B6C4C9 /* pic_redefining_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_redefining_shop.png; sourceTree = "<group>"; };
 		54B97EB218FA594B00B6C4C9 /* pic_cigna_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_cigna_shop.png; sourceTree = "<group>"; };
+		54BA8474197672F500B3A01D /* FiltrateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltrateView.h; sourceTree = "<group>"; };
+		54BA8475197672F500B3A01D /* FiltrateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltrateView.m; sourceTree = "<group>"; };
 		54BAD46218D15087003822CC /* PageControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageControlButton.h; path = ../../BabyInfo/PageControlButton.h; sourceTree = "<group>"; };
 		54BAD46318D15087003822CC /* PageControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageControlButton.m; path = ../../BabyInfo/PageControlButton.m; sourceTree = "<group>"; };
 		54BAD46518D151EB003822CC /* ChangePageControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangePageControlButton.h; path = ../../BabyInfo/ChangePageControlButton.h; sourceTree = "<group>"; };
@@ -2920,6 +2923,8 @@
 			children = (
 				54B467FE18E5154C00745F72 /* ShopAllWareHeaderView.h */,
 				54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */,
+				54BA8474197672F500B3A01D /* FiltrateView.h */,
+				54BA8475197672F500B3A01D /* FiltrateView.m */,
 				54B4682E18E521A000745F72 /* ShopCell */,
 				54B4680118E520B600745F72 /* HealthCell */,
 			);
@@ -4730,6 +4735,7 @@
 				54B4681518E520F200745F72 /* TeachedView.m in Sources */,
 				147756F918D7F49E00E08BD0 /* Forum.m in Sources */,
 				5421666C18E02113005875F8 /* RankTableViewCell.m in Sources */,
+				54BA8476197672F500B3A01D /* FiltrateView.m in Sources */,
 				54012DFC18E3095F00F11D97 /* VaccinePartnerDataCell.m in Sources */,
 				541970D318D1956D0058FE64 /* StandardLine.m in Sources */,
 				54012DC118E2C09000F11D97 /* MyTopicViewController.m in Sources */,

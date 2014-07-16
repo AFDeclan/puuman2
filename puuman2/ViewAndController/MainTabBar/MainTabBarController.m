@@ -354,9 +354,7 @@ static MBProgressHUD *hud;
             SetViewLeftUp(babyInfoBtn,768 -16 - 56, 0);
         }
     }
-    
  
-    
     
 }
 
@@ -543,6 +541,7 @@ static MBProgressHUD *hud;
     babyInfoShowed = NO;
 
 }
+
 
 -(void)dragAnimationWithView:(UIView *)view andDargPoint:(CGPoint)pos
 {
