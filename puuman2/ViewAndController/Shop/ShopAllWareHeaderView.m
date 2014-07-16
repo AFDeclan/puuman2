@@ -36,15 +36,44 @@
         [filtrateBtn resetColorButton];
         [self addSubview:filtrateBtn];
         [filtrateBtn addTarget:self action:@selector(filtrate) forControlEvents:UIControlEventTouchUpInside];
-
+        
+        
       
     }
     return self;
 }
 
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    return 1;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   static NSString *identify = @"cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    
+    if (cell == nil) {
+    
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+    }
+
+    return cell;
+}
+
 - (void)filtrate
 {
-
+    [UIView animateWithDuration:5 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+       SetViewLeftUp(filtrateBtn, ViewWidth(self)-ViewWidth(filtrateBtn), 16);
+    
+    } completion:^(BOOL finfshed) {
+    
+     SetViewLeftUp(filtrateBtn, ViewWidth(self)- ViewWidth(filtrateBtn), 16+40);
+    
+    
+    }];
+ 
 }
 
 - (void)setStatusWithKindIndex:(NSInteger)index andUnfold:(BOOL)unfold

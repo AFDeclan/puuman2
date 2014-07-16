@@ -101,6 +101,8 @@
     [usePuamnBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [usePumanView addSubview:usePuamnBtn];
     
+    locationView = [[LocationSelectedView alloc] initWithFrame:CGRectMake(312, 240, 156, 300)];
+    [_content addSubview:locationView];
     UIImageView *goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-16, 0, 32, 32)];
     [goldImageView setImage:[UIImage imageNamed:@"icon_gold_image.png"]];
     [usePumanView addSubview:goldImageView];

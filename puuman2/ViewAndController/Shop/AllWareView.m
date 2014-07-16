@@ -22,7 +22,7 @@
         // Initialization code
         
         [self setBackgroundColor:[UIColor clearColor]];
-        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 648, 688)];
+        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 648,474)];
         [_shopMallTable setDataSource:self];
         [_shopMallTable setDelegate:self];
         [self addSubview:_shopMallTable];
@@ -59,9 +59,7 @@
         [_shopMallTable addSubview:noti_insurance];
         headView= [[ShopAllWareHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
         [self addSubview:headView];
-        
-       
-        
+              
     }
     return self;
 }
