@@ -18,8 +18,6 @@
 @end
 
 @implementation ChatInputViewController
-@synthesize sendIsHidden = _sendIsHidden;
-@synthesize actionParent = _actionParent;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,7 +27,6 @@
        
         [bgView setAlpha:0];
         input_now = NO;
-        _sendIsHidden = NO;
         addHeightNum = 0;
         self.view.backgroundColor = [UIColor clearColor];
         [_content setBackgroundColor:PMColor3];
@@ -61,7 +58,8 @@
         [createBtn setColorType:kColorButtonBlueColor];
         [createBtn setDirectionType:kColorButtonLeft];
         [createBtn resetColorButton];
-        
+        [createBtn.title setText:@"发送"];
+        [createBtn adjustLayout];
         
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
@@ -81,7 +79,6 @@
 
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(taped)];
         [bgView addGestureRecognizer:tap];
-//        [MyNotiCenter addObserver:self selector:@selector(removeAllDelegate) name:Noti_RemoveFriendDelegate object:nil];
         
     }
     return self;
@@ -94,7 +91,6 @@
 
 - (void)keyboardWillShow:(NSNotification *)notif
 {
-
     input_now = YES;
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
@@ -142,14 +138,6 @@
            
         }
          SetViewLeftUp(_content, 0, 0);
-        if (_sendIsHidden) {
-                [UIView animateWithDuration:animationDuration*ViewHeight(_content)/keyBoardHeigh animations:^{
-                SetViewLeftUp(_content, 0, ViewHeight(_content));
-            }completion:^(BOOL finished) {
-                [[MainTabBarController sharedMainViewController] hiddenBottomInputView];
-
-            }];
-        }
     }];
 }
 
@@ -238,28 +226,6 @@
         SetViewLeftUp(createBtn, ViewWidth(_content)-ViewWidth(createBtn), ViewHeight(_content)-48);
         [inputTextView setContentOffset:CGPointMake(0, newSizeH - ViewHeight(inputTextView))];
     }
- 
-
-    
-//    
-//    if (newSizeH>minHeight&&newSizeH<maxHeight) {
-//        
-//        addHeightNum += preheight;
-//        _content.frame=CGRectMake(_content.frame.origin.x, _content.frame.origin.y-preheight,ViewWidth(_content), ViewHeight(_content)+preheight);
-//        inputTextView.frame=CGRectMake(inputTextView.frame.origin.x, inputTextView.frame.origin.y, inputTextView.frame.size.width, inputTextView.frame.size.height+preheight);
-//        minHeight=newSizeH;
-//        [bg_inputView setFrame:CGRectMake(bg_inputView.frame.origin.x, bg_inputView.frame.origin.y, bg_inputView.frame.size.width, bg_inputView.frame.size.height + preheight)];
-//        
-//        
-//    }else if(newSizeH<minHeight)
-//    {
-//        addHeightNum -= preheight;
-//        _content.frame=CGRectMake(_content.frame.origin.x, _content.frame.origin.y+preheight, ViewWidth(_content), ViewHeight(_content)-preheight);
-//        inputTextView.frame=CGRectMake(inputTextView.frame.origin.x, inputTextView.frame.origin.y, inputTextView.frame.size.width, inputTextView.frame.size.height-preheight);
-//        minHeight=newSizeH;
-//        [bg_inputView setFrame:CGRectMake(bg_inputView.frame.origin.x, bg_inputView.frame.origin.y, bg_inputView.frame.size.width, bg_inputView.frame.size.height - preheight)];
-//        SetViewLeftUp(createBtn, createBtn.frame.origin.x, createBtn.frame.origin.y-preheight);
-//    }
 
 }
 
@@ -290,39 +256,26 @@
 -(void)show
 {
     
-    if (_sendIsHidden) {
-        [[Forum sharedInstance] addDelegateObject:self];
+    [[Friend sharedInstance] addDelegateObject:self];
+    SetViewLeftUp(_content, 0, 56);
+    [UIView animateWithDuration:0.5 animations:^{
         SetViewLeftUp(_content, 0, 0);
-        [inputTextView becomeFirstResponder];
-        
-    }else{
-         PostNotification(Noti_RemoveFriendDelegate, nil);
-        [[Friend sharedInstance] addDelegateObject:self];
-        SetViewLeftUp(_content, 0, 56);
-        [UIView animateWithDuration:0.5 animations:^{
-            SetViewLeftUp(_content, 0, 0);
-        }];
-    }
-    
+    }];
  
+
 }
 
 -(void)hidden
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self  name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [UIView animateWithDuration:0.5 animations:^{
         SetViewLeftUp(_content, 0, 56);
     }completion:^(BOOL finished) {
-         [[Forum sharedInstance] removeDelegateObject:self];
         [[Friend sharedInstance] removeDelegateObject:self];
-        [self.view removeFromSuperview];
     }];
 }
 
 - (void)reset
 {
-    
     [inputTextView setText:@""];
     [_content setFrame:CGRectMake( ViewX(_content),  ViewY(_content)+preheight, ViewWidth(_content),ViewHeight(_content)-addHeightNum)];
     [inputTextView setFrame:CGRectMake(ViewX(inputTextView), ViewY(inputTextView), ViewWidth(inputTextView), ViewHeight(inputTextView)-addHeightNum)];
@@ -341,56 +294,16 @@
 
 - (void)create
 {
-    if (_sendIsHidden) {
-        [(Reply *)_actionParent comment:inputTextView.text];
-        [inputTextView resignFirstResponder];
-    }else{
-        [[(Group *)_actionParent actionForSendMsg:inputTextView.text] upload];
-        [self reset];
-    }
-  
+    [[[[Friend sharedInstance] myGroup] actionForSendMsg:inputTextView.text] upload];
+    [self reset];
 }
 
 - (void)taped
 {
-    if (_sendIsHidden) {
-         [inputTextView resignFirstResponder];
-    }else{
-        [self reset];
-    }
+    [self reset];
+
 }
 
-
-
-
-- (void)setSendIsHidden:(BOOL)sendIsHidden 
-{
-    
-    _sendIsHidden = sendIsHidden;
-    if (sendIsHidden) {
-        [createBtn.title setText:@"留言"];
-    }else{
-        [createBtn.title setText:@"发送"];
-
-    }
-    [createBtn adjustLayout];
-}
-
-//更多评论加载成功
-- (void)replyCommentsLoadedMore:(Reply *)reply
-{
-    PostNotification(Noti_RefreshTopicTable, nil);
-    [[NSNotificationCenter defaultCenter] removeObserver:self  name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [self.view removeFromSuperview];
-    [[MainTabBarController sharedMainViewController] hiddenBottomInputView];
-}
-
-//更多评论加载失败 注意根据noMore判断是否是因为全部加载完
-- (void)replyCommentsLoadFailed:(Reply *)reply
-{
-    
-}
 
 //Group Action 上传成功
 - (void)actionUploaded:(ActionForUpload *)action
@@ -404,4 +317,9 @@
 
 }
 
+
+-(void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
+}
 @end

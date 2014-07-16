@@ -14,15 +14,16 @@
 #import "SocialViewController.h"
 #import "SkipViewController.h"
 #import "CustomAlertViewController.h"
-#import "Models.h"
 #import "NSString+VersionCompare.h"
 #import "EnterTutorialView.h"
+#import "Models.h"
 
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -204,6 +205,7 @@
 {
     return [SocialNetwork handleOpenURL:url];
 }
+
 
 
 @end

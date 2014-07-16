@@ -10,7 +10,6 @@
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
 #import "ColorsAndFonts.h"
-#import "ShopCartViewController.h"
 
 @interface ShopViewController ()
 
@@ -144,8 +143,15 @@ static ShopViewController * instance;
     [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
     [cartVC setControlBtnType:kOnlyCloseButton];
     [cartVC show];
+    [cartVC setDelegate:self];
+    [cartVC.view addSubview:cartBtn];
 }
 
+- (void)popViewfinished
+{
+    [self.view addSubview:cartBtn];
+
+}
 
 
 //竖屏

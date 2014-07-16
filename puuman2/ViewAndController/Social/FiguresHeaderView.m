@@ -85,7 +85,6 @@
 
 - (void)reloadWithGroupInfo:(Group *)group
 {
-    PostNotification(Noti_RemoveFriendDelegate, nil);
      [[Friend sharedInstance] addDelegateObject:self];
     [info_title setEnabled:NO];
     canDeleteMember = NO;

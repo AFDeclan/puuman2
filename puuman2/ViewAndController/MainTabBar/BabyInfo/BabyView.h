@@ -12,7 +12,8 @@
 #import "AFColorButton.h"
 #import "AFImageView.h"
 #import "BabyInfoIconViewDelegate.h"
-
+#import "BabyShowButton.h"
+#import "PuumanShowView.h"
 
 
 
@@ -29,6 +30,9 @@
     UILabel *info_birthday;
     BOOL prop;
     NSInteger currentNum;
+    PuumanShowView *puumanView;
+    BabyShowButton *babyShowBtn;
+
 }
 
 - (void)setHorizontalFrame;

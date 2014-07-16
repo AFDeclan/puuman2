@@ -110,9 +110,7 @@
     
     switch (_shopState) {
         case ShopStateInsurance:
-            
-           
-            
+
             if (row == 0) {
                 NSString *identifier = @"HealthCell";
                 HealthCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];

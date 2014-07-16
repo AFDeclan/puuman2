@@ -20,6 +20,7 @@
 #import "DateFormatter.h"
 #import "CAKeyframeAnimation+DragAnimation.h"
 #import "MainTabBarController.h"
+#import "LoginViewController.h"
 
 
 
@@ -33,7 +34,6 @@
         // Initialization code
         [self initialization];
         [self setBackgroundColor:[UIColor clearColor]];
-
       
     }
     return self;
@@ -131,7 +131,12 @@
     [babyInfoColumnView setScrollEnabled:NO];
     [self addSubview:babyInfoColumnView];
 
-
+    babyShowBtn = [[BabyShowButton alloc] initWithFrame:CGRectMake(1024 -16 - 80, 768, 80, 80)];
+    [babyShowBtn setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:babyShowBtn];
+    puumanView = [[PuumanShowView alloc] initWithFrame:CGRectMake(1024 -16 - 80- 136, 768, 136, 80)];
+    [puumanView setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:puumanView];
 }
 
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
@@ -398,9 +403,10 @@
 
 - (void)portraitUploadFinish:(BOOL)suc
 {
-    
     if (suc) {
+        //PostNotification(Noti_UpdatePortrait, nil);
         [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
+        [babyShowBtn loadPortrait];
     }
     
 }
@@ -450,6 +456,8 @@
         info_birthday.text = [NSString stringWithFormat:@"%@ %@", birthStr, constellationStr];
   
     [babyInfoColumnView reloadData];
+    [babyShowBtn loadPortrait];
+    [puumanView updateData];
 }
 
 -(void) disAppearBabyView
@@ -462,7 +470,7 @@
 {
    
     [self refreshBabyInfo];
-    
+
     if ([[[UserInfo sharedUserInfo]babyInfo] WhetherBirth]) {
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [babyInfoColumnView setContentOffset:CGPointMake(768, 0)];
@@ -478,6 +486,9 @@
     }
 }
 
+
+
+
 -(void)setHorizontalFrame
 {
     [titleInfoView setFrame:CGRectMake(0, 0, 1024, 96)];
@@ -485,7 +496,9 @@
     [babyInfoColumnView setFrame:CGRectMake(0, 0, 1024, 768)];
     [babyInfoColumnView reloadData];
     [babyInfoColumnView setContentOffset:CGPointMake(1024*currentNum, 0)];
- 
+    SetViewLeftUp(babyShowBtn,1024 -16 - 80, 768);
+    SetViewLeftUp(puumanView,1024 -16 - 80- 136, 768);
+
 }
 
 -(void)setVerticalFrame
@@ -495,6 +508,8 @@
     [babyInfoColumnView setFrame:CGRectMake(0, 0, 768, 1024)];
     [babyInfoColumnView reloadData];
     [babyInfoColumnView setContentOffset:CGPointMake(currentNum*768, 0)];
+    SetViewLeftUp(babyShowBtn,768 -16 - 80, 1024);
+    SetViewLeftUp(puumanView,1024 -16 - 80- 136, 1024);
 
 }
 

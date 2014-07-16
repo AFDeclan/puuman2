@@ -8,7 +8,7 @@
 
 #import "MainTabBar.h"
 #import "UniverseConstant.h"
-
+#import "DiaryViewController.h"
 @implementation MainTabBar
 @synthesize delegate = _delegate;
 - (id)initWithFrame:(CGRect)frame
@@ -101,6 +101,7 @@
     switch (tag) {
         case kTypeTabBarOfDiary:
         {
+            [[DiaryViewController alloc] refresh];
             [self clickAFButtonWithButton:diaryBtn];
             return;
         }
