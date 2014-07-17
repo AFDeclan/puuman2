@@ -10,6 +10,7 @@
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
 #import "ColorsAndFonts.h"
+#import "WareInfoViewController.h"
 
 @interface ShopViewController ()
 
@@ -68,6 +69,7 @@ static ShopViewController * instance;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    wareInfoShow  = NO;
       [self.view setBackgroundColor:[UIColor clearColor]];
     [self initialization];
     UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
@@ -143,16 +145,65 @@ static ShopViewController * instance;
     [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
     [cartVC setControlBtnType:kOnlyCloseButton];
     [cartVC show];
-    [cartVC setDelegate:self];
-    [cartVC.view addSubview:cartBtn];
+    //
+   // [cartBtn setAlpha:0];
+   ///[self animateWithView:cartBtn];
+}
+
+- (void)popStartHidden
+{
+    wareInfoShow = NO;
+    
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        //    positionAnimation.fillMode = kCAFillModeForwards;
+        //    positionAnimation.removedOnCompletion =NO;
+        positionAnimation.duration = 1;
+        CGMutablePathRef positionPath = CGPathCreateMutable();
+        positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        CGPathMoveToPoint(positionPath, NULL, [cartBtn layer].position.x, [cartBtn layer].position.y);
+        CGPathAddQuadCurveToPoint(positionPath, NULL, [cartBtn layer].position.x, [cartBtn layer].position.y, [cartBtn layer].position.x +630,[cartBtn layer].position.y);
+        positionAnimation.path = positionPath;
+        positionAnimation.delegate = self;
+        [cartBtn.layer addAnimation:positionAnimation forKey:@"position"];
+    }else{
+        CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        //    positionAnimation.fillMode = kCAFillModeForwards;
+        //    positionAnimation.removedOnCompletion =NO;
+        positionAnimation.duration = 1;
+        CGMutablePathRef positionPath = CGPathCreateMutable();
+        positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        CGPathMoveToPoint(positionPath, NULL, [cartBtn layer].position.x, [cartBtn layer].position.y);
+        CGPathAddQuadCurveToPoint(positionPath, NULL, [cartBtn layer].position.x, [cartBtn layer].position.y, [cartBtn layer].position.x+ 750,[cartBtn layer].position.y);
+        positionAnimation.path = positionPath;
+        positionAnimation.delegate = self;
+        [cartBtn.layer addAnimation:positionAnimation forKey:@"position"];
+    }
+
 }
 
 - (void)popViewfinished
 {
+   // [cartBtn setAlpha:1];
+    
     [self.view addSubview:cartBtn];
+    
 
+    
 }
 
+- (void)showWareInfo
+{
+    wareInfoShow = YES;
+
+    WareInfoViewController *wareInfo =[[WareInfoViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:wareInfo.view];
+    [wareInfo show];
+    [wareInfo.view addSubview:cartBtn];
+    [wareInfo setDelegate:self];
+    [self animate];
+
+}
 
 //竖屏
 -(void)setVerticalFrame
@@ -206,5 +257,66 @@ static ShopViewController * instance;
     return YES;
 }
 
+- (void)animate
+{
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        CGPoint path[4] = {
+            cartBtn.center,
+            CGPointMake(cartBtn.center.x - 680, cartBtn.center.y),
+            CGPointMake(cartBtn.center.x - 600, cartBtn.center.y),
+            CGPointMake(cartBtn.center.x - 630, cartBtn.center.y)
+        };
+        CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        CGMutablePathRef thePath = CGPathCreateMutable();
+        CGPathAddLines(thePath, NULL, path, 4);
+        animation.path = thePath;
+        [animation setDuration:1];
+        animation.delegate = self;
+        CGPathRelease(thePath);
+        [cartBtn.layer addAnimation:animation forKey:nil];
+    }else{
+        CGPoint path[4] = {
+            cartBtn.center,
+            CGPointMake(cartBtn.center.x - 900, cartBtn.center.y),
+            CGPointMake(cartBtn.center.x - 700, cartBtn.center.y),
+            CGPointMake(cartBtn.center.x - 750, cartBtn.center.y)
+            
+        };
+        
+        CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        CGMutablePathRef thePath = CGPathCreateMutable();
+        CGPathAddLines(thePath, NULL, path, 4);
+        animation.path = thePath;
+        [animation setDuration:1];
+        animation.delegate = self;
+        CGPathRelease(thePath);
+        
+        [cartBtn.layer addAnimation:animation forKey:nil];
+    }
+    
+}
 
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+  
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        if (wareInfoShow) {
+            SetViewLeftUp(cartBtn, 16, 678);
+
+        }else{
+            SetViewLeftUp(cartBtn, 680, 678);
+
+        }
+    }else{
+        if (wareInfoShow) {
+            SetViewLeftUp(cartBtn, 186, 678);
+
+        }else{
+            SetViewLeftUp(cartBtn, 936, 678);
+
+        }
+    }
+
+    
+}
 @end

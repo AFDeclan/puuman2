@@ -1,29 +1,30 @@
 //
-//  WareInfoPopViewController.m
+//  WareInfoViewController.m
 //  puuman2
 //
-//  Created by Ra.（祁文龙） on 14-7-10.
+//  Created by Ra.（祁文龙） on 14-7-17.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "WareInfoPopViewController.h"
+#import "WareInfoViewController.h"
 #import "UILabel+AdjustSize.h"
+#import "UniverseConstant.h"
 
-@interface WareInfoPopViewController ()
+@interface WareInfoViewController ()
 
 @end
 
-@implementation WareInfoPopViewController
+@implementation WareInfoViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self setTitle:@"单品信息" withIcon:nil];
+        [_titleLabel setText:@"单品信息"];
         [self initContent];
         [self initBasicInfoView];
-        
+
     }
     return self;
 }
@@ -44,7 +45,7 @@
 
 - (void)initContent
 {
-  
+    
     
     shareBtn = [[AFColorButton alloc] init];
     [shareBtn.title setText:@"分享"];
@@ -70,7 +71,7 @@
     [_content addSubview:evaluationView];
     [evaluationView setBackgroundColor:PMColor5];
     [evaluationView setAlpha:0];
-
+    
     describeBtn = [[AFSelectedImgButton alloc] initWithFrame:CGRectMake(640, 112, 64, 96)];
     [describeBtn setSelectedImg:[UIImage imageNamed:@"btn_rec1_shop"]];
     [describeBtn setUnSelectedImg:[UIImage imageNamed:@"btn_rec2_shop"]];
@@ -82,9 +83,9 @@
     [evaluateBtn setUnSelectedImg:[UIImage imageNamed:@"btn_all2_shop.png"]];
     [evaluateBtn addTarget:self action:@selector(evaluateBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_content addSubview:evaluateBtn];
-
+    
     [self describeBtnPressed];
-
+    
     
 }
 
@@ -176,7 +177,7 @@
     [addCountBtn adjustSize];
     [addCountBtn setDelegate:self];
     [view addSubview:addCountBtn];
-
+    
     
 }
 
@@ -210,5 +211,6 @@
         [evaluationView setAlpha:1];
     }];
 }
+
 
 @end

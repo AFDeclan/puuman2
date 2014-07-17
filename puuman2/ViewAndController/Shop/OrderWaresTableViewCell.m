@@ -7,7 +7,7 @@
 //
 
 #import "OrderWaresTableViewCell.h"
-#import "WareInfoPopViewController.h"
+#import "ShopViewController.h"
 #import "MainTabBarController.h"
 
 @implementation OrderWaresTableViewCell
@@ -86,10 +86,7 @@
 
 - (void)showDetailWare
 {
-    WareInfoPopViewController *cartVC =[[WareInfoPopViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
-    [cartVC setControlBtnType:kOnlyCloseButton];
-    [cartVC show];
+    [[ShopViewController sharedShopViewController] showWareInfo];
     
 }
 

@@ -24,9 +24,10 @@
     ShopContentView *contentShop;
     UIButton *cartBtn;
     ShopSectionView *sectionView;
+    BOOL wareInfoShow;
 }
 
 
 + (ShopViewController *)sharedShopViewController;
-
+- (void)showWareInfo;
 @end

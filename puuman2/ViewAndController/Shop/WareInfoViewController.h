@@ -1,12 +1,12 @@
 //
-//  WareInfoPopViewController.h
+//  WareInfoViewController.h
 //  puuman2
 //
-//  Created by Ra.（祁文龙） on 14-7-10.
+//  Created by Ra.（祁文龙） on 14-7-17.
 //  Copyright (c) 2014年 AFITC. All rights reserved.
 //
 
-#import "CustomPopViewController.h"
+#import "CustomShopPopViewController.h"
 #import "AFSelectedImgButton.h"
 #import "AFColorButton.h"
 #import "AFImageView.h"
@@ -14,10 +14,8 @@
 #import "WareInfoView.h"
 #import "WareEvaluationView.h"
 
-
-@interface WareInfoPopViewController : CustomPopViewController<SelectedButtonDelegate>
+@interface WareInfoViewController : CustomShopPopViewController<SelectedButtonDelegate>
 {
-    
     UIView *basicInfoView;
     AFImageView *wareImgView;
     UILabel *wareName;
