@@ -254,7 +254,6 @@ static MBProgressHUD *hud;
 - (void)initWithTabBar
 {
     tabBar  = [[MainTabBar alloc] initWithFrame:CGRectMake(0, 0, 64, 0)];
-    [tabBar setDelegate:self];
     [self.view addSubview:tabBar];
     
     self.hidesBottomBarWhenPushed = YES;
@@ -265,10 +264,7 @@ static MBProgressHUD *hud;
     
 }
 
- -(void)selectedWithTag:(TypeTabBarButton)tag
-{
-    [self setSelectedIndex:tag];
-}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -390,16 +386,7 @@ static MBProgressHUD *hud;
 }
 
 
-- (void)showSettingView
-{
-    if (settingVC) {
-        [settingVC.view removeFromSuperview];
-    }
-    settingVC = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
-    [settingVC show];
-    [self.view addSubview:settingVC.view];
-    
-}
+
 
 - (void)initautoImportView
 {
@@ -568,17 +555,17 @@ static MBProgressHUD *hud;
     
 }
 
-- (void)showDiary
-{
-    [tabBar selectedWithTag:kTypeTabBarOfDiary];
-}
 
-- (void)showShop
+- (void)showSettingView
 {
-    [tabBar selectedWithTag:kTypeTabBarOfShop];
-    PostNotification(Noti_RefreshMenu, nil);
+    if (settingVC) {
+        [settingVC.view removeFromSuperview];
+        settingVC = nil;
+    }
+    settingVC = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
+    [settingVC show];
+    [self.view addSubview:settingVC.view];
     
 }
-
 
 @end

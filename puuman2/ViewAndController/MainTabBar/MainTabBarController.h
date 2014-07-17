@@ -18,7 +18,7 @@
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
 
-@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,MainTabBarDelegate,UITextViewDelegate,PopViewDelegate,VideoShowButtonDelegate,VideoShowViewDelegate>
+@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,UITextViewDelegate,PopViewDelegate,VideoShowButtonDelegate,VideoShowViewDelegate>
 {
     MainTabBar *tabBar;
     UIImageView *bgImgView;
@@ -56,6 +56,5 @@
 - (void)hiddenBabyView;
 - (void)showBabyView;
 - (void)refreshBabyInfoView;
-- (void)showDiary;
-- (void)showShop;
+
 @end

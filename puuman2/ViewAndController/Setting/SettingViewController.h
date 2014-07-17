@@ -18,6 +18,8 @@
     AFColorButton *logOut;
     UILabel *versionLabel;
 }
+
+- (void)showSettingView;
 - (void)show;
 - (void)back;
 @end

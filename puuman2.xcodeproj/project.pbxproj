@@ -545,6 +545,7 @@
 		54B753AA18D2F8C4002411CF /* pic_ruler_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B753A918D2F8C4002411CF /* pic_ruler_baby.png */; };
 		54B75C25197775ED00D0CA42 /* CustomShopPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B75C24197775ED00D0CA42 /* CustomShopPopViewController.m */; };
 		54B75C28197779F500D0CA42 /* WareInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B75C27197779F500D0CA42 /* WareInfoViewController.m */; };
+		54B75C2B1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B75C2A1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m */; };
 		54B97E4418FA2B1E00B6C4C9 /* btn_back2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2618FA2B1E00B6C4C9 /* btn_back2_insure_shop.png */; };
 		54B97E4518FA2B1E00B6C4C9 /* puuman3_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2718FA2B1E00B6C4C9 /* puuman3_insure_shop.png */; };
 		54B97E4618FA2B1E00B6C4C9 /* pic34_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2818FA2B1E00B6C4C9 /* pic34_insure_shop.png */; };
@@ -806,7 +807,6 @@
 		88B5160B192F52EE006A79AB /* UIImage+CroppedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515E8192F52EE006A79AB /* UIImage+CroppedImage.m */; };
 		88B5160C192F52EE006A79AB /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515EA192F52EE006A79AB /* UIImage+Scale.m */; };
 		88B5160D192F52EE006A79AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EC192F52EE006A79AB /* libMobClickLibrary.a */; };
-		88B51611192F558E006A79AB /* AFSelecedTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B51610192F558E006A79AB /* AFSelecedTextImgButton.m */; };
 		88C163591974CE0A00F86DD1 /* img_add_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C163571974CE0A00F86DD1 /* img_add_count.png */; };
 		88C1635A1974CE0A00F86DD1 /* img_reduce_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C163581974CE0A00F86DD1 /* img_reduce_count.png */; };
 		88C965A5196293B80058B842 /* line_right_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C965A3196293B80058B842 /* line_right_babyInfo.png */; };
@@ -1625,6 +1625,8 @@
 		54B75C24197775ED00D0CA42 /* CustomShopPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomShopPopViewController.m; sourceTree = "<group>"; };
 		54B75C26197779F500D0CA42 /* WareInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WareInfoViewController.h; sourceTree = "<group>"; };
 		54B75C27197779F500D0CA42 /* WareInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WareInfoViewController.m; sourceTree = "<group>"; };
+		54B75C291977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainTabBarController+MainTabBarControllerSkip.h"; sourceTree = "<group>"; };
+		54B75C2A1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MainTabBarController+MainTabBarControllerSkip.m"; sourceTree = "<group>"; };
 		54B97E2618FA2B1E00B6C4C9 /* btn_back2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back2_insure_shop.png; sourceTree = "<group>"; };
 		54B97E2718FA2B1E00B6C4C9 /* puuman3_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puuman3_insure_shop.png; sourceTree = "<group>"; };
 		54B97E2818FA2B1E00B6C4C9 /* pic34_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic34_insure_shop.png; sourceTree = "<group>"; };
@@ -3596,6 +3598,8 @@
 				54CE111D18C1BC6D00966396 /* MainTabBar.m */,
 				54CE119118C1CD7C00966396 /* MainTabBarButton.h */,
 				54CE119218C1CD7C00966396 /* MainTabBarButton.m */,
+				54B75C291977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.h */,
+				54B75C2A1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m */,
 			);
 			name = TabBar;
 			sourceTree = "<group>";
@@ -4845,6 +4849,7 @@
 				54AE2BB618E93FEB00D24F92 /* ActionForUpload.m in Sources */,
 				541970D218D1956D0058FE64 /* LineChart.m in Sources */,
 				54ADE09818C8608700B166C4 /* NewAudioPlayView.m in Sources */,
+				54B75C2B1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m in Sources */,
 				54ADE09718C8608700B166C4 /* NewAudioDiaryViewController.m in Sources */,
 				54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */,
 				54AE788618E00BD200AE558C /* PartnerDataTitleView.m in Sources */,
