@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AFColorButton.h"
 
-@interface ShopAllWareHeaderView : UIView
+@interface ShopAllWareHeaderView : UIView <UITableViewDataSource,UITableViewDelegate>
 {
     UIImageView *icon_ware;
     UILabel *wareLabel;
+    UIButton *filtrateBtn;
+   
 }
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;

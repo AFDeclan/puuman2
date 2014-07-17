@@ -20,7 +20,11 @@ typedef enum ShopState {
     ShopStateInsurance
 } ShopState;
 
+@protocol chooseViewDelegate <NSObject>
 
+- (void) hiddenChooseView;
+
+@end
 @interface AllWareView : UIView<UITableViewDataSource,UITableViewDelegate,MJRefreshBaseViewDelegate>
 {
     ShopAllWareHeaderView *headView;
@@ -33,8 +37,8 @@ typedef enum ShopState {
     BOOL filtrateShow;
     
 }
-
 -(void)reloadShopMall;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
+
 @end

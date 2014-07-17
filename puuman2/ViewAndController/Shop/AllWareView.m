@@ -23,7 +23,7 @@
         
         filtrateShow = NO;
         [self setBackgroundColor:[UIColor clearColor]];
-        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 648, 688)];
+        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 648,474)];
         [_shopMallTable setDataSource:self];
         [_shopMallTable setDelegate:self];
         [self addSubview:_shopMallTable];
@@ -119,7 +119,7 @@
                 [filtrate setFrame:CGRectMake(48, 56, 610, 40)];
                 
             }completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.2 animations:^{
                     [filtrate setFrame:CGRectMake(48, 56, 610, 210)];
                     [filtrate show];
                     
