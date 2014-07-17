@@ -13,7 +13,7 @@
 {
     UIImageView *icon_ware;
     UILabel *wareLabel;
-    AFColorButton *filtrateBtn;
+    UIButton *filtrateBtn;
    
 }
 - (void)setVerticalFrame;

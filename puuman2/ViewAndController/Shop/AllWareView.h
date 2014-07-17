@@ -30,8 +30,10 @@ typedef enum ShopState {
     ShopState _shopState;
     MJRefreshFooterView *_refreshFooter;
     UILabel *noti_insurance;
-   
- 
+    FiltrateView *filtrate;
+    UIButton *filtrateBtn;
+    BOOL filtrateShow;
+    
 }
 -(void)reloadShopMall;
 - (void)setVerticalFrame;

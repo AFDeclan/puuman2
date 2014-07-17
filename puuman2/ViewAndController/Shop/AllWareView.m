@@ -60,7 +60,22 @@
         [_shopMallTable addSubview:noti_insurance];
         headView= [[ShopAllWareHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
         [self addSubview:headView];
-              
+        
+      
+        
+        filtrate = [[FiltrateView alloc] initWithFrame:CGRectMake(38+610-112, 16, 118, 40)];
+        [self addSubview:filtrate];
+        
+        
+        filtrateBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 112, 40)];
+        [filtrateBtn addTarget:self action:@selector(filtrate) forControlEvents:UIControlEventTouchUpInside];
+        [filtrate addSubview:filtrateBtn];
+        [filtrateBtn setAlpha:1];
+        
+        
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenFiltrate)];
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
@@ -81,10 +96,10 @@
             [filtrate setFrame:CGRectMake(48, 56, 610, 40)];
             [filtrate hidden];
         }completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:0.3 animations:^{
                 [filtrate setFrame:CGRectMake(38+610-112, 56, 118, 40)];
             }completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.2 animations:^{
                     SetViewLeftUp(filtrate, 38+610-112, 16);
                 }completion:^(BOOL finished) {
                     [filtrateBtn setAlpha:1];
@@ -98,11 +113,11 @@
             SetViewLeftUp(filtrate, 38+610-112, 56);
 
         }completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:0.3 animations:^{
                 [filtrate setFrame:CGRectMake(48, 56, 610, 40)];
                 
             }completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.2 animations:^{
                     [filtrate setFrame:CGRectMake(48, 56, 610, 210)];
                     [filtrate show];
                     

@@ -13,6 +13,8 @@
     UIView *headerView;
     UIView *footerView;
     UIView *contentView;
+    UILabel *titleLabel;
+    NSArray *titleArray;
 }
 
 - (void)show;
