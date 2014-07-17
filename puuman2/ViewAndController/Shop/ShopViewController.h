@@ -27,6 +27,7 @@
     BOOL wareInfoShow;
 }
 
+@property(nonatomic,assign)    BOOL wareInfoShow;
 
 + (ShopViewController *)sharedShopViewController;
 - (void)showWareInfo;

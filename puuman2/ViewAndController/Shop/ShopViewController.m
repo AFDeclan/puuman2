@@ -18,7 +18,7 @@
 static ShopViewController * instance;
 
 @implementation ShopViewController
-
+@synthesize wareInfoShow = _wareInfoShow;
 
 + (ShopViewController *)sharedShopViewController
 {
@@ -62,7 +62,6 @@ static ShopViewController * instance;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
   
 
-    
 }
 
 - (void)viewDidLoad
@@ -70,6 +69,7 @@ static ShopViewController * instance;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     wareInfoShow  = NO;
+    _wareInfoShow = NO;
       [self.view setBackgroundColor:[UIColor clearColor]];
     [self initialization];
     UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
@@ -166,6 +166,7 @@ static ShopViewController * instance;
         positionAnimation.path = positionPath;
         positionAnimation.delegate = self;
         [cartBtn.layer addAnimation:positionAnimation forKey:@"position"];
+        
     }else{
         CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
         //    positionAnimation.fillMode = kCAFillModeForwards;
@@ -317,6 +318,6 @@ static ShopViewController * instance;
         }
     }
 
-    
+    _wareInfoShow = wareInfoShow;
 }
 @end

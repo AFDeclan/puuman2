@@ -9,6 +9,7 @@
 #import "WareInfoViewController.h"
 #import "UILabel+AdjustSize.h"
 #import "UniverseConstant.h"
+#import "ShopViewController.h"
 
 @interface WareInfoViewController ()
 
@@ -40,6 +41,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 
@@ -212,5 +214,11 @@
     }];
 }
 
+- (void)hidden
+{
+    if ([ShopViewController sharedShopViewController].wareInfoShow) {
+        [super hidden];
+    }
+}
 
 @end
