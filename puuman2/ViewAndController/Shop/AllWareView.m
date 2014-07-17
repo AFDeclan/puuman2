@@ -67,7 +67,9 @@
         [self addSubview:filtrate];
         
         
-        filtrateBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 112, 40)];
+        filtrateBtn = [[AFColorButton alloc] initWithFrame:CGRectMake(0, 0, 112, 40)];
+        [filtrateBtn.title setText:@"筛选"];
+        [filtrateBtn adjustLayout];
         [filtrateBtn addTarget:self action:@selector(filtrate) forControlEvents:UIControlEventTouchUpInside];
         [filtrate addSubview:filtrateBtn];
         [filtrateBtn setAlpha:1];
@@ -96,24 +98,24 @@
             [filtrate setFrame:CGRectMake(48, 56, 610, 40)];
             [filtrate hidden];
         }completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:0.3 animations:^{
                 [filtrate setFrame:CGRectMake(38+610-112, 56, 118, 40)];
             }completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.1 animations:^{
                     SetViewLeftUp(filtrate, 38+610-112, 16);
-                }completion:^(BOOL finished) {
                     [filtrateBtn setAlpha:1];
+
                 }];
             }];
         }];
     }else{
-        [filtrateBtn setAlpha:0];
 
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.1 animations:^{
             SetViewLeftUp(filtrate, 38+610-112, 56);
+            [filtrateBtn setAlpha:0];
 
         }completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:0.3 animations:^{
                 [filtrate setFrame:CGRectMake(48, 56, 610, 40)];
                 
             }completion:^(BOOL finished) {
