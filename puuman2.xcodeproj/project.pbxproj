@@ -486,6 +486,8 @@
 		54B3814D19791F62003FF386 /* RectRankSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B3814819791F62003FF386 /* RectRankSubCell.m */; };
 		54B3814E19791F62003FF386 /* RectWareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B3814A19791F62003FF386 /* RectWareView.m */; };
 		54B381501979201E003FF386 /* btn_back_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B3814F1979201E003FF386 /* btn_back_babyInfo.png */; };
+		54B3815619792628003FF386 /* right_body_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B3815519792628003FF386 /* right_body_img.png */; };
+		54B381581979268F003FF386 /* left_body_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B381571979268F003FF386 /* left_body_img.png */; };
 		54B427DF1973CF1300BD2B82 /* AFTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B427DE1973CF1300BD2B82 /* AFTextImgButton.m */; };
 		54B427E21973D26E00BD2B82 /* AFColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B427E11973D26E00BD2B82 /* AFColorButton.m */; };
 		54B4680018E5154C00745F72 /* ShopAllWareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */; };
@@ -1536,6 +1538,8 @@
 		54B3814919791F62003FF386 /* RectWareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectWareView.h; sourceTree = "<group>"; };
 		54B3814A19791F62003FF386 /* RectWareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectWareView.m; sourceTree = "<group>"; };
 		54B3814F1979201E003FF386 /* btn_back_babyInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_babyInfo.png; sourceTree = "<group>"; };
+		54B3815519792628003FF386 /* right_body_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_body_img.png; sourceTree = "<group>"; };
+		54B381571979268F003FF386 /* left_body_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_body_img.png; sourceTree = "<group>"; };
 		54B427DD1973CF1300BD2B82 /* AFTextImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTextImgButton.h; sourceTree = "<group>"; };
 		54B427DE1973CF1300BD2B82 /* AFTextImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTextImgButton.m; sourceTree = "<group>"; };
 		54B427E01973D26E00BD2B82 /* AFColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFColorButton.h; sourceTree = "<group>"; };
@@ -2441,6 +2445,8 @@
 		5403CDF818D04F51004CAE22 /* BabyInfoImages */ = {
 			isa = PBXGroup;
 			children = (
+				54B381571979268F003FF386 /* left_body_img.png */,
+				54B3815519792628003FF386 /* right_body_img.png */,
 				54B3814F1979201E003FF386 /* btn_back_babyInfo.png */,
 				54CC76E3196FBEFA00373B35 /* icon_babyInfo_btn.png */,
 				88B29777196A95E40050EDE2 /* baby_born_background.png */,
@@ -4651,6 +4657,7 @@
 				5403CD4018D03D39004CAE22 /* icon18_weather_diary.png in Resources */,
 				54C2E9FD192DE0BA0011AA0C /* course_p2.png in Resources */,
 				54C2E9FE192DE0BA0011AA0C /* course_p3_h.png in Resources */,
+				54B3815619792628003FF386 /* right_body_img.png in Resources */,
 				54B97E4A18FA2B1E00B6C4C9 /* pic37_insure_shop.png in Resources */,
 				5447C49618D97D1100187BE6 /* icon_like2_topic.png in Resources */,
 				54B97E7E18FA572600B6C4C9 /* num3_insure_shop.png in Resources */,
@@ -4671,6 +4678,7 @@
 				5403CD4818D03D39004CAE22 /* icon4_weather_diary.png in Resources */,
 				5403CE3418D04F5E004CAE22 /* icon_male_baby.png in Resources */,
 				88C965AD19629FAC0058B842 /* icon_vaci_babyInfo.png in Resources */,
+				54B381581979268F003FF386 /* left_body_img.png in Resources */,
 				5447C49018D97D1100187BE6 /* btn_topic2_topic.png in Resources */,
 				54D1500318CAEFD70022E1F4 /* pic1_circle_diary.png in Resources */,
 				54AC20ED18E3FD30001C1357 /* icon2_clothes_shop.png in Resources */,

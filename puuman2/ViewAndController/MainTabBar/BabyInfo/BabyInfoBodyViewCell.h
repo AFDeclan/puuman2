@@ -31,8 +31,10 @@
     UIView *lineView;
     UIButton *backBtn;
     
+    UIView *infoView;
     UIColumnView *infoTableView;
-
+    UIImageView *leftImgView;
+    UIImageView *rightImgView;
 }
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;

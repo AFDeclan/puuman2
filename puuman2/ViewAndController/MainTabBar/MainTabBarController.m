@@ -199,7 +199,24 @@ static MainTabBarController *instance;
     [tabBar setVerticalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_V]];
     [bgImgView setFrame:CGRectMake(0, 0, 768, 1024)];
+    if (infoView) {
+        if (babyInfoShowed) {
+            [infoView setFrame:CGRectMake(0, 0, 768, 1024)];
+        }else{
+            [infoView setFrame:CGRectMake(0, -1024, 768, 1024)];
+            
+        }
+        [infoView setVerticalFrame];
+    }
     
+    if (babyInfoBtn) {
+        if (babyInfoShowed) {
+            SetViewLeftUp(babyInfoBtn,768 -16 - 56, 1024);
+        }else{
+            SetViewLeftUp(babyInfoBtn,768 -16 - 56, 0);
+        }
+    }
+
     
 }
 
@@ -213,7 +230,24 @@ static MainTabBarController *instance;
     [tabBar setHorizontalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 1024)];
+    if (infoView) {
+        if (babyInfoShowed) {
+            [infoView setFrame:CGRectMake(0, 0, 1024,768 )];
+        }else{
+            [infoView setFrame:CGRectMake(0, -768, 1024, 768)];
+            
+        }
+        [infoView setHorizontalFrame];
+    }
     
+    if (babyInfoBtn) {
+        if (babyInfoShowed) {
+            SetViewLeftUp(babyInfoBtn,1024 -16 - 56,768);
+        }else{
+            SetViewLeftUp(babyInfoBtn,1024 -16 - 56, 0);
+        }
+    }
+
 }
 
 #pragma mark - shareVideo

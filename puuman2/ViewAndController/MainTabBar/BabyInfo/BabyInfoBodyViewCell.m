@@ -149,13 +149,28 @@
     [noti_label setTextAlignment:NSTextAlignmentLeft];
     [leftView addSubview:noti_label];
     
-    infoTableView = [[UIColumnView alloc] initWithFrame:CGRectMake(32, 606, 640, 136)];
-    [infoTableView setBackgroundColor:PMColor6];
+    
+    infoView = [[UIView alloc] initWithFrame:CGRectMake(32, 606, 640, 136)];
+    [infoView setBackgroundColor:PMColor6];
+    [leftView addSubview:infoView];
+    infoTableView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 640, 136)];
+    [infoTableView setBackgroundColor:[UIColor clearColor]];
     [infoTableView setColumnViewDelegate:self];
     [infoTableView setViewDataSource:self];
     [infoTableView setPagingEnabled:NO];
     [infoTableView setDelegate:self];
-    [leftView addSubview:infoTableView];
+    [infoView addSubview:infoTableView];
+    
+    
+    
+    leftImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 138, 149)];
+    [leftImgView setImage:[UIImage imageNamed:@"left_body_img.png"]];
+    [infoView addSubview:leftImgView];
+    
+    rightImgView = [[UIImageView alloc] initWithFrame:CGRectMake(640 - 138, 0, 138, 149)];
+    [rightImgView setImage:[UIImage imageNamed:@"right_body_img.png"]];
+    [infoView addSubview:rightImgView];
+    
 }
 
 - (void)addData
@@ -226,10 +241,8 @@
     SetViewLeftUp(shareBtn, 0, 706);
     SetViewLeftUp(addDataBtn, 0, 746);
     SetViewLeftUp(backBtn, 320, 992);
-    [UIView animateWithDuration:0.2 animations:^{
-        [infoTableView setAlpha:0];
-        [dataTable setAlpha:1];
-    }];
+    [infoView setAlpha:1];
+    [dataTable setAlpha:0];
 }
 
 -(void)setHorizontalFrame
@@ -247,11 +260,9 @@
     SetViewLeftUp(shareBtn, 0, 550);
     SetViewLeftUp(addDataBtn, 0, 590);
     SetViewLeftUp(backBtn, 448, 736);
+    [dataTable setAlpha:1];
+    [infoView setAlpha:0];
 
-    [UIView animateWithDuration:0.2 animations:^{
-        [infoTableView setAlpha:1];
-        [dataTable setAlpha:0];
-    }];
 }
 
 - (void)backBtnClick
