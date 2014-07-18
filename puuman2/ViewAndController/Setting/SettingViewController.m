@@ -27,7 +27,7 @@ static NSString *titleIcons[3] = {@"icon_safe_set.png",@"icon_admin_set.png",@"i
 static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@"绑定账号"},{@"发送评价",@"打分",@"帮助"}};
 
 @implementation SettingViewController
-
+@synthesize delegate = _delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -273,7 +273,6 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     }completion:^(BOOL finished) {
         [super dismiss];
         [self.view removeFromSuperview];
-
     }];
 
 }

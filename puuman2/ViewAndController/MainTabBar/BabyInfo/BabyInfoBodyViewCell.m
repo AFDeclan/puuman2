@@ -68,6 +68,7 @@
     [dataTable setDataSource:self];
     [dataTable setDelegate:self];
     [rightView addSubview:dataTable];
+    
     [dataTable setSeparatorColor:[UIColor clearColor]];
     [dataTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [dataTable setShowsHorizontalScrollIndicator:NO];
@@ -96,7 +97,7 @@
     if ([[BabyData sharedBabyData] recordCount] > 0) {
         [emptyView setAlpha:0];
     }
-
+   
     
 }
 
@@ -140,6 +141,14 @@
     [noti_label setText:@"左右滑动切换身高&体重"];
     [noti_label setTextAlignment:NSTextAlignmentLeft];
     [leftView addSubview:noti_label];
+    
+    infoTableView = [[UIColumnView alloc] initWithFrame:CGRectMake(32, 606, 640, 136)];
+    [infoTableView setBackgroundColor:PMColor6];
+    [infoTableView setColumnViewDelegate:self];
+    [infoTableView setViewDataSource:self];
+    [infoTableView setPagingEnabled:NO];
+    [infoTableView setDelegate:self];
+    [leftView addSubview:infoTableView];
 }
 
 - (void)addData
@@ -310,4 +319,76 @@
     // Configure the view for the selected state
 }
 
+
+#pragma mark - UIColumnViewDelegate and UIColumnViewDataSource
+- (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
+{
+    
+}
+
+
+- (CGFloat)columnView:(UIColumnView *)columnView widthForColumnAtIndex:(NSUInteger)index
+{
+    if (index == 0) {
+        return 208;
+    }else if(index == [[BabyData sharedBabyData] recordCount] + 1){
+        return 208;
+    }
+    return 224;
+    
+}
+
+- (NSUInteger)numberOfColumnsInColumnView:(UIColumnView *)columnView
+{
+    
+    return [[BabyData sharedBabyData] recordCount] + 2;
+
+}
+
+- (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
+{
+    
+    if (index == 0) {
+        NSString * cellIdentifier = @"LeftCell";
+        UITableViewCell *cell = [columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            
+        }
+        [cell setBackgroundColor:[UIColor clearColor]];
+
+        return cell;
+    }else if(index == [[BabyData sharedBabyData] recordCount] + 1){
+        NSString * cellIdentifier = @"RightCell";
+        UITableViewCell *cell = [columnView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            
+        }
+        [cell setBackgroundColor:[UIColor clearColor]];
+
+        return cell;
+    }
+    static NSString *identity = @"bodyInfoCell";
+    BodyInfoTableViewCell *cell = (BodyInfoTableViewCell *)[columnView dequeueReusableCellWithIdentifier:identity];
+    if (!cell)
+    {
+        cell = [[BodyInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+    }
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setInfoIndex:index - 1];
+    return cell;
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIColumnView *)scrollView
+{
+    CGPoint pos = scrollView.contentOffset;
+    NSInteger index = pos.x /224;
+    pos.x = index*224;
+    [scrollView setContentOffset:pos animated:YES];
+}
 @end

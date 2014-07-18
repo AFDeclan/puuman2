@@ -39,6 +39,7 @@
     [pieView setBackgroundColor:[UIColor clearColor]];
     [pieView setAlpha:0];
     [self animateStartEnd];
+    
     [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns] atIndex:0 color: PMColor6];
     [self addPressedWithValue:[[UserInfo sharedUserInfo] UCorns_connect] atIndex:1 color:PMColor8];
     
@@ -99,17 +100,17 @@
 {
 
     if ([UserInfo sharedUserInfo].identity == Mother) {
-        [self animateChangeVal:[[UserInfo sharedUserInfo] UCorns] andIndex:0];
-        [self animateChangeVal:[[UserInfo sharedUserInfo] UCorns_connect] andIndex:1];
+        [self animateChangeVal:1-[[UserInfo sharedUserInfo] UCorns]/([[UserInfo sharedUserInfo] UCorns]+[[UserInfo sharedUserInfo] UCorns_connect]) andIndex:0];
+        [self animateChangeVal:1-[[UserInfo sharedUserInfo] UCorns_connect]/([[UserInfo sharedUserInfo] UCorns]+[[UserInfo sharedUserInfo] UCorns_connect]) andIndex:1];
         
         [coinMother setText:[NSString stringWithFormat:@"妈妈%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
         [coinFather setText:[NSString stringWithFormat:@"爸爸%0.1f",[[UserInfo sharedUserInfo] UCorns_connect]]];
 
     }else{
-        [self animateChangeVal:[[UserInfo sharedUserInfo] UCorns_connect] andIndex:0];
-        [self animateChangeVal:[[UserInfo sharedUserInfo] UCorns] andIndex:1];
-        [coinMother setText:[NSString stringWithFormat:@"妈妈%0.1f",[[UserInfo sharedUserInfo] UCorns_connect]]];
+        [self animateChangeVal:1-[[UserInfo sharedUserInfo] UCorns_connect]/([[UserInfo sharedUserInfo] UCorns]+[[UserInfo sharedUserInfo] UCorns_connect]) andIndex:0];
+        [self animateChangeVal:1-[[UserInfo sharedUserInfo] UCorns]/([[UserInfo sharedUserInfo] UCorns]+[[UserInfo sharedUserInfo] UCorns_connect]) andIndex:1];
         [coinFather setText:[NSString stringWithFormat:@"爸爸%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
+        [coinMother setText:[NSString stringWithFormat:@"妈妈%0.1f",[[UserInfo sharedUserInfo] UCorns_connect]]];
 
     }
     [totalCoin setText:[NSString stringWithFormat:@"%0.1f",[[UserInfo sharedUserInfo] UCorns]+[[UserInfo sharedUserInfo] UCorns_connect]]];
@@ -132,13 +133,24 @@
 {
     float startAngle;
     float  pre = ([[UserInfo sharedUserInfo] UCorns_connect])/([[UserInfo sharedUserInfo] UCorns] + [[UserInfo sharedUserInfo] UCorns_connect]);
-    if ([[UserInfo sharedUserInfo] UCorns] > [[UserInfo sharedUserInfo] UCorns_connect]) {
-        startAngle = 360 *(pre + (0.5-pre)/2);
-
+    if ([UserInfo sharedUserInfo].identity == Mother) {
+        if ([[UserInfo sharedUserInfo] UCorns] > [[UserInfo sharedUserInfo] UCorns_connect]) {
+            startAngle = 360- 360 *(pre + (0.5-pre)/2);
+            
+        }else{
+            startAngle = 360- 360 *(pre - (pre-0.5)/2);
+            
+        }
     }else{
-        startAngle = 360 *(pre - (pre-0.5)/2);
+    
+        if ([[UserInfo sharedUserInfo] UCorns] > [[UserInfo sharedUserInfo] UCorns_connect]) {
+            startAngle = 360 *(pre + (0.5-pre)/2);
         
+        }else{
+            startAngle = 360 *(pre - (pre-0.5)/2);
+        }
     }
+  
        float endAngle = 360 + startAngle;
     [pieView.layer setStartAngle:startAngle endAngle:endAngle animated:YES];
 }

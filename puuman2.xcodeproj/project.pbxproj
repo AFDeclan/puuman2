@@ -482,6 +482,9 @@
 		54B30ABD195D5C9D00007DDC /* PuumanButtonAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */; };
 		54B30AC5195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */; };
 		54B30AC8195D644900007DDC /* BabyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AC7195D644900007DDC /* BabyView.m */; };
+		54B3812D1978D033003FF386 /* MainTabBarController+BabyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B3812C1978D033003FF386 /* MainTabBarController+BabyInfoController.m */; };
+		54B381301978D1F0003FF386 /* MainTabBarController+Hud.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B3812F1978D1F0003FF386 /* MainTabBarController+Hud.m */; };
+		54B381331978F8C1003FF386 /* MainTabBarController+AutoImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B381321978F8C1003FF386 /* MainTabBarController+AutoImport.m */; };
 		54B427DF1973CF1300BD2B82 /* AFTextImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B427DE1973CF1300BD2B82 /* AFTextImgButton.m */; };
 		54B427E21973D26E00BD2B82 /* AFColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B427E11973D26E00BD2B82 /* AFColorButton.m */; };
 		54B4680018E5154C00745F72 /* ShopAllWareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B467FF18E5154C00745F72 /* ShopAllWareHeaderView.m */; };
@@ -1525,6 +1528,12 @@
 		54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+DragAnimation.m"; sourceTree = "<group>"; };
 		54B30AC6195D644900007DDC /* BabyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyView.h; sourceTree = "<group>"; };
 		54B30AC7195D644900007DDC /* BabyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyView.m; sourceTree = "<group>"; };
+		54B3812B1978D033003FF386 /* MainTabBarController+BabyInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainTabBarController+BabyInfoController.h"; sourceTree = "<group>"; };
+		54B3812C1978D033003FF386 /* MainTabBarController+BabyInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MainTabBarController+BabyInfoController.m"; sourceTree = "<group>"; };
+		54B3812E1978D1F0003FF386 /* MainTabBarController+Hud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainTabBarController+Hud.h"; sourceTree = "<group>"; };
+		54B3812F1978D1F0003FF386 /* MainTabBarController+Hud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MainTabBarController+Hud.m"; sourceTree = "<group>"; };
+		54B381311978F8C1003FF386 /* MainTabBarController+AutoImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainTabBarController+AutoImport.h"; sourceTree = "<group>"; };
+		54B381321978F8C1003FF386 /* MainTabBarController+AutoImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MainTabBarController+AutoImport.m"; sourceTree = "<group>"; };
 		54B427DD1973CF1300BD2B82 /* AFTextImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTextImgButton.h; sourceTree = "<group>"; };
 		54B427DE1973CF1300BD2B82 /* AFTextImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTextImgButton.m; sourceTree = "<group>"; };
 		54B427E01973D26E00BD2B82 /* AFColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFColorButton.h; sourceTree = "<group>"; };
@@ -3600,6 +3609,12 @@
 				54CE119218C1CD7C00966396 /* MainTabBarButton.m */,
 				54B75C291977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.h */,
 				54B75C2A1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m */,
+				54B3812B1978D033003FF386 /* MainTabBarController+BabyInfoController.h */,
+				54B3812C1978D033003FF386 /* MainTabBarController+BabyInfoController.m */,
+				54B3812E1978D1F0003FF386 /* MainTabBarController+Hud.h */,
+				54B3812F1978D1F0003FF386 /* MainTabBarController+Hud.m */,
+				54B381311978F8C1003FF386 /* MainTabBarController+AutoImport.h */,
+				54B381321978F8C1003FF386 /* MainTabBarController+AutoImport.m */,
 			);
 			name = TabBar;
 			sourceTree = "<group>";
@@ -4888,6 +4903,7 @@
 				88B51600192F52EE006A79AB /* SinaWeiboRequest.m in Sources */,
 				54AFAA8B18DA9E750067B8C1 /* RecommentPartnerTableViewCell.m in Sources */,
 				54AFBBC318D6938600861A69 /* LoginBirthRegisterView.m in Sources */,
+				54B3812D1978D033003FF386 /* MainTabBarController+BabyInfoController.m in Sources */,
 				14B8DF2818BC37A30047C6B3 /* RecomWare.m in Sources */,
 				88B51608192F52EE006A79AB /* MJRefreshHeaderView.m in Sources */,
 				545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */,
@@ -4996,6 +5012,7 @@
 				54AE2BB718E93FEB00D24F92 /* ActionManager.m in Sources */,
 				54AFBBCC18D6938600861A69 /* SelectCalendarView.m in Sources */,
 				88B515F6192F52EE006A79AB /* AFButton.m in Sources */,
+				54B381301978D1F0003FF386 /* MainTabBarController+Hud.m in Sources */,
 				54012DEE18E3053B00F11D97 /* PuumanRankPartnerDataView.m in Sources */,
 				545EB7E718D7E6BD00D8EB7F /* CalenderControlView.m in Sources */,
 				54C038D71963DF1F00BBC1E6 /* OrderWaresFooterView.m in Sources */,
@@ -5028,6 +5045,7 @@
 				54AC210718E4055B001C1357 /* SearchTextField.m in Sources */,
 				54AC1D2718EEC080005E2DCE /* BindAddButton.m in Sources */,
 				5412BC61192C818F0033F322 /* DiaryTableViewController.m in Sources */,
+				54B381331978F8C1003FF386 /* MainTabBarController+AutoImport.m in Sources */,
 				14B8DF2C18BC37A30047C6B3 /* BabyData.m in Sources */,
 				547F7644196A7D96004D4F77 /* PregnancyTableViewCell.m in Sources */,
 				541970DB18D19CE00058FE64 /* AddBodyDataViewController.m in Sources */,

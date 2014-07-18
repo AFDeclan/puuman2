@@ -10,7 +10,6 @@
 #import "MainTabBar.h"
 #import "UserInfo.h"
 #import "AutoImportViewController.h"
-#import "SettingViewController.h"
 #import "VideoShowView.h"
 #import "VideoShowButton.h"
 #import "BabyView.h"
@@ -24,12 +23,9 @@
     UIImageView *bgImgView;
     UserInfo *userInfo;
     AutoImportViewController *improtAutoVC;
-    SettingViewController *settingVC;
     VideoShowView *videoView;
     VideoShowButton *videoBtn;
-    NSTimer *timer;
-    float progress;
-    NSString *videoPath;
+    
     BabyView *infoView;
     UIButton *babyInfoBtn;
     BOOL babyInfoShowed;
@@ -46,15 +42,8 @@
 //@property(assign,nonatomic) BOOL loadingVideo;
 
 + (MainTabBarController *)sharedMainViewController;
-+ (void)showHud:(NSString *)text;
-+ (void)showHudCanCancel:(NSString *)text;
-+ (void)hideHud;
-- (void)startGif;
-- (void)initautoImportView;
-- (void)removeAutoImportView;
-- (void)showAutoImportView;
-- (void)hiddenBabyView;
-- (void)showBabyView;
-- (void)refreshBabyInfoView;
+
+
+
 
 @end

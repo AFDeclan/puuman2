@@ -7,6 +7,7 @@
 //
 
 #import "MainTabBarController+MainTabBarControllerSkip.h"
+#import "SettingViewController.h"
 
 
 
@@ -30,4 +31,16 @@
 {
     [self setSelectedIndex:tag];
 }
+
+
+- (void)showSettingView
+{
+
+    SettingViewController *settingVC = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
+    [settingVC show];
+    [self.view addSubview:settingVC.view];
+    
+}
+
+
 @end

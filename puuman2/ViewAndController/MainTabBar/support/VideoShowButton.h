@@ -22,6 +22,10 @@
     UIButton *playBtn;
     UIImageView *imgView;
     NSMutableArray *refs;
+    NSTimer *timer;
+    float progress;
+
+    
 }
 @property(nonatomic,assign)id<VideoShowButtonDelegate> delegate;
 @property(assign,nonatomic)BOOL clickEnable;
@@ -32,5 +36,6 @@
 
 @end
 @protocol VideoShowButtonDelegate <NSObject>
+- (void)initVideoWithViewoPath:(NSString *)videoPath;
 - (void)showVideo;
 @end

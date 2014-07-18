@@ -12,6 +12,7 @@
 #import "TaskInfoViewController.h"
 #import "AppDelegate.h"
 #import "DiaryViewController.h"
+#import "MainTabBarController+Hud.h"
 
 
 static TaskCell * instance;

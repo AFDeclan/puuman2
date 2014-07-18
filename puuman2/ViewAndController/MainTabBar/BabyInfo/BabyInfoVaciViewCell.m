@@ -471,11 +471,14 @@
         [self refreshStatus];
         [_calendar removeFromSuperview];
         [[BabyData sharedBabyData] updateVaccineAtIndex:selectVaccine withDoneTime:date];
-        [self performSelector:@selector(refresh) withObject:nil afterDelay:0];
-        
+        [dataTable reloadData];
+        [self selectAtIndex:selectVaccine];
+
     }
     
 }
+
+
 
 - (void)alreadyBtnPressed
 {

@@ -9,7 +9,7 @@
 #import "LoginEndView.h"
 #import "ColorsAndFonts.h"
 #import "UserInfo.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+Hud.h"
 #import "DateFormatter.h"
 #import "RegisterForm.h"
 #import "CustomAlertViewController.h"

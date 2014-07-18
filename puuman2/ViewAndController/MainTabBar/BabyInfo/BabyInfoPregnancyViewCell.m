@@ -9,7 +9,7 @@
 #import "BabyInfoPregnancyViewCell.h"
 #import "ColorsAndFonts.h"
 #import "LoginViewController.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+BabyInfoController.h"
 #import "CAKeyframeAnimation+DragAnimation.h"
 #import "NSDate+Compute.h"
 #import "PregnancyTableViewCell.h"

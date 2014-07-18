@@ -7,6 +7,10 @@
 //
 
 #import "VideoShowButton.h"
+#import "UniverseConstant.h"
+#import "MainTabBarController.h"
+#import "UpLoaderShareVideo.h"
+#import "DiaryModel.h"
 
 @implementation VideoShowButton
 @synthesize delegate = _delegate;
@@ -18,6 +22,7 @@
     if (self)
     {
         currentProperty = 1;
+        progress = 0;
         NSDictionary *gifLoopCount = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0] forKey:(NSString *)kCGImagePropertyGIFLoopCount];
         
         gifProperties = [NSDictionary dictionaryWithObject:gifLoopCount forKey:(NSString *)kCGImagePropertyGIFDictionary];
@@ -44,6 +49,13 @@
         [imgView setAnimationImages:refs];
         imgView.animationDuration=2.0;
         imgView.animationRepeatCount=0;
+        
+        [MyNotiCenter addObserver:self selector:@selector(downAutoVideo) name:Noti_HasShareVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(refreshProgressAutoVideo:) name:Noti_RefreshProgressAutoVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(finishDownShareVideo:) name:Noti_FinishShareVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(failDownShareVideo) name:Noti_FailShareVideo object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(startGif) name:Noti_StartGif object:nil];
+
     }
     return self;
 }
@@ -51,6 +63,8 @@
 -(void)startGif
 {
     [imgView startAnimating];
+    [self setClickEnable:YES];
+
 }
 
 
@@ -69,6 +83,8 @@
     CFRelease(gif);
    
 }
+
+
 
 - (void)showVideo
 {
@@ -94,5 +110,68 @@
 
     }
 }
+
+- (void)downAutoVideo
+{
+    
+    SetViewLeftUp(self, ViewX(self),-1*ViewHeight(self));
+    [self setClickEnable:NO];
+    if ([[MainTabBarController sharedMainViewController] isVertical]) {
+        [self setAlpha:0];
+    }else{
+        [self setAlpha:1];
+    }
+    UpLoaderShareVideo *downloader = [[UpLoaderShareVideo alloc] init];
+    [downloader downloadDataFromUrl:[[UserInfo sharedUserInfo] shareVideo].videoUrl];
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshProgress) userInfo:nil repeats:YES];
+    [MainTabBarController sharedMainViewController].hasShareVideo = NO;
+    
+}
+
+- (void)refreshProgress
+{
+    [self setAlpha:1];
+    [UIView animateWithDuration:1 animations:^{
+        SetViewLeftUp(self, ViewX(self), ViewHeight(self)*(progress - 1));
+    }];
+}
+
+
+- (void)refreshProgressAutoVideo:(NSNotification *)notification
+{
+    progress = [[notification object] floatValue];
+
+}
+
+- (void)failDownShareVideo
+{
+    // _loadingVideo = NO;
+    SetViewLeftUp(self, ViewHeight(self), -1 *ViewHeight(self));
+    [self setAlpha:0];
+    
+}
+
+
+
+- (void)finishDownShareVideo:(NSNotification *)notification
+{
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+    // _loadingVideo = NO;
+    [MainTabBarController sharedMainViewController].hasShareVideo = YES;
+    [_delegate initVideoWithViewoPath:[notification object]];
+
+    if (([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt]) && [MainTabBarController sharedMainViewController].hasShareVideo) {
+        [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
+    }
+}
+
+
 
 @end

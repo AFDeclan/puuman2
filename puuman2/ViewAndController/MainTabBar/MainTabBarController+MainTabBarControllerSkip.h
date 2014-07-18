@@ -10,7 +10,7 @@
 
 
 @interface MainTabBarController (MainTabBarControllerSkip)
-
+- (void)showSettingView;
 - (void)showDiary;
 - (void)showShop;
 - (void)selectedWithTag:(TypeTabBarButton)tag;
