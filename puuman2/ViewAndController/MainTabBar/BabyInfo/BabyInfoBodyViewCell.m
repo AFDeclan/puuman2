@@ -217,7 +217,10 @@
     [rightBtn setFrame:CGRectMake(0, 0, 64, 926)];
     SetViewLeftUp(shareBtn, 0, 706);
     SetViewLeftUp(addDataBtn, 0, 746);
-    
+    [UIView animateWithDuration:0.2 animations:^{
+        [infoTableView setAlpha:0];
+        [dataTable setAlpha:1];
+    }];
 }
 
 -(void)setHorizontalFrame
@@ -234,7 +237,10 @@
     [rightBtn setFrame:CGRectMake(224, 0, 64, 670)];
     SetViewLeftUp(shareBtn, 0, 550);
     SetViewLeftUp(addDataBtn, 0, 590);
-
+    [UIView animateWithDuration:0.2 animations:^{
+        [infoTableView setAlpha:1];
+        [dataTable setAlpha:0];
+    }];
 }
 
 - (void)rightBtnClick
