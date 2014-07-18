@@ -26,6 +26,7 @@
     ChangePageControlButton *showAndHiddenBtn;
     UIView *lineView;
     BOOL evaShowed;
+    UIButton *backBtn;
 }
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;

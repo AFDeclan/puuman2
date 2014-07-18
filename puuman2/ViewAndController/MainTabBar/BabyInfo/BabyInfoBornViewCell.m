@@ -50,13 +50,34 @@
 {
     
     
-     contentView = [[UIView alloc] init];
+    contentView = [[UIView alloc] init];
     [contentView setBackgroundColor:RGBColor(7, 117, 202)];
     [self.contentView addSubview:contentView];
     
     clearInfoView = [[UIView alloc] init];
     [clearInfoView setBackgroundColor:[UIColor clearColor]];
     [contentView addSubview:clearInfoView];
+    
+    heiAndWeiView = [[UIView alloc] init];
+    [heiAndWeiView setBackgroundColor:[UIColor whiteColor]];
+    [heiAndWeiView setAlpha:0.3];
+    [heiAndWeiView.layer setMasksToBounds:YES];
+    [heiAndWeiView.layer setCornerRadius:10];
+    [clearInfoView addSubview:heiAndWeiView];
+    
+    vaciView =[[UIView alloc] init];
+    [vaciView setBackgroundColor:[UIColor whiteColor]];
+    [vaciView setAlpha:0.3];
+    [vaciView.layer setMasksToBounds:YES];
+    [vaciView.layer setCornerRadius:10];
+    [clearInfoView addSubview:vaciView];
+    
+     propView = [[UIView alloc] init];
+    [propView setBackgroundColor:[UIColor whiteColor]];
+    [propView setAlpha:0.3];
+    [propView.layer setMasksToBounds:YES];
+    [propView.layer setCornerRadius:10];
+    [clearInfoView addSubview:propView];
     
      bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [bottomBtn setBackgroundColor:[UIColor whiteColor]];
@@ -71,7 +92,7 @@
 
 - (void)initClearInfoView
 {
-     bgImageView = [[UIImageView alloc] init];
+    bgImageView = [[UIImageView alloc] init];
     [bgImageView setImage:[UIImage imageNamed:@"baby_born_background.png"]];
     [clearInfoView addSubview:bgImageView];
     
@@ -144,18 +165,21 @@
 //    [nextPropView setFrame:CGRectMake(744,407, 10, 16)];
 //    [preView setFrame:CGRectMake(5, 350, 10, 16)];
     [bgImageView setFrame:CGRectMake(72, 248, 500, 800)];
-    [heightBtn setFrame:CGRectMake(24, 150, 80, 68)];
-    [weightBtn setFrame:CGRectMake(24, 220, 80, 68)];
-    [vaciBtn setFrame:CGRectMake(525, 186, 180, 100)];
-    [propBtn setFrame:CGRectMake(525, 630, 180, 80)];
-    [addRecordBtn setFrame:CGRectMake(220, 150, 32, 32)];
-    [nextNaciView setFrame:CGRectMake(744, 226, 10, 16)];
-    [nextPropView setFrame:CGRectMake(744, 665, 10, 16)];
+    [heightBtn setFrame:CGRectMake(24, 145, 170, 68)];
+    [weightBtn setFrame:CGRectMake(24, 215, 170, 68)];
+    [vaciBtn setFrame:CGRectMake(528, 184, 180, 100)];
+    [propBtn setFrame:CGRectMake(528, 630, 180, 80)];
+    [addRecordBtn setFrame:CGRectMake(230, 150, 32, 32)];
+    [nextNaciView setFrame:CGRectMake(744, 224, 10, 16)];
+    [nextPropView setFrame:CGRectMake(744, 660, 10, 16)];
     [preView setFrame:CGRectMake(5, 210, 10, 16)];
-    [heiLineView setFrame:CGRectMake(24, 290, 240, 86)];
-    [vaciLineView setFrame:CGRectMake(525, 285, 240, 86)];
-    [propLineView setFrame:CGRectMake(525, 705, 240, 86)];
- 
+    [heiLineView setFrame:CGRectMake(24, 288, 240, 86)];
+    [vaciLineView setFrame:CGRectMake(528, 289, 240, 86)];
+    [propLineView setFrame:CGRectMake(528, 715, 240, 86)];
+    
+    [heiAndWeiView setFrame:CGRectMake(22, 140, 200, 140)];
+    [vaciView setFrame:CGRectMake(523, 180, 212, 100)];
+    [propView setFrame:CGRectMake(523, 625, 212, 80)];
 
 }
 - (void)setHorizontalFrame
@@ -165,17 +189,20 @@
     [bottomBtn setFrame:CGRectMake(0, 720, 1024, 48)];
     [bottomBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 480, 8, 480)];
     [bgImageView setFrame:CGRectMake(270,75, 500, 800)];
-    [heightBtn setFrame:CGRectMake(30, 262, 170, 68)];
-    [weightBtn setFrame:CGRectMake(30, 332, 170, 68)];
-    [vaciBtn setFrame:CGRectMake(780, 140, 212, 100)];
-    [propBtn setFrame:CGRectMake(780, 380, 212, 80)];
+    [heightBtn setFrame:CGRectMake(30, 260, 170, 68)];
+    [weightBtn setFrame:CGRectMake(30, 330, 170, 68)];
+    [vaciBtn setFrame:CGRectMake(780, 135, 212, 100)];
+    [propBtn setFrame:CGRectMake(780, 375, 212, 80)];
     [addRecordBtn setFrame:CGRectMake(230, 262, 32, 32)];
     [nextNaciView setFrame:CGRectMake(1000,180, 10, 16)];
     [nextPropView setFrame:CGRectMake(1000,407, 10, 16)];
     [preView setFrame:CGRectMake(10, 320, 10, 16)];
-    [heiLineView setFrame:CGRectMake(30, 400, 240, 86)];
-    [vaciLineView setFrame:CGRectMake(780, 230, 240, 86)];
-    [propLineView setFrame:CGRectMake(780, 456, 240, 86)];
+    [heiLineView setFrame:CGRectMake(30, 403, 240, 86)];
+    [vaciLineView setFrame:CGRectMake(775, 240, 240, 86)];
+    [propLineView setFrame:CGRectMake(775, 460, 240, 86)];
+    [heiAndWeiView setFrame:CGRectMake(25, 255, 200, 138)];
+    [vaciView setFrame:CGRectMake(775, 130, 212, 100)];
+    [propView setFrame:CGRectMake(775, 370, 212, 80)];
 
 }
 

@@ -62,10 +62,6 @@
     footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 604, 20)];
     [footerView setBackgroundColor:RGBColor(229, 105, 104)];
     [self addSubview:footerView];
-    
- 
-    
-    
 
 }
 

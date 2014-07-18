@@ -548,7 +548,7 @@ static MBProgressHUD *hud;
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     //    positionAnimation.fillMode = kCAFillModeForwards;
     //    positionAnimation.removedOnCompletion =NO;
-    positionAnimation.duration = 1;
+    positionAnimation.duration = 0.5;
     CGMutablePathRef positionPath = CGPathCreateMutable();
     positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [positionAnimation setBeginTime:0];

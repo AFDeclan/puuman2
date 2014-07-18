@@ -27,6 +27,7 @@
     UIButton *rightBtn;
     SocialType shareType;
     UIView *lineView;
+    UIButton *backBtn;
     
 }
 

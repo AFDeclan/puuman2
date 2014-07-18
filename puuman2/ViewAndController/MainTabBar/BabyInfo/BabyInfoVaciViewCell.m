@@ -54,6 +54,13 @@
     [leftBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:leftBtn];
+    
+     backUpBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    [backUpBtn setFrame:CGRectMake(0, 0, 128, 32)];
+    [backUpBtn setBackgroundColor:[UIColor clearColor]];
+    [backUpBtn setImage:[UIImage imageNamed:@"btn_back_babyInfo.png"] forState:UIControlStateNormal];
+    [backUpBtn addTarget:self action:@selector(backUpBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:backUpBtn];
 
     
 }
@@ -160,11 +167,17 @@
     [leftView addSubview:_calendar];
     if ([MainTabBarController sharedMainViewController].isVertical) {
         
-        SetViewLeftUp(_calendar, 121, 96);
+        SetViewLeftUp(_calendar, 16, 116);
     }else{
-        SetViewLeftUp(_calendar, 140, 96);
+        SetViewLeftUp(_calendar, 150, 96);
     }
     
+}
+
+- (void)backUpBtnClick
+{
+  [[MainTabBarController sharedMainViewController] hiddenBabyView];
+
 }
 
 - (void)leftBtnClick
@@ -212,19 +225,20 @@
 
 -(void)setVerticalFrame
 {
+    SetViewLeftUp(backUpBtn, 318, 992);
     [lineView setFrame:CGRectMake(0, 96, 768, 2)];
-    [leftView setFrame:CGRectMake(48, 98, 286, 926)];
-    [rightView setFrame:CGRectMake(336, 96, 432, 928)];
-    [dataTable setFrame:CGRectMake(0, 0, 432, 928)];
+    [leftView setFrame:CGRectMake(48, 98, 335, 926)];
+    [rightView setFrame:CGRectMake(383, 96, 385, 928)];
+    [dataTable setFrame:CGRectMake(0, 0, 385, 928)];
     [leftBtn setFrame:CGRectMake(0, 96, 48, 928)];
-    [selectedDateBtn setFrame:CGRectMake(32, 82, 224, 48)];
-    [nameLabel setFrame:CGRectMake(32, 146, 224, 64)];
-    [detail setFrame:CGRectMake(32, 190, 224, 400)];
-    [statusText setFrame:CGRectMake(0, 0, 224, 48)];
-    SetViewLeftUp(notBtn, 174, 815);
-    SetViewLeftUp(alreadyBtn, 174, 855);
+    [selectedDateBtn setFrame:CGRectMake(40, 82, 255, 48)];
+    [nameLabel setFrame:CGRectMake(40, 146, 255, 64)];
+    [detail setFrame:CGRectMake(40, 190, 255, 400)];
+    [statusText setFrame:CGRectMake(0, 0, 255, 48)];
+    SetViewLeftUp(notBtn, 224, 814);
+    SetViewLeftUp(alreadyBtn, 223, 854);
+  
     
-   
 }
 
 -(void)setHorizontalFrame
@@ -232,7 +246,7 @@
     [lineView setFrame:CGRectMake(0, 96, 1024, 2)];
     [leftView setFrame:CGRectMake(48, 98, 542, 670)];
      [rightView setFrame:CGRectMake(590,96,434, 672)];
-    [dataTable setFrame: CGRectMake(0, 0, 432, 672)];
+    [dataTable setFrame: CGRectMake(0, 0, 434, 672)];
    
     [emptyView setFrame:CGRectMake(192, 292, 136, 144)];
     [leftBtn setFrame:CGRectMake(0, 96, 48, 672)];
@@ -240,8 +254,9 @@
     [alreadyBtn setFrame:CGRectMake(432, 590, 112, 40)];
     [selectedDateBtn setFrame:CGRectMake(72, 126, 336, 48)];
     [nameLabel setFrame:CGRectMake(72, 190, 336, 64)];
-    [detail setFrame:CGRectMake(72, 235, 336, 288)];
+    [detail setFrame:CGRectMake(72, 236, 336, 288)];
     [statusText setFrame:CGRectMake(0, 0, 336, 48)];
+    SetViewLeftUp(backUpBtn, 448, 736);
 }
 
 ////-(void)setVerticalFrame
@@ -471,7 +486,7 @@
         [self refreshStatus];
         [_calendar removeFromSuperview];
         [[BabyData sharedBabyData] updateVaccineAtIndex:selectVaccine withDoneTime:date];
-        [self performSelector:@selector(refresh) withObject:nil afterDelay:0];
+    
         
     }
     
