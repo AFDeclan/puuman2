@@ -48,6 +48,12 @@
     rightView = [[UIView alloc] init];
     [rightView setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:rightView];
+     backBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setFrame:CGRectMake(0, 0, 128, 32)];
+    [backBtn setBackgroundColor:[UIColor clearColor]];
+    [backBtn setImage:[UIImage imageNamed:@"btn_back_babyInfo.png"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:backBtn];
    
     
 }
@@ -127,10 +133,16 @@
     }
 }
 
+- (void)backBtnClick
+{
+  [[MainTabBarController sharedMainViewController] hiddenBabyView];
+
+}
+
 - (void)leftBtnClick
 {
 
-    [_delegate gotoPreCell];
+    [_delegate backToMianCell];
 
     
 }
@@ -193,7 +205,7 @@
     [estiView setFrame:CGRectMake(40, 50, 216,70)];
     [showAndHiddenBtn setAlpha:1];
     SetViewLeftUp(showAndHiddenBtn, 0, (ViewHeight(rightView)-80)/2);
-
+    SetViewLeftUp(backBtn, 320, 992);
 }
 
 -(void)setHorizontalFrame
@@ -210,6 +222,7 @@
     [estiTableView setFrame:CGRectMake(40, 120, 216, ViewHeight(rightView)-120)];
     [showAndHiddenBtn setAlpha:0];
     SetViewLeftUp(showAndHiddenBtn, 0, (ViewHeight(rightView)-80)/2);
+    SetViewLeftUp(backBtn, 448, 736);
 
     
 }

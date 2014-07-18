@@ -32,6 +32,9 @@
     UIImageView *vaciLineView;
     UIImageView *propLineView;
     UIImageView *bgImageView;
+    UIView *heiAndWeiView;
+    UIView *vaciView;
+    UIView *propView;
     
 }
 

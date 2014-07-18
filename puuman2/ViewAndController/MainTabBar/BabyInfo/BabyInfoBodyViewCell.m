@@ -57,7 +57,14 @@
     rightView = [[UIView alloc] init];
     [rightView setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:rightView];
-
+     backBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setFrame:CGRectMake(0,0, 128, 32)];
+    [backBtn setBackgroundColor:[UIColor clearColor]];
+    [backBtn setImage:[UIImage imageNamed:@"btn_back_babyInfo.png"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:backBtn];
+                     
+   
 }
 
 
@@ -207,6 +214,7 @@
 -(void)setVerticalFrame
 {
     //[super setVerticalFrame];
+    [rightBtn setBackgroundColor:PMColor6];
     [lineView setFrame:CGRectMake(0, 96, 768, 2)];
     [rightView setFrame:CGRectMake(704, 98, 64, 926)];
     [leftView setFrame:CGRectMake(0, 98, 704, 926)];

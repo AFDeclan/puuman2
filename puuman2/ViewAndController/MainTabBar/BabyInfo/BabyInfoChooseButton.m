@@ -29,6 +29,8 @@
 
 - (void)initialization
 {
+  
+
     iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
     [iconView setImage:[UIImage imageNamed:@""]];
     [self addSubview:iconView];
@@ -106,7 +108,6 @@
                 
                     detailLabel.text = @"没有数据";
                 }
-            
             }
             
            // [detailLabel setText:@"(四周前)"];

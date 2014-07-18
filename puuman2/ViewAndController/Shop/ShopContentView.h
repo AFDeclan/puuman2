@@ -12,7 +12,7 @@
 #import "ShopShowContentView.h"
 
 @interface ShopContentView : UIScrollView<UIGestureRecognizerDelegate>
-{
+ {
     
     ShopShowContentView *contentView;
     UIView *menuMask;

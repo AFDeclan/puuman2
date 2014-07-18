@@ -291,6 +291,7 @@
 - (void)gotoNextCellWithProp:(BOOL)isProp
 {
     prop = isProp;
+    currentNum = 1;
     currentNum ++ ;
     if ([MainTabBarController sharedMainViewController].isVertical) {
         
@@ -304,6 +305,7 @@
 
 - (void)gotoPreCell
 {
+    currentNum = 1;
     currentNum -- ;
     if ([MainTabBarController sharedMainViewController].isVertical) {
         
