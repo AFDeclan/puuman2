@@ -10,7 +10,7 @@
 #import "ColorsAndFonts.h"
 #import "BabyData.h"
 #import "VaccineInfoTableViewCell.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+BabyInfoController.h"
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
 

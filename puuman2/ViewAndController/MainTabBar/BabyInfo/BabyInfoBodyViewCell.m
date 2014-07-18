@@ -12,7 +12,7 @@
 #import "BabyData.h"
 #import "LineChartCell.h"
 #import "AddBodyDataViewController.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+BabyInfoController.h"
 #import "ColorsAndFonts.h"
 #import "DiaryFileManager.h"
 
@@ -225,6 +225,7 @@
     [rightBtn setFrame:CGRectMake(0, 0, 64, 926)];
     SetViewLeftUp(shareBtn, 0, 706);
     SetViewLeftUp(addDataBtn, 0, 746);
+    SetViewLeftUp(backBtn, 320, 992);
     [UIView animateWithDuration:0.2 animations:^{
         [infoTableView setAlpha:0];
         [dataTable setAlpha:1];
@@ -245,10 +246,18 @@
     [rightBtn setFrame:CGRectMake(224, 0, 64, 670)];
     SetViewLeftUp(shareBtn, 0, 550);
     SetViewLeftUp(addDataBtn, 0, 590);
+    SetViewLeftUp(backBtn, 448, 736);
+
     [UIView animateWithDuration:0.2 animations:^{
         [infoTableView setAlpha:1];
         [dataTable setAlpha:0];
     }];
+}
+
+- (void)backBtnClick
+{
+  [[MainTabBarController sharedMainViewController] hiddenBabyView];
+
 }
 
 - (void)rightBtnClick
