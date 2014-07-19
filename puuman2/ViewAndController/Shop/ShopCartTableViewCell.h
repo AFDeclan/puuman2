@@ -26,6 +26,7 @@
     UILabel *num_wares;
     int count;
 }
+
 @property(nonatomic,assign) Ware *ware;
 @property(nonatomic,assign) BOOL selectedWare;
 @end

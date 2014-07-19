@@ -9,8 +9,9 @@
 #import "MainTabBar.h"
 #import "UniverseConstant.h"
 #import "DiaryViewController.h"
+#import "MainTabBarController+MainTabBarControllerSkip.h"
+
 @implementation MainTabBar
-@synthesize delegate = _delegate;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -65,14 +66,14 @@
 {
     
     if (button.flagTag == kTypeTabBarOfSetting) {
-        [_delegate showSettingView];
+        [[MainTabBarController sharedMainViewController] showSettingView];
     }else{
         if (selectedBtn) {
             [selectedBtn setSelected:NO];
         }
         [(MainTabBarButton *)button setSelected:YES];
         selectedBtn = (MainTabBarButton *)button;
-        [_delegate selectedWithTag:button.flagTag];
+        [[MainTabBarController sharedMainViewController] selectedWithTag:button.flagTag];
         [UIView animateWithDuration:MainTabBarButtonanimateTime animations:^{
             SetViewLeftUp(bg_Btn,0,(button.flagTag - 1)*80);
         }];

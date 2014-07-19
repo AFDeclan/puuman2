@@ -11,8 +11,10 @@
 #import "BabyInfoIconViewDelegate.h"
 #import "ChangePageControlButton.h"
 #import "ShareSelectedViewController.h"
+#import "UIColumnView.h"
 
-@interface BabyInfoBodyViewCell : UITableViewCell<UITableViewDelegate,UITableViewDataSource,BabyInfoIconViewDelegate,ShareViewDelegate>
+
+@interface BabyInfoBodyViewCell : UITableViewCell<UITableViewDelegate,UITableViewDataSource,BabyInfoIconViewDelegate,ShareViewDelegate,UIColumnViewDataSource,UIColumnViewDelegate,UIScrollViewDelegate>
 
 {
     UITableView *dataTable;
@@ -29,6 +31,10 @@
     UIView *lineView;
     UIButton *backBtn;
     
+    UIView *infoView;
+    UIColumnView *infoTableView;
+    UIImageView *leftImgView;
+    UIImageView *rightImgView;
 }
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;

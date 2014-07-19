@@ -29,6 +29,8 @@
     [infoTableView setViewDataSource:self];
     [infoTableView setPagingEnabled:YES];
     [self addSubview:infoTableView];
+    
+    
 
 }
 

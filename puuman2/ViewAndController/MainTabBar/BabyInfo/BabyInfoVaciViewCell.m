@@ -10,7 +10,7 @@
 #import "ColorsAndFonts.h"
 #import "BabyData.h"
 #import "VaccineInfoTableViewCell.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+BabyInfoController.h"
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
 
@@ -486,11 +486,14 @@
         [self refreshStatus];
         [_calendar removeFromSuperview];
         [[BabyData sharedBabyData] updateVaccineAtIndex:selectVaccine withDoneTime:date];
-    
-        
+        [dataTable reloadData];
+        [self selectAtIndex:selectVaccine];
+
     }
     
 }
+
+
 
 - (void)alreadyBtnPressed
 {

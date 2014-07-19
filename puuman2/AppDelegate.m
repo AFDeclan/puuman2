@@ -7,9 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+AutoImport.h"
 #import "DiaryViewController.h"
-//#import "PuumanViewController.h"
 #import "ShopViewController.h"
 #import "SocialViewController.h"
 #import "SkipViewController.h"
@@ -46,7 +45,7 @@
     DiaryViewController *diaryVC = [DiaryViewController sharedDiaryViewController];
     SocialViewController *socialVC = [[SocialViewController alloc] init];
     ShopViewController *shopVC = [ShopViewController  sharedShopViewController];
-    SkipViewController *skipVC = [[SkipViewController alloc] init];
+    SkipViewController *skipVC = [SkipViewController sharedController];
     [_rootTabBarC addChildViewController:skipVC];
     [_rootTabBarC addChildViewController:diaryVC];
     [_rootTabBarC addChildViewController:socialVC];

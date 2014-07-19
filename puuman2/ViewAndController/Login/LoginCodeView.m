@@ -9,7 +9,7 @@
 #import "LoginCodeView.h"
 #import "UniverseConstant.h"
 #import "CustomAlertViewController.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+Hud.h"
 #import <ASIFormDataRequest.h>
 #import "ErrorLog.h"
 #import "UserInfo.h"

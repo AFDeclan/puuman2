@@ -92,6 +92,7 @@ static UserInfo *instance = nil;
         _createTime = [uInfo valueForKey:userInfo_createTime];
         _UCorns = [[uInfo valueForKey:userInfo_UCorns] doubleValue];
         _UCorns_connect = [[uInfo valueForKey:userInfo_UCornsConnect] doubleValue];
+        
         _UCornsUsed = [[uInfo valueForKey:userInfo_UCornsUsed] doubleValue];
         _UCornsBound = [[uInfo valueForKey:userInfo_pumanBound] doubleValue];
         _UCornsLocalAdded = [[uInfo valueForKey:userInfo_pumanLocalAdded] doubleValue];
@@ -352,6 +353,7 @@ static UserInfo *instance = nil;
     _pwd_md5 = [dic objectForKey:@"UPwd"];
     _UCorns = [[dic valueForKey:@"UCorns"] doubleValue];
     _UCorns_connect = [[dic valueForKey:@"UCorns_connect"] doubleValue];
+    
     _UCornsUsed = [[dic valueForKey:@"UCornsUsed"] doubleValue];
     _UCornsBound = [[dic valueForKey:@"UCornsBound"] doubleValue];
     _UCornsLocalAdded = 0;

@@ -82,8 +82,7 @@ static BOOL needLoadInfo = YES;
 
 - (void)startGif
 {
-    [[MainTabBarController sharedMainViewController] startGif];
-
+    PostNotification(Noti_StartGif, nil);
 }
 
 - (void)imported

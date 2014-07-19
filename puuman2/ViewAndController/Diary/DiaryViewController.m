@@ -9,7 +9,7 @@
 #import "DiaryViewController.h"
 #import "UniverseConstant.h"
 #import "UserInfo.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+Hud.h"
 #import "NewTextDiaryViewController.h"
 #import "NewImportDiaryViewController.h"
 #import "NewAudioDiaryViewController.h"

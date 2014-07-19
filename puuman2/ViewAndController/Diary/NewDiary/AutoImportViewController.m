@@ -10,7 +10,7 @@
 #import "ColorsAndFonts.h"
 #import "AuToImportImgCell.h"
 #import "NSDate+Compute.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+AutoImport.h"
 #import "DateFormatter.h"
 #import "DiaryFileManager.h"
 #import "ImportStore.h"

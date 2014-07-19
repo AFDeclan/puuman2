@@ -22,13 +22,8 @@
     UIImageView *bg_Btn;
     
 }
-@property(assign,nonatomic)id<MainTabBarDelegate> delegate;
 - (void)selectedWithTag:(TypeTabBarButton )tag;
--(void)setVerticalFrame;
--(void)setHorizontalFrame;
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 @end
 
-@protocol MainTabBarDelegate <NSObject>
-- (void)selectedWithTag:(TypeTabBarButton)tag;
-- (void)showSettingView;
-@end

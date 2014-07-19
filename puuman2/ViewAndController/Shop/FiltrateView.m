@@ -69,7 +69,7 @@
 - (void)show
 {
     [headerView setFrame:CGRectMake(0, 0, 604, 16)];
-    [footerView setFrame:CGRectMake(0, 194, 604, 16)];
+    [footerView setFrame:CGRectMake(0, 194, 604, 20)];
 
 }
 - (void)hidden

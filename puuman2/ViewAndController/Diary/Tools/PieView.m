@@ -75,11 +75,29 @@
 {
     if (([[UserInfo sharedUserInfo] UCorns_connect] != 0) && ([[UserInfo sharedUserInfo] UCorns] != 0))
     {
-        PieElement* elem =  [self.layer.values objectAtIndex:1];
+
+        PieElement* elem;
+        if ([UserInfo sharedUserInfo].identity == Mother) {
+            if ([[UserInfo sharedUserInfo] UCorns]>[[UserInfo sharedUserInfo] UCorns_connect]) {
+                elem =  [self.layer.values objectAtIndex:0];
+
+            }else{
+                elem =  [self.layer.values objectAtIndex:1];
+
+            }
+        }else{
+            if ([[UserInfo sharedUserInfo] UCorns]>[[UserInfo sharedUserInfo] UCorns_connect]) {
+                elem =  [self.layer.values objectAtIndex:1];
+
+            }else{
+                elem =  [self.layer.values objectAtIndex:0];
+
+            }
+        }
+      
         elem.centrOffset = 0;
         [UIView animateWithDuration:1 animations:^{
             [elem setCentrOffset:4];
-           
         }];
     }
      [_pieLayerDelegate finishedAnimate];

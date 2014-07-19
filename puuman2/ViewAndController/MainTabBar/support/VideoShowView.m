@@ -13,6 +13,7 @@
 #import "UIImage+CroppedImage.h"
 #import "DiaryFileManager.h"
 #import "UserInfo.h"
+#import "CAKeyframeAnimation+DragAnimation.h"
 
 @implementation VideoShowView
 - (id)initWithFrame:(CGRect)frame withVideoPath:(NSString *)filePath
@@ -67,18 +68,9 @@
 
 - (void)showVideoView
 {
-    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    //    positionAnimation.fillMode = kCAFillModeForwards;
-    //    positionAnimation.removedOnCompletion =NO;
-    positionAnimation.duration = 1;
-    CGMutablePathRef positionPath = CGPathCreateMutable();
-    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    [positionAnimation setBeginTime:0];
-    CGPathMoveToPoint(positionPath, NULL, [contentView layer].position.x, [contentView layer].position.y);
-    CGPathAddQuadCurveToPoint(positionPath, NULL, [contentView layer].position.x, [contentView layer].position.y, [contentView layer].position.x,[contentView layer].position.y+768);
-    positionAnimation.path = positionPath;
-    [contentView.layer addAnimation:positionAnimation forKey:@"position"];
+    [CAKeyframeAnimation dragAnimationWithView:contentView andDargPoint:CGPointMake(0, 768) andDelegate:nil];
     SetViewLeftUp(contentView, 0, 0);
+
 }
 
 -(void)playVideo

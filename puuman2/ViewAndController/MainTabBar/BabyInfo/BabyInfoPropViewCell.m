@@ -7,7 +7,7 @@
 //
 
 #import "BabyInfoPropViewCell.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+BabyInfoController.h"
 #import "UniverseConstant.h"
 #import "BabyInfoPropEstiCell.h"
 

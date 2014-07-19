@@ -159,7 +159,6 @@
 
 -(void)closeBtnPressed
 {
-   // [[[UserInfo sharedUserInfo] shareVideo] toDiscard];
     [_delegate deleteVideo];
 }
 

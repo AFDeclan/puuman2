@@ -9,7 +9,7 @@
 #import "CAKeyframeAnimation+DragAnimation.h"
 
 @implementation CAKeyframeAnimation (DragAnimation)
-+ (CAKeyframeAnimation *)dragAnimationWithView:(UIView *)view andDargPoint:(CGPoint)pos
++ (CAKeyframeAnimation *)dragAnimationWithView:(UIView *)view andDargPoint:(CGPoint)pos andDelegate:(id)delegate;
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     //    positionAnimation.fillMode = kCAFillModeForwards;
@@ -19,8 +19,9 @@
     positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [positionAnimation setBeginTime:0];
     CGPathMoveToPoint(positionPath, NULL, [view layer].position.x, [view layer].position.y);
-    CGPathAddQuadCurveToPoint(positionPath, NULL, [view layer].position.x, [view layer].position.y, [view layer].position.x +pos.x,[view layer].position.y+pos.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [view layer].position.x, [view layer].position.y, [view layer].position.x + pos.x,[view layer].position.y+pos.y);
     positionAnimation.path = positionPath;
+    positionAnimation.delegate = delegate;
     [view.layer addAnimation:positionAnimation forKey:@"position"];
     return positionAnimation;
 }
