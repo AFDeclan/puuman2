@@ -12,12 +12,13 @@
 #import "AutoImportViewController.h"
 #import "VideoShowView.h"
 #import "VideoShowButton.h"
-#import "BabyView.h"
+#import "BabyShowButton.h"
+#import "BabyViewController.h"
 
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
 
-@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,UITextViewDelegate,PopViewDelegate,VideoShowButtonDelegate,VideoShowViewDelegate>
+@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,UITextViewDelegate,PopViewDelegate,VideoShowButtonDelegate,VideoShowViewDelegate,BabyViewControllerDelegate>
 {
     MainTabBar *tabBar;
     UIImageView *bgImgView;
@@ -25,10 +26,8 @@
     AutoImportViewController *improtAutoVC;
     VideoShowView *videoView;
     VideoShowButton *videoBtn;
-    
-    BabyView *infoView;
-    UIButton *babyInfoBtn;
-    BOOL babyInfoShowed;
+    BabyShowButton *babyShowBtn;
+    BabyViewController *babyVC;
 }
 
 @property(assign,nonatomic) BOOL isVertical;
@@ -40,7 +39,8 @@
 
 
 //@property(assign,nonatomic) BOOL loadingVideo;
-
+- (void)refreshBabyInfoView;
+- (void)showBabyView;
 + (MainTabBarController *)sharedMainViewController;
 
 

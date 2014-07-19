@@ -11,7 +11,7 @@
 #import "UniverseConstant.h"
 #import "Device.h"
 #import "LoginViewController.h"
-#import "MainTabBarController+BabyInfoController.h"
+#import "MainTabBarController.h"
 #import "CustomNotiViewController.h"
 #import "UserInfo.h"
 #import "BabyData.h"
@@ -246,7 +246,7 @@
 
 - (void)disAppearInfoView
 {
-    [[MainTabBarController sharedMainViewController] hiddenBabyView];
+    PostNotification(Noti_HiddenBabyView, nil);
 }
 
 

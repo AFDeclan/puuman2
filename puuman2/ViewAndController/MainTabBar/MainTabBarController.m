@@ -59,7 +59,6 @@ static MainTabBarController *instance;
 {
     [super viewDidLoad];
 
-    babyInfoShowed = NO;
     _babyInfoShowed = NO;
     [self initWithTabBar];
     _isReply = YES;
@@ -199,25 +198,7 @@ static MainTabBarController *instance;
     [tabBar setVerticalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_V]];
     [bgImgView setFrame:CGRectMake(0, 0, 768, 1024)];
-    if (infoView) {
-        if (babyInfoShowed) {
-            [infoView setFrame:CGRectMake(0, 0, 768, 1024)];
-        }else{
-            [infoView setFrame:CGRectMake(0, -1024, 768, 1024)];
-            
-        }
-        [infoView setVerticalFrame];
-    }
-    
-    if (babyInfoBtn) {
-        if (babyInfoShowed) {
-            SetViewLeftUp(babyInfoBtn,768 -16 - 56, 1024);
-        }else{
-            SetViewLeftUp(babyInfoBtn,768 -16 - 56, 0);
-        }
-    }
-
-    
+  
 }
 
 -(void)setHorizontalFrame
@@ -230,29 +211,16 @@ static MainTabBarController *instance;
     [tabBar setHorizontalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 1024)];
-    if (infoView) {
-        if (babyInfoShowed) {
-            [infoView setFrame:CGRectMake(0, 0, 1024,768 )];
-        }else{
-            [infoView setFrame:CGRectMake(0, -768, 1024, 768)];
-            
-        }
-        [infoView setHorizontalFrame];
-    }
+
     
-    if (babyInfoBtn) {
-        if (babyInfoShowed) {
-            SetViewLeftUp(babyInfoBtn,1024 -16 - 56,768);
-        }else{
-            SetViewLeftUp(babyInfoBtn,1024 -16 - 56, 0);
-        }
-    }
+
 
 }
 
 #pragma mark - shareVideo
 
-- (void)initVideoWithViewoPath:(NSString *)videoPath
+
+- (void)initVideoWithVideoPath:(NSString *)videoPath
 {
     videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768) withVideoPath:videoPath];
     [videoView setBackgroundColor:[UIColor clearColor]];
@@ -290,6 +258,56 @@ static MainTabBarController *instance;
 }
 
 
+- (void)refreshBabyInfoView
+{
+    
+    babyShowBtn = [[BabyShowButton alloc] init];
+    [babyShowBtn setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:babyShowBtn];
+    [babyShowBtn loadData];
+    if (_isVertical) {
+        SetViewLeftUp(babyShowBtn,768 -16 - ViewWidth(babyShowBtn), 0);
+    }else{
+        SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 0);
+    }
+   
+}
+
+
+- (void)showBabyView
+{
+    if (babyVC) {
+        [babyVC.view removeFromSuperview];
+        babyVC = nil;
+    }
+     babyVC = [[BabyViewController alloc] initWithNibName:nil bundle:nil];
+    [self.view addSubview:babyVC.view];
+    babyVC.delegate = self;
+    [babyVC.babyView addSubview:babyShowBtn];
+    [babyVC.view.layer setMasksToBounds:NO];
+    if (_isVertical) {
+        SetViewLeftUp(babyShowBtn,768 -16 - ViewWidth(babyShowBtn), 768);
+    }else{
+        SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 768);
+    }
+    // [babyShowBtn showInFrom:kAFAnimationFromTop inView:self.view withFade:NO duration:10 delegate:self startSelector:nil stopSelector:nil];
+    [babyVC show];
+    _babyInfoShowed = YES;
+}
+
+
+
+- (void)babyViewfinished
+{
+    [self.view addSubview:babyShowBtn];
+    if (_isVertical) {
+        SetViewLeftUp(babyShowBtn,768 -16 - ViewWidth(babyShowBtn), 0);
+    }else{
+        SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 0);
+    }
+    _babyInfoShowed = NO;
+    [babyVC.view removeFromSuperview];
+}
 
 
 @end

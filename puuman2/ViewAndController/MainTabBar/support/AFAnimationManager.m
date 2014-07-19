@@ -128,7 +128,7 @@ static AFAnimationManager *sharedAnimationManager = nil;
         overshootPoint = CGPointMake(point.x + threshold, point.y - threshold);
     } else if (direction == kAFAnimationBottomRight){
         overshootPoint = CGPointMake(point.x - threshold, point.y - threshold);
-    }else if (direction == kAFanimationFromRight){
+    }else if (direction > kAFAnimationNone){
         overshootPoint = point;
     }
     

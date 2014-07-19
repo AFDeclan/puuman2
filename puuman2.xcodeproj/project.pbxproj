@@ -478,7 +478,6 @@
 		54B30ABD195D5C9D00007DDC /* PuumanButtonAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */; };
 		54B30AC5195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */; };
 		54B30AC8195D644900007DDC /* BabyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30AC7195D644900007DDC /* BabyView.m */; };
-		54B3812D1978D033003FF386 /* MainTabBarController+BabyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B3812C1978D033003FF386 /* MainTabBarController+BabyInfoController.m */; };
 		54B381301978D1F0003FF386 /* MainTabBarController+Hud.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B3812F1978D1F0003FF386 /* MainTabBarController+Hud.m */; };
 		54B381331978F8C1003FF386 /* MainTabBarController+AutoImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B381321978F8C1003FF386 /* MainTabBarController+AutoImport.m */; };
 		54B3814B19791F62003FF386 /* RectHeadShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B3814419791F62003FF386 /* RectHeadShowCell.m */; };
@@ -658,6 +657,7 @@
 		54C2EA02192DE0EB0011AA0C /* EnterTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */; };
 		54C2EA05192DF55B0011AA0C /* TopicCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2EA04192DF55B0011AA0C /* TopicCommentView.m */; };
 		54C3959D193596AB00E0BE6F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C3959A193596AB00E0BE6F /* libWeChatSDK.a */; };
+		54C729F5197A0B2D00F105CC /* BabyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C729F4197A0B2D00F105CC /* BabyViewController.m */; };
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
 		54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56A18DC2E840013FD03 /* TopicContentCell.m */; };
 		54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */; };
@@ -1523,8 +1523,6 @@
 		54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+DragAnimation.m"; sourceTree = "<group>"; };
 		54B30AC6195D644900007DDC /* BabyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyView.h; sourceTree = "<group>"; };
 		54B30AC7195D644900007DDC /* BabyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyView.m; sourceTree = "<group>"; };
-		54B3812B1978D033003FF386 /* MainTabBarController+BabyInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainTabBarController+BabyInfoController.h"; sourceTree = "<group>"; };
-		54B3812C1978D033003FF386 /* MainTabBarController+BabyInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MainTabBarController+BabyInfoController.m"; sourceTree = "<group>"; };
 		54B3812E1978D1F0003FF386 /* MainTabBarController+Hud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainTabBarController+Hud.h"; sourceTree = "<group>"; };
 		54B3812F1978D1F0003FF386 /* MainTabBarController+Hud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MainTabBarController+Hud.m"; sourceTree = "<group>"; };
 		54B381311978F8C1003FF386 /* MainTabBarController+AutoImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainTabBarController+AutoImport.h"; sourceTree = "<group>"; };
@@ -1776,6 +1774,8 @@
 		54C3959A193596AB00E0BE6F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		54C3959B193596AB00E0BE6F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		54C3959C193596AB00E0BE6F /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		54C729F3197A0B2D00F105CC /* BabyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyViewController.h; sourceTree = "<group>"; };
+		54C729F4197A0B2D00F105CC /* BabyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyViewController.m; sourceTree = "<group>"; };
 		54C8D56018DBE1B80013FD03 /* ChatInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputViewController.h; sourceTree = "<group>"; };
 		54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputViewController.m; sourceTree = "<group>"; };
 		54C8D56918DC2E840013FD03 /* TopicContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicContentCell.h; sourceTree = "<group>"; };
@@ -3256,6 +3256,8 @@
 		54B30ABF195D5EEB00007DDC /* BabyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				54C729F3197A0B2D00F105CC /* BabyViewController.h */,
+				54C729F4197A0B2D00F105CC /* BabyViewController.m */,
 				54B30AC6195D644900007DDC /* BabyView.h */,
 				54B30AC7195D644900007DDC /* BabyView.m */,
 				54B30AB5195D5C9D00007DDC /* BabyShowButton.h */,
@@ -3618,8 +3620,6 @@
 				54CE119218C1CD7C00966396 /* MainTabBarButton.m */,
 				54B75C291977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.h */,
 				54B75C2A1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m */,
-				54B3812B1978D033003FF386 /* MainTabBarController+BabyInfoController.h */,
-				54B3812C1978D033003FF386 /* MainTabBarController+BabyInfoController.m */,
 				54B3812E1978D1F0003FF386 /* MainTabBarController+Hud.h */,
 				54B3812F1978D1F0003FF386 /* MainTabBarController+Hud.m */,
 				54B381311978F8C1003FF386 /* MainTabBarController+AutoImport.h */,
@@ -4915,7 +4915,6 @@
 				88B51600192F52EE006A79AB /* SinaWeiboRequest.m in Sources */,
 				54AFAA8B18DA9E750067B8C1 /* RecommentPartnerTableViewCell.m in Sources */,
 				54AFBBC318D6938600861A69 /* LoginBirthRegisterView.m in Sources */,
-				54B3812D1978D033003FF386 /* MainTabBarController+BabyInfoController.m in Sources */,
 				14B8DF2818BC37A30047C6B3 /* RecomWare.m in Sources */,
 				88B51608192F52EE006A79AB /* MJRefreshHeaderView.m in Sources */,
 				545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */,
@@ -5050,6 +5049,7 @@
 				88B51609192F52EE006A79AB /* TextLayoutLabel.m in Sources */,
 				145237F0193D5B5900A3A2BB /* BabyInfo.m in Sources */,
 				5403CC6018D006C7004CAE22 /* DetailShowViewController.m in Sources */,
+				54C729F5197A0B2D00F105CC /* BabyViewController.m in Sources */,
 				54C1109A1974DB5400415EE3 /* LoginStartStatusSelectedButton.m in Sources */,
 				5412BC55192C80450033F322 /* AuPhotoDiaryCell.m in Sources */,
 				54B30A89195D53EC00007DDC /* PieElement.m in Sources */,

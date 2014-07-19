@@ -131,13 +131,7 @@
     [babyInfoColumnView setScrollEnabled:NO];
     [self addSubview:babyInfoColumnView];
 
-    babyShowBtn = [[BabyShowButton alloc] initWithFrame:CGRectMake(1024 -16 - 80, 768, 80, 80)];
-    [babyShowBtn setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:babyShowBtn];
-    puumanView = [[PuumanShowView alloc] initWithFrame:CGRectMake(1024 -16 - 80- 136, 768, 136, 80)];
-    [puumanView setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:puumanView];
-}
+  }
 
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
 {
@@ -408,7 +402,7 @@
     if (suc) {
         //PostNotification(Noti_UpdatePortrait, nil);
         [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
-        [babyShowBtn loadPortrait];
+       // [babyShowBtn loadPortrait];
     }
     
 }
@@ -458,8 +452,6 @@
         info_birthday.text = [NSString stringWithFormat:@"%@ %@", birthStr, constellationStr];
   
     [babyInfoColumnView reloadData];
-    [babyShowBtn loadPortrait];
-    [puumanView updateData];
 }
 
 -(void) disAppearBabyView
@@ -498,8 +490,7 @@
     [babyInfoColumnView setFrame:CGRectMake(0, 0, 1024, 768)];
     [babyInfoColumnView reloadData];
     [babyInfoColumnView setContentOffset:CGPointMake(1024*currentNum, 0)];
-    SetViewLeftUp(babyShowBtn,1024 -16 - 80, 768);
-    SetViewLeftUp(puumanView,1024 -16 - 80- 136, 768);
+  
 
 }
 
@@ -510,8 +501,7 @@
     [babyInfoColumnView setFrame:CGRectMake(0, 0, 768, 1024)];
     [babyInfoColumnView reloadData];
     [babyInfoColumnView setContentOffset:CGPointMake(currentNum*768, 0)];
-    SetViewLeftUp(babyShowBtn,768 -16 - 80, 1024);
-    SetViewLeftUp(puumanView,1024 -16 - 80- 136, 1024);
+
 
 }
 

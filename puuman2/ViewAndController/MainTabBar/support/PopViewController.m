@@ -37,6 +37,7 @@
     _content = [[UIView alloc] init];
     [_content setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_content];
+    [self.view setBackgroundColor:[UIColor clearColor]];
     
 }
 

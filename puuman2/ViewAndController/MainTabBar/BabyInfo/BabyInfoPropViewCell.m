@@ -7,7 +7,7 @@
 //
 
 #import "BabyInfoPropViewCell.h"
-#import "MainTabBarController+BabyInfoController.h"
+#import "MainTabBarController.h"
 #import "UniverseConstant.h"
 #import "BabyInfoPropEstiCell.h"
 
@@ -135,7 +135,7 @@
 
 - (void)backBtnClick
 {
-  [[MainTabBarController sharedMainViewController] hiddenBabyView];
+    PostNotification(Noti_HiddenBabyView, nil);
 
 }
 
