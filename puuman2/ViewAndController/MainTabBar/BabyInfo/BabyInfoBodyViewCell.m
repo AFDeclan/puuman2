@@ -238,8 +238,8 @@
     [_lineChartView setFrame:CGRectMake(90, 140, 544, 408)];
     [emptyView setFrame:CGRectMake(64, 192, 88, 112)];
     [rightBtn setFrame:CGRectMake(0, 0, 64, 926)];
-    SetViewLeftUp(shareBtn, 0, 706);
-    SetViewLeftUp(addDataBtn, 0, 746);
+    SetViewLeftUp(shareBtn, 0, 800);
+    SetViewLeftUp(addDataBtn, 0, 840);
     SetViewLeftUp(backBtn, 320, 992);
     [infoView setAlpha:1];
     [dataTable setAlpha:0];
