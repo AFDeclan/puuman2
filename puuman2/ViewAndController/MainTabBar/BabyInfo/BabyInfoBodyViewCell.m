@@ -12,7 +12,7 @@
 #import "BabyData.h"
 #import "LineChartCell.h"
 #import "AddBodyDataViewController.h"
-#import "MainTabBarController+BabyInfoController.h"
+#import "MainTabBarController.h"
 #import "ColorsAndFonts.h"
 #import "DiaryFileManager.h"
 
@@ -267,7 +267,7 @@
 
 - (void)backBtnClick
 {
-  [[MainTabBarController sharedMainViewController] hiddenBabyView];
+    PostNotification(Noti_HiddenBabyView, nil);
 
 }
 

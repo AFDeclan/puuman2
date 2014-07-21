@@ -9,7 +9,7 @@
 #import "BabyInfoPregnancyViewCell.h"
 #import "ColorsAndFonts.h"
 #import "LoginViewController.h"
-#import "MainTabBarController+BabyInfoController.h"
+#import "MainTabBarController.h"
 #import "CAKeyframeAnimation+DragAnimation.h"
 #import "NSDate+Compute.h"
 #import "PregnancyTableViewCell.h"
@@ -313,7 +313,7 @@
 - (void)disAppearInfoView
 {
     
-    [[MainTabBarController sharedMainViewController] hiddenBabyView];
+    PostNotification(Noti_HiddenBabyView, nil);
     
 }
 

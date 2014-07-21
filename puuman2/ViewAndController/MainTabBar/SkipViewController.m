@@ -8,7 +8,6 @@
 
 #import "SkipViewController.h"
 #import "MainTabBarController+MainTabBarControllerSkip.h"
-#import "MainTabBarController+BabyInfoController.h"
 #import "UniverseConstant.h"
 #import "Models.h"
 #import "DiaryViewController.h"

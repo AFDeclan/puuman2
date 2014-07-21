@@ -36,6 +36,6 @@
 
 @end
 @protocol VideoShowButtonDelegate <NSObject>
-- (void)initVideoWithViewoPath:(NSString *)videoPath;
+- (void)initVideoWithVideoPath:(NSString *)videoPath;
 - (void)showVideo;
 @end

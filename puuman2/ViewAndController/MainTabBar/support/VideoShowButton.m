@@ -165,7 +165,7 @@
     }
     // _loadingVideo = NO;
     [MainTabBarController sharedMainViewController].hasShareVideo = YES;
-    [_delegate initVideoWithViewoPath:[notification object]];
+    [_delegate initVideoWithVideoPath:[notification object]];
 
     if (([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt]) && [MainTabBarController sharedMainViewController].hasShareVideo) {
         [self performSelector:@selector(startGif) withObject:nil afterDelay:0];

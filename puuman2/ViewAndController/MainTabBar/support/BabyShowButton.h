@@ -23,10 +23,13 @@ typedef enum
     PuumanButtonAnimateView *animateView;
     PuumanAnimateStatus status;
     UILabel *showLabel;
+    UILabel *coin_num;
+    UILabel *coin_label;
+    UIButton *babyInfoBtn;
 
 }
+
 - (void)addPuuman;
 - (void)minusPuuman;
-- (void)loadPortrait;
-
+- (void)loadData;
 @end

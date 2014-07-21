@@ -10,7 +10,7 @@
 #import "ColorsAndFonts.h"
 #import "BabyData.h"
 #import "VaccineInfoTableViewCell.h"
-#import "MainTabBarController+BabyInfoController.h"
+#import "MainTabBarController.h"
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
 
@@ -176,7 +176,7 @@
 
 - (void)backUpBtnClick
 {
-  [[MainTabBarController sharedMainViewController] hiddenBabyView];
+    PostNotification(Noti_HiddenBabyView, nil);
 
 }
 

@@ -15,6 +15,8 @@
 
 //MianTabBar
 #define Noti_SelectedTabBar                     @"Noti_SelectedTabBar"
+#define Noti_HiddenBabyView                     @"Noti_HiddenBabyView"
+
 
 
 

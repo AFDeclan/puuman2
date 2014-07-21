@@ -11,8 +11,6 @@
 @interface PuumanShowView : UIView
 {
 
-    UILabel *coin_num;
-    UILabel *coin_label;
+   
 }
-- (void)updateData;
 @end
