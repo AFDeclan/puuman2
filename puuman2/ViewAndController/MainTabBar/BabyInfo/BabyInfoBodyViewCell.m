@@ -154,7 +154,7 @@
     [infoView setBackgroundColor:PMColor6];
     [leftView addSubview:infoView];
     infoTableView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 640, 136)];
-    [infoTableView setBackgroundColor:[UIColor clearColor]];
+    [infoTableView setBackgroundColor:PMColor6];
     [infoTableView setColumnViewDelegate:self];
     [infoTableView setViewDataSource:self];
     [infoTableView setPagingEnabled:NO];
@@ -163,11 +163,11 @@
     
     
     
-    leftImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 138, 149)];
+    leftImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 138, 136)];
     [leftImgView setImage:[UIImage imageNamed:@"left_body_img.png"]];
     [infoView addSubview:leftImgView];
     
-    rightImgView = [[UIImageView alloc] initWithFrame:CGRectMake(640 - 138, 0, 138, 149)];
+    rightImgView = [[UIImageView alloc] initWithFrame:CGRectMake(640 - 138, 0, 138, 136)];
     [rightImgView setImage:[UIImage imageNamed:@"right_body_img.png"]];
     [infoView addSubview:rightImgView];
     

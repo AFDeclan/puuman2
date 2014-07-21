@@ -152,6 +152,8 @@
     coinBtn = [[AFSelectedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
     [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
     [coinBtn setUnSelectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
+    [coinBtn setIconSize:CGSizeMake(32, 32)];
+    [coinBtn adjustLayout];
     [coinBtn addTarget:self action:@selector(getCoin) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:coinBtn];
     [coinBtn unSelected];
@@ -205,12 +207,12 @@
 - (void)loadData
 {
 
-    if (_diary.sampleDiary) {
-        [coinBtn setAlpha:0];
-        [coinLabel setText:@""];
-        
-    }else{
-        if (_diary.UIdentity != [UserInfo sharedUserInfo].identity) {
+//    if (_diary.sampleDiary) {
+//        [coinBtn setAlpha:0];
+//        [coinLabel setText:@""];
+//        
+//    }else{
+        if (_diary.UIdentity == [UserInfo sharedUserInfo].identity) {
             [coinBtn setAlpha:1];
             if ([_diary rewarded]) {
                 [coinBtn selected];
@@ -243,9 +245,7 @@
             }
         }
     }
-
-}
-
+//}
 - (void)buildAgeLabels
 {
     //age

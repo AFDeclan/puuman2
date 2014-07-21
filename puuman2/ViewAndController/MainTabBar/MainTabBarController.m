@@ -45,15 +45,10 @@ static MainTabBarController *instance;
         // Custom initialization
         [self setDelegate:self];
         _isVertical = YES;
-
-
-
         [self.tabBar removeFromSuperview];
-        
     }
     return self;
 }
-
 
 - (void)viewDidLoad
 {
@@ -286,7 +281,7 @@ static MainTabBarController *instance;
     [babyVC.babyView addSubview:babyShowBtn];
     [babyVC.view.layer setMasksToBounds:NO];
     if (_isVertical) {
-        SetViewLeftUp(babyShowBtn,768 -16 - ViewWidth(babyShowBtn), 768);
+        SetViewLeftUp(babyShowBtn,768 -16 - ViewWidth(babyShowBtn), 1024);
     }else{
         SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 768);
     }
