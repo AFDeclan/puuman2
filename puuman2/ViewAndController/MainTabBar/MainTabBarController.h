@@ -10,21 +10,20 @@
 #import "MainTabBar.h"
 #import "UserInfo.h"
 #import "AutoImportViewController.h"
-#import "VideoShowView.h"
 #import "VideoShowButton.h"
 #import "BabyShowButton.h"
 #import "BabyViewController.h"
+#import "ShareVideoViewController.h"
 
 #define IMG_DIARY_H @"bg_h.png"
 #define IMG_DIARY_V @"bg.png"
 
-@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,UITextViewDelegate,PopViewDelegate,VideoShowButtonDelegate,VideoShowViewDelegate,BabyViewControllerDelegate>
+@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate,UITextViewDelegate,PopViewDelegate,VideoShowButtonDelegate,BabyViewControllerDelegate,ShareVideoControllerDelegate>
 {
     MainTabBar *tabBar;
     UIImageView *bgImgView;
     UserInfo *userInfo;
     AutoImportViewController *improtAutoVC;
-    VideoShowView *videoView;
     VideoShowButton *videoBtn;
     BabyShowButton *babyShowBtn;
     BabyViewController *babyVC;

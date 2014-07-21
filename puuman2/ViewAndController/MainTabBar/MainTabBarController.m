@@ -16,6 +16,7 @@
 #import "ShareVideo.h"
 #import "CAKeyframeAnimation+DragAnimation.h"
 
+
 @interface MainTabBarController ()
 
 @end
@@ -67,10 +68,10 @@ static MainTabBarController *instance;
    
     userInfo = [UserInfo sharedUserInfo];
    // _loadingVideo = YES;
-    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, -189, 189,180) fileName:@"animate_puuman"];
+    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, 0, 189,180) fileName:@"animate_puuman"];
     [videoBtn setDelegate:self];
     [self.view addSubview:videoBtn];
-    [videoBtn setClickEnable:NO];
+    [videoBtn setClickEnable:YES];
     [videoBtn setAlpha:1];
     [self.view.layer setMasksToBounds:YES];
 
@@ -198,7 +199,9 @@ static MainTabBarController *instance;
     [tabBar setVerticalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_V]];
     [bgImgView setFrame:CGRectMake(0, 0, 768, 1024)];
-  
+
+    SetViewLeftUp(babyShowBtn, 768 -16 - ViewWidth(babyShowBtn), ViewY(babyShowBtn));
+ 
 }
 
 -(void)setHorizontalFrame
@@ -212,6 +215,8 @@ static MainTabBarController *instance;
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 1024)];
 
+    SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), ViewY(babyShowBtn));
+ 
     
 
 
@@ -219,43 +224,22 @@ static MainTabBarController *instance;
 
 #pragma mark - shareVideo
 
-
-- (void)initVideoWithVideoPath:(NSString *)videoPath
-{
-    videoView = [[VideoShowView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768) withVideoPath:videoPath];
-    [videoView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview:videoView];
-    [videoView setDelegate:self];
-    [videoView  setAlpha:0];
-    [videoView.layer setMasksToBounds:YES];
-    _hasShareVideo = NO;
-    
-}
-
-- (void)showVideo
+- (void)showVideoWithVideoPath:(NSString *)videoPath
 {
     
-    [CAKeyframeAnimation dragAnimationWithView:videoBtn andDargPoint:CGPointMake(0, 768) andDelegate:nil];
-    [videoView setAlpha:1];
-    // [videoBtn setAlpha:0];
-    [videoView showVideoView];
-    [videoView playVideo];
+    ShareVideoViewController *shareVideo = [[ShareVideoViewController alloc] initWithNibName:nil bundle:nil];
+    [self.view  addSubview:shareVideo.view];
+    shareVideo.delegate = self;
+    [shareVideo.contentView addSubview:videoBtn];
+    SetViewLeftUp(videoBtn,ViewX(videoBtn), 768);
+    [shareVideo.view.layer setMasksToBounds:NO];
+    [shareVideo show];
     _videoShowed = YES;
+
     
 }
 
-- (void)deleteVideo
-{
-    [videoBtn stopGif];
-    _videoShowed = NO;
-    [videoView  removeFromSuperview];
-    videoView = nil;
-    SetViewLeftUp(videoBtn, 608, -189);
-    //[videoBtn showGifAtIndex:0];
-    [videoBtn setClickEnable:NO];
-    [videoBtn setAlpha:0];
-    
-}
+
 
 
 - (void)refreshBabyInfoView
@@ -263,6 +247,7 @@ static MainTabBarController *instance;
     
     babyShowBtn = [[BabyShowButton alloc] init];
     [babyShowBtn setBackgroundColor:[UIColor clearColor]];
+    
     [self.view addSubview:babyShowBtn];
     [babyShowBtn loadData];
     if (_isVertical) {
@@ -280,7 +265,7 @@ static MainTabBarController *instance;
         [babyVC.view removeFromSuperview];
         babyVC = nil;
     }
-     babyVC = [[BabyViewController alloc] initWithNibName:nil bundle:nil];
+    babyVC = [[BabyViewController alloc] initWithNibName:nil bundle:nil];
     [self.view addSubview:babyVC.view];
     babyVC.delegate = self;
     [babyVC.babyView addSubview:babyShowBtn];
@@ -288,7 +273,7 @@ static MainTabBarController *instance;
     if (_isVertical) {
         SetViewLeftUp(babyShowBtn,768 -16 - ViewWidth(babyShowBtn), 768);
     }else{
-        SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 768);
+        SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 1024);
     }
     // [babyShowBtn showInFrom:kAFAnimationFromTop inView:self.view withFade:NO duration:10 delegate:self startSelector:nil stopSelector:nil];
     [babyVC show];
@@ -305,8 +290,13 @@ static MainTabBarController *instance;
     }else{
         SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 0);
     }
-    _babyInfoShowed = NO;
-    [babyVC.view removeFromSuperview];
+    [videoBtn stopGif];
+    _videoShowed = NO;
+    [self.view addSubview:videoBtn];
+    SetViewLeftUp(videoBtn, ViewX(videoBtn), -189);
+    [videoBtn setClickEnable:NO];
+    [videoBtn setAlpha:0];
+    
 }
 
 

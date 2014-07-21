@@ -551,6 +551,9 @@
 		54B75C25197775ED00D0CA42 /* CustomShopPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B75C24197775ED00D0CA42 /* CustomShopPopViewController.m */; };
 		54B75C28197779F500D0CA42 /* WareInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B75C27197779F500D0CA42 /* WareInfoViewController.m */; };
 		54B75C2B1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B75C2A1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m */; };
+		54B94A3F197CF536003ABA93 /* ShareVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B94A3E197CF536003ABA93 /* ShareVideoViewController.m */; };
+		54B94A41197D0024003ABA93 /* popeye.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 54B94A40197D0024003ABA93 /* popeye.mp4 */; };
+		54B94A44197D0402003ABA93 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B94A43197D0402003ABA93 /* UIImage+Blur.m */; };
 		54B97E4418FA2B1E00B6C4C9 /* btn_back2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2618FA2B1E00B6C4C9 /* btn_back2_insure_shop.png */; };
 		54B97E4518FA2B1E00B6C4C9 /* puuman3_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2718FA2B1E00B6C4C9 /* puuman3_insure_shop.png */; };
 		54B97E4618FA2B1E00B6C4C9 /* pic34_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2818FA2B1E00B6C4C9 /* pic34_insure_shop.png */; };
@@ -624,7 +627,6 @@
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* ChangePageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* ChangePageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
-		54BBE8A81936F6B20056390B /* VideoShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE8A71936F6B20056390B /* VideoShowView.m */; };
 		54BBE8AB193727E30056390B /* VideoManageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE8AA193727E30056390B /* VideoManageView.m */; };
 		54BC5AF01939AE3B000A5108 /* btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC5AEF1939AE3B000A5108 /* btn.png */; };
 		54BC5AF21939B14D000A5108 /* 扑满惊喜动画.gif in Resources */ = {isa = PBXBuildFile; fileRef = 54BC5AF11939B14D000A5108 /* 扑满惊喜动画.gif */; };
@@ -1605,8 +1607,8 @@
 		54B5206E18F4E1B700EF5DC4 /* pic_future_topic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_future_topic.png; sourceTree = "<group>"; };
 		54B592EF196E4B0600D33DC0 /* AgeBornPreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeBornPreTableViewCell.h; sourceTree = "<group>"; };
 		54B592F0196E4B0600D33DC0 /* AgeBornPreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeBornPreTableViewCell.m; sourceTree = "<group>"; };
-		54B5AA311934421700805E63 /* VideoShowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShowButton.h; sourceTree = "<group>"; };
-		54B5AA321934421700805E63 /* VideoShowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoShowButton.m; sourceTree = "<group>"; };
+		54B5AA311934421700805E63 /* VideoShowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoShowButton.h; path = support/VideoShowButton.h; sourceTree = "<group>"; };
+		54B5AA321934421700805E63 /* VideoShowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoShowButton.m; path = support/VideoShowButton.m; sourceTree = "<group>"; };
 		54B5AA341934443700805E63 /* animate_puuman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = animate_puuman.gif; sourceTree = "<group>"; };
 		54B5AA3719347ABB00805E63 /* btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn1.png; sourceTree = "<group>"; };
 		54B6F40118D6A5030055FC72 /* btn_back_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back_set.png; sourceTree = "<group>"; };
@@ -1640,6 +1642,11 @@
 		54B75C27197779F500D0CA42 /* WareInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WareInfoViewController.m; sourceTree = "<group>"; };
 		54B75C291977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainTabBarController+MainTabBarControllerSkip.h"; sourceTree = "<group>"; };
 		54B75C2A1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MainTabBarController+MainTabBarControllerSkip.m"; sourceTree = "<group>"; };
+		54B94A3D197CF536003ABA93 /* ShareVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareVideoViewController.h; sourceTree = "<group>"; };
+		54B94A3E197CF536003ABA93 /* ShareVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareVideoViewController.m; sourceTree = "<group>"; };
+		54B94A40197D0024003ABA93 /* popeye.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = popeye.mp4; sourceTree = "<group>"; };
+		54B94A42197D0402003ABA93 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		54B94A43197D0402003ABA93 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
 		54B97E2618FA2B1E00B6C4C9 /* btn_back2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back2_insure_shop.png; sourceTree = "<group>"; };
 		54B97E2718FA2B1E00B6C4C9 /* puuman3_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puuman3_insure_shop.png; sourceTree = "<group>"; };
 		54B97E2818FA2B1E00B6C4C9 /* pic34_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic34_insure_shop.png; sourceTree = "<group>"; };
@@ -1717,8 +1724,6 @@
 		54BAD46618D151EB003822CC /* ChangePageControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangePageControlButton.m; path = ../../BabyInfo/ChangePageControlButton.m; sourceTree = "<group>"; };
 		54BB09E618D9494C00F805DD /* SkipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkipViewController.h; sourceTree = "<group>"; };
 		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
-		54BBE8A61936F6B20056390B /* VideoShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShowView.h; sourceTree = "<group>"; };
-		54BBE8A71936F6B20056390B /* VideoShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoShowView.m; sourceTree = "<group>"; };
 		54BBE8A9193727E30056390B /* VideoManageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoManageView.h; sourceTree = "<group>"; };
 		54BBE8AA193727E30056390B /* VideoManageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoManageView.m; sourceTree = "<group>"; };
 		54BC5AEF1939AE3B000A5108 /* btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn.png; sourceTree = "<group>"; };
@@ -3424,12 +3429,8 @@
 				54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */,
 				54B30AB9195D5C9D00007DDC /* PuumanButtonAnimateView.h */,
 				54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */,
-				54BBE8A61936F6B20056390B /* VideoShowView.h */,
-				54BBE8A71936F6B20056390B /* VideoShowView.m */,
 				54BBE8A9193727E30056390B /* VideoManageView.h */,
 				54BBE8AA193727E30056390B /* VideoManageView.m */,
-				54B5AA311934421700805E63 /* VideoShowButton.h */,
-				54B5AA321934421700805E63 /* VideoShowButton.m */,
 				5461934219382A4B004FED04 /* UpLoaderShareVideo.h */,
 				5461934319382A4B004FED04 /* UpLoaderShareVideo.m */,
 				54B4EB3718C57C1D004489DA /* CustomTextField.h */,
@@ -3525,6 +3526,20 @@
 				54B75C27197779F500D0CA42 /* WareInfoViewController.m */,
 			);
 			name = popView;
+			sourceTree = "<group>";
+		};
+		54B94A3C197CF4BC003ABA93 /* ShareVideo */ = {
+			isa = PBXGroup;
+			children = (
+				54B94A3D197CF536003ABA93 /* ShareVideoViewController.h */,
+				54B94A3E197CF536003ABA93 /* ShareVideoViewController.m */,
+				54B5AA311934421700805E63 /* VideoShowButton.h */,
+				54B5AA321934421700805E63 /* VideoShowButton.m */,
+				54B94A42197D0402003ABA93 /* UIImage+Blur.h */,
+				54B94A43197D0402003ABA93 /* UIImage+Blur.m */,
+				54B94A40197D0024003ABA93 /* popeye.mp4 */,
+			);
+			name = ShareVideo;
 			sourceTree = "<group>";
 		};
 		54B97E2518FA2B0600B6C4C9 /* hospital */ = {
@@ -3727,6 +3742,7 @@
 				54BB09E718D9494C00F805DD /* SkipViewController.m */,
 				54BA847319762B4600B3A01D /* TabBar */,
 				54B30ABF195D5EEB00007DDC /* BabyInfo */,
+				54B94A3C197CF4BC003ABA93 /* ShareVideo */,
 				54B4EB2218C576E5004489DA /* support */,
 			);
 			path = MainTabBar;
@@ -4576,6 +4592,7 @@
 				54B97EB318FA594B00B6C4C9 /* pic_minan_shop.png in Resources */,
 				54B97E4618FA2B1E00B6C4C9 /* pic34_insure_shop.png in Resources */,
 				54D14FF618CAEFD70022E1F4 /* circle_coin_diary.png in Resources */,
+				54B94A41197D0024003ABA93 /* popeye.mp4 in Resources */,
 				5403CE3718D04F5E004CAE22 /* icon_time_baby.png in Resources */,
 				54B97E8B18FA572600B6C4C9 /* pic17_insure_shop.png in Resources */,
 				540020331973D8B5000C0336 /* btn_blue6.png in Resources */,
@@ -4815,7 +4832,6 @@
 				5421666918E00DAF005875F8 /* PartnerPortraitDataViewCell.m in Sources */,
 				54CCF1D518F3CC220081C149 /* SelectPhotoImportTypeViewController.m in Sources */,
 				54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */,
-				54BBE8A81936F6B20056390B /* VideoShowView.m in Sources */,
 				54ADB1E618E1AC1D00FCCC83 /* AutoImportViewController.m in Sources */,
 				5421667618E032B5005875F8 /* VotingCell.m in Sources */,
 				54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */,
@@ -4825,6 +4841,7 @@
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				54B30A8D195D53EC00007DDC /* ToolsCoinView.m in Sources */,
 				54CB2A3D19626309005EBD3F /* MenuTitleButton.m in Sources */,
+				54B94A3F197CF536003ABA93 /* ShareVideoViewController.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				54B4680518E520C500745F72 /* HealthCell.m in Sources */,
 				54B1ACE4196D303B0045B369 /* AgePreTableViewCell.m in Sources */,
@@ -4910,6 +4927,7 @@
 				54C038D91963DF1F00BBC1E6 /* OrderWaresHeaderView.m in Sources */,
 				54AFBBD018D6946900861A69 /* SettingViewController.m in Sources */,
 				54B3814D19791F62003FF386 /* RectRankSubCell.m in Sources */,
+				54B94A44197D0402003ABA93 /* UIImage+Blur.m in Sources */,
 				54C110A21974E89C00415EE3 /* TaskInfoViewController.m in Sources */,
 				541970EB18D1A3710058FE64 /* AddInfoCalendar.m in Sources */,
 				88B51600192F52EE006A79AB /* SinaWeiboRequest.m in Sources */,

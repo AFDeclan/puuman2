@@ -24,6 +24,7 @@
     NSMutableArray *refs;
     NSTimer *timer;
     float progress;
+    NSString *filePath;
 
     
 }
@@ -36,6 +37,6 @@
 
 @end
 @protocol VideoShowButtonDelegate <NSObject>
-- (void)initVideoWithVideoPath:(NSString *)videoPath;
-- (void)showVideo;
+
+- (void)showVideoWithVideoPath:(NSString *)videoPath;
 @end
