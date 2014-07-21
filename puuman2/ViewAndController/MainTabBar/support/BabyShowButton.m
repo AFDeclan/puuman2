@@ -80,13 +80,14 @@
 
 - (void)showBabyView
 {
+   // [self addPuuman:nil];
     [[MainTabBarController sharedMainViewController] showBabyView];
 }
 
 
 - (void)loadAnimateView
 {
-    animateView = [[PuumanButtonAnimateView alloc]initWithFrame:CGRectMake(8,8 , 40, 40)];
+    animateView = [[PuumanButtonAnimateView alloc]initWithFrame:CGRectMake(144,8 , 64, 64)];
     [animateView setBackgroundColor:[UIColor clearColor]];
     [animateView setFillColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
     [animateView setStrokeColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
@@ -94,7 +95,7 @@
     [self addSubview:animateView];
     [animateView setDelegate:self];
     [animateView loadIndicator];
-    showLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, 40, 40)];
+    showLabel = [[UILabel alloc] initWithFrame:CGRectMake(144, 8, 64, 64)];
     [showLabel setBackgroundColor:[UIColor clearColor]];
     [showLabel setTextAlignment:NSTextAlignmentCenter];
     [showLabel setTextColor:[UIColor whiteColor]];
@@ -217,7 +218,7 @@
 - (void)addPuuman:(NSNotification *)notification
 {
     float addCoins = [[notification object] floatValue];
-    
+    addCoins = 1;
     if (addCoins > 0) {
         [showLabel setText:[NSString stringWithFormat:@"+%0.1f",addCoins]];
         [self addPuuman];

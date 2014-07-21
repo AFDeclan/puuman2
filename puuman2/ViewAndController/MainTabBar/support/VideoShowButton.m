@@ -88,10 +88,9 @@
 
 - (void)showVideo
 {
-    [_delegate showVideo];
+    [_delegate showVideoWithVideoPath:filePath];
     [playBtn setEnabled:NO];
     [self stopGif];
-    
 }
 
 - (void)stopGif
@@ -165,8 +164,7 @@
     }
     // _loadingVideo = NO;
     [MainTabBarController sharedMainViewController].hasShareVideo = YES;
-    [_delegate initVideoWithVideoPath:[notification object]];
-
+    filePath = [notification object];
     if (([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt]) && [MainTabBarController sharedMainViewController].hasShareVideo) {
         [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
     }
