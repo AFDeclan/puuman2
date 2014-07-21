@@ -65,14 +65,14 @@
 {
     [_babyView setFrame:CGRectMake(0, 0, 768, 1024)];
     self.view.frame = CGRectMake(0, 0, 768, 1024);
-    
+    [_babyView setVerticalFrame];
 }
 
 - (void)setHorizontalFrame
 {
     [_babyView setFrame:CGRectMake(0, 0, 1024, 768)];
     self.view.frame = CGRectMake(0, 0, 1024, 768);
-    
+    [_babyView setHorizontalFrame];
 }
 
 
