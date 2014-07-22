@@ -52,6 +52,7 @@ typedef enum{
     NSInteger indexRow;
     AFSelectedTextImgButton *coinBtn;
     UILabel *coinLabel;
+    UIImageView *coinView;
     
 
 }

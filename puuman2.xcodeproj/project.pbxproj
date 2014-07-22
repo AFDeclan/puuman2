@@ -785,9 +785,8 @@
 		88AF77741963B23400E02B43 /* BabyInfoPropViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF77731963B23400E02B43 /* BabyInfoPropViewCell.m */; };
 		88AF77771963B24500E02B43 /* BabyInfoVaciViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF77761963B24500E02B43 /* BabyInfoVaciViewCell.m */; };
 		88AF777D1963B56900E02B43 /* BabyInfoBodyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF777C1963B56900E02B43 /* BabyInfoBodyViewCell.m */; };
-		88B2829219542033006641AC /* coin_diary_noreceive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2829019542033006641AC /* coin_diary_noreceive.png */; };
-		88B2829319542033006641AC /* coin_diary_receive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2829119542033006641AC /* coin_diary_receive.png */; };
 		88B29778196A95E40050EDE2 /* baby_born_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B29777196A95E40050EDE2 /* baby_born_background.png */; };
+		88B2C7FE197E1BEE00A0A2FD /* coinView_diary_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2C7FD197E1BEE00A0A2FD /* coinView_diary_image.png */; };
 		88B2E5781973D6CF0095504B /* icon_gold_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2E5771973D6CF0095504B /* icon_gold_image.png */; };
 		88B3AE93196E3A4800955499 /* btn_cart_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AE92196E3A4800955499 /* btn_cart_shop.png */; };
 		88B3AF6E1932E3B800FAB2A0 /* SinglePhotoTopicVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC7B8A192F1EC300D033E8 /* SinglePhotoTopicVIew.m */; };
@@ -821,6 +820,8 @@
 		88B5160B192F52EE006A79AB /* UIImage+CroppedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515E8192F52EE006A79AB /* UIImage+CroppedImage.m */; };
 		88B5160C192F52EE006A79AB /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515EA192F52EE006A79AB /* UIImage+Scale.m */; };
 		88B5160D192F52EE006A79AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EC192F52EE006A79AB /* libMobClickLibrary.a */; };
+		88BA0A9D197D13560070CF5F /* coin_diary_receive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BA0A9B197D13560070CF5F /* coin_diary_receive.png */; };
+		88BA0A9E197D13560070CF5F /* coin_diary_noreceive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BA0A9C197D13560070CF5F /* coin_diary_noreceive.png */; };
 		88C163591974CE0A00F86DD1 /* img_add_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C163571974CE0A00F86DD1 /* img_add_count.png */; };
 		88C1635A1974CE0A00F86DD1 /* img_reduce_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C163581974CE0A00F86DD1 /* img_reduce_count.png */; };
 		88C965A5196293B80058B842 /* line_right_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C965A3196293B80058B842 /* line_right_babyInfo.png */; };
@@ -1944,9 +1945,8 @@
 		88AF77761963B24500E02B43 /* BabyInfoVaciViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoVaciViewCell.m; sourceTree = "<group>"; };
 		88AF777B1963B56900E02B43 /* BabyInfoBodyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoBodyViewCell.h; sourceTree = "<group>"; };
 		88AF777C1963B56900E02B43 /* BabyInfoBodyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoBodyViewCell.m; sourceTree = "<group>"; };
-		88B2829019542033006641AC /* coin_diary_noreceive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_noreceive.png; sourceTree = "<group>"; };
-		88B2829119542033006641AC /* coin_diary_receive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_receive.png; sourceTree = "<group>"; };
 		88B29777196A95E40050EDE2 /* baby_born_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_born_background.png; sourceTree = "<group>"; };
+		88B2C7FD197E1BEE00A0A2FD /* coinView_diary_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coinView_diary_image.png; sourceTree = "<group>"; };
 		88B2E5771973D6CF0095504B /* icon_gold_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_gold_image.png; sourceTree = "<group>"; };
 		88B3AE92196E3A4800955499 /* btn_cart_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_cart_shop.png; sourceTree = "<group>"; };
 		88B515A2192F4AE1006A79AB /* CutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutViewController.h; sourceTree = "<group>"; };
@@ -2010,6 +2010,8 @@
 		88B515EC192F52EE006A79AB /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		88B515ED192F52EE006A79AB /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		88B794BE1964F6D5000B3406 /* BabyInfoIconViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BabyInfoIconViewDelegate.h; sourceTree = "<group>"; };
+		88BA0A9B197D13560070CF5F /* coin_diary_receive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_receive.png; sourceTree = "<group>"; };
+		88BA0A9C197D13560070CF5F /* coin_diary_noreceive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_noreceive.png; sourceTree = "<group>"; };
 		88C163571974CE0A00F86DD1 /* img_add_count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_add_count.png; sourceTree = "<group>"; };
 		88C163581974CE0A00F86DD1 /* img_reduce_count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_reduce_count.png; sourceTree = "<group>"; };
 		88C965A3196293B80058B842 /* line_right_babyInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line_right_babyInfo.png; sourceTree = "<group>"; };
@@ -2045,12 +2047,12 @@
 				14ED1FEF18BC3E8E009CCE4C /* libz.1.1.3.dylib in Frameworks */,
 				14ED1FED18BC3E85009CCE4C /* libstdc++.dylib in Frameworks */,
 				54C3959D193596AB00E0BE6F /* libWeChatSDK.a in Frameworks */,
-				14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */,
 				14B8DF5E18BC3E340047C6B3 /* CoreTelephony.framework in Frameworks */,
 				14B8DF5C18BC3E250047C6B3 /* QuartzCore.framework in Frameworks */,
 				88B51601192F52EE006A79AB /* TencentOpenAPI.framework in Frameworks */,
 				148D79E518B8A71A001B4FA7 /* CoreGraphics.framework in Frameworks */,
 				148D79E718B8A71A001B4FA7 /* UIKit.framework in Frameworks */,
+				14B8DF6018BC3E3F0047C6B3 /* AVFoundation.framework in Frameworks */,
 				148D79E318B8A71A001B4FA7 /* Foundation.framework in Frameworks */,
 				88B5160D192F52EE006A79AB /* libMobClickLibrary.a in Frameworks */,
 				6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */,
@@ -3866,8 +3868,9 @@
 		54CE117318C1C84000966396 /* DiaryImages */ = {
 			isa = PBXGroup;
 			children = (
-				88B2829019542033006641AC /* coin_diary_noreceive.png */,
-				88B2829119542033006641AC /* coin_diary_receive.png */,
+				88B2C7FD197E1BEE00A0A2FD /* coinView_diary_image.png */,
+				88BA0A9B197D13560070CF5F /* coin_diary_receive.png */,
+				88BA0A9C197D13560070CF5F /* coin_diary_noreceive.png */,
 				54B06C2A1929C34000539EA5 /* block_photo_diary.png */,
 				548D3A3518F4E3D1006CC6D6 /* pic_default_diary.png */,
 				5403CD0A18D03D39004CAE22 /* DiaryJoinImages */,
@@ -4269,7 +4272,6 @@
 				54B97E8418FA572600B6C4C9 /* pic33_insure_shop.png in Resources */,
 				5447C49D18D97D1100187BE6 /* icon_reply_topic.png in Resources */,
 				5447C4A318D97D1100187BE6 /* line_topic.png in Resources */,
-				88B2829219542033006641AC /* coin_diary_noreceive.png in Resources */,
 				54441A0118D431B700FBE69F /* pic_default_baby.png in Resources */,
 				5447C46718D97D0800187BE6 /* pic_dais3_fri.png in Resources */,
 				54B97E4418FA2B1E00B6C4C9 /* btn_back2_insure_shop.png in Resources */,
@@ -4405,6 +4407,7 @@
 				5403CE2418D04F5E004CAE22 /* btn_Bpre2_baby.png in Resources */,
 				54B4684D18E527D700745F72 /* icon_health_shop.png in Resources */,
 				54C2E9FA192DE0BA0011AA0C /* course_p1_h.png in Resources */,
+				88B2C7FE197E1BEE00A0A2FD /* coinView_diary_image.png in Resources */,
 				54B6F40918D6A5030055FC72 /* icon_admin_set.png in Resources */,
 				88C965AE19629FAC0058B842 /* icon_prop_babyInfo.png in Resources */,
 				54B97E9018FA572600B6C4C9 /* pic22_insure_shop.png in Resources */,
@@ -4660,6 +4663,7 @@
 				54CCF1DF18F3E7170081C149 /* btn_diary1_diary.png in Resources */,
 				544419F118D3EE2D00FBE69F /* pic2_equip_baby.png in Resources */,
 				54CE116218C1C7BF00966396 /* block4_btn.png in Resources */,
+				88BA0A9E197D13560070CF5F /* coin_diary_noreceive.png in Resources */,
 				54CCF1E718F3E7770081C149 /* btn_shop1_diary.png in Resources */,
 				54AC20F418E3FD30001C1357 /* icon2_hospital_shop.png in Resources */,
 				5403CD5F18D03DEF004CAE22 /* block2_h_diary.png in Resources */,
@@ -4748,7 +4752,6 @@
 				54AC20F918E3FD30001C1357 /* icon2_wash_shop.png in Resources */,
 				54D14FF418CAEFD70022E1F4 /* btn_delete2_diary.png in Resources */,
 				54AC212118E414EA001C1357 /* icon4_rec_shop.png in Resources */,
-				88B2829319542033006641AC /* coin_diary_receive.png in Resources */,
 				54B97EA318FA586800B6C4C9 /* triangle_insure_shop.png in Resources */,
 				54CC76EE196FBF8800373B35 /* btn_price_shop1.png in Resources */,
 				5403CE3618D04F5E004CAE22 /* icon_share_baby.png in Resources */,
@@ -4761,6 +4764,7 @@
 				146FB10418FFEA2E002EABA7 /* Icon-72.png in Resources */,
 				5447C4A218D97D1100187BE6 /* icon_weight_topic.png in Resources */,
 				54B97E9B18FA583F00B6C4C9 /* title1_insure_shop.png in Resources */,
+				88BA0A9D197D13560070CF5F /* coin_diary_receive.png in Resources */,
 				54AC20E118E3FD30001C1357 /* btn_all1_shop.png in Resources */,
 				5403CD5118D03D39004CAE22 /* icon8_weather_diary@2x.png in Resources */,
 				54AF7E0E18FBEC5000FC454C /* btn_record_diary.png in Resources */,

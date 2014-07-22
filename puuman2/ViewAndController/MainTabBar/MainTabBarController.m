@@ -48,11 +48,9 @@ static MainTabBarController *instance;
         _isVertical = YES;
 
         [self.tabBar removeFromSuperview];
-        
     }
     return self;
 }
-
 
 - (void)viewDidLoad
 {

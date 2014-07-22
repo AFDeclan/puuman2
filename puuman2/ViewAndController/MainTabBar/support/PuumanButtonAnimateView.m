@@ -36,7 +36,7 @@
     _animatingLayer.frame = self.bounds;
     [self.layer addSublayer:_animatingLayer];
     _paths = [NSMutableArray array];
-    _animationDuration = 1;
+    _animationDuration = 0.3;
     _coverWidth = 0;
     _fillColor = [UIColor whiteColor];
     _strokeColor = [UIColor whiteColor];

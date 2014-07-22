@@ -20,7 +20,6 @@
 @property(nonatomic, assign)id<PuumanAnimateDelegate> delegate;
 - (void)loadIndicator;
 - (void)updateWithTotalBytes:(CGFloat)bytes downloadedBytes:(CGFloat)downloadedBytes;
-
 @end
 @protocol PuumanAnimateDelegate <NSObject>
 

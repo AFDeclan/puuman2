@@ -89,7 +89,8 @@
 {
     animateView = [[PuumanButtonAnimateView alloc]initWithFrame:CGRectMake(144,8 , 64, 64)];
     [animateView setBackgroundColor:[UIColor clearColor]];
-    [animateView setFillColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
+    //[animateView setFillColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
+    [animateView setFillColor:[UIColor orangeColor]];
     [animateView setStrokeColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
     animateView.radiusPercent = 0.5 ;
     [self addSubview:animateView];
@@ -114,7 +115,7 @@
     fadeAnimation.fromValue = [NSNumber numberWithFloat:1.0];
     fadeAnimation.toValue = [NSNumber numberWithFloat:1.0];
     fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    fadeAnimation.duration = 1;
+    fadeAnimation.duration = 0.5;
     [fadeAnimation setDelegate:self];
     [showLabel.layer addAnimation:fadeAnimation forKey:@"opacity"];
 
@@ -131,7 +132,7 @@
     scaleAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     scaleAnimation2.toValue = [NSNumber numberWithFloat:1];
     scaleAnimation2.duration = 0.1;
-    [scaleAnimation2 setBeginTime:0.3];
+    [scaleAnimation2 setBeginTime:0.2];
     scaleAnimation2.removedOnCompletion = NO;
     scaleAnimation2.fillMode = kCAFillModeForwards;
     
@@ -139,7 +140,7 @@
     scaleAnimation3.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     scaleAnimation3.toValue = [NSNumber numberWithFloat:1.1];
     scaleAnimation3.duration = 0.1;
-    [scaleAnimation3 setBeginTime:0.4];
+    [scaleAnimation3 setBeginTime:0.3];
     scaleAnimation3.removedOnCompletion = NO;
     scaleAnimation3.fillMode = kCAFillModeForwards;
     
@@ -147,12 +148,12 @@
     scaleAnimation4.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     scaleAnimation4.toValue = [NSNumber numberWithFloat:1];
     scaleAnimation4.duration = 0.1;
-    [scaleAnimation4 setBeginTime:0.5];
+    [scaleAnimation4 setBeginTime:0.4];
     scaleAnimation4.removedOnCompletion = NO;
     scaleAnimation4.fillMode = kCAFillModeForwards;
     
     CAAnimationGroup*group = [CAAnimationGroup animation];
-    [group  setDuration:1];
+    [group  setDuration:0.5];
     group.removedOnCompletion = NO;
     group.fillMode = kCAFillModeForwards;
     [group setAnimations:[NSArray arrayWithObjects:scaleAnimation1,scaleAnimation2, scaleAnimation3,scaleAnimation4, nil]];

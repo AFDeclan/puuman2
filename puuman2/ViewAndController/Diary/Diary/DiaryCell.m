@@ -152,6 +152,8 @@
     coinBtn = [[AFSelectedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
     [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
     [coinBtn setUnSelectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
+    [coinBtn setIconSize:CGSizeMake(32, 32)];
+    [coinBtn adjustLayout];
     [coinBtn addTarget:self action:@selector(getCoin) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:coinBtn];
     [coinBtn unSelected];
@@ -161,6 +163,12 @@
     [coinLabel setBackgroundColor:[UIColor clearColor]];
     [coinLabel setFont:PMFont3];
     [self.contentView addSubview:coinLabel];
+    
+    coinView = [[UIImageView alloc] initWithFrame:CGRectMake(32,ViewHeight(_content)/2, 10,10)];
+    [coinView setImage:[UIImage imageNamed:@"coinView_diary_image.png"]];
+    [coinView setBackgroundColor:[UIColor clearColor]];
+    [self.contentView addSubview:coinView];
+    [coinView setAlpha:0];
     
 }
 
@@ -224,7 +232,8 @@
 //        }
 //    }
 
-}
+//}
+
 
 - (void)buildParentControl
 {
@@ -255,12 +264,12 @@
         [coinLabel setText:@""];
         
     }else{
-        if (_diary.UIdentity != [UserInfo sharedUserInfo].identity) {
+        if (_diary.UIdentity == [UserInfo sharedUserInfo].identity){
             [coinBtn setAlpha:1];
-            if ([_diary rewarded]) {
-                [coinBtn selected];
-                coinLabel.text = @"已打赏";
-            }else {
+//            if ([_diary rewarded]) {
+//                [coinBtn selected];
+//                coinLabel.text = @"已打赏";
+//            }else {
                 [coinBtn unSelected];
                 if (_diary.UIdentity == Father){
                     coinLabel.text = @"赏给爸爸!";
@@ -270,26 +279,112 @@
                     coinLabel.text = @"赏给妈妈!";
                     [coinLabel setTextColor:RGBColor(239, 128, 123)];
                 }
-            }
+           // }
         }else{
             [coinBtn unSelected];
             [coinBtn setAlpha:0];
             coinLabel.text = @"";
-            if ([_diary rewarded]) {
+           // if ([_diary rewarded]) {
                 if (_diary.UIdentity == Father) {
                     coinLabel.text = @"妈妈赏了你";
                     [coinLabel setTextColor:RGBColor(239, 128, 123)];
-                }else {
+              //  }else {
                     coinLabel.text = @"爸爸赏了你!";
                     [coinLabel setTextColor:PMColor6];
                     
                 }
                 
             }
-        }
+ //       }
     }
-
 }
+
+- (void)animateStart
+{
+ 
+    [coinView setFrame:CGRectMake(32, (ViewHeight(_content)+ViewY(_content))/2, 10, 10)];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self showAnimation];
+        [coinView setFrame:CGRectMake(34, (ViewHeight(_content)+ViewY(_content))/2, 20, 20)];
+        
+    } completion:^(BOOL finished) {
+    
+         [UIView animateWithDuration:0.5 animations:^{
+        
+            [coinView setFrame:CGRectMake(30, ViewHeight(_content)+ViewY(_content), 12, 12)];
+            [coinView setAlpha:0.5];
+        
+        
+        } completion:^(BOOL finished) {
+    
+            [coinView setFrame:CGRectMake(32, ViewHeight(_content)+ViewDownY(_content), 10, 10)];
+        
+            [coinView setAlpha:0];
+            [coinBtn selected];
+        }];
+      
+    }];
+    
+}
+
+
+- (void)showAnimation
+{
+    [coinView setAlpha:1];
+    
+    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeAnimation.fromValue = [NSNumber numberWithFloat:1.0];
+    fadeAnimation.toValue = [NSNumber numberWithFloat:1.0];
+    fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    fadeAnimation.duration = 0.5;
+    [fadeAnimation setDelegate:self];
+    [coinView.layer addAnimation:fadeAnimation forKey:@"opacity"];
+    
+    
+    CABasicAnimation *scaleAnimation1 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation1.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    scaleAnimation1.toValue = [NSNumber numberWithFloat:1.15];
+    scaleAnimation1.duration = 0.2;
+    [scaleAnimation1 setBeginTime:0];
+    scaleAnimation1.removedOnCompletion = NO;
+    scaleAnimation1.fillMode = kCAFillModeForwards;
+    
+    CABasicAnimation *scaleAnimation2 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    scaleAnimation2.toValue = [NSNumber numberWithFloat:1];
+    scaleAnimation2.duration = 0.1;
+    [scaleAnimation2 setBeginTime:0.2];
+    scaleAnimation2.removedOnCompletion = NO;
+    scaleAnimation2.fillMode = kCAFillModeForwards;
+    
+    CABasicAnimation *scaleAnimation3 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation3.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    scaleAnimation3.toValue = [NSNumber numberWithFloat:1.1];
+    scaleAnimation3.duration = 0.1;
+    [scaleAnimation3 setBeginTime:0.3];
+    scaleAnimation3.removedOnCompletion = NO;
+    scaleAnimation3.fillMode = kCAFillModeForwards;
+    
+    CABasicAnimation *scaleAnimation4 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation4.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    scaleAnimation4.toValue = [NSNumber numberWithFloat:1];
+    scaleAnimation4.duration = 0.1;
+    [scaleAnimation4 setBeginTime:0.4];
+    scaleAnimation4.removedOnCompletion = NO;
+    scaleAnimation4.fillMode = kCAFillModeForwards;
+    
+    CAAnimationGroup*group = [CAAnimationGroup animation];
+    [group  setDuration:0.5];
+    group.removedOnCompletion = NO;
+    group.fillMode = kCAFillModeForwards;
+    [group setAnimations:[NSArray arrayWithObjects:scaleAnimation1,scaleAnimation2, scaleAnimation3,scaleAnimation4, nil]];
+    [coinView.layer addAnimation:group forKey:@"group"];
+    
+}
+
+
+
 
 - (void)buildAgeLabels
 {
