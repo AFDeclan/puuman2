@@ -15,10 +15,7 @@
 @interface VideoShowButton : UIView
 {
     CGImageSourceRef gif;
-    NSDictionary *gifProperties;
-    NSInteger currentProperty;
     UIImageView *gifImgView;
-    NSInteger countProperty;
     UIButton *playBtn;
     UIImageView *imgView;
     NSMutableArray *refs;

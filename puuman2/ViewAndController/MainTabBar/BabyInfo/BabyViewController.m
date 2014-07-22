@@ -93,7 +93,7 @@
 
 - (void)finishOut
 {
-    [_delegate babyViewfinished];
+   // [_delegate babyViewfinished];
     [self viewDidDisappear:NO];
     [MyNotiCenter removeObserver:self];
 }

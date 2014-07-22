@@ -659,6 +659,12 @@
 		54C2EA02192DE0EB0011AA0C /* EnterTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2EA01192DE0EB0011AA0C /* EnterTutorialView.m */; };
 		54C2EA05192DF55B0011AA0C /* TopicCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2EA04192DF55B0011AA0C /* TopicCommentView.m */; };
 		54C3959D193596AB00E0BE6F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C3959A193596AB00E0BE6F /* libWeChatSDK.a */; };
+		54C55AB6197E528800C2056D /* saveVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C55AB5197E528800C2056D /* saveVideo.png */; };
+		54C55AB9197E597200C2056D /* shareVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C55AB7197E597200C2056D /* shareVideo.png */; };
+		54C55ABA197E597200C2056D /* deleteVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C55AB8197E597200C2056D /* deleteVideo.png */; };
+		54C55ABD197E5DBF00C2056D /* ShareVideoDeleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C55ABC197E5DBF00C2056D /* ShareVideoDeleteViewController.m */; };
+		54C55AC0197E5FCA00C2056D /* saveShareVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C55ABE197E5FCA00C2056D /* saveShareVideo.png */; };
+		54C55AC1197E5FCA00C2056D /* deleteShareVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C55ABF197E5FCA00C2056D /* deleteShareVideo.png */; };
 		54C729F5197A0B2D00F105CC /* BabyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C729F4197A0B2D00F105CC /* BabyViewController.m */; };
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
 		54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56A18DC2E840013FD03 /* TopicContentCell.m */; };
@@ -1724,8 +1730,8 @@
 		54BAD46618D151EB003822CC /* ChangePageControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangePageControlButton.m; path = ../../BabyInfo/ChangePageControlButton.m; sourceTree = "<group>"; };
 		54BB09E618D9494C00F805DD /* SkipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkipViewController.h; sourceTree = "<group>"; };
 		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
-		54BBE8A9193727E30056390B /* VideoManageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoManageView.h; sourceTree = "<group>"; };
-		54BBE8AA193727E30056390B /* VideoManageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoManageView.m; sourceTree = "<group>"; };
+		54BBE8A9193727E30056390B /* VideoManageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoManageView.h; path = support/VideoManageView.h; sourceTree = "<group>"; };
+		54BBE8AA193727E30056390B /* VideoManageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoManageView.m; path = support/VideoManageView.m; sourceTree = "<group>"; };
 		54BC5AEF1939AE3B000A5108 /* btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn.png; sourceTree = "<group>"; };
 		54BC5AF11939B14D000A5108 /* 扑满惊喜动画.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "扑满惊喜动画.gif"; sourceTree = "<group>"; };
 		54BC7B83192EE7EE00D033E8 /* TopicCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicCommentCell.h; sourceTree = "<group>"; };
@@ -1779,6 +1785,13 @@
 		54C3959A193596AB00E0BE6F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		54C3959B193596AB00E0BE6F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		54C3959C193596AB00E0BE6F /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		54C55AB5197E528800C2056D /* saveVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveVideo.png; sourceTree = "<group>"; };
+		54C55AB7197E597200C2056D /* shareVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareVideo.png; sourceTree = "<group>"; };
+		54C55AB8197E597200C2056D /* deleteVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteVideo.png; sourceTree = "<group>"; };
+		54C55ABB197E5DBF00C2056D /* ShareVideoDeleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareVideoDeleteViewController.h; sourceTree = "<group>"; };
+		54C55ABC197E5DBF00C2056D /* ShareVideoDeleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareVideoDeleteViewController.m; sourceTree = "<group>"; };
+		54C55ABE197E5FCA00C2056D /* saveShareVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveShareVideo.png; sourceTree = "<group>"; };
+		54C55ABF197E5FCA00C2056D /* deleteShareVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteShareVideo.png; sourceTree = "<group>"; };
 		54C729F3197A0B2D00F105CC /* BabyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyViewController.h; sourceTree = "<group>"; };
 		54C729F4197A0B2D00F105CC /* BabyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyViewController.m; sourceTree = "<group>"; };
 		54C8D56018DBE1B80013FD03 /* ChatInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputViewController.h; sourceTree = "<group>"; };
@@ -3429,8 +3442,6 @@
 				54B30AC4195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m */,
 				54B30AB9195D5C9D00007DDC /* PuumanButtonAnimateView.h */,
 				54B30ABA195D5C9D00007DDC /* PuumanButtonAnimateView.m */,
-				54BBE8A9193727E30056390B /* VideoManageView.h */,
-				54BBE8AA193727E30056390B /* VideoManageView.m */,
 				5461934219382A4B004FED04 /* UpLoaderShareVideo.h */,
 				5461934319382A4B004FED04 /* UpLoaderShareVideo.m */,
 				54B4EB3718C57C1D004489DA /* CustomTextField.h */,
@@ -3475,6 +3486,8 @@
 				88B515A9192F50C2006A79AB /* BabyPhotoSelectedViewController.m */,
 				54AC1D1E18EEAAD7005E2DCE /* ShareSelectedViewController.h */,
 				54AC1D1F18EEAAD7005E2DCE /* ShareSelectedViewController.m */,
+				54C55ABB197E5DBF00C2056D /* ShareVideoDeleteViewController.h */,
+				54C55ABC197E5DBF00C2056D /* ShareVideoDeleteViewController.m */,
 			);
 			name = alertView;
 			sourceTree = "<group>";
@@ -3535,6 +3548,8 @@
 				54B94A3E197CF536003ABA93 /* ShareVideoViewController.m */,
 				54B5AA311934421700805E63 /* VideoShowButton.h */,
 				54B5AA321934421700805E63 /* VideoShowButton.m */,
+				54BBE8A9193727E30056390B /* VideoManageView.h */,
+				54BBE8AA193727E30056390B /* VideoManageView.m */,
 				54B94A42197D0402003ABA93 /* UIImage+Blur.h */,
 				54B94A43197D0402003ABA93 /* UIImage+Blur.m */,
 				54B94A40197D0024003ABA93 /* popeye.mp4 */,
@@ -3647,6 +3662,11 @@
 			isa = PBXGroup;
 			children = (
 				54BC5AF11939B14D000A5108 /* 扑满惊喜动画.gif */,
+				54C55AB5197E528800C2056D /* saveVideo.png */,
+				54C55AB7197E597200C2056D /* shareVideo.png */,
+				54C55AB8197E597200C2056D /* deleteVideo.png */,
+				54C55ABE197E5FCA00C2056D /* saveShareVideo.png */,
+				54C55ABF197E5FCA00C2056D /* deleteShareVideo.png */,
 			);
 			name = videoAnimate;
 			sourceTree = "<group>";
@@ -3864,8 +3884,8 @@
 				547F763C196A7C11004D4F77 /* pic1_course1.png */,
 				547F763D196A7C11004D4F77 /* pic2_course1.png */,
 				54BC5AEC1939ADF4000A5108 /* videoAnimate */,
-				54B5AA3719347ABB00805E63 /* btn1.png */,
 				54BC5AEF1939AE3B000A5108 /* btn.png */,
+				54B5AA3719347ABB00805E63 /* btn1.png */,
 				54C2E9F4192DE0BA0011AA0C /* course_p1_h.png */,
 				54C2E9F5192DE0BA0011AA0C /* course_p1.png */,
 				54C2E9F6192DE0BA0011AA0C /* course_p2_h.png */,
@@ -4280,6 +4300,7 @@
 				54B97E8518FA572600B6C4C9 /* pic23_insure_shop.png in Resources */,
 				5403CE4318D04F5E004CAE22 /* pic_puuman1_baby.png in Resources */,
 				541970EF18D1BA7E0058FE64 /* dot_gray_baby.png in Resources */,
+				54C55AC1197E5FCA00C2056D /* deleteShareVideo.png in Resources */,
 				547F763F196A7C11004D4F77 /* pic2_course1.png in Resources */,
 				5403CE3018D04F5E004CAE22 /* icon_female_baby.png in Resources */,
 				54C2E9FF192DE0BA0011AA0C /* course_p3.png in Resources */,
@@ -4295,6 +4316,7 @@
 				14B8DF5618BC37A40047C6B3 /* Readme.rtf in Resources */,
 				88C965B41962A9C00058B842 /* icon_model_babyInfo.png in Resources */,
 				54CE116118C1C7BF00966396 /* block3_btn.png in Resources */,
+				54C55AC0197E5FCA00C2056D /* saveShareVideo.png in Resources */,
 				54B97E9718FA581D00B6C4C9 /* block_insure_shop.png in Resources */,
 				54B97EA518FA586F00B6C4C9 /* bg_insure_shop.png in Resources */,
 				5463759018C98493004B11EF /* tri_blue_down.png in Resources */,
@@ -4378,6 +4400,7 @@
 				54AC20EE18E3FD30001C1357 /* icon_compare1_shop.png in Resources */,
 				54441A0518D461C300FBE69F /* btn_babyinfo3_diary.png in Resources */,
 				54F1D13718C48FA50005CDD9 /* dot_number_diary.png in Resources */,
+				54C55AB6197E528800C2056D /* saveVideo.png in Resources */,
 				5403CD3218D03D39004CAE22 /* icon11_weather_diary.png in Resources */,
 				5403CE2418D04F5E004CAE22 /* btn_Bpre2_baby.png in Resources */,
 				54B4684D18E527D700745F72 /* icon_health_shop.png in Resources */,
@@ -4415,6 +4438,7 @@
 				54B6F40E18D6A5030055FC72 /* line_set.png in Resources */,
 				5447C49918D97D1100187BE6 /* icon_no2_topic.png in Resources */,
 				54CCF1E318F3E7350081C149 /* btn_look1_diary.png in Resources */,
+				54C55ABA197E597200C2056D /* deleteVideo.png in Resources */,
 				5403CD3618D03D39004CAE22 /* icon13_weather_diary.png in Resources */,
 				54CE118318C1C8DC00966396 /* bg_h.png in Resources */,
 				5403CE3F18D04F5E004CAE22 /* line4_baby.png in Resources */,
@@ -4468,6 +4492,7 @@
 				54441A0318D43D9F00FBE69F /* dot3_baby_diary.png in Resources */,
 				54D64EFC18E7C39500B8899D /* btn_refresh_br_shop.png in Resources */,
 				540020351973D8B5000C0336 /* btn_red5.png in Resources */,
+				54C55AB9197E597200C2056D /* shareVideo.png in Resources */,
 				54B97E5518FA2B1E00B6C4C9 /* bubble_insure_shop.png in Resources */,
 				54D14FF718CAEFD70022E1F4 /* icon_audio_diary.png in Resources */,
 				54B97E5D18FA2B1E00B6C4C9 /* puuman2_insure_shop.png in Resources */,
@@ -5056,6 +5081,7 @@
 				5461934419382A4B004FED04 /* UpLoaderShareVideo.m in Sources */,
 				5448D58C18FE2F2300DA696C /* SocialContentView.m in Sources */,
 				541970D418D1956D0058FE64 /* InfoView.m in Sources */,
+				54C55ABD197E5DBF00C2056D /* ShareVideoDeleteViewController.m in Sources */,
 				14CC106218F90BC5005B366E /* DiaryImageView.m in Sources */,
 				14B8DF2618BC37A30047C6B3 /* CartModel.m in Sources */,
 				54CB2A4C1962A930005EBD3F /* SortCell.m in Sources */,

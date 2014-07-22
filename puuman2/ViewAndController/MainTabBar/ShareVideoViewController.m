@@ -12,6 +12,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Accelerate/Accelerate.h>
 #import "UIImage+Blur.h"
+#import "UserInfo.h"
+#import "CustomNotiViewController.h"
 
 @interface ShareVideoViewController ()
 
@@ -19,6 +21,8 @@
 
 @implementation ShareVideoViewController
 @synthesize contentView = _contentView;
+@synthesize filePath = _filePath;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,15 +47,16 @@
 
 - (void)initialization
 {
+    shareType = SocialNone;
+    saved = NO;
     _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
     [_contentView setBackgroundColor:PMColor6];
     [self.view addSubview:_contentView];
     [self.view setBackgroundColor:[UIColor clearColor]];
     [self.view setFrame:CGRectMake(0, 0, 1024, 768)];
 
-    path = [[NSBundle mainBundle] pathForResource:@"popeye" ofType:@"mp4"];
+    
     moviePlayer = [[MPMoviePlayerController alloc] init];
-    [moviePlayer setContentURL:[NSURL fileURLWithPath:path]];
     [moviePlayer.view setBackgroundColor:[UIColor blackColor]];
     [moviePlayer setShouldAutoplay:NO];
     [moviePlayer setFullscreen:YES];
@@ -73,13 +78,19 @@
     
 }
 
+- (void)setFilePath:(NSString *)filePath
+{
+    _filePath = filePath;
+    [moviePlayer setContentURL:[NSURL fileURLWithPath:filePath]];
+
+}
+
 
 -(void)movieFinished:(NSNotification*)notify{
     MPMoviePlayerController *moveController = [notify object];
-    [finishImgView setImage:[DiaryFileManager imageForVideo:path withDuraTion:moveController.duration]];
+    [finishImgView setImage:[DiaryFileManager imageForVideo:_filePath withDuraTion:moveController.duration]];
     [self showBlur];
     [manageView setAlpha:1];
-    [manageView setFilepath:path];
     [manageView showAnimate];
 
 }
@@ -128,15 +139,60 @@
 
 - (void)shareVideo
 {
-    [DiaryFileManager saveVideo:[NSURL fileURLWithPath:path] withTitle:@"" andTaskInfo:nil];
+    ShareSelectedViewController *shareVC = [[ShareSelectedViewController alloc] initWithNibName:nil bundle:nil];
+    [self.view addSubview:shareVC.view];
+    [shareVC setShareText:[[UserInfo sharedUserInfo] shareVideo].shareUrl];
+    [shareVC setShareTitle:@"ShareVideo"];
+    [shareVC setShareImg:[DiaryFileManager imageForVideo:_filePath]];
+    [shareVC setStyle:ConfirmError];
+    shareVC.delegate = self;
+    shareVC.shareDelegate = self;
+    [shareVC show];
     
 }
 
+
 - (void)deleteVideo
 {
-    [self hidden];
+    if (saved) {
+        [self hidden];
+    }else{
+        ShareVideoDeleteViewController *shareDeleteVC = [[ShareVideoDeleteViewController alloc] initWithNibName:nil bundle:nil];
+        [self.view addSubview:shareDeleteVC.view];
+        [shareDeleteVC setStyle:ConfirmError];
+        shareDeleteVC.deleteDelegate = self;
+        [shareDeleteVC show];
+    }
 }
 
+- (void)saveVideo
+{
+    if (!saved) {
+        [DiaryFileManager saveVideo:[NSURL fileURLWithPath:_filePath] withTitle:@"" andTaskInfo:nil];
+        [CustomNotiViewController showNotiWithTitle:@"保存完成" withTypeStyle:kNotiTypeStyleRight];
+
+    }else{
+        //[CustomNotiViewController showNotiWithTitle:@"已保存" withTypeStyle:kNotiTypeStyleRight];
+    }
+    saved = YES;
+}
+
+- (void)selectedShareType:(SocialType)type
+{
+    shareType = type;
+}
+
+- (void)saveShareVideo
+{
+    [manageView saved];
+    [self saveVideo];
+}
+
+- (void)deleteShareVideo
+{
+    [self hidden];
+
+}
 
 - (void)show
 {
@@ -155,7 +211,7 @@
 
 - (void)finishOut
 {
-    [_delegate babyViewfinished];
+    [_delegate shareViewfinished];
     [self viewDidDisappear:NO];
     [MyNotiCenter removeObserver:self];
 }

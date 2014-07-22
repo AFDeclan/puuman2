@@ -21,16 +21,8 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        currentProperty = 1;
         progress = 0;
-        NSDictionary *gifLoopCount = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0] forKey:(NSString *)kCGImagePropertyGIFLoopCount];
-        
-        gifProperties = [NSDictionary dictionaryWithObject:gifLoopCount forKey:(NSString *)kCGImagePropertyGIFDictionary];
-        
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"gif"];
-        gif = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:filePath], (__bridge CFDictionaryRef)gifProperties);
-        countProperty =CGImageSourceGetCount(gif);
-//        [self showGifAtIndex:currentProperty];
+        filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"gif"];
         imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         [self addSubview:imgView];
         playBtn = [[UIButton alloc] initWithFrame:CGRectMake((frame.size.height - frame.size.width)/2, 0, frame.size.height, frame.size.height)];
@@ -38,56 +30,53 @@
         [playBtn addTarget:self action:@selector(showVideo) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:playBtn];
         refs = [[NSMutableArray alloc] init];
-        for (int i =0; i<countProperty; i++) {
-            CGImageRef ref = CGImageSourceCreateImageAtIndex(gif, i, (__bridge CFDictionaryRef)gifProperties);
-            [refs addObject:[UIImage imageWithCGImage:ref]];
-            if (i == 0) {
-                [imgView setImage:[UIImage imageWithCGImage:ref]];
-            }
-        }
-        
-        [imgView setAnimationImages:refs];
-        imgView.animationDuration=2.0;
-        imgView.animationRepeatCount=0;
-        
+
         [MyNotiCenter addObserver:self selector:@selector(downAutoVideo) name:Noti_HasShareVideo object:nil];
         [MyNotiCenter addObserver:self selector:@selector(refreshProgressAutoVideo:) name:Noti_RefreshProgressAutoVideo object:nil];
         [MyNotiCenter addObserver:self selector:@selector(finishDownShareVideo:) name:Noti_FinishShareVideo object:nil];
         [MyNotiCenter addObserver:self selector:@selector(failDownShareVideo) name:Noti_FailShareVideo object:nil];
         [MyNotiCenter addObserver:self selector:@selector(startGif) name:Noti_StartGif object:nil];
-
+        NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(initImgs) object:nil];
+        [thread start];
     }
     return self;
+}
+
+- (void)initImgs
+{
+    NSDictionary *gifLoopCount = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0] forKey:(NSString *)kCGImagePropertyGIFLoopCount];
+    NSDictionary *gifProperties = [NSDictionary dictionaryWithObject:gifLoopCount forKey:(NSString *)kCGImagePropertyGIFDictionary];
+    gif  = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:filePath], (__bridge CFDictionaryRef)gifProperties);
+    NSInteger countProperty  =CGImageSourceGetCount(gif);
+    //        [self showGifAtIndex:currentProperty];
+
+    for (int i =0; i<countProperty; i++) {
+        CGImageRef ref = CGImageSourceCreateImageAtIndex(gif, i, (__bridge CFDictionaryRef)gifProperties);
+        [refs addObject:[UIImage imageWithCGImage:ref]];
+        if (i == 0) {
+            [imgView setImage:[UIImage imageWithCGImage:ref]];
+        }
+    }
+    [imgView setAnimationImages:refs];
+    imgView.animationDuration=2.0;
+    imgView.animationRepeatCount=0;
+
 }
 
 -(void)startGif
 {
     [imgView startAnimating];
     [self setClickEnable:YES];
-
 }
 
 
-
-
--(void)play
-{
-    currentProperty ++;
-    currentProperty = currentProperty%countProperty;
-    
-}
-
-- (void)dealloc
-{
-    NSLog(@"dealloc");
-    CFRelease(gif);
-   
-}
 
 
 
 - (void)showVideo
 {
+   //filePath = [[NSBundle mainBundle] pathForResource:@"popeye" ofType:@"mp4"];
+
     [_delegate showVideoWithVideoPath:filePath];
     [playBtn setEnabled:NO];
     [self stopGif];
@@ -171,5 +160,13 @@
 }
 
 
+
+
+- (void)dealloc
+{
+    NSLog(@"dealloc");
+    CFRelease(gif);
+    [MyNotiCenter removeObserver:self];
+}
 
 @end

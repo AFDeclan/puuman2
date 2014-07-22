@@ -8,6 +8,8 @@
 
 #import "UpLoaderShareVideo.h"
 #import "UniverseConstant.h"
+#import "DiaryFileManager.h"
+#import "Diary.h"
 
 @implementation UpLoaderShareVideo
 
@@ -41,30 +43,27 @@ static NSMutableArray *instanceList;
 
 - (void)setProgress:(float)newProgress
 {
-   
     PostNotification(Noti_RefreshProgressAutoVideo, [NSNumber numberWithDouble:newProgress]);
 }
-
-
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
     if (_request == request) {
-        NSString *fileDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        fileDir = [fileDir stringByAppendingPathComponent:@"Baby4/video"];
+        NSString *fileDir = [DiaryFileManager fileDirForDiaryType:DiaryTypeStrVideo];
         NSString *fileName =  @"sharevideo";
         fileName = [fileName stringByAppendingPathExtension:@"MOV"];
         NSString *filePath = [fileDir stringByAppendingPathComponent:fileName];
         NSData *data = [request responseData];
+        
         if ([data writeToFile:filePath atomically:YES]) {
             PostNotification(Noti_FinishShareVideo, filePath);
         }else{
-            NSLog(@"Save ShareVideo failed!");
+            NSLog(@"save file fail");
         }
-        [self releaseSelf];
-    
+        
     }
 }
+
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {

@@ -9,24 +9,27 @@
 #import "PopUpViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "VideoManageView.h"
+#import "ShareVideoDeleteViewController.h"
 
 @protocol ShareVideoControllerDelegate;
-@interface ShareVideoViewController : PopUpViewController<VideoManageDelegate>
+@interface ShareVideoViewController : PopUpViewController<VideoManageDelegate,ShareViewDelegate,PopViewDelegate,ShareVideoDeleteDelegate>
 {
     MPMoviePlayerController * moviePlayer;
     UIImageView *finishImgView;
-    NSString *path;
     VideoManageView *manageView;
+    SocialType shareType;
+    BOOL saved;
 
 }
 
 @property(nonatomic,assign)id<ShareVideoControllerDelegate>delegate;
 @property(nonatomic,retain)UIView *contentView;
+@property(nonatomic,retain)NSString *filePath;
 
 - (void)show;
 - (void)hidden;
 @end
 @protocol ShareVideoControllerDelegate <NSObject>
 @optional
-- (void)babyViewfinished;
+- (void)shareViewfinished;
 @end

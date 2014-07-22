@@ -47,8 +47,6 @@ static MainTabBarController *instance;
         [self setDelegate:self];
         _isVertical = YES;
 
-
-
         [self.tabBar removeFromSuperview];
         
     }
@@ -226,10 +224,10 @@ static MainTabBarController *instance;
 
 - (void)showVideoWithVideoPath:(NSString *)videoPath
 {
-    
     ShareVideoViewController *shareVideo = [[ShareVideoViewController alloc] initWithNibName:nil bundle:nil];
     [self.view  addSubview:shareVideo.view];
     shareVideo.delegate = self;
+    shareVideo.filePath = videoPath;
     [shareVideo.contentView addSubview:videoBtn];
     SetViewLeftUp(videoBtn,ViewX(videoBtn), 768);
     [shareVideo.view.layer setMasksToBounds:NO];
@@ -245,6 +243,9 @@ static MainTabBarController *instance;
 - (void)refreshBabyInfoView
 {
     
+    if (babyShowBtn) {
+        [babyShowBtn removeFromSuperview];
+    }
     babyShowBtn = [[BabyShowButton alloc] init];
     [babyShowBtn setBackgroundColor:[UIColor clearColor]];
     
@@ -271,9 +272,9 @@ static MainTabBarController *instance;
     [babyVC.babyView addSubview:babyShowBtn];
     [babyVC.view.layer setMasksToBounds:NO];
     if (_isVertical) {
-        SetViewLeftUp(babyShowBtn,768 -16 - ViewWidth(babyShowBtn), 768);
+        SetViewLeftUp(babyShowBtn,768 -16 - ViewWidth(babyShowBtn), 1024);
     }else{
-        SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 1024);
+        SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 768);
     }
     // [babyShowBtn showInFrom:kAFAnimationFromTop inView:self.view withFade:NO duration:10 delegate:self startSelector:nil stopSelector:nil];
     [babyVC show];
@@ -299,5 +300,8 @@ static MainTabBarController *instance;
     
 }
 
+- (void)shareViewfinished
+{
 
+}
 @end
