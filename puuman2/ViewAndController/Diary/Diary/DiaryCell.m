@@ -164,20 +164,65 @@
     
 }
 
+
+- (void)coinAnimate
+{
+    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeAnimation.fromValue = [NSNumber numberWithFloat:0.5];
+    fadeAnimation.toValue = [NSNumber numberWithFloat:1.0];
+    fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    fadeAnimation.duration = 1;
+    [fadeAnimation setBeginTime:0];
+    [fadeAnimation setDelegate:self];
+    fadeAnimation.removedOnCompletion = NO;
+    fadeAnimation.fillMode = kCAFillModeForwards;
+    
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    scaleAnimation.toValue = [NSNumber numberWithFloat:1.15];
+    scaleAnimation.duration = 2;
+    [scaleAnimation setBeginTime:0];
+    scaleAnimation.removedOnCompletion = NO;
+    scaleAnimation.fillMode = kCAFillModeForwards;
+    
+    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fillMode = kCAFillModeForwards;
+    positionAnimation.removedOnCompletion =NO;
+    positionAnimation.duration = 2;
+    CGMutablePathRef positionPath = CGPathCreateMutable();
+    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [positionAnimation setBeginTime:0];
+    
+    CGPathMoveToPoint(positionPath, NULL, [coinBtn layer].position.x, [coinBtn layer].position.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [coinBtn layer].position.x, [coinBtn layer].position.y, [coinBtn layer].position.x,[coinBtn layer].position.y-100);
+    positionAnimation.path = positionPath;
+
+    
+    
+    CAAnimationGroup*group = [CAAnimationGroup animation];
+    [group  setDuration:2];
+    group.removedOnCompletion = NO;
+    group.fillMode = kCAFillModeForwards;
+    [group setAnimations:[NSArray arrayWithObjects:fadeAnimation,scaleAnimation, positionAnimation, nil]];
+    [coinBtn.layer addAnimation:group forKey:@"group"];
+
+}
+
 - (void)getCoin {
     
-    if (_diary.rewarded) {
-        [coinBtn selected];
-    } else {
-    
-        [coinBtn unSelected];
-        if ([_diary reward:1]) {
-          
-            [coinBtn selected];
-            coinLabel.text = @"已打赏";
-            [coinLabel setTextColor:PMColor3];
-        }
-    }
+    [self coinAnimate];
+//    if (_diary.rewarded) {
+//        [coinBtn selected];
+//    } else {
+//    
+//        [coinBtn unSelected];
+//        if ([_diary reward:1]) {
+//          
+//            [coinBtn selected];
+//            coinLabel.text = @"已打赏";
+//            [coinLabel setTextColor:PMColor3];
+//        }
+//    }
 
 }
 
@@ -206,7 +251,7 @@
 {
 
     if (_diary.sampleDiary) {
-        [coinBtn setAlpha:0];
+     //   [coinBtn setAlpha:0];
         [coinLabel setText:@""];
         
     }else{
