@@ -67,8 +67,8 @@ static MainTabBarController *instance;
     videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, 0, 189,180) fileName:@"animate_puuman"];
     [videoBtn setDelegate:self];
     [self.view addSubview:videoBtn];
-    [videoBtn setClickEnable:YES];
-    [videoBtn setAlpha:1];
+    [videoBtn setClickEnable:NO];
+    [videoBtn setAlpha:0];
     [self.view.layer setMasksToBounds:YES];
 
 }

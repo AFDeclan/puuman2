@@ -49,6 +49,7 @@
 {
     shareType = SocialNone;
     saved = NO;
+    deleteVideo = NO;
     _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
     [_contentView setBackgroundColor:PMColor6];
     [self.view addSubview:_contentView];
@@ -145,7 +146,6 @@
     [shareVC setShareTitle:@"ShareVideo"];
     [shareVC setShareImg:[DiaryFileManager imageForVideo:_filePath]];
     [shareVC setStyle:ConfirmError];
-    shareVC.delegate = self;
     shareVC.shareDelegate = self;
     [shareVC show];
     
@@ -157,11 +157,20 @@
     if (saved) {
         [self hidden];
     }else{
-        ShareVideoDeleteViewController *shareDeleteVC = [[ShareVideoDeleteViewController alloc] initWithNibName:nil bundle:nil];
+        shareDeleteVC = [[ShareVideoDeleteViewController alloc] initWithNibName:nil bundle:nil];
         [self.view addSubview:shareDeleteVC.view];
         [shareDeleteVC setStyle:ConfirmError];
         shareDeleteVC.deleteDelegate = self;
+        shareDeleteVC.delegate = self;
         [shareDeleteVC show];
+    }
+}
+
+
+- (void)popViewfinished
+{
+    if (deleteVideo) {
+        [self hidden];
     }
 }
 
@@ -190,7 +199,8 @@
 
 - (void)deleteShareVideo
 {
-    [self hidden];
+    deleteVideo = YES;
+    [shareDeleteVC hidden];
 
 }
 

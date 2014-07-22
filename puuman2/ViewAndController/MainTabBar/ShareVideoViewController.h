@@ -19,7 +19,8 @@
     VideoManageView *manageView;
     SocialType shareType;
     BOOL saved;
-
+    BOOL deleteVideo;
+    ShareVideoDeleteViewController *shareDeleteVC;
 }
 
 @property(nonatomic,assign)id<ShareVideoControllerDelegate>delegate;

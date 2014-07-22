@@ -17,7 +17,7 @@
     UIButton *deleteBtn;
 }
 @property(nonatomic,assign)id<ShareVideoDeleteDelegate> deleteDelegate;
-
+- (void)hidden;
 @end
 
 @protocol ShareVideoDeleteDelegate <NSObject>

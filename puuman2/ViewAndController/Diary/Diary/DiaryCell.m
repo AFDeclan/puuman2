@@ -164,7 +164,7 @@
     [coinLabel setFont:PMFont3];
     [self.contentView addSubview:coinLabel];
     
-    coinView = [[UIImageView alloc] initWithFrame:CGRectMake(32,ViewHeight(_content)/2, 10,10)];
+    coinView = [[UIImageView alloc] initWithFrame:CGRectMake(32,ViewY(coinBtn)- 50, 10,10)];
     [coinView setImage:[UIImage imageNamed:@"coinView_diary_image.png"]];
     [coinView setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:coinView];
@@ -175,19 +175,21 @@
 
 - (void)coinAnimate
 {
+    SetViewLeftUp(coinView, 32, ViewY(coinBtn)- 50);
     CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    fadeAnimation.fromValue = [NSNumber numberWithFloat:0.5];
+    fadeAnimation.fromValue = [NSNumber numberWithFloat:0.2];
     fadeAnimation.toValue = [NSNumber numberWithFloat:1.0];
-    fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    fadeAnimation.duration = 1;
+    fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    fadeAnimation.duration = 0.75;
     [fadeAnimation setBeginTime:0];
     [fadeAnimation setDelegate:self];
     fadeAnimation.removedOnCompletion = NO;
     fadeAnimation.fillMode = kCAFillModeForwards;
     
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation.toValue = [NSNumber numberWithFloat:1.15];
+    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    scaleAnimation.fromValue = [NSNumber numberWithFloat:1];
+    scaleAnimation.toValue = [NSNumber numberWithFloat:2];
     scaleAnimation.duration = 2;
     [scaleAnimation setBeginTime:0];
     scaleAnimation.removedOnCompletion = NO;
@@ -196,28 +198,29 @@
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     positionAnimation.fillMode = kCAFillModeForwards;
     positionAnimation.removedOnCompletion =NO;
-    positionAnimation.duration = 2;
+    positionAnimation.duration = 1;
     CGMutablePathRef positionPath = CGPathCreateMutable();
-    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     [positionAnimation setBeginTime:0];
     
-    CGPathMoveToPoint(positionPath, NULL, [coinBtn layer].position.x, [coinBtn layer].position.y);
-    CGPathAddQuadCurveToPoint(positionPath, NULL, [coinBtn layer].position.x, [coinBtn layer].position.y, [coinBtn layer].position.x,[coinBtn layer].position.y-100);
+    CGPathMoveToPoint(positionPath, NULL, [coinView layer].position.x, [coinView layer].position.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [coinView layer].position.x, [coinView layer].position.y, [coinView layer].position.x,[coinView layer].position.y+50);
     positionAnimation.path = positionPath;
 
     
     
     CAAnimationGroup*group = [CAAnimationGroup animation];
-    [group  setDuration:2];
-    group.removedOnCompletion = NO;
-    group.fillMode = kCAFillModeForwards;
+    [group  setDuration:1];
+//    group.removedOnCompletion = NO;
+//    group.fillMode = kCAFillModeForwards;
     [group setAnimations:[NSArray arrayWithObjects:fadeAnimation,scaleAnimation, positionAnimation, nil]];
-    [coinBtn.layer addAnimation:group forKey:@"group"];
+    [coinView.layer addAnimation:group forKey:@"group"];
 
 }
 
 - (void)getCoin {
     
+    PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
     [self coinAnimate];
 //    if (_diary.rewarded) {
 //        [coinBtn selected];
@@ -232,8 +235,7 @@
 //        }
 //    }
 
-//}
-
+}
 
 - (void)buildParentControl
 {
@@ -250,9 +252,7 @@
     }
     [self buildAgeLabels];
     [self buildFromIdentity];
-  
-  
-    
+ 
     
 }
 
@@ -260,7 +260,7 @@
 {
 
     if (_diary.sampleDiary) {
-     //   [coinBtn setAlpha:0];
+        [coinBtn setAlpha:0];
         [coinLabel setText:@""];
         
     }else{
@@ -297,94 +297,9 @@
             }
  //       }
     }
+
+
 }
-
-- (void)animateStart
-{
- 
-    [coinView setFrame:CGRectMake(32, (ViewHeight(_content)+ViewY(_content))/2, 10, 10)];
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        [self showAnimation];
-        [coinView setFrame:CGRectMake(34, (ViewHeight(_content)+ViewY(_content))/2, 20, 20)];
-        
-    } completion:^(BOOL finished) {
-    
-         [UIView animateWithDuration:0.5 animations:^{
-        
-            [coinView setFrame:CGRectMake(30, ViewHeight(_content)+ViewY(_content), 12, 12)];
-            [coinView setAlpha:0.5];
-        
-        
-        } completion:^(BOOL finished) {
-    
-            [coinView setFrame:CGRectMake(32, ViewHeight(_content)+ViewDownY(_content), 10, 10)];
-        
-            [coinView setAlpha:0];
-            [coinBtn selected];
-        }];
-      
-    }];
-    
-}
-
-
-- (void)showAnimation
-{
-    [coinView setAlpha:1];
-    
-    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    fadeAnimation.fromValue = [NSNumber numberWithFloat:1.0];
-    fadeAnimation.toValue = [NSNumber numberWithFloat:1.0];
-    fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    fadeAnimation.duration = 0.5;
-    [fadeAnimation setDelegate:self];
-    [coinView.layer addAnimation:fadeAnimation forKey:@"opacity"];
-    
-    
-    CABasicAnimation *scaleAnimation1 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnimation1.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation1.toValue = [NSNumber numberWithFloat:1.15];
-    scaleAnimation1.duration = 0.2;
-    [scaleAnimation1 setBeginTime:0];
-    scaleAnimation1.removedOnCompletion = NO;
-    scaleAnimation1.fillMode = kCAFillModeForwards;
-    
-    CABasicAnimation *scaleAnimation2 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation2.toValue = [NSNumber numberWithFloat:1];
-    scaleAnimation2.duration = 0.1;
-    [scaleAnimation2 setBeginTime:0.2];
-    scaleAnimation2.removedOnCompletion = NO;
-    scaleAnimation2.fillMode = kCAFillModeForwards;
-    
-    CABasicAnimation *scaleAnimation3 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnimation3.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation3.toValue = [NSNumber numberWithFloat:1.1];
-    scaleAnimation3.duration = 0.1;
-    [scaleAnimation3 setBeginTime:0.3];
-    scaleAnimation3.removedOnCompletion = NO;
-    scaleAnimation3.fillMode = kCAFillModeForwards;
-    
-    CABasicAnimation *scaleAnimation4 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnimation4.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation4.toValue = [NSNumber numberWithFloat:1];
-    scaleAnimation4.duration = 0.1;
-    [scaleAnimation4 setBeginTime:0.4];
-    scaleAnimation4.removedOnCompletion = NO;
-    scaleAnimation4.fillMode = kCAFillModeForwards;
-    
-    CAAnimationGroup*group = [CAAnimationGroup animation];
-    [group  setDuration:0.5];
-    group.removedOnCompletion = NO;
-    group.fillMode = kCAFillModeForwards;
-    [group setAnimations:[NSArray arrayWithObjects:scaleAnimation1,scaleAnimation2, scaleAnimation3,scaleAnimation4, nil]];
-    [coinView.layer addAnimation:group forKey:@"group"];
-    
-}
-
-
-
 
 - (void)buildAgeLabels
 {
