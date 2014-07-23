@@ -147,7 +147,7 @@
     [UIView animateWithDuration:0.4 animations:^{
         [bgView setAlpha:0.3];
     }];
-    [_content showInFrom:kAFAnimationTop inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:nil];
+    [_content showInFrom:kAFAnimationTop inView:self.view withFade:NO duration:0.5 delegate:self startSelector:nil stopSelector:nil];
  
 }
 
@@ -156,7 +156,7 @@
     [UIView animateWithDuration:0.4 animations:^{
         [bgView setAlpha:0];
     }];
-    [_content hiddenOutTo:kAFAnimationTop inView:self.view withFade:YES duration:0.5 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
+    [_content hiddenOutTo:kAFAnimationTop inView:self.view withFade:NO duration:0.5 delegate:self startSelector:nil stopSelector:@selector(finishOut)];
 
 }
 

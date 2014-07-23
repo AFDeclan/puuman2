@@ -16,8 +16,6 @@
 {
     CustomTextField *titleTield;
     UILabel *notiLabel;
-    UIButton *closeBtn;
-    UIButton *finishBtn;
     UIButton *autoBtn;
     UILabel *autoLabel;
     UITableView *pickerTable;

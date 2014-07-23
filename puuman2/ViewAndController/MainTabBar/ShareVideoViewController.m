@@ -76,7 +76,15 @@
     [manageView setDelegate:self];
     [_contentView addSubview:manageView];
     [manageView setAlpha:0];
+    [MyNotiCenter addObserver:self selector:@selector(continueVideo) name:Noti_ContinueVideo object:nil];
     
+}
+
+- (void)continueVideo
+{
+    if ([moviePlayer playbackState] == MPMoviePlaybackStatePaused) {
+        [moviePlayer play];
+    }
 }
 
 - (void)setFilePath:(NSString *)filePath

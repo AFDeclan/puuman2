@@ -14,7 +14,6 @@
     LoginViewController *loginViewC;
 
 }
-
 + (SkipViewController *)sharedController;
 
 @end

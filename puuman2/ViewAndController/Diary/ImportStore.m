@@ -76,6 +76,7 @@ static ImportStore * instance;
             [ErrorLog errorLog:@"Save photo failed - 1" fromFile:@"DiaryFileManager.m" error:error];
         }
         count ++;
+        
         PostNotification(Noti_Imported, [NSNumber numberWithInt:count]);
         [paths addObject:filePath];
     }

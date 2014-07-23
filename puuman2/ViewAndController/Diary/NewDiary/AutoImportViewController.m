@@ -82,7 +82,8 @@
         UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
         [_content addGestureRecognizer:tap];
         [self preparePhotos];
-    }
+        
+          }
     return self;
 }
 
@@ -162,7 +163,7 @@
     [arrTime addObject:startDate];
 
     [super finishBtnPressed];
-    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:arr,@"photos",titleTield.text,@"title",[NSNumber numberWithInt:[dateArr count]],@"count",arrTime,@"createTime", nil];
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:arr,@"photos",titleTield.text,@"title",[NSNumber numberWithInt:[arr count]],@"count",arrTime,@"createTime", nil];
     [self performSelector:@selector(updatePhotos:) withObject:dic afterDelay:1];
 }
 
@@ -208,9 +209,8 @@
                                            [pickerTable reloadData];
                                            
                                            [[MainTabBarController sharedMainViewController ] showAutoImportView];
-                                           selectedNum = [dateArr count];
                                            for (int i = 0 ; i < [dateArr count]; i ++) {
-                                               [photoStatus setValue:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%d",i]];
+                                               [photoStatus setValue:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",i]];
                                            }
                                        }else{
                                            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
@@ -373,11 +373,11 @@
         [photoStatus setValue:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",num]];
         selectedNum--;
     }
-    [finishBtn setEnabled:YES];
-    [finishBtn setAlpha:1];
+    [_finishBtn setEnabled:YES];
+    [_finishBtn setAlpha:1];
     if (selectedNum == 0) {
-        [finishBtn setEnabled:NO];
-        [finishBtn setAlpha:0.5];
+        [_finishBtn setEnabled:NO];
+        [_finishBtn setAlpha:0.5];
     }
     [titleTield resignFirstResponder];
 }
@@ -387,5 +387,13 @@
     
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)setControlBtnType:(ControlBtnType)controlBtnType
+{
+    [super setControlBtnType:controlBtnType];
+    [_finishBtn setEnabled:NO];
+    [_finishBtn setAlpha:0.5];
+
 }
 @end
