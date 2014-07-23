@@ -122,7 +122,7 @@
 
 - (void)refreshProgress
 {
-    [self setAlpha:1];
+    
     [UIView animateWithDuration:1 animations:^{
         SetViewLeftUp(self, ViewX(self), ViewHeight(self)*(progress - 1));
     }];

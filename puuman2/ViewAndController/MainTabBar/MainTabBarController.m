@@ -64,7 +64,7 @@ static MainTabBarController *instance;
    
     userInfo = [UserInfo sharedUserInfo];
    // _loadingVideo = YES;
-    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, 0, 189,180) fileName:@"animate_puuman"];
+    videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, -180, 189,180) fileName:@"animate_puuman"];
     [videoBtn setDelegate:self];
     [self.view addSubview:videoBtn];
     [videoBtn setClickEnable:NO];
@@ -274,7 +274,6 @@ static MainTabBarController *instance;
     }else{
         SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 768);
     }
-    // [babyShowBtn showInFrom:kAFAnimationFromTop inView:self.view withFade:NO duration:10 delegate:self startSelector:nil stopSelector:nil];
     [babyVC show];
     _babyInfoShowed = YES;
 }
