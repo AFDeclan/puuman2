@@ -139,7 +139,6 @@
 {
     // _loadingVideo = NO;
     SetViewLeftUp(self, ViewHeight(self), -1 *ViewHeight(self));
-    [self setAlpha:0];
     
 }
 

@@ -25,7 +25,7 @@
 - (void)showAutoImportView
 {
     
-    if (improtAutoVC && !self.videoShowed) {
+    if (improtAutoVC && !self.videoShowed && !self.babyInfoShowed) {
         [self.view addSubview:improtAutoVC.view];
         [improtAutoVC show];
     }

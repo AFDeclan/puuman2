@@ -1972,7 +1972,7 @@
 		88B515C1192F52EE006A79AB /* AFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageView.m; sourceTree = "<group>"; };
 		88B515C2192F52EE006A79AB /* AFPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPageControl.h; sourceTree = "<group>"; };
 		88B515C3192F52EE006A79AB /* AFPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPageControl.m; sourceTree = "<group>"; };
-		88B515C4192F52EE006A79AB /* AFUICode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFUICode.h; sourceTree = "<group>"; };
+		88B515C4192F52EE006A79AB /* AFUICode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFUICode.h; path = ../../../Support/AFUIEx/AFUICode.h; sourceTree = "<group>"; };
 		88B515C5192F52EE006A79AB /* UIImageView+AnimateFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AnimateFade.h"; sourceTree = "<group>"; };
 		88B515C6192F52EE006A79AB /* UIImageView+AnimateFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AnimateFade.m"; sourceTree = "<group>"; };
 		88B515C7192F52EE006A79AB /* UILabel+AdjustSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+AdjustSize.h"; sourceTree = "<group>"; };
@@ -3467,6 +3467,7 @@
 				54B4EB2A18C576E5004489DA /* PopViewController.m */,
 				54B4EB2B18C576E5004489DA /* UIView+AFAnimation.h */,
 				54B4EB2C18C576E5004489DA /* UIView+AFAnimation.m */,
+				88B515C4192F52EE006A79AB /* AFUICode.h */,
 			);
 			name = popView;
 			sourceTree = "<group>";
@@ -4103,7 +4104,6 @@
 				88B515C1192F52EE006A79AB /* AFImageView.m */,
 				88B515C2192F52EE006A79AB /* AFPageControl.h */,
 				88B515C3192F52EE006A79AB /* AFPageControl.m */,
-				88B515C4192F52EE006A79AB /* AFUICode.h */,
 				88B515C5192F52EE006A79AB /* UIImageView+AnimateFade.h */,
 				88B515C6192F52EE006A79AB /* UIImageView+AnimateFade.m */,
 				88B515C7192F52EE006A79AB /* UILabel+AdjustSize.h */,

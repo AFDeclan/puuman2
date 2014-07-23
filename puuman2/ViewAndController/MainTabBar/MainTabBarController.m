@@ -288,17 +288,18 @@ static MainTabBarController *instance;
     }else{
         SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 0);
     }
+    _babyInfoShowed = NO;
+
+}
+
+- (void)shareViewfinished
+{
     [videoBtn stopGif];
     _videoShowed = NO;
     [self.view addSubview:videoBtn];
     SetViewLeftUp(videoBtn, ViewX(videoBtn), -189);
     [videoBtn setClickEnable:NO];
     [videoBtn setAlpha:0];
-    
-}
-
-- (void)shareViewfinished
-{
 
 }
 @end
