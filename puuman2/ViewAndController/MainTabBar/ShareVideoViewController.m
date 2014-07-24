@@ -110,7 +110,6 @@
     //  imgView.alpha = 1.f;
     finishImgView.layer.contents = (id)screenshot.CGImage;
     
-    UIBezierPath *blurExclusionPath = [UIBezierPath bezierPathWithOvalInRect:finishImgView.frame];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
         UIImage *blur = [screenshot rn_boxblurImageWithBlur: 0.5f ];

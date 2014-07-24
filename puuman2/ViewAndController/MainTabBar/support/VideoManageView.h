@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ShareSelectedViewController.h"
 
 @protocol VideoManageDelegate;
 @interface VideoManageView : UIView

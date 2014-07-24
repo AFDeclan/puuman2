@@ -10,6 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "VideoManageView.h"
 #import "ShareVideoDeleteViewController.h"
+#import "ShareSelectedViewController.h"
 
 @protocol ShareVideoControllerDelegate;
 @interface ShareVideoViewController : PopUpViewController<VideoManageDelegate,ShareViewDelegate,PopViewDelegate,ShareVideoDeleteDelegate>
