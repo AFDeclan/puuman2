@@ -67,6 +67,7 @@ static SkipViewController *instance;
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [[MainTabBarController sharedMainViewController] showDiary];
     [[MainTabBarController sharedMainViewController] refreshBabyInfoView];
+    [[DiaryViewController sharedDiaryViewController] removeheadView];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (![userDefaults boolForKey:@"DiarytutorialShowed"]){
         [userDefaults setBool:YES forKey:@"DiarytutorialShowed"];

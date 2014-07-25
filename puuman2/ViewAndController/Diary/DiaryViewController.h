@@ -26,10 +26,7 @@
     ToolsView *toolsView;
     UIView *diaryTurorialView;
     UIImageView *diaryTurorial;
-    DiaryProgressHeaderView *importProgress;
     DiaryProgressHeaderView *headerview;
-    int importNum;
-    int importTotalNum;
 }
 @property (assign,nonatomic) BOOL cameraModel;
 
@@ -42,10 +39,8 @@
 - (void)showNewDiaryViewWithType:(NewButtonType)type withTaskInfo:(NSDictionary *)info;
 - (void)setTaskInfo:(NSDictionary *)taskInfo;
 - (void)refresh;
-- (void)diaryLoaded;
-- (void)refreshTable;
-- (void)setImportTotalNum:(NSInteger)num;
-- (void)autoImportShowed;
+- (void)removeheadView;
+- (void)loadDownFindished;
 - (void)showTurorialView;
 
 @end

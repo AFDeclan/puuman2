@@ -79,6 +79,7 @@
 //刷新网络
 #define Noti_Refresh                            @"Noti_Refresh"
 #define Noti_ReloadDiaryTable                   @"Noti_ReloadDiaryTable"
+#define Noti_AddDiaryTable                      @"Noti_AddDiaryTable"
 #define Noti_HideKeyBoard                       @"Noti_HideKeyBoard"
 #define Noti_PartnerDataViewScrolled            @"Noti_PartnerDataViewScrolled"
 #define Noti_Imported                           @"Noti_Imported"

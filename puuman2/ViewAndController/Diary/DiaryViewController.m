@@ -42,9 +42,6 @@ static DiaryViewController * instance;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        importNum = 0;
-        importTotalNum = 0;
-        [MyNotiCenter addObserver:self selector:@selector(imported) name:Noti_Imported object:nil];
         [MyNotiCenter addObserver:self selector:@selector(updateDiaryCount) name:Noti_UpdateDiaryStateRefreshed object:nil];
     }
     return self;
@@ -78,7 +75,6 @@ static DiaryViewController * instance;
     [self.view setBackgroundColor:[UIColor clearColor]];
     [self initToolsView];
     [self initContent];
-    
 	// Do any additional setup after loading the view.
 
 
@@ -111,32 +107,20 @@ static DiaryViewController * instance;
     [self.view addSubview:toolsView];
 }
 
-- (void)initActiveView
-{
-    
-    
-//    UIImageView *partingLineOne = [[UIImageView alloc] initWithFrame:CGRectMake(0, 288, 240, 2)];
-//    [partingLineOne setImage:[UIImage imageNamed:@"line1_diary.png"]];
-//    [partingLineOne setBackgroundColor:[UIColor clearColor]];
-//    [activeNewestView addSubview:partingLineOne];
-//    
-//    calenderView = [[CalenderControlView alloc] initWithFrame:CGRectMake(0, 290, 240, 340)];
-//    [calenderView setBackgroundColor:[UIColor clearColor]];
-//    [activeNewestView addSubview:calenderView];
-    
-    
-}
+
 - (void)updateDiaryCount
 {
     //取数据判断是否下载更新
-    if ([DiaryModel sharedDiaryModel].updateCnt >0) {
+    if ([DiaryModel sharedDiaryModel].updateCnt > 0) {
         //if ([DiaryModel sharedDiaryModel].downloadedCnt == 0) [self  diaryLoading];
         if (!headerview)
         {
-            headerview = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(48, 30, ViewWidth(self.view)-40, 20)];
-            [headerview setIsDiary:YES];
+            headerview = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(152, 28, 672 - 88 , 20)];
             [self.view addSubview:headerview];
+            [diaryTableVC.tableView reloadData];
         }
+        
+        
         
         [headerview diaryLoadedcnt:[[DiaryModel sharedDiaryModel] downloadedCnt] totalCnt:[[DiaryModel sharedDiaryModel] updateCnt]];
         if ([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt] && [[MainTabBarController sharedMainViewController] hasShareVideo]) {
@@ -146,29 +130,6 @@ static DiaryViewController * instance;
 }
 
 
-- (void)imported
-{
-    if (importTotalNum >0) {
-  //      if (importNum == 0)[self  diaryLoading];
-        if (!importProgress){
-            importProgress = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(48, 30, ViewWidth(self.view)-40, 20)];
-            [importProgress setIsDiary:NO];
-        }
-        
-        importNum++;
-        [importProgress diaryLoadedcnt:importNum totalCnt:importTotalNum];
-        
-    }
-}
-
-
-- (void)setImportTotalNum:(NSInteger)num
-{
-    importTotalNum = num;
-    if (num == 0) {
-        importNum = 0;
-    }
-}
 
 - (void)loadTable
 {
@@ -452,33 +413,18 @@ static DiaryViewController * instance;
     [toolsView reloadView];
 }
 
-- (void)diaryLoaded
+
+- (void)loadDownFindished
 {
     [[DiaryModel sharedDiaryModel] reloadData];
-    [[DiaryModel sharedDiaryModel] resetUpdateDiaryCnt];
     [diaryTableVC.tableView reloadData];
+    
+    [[DiaryModel sharedDiaryModel] resetUpdateDiaryCnt];
     [[JoinView sharedJoinView] refreshStaus];
-    
-    
+    [headerview removeFromSuperview];
+    headerview = nil;
 }
 
-//- (void)setImportTotalNum:(NSInteger)num
-//{
-//    
-//    [diaryTableVC setImportTotalNum:num];
-//    [diaryTableVC.tableView reloadData];
-//}
-//
-//- (void)refreshTable
-//{
-//    
-//    [diaryTableVC.tableView reloadData];
-//}
-//
-//- (void)autoImportShowed
-//{
-//    [diaryTableVC autoImportShowed];
-//}
 
 - (void)showTurorialView
 {
@@ -653,5 +599,11 @@ static DiaryViewController * instance;
 }
 
 
-
+- (void)removeheadView
+{
+    if (headerview) {
+        [headerview removeFromSuperview];
+        headerview = nil;
+    }
+}
 @end

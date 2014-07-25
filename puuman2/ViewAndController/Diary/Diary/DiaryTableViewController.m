@@ -31,12 +31,12 @@ static BOOL needLoadInfo = YES;
     if (self) {
        
         // Custom initialization
-        [MyNotiCenter addObserver:self selector:@selector(reloadTable) name:Noti_ReloadDiaryTable object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(imported:) name:Noti_Imported object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(addDiary) name:Noti_AddDiaryTable object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(reloadDiaryTable) name:Noti_ReloadDiaryTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(deleteDiary:) name:Noti_DeleteDiary object:nil];
         [MyNotiCenter addObserver:self selector:@selector(deletBtnShowed:) name:Noti_DelBtnShowed object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(updateDiaryCount) name:Noti_UpdateDiaryStateRefreshed object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(imported:) name:Noti_Imported object:nil];
-        show = NO;
+ 
     }
     return self;
 }
@@ -70,18 +70,21 @@ static BOOL needLoadInfo = YES;
 
 - (void)imported:(NSNotification *)notification
 {
-    show = !show;
+    show = [[notification object] boolValue];
 
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 0)] withRowAnimation:UITableViewRowAnimationAutomatic];
     PostNotification(Noti_ImportRefresh, [NSNumber numberWithBool:show]);
     if (!show) {
         [[ImportStore shareImportStore] addNewDiary];
+        [self addDiary];
+        [[ImportStore shareImportStore] reset];
+        
     }
 }
 
 - (void)diaryLoading;
 {
-    [self reloadTable];
+    [self reloadDiaryTable];
 }
 
 - (void)didReceiveMemoryWarning
@@ -143,6 +146,7 @@ static BOOL needLoadInfo = YES;
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -322,18 +326,20 @@ static BOOL needLoadInfo = YES;
 - (void)foldOrUnfold
 {
     
-    [self reloadTable];
+    [self reloadDiaryTable];
 }
 
-- (void)reloadTable
+- (void)reloadDiaryTable
 {
     [[DiaryModel sharedDiaryModel] reloadData];
-    [self.tableView reloadData];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 1)] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 
 - (void)tableView:(UITableView *)parent didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    
     NSArray *reloadArray;
     BOOL expand = NO;
     
@@ -409,16 +415,16 @@ static BOOL needLoadInfo = YES;
 
 
 
-- (void)diaryLoaded
+- (void)addDiary
 {
-  
     [[DiaryModel sharedDiaryModel] reloadData];
-    [[DiaryModel sharedDiaryModel] resetUpdateDiaryCnt];
-    [self reloadTable];
-    
+    [self.tableView beginUpdates];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    NSArray *insertIndexPath = [NSArray arrayWithObjects:indexPath, nil];
+    [self.tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];
     
 }
-
 
 
 

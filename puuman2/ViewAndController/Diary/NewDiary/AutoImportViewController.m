@@ -33,7 +33,6 @@
         // Custom initialization
         selectedNum = 0;
     
-        
         titleTield = [[CustomTextField  alloc] initWithFrame:CGRectMake(96, 112, 512, 48)];
         titleTield.keyboardType = UIKeyboardTypeDefault;
         titleTield.returnKeyType = UIReturnKeyDone;

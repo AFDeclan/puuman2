@@ -13,7 +13,6 @@
 #import "ImportStore.h"
 
 @implementation DiaryProgressHeaderView
-@synthesize isDiary =_isDiary;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -21,9 +20,8 @@
     if (self) {
         // Initialization code
         [self initialization];
-        _isDiary = YES;
         isFinished = NO;
-        [self setAlpha:1];
+        [self setAlpha:0.5];
     
     }
     return self;
@@ -33,22 +31,26 @@
 - (void)initialization
 {
     
-    bg_view =[[UIImageView alloc] initWithFrame:CGRectMake(48, 0, self.frame.size.width-40-48-40, 20)];
+    bg_view =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 20)];
     [bg_view.layer setCornerRadius:10];
     [bg_view.layer setMasksToBounds:YES];
     [self addSubview:bg_view];
-
     
-    progress = [[UIScrollView alloc] initWithFrame:CGRectMake(48, 0,self.frame.size.width-40-48-40, 20)];
+    progress = [[UIScrollView alloc] initWithFrame:CGRectMake(2, 2,self.frame.size.width - 4, 16)];
     [progress setScrollEnabled:NO];
-    [progress.layer setCornerRadius:10];
+    [progress.layer setCornerRadius:8];
     [progress.layer setMasksToBounds:YES];
     [self addSubview:progress];
-    [progress setContentSize:CGSizeMake((self.frame.size.width-40-48-40)*2, 20)];
-     bg_progress =[[UIImageView alloc] initWithFrame:CGRectMake(48, 0,self.frame.size.width-40-48-40,20)];
-    [progress setContentOffset:CGPointMake(self.frame.size.width-40, 0)];
-    [progress addSubview:bg_progress];
+    [progress setContentSize:CGSizeMake(self.frame.size.width*2, 16)];
     
+    bg_progress =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0,self.frame.size.width - 4,16)];
+
+    [bg_progress.layer setCornerRadius:8];
+    [bg_progress.layer setMasksToBounds:YES];
+    [bg_progress setBackgroundColor:PMColor3];
+    [progress setContentOffset:CGPointMake(self.frame.size.width, 0)];
+    [progress addSubview:bg_progress];
+    [bg_view setBackgroundColor:PMColor4];
 
    
 }
@@ -81,51 +83,32 @@
     
 }
 
-- (void)setIsDiary:(BOOL)isDiary
-{
-    _isDiary = isDiary;
-    if (_isDiary) {
-        [bg_progress setBackgroundColor:PMColor3];
-        [bg_view setBackgroundColor:PMColor4];
-
-    }else{
-        [bg_progress setBackgroundColor:RGBColor(239, 84, 77)];
-        [bg_view setBackgroundColor:RGBColor(239, 128, 123)];
-
-    }
-}
 - (void)refreshProgress
 {
     CGPoint pos = progress.contentOffset;
     if (_cnt >_totalCnt) {
         _cnt = _totalCnt;
     }
-    pos.x =self.frame.size.width-self.frame.size.width*_cnt/_totalCnt;
+    pos.x = ViewWidth(progress)-ViewWidth(progress)*_cnt/_totalCnt;
     [progress setContentOffset:pos animated:YES];
-    if (_isDiary) {
-        [[DiaryViewController sharedDiaryViewController] diaryLoaded];
-    }else{
-        [[DiaryViewController sharedDiaryViewController] setImportTotalNum:0];
-        [[ImportStore shareImportStore] addNewDiary];
-        [[DiaryViewController sharedDiaryViewController] refreshTable];
-        [[ImportStore shareImportStore] reset];
-    }
     
     [self performSelector:@selector(reset) withObject:nil afterDelay:0];
 
 }
 
 
-
 - (void)finished
 {
     isFinished = YES;
+
     if (progress.contentOffset.x  >0) {
 
         [UIView animateWithDuration:0.5 animations:^{
            // progress.contentOffset = CGPointMake(0, 0);
             [self refreshProgress];
             [self setAlpha:0];
+            [[DiaryViewController sharedDiaryViewController] loadDownFindished];
+
         }];
       
     }

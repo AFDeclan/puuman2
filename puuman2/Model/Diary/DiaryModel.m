@@ -208,13 +208,10 @@ static DiaryModel * instance;
         [_diaries removeAllObjects];
     _sampleDiary = NO;
     [_diaries addObject:d];
-    PostNotification(Noti_ReloadDiaryTable, nil);
     if ( [[UserInfo sharedUserInfo] addCorns:0.1]) {
         PostNotification(Noti_AddCorns, nil);
 
     }
-   
-
     [self performSelectorInBackground:@selector(uploadDiary:) withObject:d];
     return YES;
 }

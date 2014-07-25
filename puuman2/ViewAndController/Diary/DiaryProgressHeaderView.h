@@ -18,9 +18,9 @@
     NSTimer  *timer;
     int _totalCnt;
     int _cnt;
+    
     BOOL isFinished;
 }
-@property(assign,nonatomic) BOOL isDiary;
 
 - (void)diaryLoadedcnt:(int)cnt totalCnt:(int)totalCnt;
 - (void)finished;

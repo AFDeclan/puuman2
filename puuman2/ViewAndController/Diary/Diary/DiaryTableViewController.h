@@ -24,7 +24,6 @@
     BOOL dragging;
     BOOL show;
 }
-- (void)diaryLoaded;
 
 - (void)tapWithPoint:(CGPoint)pos;
 + (BOOL)needLoadInfo;
