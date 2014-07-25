@@ -185,10 +185,11 @@
     lastDate = (NSDate *)[userDefaults valueForKey:@"closeDate"];
     if (lastDate) {
         NSInteger hour = [[NSDate date] hoursFromDate:lastDate];
-       if (hour < 2) {
-            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
-            return;
-        }
+//       if (hour < 2) {
+//            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
+//            return;
+//        }
+        hour = 200;
         __block BOOL foundThePhoto = NO;
         ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
         library = assetLibrary;

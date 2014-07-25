@@ -15,7 +15,6 @@
     NSString *title;
     NSInteger *progress;
    // NSDictionary *diaryInfo;
-    NSInteger count;
     NSInteger total;
     NSMutableArray *diaryArrs;
     NSMutableArray *timeArrs;

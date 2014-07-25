@@ -666,6 +666,7 @@
 		54C55AC0197E5FCA00C2056D /* saveShareVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C55ABE197E5FCA00C2056D /* saveShareVideo.png */; };
 		54C55AC1197E5FCA00C2056D /* deleteShareVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C55ABF197E5FCA00C2056D /* deleteShareVideo.png */; };
 		54C729F5197A0B2D00F105CC /* BabyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C729F4197A0B2D00F105CC /* BabyViewController.m */; };
+		54C86F0E1981F57000A6F5F4 /* ImportRefreshCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C86F0D1981F57000A6F5F4 /* ImportRefreshCell.m */; };
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
 		54C8D56B18DC2E840013FD03 /* TopicContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56A18DC2E840013FD03 /* TopicContentCell.m */; };
 		54C8D57418DC44EF0013FD03 /* TopicAllTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D57318DC44EF0013FD03 /* TopicAllTableViewController.m */; };
@@ -1795,6 +1796,8 @@
 		54C55ABF197E5FCA00C2056D /* deleteShareVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteShareVideo.png; sourceTree = "<group>"; };
 		54C729F3197A0B2D00F105CC /* BabyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyViewController.h; sourceTree = "<group>"; };
 		54C729F4197A0B2D00F105CC /* BabyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyViewController.m; sourceTree = "<group>"; };
+		54C86F0C1981F57000A6F5F4 /* ImportRefreshCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportRefreshCell.h; sourceTree = "<group>"; };
+		54C86F0D1981F57000A6F5F4 /* ImportRefreshCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportRefreshCell.m; sourceTree = "<group>"; };
 		54C8D56018DBE1B80013FD03 /* ChatInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputViewController.h; sourceTree = "<group>"; };
 		54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputViewController.m; sourceTree = "<group>"; };
 		54C8D56918DC2E840013FD03 /* TopicContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicContentCell.h; sourceTree = "<group>"; };
@@ -3977,6 +3980,8 @@
 			children = (
 				5412BC5F192C818F0033F322 /* DiaryTableViewController.h */,
 				5412BC60192C818F0033F322 /* DiaryTableViewController.m */,
+				54C86F0C1981F57000A6F5F4 /* ImportRefreshCell.h */,
+				54C86F0D1981F57000A6F5F4 /* ImportRefreshCell.m */,
 				54C1109B1974E89C00415EE3 /* TaskCell.h */,
 				54C1109C1974E89C00415EE3 /* TaskCell.m */,
 				54C1109D1974E89C00415EE3 /* TaskInfoViewController.h */,
@@ -4832,6 +4837,7 @@
 				5474A47718C5A40A0073B2FE /* NewTextPhotoSelectedViewController.m in Sources */,
 				1405E0CE18FE97B300781B81 /* AsyncImgView.m in Sources */,
 				54B4682218E5210900745F72 /* HospitalHomeView.m in Sources */,
+				54C86F0E1981F57000A6F5F4 /* ImportRefreshCell.m in Sources */,
 				54C110971974DA5500415EE3 /* AFSelectedButton.m in Sources */,
 				54AFAA8E18DAA4220067B8C1 /* RewardViewController.m in Sources */,
 				14B8DF2B18BC37A30047C6B3 /* Ware.m in Sources */,

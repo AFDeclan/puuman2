@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+
 typedef enum{
     ImportDiary = 0,
     TextDiary,
     AudioDiary,
     CameraDiary,
     VideoDiary
-    
-    
 }NewButtonType;
 @interface DiaryNewButton : UIView
 {

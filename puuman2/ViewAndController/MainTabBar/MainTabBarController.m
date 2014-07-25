@@ -29,7 +29,7 @@ static MainTabBarController *instance;
 @synthesize videoShowed =_videoShowed;
 @synthesize hasShareVideo = _hasShareVideo;
 @synthesize babyInfoShowed = _babyInfoShowed;
-
+@synthesize importTotal = _importTotal;
 //@synthesize loadingVideo = _loadingVideo;
 + (MainTabBarController *)sharedMainViewController
 {
@@ -46,7 +46,7 @@ static MainTabBarController *instance;
         // Custom initialization
         [self setDelegate:self];
         _isVertical = YES;
-
+        
         [self.tabBar removeFromSuperview];
     }
     return self;
@@ -55,7 +55,7 @@ static MainTabBarController *instance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    _importTotal = 0;
     _babyInfoShowed = NO;
     [self initWithTabBar];
     _isReply = YES;

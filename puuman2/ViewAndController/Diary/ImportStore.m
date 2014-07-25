@@ -45,7 +45,6 @@ static ImportStore * instance;
 
 -(void)initWithImportData:(NSDictionary *)dataDic
 {
-    count = 0;
     photosArr = [dataDic valueForKey:@"photos"];
     title = [dataDic valueForKey:@"title"];
     total = [[dataDic valueForKey:@"count"] integerValue];
@@ -75,9 +74,13 @@ static ImportStore * instance;
         {
             [ErrorLog errorLog:@"Save photo failed - 1" fromFile:@"DiaryFileManager.m" error:error];
         }
-        count ++;
         
-        PostNotification(Noti_Imported, [NSNumber numberWithInt:count]);
+        if (i == 0) {
+            PostNotification(Noti_Imported, [NSNumber numberWithBool:YES]);
+        }
+        if (i == [photos count] - 1) {
+            PostNotification(Noti_Imported, [NSNumber numberWithBool:NO]);
+        }
         [paths addObject:filePath];
     }
     

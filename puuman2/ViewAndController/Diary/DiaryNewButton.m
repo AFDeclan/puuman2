@@ -23,6 +23,7 @@
         perVertical= ![MainTabBarController sharedMainViewController].isVertical;
         // Initialization code
         [self initialization];
+        self.layer.masksToBounds = NO;
     }
     return self;
 }
@@ -35,16 +36,26 @@
     [bgCommon setShowsHorizontalScrollIndicator:NO];
     [bgCommon setShowsVerticalScrollIndicator:NO];
     [self addSubview:bgCommon];
+
+    
+    
     newBtn =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 56, 88)];
     [newBtn setImage:[UIImage imageNamed:@"btn_more_diary.png"] forState:UIControlStateNormal];
     [newBtn addTarget:self action:@selector(hideOrShowBtns) forControlEvents:UIControlEventTouchUpInside];
     [bgCommon addSubview:newBtn];
   
+    
+    
     commonBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 33, 55, 55)];
     [commonBtn addTarget:self action:@selector(addDiary) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:commonBtn];
+    
+    
+    
 
 }
+
+
 - (void)setCommonBtnType:(NewButtonType)commonBtnType
 {
     switch (commonBtnType) {

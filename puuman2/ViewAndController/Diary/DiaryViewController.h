@@ -39,7 +39,6 @@
 - (void)refresh;
 - (void)diaryLoaded;
 - (void)refreshTable;
-- (void)setImportTotalNum:(NSInteger)num;
 - (void)autoImportShowed;
 - (void)showTurorialView;
 

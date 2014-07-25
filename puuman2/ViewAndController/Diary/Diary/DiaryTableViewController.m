@@ -14,6 +14,8 @@
 #import "DiaryViewController.h"
 #import "ImportStore.h"
 #import "DiaryProgressHeaderView.h"
+#import "ImportRefreshCell.h"
+#import "ImportStore.h"
 
 @interface DiaryTableViewController ()
 
@@ -33,9 +35,9 @@ static BOOL needLoadInfo = YES;
         [MyNotiCenter addObserver:self selector:@selector(reloadTable) name:Noti_ReloadDiaryTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(deleteDiary:) name:Noti_DeleteDiary object:nil];
         [MyNotiCenter addObserver:self selector:@selector(deletBtnShowed:) name:Noti_DelBtnShowed object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(imported) name:Noti_Imported object:nil];
         [MyNotiCenter addObserver:self selector:@selector(updateDiaryCount) name:Noti_UpdateDiaryStateRefreshed object:nil];
-        
+        [MyNotiCenter addObserver:self selector:@selector(imported:) name:Noti_Imported object:nil];
+        show = NO;
     }
     return self;
 }
@@ -85,18 +87,14 @@ static BOOL needLoadInfo = YES;
     PostNotification(Noti_StartGif, nil);
 }
 
-- (void)imported
+- (void)imported:(NSNotification *)notification
 {
-    if (importTotalNum >0) {
-        if (importNum == 0)[self  diaryLoading];
-        if (!importProgress){
-            importProgress = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
-            [importProgress setIsDiary:NO];
-        }
-        
-        importNum++;
-        [importProgress diaryLoadedcnt:importNum totalCnt:importTotalNum];
-        
+    show = !show;
+
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 0)] withRowAnimation:UITableViewRowAnimationAutomatic];
+    PostNotification(Noti_ImportRefresh, [NSNumber numberWithBool:show]);
+    if (!show) {
+        [[ImportStore shareImportStore] addNewDiary];
     }
 }
 
@@ -123,7 +121,7 @@ static BOOL needLoadInfo = YES;
 {
     switch (section) {
         case 0:
-            return 1;
+            return 2;
         case 1:
             return  [[[DiaryModel sharedDiaryModel]diaries]count];
         case 2:
@@ -190,8 +188,13 @@ static BOOL needLoadInfo = YES;
             [cell setBackgroundColor:[UIColor clearColor]];
             return cell;
         }else{
-            TaskCell *cell =[TaskCell sharedTaskCell];
-            cell.delegate =self;
+            static NSString *identify = @"ImportRefrsh";
+            ImportRefreshCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+            if (cell == nil)
+            {
+                cell = [[ImportRefreshCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+              
+            }
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [cell setBackgroundColor:[UIColor clearColor]];
             return cell;
@@ -314,10 +317,13 @@ static BOOL needLoadInfo = YES;
         if (indexPath.row == 0) {
             return 64;
         }else{
-            if ([TaskCell sharedTaskCell].taskFolded)
-                return kTaskCellHeight_Folded;
-            else return kTaskCellHeight_Unfolded;
-            return 0;
+            if (show) {
+                return 32;
+ 
+            }else{
+                return 0;
+
+            }
         }
         
     }else if (indexPath.section == 2)

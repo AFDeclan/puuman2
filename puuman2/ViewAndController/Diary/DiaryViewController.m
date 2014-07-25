@@ -111,14 +111,6 @@ static DiaryViewController * instance;
 {
     
     
-    
-    
-   
-    
-  
-    
-    
-    
 //    UIImageView *partingLineOne = [[UIImageView alloc] initWithFrame:CGRectMake(0, 288, 240, 2)];
 //    [partingLineOne setImage:[UIImage imageNamed:@"line1_diary.png"]];
 //    [partingLineOne setBackgroundColor:[UIColor clearColor]];

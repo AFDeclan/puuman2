@@ -82,6 +82,7 @@
 #define Noti_HideKeyBoard                       @"Noti_HideKeyBoard"
 #define Noti_PartnerDataViewScrolled            @"Noti_PartnerDataViewScrolled"
 #define Noti_Imported                           @"Noti_Imported"
+#define Noti_ImportRefresh                      @"Noti_ImportRefresh"
 
 //社交
 #define Noti_manangePartnerData                 @"Noti_manangePartnerData"

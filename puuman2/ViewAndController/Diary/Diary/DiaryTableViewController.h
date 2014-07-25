@@ -26,6 +26,7 @@
     DiaryProgressHeaderView *importProgress;
     DiaryProgressHeaderView *headerview;
     BOOL dragging;
+    BOOL show;
 }
 - (void)diaryLoaded;
 - (void)setImportTotalNum:(NSInteger)num;

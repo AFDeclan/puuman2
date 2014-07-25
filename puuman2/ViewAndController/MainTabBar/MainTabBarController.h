@@ -35,6 +35,7 @@
 @property(assign,nonatomic) BOOL videoShowed;
 @property(assign,nonatomic) BOOL hasShareVideo;
 @property(assign,nonatomic) BOOL babyInfoShowed;
+@property(assign,nonatomic) NSInteger importTotal;
 
 
 //@property(assign,nonatomic) BOOL loadingVideo;
