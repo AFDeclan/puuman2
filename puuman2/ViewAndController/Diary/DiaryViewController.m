@@ -42,6 +42,10 @@ static DiaryViewController * instance;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        importNum = 0;
+        importTotalNum = 0;
+        [MyNotiCenter addObserver:self selector:@selector(imported) name:Noti_Imported object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(updateDiaryCount) name:Noti_UpdateDiaryStateRefreshed object:nil];
     }
     return self;
 }
@@ -122,8 +126,49 @@ static DiaryViewController * instance;
     
     
 }
+- (void)updateDiaryCount
+{
+    //取数据判断是否下载更新
+    if ([DiaryModel sharedDiaryModel].updateCnt >0) {
+        //if ([DiaryModel sharedDiaryModel].downloadedCnt == 0) [self  diaryLoading];
+        if (!headerview)
+        {
+            headerview = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(48, 30, ViewWidth(self.view)-40, 20)];
+            [headerview setIsDiary:YES];
+            [self.view addSubview:headerview];
+        }
+        
+        [headerview diaryLoadedcnt:[[DiaryModel sharedDiaryModel] downloadedCnt] totalCnt:[[DiaryModel sharedDiaryModel] updateCnt]];
+        if ([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt] && [[MainTabBarController sharedMainViewController] hasShareVideo]) {
+            [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
+        }
+    }
+}
 
 
+- (void)imported
+{
+    if (importTotalNum >0) {
+  //      if (importNum == 0)[self  diaryLoading];
+        if (!importProgress){
+            importProgress = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(48, 30, ViewWidth(self.view)-40, 20)];
+            [importProgress setIsDiary:NO];
+        }
+        
+        importNum++;
+        [importProgress diaryLoadedcnt:importNum totalCnt:importTotalNum];
+        
+    }
+}
+
+
+- (void)setImportTotalNum:(NSInteger)num
+{
+    importTotalNum = num;
+    if (num == 0) {
+        importNum = 0;
+    }
+}
 
 - (void)loadTable
 {
@@ -417,23 +462,23 @@ static DiaryViewController * instance;
     
 }
 
-- (void)setImportTotalNum:(NSInteger)num
-{
-    
-    [diaryTableVC setImportTotalNum:num];
-    [diaryTableVC.tableView reloadData];
-}
-
-- (void)refreshTable
-{
-    
-    [diaryTableVC.tableView reloadData];
-}
-
-- (void)autoImportShowed
-{
-    [diaryTableVC autoImportShowed];
-}
+//- (void)setImportTotalNum:(NSInteger)num
+//{
+//    
+//    [diaryTableVC setImportTotalNum:num];
+//    [diaryTableVC.tableView reloadData];
+//}
+//
+//- (void)refreshTable
+//{
+//    
+//    [diaryTableVC.tableView reloadData];
+//}
+//
+//- (void)autoImportShowed
+//{
+//    [diaryTableVC autoImportShowed];
+//}
 
 - (void)showTurorialView
 {
