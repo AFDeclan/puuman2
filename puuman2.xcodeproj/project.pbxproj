@@ -3656,6 +3656,7 @@
 				54B3812F1978D1F0003FF386 /* MainTabBarController+Hud.m */,
 				54B381311978F8C1003FF386 /* MainTabBarController+AutoImport.h */,
 				54B381321978F8C1003FF386 /* MainTabBarController+AutoImport.m */,
+				54B94A3C197CF4BC003ABA93 /* ShareVideo */,
 			);
 			name = TabBar;
 			sourceTree = "<group>";
@@ -3764,7 +3765,6 @@
 				54BB09E718D9494C00F805DD /* SkipViewController.m */,
 				54BA847319762B4600B3A01D /* TabBar */,
 				54B30ABF195D5EEB00007DDC /* BabyInfo */,
-				54B94A3C197CF4BC003ABA93 /* ShareVideo */,
 				54B4EB2218C576E5004489DA /* support */,
 			);
 			path = MainTabBar;

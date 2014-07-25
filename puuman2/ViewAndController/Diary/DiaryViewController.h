@@ -12,6 +12,7 @@
 #import "JoinView.h"
 #import "CalenderControlView.h"
 #import "ToolsView.h"
+#import "DiaryProgressHeaderView.h"
 
 @interface DiaryViewController : UIViewController<UIGestureRecognizerDelegate>
 {
@@ -25,6 +26,10 @@
     ToolsView *toolsView;
     UIView *diaryTurorialView;
     UIImageView *diaryTurorial;
+    DiaryProgressHeaderView *importProgress;
+    DiaryProgressHeaderView *headerview;
+    int importNum;
+    int importTotalNum;
 }
 @property (assign,nonatomic) BOOL cameraModel;
 
