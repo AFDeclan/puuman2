@@ -19,7 +19,7 @@
 #import "Diary.h"
 #import "AFSelectedTextImgButton.h"
 #define kHeaderHeight    36
-#define kFooterHeight    24
+#define kFooterHeight    40
 #define ContentWidth  512
 
 typedef enum{

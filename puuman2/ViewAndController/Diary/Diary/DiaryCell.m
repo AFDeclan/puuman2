@@ -241,8 +241,8 @@
 {
     SetViewLeftUp(_delBtn,632, 24);
     SetViewLeftUp(_shareBtn,632, ViewY(_content)+ViewHeight(_content)-24);
-    SetViewLeftUp(coinBtn, 20, ViewY(_content) +ViewHeight(_content)-10);
-    SetViewLeftUp(coinLabel, 54, ViewY(_content) + ViewHeight(_content));
+    SetViewLeftUp(coinBtn, 20, ViewY(_content) +ViewHeight(_content));
+    SetViewLeftUp(coinLabel, 54, ViewY(_content) + ViewHeight(_content)+5);
     
     SetViewRightCenter(_delScrollView, ViewX(_delBtn), ViewY(_delBtn)+ViewHeight(_delBtn)/2);
     if (self.indexPath.row == 0) {
