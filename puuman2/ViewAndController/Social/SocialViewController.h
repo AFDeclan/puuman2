@@ -21,9 +21,11 @@
     AFSelectedImgButton *partnerBtn;
     SocialContentView *contnetView;
     BOOL selectedTopic;
+    
 
 }
 
++ (SocialViewController *)sharedViewController;
 
 
 @end

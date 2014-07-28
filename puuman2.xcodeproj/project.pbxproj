@@ -313,6 +313,11 @@
 		54A8F46118CDCAE900D0D523 /* CameraAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A8F46018CDCAE900D0D523 /* CameraAudioViewController.m */; };
 		54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9287F18C95CEF00C9D366 /* NewDiaryDeleteCell.m */; };
 		54A9288418C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */; };
+		54AAEAA319863C64004AD151 /* SocialDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEAA219863C64004AD151 /* SocialDetailView.m */; };
+		54AAEAA919863D60004AD151 /* SocialAllTopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEAA819863D60004AD151 /* SocialAllTopicView.m */; };
+		54AAEAAC19863D78004AD151 /* SocialMyTopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEAAB19863D78004AD151 /* SocialMyTopicView.m */; };
+		54AAEAAF19863D91004AD151 /* SocialPartnerDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEAAE19863D91004AD151 /* SocialPartnerDataView.m */; };
+		54AAEAB219863DAB004AD151 /* SocialPartnerChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEAB119863DAB004AD151 /* SocialPartnerChatView.m */; };
 		54AB6CC818F2BA8D00E4269E /* check_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AB6CC518F2BA8D00E4269E /* check_diary.png */; };
 		54AB6CC918F2BA8D00E4269E /* circle_autoinput.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AB6CC618F2BA8D00E4269E /* circle_autoinput.png */; };
 		54AB6CCA18F2BA8D00E4269E /* icon_check_autoinput.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AB6CC718F2BA8D00E4269E /* icon_check_autoinput.png */; };
@@ -1273,6 +1278,16 @@
 		54A9288118C95D0200C9D366 /* NewDiaryDeleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDiaryDeleteCell.h; sourceTree = "<group>"; };
 		54A9288218C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDiaryDeleteTableViewCell.h; sourceTree = "<group>"; };
 		54A9288318C95D6B00C9D366 /* NewDiaryDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDiaryDeleteTableViewCell.m; sourceTree = "<group>"; };
+		54AAEAA119863C64004AD151 /* SocialDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialDetailView.h; sourceTree = "<group>"; };
+		54AAEAA219863C64004AD151 /* SocialDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialDetailView.m; sourceTree = "<group>"; };
+		54AAEAA719863D60004AD151 /* SocialAllTopicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialAllTopicView.h; sourceTree = "<group>"; };
+		54AAEAA819863D60004AD151 /* SocialAllTopicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialAllTopicView.m; sourceTree = "<group>"; };
+		54AAEAAA19863D78004AD151 /* SocialMyTopicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialMyTopicView.h; sourceTree = "<group>"; };
+		54AAEAAB19863D78004AD151 /* SocialMyTopicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMyTopicView.m; sourceTree = "<group>"; };
+		54AAEAAD19863D91004AD151 /* SocialPartnerDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialPartnerDataView.h; sourceTree = "<group>"; };
+		54AAEAAE19863D91004AD151 /* SocialPartnerDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialPartnerDataView.m; sourceTree = "<group>"; };
+		54AAEAB019863DAB004AD151 /* SocialPartnerChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialPartnerChatView.h; sourceTree = "<group>"; };
+		54AAEAB119863DAB004AD151 /* SocialPartnerChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialPartnerChatView.m; sourceTree = "<group>"; };
 		54AB6CAE18F24B4A00E4269E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		54AB6CB018F24B5A00E4269E /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		54AB6CB218F24C2100E4269E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -2693,6 +2708,16 @@
 			children = (
 				5448D58A18FE2F2300DA696C /* SocialContentView.h */,
 				5448D58B18FE2F2300DA696C /* SocialContentView.m */,
+				54AAEAA119863C64004AD151 /* SocialDetailView.h */,
+				54AAEAA219863C64004AD151 /* SocialDetailView.m */,
+				54AAEAA719863D60004AD151 /* SocialAllTopicView.h */,
+				54AAEAA819863D60004AD151 /* SocialAllTopicView.m */,
+				54AAEAAA19863D78004AD151 /* SocialMyTopicView.h */,
+				54AAEAAB19863D78004AD151 /* SocialMyTopicView.m */,
+				54AAEAAD19863D91004AD151 /* SocialPartnerDataView.h */,
+				54AAEAAE19863D91004AD151 /* SocialPartnerDataView.m */,
+				54AAEAB019863DAB004AD151 /* SocialPartnerChatView.h */,
+				54AAEAB119863DAB004AD151 /* SocialPartnerChatView.m */,
 				5447C4AC18D98ED600187BE6 /* AllTopicView.h */,
 				5447C4AD18D98ED600187BE6 /* AllTopicView.m */,
 				5447C4AF18D98EED00187BE6 /* MyTopicView.h */,
@@ -4869,6 +4894,7 @@
 				54AFAA8118DA8C670067B8C1 /* AllWordsPopTalkTableViewCell.m in Sources */,
 				54ADB1E618E1AC1D00FCCC83 /* AutoImportViewController.m in Sources */,
 				5421667618E032B5005875F8 /* VotingCell.m in Sources */,
+				54AAEAAC19863D78004AD151 /* SocialMyTopicView.m in Sources */,
 				54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */,
 				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
 				54B30AA5195D546900007DDC /* WaitView.m in Sources */,
@@ -4920,6 +4946,7 @@
 				54D14FD918CACC720022E1F4 /* CustomPopViewController.m in Sources */,
 				54AFBBCB18D6938600861A69 /* SelectButton.m in Sources */,
 				54AFAA7E18DA896B0067B8C1 /* AllWordsPopViewController.m in Sources */,
+				54AAEAA319863C64004AD151 /* SocialDetailView.m in Sources */,
 				54AFBBC718D6938600861A69 /* LoginStartView.m in Sources */,
 				541970D818D195C10058FE64 /* LineChartCell.m in Sources */,
 				54B30ABC195D5C9D00007DDC /* PuumanShowView.m in Sources */,
@@ -5003,6 +5030,7 @@
 				54012DC418E2C14300F11D97 /* SortTableViewController.m in Sources */,
 				54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */,
 				54B30A91195D53EC00007DDC /* ToolsUnitView.m in Sources */,
+				54AAEAA919863D60004AD151 /* SocialAllTopicView.m in Sources */,
 				54B30A8F195D53EC00007DDC /* ToolsInfoView.m in Sources */,
 				54B30AB1195D5A0500007DDC /* CalenderTableViewCell.m in Sources */,
 				54B30ABD195D5C9D00007DDC /* PuumanButtonAnimateView.m in Sources */,
@@ -5045,6 +5073,7 @@
 				88C9A94C196171A100C25347 /* BabyInfoChooseButton.m in Sources */,
 				54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */,
 				1495A1B719189298006A64BA /* Diary.m in Sources */,
+				54AAEAAF19863D91004AD151 /* SocialPartnerDataView.m in Sources */,
 				14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */,
 				88B515FA192F52EE006A79AB /* AFPageControl.m in Sources */,
 				54B427DF1973CF1300BD2B82 /* AFTextImgButton.m in Sources */,
@@ -5132,6 +5161,7 @@
 				54ADE09918C8608700B166C4 /* NewAudioProgressView.m in Sources */,
 				14B8DF2418BC37A30047C6B3 /* PumanBookModel.m in Sources */,
 				54B6F41E18D6C8640055FC72 /* ReSendButton.m in Sources */,
+				54AAEAB219863DAB004AD151 /* SocialPartnerChatView.m in Sources */,
 				54012DF218E3090B00F11D97 /* PropWarePartnerDataCell.m in Sources */,
 				5421667218E02692005875F8 /* RewardView.m in Sources */,
 				54ACEE8518EA64B80055562B /* Award.m in Sources */,

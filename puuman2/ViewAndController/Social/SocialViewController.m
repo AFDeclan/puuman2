@@ -14,8 +14,18 @@
 @interface SocialViewController ()
 
 @end
+static SocialViewController * instance;
 
 @implementation SocialViewController
+
++ (SocialViewController *)sharedViewController
+{
+    if (!instance)
+        instance = [[SocialViewController alloc] initWithNibName:nil bundle:nil];
+    return instance;
+}
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -154,9 +164,9 @@
     [rightBtn unSelected];
     [rightBtn setEnabled:YES];
     if (selectedTopic) {
-        [contnetView selectWithType:kAllTopicView];
+        [contnetView setSocialType:kSocialAllTopicView];
     }else{
-        [contnetView selectWithType:kPartnerDataView];
+        [contnetView setSocialType:kSocialPartnerDataView];
     }
 }
 
@@ -167,9 +177,9 @@
     [leftBtn unSelected];
     [leftBtn setEnabled:YES];
     if (selectedTopic) {
-        [contnetView selectWithType:kMyTopicView];
+        [contnetView  setSocialType:kSocialMyTopicView];
     }else{
-        [contnetView selectWithType:kPartnerChatView];
+        [contnetView  setSocialType:kSocialPartnerChatView];
     }
 }
 //竖屏

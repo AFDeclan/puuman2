@@ -271,6 +271,7 @@
         SetViewLeftUp(_content, 0, 56);
     }completion:^(BOOL finished) {
         [[Friend sharedInstance] removeDelegateObject:self];
+        [self.view removeFromSuperview];
     }];
 }
 
