@@ -27,6 +27,7 @@
 {
     if (_socialType != kSocialNoneType) {
         [selectedView hiddenView];
+
     }
     _socialType = socialType;
     switch (socialType) {

@@ -15,7 +15,7 @@
 
 
 @implementation TopicCommentView
-
+@synthesize row = _row;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -115,6 +115,7 @@
     [moreReplayVC setControlBtnType:kOnlyCloseButton];
     [moreReplayVC setTitle:@"所有留言"];
     [moreReplayVC setReplay:_reply];
+    [moreReplayVC setRow:_row];
     [moreReplayVC setDelegate:self];
     [moreReplayVC show];
 }

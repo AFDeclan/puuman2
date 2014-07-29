@@ -20,6 +20,7 @@
 #import "NewTextDiaryViewController.h"
 #import "NewCameraViewController.h"
 #import "Friend.h"
+
 @protocol TopicContentCellDelegate;
 @interface TopicContentCell : UITableViewCell<ForumDelegate,SelectPhotoDelegate,PopViewDelegate,FriendDelegate>
 {

@@ -318,6 +318,7 @@
 		54AAEAAC19863D78004AD151 /* SocialMyTopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEAAB19863D78004AD151 /* SocialMyTopicView.m */; };
 		54AAEAAF19863D91004AD151 /* SocialPartnerDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEAAE19863D91004AD151 /* SocialPartnerDataView.m */; };
 		54AAEAB219863DAB004AD151 /* SocialPartnerChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEAB119863DAB004AD151 /* SocialPartnerChatView.m */; };
+		54AAEABA19865335004AD151 /* AllTopicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEAB919865335004AD151 /* AllTopicTableViewController.m */; };
 		54AB6CC818F2BA8D00E4269E /* check_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AB6CC518F2BA8D00E4269E /* check_diary.png */; };
 		54AB6CC918F2BA8D00E4269E /* circle_autoinput.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AB6CC618F2BA8D00E4269E /* circle_autoinput.png */; };
 		54AB6CCA18F2BA8D00E4269E /* icon_check_autoinput.png in Resources */ = {isa = PBXBuildFile; fileRef = 54AB6CC718F2BA8D00E4269E /* icon_check_autoinput.png */; };
@@ -556,6 +557,11 @@
 		54B75C25197775ED00D0CA42 /* CustomShopPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B75C24197775ED00D0CA42 /* CustomShopPopViewController.m */; };
 		54B75C28197779F500D0CA42 /* WareInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B75C27197779F500D0CA42 /* WareInfoViewController.m */; };
 		54B75C2B1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B75C2A1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m */; };
+		54B85CFA198739C90032E09F /* TopicTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B85CF9198739C90032E09F /* TopicTitleCell.m */; };
+		54B85CFD198793040032E09F /* VoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B85CFC198793040032E09F /* VoteTableViewController.m */; };
+		54B85D011987AB050032E09F /* socail_current_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B85CFE1987AB050032E09F /* socail_current_btn.png */; };
+		54B85D021987AB050032E09F /* social_participate_btnpng.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B85CFF1987AB050032E09F /* social_participate_btnpng.png */; };
+		54B85D031987AB050032E09F /* social_reward_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B85D001987AB050032E09F /* social_reward_btn.png */; };
 		54B94A3F197CF536003ABA93 /* ShareVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B94A3E197CF536003ABA93 /* ShareVideoViewController.m */; };
 		54B94A41197D0024003ABA93 /* popeye.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 54B94A40197D0024003ABA93 /* popeye.mp4 */; };
 		54B94A44197D0402003ABA93 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B94A43197D0402003ABA93 /* UIImage+Blur.m */; };
@@ -1288,6 +1294,8 @@
 		54AAEAAE19863D91004AD151 /* SocialPartnerDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialPartnerDataView.m; sourceTree = "<group>"; };
 		54AAEAB019863DAB004AD151 /* SocialPartnerChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialPartnerChatView.h; sourceTree = "<group>"; };
 		54AAEAB119863DAB004AD151 /* SocialPartnerChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialPartnerChatView.m; sourceTree = "<group>"; };
+		54AAEAB819865335004AD151 /* AllTopicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTopicTableViewController.h; sourceTree = "<group>"; };
+		54AAEAB919865335004AD151 /* AllTopicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTopicTableViewController.m; sourceTree = "<group>"; };
 		54AB6CAE18F24B4A00E4269E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		54AB6CB018F24B5A00E4269E /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		54AB6CB218F24C2100E4269E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -1665,6 +1673,13 @@
 		54B75C27197779F500D0CA42 /* WareInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WareInfoViewController.m; sourceTree = "<group>"; };
 		54B75C291977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainTabBarController+MainTabBarControllerSkip.h"; sourceTree = "<group>"; };
 		54B75C2A1977D23800D0CA42 /* MainTabBarController+MainTabBarControllerSkip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MainTabBarController+MainTabBarControllerSkip.m"; sourceTree = "<group>"; };
+		54B85CF8198739C90032E09F /* TopicTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTitleCell.h; sourceTree = "<group>"; };
+		54B85CF9198739C90032E09F /* TopicTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicTitleCell.m; sourceTree = "<group>"; };
+		54B85CFB198793040032E09F /* VoteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteTableViewController.h; sourceTree = "<group>"; };
+		54B85CFC198793040032E09F /* VoteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteTableViewController.m; sourceTree = "<group>"; };
+		54B85CFE1987AB050032E09F /* socail_current_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = socail_current_btn.png; sourceTree = "<group>"; };
+		54B85CFF1987AB050032E09F /* social_participate_btnpng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = social_participate_btnpng.png; sourceTree = "<group>"; };
+		54B85D001987AB050032E09F /* social_reward_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = social_reward_btn.png; sourceTree = "<group>"; };
 		54B94A3D197CF536003ABA93 /* ShareVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareVideoViewController.h; sourceTree = "<group>"; };
 		54B94A3E197CF536003ABA93 /* ShareVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareVideoViewController.m; sourceTree = "<group>"; };
 		54B94A40197D0024003ABA93 /* popeye.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = popeye.mp4; sourceTree = "<group>"; };
@@ -2632,6 +2647,9 @@
 		5447C44518D9785100187BE6 /* SocialImages */ = {
 			isa = PBXGroup;
 			children = (
+				54B85CFE1987AB050032E09F /* socail_current_btn.png */,
+				54B85CFF1987AB050032E09F /* social_participate_btnpng.png */,
+				54B85D001987AB050032E09F /* social_reward_btn.png */,
 				5447C44618D9785600187BE6 /* paper_right_h_shop.png */,
 				5447C44718D9785600187BE6 /* paper_right_shop.png */,
 				5447C44818D9785600187BE6 /* paper_top_h_shop.png */,
@@ -2708,16 +2726,7 @@
 			children = (
 				5448D58A18FE2F2300DA696C /* SocialContentView.h */,
 				5448D58B18FE2F2300DA696C /* SocialContentView.m */,
-				54AAEAA119863C64004AD151 /* SocialDetailView.h */,
-				54AAEAA219863C64004AD151 /* SocialDetailView.m */,
-				54AAEAA719863D60004AD151 /* SocialAllTopicView.h */,
-				54AAEAA819863D60004AD151 /* SocialAllTopicView.m */,
-				54AAEAAA19863D78004AD151 /* SocialMyTopicView.h */,
-				54AAEAAB19863D78004AD151 /* SocialMyTopicView.m */,
-				54AAEAAD19863D91004AD151 /* SocialPartnerDataView.h */,
-				54AAEAAE19863D91004AD151 /* SocialPartnerDataView.m */,
-				54AAEAB019863DAB004AD151 /* SocialPartnerChatView.h */,
-				54AAEAB119863DAB004AD151 /* SocialPartnerChatView.m */,
+				54AAEAB31986467B004AD151 /* SubView */,
 				5447C4AC18D98ED600187BE6 /* AllTopicView.h */,
 				5447C4AD18D98ED600187BE6 /* AllTopicView.m */,
 				5447C4AF18D98EED00187BE6 /* MyTopicView.h */,
@@ -2918,6 +2927,37 @@
 				14CC106118F90BC5005B366E /* DiaryImageView.m */,
 			);
 			name = support;
+			sourceTree = "<group>";
+		};
+		54AAEAB31986467B004AD151 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				54AAEAA119863C64004AD151 /* SocialDetailView.h */,
+				54AAEAA219863C64004AD151 /* SocialDetailView.m */,
+				54AAEAA719863D60004AD151 /* SocialAllTopicView.h */,
+				54AAEAA819863D60004AD151 /* SocialAllTopicView.m */,
+				54AAEAAA19863D78004AD151 /* SocialMyTopicView.h */,
+				54AAEAAB19863D78004AD151 /* SocialMyTopicView.m */,
+				54AAEAAD19863D91004AD151 /* SocialPartnerDataView.h */,
+				54AAEAAE19863D91004AD151 /* SocialPartnerDataView.m */,
+				54AAEAB019863DAB004AD151 /* SocialPartnerChatView.h */,
+				54AAEAB119863DAB004AD151 /* SocialPartnerChatView.m */,
+				54AAEAB4198646B2004AD151 /* AllTopicView */,
+			);
+			name = SubView;
+			sourceTree = "<group>";
+		};
+		54AAEAB4198646B2004AD151 /* AllTopicView */ = {
+			isa = PBXGroup;
+			children = (
+				54AAEAB819865335004AD151 /* AllTopicTableViewController.h */,
+				54AAEAB919865335004AD151 /* AllTopicTableViewController.m */,
+				54B85CFB198793040032E09F /* VoteTableViewController.h */,
+				54B85CFC198793040032E09F /* VoteTableViewController.m */,
+				54B85CF8198739C90032E09F /* TopicTitleCell.h */,
+				54B85CF9198739C90032E09F /* TopicTitleCell.m */,
+			);
+			name = AllTopicView;
 			sourceTree = "<group>";
 		};
 		54AC20C318E3FD1F001C1357 /* ShopImages */ = {
@@ -4346,6 +4386,7 @@
 				54CCF1E418F3E7350081C149 /* btn_look2_diary.png in Resources */,
 				5403CD3718D03D39004CAE22 /* icon13_weather_diary@2x.png in Resources */,
 				14B8DF5618BC37A40047C6B3 /* Readme.rtf in Resources */,
+				54B85D021987AB050032E09F /* social_participate_btnpng.png in Resources */,
 				88C965B41962A9C00058B842 /* icon_model_babyInfo.png in Resources */,
 				54CE116118C1C7BF00966396 /* block3_btn.png in Resources */,
 				54C55AC0197E5FCA00C2056D /* saveShareVideo.png in Resources */,
@@ -4492,6 +4533,7 @@
 				54F1D12A18C48FA50005CDD9 /* block_photo__h_diary.png in Resources */,
 				54B97E5218FA2B1E00B6C4C9 /* icon1_insure_shop.png in Resources */,
 				54D1500218CAEFD70022E1F4 /* pic_timeline_diary.png in Resources */,
+				54B85D011987AB050032E09F /* socail_current_btn.png in Resources */,
 				148D79ED18B8A71A001B4FA7 /* InfoPlist.strings in Resources */,
 				54CE115F18C1C7BF00966396 /* block1_btn.png in Resources */,
 				88C965BD1962B48F0058B842 /* grayline_right_babyInfo.png in Resources */,
@@ -4661,6 +4703,7 @@
 				54AC212718E4151D001C1357 /* block2_rec_shop.png in Resources */,
 				54C9C96B19751386009BACE3 /* btn_gray6.png in Resources */,
 				5463757F18C98476004B11EF /* icon_mom_diary.png in Resources */,
+				54B85D031987AB050032E09F /* social_reward_btn.png in Resources */,
 				541970AD18D188F40058FE64 /* pic_filter_blank.png in Resources */,
 				5463759318C98493004B11EF /* tri_blue_up.png in Resources */,
 				54F1D10618C48B340005CDD9 /* bg_subpage.png in Resources */,
@@ -4902,6 +4945,7 @@
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				54B30A8D195D53EC00007DDC /* ToolsCoinView.m in Sources */,
 				54CB2A3D19626309005EBD3F /* MenuTitleButton.m in Sources */,
+				54B85CFD198793040032E09F /* VoteTableViewController.m in Sources */,
 				54B94A3F197CF536003ABA93 /* ShareVideoViewController.m in Sources */,
 				148D79F318B8A71A001B4FA7 /* AppDelegate.m in Sources */,
 				54B4680518E520C500745F72 /* HealthCell.m in Sources */,
@@ -4921,6 +4965,7 @@
 				14B8DF2918BC37A30047C6B3 /* ShopClassModel.m in Sources */,
 				14B8DF5318BC37A40047C6B3 /* MD5.m in Sources */,
 				54AE2BB518E93FEB00D24F92 /* Action.m in Sources */,
+				54B85CFA198739C90032E09F /* TopicTitleCell.m in Sources */,
 				54AC1D2018EEAAD7005E2DCE /* ShareSelectedViewController.m in Sources */,
 				54AFAA8818DA9B640067B8C1 /* RecommendPartnerViewController.m in Sources */,
 				54ADB1EC18E1B39000FCCC83 /* DiaryProgressHeaderView.m in Sources */,
@@ -5073,6 +5118,7 @@
 				88C9A94C196171A100C25347 /* BabyInfoChooseButton.m in Sources */,
 				54B4EB3918C57C1D004489DA /* CustomTextField.m in Sources */,
 				1495A1B719189298006A64BA /* Diary.m in Sources */,
+				54AAEABA19865335004AD151 /* AllTopicTableViewController.m in Sources */,
 				54AAEAAF19863D91004AD151 /* SocialPartnerDataView.m in Sources */,
 				14B8DF5118BC37A40047C6B3 /* ErrorLog.m in Sources */,
 				88B515FA192F52EE006A79AB /* AFPageControl.m in Sources */,

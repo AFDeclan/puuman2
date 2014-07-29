@@ -138,14 +138,6 @@
     }
 }
 
-
-
-
-
-
-
-
-
 - (void)buildWithReply:(Reply *)reply
 {
     commentNum = [[reply comments] count];
@@ -157,16 +149,6 @@
     
     [[Forum sharedInstance] addDelegateObject:self];
     [infoView setInfoWithUid:_reply.UID andIsTopic:YES];
-    
-//    if ([reply RCommentCnt] == 0) {
-//        [scanMoreReplay setTitle:@"没有留言" andImg:nil andButtonType:kButtonTypeOne];
-//    }else{
-//        [scanMoreReplay setTitle:@"查看留言" andImg:nil andButtonType:kButtonTypeOne];
-//
-//    }
-//    [scanMoreReplay setTitleFont:PMFont3];
-//
-//    [scanMoreReplay adjustLayout];
  
     if (_isMyTopic) {
         Topic *topic =  [[Forum sharedInstance] getTopic:reply.TID];
@@ -243,8 +225,12 @@
     if (!_reply.voted) {
         [_reply vote];
     }
-    
-   
+}
+
+- (void)setRow:(NSInteger)row
+{
+    _row = row;
+    [comment setRow:row];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -254,12 +240,6 @@
     // Configure the view for the selected state
 }
 
-
-
-//- (void)removeForumDelegate
-//{
-//    [[Forum sharedInstance] removeDelegateObject:self];
-//}
 
 + (CGFloat)heightForReply:(Reply *)reply andIsMyTopic:(BOOL)isMytopic andTopicType:(TopicType)type andUnfold:(BOOL)unfold
 {
@@ -361,26 +341,6 @@
     
 }
 
-
-////更多评论加载成功
-//- (void)replyCommentsLoadedMore:(Reply *)reply
-//{
-//    
-//    if (_reply == reply) {
-//        if ([[reply comments] count] != 0) {
-//            [relayExample setText:[[[reply comments] objectAtIndex:0] CContent]];
-//            
-//        }
-//    }
-//  
-//}
-//
-////更多评论加载失败 注意根据noMore判断是否是因为全部加载完
-//- (void)replyCommentsLoadFailed:(Reply *)reply
-//{
-//
-//}
-
 - (void)setUnfold:(BOOL)unfold
 {
     CGRect frameF = footerView.frame;
@@ -399,7 +359,7 @@
 - (void)replyCommentsLoadedMore:(Reply *)reply
 {
     if (_reply == reply) {
-        PostNotification(Noti_RefreshTopicTable, nil);
+        PostNotification(Noti_RefreshTopicTable, [NSNumber numberWithInt:_row]);
     }
 }
 
@@ -410,10 +370,7 @@
     
     
     if (_reply == reply) {
-        if ([_reply.comments count] <= 6 && commentNum <[[reply comments] count]) {
-            PostNotification(Noti_RefreshTopicTable, nil);
-
-        }
+            PostNotification(Noti_RefreshTopicTable, [NSNumber numberWithInt:_row]);
     }
 }
 

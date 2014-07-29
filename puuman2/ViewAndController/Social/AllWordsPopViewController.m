@@ -17,6 +17,8 @@
 
 @implementation AllWordsPopViewController
 @synthesize replay =_replay;
+@synthesize row = _row;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -140,10 +142,7 @@
 //评论上传成功
 - (void)replyCommentUploaded:(Reply *)reply
 {
-    if ([reply.comments count] <= 6 && commentNum <[[reply comments] count]) {
-        PostNotification(Noti_RefreshTopicTable, nil);
-        
-    }
+    PostNotification(Noti_RefreshTopicTable, [NSNumber numberWithInt:_row]);
     [talkTextField setText:@""];
     [talksTable reloadData];
 }
