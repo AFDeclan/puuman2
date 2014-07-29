@@ -26,22 +26,30 @@
         
         [MyNotiCenter addObserver:self selector:@selector(showManagerMenu) name:Noti_manangePartnerData object:nil];
         [MyNotiCenter addObserver:self selector:@selector(hiddenManagerMenu) name:Noti_manangedPartnerData object:nil];
-        icon_head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
-        [icon_head setImage:[UIImage imageNamed:@"block_name_fri.png"]];
-        [self addSubview:icon_head];
+        
+        icon_headDown = [[UIView alloc]initWithFrame:CGRectMake(0, 14, 864, 26)];
+        [icon_headDown setBackgroundColor:PMColor6];
+        [self addSubview:icon_headDown];
+        
+        icon_headUp = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 40)];
+        [icon_headUp setBackgroundColor:PMColor6];
+        [icon_headUp.layer setMasksToBounds:YES];
+        [icon_headUp.layer setCornerRadius:16.0f];
+        [self addSubview:icon_headUp];
       
         notiStr = @"";
-        info_title = [[UITextField alloc] initWithFrame:CGRectMake(80, 16, 160, 16)];
+        info_title = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
         [info_title setBackgroundColor:[UIColor clearColor]];
         [info_title setTextColor:[UIColor whiteColor]];
+        [info_title setText:@"三月宝宝妈妈团"];
         [info_title setFont:PMFont2];
         [info_title setTextAlignment:NSTextAlignmentCenter];
-        [icon_head addSubview:info_title];
+        [icon_headUp addSubview:info_title];
         [info_title setDelegate:self];
         [info_title setEnabled:NO];
-        modifyBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        modifyBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 40, 0, 0)];
         
-        UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 96, 112)];
+        UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 96, 112)];
         [modifyBtn addSubview:bgView];
         [bgView setBackgroundColor:[UIColor blackColor]];
         [bgView setAlpha:0.5];
@@ -50,7 +58,7 @@
         [icon_img setImage:[UIImage imageNamed:@"circle_fri.png"]];
         [bgView addSubview:icon_img];
         
-       UILabel *label_manageStatus = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
+        UILabel *label_manageStatus = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
         [label_manageStatus setTextAlignment:NSTextAlignmentCenter];
         [label_manageStatus setTextColor:[UIColor whiteColor]];
         [label_manageStatus setFont:PMFont2];
@@ -60,14 +68,19 @@
         
         [modifyBtn setAlpha:0];
 
-        noti_label = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
+        noti_label = [[AnimateShowLabel alloc] initWithFrame:CGRectMake(320, 40, 276, 48)];
         [noti_label setBackgroundColor:[UIColor clearColor]];
         [self addSubview:noti_label];
-        modifyNameBtn = [[UIButton alloc] initWithFrame:CGRectMake(80, 0, 160, 48)];
+        modifyNameBtn = [[UIButton alloc] initWithFrame:CGRectMake(80, 40, 160, 48)];
         [modifyNameBtn setBackgroundColor:[UIColor clearColor]];
         [modifyNameBtn addTarget:self action:@selector(showKeyBoard) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:modifyNameBtn];
         changed = NO;
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            [self setVerticalFrame];
+        }else{
+            [self setHorizontalFrame];
+        }
        
     }
     return self;
@@ -99,7 +112,7 @@
     }
     [info_title setText:group.GName];
     oldName = group.GName;
-    figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 48, 576, 120)];
+    figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 40, 576, 120)];
     [figuresColumnView setBackgroundColor:[UIColor clearColor]];
     [figuresColumnView setColumnViewDelegate:self];
     [figuresColumnView setViewDataSource:self];
@@ -211,15 +224,20 @@
 
 - (void)setVerticalFrame
 {
-    [noti_label setFrame:CGRectMake(320, 0, 164, 48)];
+    [icon_headDown setFrame:CGRectMake(0, 16, 608, 40)];
+    [icon_headUp setFrame:CGRectMake(0, 0, 608, 40)];
+    [noti_label setFrame:CGRectMake(320, 40, 164, 40)];
     [noti_label animateStop];
     [noti_label setTitleWithTitleText:notiStr andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
     [noti_label animateStart];
+   
 }
 
 - (void)setHorizontalFrame
 {
-    [noti_label setFrame:CGRectMake(320, 0, 276, 48)];
+    [icon_headDown setFrame:CGRectMake(0, 16, 864, 40)];
+    [icon_headUp setFrame:CGRectMake(0, 0, 864, 40)];
+    [noti_label setFrame:CGRectMake(320, 40, 276, 40)];
     [noti_label animateStop];
     [noti_label setTitleWithTitleText:notiStr andTitleColor:PMColor3 andTitleFont:PMFont2 andMoveSpeed:1 andIsAutomatic:YES];
     [noti_label animateStart];

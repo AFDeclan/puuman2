@@ -149,7 +149,7 @@ static SocialViewController * instance;
     selectedTopic = NO;
     [topicBtn unSelected];
     [partnerBtn selected];
-    [leftBtn.title setText:@"数据"];
+    [leftBtn.title setText:@"比较"];
     [rightBtn.title setText:@"闲聊"];
     [leftBtn adjustLayout];
     [rightBtn adjustLayout];

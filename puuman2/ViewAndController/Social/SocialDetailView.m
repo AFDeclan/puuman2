@@ -21,12 +21,12 @@
 
 - (void)showView
 {
-
+    [self setAlpha:1];
 }
 
 - (void)hiddenView
 {
-
+    [self setAlpha:0];
 }
 
 - (void)setVerticalFrame

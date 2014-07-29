@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "FiguresHeaderView.h"
 #import "DataInfoScrollView.h"
-#import "AFColorButton.h"
 #import "Group.h"
 
 @interface PartnerDataInGroupView : UIView
 {
     FiguresHeaderView *figuresHeader;
     DataInfoScrollView *dataInfoView;
-    AFColorButton *manageBtn;
-    BOOL manage;
+    UIButton *manageBtn;
+    BOOL selected;
     Group *group;
+
 }
 
 

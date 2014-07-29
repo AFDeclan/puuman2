@@ -41,13 +41,19 @@
     [self addSubview:chatTable];
     [chatTable setBackgroundColor:[UIColor clearColor]];
     
-    bgHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
+    bgHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 48)];
     [bgHeadView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_talk_fri.png"]]];
     [self addSubview:bgHeadView];
     
-    icon_head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
-    [icon_head setImage:[UIImage imageNamed:@"block_name_fri.png"]];
-    [self addSubview:icon_head];
+    icon_headDown = [[UIView alloc]initWithFrame:CGRectMake(0, 16, 864, 32)];
+    [icon_headDown setBackgroundColor:PMColor6];
+    [self addSubview:icon_headDown];
+    
+    icon_headUp = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 48)];
+    [icon_headUp setBackgroundColor:PMColor6];
+    [icon_headUp.layer setMasksToBounds:YES];
+    [icon_headUp.layer setCornerRadius:16.0f];
+    [self addSubview:icon_headUp];
     
     
     info_title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
@@ -55,14 +61,14 @@
     [info_title setTextColor:[UIColor whiteColor]];
     [info_title setFont:PMFont2];
     [info_title setTextAlignment:NSTextAlignmentCenter];
-    [icon_head addSubview:info_title];
+    [icon_headUp addSubview:info_title];
     
-    noti_label = [[UILabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
-    [noti_label setText:@""];
-    [noti_label setFont:PMFont2];
-    [noti_label setTextColor:PMColor3];
-    [noti_label setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:noti_label];
+//    noti_label = [[UILabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
+//    [noti_label setText:@""];
+//    [noti_label setFont:PMFont2];
+//    [noti_label setTextColor:PMColor3];
+//    [noti_label setBackgroundColor:[UIColor clearColor]];
+//    [self addSubview:noti_label];
    // [self reloadChatData];
     [self refreshChatTable];
     inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
@@ -110,6 +116,8 @@
 {
     
     [bgHeadView setFrame:CGRectMake(0, 0, 608, 48)];
+    [icon_headDown setFrame:CGRectMake(0, 16, 608, 32)];
+    [icon_headUp setFrame:CGRectMake(0, 0, 608, 48)];
     [chatTable setFrame:CGRectMake(0, 0, 608, 880)];
     [self reloadChatTable];
 }
@@ -118,6 +126,8 @@
 {
 
     [bgHeadView setFrame:CGRectMake(0, 0, 864, 48)];
+    [icon_headDown setFrame:CGRectMake(0, 16, 864, 32)];
+    [icon_headUp setFrame:CGRectMake(0, 0, 864, 48)];
     [chatTable setFrame:CGRectMake(0, 0, 864, 624)];
     [self reloadChatTable];
     

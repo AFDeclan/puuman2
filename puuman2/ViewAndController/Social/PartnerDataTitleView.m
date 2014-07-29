@@ -49,12 +49,12 @@
     [info_title setText:@"三月宝宝妈妈团"];
     [icon_head addSubview:info_title];
     
-    noti_label = [[UILabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
-    [noti_label setText:@"三天前，天天邀请了w 入团"];
-    [noti_label setFont:PMFont2];
-    [noti_label setTextColor:PMColor3];
-    [noti_label setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:noti_label];
+//    noti_label = [[UILabel alloc] initWithFrame:CGRectMake(320, 0, 276, 48)];
+//    [noti_label setText:@"三天前，天天邀请了w 入团"];
+//    [noti_label setFont:PMFont2];
+//    [noti_label setTextColor:PMColor3];
+//    [noti_label setBackgroundColor:[UIColor clearColor]];
+//    [self addSubview:noti_label];
 
 }
 

@@ -9,6 +9,7 @@
 #import "PartnerDataInGroupView.h"
 #import "UniverseConstant.h"
 #import "Friend.h"
+#import "MainTabBarController.h"
 
 @implementation PartnerDataInGroupView
 
@@ -19,18 +20,26 @@
         
         figuresHeader = [[FiguresHeaderView alloc] initWithFrame:CGRectMake(0, 0, 608, 168)];
         [self addSubview:figuresHeader];
-        manage = NO;
+        selected = NO;
         dataInfoView = [[DataInfoScrollView alloc] initWithFrame:CGRectMake(0, 0, 608, 520)];
         [dataInfoView setBounces:NO];
         [dataInfoView setContentSize:CGSizeMake(608, 672)];//1432
         [self addSubview:dataInfoView];
-        manageBtn = [[AFColorButton alloc] init];
-        [manageBtn.title setText:@"管理"];
-        [manageBtn setColorType:kColorButtonGrayColor];
-        [manageBtn setDirectionType:kColorButtonLeft];
-        [manageBtn resetColorButton];
+         manageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [manageBtn setFrame:CGRectMake(0, 0, 40, 32)];
+        [manageBtn.titleLabel setFont:PMFont2];
+        [manageBtn setBackgroundColor:PMColor6];
+        [manageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [manageBtn setTitle:@"管理" forState: UIControlStateNormal];
         [manageBtn addTarget:self action:@selector(managePartner) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:manageBtn];
+        [self loadViewInfo];
+        
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            [self setVerticalFrame];
+        }else{
+            [self setHorizontalFrame];
+        }
     }
     return self;
 }
@@ -38,42 +47,37 @@
 - (void)setVerticalFrame
 {
     [dataInfoView setFrame:CGRectMake(0, 168, 608, 776)];
-    [dataInfoView setVerticalFrame];
-    [figuresHeader setVerticalFrame];
-    SetViewLeftUp(figuresHeader, 0, 0);
-    SetViewLeftUp(manageBtn, 496, 8);
+    //[dataInfoView setVerticalFrame];
+    [figuresHeader setFrame:CGRectMake(0, 0, 608, 168)];
+    SetViewLeftUp(manageBtn, 496, 16);
 }
 
 - (void)setHorizontalFrame
 {
     [dataInfoView setFrame:CGRectMake(0,168, 864, 520)];
-    [dataInfoView setHorizontalFrame];
-    [figuresHeader setHorizontalFrame];
-    SetViewLeftUp(figuresHeader, 130, 0);
-    SetViewLeftUp(manageBtn, 752, 84);
+    //[dataInfoView setHorizontalFrame];
+    [figuresHeader setFrame:CGRectMake(0, 0, 864, 168)];
+    SetViewLeftUp(manageBtn, 810, 16);
 }
 
 - (void)managePartner
 {
-    manage = !manage;
-    if (manage) {
-        [manageBtn.title setText:@"保存"];
+     selected= !selected;
+    if (selected) {
+        [manageBtn setTitle:@"保存" forState:UIControlStateSelected];
        PostNotification(Noti_manangePartnerData, nil);
         
     }else{
-        [manageBtn.title setText:@"管理"];
+        [manageBtn setTitle:@"管理" forState:UIControlStateNormal];
 
      PostNotification(Noti_manangedPartnerData, nil);
     }
-    [manageBtn adjustLayout];
-    
 }
 
 - (void)loadViewInfo
 {
-    manage = NO;
-    [manageBtn.title setText:@"管理"];
-    [manageBtn adjustLayout];
+    selected = NO;
+     [manageBtn setTitle:@"管理" forState:UIControlStateNormal];
   //  PostNotification(Noti_manangedPartnerData, nil);
     [figuresHeader reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
     [dataInfoView reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];

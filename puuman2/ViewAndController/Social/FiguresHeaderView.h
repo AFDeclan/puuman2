@@ -13,7 +13,8 @@
 #import "Friend.h"
 @interface FiguresHeaderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate,FriendDelegate,UITextFieldDelegate>
 {
-    UIImageView *icon_head;
+    UIView *icon_headUp;
+    UIView *icon_headDown;
     AnimateShowLabel *noti_label;
     UITextField *info_title;
     UIButton *modifyBtn;

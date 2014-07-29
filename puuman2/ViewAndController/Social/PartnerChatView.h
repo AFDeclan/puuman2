@@ -16,9 +16,10 @@
 @interface PartnerChatView : UIView<UITableViewDataSource,UITableViewDelegate,FriendDelegate>
 {
     UIView *bgHeadView;
-    UIImageView *icon_head;
+    UIView *icon_headDown;
+    UIView *icon_headUp;
     UITableView *chatTable;
-    UILabel *noti_label;
+//    UILabel *noti_label;
     UILabel *info_title;
     Group *myGroup;
     ChatInputViewController *inputVC;

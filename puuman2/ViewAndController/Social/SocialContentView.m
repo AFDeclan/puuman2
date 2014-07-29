@@ -46,7 +46,10 @@
             break;
     }
     if (_socialType != kSocialNoneType) {
+        
         [selectedView showView];
+        
+    
     }
 }
 - (void)selectedAll
