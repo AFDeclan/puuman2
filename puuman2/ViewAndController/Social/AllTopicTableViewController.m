@@ -40,10 +40,13 @@
         status = [[NSMutableDictionary alloc] init];
         [[Forum sharedInstance] addDelegateObject:self];
         [MyNotiCenter addObserver:self selector:@selector(refreshTable:) name:Noti_RefreshTopicTable object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(addNewTopic) name:Noti_AddTopic object:nil];
+
 
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
@@ -61,6 +64,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)addNewTopic
+{
+    [_refreshHeader beginRefreshing];
+
 }
 
 - (void)setTopic:(Topic *)topic
@@ -89,7 +98,7 @@
     if ([[_topic replies:_replyOrder] count] == 0) {
         [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ];
     }else{
-        [self.tableView reloadData];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -101,9 +110,10 @@
     {
         [_refreshHeader endRefreshing];
         [status removeAllObjects];
-        [self.tableView reloadData];
+    
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }else{
-        [self.tableView reloadData];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
 
 }

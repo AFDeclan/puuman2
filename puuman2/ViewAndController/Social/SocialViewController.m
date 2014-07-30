@@ -10,6 +10,8 @@
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
 #import "ColorsAndFonts.h"
+#import "RewardViewController.h"
+#import "CreateTopicViewController.h"
 
 @interface SocialViewController ()
 
@@ -123,20 +125,26 @@ static SocialViewController * instance;
     [self.view addSubview:partnerBtn];
     [self topicBtnPressed];
     
-    rewardBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 112)];
+    rewardBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 112)];
     [rewardBtn setImage:[UIImage imageNamed:@"social_reward_btn.png"] forState:UIControlStateNormal];
     [rewardBtn addTarget:self action:@selector(reward) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rewardBtn];
     
-    participateBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 112)];
+    participateBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 112)];
     [participateBtn setImage:[UIImage imageNamed:@"social_participate_btnpng"] forState:UIControlStateNormal];
     [participateBtn addTarget:self action:@selector(participate) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:participateBtn];
     
-    toCurrentTopic = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 112)];
+    toCurrentTopic = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 112)];
     [toCurrentTopic setImage:[UIImage imageNamed:@"socail_current_btn.png"] forState:UIControlStateNormal];
     [toCurrentTopic addTarget:self action:@selector(toCurrentTopic) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:toCurrentTopic];
+    
+    voteBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 112)];
+    [voteBtn setImage:[UIImage imageNamed:@"socail_vote_btn.png"] forState:UIControlStateNormal];
+    [voteBtn addTarget:self action:@selector(voteTopic) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:voteBtn];
+
     
 }
 
@@ -212,9 +220,11 @@ static SocialViewController * instance;
     SetViewLeftUp(leftBtn, 272, 28);
     SetViewLeftUp(rightBtn, 384, 28);
     
-    SetViewLeftUp(rewardBtn, 688, 28);
-    SetViewLeftUp(participateBtn, 688, 28);
-    SetViewLeftUp(toCurrentTopic, 688, 28);
+    SetViewLeftUp(rewardBtn, 688, 800);
+    SetViewLeftUp(participateBtn, 688, 912);
+    SetViewLeftUp(toCurrentTopic, 688, 912);
+    SetViewLeftUp(voteBtn, 688, 912);
+
 
 }
 
@@ -234,10 +244,38 @@ static SocialViewController * instance;
     SetViewLeftUp(rightBtn, 512, 28);
 
     
-    SetViewLeftUp(rewardBtn, 944, 28);
-    SetViewLeftUp(participateBtn, 944, 28);
-    SetViewLeftUp(toCurrentTopic, 944, 28);
+    SetViewLeftUp(rewardBtn, 944, 544);
+    SetViewLeftUp(participateBtn, 944, 656);
+    SetViewLeftUp(toCurrentTopic, 944, 656);
+    SetViewLeftUp(voteBtn, 688, 656);
 
+
+}
+
+
+- (void)showNewestTopic
+{
+    [rewardBtn setAlpha:1];
+    [participateBtn setAlpha:1];
+    [toCurrentTopic setAlpha:0];
+    [voteBtn setAlpha:0];
+}
+
+- (void)showPreTopic
+{
+    [rewardBtn setAlpha:0];
+    [participateBtn setAlpha:0];
+    [toCurrentTopic setAlpha:1];
+    [voteBtn setAlpha:0];
+
+}
+
+- (void)showVoteTopic
+{
+    [voteBtn setAlpha:1];
+    [rewardBtn setAlpha:0];
+    [participateBtn setAlpha:0];
+    [toCurrentTopic setAlpha:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -254,16 +292,68 @@ static SocialViewController * instance;
 
 - (void)reward
 {
+    RewardViewController *rewardVC = [[RewardViewController alloc] initWithNibName:nil bundle:nil];
+    [rewardVC setTitle:@"本月奖励" withIcon:nil];
+    [rewardVC setControlBtnType:kOnlyCloseButton];
+    [[MainTabBarController sharedMainViewController].view addSubview:rewardVC.view];
+    [rewardVC show];
 
 }
 
 - (void)participate
 {
+    
+    [participateBtn setEnabled:NO];
+    TopicType type =[[[Forum sharedInstance] onTopic] TType];
+    switch (type) {
+        case TopicType_Photo:
+        {
+            TopicCellSelectedPohosViewController *chooseView = [[TopicCellSelectedPohosViewController alloc] initWithNibName:nil bundle:nil];
+            [[MainTabBarController sharedMainViewController].view addSubview:chooseView.view];
+            [chooseView setStyle:ConfirmError];
+            [chooseView setSelecedDelegate:self];
+            [chooseView show];
+        }
+            break;
+        case TopicType_Text:
+        {
+            NewTextDiaryViewController *textVC = [[NewTextDiaryViewController alloc] initWithNibName:nil bundle:nil];
+            [[MainTabBarController sharedMainViewController].view addSubview:textVC.view];
+            [textVC setControlBtnType:kCloseAndFinishButton];
+            [textVC setTitle:@"文本" withIcon:nil];
+            [textVC setIsTopic:YES];
+            [textVC setDelegate:self];
+            [textVC show];
+        }
+            break;
+        default:
+            break;
+    }
 
+}
+
+- (void)popViewfinished
+{
+    [participateBtn setEnabled:YES];
+}
+
+- (void)selectedViewhidden
+{
+    [participateBtn setEnabled:YES];
 }
 
 - (void)toCurrentTopic
 {
+    PostNotification(Noti_AllTopicToNewest, nil);
+}
 
+- (void)voteTopic
+{
+    CreateTopicViewController *voteVC = [[CreateTopicViewController alloc] initWithNibName:nil bundle:nil];
+    [[MainTabBarController sharedMainViewController].view addSubview:voteVC.view];
+    [voteVC setControlBtnType:kOnlyCloseButton];
+    [voteVC setTitle:@"发起话题" withIcon:nil];
+    [voteVC showKeyBoard];
+    [voteVC show];
 }
 @end

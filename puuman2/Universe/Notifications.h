@@ -91,6 +91,7 @@
 #define Noti_GoOutDataView                      @"Noti_GoOutDataView"
 #define Noti_BottomInputViewHidden              @"Noti_BottomInputViewHidden"
 #define Noti_RefreshTopicTable                  @"Noti_RefreshTopicTable"
+#define Noti_AddTopic                           @"Noti_AddTopic"
 #define Noti_RefreshInviteStatus                @"Noti_RefreshInviteStatus"
 #define Noti_InOrOutGroup                       @"Noti_InOrOutGroup"
 #define Noti_RefreshChatTable                   @"Noti_RefreshChatTable"
@@ -102,4 +103,5 @@
 #define Noti_loadTopicCell                      @"Noti_loadTopicCell"
 #define Noti_ShowCommentPopView                 @"Noti_ShowCommentPopView"
 #define Noti_HiddenCommentKeyBoard              @"Noti_HiddenCommentKeyBoard"
+#define Noti_AllTopicToNewest                   @"Noti_AllTopicToNewest"
 #endif

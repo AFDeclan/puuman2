@@ -31,6 +31,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[Forum sharedInstance] addDelegateObject:self];
+        [MyNotiCenter addObserver:self selector:@selector(refreshVoteTable) name:Noti_RefreshVoteTabe object:nil];
 
     }
     return self;
@@ -59,6 +60,12 @@
         };
     }
    
+}
+
+- (void)refreshVoteTable
+{
+    [_refreshHeader beginRefreshing];
+
 }
 
 - (void)didReceiveMemoryWarning

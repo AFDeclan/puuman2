@@ -676,6 +676,7 @@
 		54C55ABD197E5DBF00C2056D /* ShareVideoDeleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C55ABC197E5DBF00C2056D /* ShareVideoDeleteViewController.m */; };
 		54C55AC0197E5FCA00C2056D /* saveShareVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C55ABE197E5FCA00C2056D /* saveShareVideo.png */; };
 		54C55AC1197E5FCA00C2056D /* deleteShareVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C55ABF197E5FCA00C2056D /* deleteShareVideo.png */; };
+		54C7119F1988D143007F8E69 /* socail_vote_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C7119E1988D143007F8E69 /* socail_vote_btn.png */; };
 		54C729F5197A0B2D00F105CC /* BabyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C729F4197A0B2D00F105CC /* BabyViewController.m */; };
 		54C86F0E1981F57000A6F5F4 /* ImportRefreshCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C86F0D1981F57000A6F5F4 /* ImportRefreshCell.m */; };
 		54C8D56218DBE1B80013FD03 /* ChatInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C8D56118DBE1B80013FD03 /* ChatInputViewController.m */; };
@@ -1824,6 +1825,7 @@
 		54C55ABC197E5DBF00C2056D /* ShareVideoDeleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareVideoDeleteViewController.m; sourceTree = "<group>"; };
 		54C55ABE197E5FCA00C2056D /* saveShareVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveShareVideo.png; sourceTree = "<group>"; };
 		54C55ABF197E5FCA00C2056D /* deleteShareVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteShareVideo.png; sourceTree = "<group>"; };
+		54C7119E1988D143007F8E69 /* socail_vote_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = socail_vote_btn.png; sourceTree = "<group>"; };
 		54C729F3197A0B2D00F105CC /* BabyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyViewController.h; sourceTree = "<group>"; };
 		54C729F4197A0B2D00F105CC /* BabyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyViewController.m; sourceTree = "<group>"; };
 		54C86F0C1981F57000A6F5F4 /* ImportRefreshCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportRefreshCell.h; sourceTree = "<group>"; };
@@ -2647,6 +2649,7 @@
 		5447C44518D9785100187BE6 /* SocialImages */ = {
 			isa = PBXGroup;
 			children = (
+				54C7119E1988D143007F8E69 /* socail_vote_btn.png */,
 				54B85CFE1987AB050032E09F /* socail_current_btn.png */,
 				54B85CFF1987AB050032E09F /* social_participate_btnpng.png */,
 				54B85D001987AB050032E09F /* social_reward_btn.png */,
@@ -4627,6 +4630,7 @@
 				54DEFEAE18FE4FC20087658F /* pic_coin_shop.png in Resources */,
 				5447C45E18D97D0800187BE6 /* block_name_fri.png in Resources */,
 				54B4684A18E527D700745F72 /* icon_clothes_shop.png in Resources */,
+				54C7119F1988D143007F8E69 /* socail_vote_btn.png in Resources */,
 				54B97EAB18FA589800B6C4C9 /* pic_insure1_shop.png in Resources */,
 				54AC20EC18E3FD30001C1357 /* icon_check_shop.png in Resources */,
 				5463759118C98493004B11EF /* tri_blue_left.png in Resources */,

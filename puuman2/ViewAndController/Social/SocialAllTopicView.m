@@ -8,6 +8,7 @@
 
 #import "SocialAllTopicView.h"
 #import "UniverseConstant.h"
+#import "SocialViewController.h"
 
 @implementation SocialAllTopicView
 
@@ -19,6 +20,7 @@
         addressTag = 0;
         [self initialization];
         [[Forum sharedInstance] addDelegateObject:self];
+        [MyNotiCenter addObserver:self selector:@selector(toNewestTopic) name:Noti_AllTopicToNewest object:nil];
 
     }
     return self;
@@ -36,7 +38,15 @@
     [self reloadTitleView];
     [titleColumnView setContentOffset:CGPointMake(608*(addressTag -1), 0)];
     [self resetTopicButton];
-    
+    [[SocialViewController sharedViewController] showNewestTopic];
+
+}
+
+- (void)toNewestTopic
+{
+    addressTag = [Forum sharedInstance].onTopic.TNo;
+    [titleColumnView setContentOffset:CGPointMake(608*(addressTag -1), 0) animated:YES];
+
 }
 
 - (void)reloadTitleView
@@ -141,7 +151,16 @@
         if (addressTag > [[Forum sharedInstance] onTopic].TNo) {
             [topicTableView.view setAlpha:0];
             [voteTableView.view setAlpha:1];
+            [self leftSortSelected];
+            [[SocialViewController sharedViewController] showVoteTopic];
+        }else if(addressTag == [[Forum sharedInstance] onTopic].TNo){
+            [[SocialViewController sharedViewController] showNewestTopic];
+
+        }else{
+            [[SocialViewController sharedViewController] showPreTopic];
+
         }
+        
     } completion:^(BOOL finished) {
         [titleColumnView setContentOffset:CGPointMake(titleColumnView.contentOffset.x + 1, 0) ];
         [rightBtn setEnabled:YES];
@@ -164,11 +183,20 @@
     [leftBtn setEnabled:NO];
     [UIView animateWithDuration:0.5 animations:^{
         [titleColumnView setContentOffset:CGPointMake(titleColumnView.contentOffset.x - 607, 0) ];
-       
+        if (addressTag > [[Forum sharedInstance] onTopic].TNo) {
+            [[SocialViewController sharedViewController] showVoteTopic];
+            
+        }else if (addressTag == [[Forum sharedInstance] onTopic].TNo){
+            [[SocialViewController sharedViewController] showNewestTopic];
+        }else{
+            [[SocialViewController sharedViewController] showPreTopic];
+            
+        }
     } completion:^(BOOL finished) {
         [titleColumnView setContentOffset:CGPointMake(titleColumnView.contentOffset.x - 1, 0) ];
         [leftBtn setEnabled:YES];
         [self resetTopicButton];
+        
     }];
 
     
@@ -296,5 +324,16 @@
 
 }
 
+//回复上传成功
+- (void)topicReplyUploaded:(ReplyForUpload *)reply
+{
+    PostNotification(Noti_AddTopic, nil);
+    
+}
 
+//回复上传失败
+- (void)topicReplyUploadFailed:(ReplyForUpload *)reply
+{
+    
+}
 @end

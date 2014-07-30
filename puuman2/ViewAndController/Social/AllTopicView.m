@@ -167,7 +167,7 @@
 //回复上传成功
 - (void)topicReplyUploaded:(ReplyForUpload *)reply
 {
-    PostNotification(Noti_RefreshTopicTable, nil);
+    PostNotification(Noti_AddTopic, nil);
     [[Forum sharedInstance] removeDelegateObject:self];
     
 }

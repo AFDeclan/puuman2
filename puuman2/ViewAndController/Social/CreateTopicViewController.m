@@ -40,10 +40,6 @@
     [inputTextFied setDelegate:self];
     [_content addSubview:inputTextFied];
     
-//    instructionBtn = [[ColorButton alloc] init];
-//    [instructionBtn  initWithTitle:@"说明" andIcon:[UIImage imageNamed:@"icon_info_diary.png"] andButtonType:kGrayLeftUp];
-//    [instructionBtn addTarget:self action:@selector(instruction) forControlEvents:UIControlEventTouchUpInside];
-//    [_content  addSubview:instructionBtn];
     createBtn = [[AFColorButton alloc] init];
     [createBtn.title setText:@"发起"];
     [createBtn setIconImg:[UIImage imageNamed:@"icon_start_topic.png"]];

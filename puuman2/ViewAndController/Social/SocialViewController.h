@@ -10,8 +10,10 @@
 #import "AFColorButton.h"
 #import "AFSelectedImgButton.h"
 #import "SocialContentView.h"
+#import "TopicCellSelectedPohosViewController.h"
+#import "NewCameraViewController.h"
 
-@interface SocialViewController : UIViewController
+@interface SocialViewController : UIViewController<SelectPhotoDelegate,PopViewDelegate>
 {
     UIImageView *bg_topImageView;
     UIImageView *bg_rightImageView;
@@ -25,10 +27,12 @@
     UIButton *rewardBtn;
     UIButton *participateBtn;
     UIButton *toCurrentTopic;
-    
+    UIButton *voteBtn;
 }
 
 + (SocialViewController *)sharedViewController;
 
-
+- (void)showNewestTopic;
+- (void)showPreTopic;
+- (void)showVoteTopic;
 @end
