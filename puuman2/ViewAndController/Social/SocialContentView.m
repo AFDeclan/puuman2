@@ -27,6 +27,7 @@
 {
     if (_socialType != kSocialNoneType) {
         [selectedView hiddenView];
+
     }
     _socialType = socialType;
     switch (socialType) {
@@ -48,6 +49,7 @@
     if (_socialType != kSocialNoneType) {
         
         [selectedView showView];
+      
         
     
     }
@@ -94,7 +96,8 @@
     }else{
         [self setHorizontalFrame];
     }
-    selectedView = partnerChat;
+    selectedView = partnerData;
+    PostNotification(Noti_BottomInputViewHidden, nil);
 
 }
 

@@ -13,15 +13,14 @@
 #import "Friend.h"
 @interface FiguresHeaderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate,FriendDelegate,UITextFieldDelegate>
 {
+    UIView *bgHeadView;
     UIView *icon_headUp;
     UIView *icon_headDown;
-    AnimateShowLabel *noti_label;
     UITextField *info_title;
-    UIButton *modifyBtn;
     UIColumnView *figuresColumnView;
     Group *myGroup;
     BOOL canDeleteMember;
-    UIButton *modifyNameBtn;
+  
     NSString *oldName;
     NSString *notiStr;
     BOOL changed;

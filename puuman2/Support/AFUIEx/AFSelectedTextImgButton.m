@@ -46,7 +46,7 @@
     self.enabled = NO;
     [self setIconImg:_selectedImg];
     [self.title setTextColor:_selectedColor];
-    [self setBackgroundColor:[UIColor clearColor]];
+    [self setBackgroundColor:PMColor6];
 }
 
 - (void)unSelected

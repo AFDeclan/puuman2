@@ -25,5 +25,7 @@
    NSInteger commentNum;
 }
 
+@property(nonatomic,assign)NSInteger row;
+
 @property(retain,nonatomic)Reply *replay;
 @end

@@ -22,5 +22,7 @@
     TopicCommentCell*comments[5];
     Reply *_reply;
 }
+@property(nonatomic,assign)NSInteger row;
+
 - (void)setCommentWithReply:(Reply *)reply;
 @end

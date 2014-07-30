@@ -19,6 +19,7 @@
     if (self) {
         // Initialization code
         dataArr = [[NSArray alloc] init];
+        [self loadViewInfo];
         
     }
     return self;

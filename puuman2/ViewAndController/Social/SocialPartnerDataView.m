@@ -22,11 +22,18 @@
         [self addSubview:inGroupView];
         outGroupView = [[PartnerDataOutGroupView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
         [self addSubview:outGroupView];
-        [inGroupView setAlpha:0];
+        [inGroupView setAlpha:1];
         [outGroupView setAlpha:0];
         [MyNotiCenter addObserver:self selector:@selector(refreshStatus) name:Noti_RefreshInviteStatus object:nil];
+        
     }
+ 
     return self;
+}
+- (void) showView
+{
+    [super showView];
+
 }
 
 - (void)refreshStatus

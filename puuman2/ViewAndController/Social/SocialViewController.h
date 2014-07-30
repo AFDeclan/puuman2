@@ -22,7 +22,10 @@
     SocialContentView *contnetView;
     BOOL selectedTopic;
     
-
+    UIButton *rewardBtn;
+    UIButton *participateBtn;
+    UIButton *toCurrentTopic;
+    
 }
 
 + (SocialViewController *)sharedViewController;

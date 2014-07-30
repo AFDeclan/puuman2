@@ -8,6 +8,7 @@
 
 #import "DataInfoScrollView.h"
 #import "UniverseConstant.h"
+#import "MainTabBarController.h"
 
 @implementation DataInfoScrollView
 
@@ -43,6 +44,11 @@
         [puumanRankView setbgViewColor:PMColor5];
         [weightView setbgViewColor:[UIColor whiteColor]];
         [heightView setbgViewColor:PMColor5];
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            [self setVerticalFrame];
+        }else{
+            [self setHorizontalFrame];
+        }
         
     }
     return self;

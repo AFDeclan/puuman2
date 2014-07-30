@@ -33,8 +33,7 @@
         [manageBtn setTitle:@"管理" forState: UIControlStateNormal];
         [manageBtn addTarget:self action:@selector(managePartner) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:manageBtn];
-        [self loadViewInfo];
-        
+    
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
         }else{
@@ -42,29 +41,30 @@
         }
     }
     return self;
+ 
 }
 
 - (void)setVerticalFrame
 {
     [dataInfoView setFrame:CGRectMake(0, 168, 608, 776)];
-    //[dataInfoView setVerticalFrame];
+    [dataInfoView setVerticalFrame];
     [figuresHeader setFrame:CGRectMake(0, 0, 608, 168)];
-    SetViewLeftUp(manageBtn, 496, 16);
+    SetViewLeftUp(manageBtn, 554, 6);
 }
 
 - (void)setHorizontalFrame
 {
     [dataInfoView setFrame:CGRectMake(0,168, 864, 520)];
-    //[dataInfoView setHorizontalFrame];
+    [dataInfoView setHorizontalFrame];
     [figuresHeader setFrame:CGRectMake(0, 0, 864, 168)];
-    SetViewLeftUp(manageBtn, 810, 16);
+    SetViewLeftUp(manageBtn, 810, 6);
 }
 
 - (void)managePartner
 {
      selected= !selected;
     if (selected) {
-        [manageBtn setTitle:@"保存" forState:UIControlStateSelected];
+        [manageBtn setTitle:@"保存" forState:UIControlStateNormal];
        PostNotification(Noti_manangePartnerData, nil);
         
     }else{

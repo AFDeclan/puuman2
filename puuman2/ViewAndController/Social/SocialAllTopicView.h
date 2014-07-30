@@ -7,7 +7,27 @@
 //
 
 #import "SocialDetailView.h"
+#import "UIColumnView.h"
+#import "Forum.h"
+#import "TopicSelectButton.h"
+#import "AFSelectedTextImgButton.h"
+#import "AllTopicTableViewController.h"
+#import "VoteTableViewController.h"
+#import "TopicTitleCell.h"
 
-@interface SocialAllTopicView : SocialDetailView
+@interface SocialAllTopicView : SocialDetailView<UIColumnViewDataSource, UIColumnViewDelegate,ForumDelegate,TopicTitleDelegate>
+{
+    UIView *titleView;
+    UIColumnView *titleColumnView;
+    NSInteger addressTag;
+    AllTopicTableViewController *topicTableView;
+    VoteTableViewController *voteTableView;
+    TopicSelectButton *leftBtn;
+    TopicSelectButton *rightBtn;
+    AFSelectedTextImgButton *left_sortBtn;
+    AFSelectedTextImgButton *right_sortBtn;
+
+    
+}
 
 @end

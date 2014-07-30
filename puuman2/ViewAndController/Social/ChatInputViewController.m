@@ -24,7 +24,6 @@
     if (self) {
         // Custom initialization
       
-       
         [bgView setAlpha:0];
         input_now = NO;
         addHeightNum = 0;

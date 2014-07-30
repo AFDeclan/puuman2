@@ -123,6 +123,21 @@ static SocialViewController * instance;
     [self.view addSubview:partnerBtn];
     [self topicBtnPressed];
     
+    rewardBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 112)];
+    [rewardBtn setImage:[UIImage imageNamed:@"social_reward_btn.png"] forState:UIControlStateNormal];
+    [rewardBtn addTarget:self action:@selector(reward) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rewardBtn];
+    
+    participateBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 112)];
+    [participateBtn setImage:[UIImage imageNamed:@"social_participate_btnpng"] forState:UIControlStateNormal];
+    [participateBtn addTarget:self action:@selector(participate) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:participateBtn];
+    
+    toCurrentTopic = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 112)];
+    [toCurrentTopic setImage:[UIImage imageNamed:@"socail_current_btn.png"] forState:UIControlStateNormal];
+    [toCurrentTopic addTarget:self action:@selector(toCurrentTopic) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:toCurrentTopic];
+    
 }
 
 - (void)topicBtnPressed
@@ -196,7 +211,11 @@ static SocialViewController * instance;
     SetViewLeftUp(partnerBtn, 688, 176);
     SetViewLeftUp(leftBtn, 272, 28);
     SetViewLeftUp(rightBtn, 384, 28);
- 
+    
+    SetViewLeftUp(rewardBtn, 688, 28);
+    SetViewLeftUp(participateBtn, 688, 28);
+    SetViewLeftUp(toCurrentTopic, 688, 28);
+
 }
 
 //横屏
@@ -214,6 +233,11 @@ static SocialViewController * instance;
     SetViewLeftUp(leftBtn, 400, 28);
     SetViewLeftUp(rightBtn, 512, 28);
 
+    
+    SetViewLeftUp(rewardBtn, 944, 28);
+    SetViewLeftUp(participateBtn, 944, 28);
+    SetViewLeftUp(toCurrentTopic, 944, 28);
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -228,5 +252,18 @@ static SocialViewController * instance;
     
 }
 
+- (void)reward
+{
 
+}
+
+- (void)participate
+{
+
+}
+
+- (void)toCurrentTopic
+{
+
+}
 @end

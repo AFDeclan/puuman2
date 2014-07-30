@@ -21,11 +21,16 @@
     if (self) {
         [MyNotiCenter addObserver:self selector:@selector(refreshChatTable) name:Noti_RefreshChatTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
-
+      
         [self initialization];
-     
+         [self reloadChatData];
     }
     return self;
+}
+- (void)showView
+{
+    [super showView];
+
 }
 
 - (void)initialization
@@ -40,32 +45,36 @@
     [self addSubview:chatTable];
     [chatTable setBackgroundColor:[UIColor clearColor]];
     
-    bgHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 40)];
+    bgHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 44)];
     [bgHeadView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_talk_fri.png"]]];
     [self addSubview:bgHeadView];
     
-    icon_headDown = [[UIView alloc]initWithFrame:CGRectMake(0, 14, 864, 26)];
+    icon_headDown = [[UIView alloc]initWithFrame:CGRectMake(0, 14, 864, 30)];
     [icon_headDown setBackgroundColor:PMColor6];
     [self addSubview:icon_headDown];
     
-    icon_headUp = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 40)];
+    icon_headUp = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 44)];
     [icon_headUp setBackgroundColor:PMColor6];
     [icon_headUp.layer setMasksToBounds:YES];
     [icon_headUp.layer setCornerRadius:16.0f];
     [self addSubview:icon_headUp];
     
     
-    info_title = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 320,40)];
+    info_title = [[UILabel alloc] initWithFrame:CGRectMake(0,0,320,44)];
     [info_title setBackgroundColor:[UIColor clearColor]];
     [info_title setTextColor:[UIColor whiteColor]];
     [info_title setText:@"三月宝宝妈妈团"];
     [info_title setFont:PMFont1];
     [info_title setTextAlignment:NSTextAlignmentCenter];
     [icon_headUp addSubview:info_title];
-
+   
     [self refreshChatTable];
+    
+    
     inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
-
+   // [inputVC.view setFrame:CGRectMake(0, 600, 864, 40)];
+    //[[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
+    
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
@@ -107,15 +116,16 @@
     
     myGroup = [[Friend sharedInstance] myGroup];
     [self reloadChatTable];
+   
 }
 
 
 - (void)setVerticalFrame
 {
     
-    [bgHeadView setFrame:CGRectMake(0, 0, 608, 40)];
-    [icon_headDown setFrame:CGRectMake(0, 16, 608, 32)];
-    [icon_headUp setFrame:CGRectMake(0, 0, 608, 40)];
+    [bgHeadView setFrame:CGRectMake(0, 0, 608, 44)];
+    [icon_headDown setFrame:CGRectMake(0, 14, 608, 30)];
+    [icon_headUp setFrame:CGRectMake(0, 0, 608, 44)];
     [chatTable setFrame:CGRectMake(0, 0, 608, 880)];
     SetViewLeftUp(info_title, 136, 0);
     [self reloadChatTable];
@@ -124,9 +134,9 @@
 - (void)setHorizontalFrame
 {
     
-    [bgHeadView setFrame:CGRectMake(0, 0, 864, 40)];
-    [icon_headDown setFrame:CGRectMake(0, 16, 864, 32)];
-    [icon_headUp setFrame:CGRectMake(0, 0, 864, 40)];
+    [bgHeadView setFrame:CGRectMake(0, 0, 864, 44)];
+    [icon_headDown setFrame:CGRectMake(0, 14, 864, 30)];
+    [icon_headUp setFrame:CGRectMake(0, 0, 864, 44)];
     [chatTable setFrame:CGRectMake(0, 0, 864, 624)];
      SetViewLeftUp(info_title, 272, 0);
     [self reloadChatTable];
@@ -185,7 +195,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] == 0) {
-        return 48;
+        return 44;
     }else{
         return [ChatTableCell heightForChat:[(Action *)[[myGroup GAction] objectAtIndex:[indexPath row]-1 ] AMeta]];
     }
@@ -202,6 +212,7 @@
     [chatTable setContentOffset:pos];
     if ([chatTable contentSize].height > height) {
         [chatTable scrollRectToVisible:CGRectMake(0, [chatTable contentSize].height - self.frame.size.height, self.frame.size.width, self.frame.size.height) animated:YES];
+ 
     }
 }
 

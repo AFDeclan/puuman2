@@ -9,6 +9,9 @@
 #import "BodyPartnerDataView.h"
 #import "BodyPartnerDataCell.h"
 #import "ColorsAndFonts.h"
+#import "BabyData.h"
+#import "BabyInfo.h"
+
 
 @implementation BodyPartnerDataView
 @synthesize isHeight = _isHeight;
@@ -42,27 +45,30 @@
 
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
 {
-    
     NSString * cellIdentifier = @"DataBodyCell";
     BodyPartnerDataCell *cell = (BodyPartnerDataCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
     {
         cell = [[BodyPartnerDataCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        
+    }
     
+    if (index == 0){
+        [cell setBodyData:_group.GID andTheDate:nil andHighest:max andLowest:min andIsHeight:_isHeight];
     }
     if (_isHeight) {
         [cell setBodyData:((Member *)[_group.GMember objectAtIndex:index]).BabyHeight andTheDate:nil andHighest:max andLowest:min andIsHeight:_isHeight];
     }else{
         [cell setBodyData:((Member *)[_group.GMember objectAtIndex:index]).BabyWeight andTheDate:nil andHighest:max andLowest:min andIsHeight:_isHeight];
     }
-    if (index == 0) {
-        [cell setShowLine:NO];
-    }else{
+    
         [cell setShowLine:YES];
-    }
+
     
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
+    
+
  
 }
 
