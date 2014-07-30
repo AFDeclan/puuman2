@@ -247,7 +247,7 @@ static SocialViewController * instance;
     SetViewLeftUp(rewardBtn, 944, 544);
     SetViewLeftUp(participateBtn, 944, 656);
     SetViewLeftUp(toCurrentTopic, 944, 656);
-    SetViewLeftUp(voteBtn, 688, 656);
+    SetViewLeftUp(voteBtn, 944, 656);
 
 
 }
