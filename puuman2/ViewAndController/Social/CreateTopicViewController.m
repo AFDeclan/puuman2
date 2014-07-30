@@ -50,10 +50,31 @@
     [_content  addSubview:createBtn];
     SetViewLeftUp(instructionBtn, 592, 256);
     SetViewLeftUp(createBtn, 592, 296);
+    [createBtn setAlpha:0.5];
+    [createBtn setEnabled:NO];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+ 
+    
+    if (range.length == 1) {
+        if ([textField.text length]==1) {
+            createBtn.enabled = NO;
+            createBtn.alpha = 0.5;
+        }else
+        {
+            createBtn.enabled = YES;
+            createBtn.alpha = 1;
+        }
+    }else{
+      
+        createBtn.enabled = YES;
+        createBtn.alpha = 1;
+     
+        
+    }
+    
     if (range.length == 0) {
         if ([textField.text length] >=30) {
             NSString *str = [textField.text substringToIndex:30];
@@ -61,6 +82,7 @@
         }
     }
     return YES;
+
 }
 
 - (void)showKeyBoard

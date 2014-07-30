@@ -44,7 +44,6 @@
         [myTopicTable addSubview:_refreshHeader];
         [_refreshHeader setDelegate:self];
         _refreshHeader.alpha = 1;
-        
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
             [[Forum sharedInstance] getMoreMyReplies:5 newDirect:YES];
         };
@@ -56,7 +55,7 @@
 - (void)showView
 {
     [super showView];
-    [self performSelector:@selector(refreshMyTopicTable) withObject:nil afterDelay:0];
+    [self performSelector:@selector(refreshMyTopicTable) withObject:nil afterDelay:1];
 }
 
 - (void)refreshMyTopicTable

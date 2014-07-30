@@ -39,6 +39,12 @@
     [titleColumnView setContentOffset:CGPointMake(608*(addressTag -1), 0)];
     [self resetTopicButton];
     [[SocialViewController sharedViewController] showNewestTopic];
+    [topicTableView.view setAlpha:1];
+    [voteTableView.view setAlpha:0];
+}
+
+- (void)activeTopicFailed
+{
 
 }
 
@@ -64,10 +70,6 @@
     [titleColumnView setContentSize:CGSizeMake( 608*([[Forum sharedInstance] onTopic].TNo +1),144)];
 }
 
-- (void)activeTopicFailed
-{
-    
-}
 
 - (void)initialization
 {
