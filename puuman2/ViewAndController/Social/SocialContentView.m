@@ -57,12 +57,12 @@
         [self addSubview:allTopic];
     }
     
+    selectedView = allTopic;
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
         [self setHorizontalFrame];
     }
-    selectedView = allTopic;
 }
 
 - (void)selectedMine
@@ -71,12 +71,13 @@
         myTopic = [[SocialMyTopicView alloc] initWithFrame:CGRectZero];
         [self addSubview:myTopic];
     }
+    selectedView = myTopic;
+
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
         [self setHorizontalFrame];
     }
-    selectedView = myTopic;
 }
 
 
@@ -87,12 +88,12 @@
         [self addSubview:partnerData];
     }
     
+    selectedView = partnerChat;
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
         [self setHorizontalFrame];
     }
-    selectedView = partnerChat;
 
 }
 
@@ -103,12 +104,12 @@
         partnerChat = [[SocialPartnerChatView alloc] initWithFrame:CGRectZero];
         [self addSubview:partnerChat];
     }
+    selectedView = partnerChat;
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
         [self setHorizontalFrame];
     }
-    selectedView = partnerChat;
 }
 
 

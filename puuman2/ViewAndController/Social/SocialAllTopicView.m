@@ -336,4 +336,9 @@
 {
     
 }
+
+-(void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
+}
 @end

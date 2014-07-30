@@ -19,7 +19,7 @@
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
         topicMyVC = [[MyTopicViewController alloc] initWithNibName:nil bundle:nil];
-       [topicMyVC.view setBackgroundColor:[UIColor clearColor]];
+        [topicMyVC.view setBackgroundColor:[UIColor clearColor]];
         [self addSubview:topicMyVC.view];
         
         if([MainTabBarController sharedMainViewController].isVertical)

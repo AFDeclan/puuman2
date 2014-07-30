@@ -59,9 +59,6 @@ static SocialViewController * instance;
 - (void)viewDidDisappear:(BOOL)animated
 {
     PostNotification(Noti_BottomInputViewHidden, nil);
-    [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_Vertical object:nil];
-  
     
 }
 
@@ -355,5 +352,10 @@ static SocialViewController * instance;
     [voteVC setTitle:@"发起话题" withIcon:nil];
     [voteVC showKeyBoard];
     [voteVC show];
+}
+
+-(void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
 }
 @end

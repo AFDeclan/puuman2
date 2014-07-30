@@ -7,7 +7,15 @@
 //
 
 #import "SocialDetailView.h"
+#import "MJRefreshHeaderView.h"
+#import "Forum.h"
+#import "TopicCell.h"
 
-@interface SocialMyTopicView : SocialDetailView
+@interface SocialMyTopicView : SocialDetailView<UITableViewDataSource,UITableViewDelegate,MJRefreshBaseViewDelegate,ForumDelegate,TopicCellDelegate>
+{
+    MJRefreshHeaderView *_refreshHeader;
+    NSMutableDictionary *status;
+    UITableView *myTopicTable;
+}
 
 @end
