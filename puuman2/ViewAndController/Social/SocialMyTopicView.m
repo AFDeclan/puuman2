@@ -38,7 +38,10 @@
     [myTopicTable setShowsHorizontalScrollIndicator:NO];
     [myTopicTable setShowsVerticalScrollIndicator:NO];
     [self addSubview:myTopicTable];
-    if (!_refreshHeader) {
+    if (_refreshHeader) {
+        [_refreshHeader removeFromSuperview];
+        _refreshHeader = nil;
+    }
         _refreshHeader = [[MJRefreshHeaderView alloc] init];
         _refreshHeader.scrollView = myTopicTable;
         [myTopicTable addSubview:_refreshHeader];
@@ -47,7 +50,6 @@
         _refreshHeader.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
             [[Forum sharedInstance] getMoreMyReplies:5 newDirect:YES];
         };
-    }
 
 }
 
