@@ -39,7 +39,7 @@
     }
     [inGroupView setAlpha:1];
     [outGroupView setAlpha:0];
-
+    PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:YES]);
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
@@ -57,7 +57,7 @@
     }
     [inGroupView setAlpha:0];
     [outGroupView setAlpha:1];
-
+    PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:NO] );
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
