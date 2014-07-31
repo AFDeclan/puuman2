@@ -165,7 +165,6 @@ static SocialViewController * instance;
 
 - (void)partnerBtnPressed
 {
-    
     selectedTopic = NO;
     [topicBtn unSelected];
     [partnerBtn selected];
@@ -187,6 +186,7 @@ static SocialViewController * instance;
         [contnetView setSocialType:kSocialAllTopicView];
     }else{
         [contnetView setSocialType:kSocialPartnerDataView];
+        [self showPartnerView];
     }
 }
 
@@ -249,6 +249,14 @@ static SocialViewController * instance;
 
 }
 
+- (void)showPartnerView
+{
+    [rewardBtn setAlpha:0];
+    [participateBtn setAlpha:0];
+    [toCurrentTopic setAlpha:0];
+    [voteBtn setAlpha:0];
+
+}
 
 - (void)showNewestTopic
 {
