@@ -88,7 +88,7 @@
         [self addSubview:partnerData];
     }
     
-    selectedView = partnerChat;
+    selectedView = partnerData;
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{

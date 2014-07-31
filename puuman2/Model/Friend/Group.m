@@ -37,8 +37,12 @@
                 [mem setData:mdata];
                 if (mem.BID == [UserInfo sharedUserInfo].BID) {
                     _isMy = YES;
+                    [_GMember  insertObject:mem atIndex:0];
+
+                }else{
+                    [_GMember addObject:mem];
+
                 }
-                [_GMember addObject:mem];
             }
         }
     }

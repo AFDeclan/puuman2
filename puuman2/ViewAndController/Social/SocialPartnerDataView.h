@@ -7,7 +7,16 @@
 //
 
 #import "SocialDetailView.h"
+#import "PartnerOutGroupDataView.h"
+#import "PartnerInGroupDataView.h"
+#import "Friend.h"
 
-@interface SocialPartnerDataView : SocialDetailView
+@interface SocialPartnerDataView : SocialDetailView<FriendDelegate>
+{
+    PartnerInGroupDataView *inGroupView;
+    PartnerOutGroupDataView *outGroupView;
+}
 
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 @end
