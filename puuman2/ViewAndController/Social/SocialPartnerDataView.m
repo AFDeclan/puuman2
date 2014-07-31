@@ -35,7 +35,6 @@
 {
     if (!inGroupView) {
         inGroupView = [[PartnerInGroupDataView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
-        [inGroupView setBackgroundColor:[UIColor blackColor]];
         [self addSubview:inGroupView];
     }
     [inGroupView setAlpha:1];
@@ -54,7 +53,6 @@
 {
     if (!outGroupView) {
         outGroupView = [[PartnerOutGroupDataView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
-        [outGroupView setBackgroundColor:[UIColor blackColor]];
         [self addSubview:outGroupView];
     }
     [inGroupView setAlpha:0];
