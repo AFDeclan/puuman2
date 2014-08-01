@@ -57,7 +57,7 @@
 - (void)showView
 {
     [super showView];
-    [self performSelector:@selector(refreshMyTopicTable) withObject:nil afterDelay:1];
+    [self performSelector:@selector(refreshMyTopicTable) withObject:nil afterDelay:0.5];
 }
 
 - (void)refreshMyTopicTable

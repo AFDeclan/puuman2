@@ -217,10 +217,10 @@ static SocialViewController * instance;
     SetViewLeftUp(leftBtn, 272, 28);
     SetViewLeftUp(rightBtn, 384, 28);
     
-    SetViewLeftUp(rewardBtn, 688, 800);
-    SetViewLeftUp(participateBtn, 688, 912);
-    SetViewLeftUp(toCurrentTopic, 688, 912);
-    SetViewLeftUp(voteBtn, 688, 912);
+    SetViewLeftUp(rewardBtn, 688, 770);
+    SetViewLeftUp(participateBtn, 688, 882);
+    SetViewLeftUp(toCurrentTopic, 688, 882);
+    SetViewLeftUp(voteBtn, 688, 882);
 
 
 }
@@ -241,10 +241,10 @@ static SocialViewController * instance;
     SetViewLeftUp(rightBtn, 512, 28);
 
     
-    SetViewLeftUp(rewardBtn, 944, 544);
-    SetViewLeftUp(participateBtn, 944, 656);
-    SetViewLeftUp(toCurrentTopic, 944, 656);
-    SetViewLeftUp(voteBtn, 944, 656);
+    SetViewLeftUp(rewardBtn, 944, 514);
+    SetViewLeftUp(participateBtn, 944, 626);
+    SetViewLeftUp(toCurrentTopic, 944, 626);
+    SetViewLeftUp(voteBtn, 944, 626);
 
 
 }

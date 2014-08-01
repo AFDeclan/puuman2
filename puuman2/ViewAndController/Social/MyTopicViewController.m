@@ -53,23 +53,7 @@
     [self.tableView setShowsHorizontalScrollIndicator:NO];
     [self.tableView setShowsVerticalScrollIndicator:NO];
     
-//	// Do any additional setup after loading the view.
-//    if (!_refreshFooter) {
-//        _refreshFooter = [[MJRefreshFooterView alloc] init];
-//        _refreshFooter.scrollView = self.tableView;
-//        [self.tableView addSubview:_refreshFooter];
-//        [_refreshFooter setDelegate:self];
-//        _refreshFooter.alpha = 1;
-//        __block MJRefreshFooterView * blockRefreshFooter = _refreshFooter;
-//        _refreshFooter.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-//            [[Forum sharedInstance] getMoreMyReplies:5 newDirect:NO];
-//            if (![[Forum sharedInstance] noMore])
-//            {
-//                [blockRefreshFooter endRefreshing];
-//            }
-//        };
-//      
-//    }
+
     
     if (!_refreshHeader) {
         _refreshHeader = [[MJRefreshHeaderView alloc] init];

@@ -22,6 +22,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        [[Friend sharedInstance] addDelegateObject:self];
         [self initialization];
     }
     return self;
@@ -62,7 +63,6 @@
     [info_upload setFont:PMFont2];
     [info_upload setTextColor:PMColor3];
     [self addSubview:info_upload];
-    [[Friend sharedInstance] addDelegateObject:self];
 
 }
 
@@ -121,6 +121,7 @@
     }
     
 }
+
 //Member数据下载失败
 - (void)memberDownloadFailed
 {

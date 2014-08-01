@@ -45,8 +45,6 @@
     }else{
         [self setHorizontalFrame];
     }
-
-    
 }
 
 - (void)outGroup

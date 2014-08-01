@@ -52,6 +52,7 @@
 {
     addressTag = [Forum sharedInstance].onTopic.TNo;
     [titleColumnView setContentOffset:CGPointMake(608*(addressTag -1), 0) animated:YES];
+    [self resetTopicButton];
 
 }
 
@@ -67,7 +68,6 @@
     [titleColumnView setPagingEnabled:YES];
     [titleColumnView setScrollEnabled:NO];
     [titleView addSubview:titleColumnView];
-    [titleColumnView setContentSize:CGSizeMake( 608*([[Forum sharedInstance] onTopic].TNo +1),144)];
 }
 
 
@@ -157,16 +157,15 @@
             [[SocialViewController sharedViewController] showVoteTopic];
         }else if(addressTag == [[Forum sharedInstance] onTopic].TNo){
             [[SocialViewController sharedViewController] showNewestTopic];
-
         }else{
             [[SocialViewController sharedViewController] showPreTopic];
 
         }
-        
+        [self resetTopicButton];
+
     } completion:^(BOOL finished) {
         [titleColumnView setContentOffset:CGPointMake(titleColumnView.contentOffset.x + 1, 0) ];
         [rightBtn setEnabled:YES];
-        [self resetTopicButton];
     }];
 
 }
@@ -194,10 +193,11 @@
             [[SocialViewController sharedViewController] showPreTopic];
             
         }
+        [self resetTopicButton];
+
     } completion:^(BOOL finished) {
         [titleColumnView setContentOffset:CGPointMake(titleColumnView.contentOffset.x - 1, 0) ];
         [leftBtn setEnabled:YES];
-        [self resetTopicButton];
         
     }];
 
@@ -206,6 +206,7 @@
 
 - (void)resetTopicButton
 {
+    
     if (addressTag == 1 ) {
         [leftBtn setAlpha:0];
     }else{
@@ -275,7 +276,6 @@
     }else{
         return 1;
     }
-    
 }
 
 - (UITableViewCell *)columnView:(UIColumnView *)columnView viewForColumnAtIndex:(NSUInteger)index
