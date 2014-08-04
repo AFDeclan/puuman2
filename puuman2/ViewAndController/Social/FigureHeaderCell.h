@@ -17,7 +17,7 @@
     UILabel *info_compare;
     AFTextImgButton *name_sex;
     UIImageView *recommendView;
-    UILabel *label_manageStatus;
+    UIButton *manageBtn;
 }
 @property(nonatomic,assign)BOOL recommend;
 - (void)buildWithMemberInfo:(Member *)member;

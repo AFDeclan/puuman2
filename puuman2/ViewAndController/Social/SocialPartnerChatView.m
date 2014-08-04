@@ -21,10 +21,8 @@
     if (self) {
         [MyNotiCenter addObserver:self selector:@selector(refreshChatTable) name:Noti_RefreshChatTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
-        
         [self initialization];
         [self reloadChatData];
-        
     }
     return self;
 }

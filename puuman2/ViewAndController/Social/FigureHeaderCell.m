@@ -20,7 +20,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-       
+        [MyNotiCenter addObserver:self selector:@selector(showManagerMenu) name:Noti_manangePartnerData object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(hiddenManagerMenu) name:Noti_manangedPartnerData object:nil];
         portrait  =[[AFImageView alloc] initWithFrame:CGRectMake(28, 16, 40, 40)];
         [portrait setBackgroundColor:[UIColor clearColor]];
         portrait.layer.cornerRadius = 20;
@@ -113,6 +114,17 @@
 {
     [MyNotiCenter removeObserver:self name:Noti_manangePartnerData object:nil];
     [MyNotiCenter removeObserver:self name:Noti_manangedPartnerData object:nil];
+}
+
+- (void)showManagerMenu
+{
+    
+    [manageBtn setAlpha:1];
+}
+
+- (void)hiddenManagerMenu
+{
+    [manageBtn setAlpha:0];
 }
 
 @end

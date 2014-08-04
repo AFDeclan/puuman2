@@ -20,19 +20,10 @@
         
         figuresHeader = [[FiguresHeaderView alloc] initWithFrame:CGRectMake(0, 0, 608, 168)];
         [self addSubview:figuresHeader];
-        selected = NO;
         dataInfoView = [[DataInfoScrollView alloc] initWithFrame:CGRectMake(0, 0, 608, 520)];
-        [dataInfoView setBounces:NO];
-        [dataInfoView setContentSize:CGSizeMake(608, 672)];//1432
+        [dataInfoView setBounces:YES];
+        [dataInfoView setContentSize:CGSizeMake(608, 672)];
         [self addSubview:dataInfoView];
-        manageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [manageBtn setFrame:CGRectMake(0, 0, 40, 32)];
-        [manageBtn.titleLabel setFont:PMFont2];
-        [manageBtn setBackgroundColor:PMColor6];
-        [manageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [manageBtn setTitle:@"管理" forState: UIControlStateNormal];
-        [manageBtn addTarget:self action:@selector(managePartner) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:manageBtn];
         
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
@@ -42,6 +33,34 @@
     }
     return self;
 }
+
+- (void)setVerticalFrame
+{
+    [dataInfoView setFrame:CGRectMake(0, 168, 608, 776)];
+    [figuresHeader setFrame:CGRectMake(0, 0, 608, 168)];
+    [dataInfoView setVerticalFrame];
+    [figuresHeader setVerticalFrame];
+}
+
+- (void)setHorizontalFrame
+{
+    [dataInfoView setFrame:CGRectMake(0,168, 864, 520)];
+    [figuresHeader setFrame:CGRectMake(0, 0, 864, 168)];
+    [dataInfoView setHorizontalFrame];
+    [figuresHeader setHorizontalFrame];
+}
+
+- (void)loadViewInfo
+{
+    [figuresHeader reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
+    [dataInfoView reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+    }else{
+        [self setHorizontalFrame];
+    }
+}
+
 
 
 

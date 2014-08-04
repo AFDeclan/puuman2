@@ -15,8 +15,6 @@
 {
     FiguresHeaderView *figuresHeader;
     DataInfoScrollView *dataInfoView;
-    UIButton *manageBtn;
-    BOOL selected;
     Group *group;
 }
 

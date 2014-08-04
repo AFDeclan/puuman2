@@ -24,21 +24,21 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        [MyNotiCenter addObserver:self selector:@selector(showManagerMenu) name:Noti_manangePartnerData object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(hiddenManagerMenu) name:Noti_manangedPartnerData object:nil];
-        bgHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 44)];
-        [bgHeadView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_talk_fri.png"]]];
-        [self addSubview:bgHeadView];
+        managing = NO;
         
-        icon_headDown = [[UIView alloc]initWithFrame:CGRectMake(0, 14, 864, 30)];
-        [icon_headDown setBackgroundColor:PMColor6];
-        [self addSubview:icon_headDown];
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 44)];
+        [self addSubview:headerView];
+        headerView.layer.masksToBounds = YES;
+        [headerView setBackgroundColor:[UIColor clearColor]];
         
-        icon_headUp = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 44)];
-        [icon_headUp setBackgroundColor:PMColor6];
-        [icon_headUp.layer setMasksToBounds:YES];
-        [icon_headUp.layer setCornerRadius:16.0f];
-        [self addSubview:icon_headUp];
+        contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 864, 124)];
+        [contentView setBackgroundColor:[UIColor clearColor]];
+        [self addSubview:contentView];
+        
+        header_bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 60)];
+        [header_bg setBackgroundColor:PMColor6];
+        [headerView addSubview:header_bg];
+        header_bg.layer.cornerRadius = 16.0f;
 
       
         notiStr = @"";
@@ -46,12 +46,30 @@
         [info_title setBackgroundColor:[UIColor clearColor]];
         [info_title setTextColor:[UIColor whiteColor]];
         [info_title setFont:PMFont1];
-        [info_title setText:@"三月宝宝妈妈团"];
         [info_title setTextAlignment:NSTextAlignmentCenter];
-        [icon_headUp addSubview:info_title];
+        [headerView addSubview:info_title];
         [info_title setDelegate:self];
         [info_title setEnabled:NO];
        
+        manageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [manageBtn setFrame:CGRectMake(0, 0, 80, 44)];
+        [manageBtn.titleLabel setFont:PMFont2];
+        [manageBtn setBackgroundColor:[UIColor clearColor]];
+        [manageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [manageBtn setTitle:@"管理" forState: UIControlStateNormal];
+        [manageBtn addTarget:self action:@selector(managePartner) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:manageBtn];
+
+        backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backBtn setFrame:CGRectMake(0, 0, 80, 44)];
+        [backBtn.titleLabel setFont:PMFont2];
+        [backBtn setBackgroundColor:[UIColor clearColor]];
+        [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [backBtn setTitle:@"返回" forState: UIControlStateNormal];
+        [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:backBtn];
+        
+        
         changed = NO;
         if ([MainTabBarController sharedMainViewController].isVertical) {
         
@@ -64,6 +82,26 @@
     return self;
 }
 
+- (void)back
+{
+
+}
+
+- (void)managePartner
+{
+    managing= !managing;
+    if (managing) {
+        [manageBtn setTitle:@"保存" forState:UIControlStateNormal];
+        PostNotification(Noti_manangePartnerData, nil);
+        [self showManagerMenu];
+    }else{
+        [manageBtn setTitle:@"管理" forState:UIControlStateNormal];
+        PostNotification(Noti_manangedPartnerData, nil);
+        [self hiddenManagerMenu];
+
+    }
+}
+
 
 - (void)removeAllDelegate
 {
@@ -72,6 +110,9 @@
 
 - (void)reloadWithGroupInfo:(Group *)group
 {
+    managing = NO;
+    [manageBtn setTitle:@"管理" forState:UIControlStateNormal];
+    
      [[Friend sharedInstance] addDelegateObject:self];
     [info_title setEnabled:NO];
     canDeleteMember = NO;
@@ -195,17 +236,21 @@
 
 - (void)setVerticalFrame
 {
-    [bgHeadView setFrame:CGRectMake(0, 0, 608, 44)];
-    [icon_headDown setFrame:CGRectMake(0, 14, 608, 30)];
-    [icon_headUp setFrame:CGRectMake(0, 0, 608, 44)];
-    SetViewLeftUp(info_title, 136, 0);}
+    [headerView setFrame:CGRectMake(0, 0, 608, 44)];
+    [header_bg setFrame:CGRectMake(0, 0, 608, 60)];
+    SetViewLeftUp(info_title, 136, 0);
+    SetViewLeftUp(figuresColumnView, 22, 48);
+    SetViewLeftUp(manageBtn, 528, 0);
+
+}
 
 - (void)setHorizontalFrame
 {
-    [bgHeadView setFrame:CGRectMake(0, 0, 864, 44)];
-    [icon_headDown setFrame:CGRectMake(0, 14, 864, 30)];
-    [icon_headUp setFrame:CGRectMake(0, 0, 864, 44)];
+    [headerView setFrame:CGRectMake(0, 0, 864, 44)];
+    [header_bg setFrame:CGRectMake(0, 0, 864, 60)];
     SetViewLeftUp(info_title, 272, 0);
+    SetViewLeftUp(figuresColumnView, 152, 48);
+    SetViewLeftUp(manageBtn, 784,0);
 }
 
 //Group Action 上传成功
@@ -213,6 +258,7 @@
 {
     PostNotification(Noti_RefreshInviteStatus, nil);
 }
+
 //Group Action 上传失败
 - (void)actionUploadFailed:(ActionForUpload *)action
 {

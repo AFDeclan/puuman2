@@ -454,8 +454,8 @@
 		54B06C2B1929C34000539EA5 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C2A1929C34000539EA5 /* block_photo_diary.png */; };
 		54B06C2D1929C37B00539EA5 /* block_photo_diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C2C1929C37B00539EA5 /* block_photo_diary.png */; };
 		54B06C321929F65600539EA5 /* btn_preinfo_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B06C311929F65600539EA5 /* btn_preinfo_baby.png */; };
-		54B17C881989E261008A0CC8 /* PartnerOutGroupDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B17C871989E261008A0CC8 /* PartnerOutGroupDataView.m */; };
-		54B17C8B1989E27E008A0CC8 /* PartnerInGroupDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B17C8A1989E27E008A0CC8 /* PartnerInGroupDataView.m */; };
+		54B0E4DF198F3691000FF26A /* PartnerInGroupDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B0E4DC198F3691000FF26A /* PartnerInGroupDataView.m */; };
+		54B0E4E0198F3691000FF26A /* PartnerOutGroupDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B0E4DE198F3691000FF26A /* PartnerOutGroupDataView.m */; };
 		54B1ACE1196D24E50045B369 /* NSDate+Compute.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1ACE0196D24E50045B369 /* NSDate+Compute.m */; };
 		54B1ACE4196D303B0045B369 /* AgePreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B1ACE3196D303B0045B369 /* AgePreTableViewCell.m */; };
 		54B30A6C195D4A9600007DDC /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B30A6B195D4A9500007DDC /* UserInfo.m */; };
@@ -1500,10 +1500,10 @@
 		54B06C2A1929C34000539EA5 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		54B06C2C1929C37B00539EA5 /* block_photo_diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_photo_diary.png; sourceTree = "<group>"; };
 		54B06C311929F65600539EA5 /* btn_preinfo_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_preinfo_baby.png; sourceTree = "<group>"; };
-		54B17C861989E261008A0CC8 /* PartnerOutGroupDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerOutGroupDataView.h; sourceTree = "<group>"; };
-		54B17C871989E261008A0CC8 /* PartnerOutGroupDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerOutGroupDataView.m; sourceTree = "<group>"; };
-		54B17C891989E27E008A0CC8 /* PartnerInGroupDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerInGroupDataView.h; sourceTree = "<group>"; };
-		54B17C8A1989E27E008A0CC8 /* PartnerInGroupDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerInGroupDataView.m; sourceTree = "<group>"; };
+		54B0E4DB198F3691000FF26A /* PartnerInGroupDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerInGroupDataView.h; sourceTree = "<group>"; };
+		54B0E4DC198F3691000FF26A /* PartnerInGroupDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerInGroupDataView.m; sourceTree = "<group>"; };
+		54B0E4DD198F3691000FF26A /* PartnerOutGroupDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerOutGroupDataView.h; sourceTree = "<group>"; };
+		54B0E4DE198F3691000FF26A /* PartnerOutGroupDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerOutGroupDataView.m; sourceTree = "<group>"; };
 		54B1ACE0196D24E50045B369 /* NSDate+Compute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Compute.m"; sourceTree = "<group>"; };
 		54B1ACE2196D303B0045B369 /* AgePreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgePreTableViewCell.h; sourceTree = "<group>"; };
 		54B1ACE3196D303B0045B369 /* AgePreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgePreTableViewCell.m; sourceTree = "<group>"; };
@@ -3227,10 +3227,10 @@
 		54B17C841989E1DA008A0CC8 /* PartnerView */ = {
 			isa = PBXGroup;
 			children = (
-				54B17C861989E261008A0CC8 /* PartnerOutGroupDataView.h */,
-				54B17C871989E261008A0CC8 /* PartnerOutGroupDataView.m */,
-				54B17C891989E27E008A0CC8 /* PartnerInGroupDataView.h */,
-				54B17C8A1989E27E008A0CC8 /* PartnerInGroupDataView.m */,
+				54B0E4DB198F3691000FF26A /* PartnerInGroupDataView.h */,
+				54B0E4DC198F3691000FF26A /* PartnerInGroupDataView.m */,
+				54B0E4DD198F3691000FF26A /* PartnerOutGroupDataView.h */,
+				54B0E4DE198F3691000FF26A /* PartnerOutGroupDataView.m */,
 			);
 			name = PartnerView;
 			sourceTree = "<group>";
@@ -4982,7 +4982,6 @@
 				54ACEE8618EA64B80055562B /* Rank.m in Sources */,
 				54B4682418E5210900745F72 /* HospitalPrivateView.m in Sources */,
 				54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */,
-				54B17C8B1989E27E008A0CC8 /* PartnerInGroupDataView.m in Sources */,
 				54B4683118E521B900745F72 /* WareCell.m in Sources */,
 				54B4682518E5210900745F72 /* HospitalSmallView.m in Sources */,
 				14B8DF2918BC37A30047C6B3 /* ShopClassModel.m in Sources */,
@@ -5057,7 +5056,6 @@
 				54C038D91963DF1F00BBC1E6 /* OrderWaresHeaderView.m in Sources */,
 				54AFBBD018D6946900861A69 /* SettingViewController.m in Sources */,
 				54B3814D19791F62003FF386 /* RectRankSubCell.m in Sources */,
-				54B17C881989E261008A0CC8 /* PartnerOutGroupDataView.m in Sources */,
 				54B94A44197D0402003ABA93 /* UIImage+Blur.m in Sources */,
 				54C110A21974E89C00415EE3 /* TaskInfoViewController.m in Sources */,
 				541970EB18D1A3710058FE64 /* AddInfoCalendar.m in Sources */,
@@ -5082,6 +5080,7 @@
 				88B515FF192F52EE006A79AB /* SinaWeiboAuthorizeView.m in Sources */,
 				54ADB1D418E1860200FCCC83 /* TextTopicCell.m in Sources */,
 				54AC210418E3FEA8001C1357 /* AllWareView.m in Sources */,
+				54B0E4DF198F3691000FF26A /* PartnerInGroupDataView.m in Sources */,
 				54ADE0A018C8608700B166C4 /* TimeView.m in Sources */,
 				54AE2BB918E93FEB00D24F92 /* Group.m in Sources */,
 				547F7649196A7DAC004D4F77 /* BabyInfoBornViewCell.m in Sources */,
@@ -5095,6 +5094,7 @@
 				54B6F42718D6EAF00055FC72 /* VideoPlayerController.m in Sources */,
 				54AE2BBB18E93FEB00D24F92 /* MemberCache.m in Sources */,
 				54AFAA9118DAC3BF0067B8C1 /* AdaptiveLabel.m in Sources */,
+				54B0E4E0198F3691000FF26A /* PartnerOutGroupDataView.m in Sources */,
 				549B62C718CABC5A00AFEEAB /* CustomNotiViewController.m in Sources */,
 				54012DC418E2C14300F11D97 /* SortTableViewController.m in Sources */,
 				54ADE0B818C87E9C00B166C4 /* NewCameraShowPhotosViewController.m in Sources */,

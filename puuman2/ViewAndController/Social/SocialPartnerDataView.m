@@ -20,7 +20,6 @@
     if (self) {
         // Initialization code
         [[Friend sharedInstance] addDelegateObject:self];
-
     }
     return self;
 }
@@ -29,7 +28,6 @@
 {
     [super showView];
     [[Friend sharedInstance] getGroupData];
-     
 }
 
 
@@ -41,13 +39,13 @@
     }
     [inGroupView setAlpha:1];
     [outGroupView setAlpha:0];
+    [inGroupView loadViewInfo];
     PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:YES]);
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
         [self setHorizontalFrame];
     }
-    
 }
 
 - (void)outGroup
@@ -58,13 +56,13 @@
     }
     [inGroupView setAlpha:0];
     [outGroupView setAlpha:1];
+    [outGroupView loadViewInfo];
     PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:NO] );
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{
         [self setHorizontalFrame];
     }
-
 }
 
 //获取小组信息成功
@@ -83,13 +81,9 @@
 {
     if ([[Friend sharedInstance] inGroup]) {
         [self inGoup];
-        
     }else{
         [self outGroup];
-       
     }
-    
-    NSLog(@"%@",[[Friend sharedInstance] myGroup].GName);
     
 }
 
@@ -120,5 +114,8 @@
     }
 }
 
-
+- (void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
+}
 @end

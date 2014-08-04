@@ -13,9 +13,17 @@
 #import "Friend.h"
 @interface FiguresHeaderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate,FriendDelegate,UITextFieldDelegate>
 {
-    UIView *bgHeadView;
-    UIView *icon_headUp;
-    UIView *icon_headDown;
+    
+    BOOL managing;
+
+    
+    UIView *headerView;
+    UIView *contentView;
+    
+    UIView *header_bg;
+    UIButton *manageBtn;
+    UIButton *backBtn;
+
     UITextField *info_title;
     UIColumnView *figuresColumnView;
     Group *myGroup;
