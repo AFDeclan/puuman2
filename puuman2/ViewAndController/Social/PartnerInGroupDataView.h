@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "FiguresHeaderView.h"
+#import "DataInfoScrollView.h"
+#import "Group.h"
 
 @interface PartnerInGroupDataView : UIView
+{
+    FiguresHeaderView *figuresHeader;
+    DataInfoScrollView *dataInfoView;
+    UIButton *manageBtn;
+    BOOL selected;
+    Group *group;
+}
 
+- (void)loadViewInfo;
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 @end
