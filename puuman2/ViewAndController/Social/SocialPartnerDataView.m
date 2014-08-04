@@ -29,7 +29,7 @@
 {
     [super showView];
     [[Friend sharedInstance] getGroupData];
-
+     
 }
 
 
@@ -99,8 +99,10 @@
     if ([[Friend sharedInstance] inGroup])
     {
         [inGroupView setFrame:CGRectMake(0, 0, 608, 944)];
+        [inGroupView setVerticalFrame];
     }else{
         [outGroupView setFrame:CGRectMake(0, 0, 608, 944)];
+        [outGroupView setVerticalFrame];
     }
     
 }
@@ -111,8 +113,10 @@
     if ([[Friend sharedInstance] inGroup])
     {
         [inGroupView setFrame:CGRectMake(0, 0, 864, 688)];
+        [inGroupView setHorizontalFrame];
     }else{
         [outGroupView setFrame:CGRectMake(0, 0, 864, 688)];
+        [outGroupView setHorizontalFrame];
     }
 }
 

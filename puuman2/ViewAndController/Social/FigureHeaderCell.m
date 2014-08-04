@@ -20,10 +20,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [MyNotiCenter addObserver:self selector:@selector(showManagerMenu) name:Noti_manangePartnerData object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(hiddenManagerMenu) name:Noti_manangedPartnerData object:nil];
-        // Initialization code
-        
+       
         portrait  =[[AFImageView alloc] initWithFrame:CGRectMake(28, 16, 40, 40)];
         [portrait setBackgroundColor:[UIColor clearColor]];
         portrait.layer.cornerRadius = 20;
@@ -61,49 +58,21 @@
 //        [label_recommend setText:@"推荐"];
 //        [recommendView  addSubview:label_recommend];
 
-        manageBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 96, 112)];
-        [manageBtn setAlpha:0];
-        [self.contentView addSubview:manageBtn];
         
-      
+        
         UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 96, 112)];
         [bgView setBackgroundColor:[UIColor blackColor]];
         [bgView setAlpha:0.5];
-        [manageBtn addSubview:bgView];
-      
         
         UIImageView *icon_img = [[ UIImageView alloc] initWithFrame:CGRectMake(24, 36, 48, 48)];
         [icon_img setImage:[UIImage imageNamed:@"circle_fri.png"]];
         [bgView addSubview:icon_img];
         
-        label_manageStatus = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
-        [label_manageStatus setTextAlignment:NSTextAlignmentCenter];
-        [label_manageStatus setTextColor:[UIColor whiteColor]];
-        [label_manageStatus setFont:PMFont2];
-        [label_manageStatus setBackgroundColor:[UIColor clearColor]];
-        [label_manageStatus setText:@"移除"];
-        [icon_img  addSubview:label_manageStatus];
-     
-        
-        
-        
-        
-        
-        
     }
     return self;
 }
 
-- (void)showManagerMenu
-{
-    
-    [manageBtn setAlpha:1];
-}
 
-- (void)hiddenManagerMenu
-{
-    [manageBtn setAlpha:0];
-}
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

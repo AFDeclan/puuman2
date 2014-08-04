@@ -11,6 +11,7 @@
 #import "ColorsAndFonts.h"
 #import "Friend.h"
 #import "UniverseConstant.h"
+#import "MainTabBarController.h"
 @implementation PartnerDataOutGroupView
 
 - (id)initWithFrame:(CGRect)frame
@@ -57,6 +58,7 @@
     }else{
         [emptyNotiView setAlpha:0];
     }
+    
 }
 
 - (void)setVerticalFrame
