@@ -11,6 +11,7 @@
 #import "AFTextImgButton.h"
 #import "Member.h"
 
+@protocol FigureHeaderDelegate;
 @interface FigureHeaderCell : UITableViewCell
 {
     AFImageView *portrait;
@@ -18,7 +19,15 @@
     AFTextImgButton *name_sex;
     UIImageView *recommendView;
     UIButton *manageBtn;
+    UIView *manageView;
 }
+@property(nonatomic,assign)id<FigureHeaderDelegate> delegate;
 @property(nonatomic,assign)BOOL recommend;
-- (void)buildWithMemberInfo:(Member *)member;
+@property(nonatomic,retain)Member *member;
+@end
+
+@protocol FigureHeaderDelegate <NSObject>
+
+- (void)quit;
+- (void)showPartnerWithInfo:(Member *)member;
 @end

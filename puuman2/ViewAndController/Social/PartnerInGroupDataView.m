@@ -52,7 +52,7 @@
 
 - (void)loadViewInfo
 {
-    [figuresHeader reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
+    [figuresHeader reloadGroupInfo];
     [dataInfoView reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
@@ -61,7 +61,10 @@
     }
 }
 
+- (void)dealloc
+{
 
+}
 
 
 @end

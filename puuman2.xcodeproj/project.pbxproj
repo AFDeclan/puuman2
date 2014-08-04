@@ -2754,6 +2754,7 @@
 		5447C4B818D9999900187BE6 /* subView */ = {
 			isa = PBXGroup;
 			children = (
+				54AE788318E00B9100AE558C /* DataView */,
 				54012DBF18E2C09000F11D97 /* MyTopicViewController.h */,
 				54012DC018E2C09000F11D97 /* MyTopicViewController.m */,
 				54012DC218E2C14300F11D97 /* SortTableViewController.h */,
@@ -2775,7 +2776,6 @@
 				54BEB69018E948FE00AB3E27 /* PartnerDataInGroupView.m */,
 				54BEB68F18E948FE00AB3E27 /* PartnerDataInGroupView.h */,
 				5421667318E03281005875F8 /* VotingCell */,
-				54AE788318E00B9100AE558C /* DataView */,
 				54AE787F18DFF83D00AE558C /* TopicCell */,
 				54AFAA7A18DA889C0067B8C1 /* popView */,
 			);

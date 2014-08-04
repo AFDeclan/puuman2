@@ -58,12 +58,10 @@
     manage = !manage;
     if (manage) {
         [manageBtn.title setText:@"保存"];
-       PostNotification(Noti_manangePartnerData, nil);
         
     }else{
         [manageBtn.title setText:@"管理"];
 
-     PostNotification(Noti_manangedPartnerData, nil);
     }
     [manageBtn adjustLayout];
     
@@ -74,8 +72,7 @@
     manage = NO;
     [manageBtn.title setText:@"管理"];
     [manageBtn adjustLayout];
-  //  PostNotification(Noti_manangedPartnerData, nil);
-    [figuresHeader reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
+    [figuresHeader reloadGroupInfo];
     [dataInfoView reloadWithGroupInfo:[[Friend sharedInstance] myGroup]];
     
 }

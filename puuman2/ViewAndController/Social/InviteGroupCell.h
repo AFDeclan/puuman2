@@ -10,9 +10,8 @@
 #import "UIColumnView.h"
 #import "AFColorButton.h"
 #import "Group.h"
-#import "Friend.h"
-
-@interface InviteGroupCell : UITableViewCell<UIColumnViewDataSource, UIColumnViewDelegate,FriendDelegate>
+@protocol InvitedMemberDelegate;
+@interface InviteGroupCell : UITableViewCell<UIColumnViewDataSource, UIColumnViewDelegate>
 {
     UILabel *noti_Title;
     UILabel *date_invite;
@@ -22,6 +21,12 @@
     NSArray *groupMembers;
    
 }
-
+@property(nonatomic,assign)id<InvitedMemberDelegate>delegate;
 - (void)buildCellWithGroup:(Group *)group;
+@end
+
+@protocol InvitedMemberDelegate <NSObject>
+
+- (void)acceptInviteWithGroup:(Group *)group;
+
 @end

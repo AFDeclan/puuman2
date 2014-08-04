@@ -20,9 +20,12 @@
     if (self) {
         // Initialization code
         [[Friend sharedInstance] addDelegateObject:self];
+        [MyNotiCenter addObserver:self selector:@selector(showView) name:Noti_RefreshInviteStatus object:nil];
+
     }
     return self;
 }
+
 
 - (void)showView
 {
@@ -33,12 +36,17 @@
 
 - (void)inGoup
 {
+    if (outGroupView) {
+        [outGroupView removeFromSuperview];
+         outGroupView = nil;
+    }
+    
     if (!inGroupView) {
         inGroupView = [[PartnerInGroupDataView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
         [self addSubview:inGroupView];
     }
+    
     [inGroupView setAlpha:1];
-    [outGroupView setAlpha:0];
     [inGroupView loadViewInfo];
     PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:YES]);
     if ([MainTabBarController sharedMainViewController].isVertical) {
@@ -50,11 +58,14 @@
 
 - (void)outGroup
 {
+    if (inGroupView) {
+        [inGroupView removeFromSuperview];
+        inGroupView = nil;
+    }
     if (!outGroupView) {
         outGroupView = [[PartnerOutGroupDataView alloc] initWithFrame:CGRectMake(0, 0, 864, 688)];
         [self addSubview:outGroupView];
     }
-    [inGroupView setAlpha:0];
     [outGroupView setAlpha:1];
     [outGroupView loadViewInfo];
     PostNotification(Noti_InOrOutGroup,[NSNumber numberWithBool:NO] );
@@ -117,5 +128,7 @@
 - (void)dealloc
 {
     [MyNotiCenter removeObserver:self];
+    [[Friend sharedInstance] removeDelegateObject:self];
+
 }
 @end

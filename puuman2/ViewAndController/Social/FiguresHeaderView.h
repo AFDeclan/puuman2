@@ -11,30 +11,30 @@
 #import "AnimateShowLabel.h"
 #import "Group.h"
 #import "Friend.h"
-@interface FiguresHeaderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate,FriendDelegate,UITextFieldDelegate>
+#import "FigureHeaderCell.h"
+
+@interface FiguresHeaderView : UIView<UIColumnViewDataSource, UIColumnViewDelegate,FriendDelegate,UITextFieldDelegate,FigureHeaderDelegate>
 {
     
     BOOL managing;
 
-    
     UIView *headerView;
     UIView *contentView;
     
     UIView *header_bg;
     UIButton *manageBtn;
     UIButton *backBtn;
-
-    UITextField *info_title;
-    UIColumnView *figuresColumnView;
+    UITextField *nameTextField;
+    
     Group *myGroup;
-    BOOL canDeleteMember;
+    
     NSString *oldName;
-    NSString *notiStr;
     BOOL changed;
+    UIColumnView *figuresColumnView;
 
 }
 
-- (void)reloadWithGroupInfo:(Group *)group;
+- (void)reloadGroupInfo;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

@@ -19,7 +19,6 @@
     UITableView *recommentTable;
     AFColorButton *changeBtn;
     AFColorButton *inviteBtn;
-    Member *_memberInfo;
     Member *_userInfo;
     AFImageView *portrait;
     AFTextImgButton *sex_name;
@@ -27,6 +26,7 @@
 }
 
 @property(nonatomic,assign)BOOL recommend;
+@property(nonatomic,retain)Member *member;
 - (void)buildWithTheUid:(NSInteger)uid andUserInfo:(Member *)userInfo;
 @end
 

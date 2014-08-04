@@ -20,6 +20,8 @@
 
 @implementation RecommendPartnerViewController
 @synthesize recommend =_recommend;
+@synthesize member = _member;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -101,6 +103,29 @@
     
 }
 
+- (void)setMember:(Member *)member
+{
+    _userInfo = [[[Friend sharedInstance] myGroup] MyMember];
+    _member = member;
+    if (member.GID == 0 ) {
+        [inviteBtn setAlpha:1];
+    }else{
+        [inviteBtn setAlpha:0];
+    }
+    [recommentTable reloadData];
+    [sex_name.title setText:[member babyInfo].Nickname];
+    
+    if ([[member babyInfo] Gender]) {
+        [sex_name setIconImg:[UIImage imageNamed:@"icon_male_baby.png"]];
+    }else{
+        [sex_name setIconImg:[UIImage imageNamed:@"icon_female_baby.png"]];
+    }
+    [sex_name adjustLayout];
+    [portrait getImage:[[member babyInfo] PortraitUrl] defaultImage:@"pic_default_topic.png"];
+    [recommentTable reloadData];
+}
+
+
 - (void)buildWithTheUid:(NSInteger)uid andUserInfo:(Member *)userInfo
 {
     _userInfo = userInfo;
@@ -112,11 +137,12 @@
    
 }
 
+
 //Member数据下载成功
 - (void)memberDownloaded:(Member *)member
 {
     
-    _memberInfo = member;
+    _member = member;
     if (member.GID == 0 ) {
         [inviteBtn setAlpha:1];
     }else{
@@ -152,7 +178,7 @@
    // [[Friend sharedInstance] addDelegateObject:self];
     [[Friend sharedInstance]  getGroupData];
     Group *myGroup = [[Friend sharedInstance] myGroup];
-    [[myGroup actionForInvite:_memberInfo.BID] upload];
+    [[myGroup actionForInvite:_member.BID] upload];
     
 }
 
@@ -200,14 +226,15 @@
     }else{
         [cell setBackgroundColor:PMColor5];
     }
+    
     if ([indexPath row] == 0) {
-        [cell buildWithData:_memberInfo andUserData:_userInfo andDataType:kPartnerBirthday];
+        [cell buildWithData:_member andUserData:_userInfo andDataType:kPartnerBirthday];
         [cell setBackgroundColor:PMColor5];
     }else if([indexPath row] == 1) {
-        [cell buildWithData:_memberInfo  andUserData:_userInfo  andDataType:kPartnerHeight];
+        [cell buildWithData:_member  andUserData:_userInfo  andDataType:kPartnerHeight];
         [cell setBackgroundColor:[UIColor whiteColor]];
     }else if([indexPath row]== 2){
-        [cell buildWithData:_memberInfo andUserData:_userInfo  andDataType:kPartnerWeight];
+        [cell buildWithData:_member andUserData:_userInfo  andDataType:kPartnerWeight];
         [cell setBackgroundColor:PMColor5];
     }
     

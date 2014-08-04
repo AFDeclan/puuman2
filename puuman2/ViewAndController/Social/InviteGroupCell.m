@@ -11,16 +11,14 @@
 #import "UniverseConstant.h"
 #import "ColorsAndFonts.h"
 #import "DateFormatter.h"
-#import "ActionForUpload.h"
 
 @implementation InviteGroupCell
-
+@synthesize delegate= _delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [[Friend sharedInstance] addDelegateObject:self];
         groupMembers = [[NSArray alloc] init];
         figuresColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(22, 36, 576, 120)];
         [figuresColumnView setBackgroundColor:[UIColor clearColor]];
@@ -98,7 +96,7 @@
         
     }
     [cell setRecommend:NO];
-    [cell buildWithMemberInfo:[groupMembers objectAtIndex:index]];
+    [cell setMember:[groupMembers objectAtIndex:index]];
     [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
     
@@ -116,21 +114,14 @@
 
 - (void)acceptInvite
 {
-    [[inviteGroup actionForJoin] upload];
+    [_delegate acceptInviteWithGroup:inviteGroup];
    
 }
 
-
-//Group Action 上传成功
-- (void)actionUploaded:(ActionForUpload *)action
-{
-    PostNotification(Noti_RefreshInviteStatus, nil);
-}
-
-//Group Action 上传失败
-- (void)actionUploadFailed:(ActionForUpload *)action
+-(void)dealloc
 {
 
 }
+
 
 @end

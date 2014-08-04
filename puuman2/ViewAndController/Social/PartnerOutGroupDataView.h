@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InviteGroupCell.h"
+#import "Friend.h"
 
-@interface PartnerOutGroupDataView : UIView <UITableViewDataSource,UITableViewDelegate>
+@interface PartnerOutGroupDataView : UIView <UITableViewDataSource,UITableViewDelegate,InvitedMemberDelegate,FriendDelegate>
 {
     UITableView *inviteGroupsTable;
     NSArray *dataArr;

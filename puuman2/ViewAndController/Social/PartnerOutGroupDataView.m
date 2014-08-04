@@ -7,11 +7,11 @@
 //
 
 #import "PartnerOutGroupDataView.h"
-#import "InviteGroupCell.h"
 #import "ColorsAndFonts.h"
 #import "Friend.h"
 #import "UniverseConstant.h"
 #import "MainTabBarController.h"
+#import "ActionForUpload.h"
 
 @implementation PartnerOutGroupDataView
 
@@ -21,6 +21,8 @@
     if (self) {
         dataArr = [[NSArray alloc] init];
         [self  loadViewInfo];
+        [[Friend sharedInstance] addDelegateObject:self];
+
     }
     return self;
 }
@@ -104,14 +106,16 @@
             cell = [[InviteGroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
             
         }
+        [cell setDelegate:self];
         [cell buildCellWithGroup:[dataArr objectAtIndex:[indexPath row]-1]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setBackgroundColor:PMColor5];
         return cell;
     }
-    
-    
+
 }
+
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -122,7 +126,27 @@
     }
 }
 
+- (void)acceptInviteWithGroup:(Group *)group
+{
+    [[group actionForJoin] upload];
+
+}
+
+//Group Action 上传成功
+- (void)actionUploaded:(ActionForUpload *)action
+{
+    PostNotification(Noti_RefreshInviteStatus, nil);
+}
+
+//Group Action 上传失败
+- (void)actionUploadFailed:(ActionForUpload *)action
+{
+    
+}
 
 
-
+- (void)dealloc
+{
+    [[Friend sharedInstance] removeDelegateObject:self];
+}
 @end

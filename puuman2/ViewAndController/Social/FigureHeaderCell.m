@@ -15,13 +15,13 @@
 
 @implementation FigureHeaderCell
 @synthesize recommend = _recommend;
-
+@synthesize member = _member;
+@synthesize delegate = _delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [MyNotiCenter addObserver:self selector:@selector(showManagerMenu) name:Noti_manangePartnerData object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(hiddenManagerMenu) name:Noti_manangedPartnerData object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(showManagerMenu:) name:Noti_manangingPartnerData object:nil];
         portrait  =[[AFImageView alloc] initWithFrame:CGRectMake(28, 16, 40, 40)];
         [portrait setBackgroundColor:[UIColor clearColor]];
         portrait.layer.cornerRadius = 20;
@@ -59,22 +59,40 @@
 //        [label_recommend setText:@"推荐"];
 //        [recommendView  addSubview:label_recommend];
 
+        manageView = [[UIView alloc] initWithFrame:CGRectMake(28, 16, 40, 40)];
+        [self.contentView addSubview:manageView];
         
+        UIImageView *quitImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        [quitImgView setBackgroundColor:[UIColor blackColor]];
+        [quitImgView setAlpha:0.3];
+        quitImgView.layer.cornerRadius = 20;
+        [manageView addSubview:quitImgView];
         
-        UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 96, 112)];
-        [bgView setBackgroundColor:[UIColor blackColor]];
-        [bgView setAlpha:0.5];
+        UILabel *label_manageStatus = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        [label_manageStatus setTextAlignment:NSTextAlignmentCenter];
+        [label_manageStatus setTextColor:[UIColor whiteColor]];
+        [label_manageStatus setFont:PMFont2];
+        [label_manageStatus setBackgroundColor:[UIColor clearColor]];
+        [label_manageStatus setText:@"退出"];
+        [manageView  addSubview:label_manageStatus];
         
-        UIImageView *icon_img = [[ UIImageView alloc] initWithFrame:CGRectMake(24, 36, 48, 48)];
-        [icon_img setImage:[UIImage imageNamed:@"circle_fri.png"]];
-        [bgView addSubview:icon_img];
+        manageBtn = [[UIButton alloc] initWithFrame:CGRectMake(18, 6, 60, 60)];
+        [manageBtn setBackgroundColor:[UIColor clearColor]];
+        [manageBtn addTarget:self action:@selector(managed) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:manageBtn];
         
     }
     return self;
 }
 
-
-
+- (void)managed
+{
+    if (_member.BID == [UserInfo sharedUserInfo].BID) {
+        [_delegate quit];
+    }else{
+        [_delegate showPartnerWithInfo:_member];
+    }
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -93,38 +111,66 @@
 //    }
 }
 
-- (void)buildWithMemberInfo:(Member *)member
+- (void)setMember:(Member *)member
 {
+    [manageView setAlpha:0];
+    _member = member;
     [portrait getImage:[member babyInfo].PortraitUrl defaultImage:@""];
-    if (![member belongsTo:[UserInfo sharedUserInfo].UID]&&[[member babyInfo] WhetherBirth]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+    if (_member.BID != [UserInfo sharedUserInfo].BID&&[[member babyInfo] WhetherBirth]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
         info_compare.text =[[[[UserInfo sharedUserInfo] babyInfo] Birthday] compareFromDate:[[member babyInfo] Birthday]];
     }
     [name_sex.title  setText:[member babyInfo].Nickname];
 
-    if ([[member babyInfo] Gender]) {
-        [name_sex setIconImg:[UIImage imageNamed:@"icon_male_topic.png"]];
+    if ([[member babyInfo] WhetherBirth]) {
+        if ([[member babyInfo] Gender]) {
+            [name_sex setIconImg:[UIImage imageNamed:@"icon_male_topic.png"]];
+        }else{
+            [name_sex setIconImg:[UIImage imageNamed:@"icon_female_topic.png"]];
+        }
     }else{
-        [name_sex setIconImg:[UIImage imageNamed:@"icon_female_topic.png"]];
+        [name_sex setIconImg:nil];
 
     }
+    if (_member.BID == [UserInfo sharedUserInfo].BID) {
+        [manageBtn setAlpha:0];
+    }else{
+        [manageBtn setAlpha:1];
+
+    }
+   
     [name_sex adjustLayout];
+
+}
+
+
+- (void)showManagerMenu:(NSNotification *)notification
+{
+    if (_member.BID == [UserInfo sharedUserInfo].BID) {
+        [UIView animateWithDuration:0.3 animations:^{
+            if ([[notification object] boolValue]) {
+                [manageView setAlpha:1];
+                [manageBtn setAlpha:1];
+            }else{
+                [manageView setAlpha:0];
+                [manageBtn setAlpha:0];
+
+            }
+        }];
+    }else{
+        if ([[notification object] boolValue]) {
+            [manageView setAlpha:0];
+            [manageBtn setAlpha:0];
+        }else{
+            [manageView setAlpha:0];
+            [manageBtn setAlpha:1];
+            
+        }
+    }
 }
 
 - (void)dealloc
 {
-    [MyNotiCenter removeObserver:self name:Noti_manangePartnerData object:nil];
-    [MyNotiCenter removeObserver:self name:Noti_manangedPartnerData object:nil];
-}
-
-- (void)showManagerMenu
-{
-    
-    [manageBtn setAlpha:1];
-}
-
-- (void)hiddenManagerMenu
-{
-    [manageBtn setAlpha:0];
+    [MyNotiCenter removeObserver:self];
 }
 
 @end
