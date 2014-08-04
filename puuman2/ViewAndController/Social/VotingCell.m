@@ -59,8 +59,8 @@
 {
      [[Forum sharedInstance] removeDelegateObject:self];
      [[Forum sharedInstance] addDelegateObject:self];
-    [[Friend sharedInstance] removeDelegateObject:self];
-    [[Friend sharedInstance] addDelegateObject:self];
+     [[Friend sharedInstance] removeDelegateObject:self];
+     [[Friend sharedInstance] addDelegateObject:self];
     
     votingTopic = voteTopic;
   

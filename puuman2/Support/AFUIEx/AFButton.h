@@ -20,4 +20,5 @@
 @protocol AFButtonDelegate <NSObject>
 
 - (void)clickAFButtonWithButton:(AFButton *)button;
+
 @end

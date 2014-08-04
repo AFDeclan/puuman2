@@ -9,6 +9,8 @@
 #import "SocialPartnerDataView.h"
 #import "MainTabBarController.h"
 #import "UniverseConstant.h"
+#import "Group.h"
+#import "Friend.h"
 
 @implementation SocialPartnerDataView
 
@@ -45,6 +47,7 @@
     }else{
         [self setHorizontalFrame];
     }
+    
 }
 
 - (void)outGroup
@@ -85,6 +88,8 @@
         [self outGroup];
        
     }
+    
+    NSLog(@"%@",[[Friend sharedInstance] myGroup].GName);
     
 }
 
