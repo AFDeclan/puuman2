@@ -19,9 +19,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [[Friend sharedInstance] addDelegateObject:self];
         dataArr = [[NSArray alloc] init];
         [self  loadViewInfo];
-        [[Friend sharedInstance] addDelegateObject:self];
 
     }
     return self;
