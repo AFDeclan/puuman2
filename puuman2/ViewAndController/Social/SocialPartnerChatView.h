@@ -16,12 +16,10 @@
     UIView *bgHeadView;
     UIView *icon_headUp;
     UIView *icon_headDown;
-    UILabel *info_title;
+    UILabel *nameLabel;
     UITableView *chatTable;
     Group *myGroup;
     ChatInputViewController *inputVC;
 }
-
--(void)reloadChatData;
 
 @end

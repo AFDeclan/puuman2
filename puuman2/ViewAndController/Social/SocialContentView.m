@@ -89,7 +89,6 @@
     }
     
     selectedView = partnerData;
-    PostNotification(Noti_BottomInputViewHidden, nil);
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
     }else{

@@ -270,6 +270,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         SetViewLeftUp(_content, 0, 56);
     }completion:^(BOOL finished) {
+        [[[Friend sharedInstance] myGroup] stopUpdateAction];
         [[Friend sharedInstance] removeDelegateObject:self];
         [self.view removeFromSuperview];
     }];
@@ -317,7 +318,6 @@
 {
 
 }
-
 
 -(void)dealloc
 {

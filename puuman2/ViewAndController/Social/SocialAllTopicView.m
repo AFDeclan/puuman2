@@ -19,8 +19,7 @@
         // Initialization code
         addressTag = 0;
         [self initialization];
-        [[Forum sharedInstance] addDelegateObject:self];
-        [MyNotiCenter addObserver:self selector:@selector(toNewestTopic) name:Noti_AllTopicToNewest object:nil];
+       
 
     }
     return self;
@@ -29,7 +28,16 @@
 - (void)showView
 {
     [super showView];
+    [[Forum sharedInstance] addDelegateObject:self];
+    [MyNotiCenter addObserver:self selector:@selector(toNewestTopic) name:Noti_AllTopicToNewest object:nil];
     [[Forum sharedInstance] getActiveTopic];
+}
+
+- (void)hiddenView
+{
+    [MyNotiCenter removeObserver:self];
+    [[Forum sharedInstance] removeDelegateObject:self];
+    [super hiddenView];
 }
 
 - (void)activeTopicReceived
@@ -339,8 +347,4 @@
     
 }
 
--(void)dealloc
-{
-    [MyNotiCenter removeObserver:self];
-}
 @end

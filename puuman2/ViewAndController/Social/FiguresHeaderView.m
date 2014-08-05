@@ -113,12 +113,14 @@
 {
     managing= !managing;
     if (managing) {
+        changed = NO;
         oldName = myGroup.GName;
         [manageBtn setTitle:@"保存" forState:UIControlStateNormal];
         PostNotification(Noti_manangingPartnerData, [NSNumber numberWithBool:YES]);
         [self showManagerMenu];
         [backBtn setAlpha:1];
     }else{
+        
         [manageBtn setTitle:@"管理" forState:UIControlStateNormal];
         PostNotification(Noti_manangingPartnerData, [NSNumber numberWithBool:NO]);
         [self hiddenManagerMenu];
@@ -232,7 +234,6 @@
 {
     if (managing) {
         PostNotification(Noti_RefreshInviteStatus, nil);
-
     }
 }
 

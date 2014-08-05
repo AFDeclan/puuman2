@@ -19,8 +19,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [[Friend sharedInstance] addDelegateObject:self];
-        [MyNotiCenter addObserver:self selector:@selector(showView) name:Noti_RefreshInviteStatus object:nil];
 
     }
     return self;
@@ -30,8 +28,19 @@
 - (void)showView
 {
     [super showView];
+    [MyNotiCenter addObserver:self selector:@selector(showView) name:Noti_RefreshInviteStatus object:nil];
+    [[Friend sharedInstance] addDelegateObject:self];
     [[Friend sharedInstance] getGroupData];
 }
+
+- (void)hiddenView
+{
+    [[Friend sharedInstance] removeDelegateObject:self];
+    [MyNotiCenter removeObserver:self];
+    [super hiddenView];
+
+}
+
 
 
 - (void)inGoup
@@ -125,10 +134,5 @@
     }
 }
 
-- (void)dealloc
-{
-    [MyNotiCenter removeObserver:self];
-    [[Friend sharedInstance] removeDelegateObject:self];
 
-}
 @end

@@ -61,7 +61,6 @@
     }
 }
 
-
 - (void)dealloc
 {
     [figuresHeader removeFromSuperview];

@@ -19,10 +19,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [MyNotiCenter addObserver:self selector:@selector(refreshChatTable) name:Noti_RefreshChatTable object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
         [self initialization];
-        [self reloadChatData];
     }
     return self;
 }
@@ -30,7 +27,29 @@
 - (void)showView {
     
     [super showView];
+    [MyNotiCenter addObserver:self selector:@selector(refreshChatTable) name:Noti_RefreshChatTable object:nil];
+    [MyNotiCenter addObserver:self selector:@selector(hiddenBottomInputView) name:Noti_BottomInputViewHidden object:nil];
+    [[Friend sharedInstance] addDelegateObject:self];
+    [[[Friend sharedInstance] myGroup] startUpdateAction];
+    [self refreshChatTable];
+    [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
+    [inputVC show];
 
+
+}
+
+- (void)hiddenView
+{
+    [inputVC hidden];
+    [MyNotiCenter removeObserver:self];
+    [[[Friend sharedInstance] myGroup] stopUpdateAction];
+    [[Friend sharedInstance] removeDelegateObject:self];
+    [super hiddenView];
+}
+
+- (void)hiddenBottomInputView
+{
+    [self hiddenView];
 }
 
 - (void)initialization
@@ -60,50 +79,27 @@
     [self addSubview:icon_headUp];
     
     
-    info_title = [[UILabel alloc] initWithFrame:CGRectMake(0,0,320,44)];
-    [info_title setBackgroundColor:[UIColor clearColor]];
-    [info_title setTextColor:[UIColor whiteColor]];
-    [info_title setText:@"三月宝宝妈妈团"];
-    [info_title setFont:PMFont1];
-    [info_title setTextAlignment:NSTextAlignmentCenter];
-    [icon_headUp addSubview:info_title];
-    
-    [self refreshChatTable];
-    
+    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,320,44)];
+    [nameLabel setBackgroundColor:[UIColor clearColor]];
+    [nameLabel setTextColor:[UIColor whiteColor]];
+    [nameLabel setText:@""];
+    [nameLabel setFont:PMFont1];
+    [nameLabel setTextAlignment:NSTextAlignmentCenter];
+    [icon_headUp addSubview:nameLabel];
+
     inputVC = [[ChatInputViewController alloc] initWithNibName:nil bundle:nil];
-    
-    if ([MainTabBarController sharedMainViewController].isVertical) {
-    
-        [self setVerticalFrame];
-    } else {
-    
-        [self setHorizontalFrame];
-    }
- 
+
 
 }
 
-- (void)reloadChatData
+- (void)refreshChatTable
 {
-    [[Friend sharedInstance] removeDelegateObject:self];
-    [[Friend sharedInstance] addDelegateObject:self];
-    [[[Friend sharedInstance] myGroup] startUpdateAction];
-    [[MainTabBarController sharedMainViewController].view addSubview:inputVC.view];
-    [inputVC show];
+    myGroup = [[Friend sharedInstance] myGroup];
+    [nameLabel setText:myGroup.GName];
+    [self reloadChatTable];
 }
 
-- (void)hiddenBottomInputView
-{
-    [inputVC hidden];
 
-}
-
-- (void)goOut
-{
-    [[Friend sharedInstance] removeDelegateObject:self];
-    [[[Friend sharedInstance] myGroup] stopUpdateAction];
-
-}
 
 - (void)actionUpdated:(Group *)group
 {
@@ -111,11 +107,18 @@
     [self reloadChatTable];
 }
 
-- (void)refreshChatTable
+- (void)reloadChatTable
 {
-    myGroup = [[Friend sharedInstance] myGroup];
-    [self reloadChatTable];
+    float height = [chatTable contentSize].height;
+    CGPoint pos = chatTable.contentOffset;
+    [chatTable reloadData];
+    [chatTable setContentOffset:pos];
+    if ([chatTable contentSize].height > height) {
+        [chatTable scrollRectToVisible:CGRectMake(0, [chatTable contentSize].height - self.frame.size.height, self.frame.size.width, self.frame.size.height) animated:YES];
+    }
 }
+
+
 
 - (void)setVerticalFrame
 {
@@ -124,7 +127,7 @@
     [icon_headDown setFrame:CGRectMake(0, 14, 608, 30)];
     [icon_headUp setFrame:CGRectMake(0, 0, 608, 44)];
     [chatTable setFrame:CGRectMake(0, 0, 608, 880)];
-    SetViewLeftUp(info_title, 136, 0);
+    SetViewLeftUp(nameLabel, 136, 0);
     [self reloadChatTable];
 }
 
@@ -135,7 +138,7 @@
     [icon_headDown setFrame:CGRectMake(0, 14, 864, 30)];
     [icon_headUp setFrame:CGRectMake(0, 0, 864, 44)];
     [chatTable setFrame:CGRectMake(0, 0, 864, 624)];
-    SetViewLeftUp(info_title, 272, 0);
+    SetViewLeftUp(nameLabel, 272, 0);
     [self reloadChatTable];
     
 }
@@ -152,7 +155,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     
     if ([indexPath row] == 0) {
         NSString  *identity = @"HeadCell";
@@ -181,34 +183,12 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setBackgroundColor:[UIColor clearColor]];
         return cell;
-        
     }
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 100;
-
-}
-
-- (void)reloadChatTable
-{
-    //[info_title setText:myGroup.GName];
-    float height = [chatTable contentSize].height;
-    CGPoint pos = chatTable.contentOffset;
-    [chatTable reloadData];
-    [chatTable setContentOffset:pos];
-    if ([chatTable contentSize].height > height) {
-        [chatTable scrollRectToVisible:CGRectMake(0, [chatTable contentSize].height - self.frame.size.height, self.frame.size.width, self.frame.size.height) animated:YES];
-        
-    }
-}
-
--(void)dealloc
-{
-    [inputVC hidden];
-    [MyNotiCenter removeObserver:self];
 }
 
 

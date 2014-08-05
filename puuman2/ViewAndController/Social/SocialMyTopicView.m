@@ -19,12 +19,25 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [[Forum sharedInstance] addDelegateObject:self];
         status = [[NSMutableDictionary alloc] init];
         [self initialization];
 
     }
     return self;
+}
+
+- (void)showView
+{
+    [super showView];
+    [[Forum sharedInstance] addDelegateObject:self];
+    [self performSelector:@selector(refreshMyTopicTable) withObject:nil afterDelay:0];
+}
+
+- (void)hiddenView
+{
+    [[Forum sharedInstance] removeDelegateObject:self];
+    [super hiddenView];
+
 }
 
 - (void)initialization
@@ -54,11 +67,7 @@
 }
 
 
-- (void)showView
-{
-    [super showView];
-    [self performSelector:@selector(refreshMyTopicTable) withObject:nil afterDelay:0.5];
-}
+
 
 - (void)refreshMyTopicTable
 {
@@ -169,9 +178,6 @@
     if (_refreshHeader.isRefreshing)
         [_refreshHeader endRefreshing];
 }
-
-
-
 
 - (void)setVerticalFrame
 {
