@@ -49,6 +49,9 @@
         SetViewLeftUp(addBtn, 496, 144);
         [addBtn addTarget:self action:@selector(acceptInvite) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:addBtn];
+        [addBtn setEnabled:YES];
+        [addBtn setAdjustsImageWhenDisabled:NO];
+
     }
     return self;
 }
@@ -114,6 +117,7 @@
 
 - (void)acceptInvite
 {
+    [addBtn setEnabled:NO];
     [_delegate acceptInviteWithGroup:inviteGroup];
    
 }

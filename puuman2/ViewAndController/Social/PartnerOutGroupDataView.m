@@ -147,6 +147,13 @@
 
 - (void)dealloc
 {
+    
+}
+
+- (void)removeFromSuperview
+{
     [[Friend sharedInstance] removeDelegateObject:self];
+
+    [super removeFromSuperview];
 }
 @end

@@ -17,7 +17,6 @@
 {
     
     BOOL managing;
-
     UIView *headerView;
     UIView *contentView;
     

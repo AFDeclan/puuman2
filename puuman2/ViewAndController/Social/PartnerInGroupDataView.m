@@ -62,5 +62,8 @@
 }
 
 
-
+- (void)dealloc
+{
+    [figuresHeader removeFromSuperview];
+}
 @end

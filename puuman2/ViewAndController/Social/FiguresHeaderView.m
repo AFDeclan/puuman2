@@ -230,7 +230,10 @@
 //Group Action 上传成功
 - (void)actionUploaded:(ActionForUpload *)action
 {
-    PostNotification(Noti_RefreshInviteStatus, nil);
+    if (managing) {
+        PostNotification(Noti_RefreshInviteStatus, nil);
+
+    }
 }
 
 //Group Action 上传失败
@@ -276,8 +279,9 @@
 }
 
 
-- (void)dealloc
+- (void)removeFromSuperview
 {
     [[Friend sharedInstance] removeDelegateObject:self];
+    [super removeFromSuperview];
 }
 @end

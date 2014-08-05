@@ -80,13 +80,14 @@
         [manageBtn setBackgroundColor:[UIColor clearColor]];
         [manageBtn addTarget:self action:@selector(managed) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:manageBtn];
-        
+        [manageBtn setAdjustsImageWhenDisabled:NO];
     }
     return self;
 }
 
 - (void)managed
 {
+    [manageBtn setEnabled:NO];
     if (_member.BID == [UserInfo sharedUserInfo].BID) {
         [_delegate quit];
     }else{
@@ -145,6 +146,8 @@
 
 - (void)showManagerMenu:(NSNotification *)notification
 {
+    
+    [manageBtn setEnabled:YES];
     if (_member.BID == [UserInfo sharedUserInfo].BID) {
         [UIView animateWithDuration:0.3 animations:^{
             if ([[notification object] boolValue]) {
