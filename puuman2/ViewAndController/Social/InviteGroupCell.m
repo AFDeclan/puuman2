@@ -11,9 +11,11 @@
 #import "UniverseConstant.h"
 #import "ColorsAndFonts.h"
 #import "DateFormatter.h"
+#import "MainTabBarController.h"
 
 @implementation InviteGroupCell
 @synthesize delegate= _delegate;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -46,15 +48,36 @@
         [addBtn setColorType:kColorButtonGrayColor];
         [addBtn setDirectionType:kColorButtonLeft];
         [addBtn resetColorButton];
-        SetViewLeftUp(addBtn, 496, 144);
         [addBtn addTarget:self action:@selector(acceptInvite) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:addBtn];
         [addBtn setEnabled:YES];
         [addBtn setAdjustsImageWhenDisabled:NO];
-
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+        
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            [self setVerticalFrame];
+        }else{
+            [self setHorizontalFrame];
+        }
     }
     return self;
 }
+
+- (void)setHorizontalFrame
+{
+    SetViewLeftUp(addBtn, 752, 144);
+
+}
+
+- (void)setVerticalFrame
+{
+    SetViewLeftUp(addBtn, 496, 144);
+
+}
+
 
 - (void)awakeFromNib
 {
