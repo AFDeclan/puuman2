@@ -17,6 +17,7 @@
 @synthesize recommend = _recommend;
 @synthesize member = _member;
 @synthesize delegate = _delegate;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -87,11 +88,14 @@
 
 - (void)managed
 {
-    [manageBtn setEnabled:NO];
     if (_member.BID == [UserInfo sharedUserInfo].BID) {
         [_delegate quit];
+        [manageBtn setEnabled:NO];
+
     }else{
         [_delegate showPartnerWithInfo:_member];
+        [manageBtn setEnabled:YES];
+
     }
 }
 

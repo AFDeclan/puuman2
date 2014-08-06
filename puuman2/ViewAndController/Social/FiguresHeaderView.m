@@ -150,6 +150,7 @@
 
 - (void)quit
 {
+    changed = NO;
     [self hiddenManagerMenu];
     [[myGroup actionForQuit] upload];
 
