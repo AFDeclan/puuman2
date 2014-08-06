@@ -29,7 +29,7 @@
 - (void)initializaiton
 {
     [[ShopModel sharedInstance] setSectionIndex:-1];
-    menuTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
+    menuTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 256, 0)];
     [menuTable setDataSource:self];
     [menuTable setDelegate:self];
     [self addSubview:menuTable];
@@ -42,12 +42,12 @@
 
 -(void)setVerticalFrame
 {
-    [menuTable setFrame:CGRectMake(0, 0, 216, 944)];
+    [menuTable setFrame:CGRectMake(0, 0, 256, 944)];
 }
 
 -(void)setHorizontalFrame
 {
-    [menuTable setFrame:CGRectMake(0, 0, 216, 688)];
+    [menuTable setFrame:CGRectMake(0, 0, 256, 688)];
 
 }
 

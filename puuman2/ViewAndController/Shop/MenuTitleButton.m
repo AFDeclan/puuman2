@@ -24,7 +24,7 @@
 
 - (id)init
 {
-    return  [self initWithFrame:CGRectMake(0, 0, 216, 64)];
+    return  [self initWithFrame:CGRectMake(0, 0, 256, 64)];
 }
 - (void)initialization
 {
