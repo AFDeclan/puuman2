@@ -28,10 +28,18 @@
 - (void)showView
 {
     [super showView];
-    [MyNotiCenter addObserver:self selector:@selector(showView) name:Noti_RefreshInviteStatus object:nil];
+    [MyNotiCenter addObserver:self selector:@selector(getData) name:Noti_RefreshInviteStatus object:nil];
     [[Friend sharedInstance] addDelegateObject:self];
-    [[Friend sharedInstance] getGroupData];
+    [self getData];
 }
+
+- (void)getData
+{
+    [[Friend sharedInstance] getGroupData];
+
+}
+
+
 
 - (void)hiddenView
 {
