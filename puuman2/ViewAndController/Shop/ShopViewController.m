@@ -219,7 +219,7 @@ static ShopViewController * instance;
     SetViewLeftUp(sectionView, 688, 100);
     SetViewLeftUp(searchBtn, 464, 28);
     SetViewLeftUp(searchView, 288, 28);
-    SetViewLeftUp(cartBtn, 680, 678);
+    SetViewLeftUp(cartBtn, 692, 678);
 }
 
 //横屏
@@ -237,7 +237,7 @@ static ShopViewController * instance;
 
     SetViewLeftUp(searchBtn, 592, 28);
     SetViewLeftUp(searchView, 416, 28);
-    SetViewLeftUp(cartBtn, 936, 678);
+    SetViewLeftUp(cartBtn, 948, 678);
 }
 
 
@@ -305,7 +305,7 @@ static ShopViewController * instance;
             SetViewLeftUp(cartBtn, 16, 678);
 
         }else{
-            SetViewLeftUp(cartBtn, 680, 678);
+            SetViewLeftUp(cartBtn, 692, 678);
 
         }
     }else{
@@ -313,7 +313,7 @@ static ShopViewController * instance;
             SetViewLeftUp(cartBtn, 186, 678);
 
         }else{
-            SetViewLeftUp(cartBtn, 936, 678);
+            SetViewLeftUp(cartBtn, 948, 678);
 
         }
     }
