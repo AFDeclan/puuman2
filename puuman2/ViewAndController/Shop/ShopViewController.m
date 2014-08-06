@@ -141,11 +141,14 @@ static ShopViewController * instance;
 
 - (void)showCart
 {
-    ShopCartViewController *cartVC =[[ShopCartViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
-    [cartVC setControlBtnType:kOnlyCloseButton];
-    [cartVC show];
-    //
+    
+        ShopCartViewController *cartVC =[[ShopCartViewController alloc] initWithNibName:nil bundle:nil];
+        [[MainTabBarController sharedMainViewController].view addSubview:cartVC.view];
+        [cartVC setControlBtnType:kOnlyCloseButton];
+        [cartVC show];
+
+   
+    
    // [cartBtn setAlpha:0];
    ///[self animateWithView:cartBtn];
 }
@@ -186,23 +189,22 @@ static ShopViewController * instance;
 - (void)popViewfinished
 {
    // [cartBtn setAlpha:1];
-    
     [self.view addSubview:cartBtn];
-    
-
-    
 }
 
 - (void)showWareInfo
 {
-    wareInfoShow = YES;
+    if (!_wareInfoShow) {
+        wareInfoShow = YES;
 
-    WareInfoViewController *wareInfo =[[WareInfoViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:wareInfo.view];
-    [wareInfo show];
-    [wareInfo.view addSubview:cartBtn];
-    [wareInfo setDelegate:self];
-    [self animate];
+        WareInfoViewController *wareInfo =[[WareInfoViewController alloc] initWithNibName:nil bundle:nil];
+        [[MainTabBarController sharedMainViewController].view addSubview:wareInfo.view];
+        [wareInfo show];
+        [wareInfo.view addSubview:cartBtn];
+        [wareInfo setDelegate:self];
+        [self animate];
+
+    }
 
 }
 
