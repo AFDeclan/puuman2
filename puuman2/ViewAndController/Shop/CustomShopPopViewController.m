@@ -31,7 +31,7 @@
         [_titleLabel setBackgroundColor:[UIColor clearColor]];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_titleLabel setFont:PMFont1];
-        [_content setBackgroundColor:[UIColor blueColor]];
+        [_content setBackgroundColor:PMColor5];
         [_content addSubview:_titleLabel];
         _content.layer.masksToBounds = YES;
         _content.layer.cornerRadius = 48;
