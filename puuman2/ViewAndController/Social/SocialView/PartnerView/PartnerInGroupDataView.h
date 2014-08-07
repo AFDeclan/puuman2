@@ -16,6 +16,8 @@
     FiguresHeaderView *figuresHeader;
     DataInfoScrollView *dataInfoView;
     Group *group;
+    UIView *blockView;
+    BOOL managing;
 }
 
 - (void)loadViewInfo;
