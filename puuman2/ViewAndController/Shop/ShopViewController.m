@@ -161,7 +161,7 @@ static ShopViewController * instance;
         CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
         //    positionAnimation.fillMode = kCAFillModeForwards;
         //    positionAnimation.removedOnCompletion =NO;
-        positionAnimation.duration = 1;
+        positionAnimation.duration = 0.8;
         CGMutablePathRef positionPath = CGPathCreateMutable();
         positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         CGPathMoveToPoint(positionPath, NULL, [cartBtn layer].position.x, [cartBtn layer].position.y);
@@ -221,7 +221,14 @@ static ShopViewController * instance;
     SetViewLeftUp(sectionView, 688, 100);
     SetViewLeftUp(searchBtn, 464, 28);
     SetViewLeftUp(searchView, 288, 28);
-    SetViewLeftUp(cartBtn, 692, 678);
+    if (wareInfoShow) {
+        SetViewLeftUp(cartBtn, 12, 678);
+        
+    }else{
+        SetViewLeftUp(cartBtn, 692, 678);
+        
+    }
+
 }
 
 //横屏
@@ -239,8 +246,14 @@ static ShopViewController * instance;
 
     SetViewLeftUp(searchBtn, 592, 28);
     SetViewLeftUp(searchView, 416, 28);
-    SetViewLeftUp(cartBtn, 948, 678);
-}
+    
+    if (wareInfoShow) {
+        SetViewLeftUp(cartBtn, 186, 678);
+        
+    }else{
+        SetViewLeftUp(cartBtn, 948, 678);
+        
+    }}
 
 
 
@@ -265,9 +278,9 @@ static ShopViewController * instance;
     if ([MainTabBarController sharedMainViewController].isVertical) {
         CGPoint path[4] = {
             cartBtn.center,
-            CGPointMake(cartBtn.center.x - 680, cartBtn.center.y),
-            CGPointMake(cartBtn.center.x - 600, cartBtn.center.y),
-            CGPointMake(cartBtn.center.x - 630, cartBtn.center.y)
+            CGPointMake(cartBtn.center.x - 692, cartBtn.center.y),
+            CGPointMake(cartBtn.center.x - 668, cartBtn.center.y),
+            CGPointMake(cartBtn.center.x - 680, cartBtn.center.y)
         };
         CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
         CGMutablePathRef thePath = CGPathCreateMutable();
@@ -281,7 +294,7 @@ static ShopViewController * instance;
         CGPoint path[4] = {
             cartBtn.center,
             CGPointMake(cartBtn.center.x - 900, cartBtn.center.y),
-            CGPointMake(cartBtn.center.x - 700, cartBtn.center.y),
+            CGPointMake(cartBtn.center.x - 668, cartBtn.center.y),
             CGPointMake(cartBtn.center.x - 750, cartBtn.center.y)
             
         };
@@ -304,7 +317,7 @@ static ShopViewController * instance;
   
     if ([MainTabBarController sharedMainViewController].isVertical) {
         if (wareInfoShow) {
-            SetViewLeftUp(cartBtn, 16, 678);
+            SetViewLeftUp(cartBtn, 12, 678);
 
         }else{
             SetViewLeftUp(cartBtn, 692, 678);
@@ -312,7 +325,7 @@ static ShopViewController * instance;
         }
     }else{
         if (wareInfoShow) {
-            SetViewLeftUp(cartBtn, 186, 678);
+            SetViewLeftUp(cartBtn, 198, 678);
 
         }else{
             SetViewLeftUp(cartBtn, 948, 678);
