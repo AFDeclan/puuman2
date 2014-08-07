@@ -18,6 +18,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+    
+            
         figuresHeader = [[FiguresHeaderView alloc] initWithFrame:CGRectMake(0, 0, 608, 168)];
         [self addSubview:figuresHeader];
         dataInfoView = [[DataInfoScrollView alloc] initWithFrame:CGRectMake(0, 0, 608, 520)];
