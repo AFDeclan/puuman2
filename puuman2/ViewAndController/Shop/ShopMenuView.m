@@ -29,7 +29,7 @@
 - (void)initializaiton
 {
     [[ShopModel sharedInstance] setSectionIndex:-1];
-    menuTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
+    menuTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 256, 0)];
     [menuTable setDataSource:self];
     [menuTable setDelegate:self];
     [self addSubview:menuTable];
@@ -42,12 +42,12 @@
 
 -(void)setVerticalFrame
 {
-    [menuTable setFrame:CGRectMake(0, 0, 216, 944)];
+    [menuTable setFrame:CGRectMake(0, 0, 256, 944)];
 }
 
 -(void)setHorizontalFrame
 {
-    [menuTable setFrame:CGRectMake(0, 0, 216, 688)];
+    [menuTable setFrame:CGRectMake(0, 0, 256, 688)];
 
 }
 
@@ -80,8 +80,9 @@
 - (void)selectedMenuWithCell:(ShopMenuCell *)cell
 {
     if (cell.flagNum == -1 && [ShopModel sharedInstance].sectionIndex == -1) {
-
+      
     }else{
+        
         NSMutableArray *arr = [[NSMutableArray alloc] init];
         for (ShopMenuCell *view in [menuTable visibleCells]) {
             if (view.flagNum == [ShopModel sharedInstance].sectionIndex) {
@@ -103,6 +104,10 @@
             PostNotification(Noti_ShowAllShopView, [NSNumber numberWithBool:YES]);
         }
         [menuTable reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationNone];
+        if (cell.flagNum == -1 ) {
+            PostNotification(Noti_HiddenMenu, nil);
+
+        }
 
     }
 

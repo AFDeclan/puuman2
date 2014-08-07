@@ -3058,12 +3058,12 @@
 		54B0E77319920E0800E9537A /* PartnerView */ = {
 			isa = PBXGroup;
 			children = (
-				54B0E77419920E0800E9537A /* ChatView */,
-				54B0E77B19920E0800E9537A /* DataView */,
 				54B0E79819920E0800E9537A /* PartnerInGroupDataView.h */,
 				54B0E79919920E0800E9537A /* PartnerInGroupDataView.m */,
 				54B0E79A19920E0800E9537A /* PartnerOutGroupDataView.h */,
 				54B0E79B19920E0800E9537A /* PartnerOutGroupDataView.m */,
+				54B0E77419920E0800E9537A /* ChatView */,
+				54B0E77B19920E0800E9537A /* DataView */,
 			);
 			path = PartnerView;
 			sourceTree = "<group>";
@@ -3084,10 +3084,10 @@
 		54B0E77B19920E0800E9537A /* DataView */ = {
 			isa = PBXGroup;
 			children = (
-				54B0E77C19920E0800E9537A /* DataInfoScrollView.h */,
-				54B0E77D19920E0800E9537A /* DataInfoScrollView.m */,
 				54B0E77E19920E0800E9537A /* FiguresHeaderView.h */,
 				54B0E77F19920E0800E9537A /* FiguresHeaderView.m */,
+				54B0E77C19920E0800E9537A /* DataInfoScrollView.h */,
+				54B0E77D19920E0800E9537A /* DataInfoScrollView.m */,
 				54B0E78019920E0800E9537A /* subview */,
 			);
 			path = DataView;

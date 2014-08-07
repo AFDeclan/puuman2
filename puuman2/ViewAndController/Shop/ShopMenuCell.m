@@ -44,7 +44,8 @@
     [titleButton addTarget:self action:@selector(selectedSection) forControlEvents:UIControlEventTouchUpInside];
     [self.layer setMasksToBounds:YES];
     [self.contentView.layer setMasksToBounds:YES];
-    subTable  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
+    
+    subTable  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 256, 0)];
     [subTable setDataSource:self];
     [subTable setDelegate:self];
     [self.contentView addSubview:subTable];
@@ -65,7 +66,7 @@
         NSInteger cnt = [ShopModel subTypeCntForSectionAtIndex:flagNum ];
         if (cnt != 0) {
             cnt = (cnt % 2) == 0 ? cnt/2 : cnt/2+1;
-            [subTable setFrame:CGRectMake(0, 64, 216, 72+64+ 88 *cnt)];
+            [subTable setFrame:CGRectMake(0, 64, 256, 72+64+ 88 *cnt)];
             [subTable reloadData];
         }
       

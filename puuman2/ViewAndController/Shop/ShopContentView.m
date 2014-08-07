@@ -34,8 +34,8 @@
         [showAndHiddenBtn addTarget:self action:@selector(showOrHidden) forControlEvents:UIControlEventTouchUpInside];
         [menuMask addSubview:showAndHiddenBtn];
         [showAndHiddenBtn setIsLeft:YES];
-        SetViewLeftUp(showAndHiddenBtn, 216, 452);
-        menu  =[[ShopMenuView alloc] initWithFrame:CGRectMake(0, 0, 216, 0)];
+        SetViewLeftUp(showAndHiddenBtn, 256, 452);
+        menu  =[[ShopMenuView alloc] initWithFrame:CGRectMake(0, 0, 256, 0)];
         [menuMask addSubview:menu];
         UITapGestureRecognizer *gestureRecognizer= [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
         [gestureRecognizer setDelegate:self];
@@ -103,7 +103,7 @@
         }
         [showAndHiddenBtn foldWithDuration:0.5];
         [UIView animateWithDuration:0.5 animations:^{
-            SetViewLeftUp(menuMask, -216, 0);
+            SetViewLeftUp(menuMask, -256, 0);
         }];
     }
 
@@ -127,8 +127,8 @@
  
     [contentView setFrame:CGRectMake(0, 0, 608, 944)];
     [contentView setVerticalFrame];
-    [menuMask setFrame:CGRectMake(-216, 0, 256, 944)];
-    [menu setFrame:CGRectMake(0, 0, 216, 944)];
+    [menuMask setFrame:CGRectMake(-256, 0, 296, 944)];
+    [menu setFrame:CGRectMake(0, 0, 256, 944)];
     [showAndHiddenBtn setAlpha:1];
     [self fold];
     [menu setVerticalFrame];
@@ -136,11 +136,11 @@
 
 - (void)setHorizontalFrame
 {
-    [contentView setFrame:CGRectMake(216, 0, 648, 688)];
+    [contentView setFrame:CGRectMake(256, 0, 608, 688)];
     [contentView setHorizontalFrame];
-    [menuMask setFrame:CGRectMake(0, 0, 216, 688)];
+    [menuMask setFrame:CGRectMake(0, 0, 256, 688)];
     [showAndHiddenBtn setAlpha:0];
-    [menu setFrame:CGRectMake(0, 0, 216, 688)];
+    [menu setFrame:CGRectMake(0, 0, 256, 688)];
     [menu setHorizontalFrame];
 
     if (_timerToFoldDrawer) {

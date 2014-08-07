@@ -23,7 +23,7 @@
         
         filtrateShow = NO;
         [self setBackgroundColor:[UIColor clearColor]];
-        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 648,474)];
+        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 608,474)];
         [_shopMallTable setDataSource:self];
         [_shopMallTable setDelegate:self];
         [self addSubview:_shopMallTable];
@@ -63,7 +63,7 @@
         
       
         
-        filtrate = [[FiltrateView alloc] initWithFrame:CGRectMake(38+610-112, 16, 118, 40)];
+        filtrate = [[FiltrateView alloc] initWithFrame:CGRectMake(608-112, 8, 118, 40)];
         [self addSubview:filtrate];
         
         
@@ -95,14 +95,14 @@
 {
     if (filtrateShow) {
         [UIView animateWithDuration:0.5 animations:^{
-            [filtrate setFrame:CGRectMake(48, 56, 610, 40)];
+            [filtrate setFrame:CGRectMake(4, 56, 608, 40)];
             [filtrate hidden];
         }completion:^(BOOL finished) {
             [UIView animateWithDuration:0.3 animations:^{
-                [filtrate setFrame:CGRectMake(38+610-112, 56, 118, 40)];
+                [filtrate setFrame:CGRectMake(608-112, 56, 118, 40)];
             }completion:^(BOOL finished) {
                 [UIView animateWithDuration:0.1 animations:^{
-                    SetViewLeftUp(filtrate, 38+610-112, 16);
+                    SetViewLeftUp(filtrate, 608-112, 8);
                     [filtrateBtn setAlpha:1];
 
                 }];
@@ -111,16 +111,16 @@
     }else{
 
         [UIView animateWithDuration:0.1 animations:^{
-            SetViewLeftUp(filtrate, 38+610-112, 56);
+            SetViewLeftUp(filtrate, 608-112, 56);
             [filtrateBtn setAlpha:0];
 
         }completion:^(BOOL finished) {
             [UIView animateWithDuration:0.3 animations:^{
-                [filtrate setFrame:CGRectMake(48, 56, 610, 40)];
+                [filtrate setFrame:CGRectMake(4, 56, 608, 40)];
                 
             }completion:^(BOOL finished) {
                 [UIView animateWithDuration:0.2 animations:^{
-                    [filtrate setFrame:CGRectMake(48, 56, 610, 210)];
+                    [filtrate setFrame:CGRectMake(4, 56, 608, 210)];
                     [filtrate show];
                     
                 }];

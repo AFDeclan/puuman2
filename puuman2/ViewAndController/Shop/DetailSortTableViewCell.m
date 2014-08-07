@@ -45,7 +45,7 @@
         if (i+_row*2 - 2 < (_row*2 >[[ShopModel sharedInstance] subClassCnt]?[[ShopModel sharedInstance] subClassCnt]:_row*2)) {
             [subCell[i] setAlpha:1];
             [subCell[i] setFlagTag:i+_row*2 - 2];
-            SetViewLeftUp(subCell[i%2], 12 + 96*i , 0);
+            SetViewLeftUp(subCell[i%2], 32 + 96*i , 0);
         }else{
             [subCell[i] setAlpha:0];
         }
