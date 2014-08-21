@@ -29,7 +29,6 @@
 
 - (void)initContentView
 {
-   
     UILabel  *email_address = [[UILabel alloc] initWithFrame:CGRectMake(36, 114, 288, 24)];
     [email_address setText:@"邮箱地址"];
     [email_address setFont:PMFont2];

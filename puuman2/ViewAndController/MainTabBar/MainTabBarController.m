@@ -93,7 +93,6 @@ static MainTabBarController *instance;
         }
 
     }
-    
 }
 
 
