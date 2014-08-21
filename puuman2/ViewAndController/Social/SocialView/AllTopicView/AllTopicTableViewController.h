@@ -17,6 +17,7 @@
 {
     MJRefreshHeaderView *_refreshHeader;
     NSMutableDictionary *status;
+    NSInteger num;
 }
 
 @property(nonatomic,retain)Topic *topic;

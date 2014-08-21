@@ -41,7 +41,7 @@
         [[Forum sharedInstance] addDelegateObject:self];
         [MyNotiCenter addObserver:self selector:@selector(refreshTable:) name:Noti_RefreshTopicTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(addNewTopic) name:Noti_AddTopic object:nil];
-
+        num = 0;
 
     }
     return self;
@@ -52,6 +52,7 @@
 {
     [super viewDidLoad];
 
+    [self.tableView setDelegate:self];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -96,8 +97,10 @@
     _replyOrder = replyOrder;
     [status removeAllObjects];
     if ([[_topic replies:_replyOrder] count] == 0) {
+        num = [[_topic replies:_replyOrder] count];
         [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ];
     }else{
+
         [self.tableView reloadData];
 
     //   [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
@@ -214,7 +217,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (self.tableView.contentSize.height - self.tableView.contentOffset.y < self.tableView.frame.size.height*2 ) {
-   
+        num = [[_topic replies:_replyOrder] count];
         [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO];
         
     }

@@ -2118,6 +2118,7 @@
 				148D7A0118B8A71A001B4FA7 /* puuman2Tests */,
 				148D79E118B8A71A001B4FA7 /* Frameworks */,
 				148D79E018B8A71A001B4FA7 /* Products */,
+				721904F09AE644A085A71BDA /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2133,7 +2134,6 @@
 		148D79E118B8A71A001B4FA7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				721904F09AE644A085A71BDA /* Pods.xcconfig */,
 				54AB6CB418F24C4600E4269E /* CoreMedia.framework */,
 				54AB6CB218F24C2100E4269E /* MediaPlayer.framework */,
 				54AB6CB018F24B5A00E4269E /* ImageIO.framework */,
@@ -2979,9 +2979,6 @@
 		54B0E75219920E0800E9537A /* SocialView */ = {
 			isa = PBXGroup;
 			children = (
-				54B0E75319920E0800E9537A /* AllTopicView */,
-				54B0E77319920E0800E9537A /* PartnerView */,
-				54B0E79C19920E0800E9537A /* PopView */,
 				54B0E7B019920E0800E9537A /* SocialAllTopicView.h */,
 				54B0E7B119920E0800E9537A /* SocialAllTopicView.m */,
 				54B0E7B219920E0800E9537A /* SocialDetailView.h */,
@@ -2992,6 +2989,9 @@
 				54B0E7B719920E0800E9537A /* SocialPartnerChatView.m */,
 				54B0E7B819920E0800E9537A /* SocialPartnerDataView.h */,
 				54B0E7B919920E0800E9537A /* SocialPartnerDataView.m */,
+				54B0E75319920E0800E9537A /* AllTopicView */,
+				54B0E77319920E0800E9537A /* PartnerView */,
+				54B0E79C19920E0800E9537A /* PopView */,
 			);
 			path = SocialView;
 			sourceTree = "<group>";
@@ -4259,7 +4259,7 @@
 		148D79D718B8A71A001B4FA7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = AFITC;
 				TargetAttributes = {
 					148D79F918B8A71A001B4FA7 = {
@@ -5210,7 +5210,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -5241,7 +5240,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -5253,7 +5252,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -5359,7 +5357,6 @@
 		148D7A0F18B8A71A001B4FA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/puuman2.app/puuman2";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -5382,7 +5379,6 @@
 		148D7A1018B8A71A001B4FA7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/puuman2.app/puuman2";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

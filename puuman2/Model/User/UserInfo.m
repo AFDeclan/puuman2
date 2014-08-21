@@ -391,7 +391,7 @@ static UserInfo *instance = nil;
         }
     }
     for (Diary * d in [self rewardDiaryList]) {
-    //    [d setRewarded];
+        [d setRewarded];
         [[DiaryModel sharedDiaryModel] updateDiary:d needUpload:NO];
     }
     [self saveToUserDefault];

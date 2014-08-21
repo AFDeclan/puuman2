@@ -222,18 +222,20 @@
     
     PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
     [self coinAnimate];
-//    if (_diary.rewarded) {
-//        [coinBtn selected];
-//    } else {
-//    
-//        [coinBtn unSelected];
-//        if ([_diary reward:1]) {
-//          
-//            [coinBtn selected];
-//            coinLabel.text = @"已打赏";
-//            [coinLabel setTextColor:PMColor3];
-//        }
-//    }
+    if (_diary.rewarded) {
+        [coinBtn selected];
+    } else {
+    
+        [coinBtn unSelected];
+        if ([_diary reward:1]) {
+          
+            [coinBtn selected];
+            coinLabel.text = @"已打赏";
+            [coinLabel setTextColor:PMColor3];
+            [coinBtn setBackgroundColor:[UIColor clearColor]];
+
+        }
+    }
 
 }
 
@@ -266,10 +268,12 @@
     }else{
         if (_diary.UIdentity == [UserInfo sharedUserInfo].identity){
             [coinBtn setAlpha:1];
-//            if ([_diary rewarded]) {
-//                [coinBtn selected];
-//                coinLabel.text = @"已打赏";
-//            }else {
+            if ([_diary rewarded]) {
+                [coinBtn selected];
+                [coinBtn setBackgroundColor:[UIColor clearColor]];
+
+                coinLabel.text = @"已打赏";
+            }else {
                 [coinBtn unSelected];
                 if (_diary.UIdentity == Father){
                     coinLabel.text = @"赏给爸爸!";
@@ -279,23 +283,23 @@
                     coinLabel.text = @"赏给妈妈!";
                     [coinLabel setTextColor:RGBColor(239, 128, 123)];
                 }
-           // }
+            }
         }else{
             [coinBtn unSelected];
             [coinBtn setAlpha:0];
             coinLabel.text = @"";
-           // if ([_diary rewarded]) {
+            if ([_diary rewarded]) {
                 if (_diary.UIdentity == Father) {
                     coinLabel.text = @"妈妈赏了你";
                     [coinLabel setTextColor:RGBColor(239, 128, 123)];
-              //  }else {
+                }else {
                     coinLabel.text = @"爸爸赏了你!";
                     [coinLabel setTextColor:PMColor6];
                     
                 }
                 
             }
- //       }
+        }
     }
 
 
