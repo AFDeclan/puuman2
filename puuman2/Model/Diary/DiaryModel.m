@@ -104,7 +104,11 @@ static DiaryModel * instance;
         diary.deleted = [rs boolForColumn:kDeletedDiary];
         diary.uploaded = [rs boolForColumn:kUploaded];
         NSData * metaData = [rs dataForColumn:kDiaryMeta];
-        diary.meta = [metaData objectFromJSONData];
+        id info = [metaData objectFromJSONData];
+        if (info) {
+            diary.meta = [[NSMutableDictionary alloc] initWithDictionary:info];
+        }
+        
         if (diary.deleted)
         {
             [_deletedDiaries addObject:diary];
@@ -257,10 +261,9 @@ static DiaryModel * instance;
 - (BOOL)updateDiary:(Diary *)d needUpload:(BOOL)toUp
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlUpdate = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?) WHERE %@ = ?", tableName, kTitleName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded, kDateName];
+    NSString *sqlUpdate = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ? WHERE %@ = ?", tableName, kTitleName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded, kDateName];
     if (![db executeUpdate: sqlUpdate,
           d.title,
-          d.DCreateTime,
           [NSNumber numberWithInteger:d.type1],
           [d.filePaths1 JSONData],
           [d.urls1 JSONData],
@@ -270,7 +273,8 @@ static DiaryModel * instance;
           [NSNumber numberWithInteger:[UserInfo sharedUserInfo].identity],
           [d.meta JSONData],
           [NSNumber numberWithBool:d.deleted],
-          [NSNumber numberWithBool:!toUp]])
+          [NSNumber numberWithBool:!toUp],
+          d.DCreateTime])
         return NO;
     return YES;
 }
@@ -416,7 +420,10 @@ static DiaryModel * instance;
                     [d setUrls1WithMainUrl:[dic valueForKey:@"url1"] andSubcnt:[[dic valueForKey:@"subCnt1"] integerValue]];
                     [d setUrls2WithMainUrl:[dic valueForKey:@"url2"] andSubcnt:[[dic valueForKey:@"subCnt2"] integerValue]];
                     d.UTID = [[dic valueForKey:@"UTID"] integerValue];
-                    d.meta = [[dic valueForKey:@"Meta"] objectFromJSONString];
+                    id info = [[dic valueForKey:@"Meta"] objectFromJSONString];
+                    if (info) {
+                        d.meta = [[NSMutableDictionary alloc] initWithDictionary:info];
+                    }
                     [_toDownloadDiaries addObject:d];
                 }
             }
