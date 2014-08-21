@@ -70,10 +70,8 @@ static NSMutableArray *instanceList;
     [request postSynchronous];
     if (request.result != PumanRequest_Succeeded)
     {
-        PostNotification(Noti_Imported, name);
         return NO;
     }else{
-        PostNotification(Noti_Imported, name);
         return YES;
     }
 }

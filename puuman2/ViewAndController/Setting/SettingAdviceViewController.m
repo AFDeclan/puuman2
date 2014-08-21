@@ -11,7 +11,7 @@
 #import "UserInfo.h"
 #import "CustomAlertViewController.h"
 #import "CustomNotiViewController.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+Hud.h"
 @interface SettingAdviceViewController ()
 
 @end

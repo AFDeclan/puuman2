@@ -74,7 +74,6 @@
         _dateLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_dateLabel];
         
-
         _content = [[UIView alloc] init];
         _content.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_content];
@@ -112,6 +111,7 @@
     if ([DiaryTableViewController needLoadInfo]) {
         [self loadInfo];
     }
+      [self loadData];
 }
 
 - (void)initWithShareAndDelBtn
@@ -148,12 +148,102 @@
     }else{
         [_delBtn setEnabled:YES];
     }
+    
+    coinBtn = [[AFSelectedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
+    [coinBtn setUnSelectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
+    [coinBtn setIconSize:CGSizeMake(32, 32)];
+    [coinBtn adjustLayout];
+    [coinBtn addTarget:self action:@selector(getCoin) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:coinBtn];
+    [coinBtn unSelected];
+    
+    coinLabel = [[UILabel alloc] init];
+    [coinLabel setFrame:CGRectMake(0, 0, 66, 24)];
+    [coinLabel setBackgroundColor:[UIColor clearColor]];
+    [coinLabel setFont:PMFont3];
+    [self.contentView addSubview:coinLabel];
+    
+    coinView = [[UIImageView alloc] initWithFrame:CGRectMake(32,ViewY(coinBtn)- 50, 10,10)];
+    [coinView setImage:[UIImage imageNamed:@"coinView_diary_image.png"]];
+    [coinView setBackgroundColor:[UIColor clearColor]];
+    [self.contentView addSubview:coinView];
+    [coinView setAlpha:0];
+    
+}
+
+
+- (void)coinAnimate
+{
+    SetViewLeftUp(coinView, 32, ViewY(coinBtn)- 50);
+    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeAnimation.fromValue = [NSNumber numberWithFloat:0.2];
+    fadeAnimation.toValue = [NSNumber numberWithFloat:1.0];
+    fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    fadeAnimation.duration = 0.75;
+    [fadeAnimation setBeginTime:0];
+    [fadeAnimation setDelegate:self];
+    fadeAnimation.removedOnCompletion = NO;
+    fadeAnimation.fillMode = kCAFillModeForwards;
+    
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    scaleAnimation.fromValue = [NSNumber numberWithFloat:1];
+    scaleAnimation.toValue = [NSNumber numberWithFloat:2];
+    scaleAnimation.duration = 2;
+    [scaleAnimation setBeginTime:0];
+    scaleAnimation.removedOnCompletion = NO;
+    scaleAnimation.fillMode = kCAFillModeForwards;
+    
+    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fillMode = kCAFillModeForwards;
+    positionAnimation.removedOnCompletion =NO;
+    positionAnimation.duration = 1;
+    CGMutablePathRef positionPath = CGPathCreateMutable();
+    positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    [positionAnimation setBeginTime:0];
+    
+    CGPathMoveToPoint(positionPath, NULL, [coinView layer].position.x, [coinView layer].position.y);
+    CGPathAddQuadCurveToPoint(positionPath, NULL, [coinView layer].position.x, [coinView layer].position.y, [coinView layer].position.x,[coinView layer].position.y+50);
+    positionAnimation.path = positionPath;
+
+    
+    
+    CAAnimationGroup*group = [CAAnimationGroup animation];
+    [group  setDuration:1];
+//    group.removedOnCompletion = NO;
+//    group.fillMode = kCAFillModeForwards;
+    [group setAnimations:[NSArray arrayWithObjects:fadeAnimation,scaleAnimation, positionAnimation, nil]];
+    [coinView.layer addAnimation:group forKey:@"group"];
+
+}
+
+- (void)getCoin {
+    
+    PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
+    [self coinAnimate];
+//    if (_diary.rewarded) {
+//        [coinBtn selected];
+//    } else {
+//    
+//        [coinBtn unSelected];
+//        if ([_diary reward:1]) {
+//          
+//            [coinBtn selected];
+//            coinLabel.text = @"已打赏";
+//            [coinLabel setTextColor:PMColor3];
+//        }
+//    }
+
 }
 
 - (void)buildParentControl
 {
     SetViewLeftUp(_delBtn,632, 24);
     SetViewLeftUp(_shareBtn,632, ViewY(_content)+ViewHeight(_content)-24);
+    SetViewLeftUp(coinBtn, 20, ViewY(_content) +ViewHeight(_content));
+    SetViewLeftUp(coinLabel, 54, ViewY(_content) + ViewHeight(_content)+5);
+    
     SetViewRightCenter(_delScrollView, ViewX(_delBtn), ViewY(_delBtn)+ViewHeight(_delBtn)/2);
     if (self.indexPath.row == 0) {
         [_timeLine setFrame:CGRectMake(86, 32, 1, kHeaderHeight + kFooterHeight + ViewHeight(_content) )];
@@ -162,9 +252,53 @@
     }
     [self buildAgeLabels];
     [self buildFromIdentity];
+ 
     
-    
-    
+}
+
+- (void)loadData
+{
+
+    if (_diary.sampleDiary) {
+        [coinBtn setAlpha:0];
+        [coinLabel setText:@""];
+        
+    }else{
+        if (_diary.UIdentity == [UserInfo sharedUserInfo].identity){
+            [coinBtn setAlpha:1];
+//            if ([_diary rewarded]) {
+//                [coinBtn selected];
+//                coinLabel.text = @"已打赏";
+//            }else {
+                [coinBtn unSelected];
+                if (_diary.UIdentity == Father){
+                    coinLabel.text = @"赏给爸爸!";
+                    [coinLabel setTextColor:PMColor6];
+                    
+                } else {
+                    coinLabel.text = @"赏给妈妈!";
+                    [coinLabel setTextColor:RGBColor(239, 128, 123)];
+                }
+           // }
+        }else{
+            [coinBtn unSelected];
+            [coinBtn setAlpha:0];
+            coinLabel.text = @"";
+           // if ([_diary rewarded]) {
+                if (_diary.UIdentity == Father) {
+                    coinLabel.text = @"妈妈赏了你";
+                    [coinLabel setTextColor:RGBColor(239, 128, 123)];
+              //  }else {
+                    coinLabel.text = @"爸爸赏了你!";
+                    [coinLabel setTextColor:PMColor6];
+                    
+                }
+                
+            }
+ //       }
+    }
+
+
 }
 
 - (void)buildAgeLabels

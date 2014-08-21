@@ -29,4 +29,5 @@ typedef enum
 @protocol PopViewDelegate <NSObject>
 @optional
 - (void)popViewfinished;
+- (void)popStartHidden;
 @end

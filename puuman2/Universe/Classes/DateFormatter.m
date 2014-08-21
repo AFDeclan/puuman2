@@ -65,6 +65,15 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSString *)stringFromDate2:(NSDate *)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Harbin"];
+    [formatter setTimeZone:timeZone];
+    [formatter setDateFormat:@"yyyy-MM"];
+    return [formatter stringFromDate:date];
+}
+
 + (NSDate *)dateFromString:(NSString *)dateStr
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

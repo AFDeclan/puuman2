@@ -9,7 +9,6 @@
 #import "RectRankCell.h"
 #import "RectRankSubCell.h"
 #import "ColorsAndFonts.h"
-#import "ShopWebViewController.h"
 #import "MainTabBarController.h"
 
 @implementation RectRankCell
@@ -71,10 +70,10 @@
 {
     RecomWare *recWare = [rectWares objectAtIndex:index];
     
-    ShopWebViewController  *webVC = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
-    [[MainTabBarController sharedMainViewController].view addSubview:webVC.view];
-    [webVC setRecWebUrl:recWare.RWShopLink wareName:recWare.RWName wareId:recWare.RWID warePrice:recWare.RWPrice shopName:recWare.RWShop shopIndex:0 imgLink:recWare.RWPicLink];
-    [webVC show];
+//    ShopWebViewController  *webVC = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
+//    [[MainTabBarController sharedMainViewController].view addSubview:webVC.view];
+//    [webVC setRecWebUrl:recWare.RWShopLink wareName:recWare.RWName wareId:recWare.RWID warePrice:recWare.RWPrice shopName:recWare.RWShop shopIndex:0 imgLink:recWare.RWPicLink];
+//    [webVC show];
 
 }
 

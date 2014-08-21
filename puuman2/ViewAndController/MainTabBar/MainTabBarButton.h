@@ -7,13 +7,22 @@
 //
 
 #import "AFButton.h"
-#define animateTime 0.5
+
+typedef enum{
+    kTypeTabBarOfSkip,
+    kTypeTabBarOfDiary,
+    kTypeTabBarOfSocial,
+    kTypeTabBarOfShop,
+    kTypeTabBarOfSetting,
+    
+}TypeTabBarButton;
+
+#define MainTabBarButtonanimateTime 0.5
 @interface MainTabBarButton : AFButton
 {
-    UIImageView *flag;
+    UIImageView *flagImageView;
 }
-@property(retain,nonatomic)UIImage *normalImage;
-@property(retain,nonatomic)UIImage *selectedImage;
-@property(assign,nonatomic)BOOL selected;
-- (void)setSelected:(BOOL)selected withAnimate:(BOOL)animate;
+
+@property(assign,nonatomic)BOOL animate;
+
 @end

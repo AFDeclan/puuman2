@@ -13,6 +13,11 @@
 #define NOTIFICATION_Horizontal                 @"NOTIFICATION_Horizontal"
 #define NOTIFICATION_Vertical                   @"NOTIFICATION_Vertical"
 
+//MianTabBar
+#define Noti_SelectedTabBar                     @"Noti_SelectedTabBar"
+#define Noti_HiddenBabyView                     @"Noti_HiddenBabyView"
+
+
 
 
 #define Noti_CartDoneReceived                   @"Noti_CartDoneReceived"
@@ -26,13 +31,20 @@
 #define Noti_ReloadRankView                     @"Noti_ReloadRankView"
 #define Noti_ReloadWareFilterView               @"Noti_ReloadWareFilterView"
 #define Noti_RefreshMenu                        @"Noti_RefreshMenu"
+#define Noti_ShowAllShopView                    @"Noti_ShowAllShopView"
+#define Noti_SelectedLocation                   @"Noti_SelectedLocation"
+
 //video
 #define Noti_HasShareVideo                      @"Noti_HasShareVideo"
 #define Noti_RefreshProgressAutoVideo           @"Noti_RefreshProgressAutoVideo"
 #define Noti_FinishShareVideo                   @"Noti_FinishShareVideo"
 #define Noti_FailShareVideo                     @"Noti_FailShareVideo"
 #define Noti_ContinueVideo                      @"Noti_ContinueVideo"
+#define Noti_StartGif                           @"Noti_StartGif"
 
+
+#define Noti_ShowTools                          @"Noti_ShowTools"
+#define Noti_HiddenTools                        @"Noti_HiddenTools"
 
 #define Noti_LoadDiaryCellInfo                  @"Noti_LoadDiaryCellInfo"
 #define Noti_PumanInBookUpdated                 @"Noti_PumanInBookUpdated"
@@ -43,6 +55,11 @@
 #define Noti_BabyInfoUpdated                    @"Noti_BabyInfoUpdated"
 #define Noti_VaccineUpdated                     @"Noti_VaccineUpdated"
 #define Noti_RecomWaresUpdated                  @"Noti_RecomWaresUpdated"
+#define Noti_AddCorns                           @"Noti_AddCorns"
+#define Noti_UpdatePuumanShow                   @"Noti_UpdatePuumanShow"
+#define Noti_PreBabyShowInfo                    @"Noti_PreBabyShowInfo"
+#define Noti_PreBabyHiddenInfo                  @"Noti_PreBabyHiddenInfo"
+#define Noti_UpdatePortrait                     @"Noti_UpdatePortrait"
 
 
 #define Noti_ShowAlert                          @"Noti_ShowAlert"
@@ -62,22 +79,22 @@
 //刷新网络
 #define Noti_Refresh                            @"Noti_Refresh"
 #define Noti_ReloadDiaryTable                   @"Noti_ReloadDiaryTable"
+#define Noti_AddDiaryTable                      @"Noti_AddDiaryTable"
 #define Noti_HideKeyBoard                       @"Noti_HideKeyBoard"
 #define Noti_PartnerDataViewScrolled            @"Noti_PartnerDataViewScrolled"
 #define Noti_Imported                           @"Noti_Imported"
+#define Noti_ImportRefresh                      @"Noti_ImportRefresh"
 
 //社交
-#define Noti_manangePartnerData                 @"Noti_manangePartnerData"
-#define Noti_manangedPartnerData                @"Noti_manangedPartnerData"
+#define Noti_manangingPartnerData               @"Noti_manangingPartnerData"
 #define Noti_GoOutDataView                      @"Noti_GoOutDataView"
-#define Noti_BottomInputViewShow                @"Noti_BottomInputViewShow"
 #define Noti_BottomInputViewHidden              @"Noti_BottomInputViewHidden"
 #define Noti_RefreshTopicTable                  @"Noti_RefreshTopicTable"
+#define Noti_AddTopic                           @"Noti_AddTopic"
 #define Noti_RefreshInviteStatus                @"Noti_RefreshInviteStatus"
 #define Noti_InOrOutGroup                       @"Noti_InOrOutGroup"
 #define Noti_RefreshChatTable                   @"Noti_RefreshChatTable"
 #define Noti_RefreshVoteTabe                    @"Noti_RefreshVoteTabe"
-#define Noti_RemoveFriendDelegate               @"Noti_RemoveFriendDelegate"
 #define Noti_BackFromSelectedView               @"Noti_BackFromSelectedView"
 #define Noti_ReplyRemoveForumDelgate            @"Noti_ReplyRemoveForumDelgate"
 #define Noti_RefreshTextTopicCell               @"Noti_RefreshTextTopicCell"
@@ -85,4 +102,5 @@
 #define Noti_loadTopicCell                      @"Noti_loadTopicCell"
 #define Noti_ShowCommentPopView                 @"Noti_ShowCommentPopView"
 #define Noti_HiddenCommentKeyBoard              @"Noti_HiddenCommentKeyBoard"
+#define Noti_AllTopicToNewest                   @"Noti_AllTopicToNewest"
 #endif

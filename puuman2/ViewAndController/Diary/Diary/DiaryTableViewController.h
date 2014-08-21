@@ -15,22 +15,17 @@
 #import "VideoDiaryCell.h"
 #import "PhotoSingleDiaryCell.h"
 #import "PhotoMoreDiaryCell.h"
-#import "DiaryHeaderView.h"
+
 
 @interface DiaryTableViewController : UITableViewController<TaskClickDelegate,TextDiaryDelegate>
 {
     NSIndexPath *selectedPath;
     DiaryCell *_activeCell;
-    int importNum;
-    int importTotalNum;
-    DiaryHeaderView *importProgress;
-    DiaryHeaderView *headerview;
     BOOL dragging;
+    BOOL show;
 }
-- (void)diaryLoaded;
-- (void)setImportTotalNum:(NSInteger)num;
+
 - (void)tapWithPoint:(CGPoint)pos;
-- (void)autoImportShowed;
 + (BOOL)needLoadInfo;
 
 @end

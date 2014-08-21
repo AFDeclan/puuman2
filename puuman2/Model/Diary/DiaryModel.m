@@ -208,8 +208,10 @@ static DiaryModel * instance;
         [_diaries removeAllObjects];
     _sampleDiary = NO;
     [_diaries addObject:d];
-    PostNotification(Noti_ReloadDiaryTable, nil);
-    [[UserInfo sharedUserInfo] addCorns:0.1];
+    if ( [[UserInfo sharedUserInfo] addCorns:0.1]) {
+        PostNotification(Noti_AddCorns, nil);
+
+    }
     [self performSelectorInBackground:@selector(uploadDiary:) withObject:d];
     return YES;
 }
@@ -220,7 +222,7 @@ static DiaryModel * instance;
     NSDate *date = d.DCreateTime;
     if (date == nil) return  NO;
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlDel = [NSString stringWithFormat:@"UPDATE %@ SET %@ = 1 AND %@ = 0 WHERE %@ = ?", tableName, kDeletedDiary, kUploaded, kDateName];
+    NSString *sqlDel = [NSString stringWithFormat:@"UPDATE %@ SET %@ = 1 , %@ = 0 WHERE %@ = ?", tableName, kDeletedDiary, kUploaded, kDateName];
     if (![db executeUpdate:sqlDel, date]) return NO;
     //delete file
     for (NSString *filePath in d.filePaths1) {

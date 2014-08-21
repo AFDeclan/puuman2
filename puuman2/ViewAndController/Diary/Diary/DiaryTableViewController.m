@@ -13,6 +13,9 @@
 #import "MainTabBarController.h"
 #import "DiaryViewController.h"
 #import "ImportStore.h"
+#import "DiaryProgressHeaderView.h"
+#import "ImportRefreshCell.h"
+#import "ImportStore.h"
 
 @interface DiaryTableViewController ()
 
@@ -26,15 +29,14 @@ static BOOL needLoadInfo = YES;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        importNum = 0;
-        importTotalNum = 0;
+       
         // Custom initialization
-        [MyNotiCenter addObserver:self selector:@selector(reloadTable) name:Noti_ReloadDiaryTable object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(imported:) name:Noti_Imported object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(addDiary) name:Noti_AddDiaryTable object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(reloadDiaryTable) name:Noti_ReloadDiaryTable object:nil];
         [MyNotiCenter addObserver:self selector:@selector(deleteDiary:) name:Noti_DeleteDiary object:nil];
         [MyNotiCenter addObserver:self selector:@selector(deletBtnShowed:) name:Noti_DelBtnShowed object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(imported) name:Noti_Imported object:nil];
-        [MyNotiCenter addObserver:self selector:@selector(updateDiaryCount) name:Noti_UpdateDiaryStateRefreshed object:nil];
-        
+ 
     }
     return self;
 }
@@ -61,48 +63,28 @@ static BOOL needLoadInfo = YES;
     return needLoadInfo;
 }
 
-- (void)updateDiaryCount
-{
-    //取数据判断是否下载更新
-    if ([DiaryModel sharedDiaryModel].updateCnt >0) {
-        if ([DiaryModel sharedDiaryModel].downloadedCnt == 0) [self  diaryLoading];
-        if (!headerview)
-        {
-            headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
-            [headerview setIsDiary:YES];
-        }
-        
-        [headerview diaryLoadedcnt:[[DiaryModel sharedDiaryModel] downloadedCnt] totalCnt:[[DiaryModel sharedDiaryModel] updateCnt]];
-        if ([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt] && [[MainTabBarController sharedMainViewController] hasShareVideo]) {
-            [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
-        }
-    }
-}
-
 - (void)startGif
 {
-    [[MainTabBarController sharedMainViewController] startGif];
-
+    PostNotification(Noti_StartGif, nil);
 }
 
-- (void)imported
+- (void)imported:(NSNotification *)notification
 {
-    if (importTotalNum >0) {
-        if (importNum == 0)[self  diaryLoading];
-        if (!importProgress){
-            importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
-            [importProgress setIsDiary:NO];
-        }
-        
-        importNum++;
-        [importProgress diaryLoadedcnt:importNum totalCnt:importTotalNum];
+    show = [[notification object] boolValue];
+
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 0)] withRowAnimation:UITableViewRowAnimationAutomatic];
+    PostNotification(Noti_ImportRefresh, [NSNumber numberWithBool:show]);
+    if (!show) {
+        [[ImportStore shareImportStore] addNewDiary];
+        [self addDiary];
+        [[ImportStore shareImportStore] reset];
         
     }
 }
 
 - (void)diaryLoading;
 {
-    [self reloadTable];
+    [self reloadDiaryTable];
 }
 
 - (void)didReceiveMemoryWarning
@@ -164,6 +146,7 @@ static BOOL needLoadInfo = YES;
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -190,8 +173,13 @@ static BOOL needLoadInfo = YES;
             [cell setBackgroundColor:[UIColor clearColor]];
             return cell;
         }else{
-            TaskCell *cell =[TaskCell sharedTaskCell];
-            cell.delegate =self;
+            static NSString *identify = @"ImportRefrsh";
+            ImportRefreshCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+            if (cell == nil)
+            {
+                cell = [[ImportRefreshCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+              
+            }
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [cell setBackgroundColor:[UIColor clearColor]];
             return cell;
@@ -314,10 +302,13 @@ static BOOL needLoadInfo = YES;
         if (indexPath.row == 0) {
             return 64;
         }else{
-            if ([TaskCell sharedTaskCell].taskFolded)
-                return kTaskCellHeight_Folded;
-            else return kTaskCellHeight_Unfolded;
-            return 0;
+            if (show) {
+                return 32;
+ 
+            }else{
+                return 0;
+
+            }
         }
         
     }else if (indexPath.section == 2)
@@ -331,79 +322,24 @@ static BOOL needLoadInfo = YES;
     else return [DiaryCell heightForDiary:[[[DiaryModel sharedDiaryModel] diaries] objectAtIndex:indexPath.row] abbreviated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 1) {
-        int num = 0;
-        if ([[DiaryModel sharedDiaryModel] updateCnt] > 0) {
-            num++;
-        }
-        if (importTotalNum >0 ) {
-            num++;
-        }
-        return 40*num;
-    }else{
-        return 0;
-    }
-
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (section == 1) {
-        int num = 0;
-        if ([[DiaryModel sharedDiaryModel] updateCnt] > 0) {
-            num++;
-        }
-        if (importTotalNum >0 ) {
-            num++;
-        }
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40*num)];
-        
-        if ([[DiaryModel sharedDiaryModel] updateCnt] > 0) {
-            if (!headerview)
-            {
-                
-                headerview = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, 0, 672, 40)];
-                [headerview setIsDiary:YES];
-            }
-            
-            [view addSubview:headerview];
-        }
-        
-        if (importTotalNum >0) {
-            if (!importProgress)
-            {
-                importProgress = [[DiaryHeaderView alloc] initWithFrame:CGRectMake(0, (num-1)*40, 672, 40)];
-                [importProgress setIsDiary:NO];
-            }
-            [view addSubview:importProgress];
-        }
-        
-        return view;
-    }else{
-        return nil;
-    }
-
-}
 
 - (void)foldOrUnfold
 {
     
-    [self reloadTable];
+    [self reloadDiaryTable];
 }
 
-- (void)reloadTable
+- (void)reloadDiaryTable
 {
-   
     [[DiaryModel sharedDiaryModel] reloadData];
-
-    [self.tableView reloadData];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 1)] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 
 - (void)tableView:(UITableView *)parent didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    
     NSArray *reloadArray;
     BOOL expand = NO;
     
@@ -458,7 +394,6 @@ static BOOL needLoadInfo = YES;
     //    [diaryTable reloadData];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 2)] withRowAnimation:UITableViewRowAnimationAutomatic];
 
-    
 }
 
 - (void)tapWithPoint:(CGPoint)pos
@@ -478,34 +413,19 @@ static BOOL needLoadInfo = YES;
 
 }
 
-- (void)setImportTotalNum:(NSInteger)num
-{
-    importTotalNum = num;
-    if (num == 0) {
-        importNum = 0;
-    }
-}
 
-- (void)diaryLoaded
+
+- (void)addDiary
 {
-  
     [[DiaryModel sharedDiaryModel] reloadData];
-    [[DiaryModel sharedDiaryModel] resetUpdateDiaryCnt];
-    [self reloadTable];
-    
+    [self.tableView beginUpdates];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    NSArray *insertIndexPath = [NSArray arrayWithObjects:indexPath, nil];
+    [self.tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];
     
 }
 
-- (void)autoImportShowed
-{
-    if (importTotalNum >0) {
-        [[DiaryViewController sharedDiaryViewController] setImportTotalNum:0];
-        [[ImportStore shareImportStore] addNewDiary];
-        [[DiaryViewController sharedDiaryViewController] refreshTable];
-        [[ImportStore shareImportStore] reset];
-    }
-   
-}
 
 
 @end

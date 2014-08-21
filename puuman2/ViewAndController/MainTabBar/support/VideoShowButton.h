@@ -15,13 +15,15 @@
 @interface VideoShowButton : UIView
 {
     CGImageSourceRef gif;
-    NSDictionary *gifProperties;
-    NSInteger currentProperty;
     UIImageView *gifImgView;
-    NSInteger countProperty;
     UIButton *playBtn;
     UIImageView *imgView;
     NSMutableArray *refs;
+    NSTimer *timer;
+    float progress;
+    NSString *filePath;
+
+    
 }
 @property(nonatomic,assign)id<VideoShowButtonDelegate> delegate;
 @property(assign,nonatomic)BOOL clickEnable;
@@ -32,5 +34,6 @@
 
 @end
 @protocol VideoShowButtonDelegate <NSObject>
-- (void)showVideo;
+
+- (void)showVideoWithVideoPath:(NSString *)videoPath;
 @end

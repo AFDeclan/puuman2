@@ -317,30 +317,15 @@
             
                 if (modifyMode)
                 {
-
-                    NSDictionary *oldInfo = [[[UserInfo sharedUserInfo] babyInfo] getDic];
                     BabyInfo *babyInfo = [[UserInfo sharedUserInfo] babyInfo];
                     [babyInfo setOriginInfo:[babyInfo getDic]];
                     babyInfo.WhetherBirth = NO;
                     babyInfo.Nickname = [pregnancy babyName];
                     babyInfo.Birthday = [pregnancy birthDate];
-                    
                     if ([birth selectedImg]) {
                         [babyInfo uploadPortrait:birth.selectedImg];
                     }
-                    
-                    if ([babyInfo uploadInfoSync])
-                    {
-
-                         [CustomNotiViewController showNotiWithTitle:@"修改成功" withTypeStyle:kNotiTypeStyleRight];
-                         [[TaskModel sharedTaskModel] updateTasks];
-                        [self hidden];
-                    }
-                    else
-                    {
-                        [babyInfo setWithDic:oldInfo];
-                         [CustomNotiViewController showNotiWithTitle:@"网络异常" withTypeStyle:kNotiTypeStyleRight];
-                    }
+                    [babyInfo uploadInfo];
                     return;
                 }
                 isBirthView = NO;

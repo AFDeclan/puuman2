@@ -12,7 +12,7 @@
 #import <MBProgressHUD.h>
 #import <AVFoundation/AVFoundation.h>
 #import "AFDataStore.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 @protocol TaskClickDelegate;
 @class AFPageControl;
@@ -24,8 +24,8 @@
     TaskTitleView *taskTitle;
     UIImageView *bgImgView;
     UIImageView *bonusBackView;
-    ColorButton *startButton;
-    ColorButton *infoButton;
+    AFColorButton *startButton;
+    AFColorButton *infoButton;
     UILabel *bonusLabel;
     UILabel *notiLabel;
     MBProgressHUD *_hud;

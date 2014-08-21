@@ -9,7 +9,7 @@
 #import "DiaryViewController.h"
 #import "UniverseConstant.h"
 #import "UserInfo.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+Hud.h"
 #import "NewTextDiaryViewController.h"
 #import "NewImportDiaryViewController.h"
 #import "NewAudioDiaryViewController.h"
@@ -42,6 +42,7 @@ static DiaryViewController * instance;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [MyNotiCenter addObserver:self selector:@selector(updateDiaryCount) name:Noti_UpdateDiaryStateRefreshed object:nil];
     }
     return self;
 }
@@ -51,8 +52,6 @@ static DiaryViewController * instance;
 
     diaryTableVC = [[DiaryTableViewController alloc] init];
     [self.view addSubview:diaryTableVC.view];
-
-    
     newBtn = [[DiaryNewButton alloc] initWithFrame:CGRectMake(0, 0, 56, 88)];
     [self.view addSubview:newBtn];
     [newBtn setCommonBtnType:[self newBtnType]];
@@ -68,40 +67,14 @@ static DiaryViewController * instance;
 
 }
 
-- (void)initActiveView
-{
-    
-    activeNewestView = [[UIView alloc] initWithFrame:CGRectMake(768, 0, 240, 656)];
-    [activeNewestView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview:activeNewestView];
-    
-    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 656)];
-    [bgImgView setImage:[UIImage imageNamed:@"bg_calendar_diary.png"]];
-    [activeNewestView addSubview:bgImgView];
-    
-    joinView = [[JoinView alloc] initWithFrame:CGRectMake(0, 0, 240, 288)];
-    [joinView setBackgroundColor:[UIColor clearColor]];
-    [activeNewestView addSubview:joinView];
-    
-    UIImageView *partingLineOne = [[UIImageView alloc] initWithFrame:CGRectMake(0, 288, 240, 2)];
-    [partingLineOne setImage:[UIImage imageNamed:@"line1_diary.png"]];
-    [partingLineOne setBackgroundColor:[UIColor clearColor]];
-    [activeNewestView addSubview:partingLineOne];
-    
-    calenderView = [[CalenderControlView alloc] initWithFrame:CGRectMake(0, 290, 240, 340)];
-    [calenderView setBackgroundColor:[UIColor clearColor]];
-    [activeNewestView addSubview:calenderView];
-    
 
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor clearColor]];
-    [self initActiveView];
+    [self initToolsView];
     [self initContent];
-    
 	// Do any additional setup after loading the view.
 
 
@@ -127,6 +100,37 @@ static DiaryViewController * instance;
     [self performSelector:@selector(loadTable) withObject:nil afterDelay:0.1];
 }
 
+
+- (void)initToolsView
+{
+    toolsView = [[ToolsView alloc] initWithFrame:CGRectMake(768, 0, 240, 656)];
+    [self.view addSubview:toolsView];
+}
+
+
+- (void)updateDiaryCount
+{
+    //取数据判断是否下载更新
+    if ([DiaryModel sharedDiaryModel].updateCnt > 0) {
+        //if ([DiaryModel sharedDiaryModel].downloadedCnt == 0) [self  diaryLoading];
+        if (!headerview)
+        {
+            headerview = [[DiaryProgressHeaderView alloc] initWithFrame:CGRectMake(152, 28, 672 - 88 , 20)];
+            [self.view addSubview:headerview];
+            [diaryTableVC.tableView reloadData];
+        }
+        
+        
+        
+        [headerview diaryLoadedcnt:[[DiaryModel sharedDiaryModel] downloadedCnt] totalCnt:[[DiaryModel sharedDiaryModel] updateCnt]];
+        if ([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt] && [[MainTabBarController sharedMainViewController] hasShareVideo]) {
+            [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
+        }
+    }
+}
+
+
+
 - (void)loadTable
 {
     PostNotification(Noti_LoadDiaryCellInfo, nil);
@@ -146,152 +150,6 @@ static DiaryViewController * instance;
     [diaryTableVC tapWithPoint:pos];
     return YES;
     
-}
-
-
-//竖屏
--(void)setVerticalFrame
-{
-   
-    [activeNewestView setAlpha:0];
-    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 1024)];
-    [newBtn setFrame:CGRectMake(680, 904, 56, 88)];
-    
-    if ([newBtn directionChangedWithVertical:YES] &&isFirst == NO) {
-        isFirst = YES;
-        [newBtn setShowStatus];
-        [newBtn setNewBtnShowed:YES];
-        
-        for (int i=0; i<5; i++)
-        {
-            if (newBtn.commonBtnType >i ) {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else if(newBtn.commonBtnType < i )
-            {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else{
-                newDiaryBtn[i].alpha = 0;
-            }
-            
-        }
-        if (timer) {
-            [timer invalidate];
-            timer = nil;
-        }
-        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
-
-        
-    }
-    if (newBtn.newBtnShowed) {
-        for (int i=0; i<5; i++)
-        {
-            if (newBtn.commonBtnType >i ) {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else if(newBtn.commonBtnType < i )
-            {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else{
-                newDiaryBtn[i].alpha = 0;
-            }
-            
-        }
-        if (timer) {
-            [timer invalidate];
-            timer = nil;
-        }
-        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
-
-        
-    }else{
-        for (int i=0; i<5; i++)
-        {
-            newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x, newBtn.frame.origin.y, 56,56);
-            [newDiaryBtn[i] setAlpha:0];
-            
-        }
-    }
-
-}
-
-//横屏
--(void)setHorizontalFrame
-{
-    [activeNewestView setAlpha:1];
-    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 768)];
-    [newBtn setFrame:CGRectMake(936, 648, 56, 88)];
-    
-    if ([newBtn directionChangedWithVertical:NO]&&isFirst == NO) {
-        [newBtn setShowStatus];
-        isFirst = YES;
-        [newBtn setNewBtnShowed:YES];
-        for (int i=0; i<5; i++)
-        {
-            if (newBtn.commonBtnType >i ) {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else if(newBtn.commonBtnType < i )
-            {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else{
-                newDiaryBtn[i].alpha = 0;
-            }
-            
-        }
-        if (timer) {
-            [timer invalidate];
-            timer = nil;
-        }
-         timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
-
-        
-    }
-    if (newBtn.newBtnShowed) {
-        for (int i=0; i<5; i++)
-        {
-            if (newBtn.commonBtnType >i ) {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else if(newBtn.commonBtnType < i )
-            {
-                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
-                newDiaryBtn[i].alpha = 1;
-            }else{
-                newDiaryBtn[i].alpha = 0;
-            }
-            
-        }
-        if (timer) {
-            [timer invalidate];
-            timer = nil;
-        }
-        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
-
-        
-    }else{
-        for (int i=0; i<5; i++)
-        {
-            newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x, newBtn.frame.origin.y, 56,56);
-            [newDiaryBtn[i] setAlpha:0];
-            
-        }
-    }
-   SetViewLeftUp(activeNewestView, 768, -30);
-    [self performSelectorOnMainThread:@selector(animateWithActiveView) withObject:nil waitUntilDone:0];
-}
-
-- (void)animateWithActiveView
-{
-   
-    [UIView animateWithDuration:1 animations:^{
-        SetViewLeftUp(activeNewestView, 768, 0);
-    }completion:^(BOOL finished) {
-        [calenderView show];
-    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -487,8 +345,6 @@ static DiaryViewController * instance;
 
 -(void)setTaskInfo:(NSDictionary *)taskInfo
 {
-    
-    
     switch ([[taskInfo valueForKey:_task_TaskType] integerValue]) {
         case 2:
         case 7:
@@ -554,35 +410,200 @@ static DiaryViewController * instance;
     [joinView refreshStaus];
     [diaryTableVC.tableView reloadData];
     [diaryTableVC.tableView setContentOffset:CGPointMake(0, 0)];
-    
-
+    [toolsView reloadView];
 }
 
-- (void)diaryLoaded
+
+- (void)loadDownFindished
 {
     [[DiaryModel sharedDiaryModel] reloadData];
+    [diaryTableVC.tableView reloadData];
+    
     [[DiaryModel sharedDiaryModel] resetUpdateDiaryCnt];
-    [diaryTableVC.tableView reloadData];
     [[JoinView sharedJoinView] refreshStaus];
+    [headerview removeFromSuperview];
+    headerview = nil;
+}
+
+
+- (void)showTurorialView
+{
+    diaryTurorialView =[[UIView alloc] init];
+   diaryTurorial = [[UIImageView alloc] init];
+    if ([MainTabBarController sharedMainViewController].isVertical ) {
+        [diaryTurorialView setFrame:CGRectMake(0, 0, 768, 1024)];
+        [diaryTurorial setFrame:CGRectMake(0, 0, 768, 1024)];
+        [diaryTurorial setImage:[UIImage imageNamed:@"pic2_course2.png"]];
+        
+    }else{
+        [diaryTurorialView setFrame:CGRectMake(0, 0, 1024, 768)];
+        [diaryTurorial setFrame:CGRectMake(0, 0, 1024, 768)];
+        [diaryTurorial setImage:[UIImage imageNamed:@"pic1_course1.png"]];
+        
+    }
     
+    [diaryTurorialView setAlpha:1];
+    [diaryTurorialView addSubview:diaryTurorial];
+    [self.view addSubview:diaryTurorialView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDiaryTurorialView)];
+    [diaryTurorialView addGestureRecognizer:tap];
+}
+
+- (void)hiddenDiaryTurorialView
+{
+    [diaryTurorialView setAlpha:0];
+    [diaryTurorialView removeFromSuperview];
+}
+
+
+
+//竖屏
+-(void)setVerticalFrame
+{
+    [diaryTurorialView setFrame:CGRectMake(0, 0, 768, 1024)];
+    [diaryTurorial setFrame:CGRectMake(0, 0, 768, 1024)];
+    [diaryTurorial setImage:[UIImage imageNamed:@"pic2_course2.png"]];
+    [toolsView setAlpha:0];
+    
+    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 1024)];
+    [newBtn setFrame:CGRectMake(680, 904, 56, 88)];
+    
+    if ([newBtn directionChangedWithVertical:YES] &&isFirst == NO) {
+        isFirst = YES;
+        [newBtn setShowStatus];
+        [newBtn setNewBtnShowed:YES];
+        
+        for (int i=0; i<5; i++)
+        {
+            if (newBtn.commonBtnType >i ) {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else if(newBtn.commonBtnType < i )
+            {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else{
+                newDiaryBtn[i].alpha = 0;
+            }
+            
+        }
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
+        
+        
+    }
+    if (newBtn.newBtnShowed) {
+        for (int i=0; i<5; i++)
+        {
+            if (newBtn.commonBtnType >i ) {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else if(newBtn.commonBtnType < i )
+            {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else{
+                newDiaryBtn[i].alpha = 0;
+            }
+            
+        }
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
+        
+        
+    }else{
+        for (int i=0; i<5; i++)
+        {
+            newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x, newBtn.frame.origin.y, 56,56);
+            [newDiaryBtn[i] setAlpha:0];
+            
+        }
+    }
     
 }
 
-- (void)setImportTotalNum:(NSInteger)num
+//横屏
+-(void)setHorizontalFrame
 {
+    [diaryTurorialView setFrame:CGRectMake(0, 0, 1024, 768)];
+    [diaryTurorial setFrame:CGRectMake(0, 0, 1024, 768)];
+    [diaryTurorial setImage:[UIImage imageNamed:@"pic1_course1.png"]];
+
+    [toolsView setAlpha:1];
+    [diaryTableVC.view setFrame:CGRectMake(80, 0, 672, 768)];
+    [newBtn setFrame:CGRectMake(936, 648, 56, 88)];
     
-    [diaryTableVC setImportTotalNum:num];
-    [diaryTableVC.tableView reloadData];
+    if ([newBtn directionChangedWithVertical:NO]&&isFirst == NO) {
+        [newBtn setShowStatus];
+        isFirst = YES;
+        [newBtn setNewBtnShowed:YES];
+        for (int i=0; i<5; i++)
+        {
+            if (newBtn.commonBtnType >i ) {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else if(newBtn.commonBtnType < i )
+            {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else{
+                newDiaryBtn[i].alpha = 0;
+            }
+            
+        }
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
+        
+        
+    }
+    if (newBtn.newBtnShowed) {
+        for (int i=0; i<5; i++)
+        {
+            if (newBtn.commonBtnType >i ) {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - i*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else if(newBtn.commonBtnType < i )
+            {
+                newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x,newBtn.frame.origin.y - (i-1)*80-44, 56, 56);
+                newDiaryBtn[i].alpha = 1;
+            }else{
+                newDiaryBtn[i].alpha = 0;
+            }
+            
+        }
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideNewBtns) userInfo:nil repeats:NO];
+        
+        
+    }else{
+        for (int i=0; i<5; i++)
+        {
+            newDiaryBtn[i].frame = CGRectMake(newBtn.frame.origin.x, newBtn.frame.origin.y, 56,56);
+            [newDiaryBtn[i] setAlpha:0];
+            
+        }
+    }
+    [toolsView showAnimate];
 }
 
-- (void)refreshTable
-{
-    
-    [diaryTableVC.tableView reloadData];
-}
 
-- (void)autoImportShowed
+- (void)removeheadView
 {
-    [diaryTableVC autoImportShowed];
+    if (headerview) {
+        [headerview removeFromSuperview];
+        headerview = nil;
+    }
 }
 @end

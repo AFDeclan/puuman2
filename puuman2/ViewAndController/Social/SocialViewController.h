@@ -7,25 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ColorButton.h"
-#import "AFSelecedTextImgButton.h"
+#import "AFColorButton.h"
+#import "AFSelectedImgButton.h"
 #import "SocialContentView.h"
+#import "TopicCellSelectedPohosViewController.h"
+#import "NewCameraViewController.h"
 
-
-
-@interface SocialViewController : UIViewController
+@interface SocialViewController : UIViewController<SelectPhotoDelegate,PopViewDelegate>
 {
     UIImageView *bg_topImageView;
     UIImageView *bg_rightImageView;
-    ColorButton *leftBtn;
-    ColorButton *rightBtn;
-    AFSelecedTextImgButton *topicBtn;
-    AFSelecedTextImgButton *partnerBtn;
+    AFColorButton *leftBtn;
+    AFColorButton *rightBtn;
+    AFSelectedImgButton *topicBtn;
+    AFSelectedImgButton *partnerBtn;
     SocialContentView *contnetView;
     BOOL selectedTopic;
-
+    
+    UIButton *rewardBtn;
+    UIButton *participateBtn;
+    UIButton *toCurrentTopic;
+    UIButton *voteBtn;
 }
 
++ (SocialViewController *)sharedViewController;
 
-
+- (void)showNewestTopic;
+- (void)showPreTopic;
+- (void)showVoteTopic;
 @end

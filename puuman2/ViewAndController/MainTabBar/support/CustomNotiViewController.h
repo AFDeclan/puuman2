@@ -8,6 +8,7 @@
 
 #import "PopViewController.h"
 #import "AFTextImgButton.h"
+
 typedef   enum {
     kNotiTypeStyleRight,
     kNotiTypeStyleNone

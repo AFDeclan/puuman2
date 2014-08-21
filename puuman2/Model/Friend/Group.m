@@ -32,13 +32,18 @@
         } else if ([key isEqualToString:@"GMember"]) {
             NSArray * msdata = val;
             _GMember = [[NSMutableArray alloc] init];
+            _MyMember = [[Member alloc] init];
             for (NSDictionary * mdata in msdata) {
                 Member *mem = [[Member alloc] init];
                 [mem setData:mdata];
                 if (mem.BID == [UserInfo sharedUserInfo].BID) {
                     _isMy = YES;
+                    [_GMember  insertObject:mem atIndex:0];
+                    _MyMember = mem;
+                }else{
+                    [_GMember addObject:mem];
+
                 }
-                [_GMember addObject:mem];
             }
         }
     }

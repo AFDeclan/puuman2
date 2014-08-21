@@ -30,7 +30,7 @@
 @property (retain, nonatomic, readonly) NSDate * GCreateTime;
 //成员
 @property (retain, nonatomic, readonly) NSMutableArray * GMember;
-
+@property (retain, nonatomic, readonly) Member * MyMember;
 @property (retain, nonatomic, readonly) NSMutableArray * GAction;
 @property (retain, nonatomic, readonly) NSMutableArray * GMsgs;
 @property (retain, nonatomic, readonly) Action * GLatestAction; //非msg类的最新action

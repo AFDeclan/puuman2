@@ -44,7 +44,7 @@
     [info_date setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:info_date];
     
-    info_name = [[UILabel alloc] initWithFrame:CGRectMake(176, 56, 224, 16)];
+    info_name = [[UILabel alloc] initWithFrame:CGRectMake(120, 56, 224, 16)];
     [info_name setFont:PMFont2];
     [info_name setBackgroundColor:[UIColor clearColor]];
     [info_name setTextAlignment:NSTextAlignmentRight];

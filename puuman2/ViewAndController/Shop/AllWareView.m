@@ -8,11 +8,11 @@
 
 #import "AllWareView.h"
 #import "ColorsAndFonts.h"
-#import "ShopAllWareHeaderView.h"
 #import "HealthCell.h"
 #import "InsuranceCell.h"
 #import "WareCell.h"
 #import "MainTabBarController.h"
+
 @implementation AllWareView
 
 - (id)initWithFrame:(CGRect)frame
@@ -20,12 +20,16 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-         [MyNotiCenter addObserver:self selector:@selector(reloadShopMall) name:Noti_ReloadShopMall object:nil];
+        
+        filtrateShow = NO;
         [self setBackgroundColor:[UIColor clearColor]];
-        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 608, 688)];
+        _shopMallTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 608,474)];
         [_shopMallTable setDataSource:self];
         [_shopMallTable setDelegate:self];
         [self addSubview:_shopMallTable];
+        
+     
+        
         [_shopMallTable setBackgroundColor:[UIColor clearColor]];
         [_shopMallTable setSeparatorColor:[UIColor clearColor]];
         [_shopMallTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -54,9 +58,78 @@
         [noti_insurance setText:@"请在横屏下查看此页面"];
         [noti_insurance setAlpha:0];
         [_shopMallTable addSubview:noti_insurance];
+        headView= [[ShopAllWareHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
+        [self addSubview:headView];
         
+      
+        
+        filtrate = [[FiltrateView alloc] initWithFrame:CGRectMake(608-112, 8, 118, 40)];
+        [self addSubview:filtrate];
+        
+        
+        filtrateBtn = [[AFColorButton alloc] initWithFrame:CGRectMake(0, 0, 112, 40)];
+        [filtrateBtn.title setText:@"筛选"];
+        [filtrateBtn adjustLayout];
+        [filtrateBtn addTarget:self action:@selector(filtrate) forControlEvents:UIControlEventTouchUpInside];
+        [filtrate addSubview:filtrateBtn];
+        [filtrateBtn setAlpha:1];
+        
+        
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenFiltrate)];
+        [self addGestureRecognizer:tap];
     }
     return self;
+}
+
+
+- (void)hiddenFiltrate
+{
+    if (filtrateShow) {
+        [self filtrate];
+    }
+
+}
+
+- (void)filtrate
+{
+    if (filtrateShow) {
+        [UIView animateWithDuration:0.5 animations:^{
+            [filtrate setFrame:CGRectMake(4, 56, 608, 40)];
+            [filtrate hidden];
+        }completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3 animations:^{
+                [filtrate setFrame:CGRectMake(608-112, 56, 118, 40)];
+            }completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.1 animations:^{
+                    SetViewLeftUp(filtrate, 608-112, 8);
+                    [filtrateBtn setAlpha:1];
+
+                }];
+            }];
+        }];
+    }else{
+
+        [UIView animateWithDuration:0.1 animations:^{
+            SetViewLeftUp(filtrate, 608-112, 56);
+            [filtrateBtn setAlpha:0];
+
+        }completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3 animations:^{
+                [filtrate setFrame:CGRectMake(4, 56, 608, 40)];
+                
+            }completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.2 animations:^{
+                    [filtrate setFrame:CGRectMake(4, 56, 608, 210)];
+                    [filtrate show];
+                    
+                }];
+            }];
+        }];
+        
+    }
+    filtrateShow = !filtrateShow;
+    
 }
 
 #pragma mark - Tableview Delegate Methods
@@ -84,9 +157,7 @@
         case ShopStateInsurance:
             return 2;
         case ShopStateNormal:
-            if ([data count] >= 6)
-                return 2;
-            else break;
+            return 0;
         default:
             break;
     }
@@ -103,9 +174,7 @@
     
     switch (_shopState) {
         case ShopStateInsurance:
-            
-           
-            
+
             if (row == 0) {
                 NSString *identifier = @"HealthCell";
                 HealthCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -211,25 +280,8 @@
 
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-   
-    return 56;
 
-}
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
- 
-    
-    ShopAllWareHeaderView  *headView= [[ShopAllWareHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
-
-    [headView setStatusWithKindIndex:section andUnfold:_shopState == ShopStateNormal?NO:YES];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(sectionHeaderTapped:)];
-    headView.tag =section;
-    [headView addGestureRecognizer:tap];
-    return headView;
-}
 
 
 #pragma mark - 获取相应section的数据
@@ -291,18 +343,17 @@
 
 -(void)reloadShopMall
 {
-    
+
     NSInteger type = [ShopModel sharedInstance].sectionIndex;
+    
     if (type < 0 && ![ShopModel sharedInstance].searchOn)
         _shopState = ShopStateNormal;
     else if (type == 11)
     {
         _shopState = ShopStateInsurance;
-        // [menu toAllPage];
     }
     else
     {
-       // [menu toAllPage];
         _shopState = ShopStateFiltered;
         _refreshFooter.alpha = 1;
         if ([[[ShopModel sharedInstance] filteredWares] count] <= 2)
@@ -311,32 +362,36 @@
     if (_refreshFooter.isRefreshing)
         [_refreshFooter endRefreshing];
     [_shopMallTable reloadData];
+    
+    [headView setStatusWithKindIndex:type andUnfold:_shopState == ShopStateNormal?NO:YES];
+
+    
 }
-
-
 
 
 - (void)setVerticalFrame
 {
-    [_shopMallTable setFrame:CGRectMake(0, 0, 608, 944)];
+    
+    [headView setFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
+    [headView setVerticalFrame];
+    [_shopMallTable setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     if (_shopState == ShopStateInsurance) {
         [noti_insurance setAlpha:1];
     }
+
 }
 
 - (void)setHorizontalFrame
 {
-    [_shopMallTable setFrame:CGRectMake(0, 0, 648, 688)];
+   
+    [headView setFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
+    [headView setHorizontalFrame];
+    [_shopMallTable setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     if (_shopState == ShopStateInsurance) {
           [noti_insurance setAlpha:0];
     }
-}
 
-- (void)dealloc
-{
-    [MyNotiCenter removeObserver:self];
 }
-
 
 
 
