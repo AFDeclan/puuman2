@@ -100,7 +100,6 @@ static MainTabBarController *instance;
 
 - (void)startApp
 {
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:Noti_TutorialFinshed object:nil];
     if (![userInfo logined]) {
         if (![userInfo loginFromUserDefault])

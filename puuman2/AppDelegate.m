@@ -10,6 +10,7 @@
 #import "MainTabBarController+AutoImport.h"
 #import "DiaryViewController.h"
 #import "ShopViewController.h"
+#import "TestShopViewController.h"
 #import "SocialViewController.h"
 #import "SkipViewController.h"
 #import "CustomAlertViewController.h"
@@ -44,7 +45,9 @@
     _rootTabBarC = [MainTabBarController sharedMainViewController];
     DiaryViewController *diaryVC = [DiaryViewController sharedDiaryViewController];
     SocialViewController *socialVC = [SocialViewController  sharedViewController];
-    ShopViewController *shopVC = [ShopViewController  sharedShopViewController];
+    //ShopViewController *shopVC = [ShopViewController  sharedShopViewController];
+    TestShopViewController *shopVC = [[TestShopViewController  alloc] init];
+
     SkipViewController *skipVC = [SkipViewController sharedController];
     [_rootTabBarC addChildViewController:skipVC];
     [_rootTabBarC addChildViewController:diaryVC];

@@ -11,7 +11,7 @@
 #import "MainTabBarController.h"
 #import "ShopViewController.h"
 #import "ShopModel.h"
-
+#import "MainTabBarController+MainTabBarControllerSkip.h"
 @implementation PropWare
 
 - (id)init
@@ -90,15 +90,8 @@
 }
 - (void)detailInfo
 {
-//    [MobClick event:umeng_event_click label:@"DetailInfo_PropWare"];
-//    if (_ware) {
-//        SingleGoodViewController *singleGoodViewController = [[SingleGoodViewController alloc]initWithNibName:@"SingleGoodViewController" bundle:nil];
-//        [BlurView showViewController:singleGoodViewController withVerticalViewFrame:CGRectMake(12, 296, 736, 521) andHorizontalViewFrame:CGRectMake(140, 80, 736, 521)];
-//        [singleGoodViewController setWare:_ware];
-//    }else{
-//  
-//        [[MainViewController sharedMainViewController] scrollToShopWithParentIndex:parentMenu andChildIndex:childMenu];
-//    }
+    PostNotification(Noti_HiddenBabyView, nil);
+    [[MainTabBarController sharedMainViewController] showShop];
     
     if(_ware) {
 //        SinglepopViewController *singGoodVC = [[SinglepopViewController alloc] initWithNibName:nil bundle:nil];

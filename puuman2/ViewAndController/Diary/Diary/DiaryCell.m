@@ -285,8 +285,8 @@
             if ([_diary rewarded]) {
                 [coinBtn selected];
                 [coinBtn setBackgroundColor:[UIColor clearColor]];
-
                 coinLabel.text = @"已打赏";
+                
             }else {
                 [coinBtn unSelected];
                 if (_diary.UIdentity == Father){
