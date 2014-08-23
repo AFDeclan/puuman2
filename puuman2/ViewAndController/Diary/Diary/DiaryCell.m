@@ -286,7 +286,6 @@
             if ([_diary rewarded]) {
                 [coinBtn selected];
                 [coinBtn setBackgroundColor:[UIColor clearColor]];
-
                 coinLabel.text = @"已打赏";
                 [coinLabel setTextColor:PMColor3];
             }else {

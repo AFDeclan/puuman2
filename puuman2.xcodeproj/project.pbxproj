@@ -634,6 +634,7 @@
 		54B97EB318FA594B00B6C4C9 /* pic_minan_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EB018FA594B00B6C4C9 /* pic_minan_shop.png */; };
 		54B97EB418FA594B00B6C4C9 /* pic_redefining_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EB118FA594B00B6C4C9 /* pic_redefining_shop.png */; };
 		54B97EB518FA594B00B6C4C9 /* pic_cigna_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97EB218FA594B00B6C4C9 /* pic_cigna_shop.png */; };
+		54B98E5D19A84A78001B74AF /* TestShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B98E5C19A84A78001B74AF /* TestShopViewController.m */; };
 		54BA8476197672F500B3A01D /* FiltrateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BA8475197672F500B3A01D /* FiltrateView.m */; };
 		54BAD46418D15087003822CC /* PageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46318D15087003822CC /* PageControlButton.m */; };
 		54BAD46718D151EB003822CC /* ChangePageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* ChangePageControlButton.m */; };
@@ -1745,6 +1746,8 @@
 		54B97EB018FA594B00B6C4C9 /* pic_minan_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_minan_shop.png; sourceTree = "<group>"; };
 		54B97EB118FA594B00B6C4C9 /* pic_redefining_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_redefining_shop.png; sourceTree = "<group>"; };
 		54B97EB218FA594B00B6C4C9 /* pic_cigna_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_cigna_shop.png; sourceTree = "<group>"; };
+		54B98E5B19A84A78001B74AF /* TestShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShopViewController.h; sourceTree = "<group>"; };
+		54B98E5C19A84A78001B74AF /* TestShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShopViewController.m; sourceTree = "<group>"; };
 		54BA8474197672F500B3A01D /* FiltrateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltrateView.h; sourceTree = "<group>"; };
 		54BA8475197672F500B3A01D /* FiltrateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltrateView.m; sourceTree = "<group>"; };
 		54BAD46218D15087003822CC /* PageControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageControlButton.h; path = ../../BabyInfo/PageControlButton.h; sourceTree = "<group>"; };
@@ -3791,6 +3794,8 @@
 		54CE112018C1BC6D00966396 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				54B98E5B19A84A78001B74AF /* TestShopViewController.h */,
+				54B98E5C19A84A78001B74AF /* TestShopViewController.m */,
 				54CE112118C1BC6D00966396 /* ShopViewController.h */,
 				54CE112218C1BC6D00966396 /* ShopViewController.m */,
 				54AC20FE18E3FE68001C1357 /* contentView */,
@@ -4886,6 +4891,7 @@
 				54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */,
 				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
 				54B30AA5195D546900007DDC /* WaitView.m in Sources */,
+				54B98E5D19A84A78001B74AF /* TestShopViewController.m in Sources */,
 				54B6F42418D6E33E0055FC72 /* SettingAdviceViewController.m in Sources */,
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				54B30A8D195D53EC00007DDC /* ToolsCoinView.m in Sources */,

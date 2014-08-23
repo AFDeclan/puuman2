@@ -253,7 +253,8 @@ static ShopViewController * instance;
     }else{
         SetViewLeftUp(cartBtn, 948, 678);
         
-    }}
+    }
+}
 
 
 
