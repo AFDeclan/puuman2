@@ -213,27 +213,35 @@
     [group  setDuration:1];
 //    group.removedOnCompletion = NO;
 //    group.fillMode = kCAFillModeForwards;
+    [group setDelegate:self];
     [group setAnimations:[NSArray arrayWithObjects:fadeAnimation,scaleAnimation, positionAnimation, nil]];
     [coinView.layer addAnimation:group forKey:@"group"];
+    
 
+}
+
+- (void)coinAnimateFinished
+{
+    [coinBtn selected];
+    [coinBtn setEnabled:NO];
+    coinLabel.text = @"已打赏";
+    [coinLabel setTextColor:PMColor3];
+    [coinBtn setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)getCoin {
     
-    PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
-    [self coinAnimate];
+   
     if (_diary.rewarded) {
         [coinBtn selected];
     } else {
-    
-        [coinBtn unSelected];
+      
         if ([_diary reward:1]) {
-          
-            [coinBtn selected];
-            coinLabel.text = @"已打赏";
-            [coinLabel setTextColor:PMColor3];
-            [coinBtn setBackgroundColor:[UIColor clearColor]];
-
+            PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
+            [self coinAnimate];
+            [coinBtn unSelected];
+            [coinBtn setEnabled:NO ];
+            [self performSelector:@selector(coinAnimateFinished) withObject:nil afterDelay:1.1];
         }
     }
 

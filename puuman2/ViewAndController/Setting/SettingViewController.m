@@ -196,7 +196,7 @@ static NSString *cellTitles[3][4] = {{@"修改手机&邮箱",@"修改密码"},{@
     [titleView.title setTextColor:PMColor7];
     [titleView setIconImg:[UIImage imageNamed:titleIcons[section]]];
     [titleView setIconSize:CGSizeMake(12, 12)];
-    [titleView adjustLayout];
+    [titleView adjustLeftLayout];
     [titleView setBackgroundColor:[UIColor clearColor]];
     [titleView setEnabled:NO];
     [headView addSubview:titleView];
