@@ -220,15 +220,6 @@
 
 }
 
-- (void)coinAnimateFinished
-{
-    [coinBtn selected];
-    [coinBtn setEnabled:NO];
-    coinLabel.text = @"已打赏";
-    [coinLabel setTextColor:PMColor3];
-    [coinBtn setBackgroundColor:[UIColor clearColor]];
-}
-
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     if (flag) {
@@ -242,18 +233,20 @@
 
 - (void)getCoin {
     
-   
+    [coinBtn setEnabled:NO];
+    
     if (_diary.rewarded) {
         [coinBtn selected];
 
     } else {
-      
+        
         if ([_diary reward:1]) {
             PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
             [self coinAnimate];
+  
+        }else{
             [coinBtn unSelected];
-            [coinBtn setEnabled:NO ];
-            [self performSelector:@selector(coinAnimateFinished) withObject:nil afterDelay:1.1];
+
         }
     }
 
@@ -295,6 +288,7 @@
                 [coinBtn setBackgroundColor:[UIColor clearColor]];
 
                 coinLabel.text = @"已打赏";
+                [coinLabel setTextColor:PMColor3];
             }else {
                 [coinBtn unSelected];
                 if (_diary.UIdentity == Father){

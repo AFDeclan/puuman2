@@ -15,7 +15,8 @@
 @interface BabyInfoPropViewCell : UITableViewCell<BabyInfoIconViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     PropView *babyPropView;
-    UIView *rightView;
+   // UIView *rightView;
+    UIView *contentView;
     UIView *leftView;
     UITextField *estiTextField;
     UITableView *estiTableView;
