@@ -20,4 +20,6 @@
 
 - (void)setIconLocation:(CGPoint)pos;
 - (void)adjustLayout;
+- (void)adjustLeftLayout;
+
 @end
