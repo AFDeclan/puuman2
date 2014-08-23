@@ -22,7 +22,7 @@
         [showAndHiddenBtn setAlpha:0];
         [self initialization];
         [self initWithLeftView];
-        [self initWithRightView];
+       // [self initWithRightView];
         if ([[MainTabBarController sharedMainViewController] isVertical]) {
         
             [self setVerticalFrame];
@@ -38,16 +38,18 @@
 - (void)initialization
 {
     
-    
+    contentView = [[UIView alloc] init];
+    [contentView setBackgroundColor:[UIColor whiteColor]];
+    [self.contentView addSubview:contentView];
     lineView =[[UIView alloc] init];
     [lineView setBackgroundColor:PMColor6];
     [self.contentView addSubview:lineView];
     leftView = [[UIView alloc] init];
     [leftView setBackgroundColor:[UIColor whiteColor]];
     [self.contentView addSubview:leftView];
-    rightView = [[UIView alloc] init];
-    [rightView setBackgroundColor:[UIColor clearColor]];
-    [self.contentView addSubview:rightView];
+//    rightView = [[UIView alloc] init];
+//    [rightView setBackgroundColor:[UIColor clearColor]];
+//    [self.contentView addSubview:rightView];
      backBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setFrame:CGRectMake(0, 0, 128, 32)];
     [backBtn setBackgroundColor:[UIColor clearColor]];
@@ -79,11 +81,11 @@
     [estiTextField setPlaceholder:@"在此点击输入您的评价"];
     [estiTextField setFont:PMFont2];
     [estiTextField setTextAlignment:NSTextAlignmentLeft];
-    [rightView addSubview:estiTextField];
+   // [rightView addSubview:estiTextField];
     
      estiView = [[UIView alloc] init];
     [estiView setBackgroundColor:PMColor4];
-    [rightView addSubview:estiView];
+   // [rightView addSubview:estiView];
     
     estiBtn = [[AFColorButton alloc] initWithFrame:CGRectMake(0, 15, 112, 40)];
     [estiBtn.title setText:@"评价" ];
@@ -102,14 +104,14 @@
     [estiTableView setShowsVerticalScrollIndicator:NO];
     [estiTableView setDelegate:self];
     [estiTableView setDataSource:self];
-    [rightView addSubview:estiTableView];
+    //[rightView addSubview:estiTableView];
     
     estiArrayData = [[NSMutableArray alloc] init];
     
     showAndHiddenBtn = [[ChangePageControlButton alloc] init];
     [showAndHiddenBtn addTarget:self action:@selector(showOrHiddenEvaluateView)  forControlEvents:UIControlEventTouchUpInside];
     [showAndHiddenBtn setIsLeft:NO];
-    [rightView addSubview:showAndHiddenBtn];
+   // [rightView addSubview:showAndHiddenBtn];
     
 }
 
@@ -120,14 +122,14 @@
         evaShowed = NO;
         [showAndHiddenBtn foldWithDuration:0.5];
         [UIView animateWithDuration:0.5 animations:^{
-            SetViewLeftUp(rightView,728, 98);
+           // SetViewLeftUp(rightView,728, 98);
         }];
         return;
     }else{
         evaShowed = YES;
         [showAndHiddenBtn unfoldWithDuration:0.5];
         [UIView animateWithDuration:0.5 animations:^{
-            SetViewLeftUp(rightView,728 - 216 , 98);
+           // SetViewLeftUp(rightView,728 - 216 , 98);
         }];
         return;
     }
@@ -193,35 +195,37 @@
 
 -(void)setVerticalFrame
 {
+    [contentView setFrame:CGRectMake(0, 0, 768, 1024)];
     //[super setVerticalFrame];
     [lineView setFrame:CGRectMake(0, 96, 768, 2)];
     [leftView setFrame:CGRectMake(0, 98, 768, 926)];
-    [rightView setFrame:CGRectMake(728, 98, 256, 926)];
+   // [rightView setFrame:CGRectMake(728, 98, 256, 926)];
     
-    [estiTableView setFrame:CGRectMake(40, 120, 216, ViewHeight(rightView)-120)];
+   // [estiTableView setFrame:CGRectMake(40, 120, 216, ViewHeight(rightView)-120)];
     [babyPropView setFrame:CGRectMake(130, 280, 544, 448)];
     [leftBtn setFrame:CGRectMake(0, 0, 48, 926)];
     [estiTextField setFrame:CGRectMake(40, 0, 216, 50)];
     [estiView setFrame:CGRectMake(40, 50, 216,70)];
     [showAndHiddenBtn setAlpha:1];
-    SetViewLeftUp(showAndHiddenBtn, 0, (ViewHeight(rightView)-80)/2);
+ //   SetViewLeftUp(showAndHiddenBtn, 0, (ViewHeight(rightView)-80)/2);
     SetViewLeftUp(backBtn, 320, 992);
 }
 
 -(void)setHorizontalFrame
 {
+    [contentView setFrame:CGRectMake(0, 0, 1024, 768)];
    // [super setHorizontalFrame];
     [lineView setFrame:CGRectMake(0, 96, 1024, 2)];
     [leftView setFrame:CGRectMake(0, 98, 808, 670)];
-    [rightView setFrame:CGRectMake(768,98,256, 670)];
+   // [rightView setFrame:CGRectMake(768,98,256, 670)];
     
-    [babyPropView setFrame:CGRectMake(130, 140, 544, 448)];
+    [babyPropView setFrame:CGRectMake(260, 140, 544, 448)];
     [leftBtn setFrame:CGRectMake(0, 0, 48, 670)];
     [estiTextField setFrame:CGRectMake(40, 0, 216, 50)];
     [estiView setFrame:CGRectMake(40, 50, 216,70)];
-    [estiTableView setFrame:CGRectMake(40, 120, 216, ViewHeight(rightView)-120)];
+//  [estiTableView setFrame:CGRectMake(40, 120, 216, ViewHeight(rightView)-120)];
     [showAndHiddenBtn setAlpha:0];
-    SetViewLeftUp(showAndHiddenBtn, 0, (ViewHeight(rightView)-80)/2);
+//    SetViewLeftUp(showAndHiddenBtn, 0, (ViewHeight(rightView)-80)/2);
     SetViewLeftUp(backBtn, 448, 736);
 
     

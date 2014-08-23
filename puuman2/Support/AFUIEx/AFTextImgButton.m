@@ -90,7 +90,6 @@
     
 }
 
-
 - (void)setIconLocation:(CGPoint)pos
 {
     SetViewLeftUp(iconView, pos.x, pos.y);

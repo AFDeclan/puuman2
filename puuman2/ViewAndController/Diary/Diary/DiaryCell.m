@@ -216,6 +216,7 @@
     [group setDelegate:self];
     [group setAnimations:[NSArray arrayWithObjects:fadeAnimation,scaleAnimation, positionAnimation, nil]];
     [coinView.layer addAnimation:group forKey:@"group"];
+    
 
 }
 

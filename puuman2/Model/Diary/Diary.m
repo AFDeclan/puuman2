@@ -136,7 +136,7 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
 
 - (BOOL)reward:(CGFloat)cnt
 {
-   // assert(_UIdentity != [UserInfo sharedUserInfo].identity);
+    //assert(_UIdentity != [UserInfo sharedUserInfo].identity);
     assert(![self rewarded]);
     PumanRequest * req = [[PumanRequest alloc] init];
     req.urlStr = kUrl_RewardDiary;
@@ -146,7 +146,7 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
     [req setParam:[DateFormatter timestampStrFromDatetime:_DCreateTime] forKey:@"DCreateTime"];
     [req setTimeOutSeconds:5];
     [req postSynchronous];
-    if (req.result == PumanRequest_Succeeded) {
+    if (req.result ==PumanRequest_Succeeded) {
     
        [_meta setValue:[NSNumber numberWithBool:YES] forKey:DiaryMetaKeyRewarded];
         BOOL up = [[DiaryModel sharedDiaryModel] updateDiary:self needUpload:YES];

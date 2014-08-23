@@ -45,7 +45,7 @@ static MainTabBarController *instance;
     if (self) {
         // Custom initialization
         [self setDelegate:self];
-        _isVertical = YES;
+         _isVertical = YES;
         
         [self.tabBar removeFromSuperview];
     }
@@ -93,7 +93,6 @@ static MainTabBarController *instance;
         }
 
     }
-    
 }
 
 
@@ -194,8 +193,13 @@ static MainTabBarController *instance;
     [tabBar setVerticalFrame];
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_V]];
     [bgImgView setFrame:CGRectMake(0, 0, 768, 1024)];
+    if (_babyInfoShowed) {
+        SetViewLeftUp(babyShowBtn, 768 -16 - ViewWidth(babyShowBtn), 1024);
 
-    SetViewLeftUp(babyShowBtn, 768 -16 - ViewWidth(babyShowBtn), ViewY(babyShowBtn));
+    }else{
+        SetViewLeftUp(babyShowBtn, 768 -16 - ViewWidth(babyShowBtn), ViewY(babyShowBtn));
+
+    }
  
 }
 
@@ -210,7 +214,13 @@ static MainTabBarController *instance;
     [bgImgView setImage:[UIImage imageNamed:IMG_DIARY_H]];
     [bgImgView setFrame:CGRectMake(0, 0, 1024, 1024)];
 
-    SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), ViewY(babyShowBtn));
+    if (_babyInfoShowed) {
+        SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), 768);
+
+    }else{
+        SetViewLeftUp(babyShowBtn, 1024 -16 - ViewWidth(babyShowBtn), ViewY(babyShowBtn));
+
+    }
  
     
 
