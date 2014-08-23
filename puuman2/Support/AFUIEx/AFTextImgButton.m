@@ -65,7 +65,7 @@
         SetViewLeftCenter(_title, x, y);
     } else {
         CGFloat contentWidth = ViewWidth(_title);
-        CGFloat x = ( ViewWidth(self) - contentWidth ) / 2;
+        CGFloat x = (ViewWidth(self) - contentWidth ) / 2;
         CGFloat y = ViewHeight(self)/2;
         SetViewLeftCenter(_title, x, y);
     }

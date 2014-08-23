@@ -69,13 +69,13 @@
     portraitView.layer.shadowRadius =0.1;
     [self addSubview:portraitView];
     [self loadAnimateView];
-    [MyNotiCenter addObserver:self selector:@selector(addPuuman:) name:Noti_AddCorns object:nil];
 
     babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(136, 0, 80, 80)];
     [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:babyInfoBtn];
 
-    
+    [MyNotiCenter addObserver:self selector:@selector(addPuuman:) name:Noti_AddCorns object:nil];
+
 }
 
 - (void)showBabyView
@@ -219,13 +219,13 @@
 - (void)addPuuman:(NSNotification *)notification
 {
     float addCoins = [[notification object] floatValue];
-    addCoins = 1;
+    
     if (addCoins > 0) {
         [showLabel setText:[NSString stringWithFormat:@"+%0.1f",addCoins]];
         [self addPuuman];
     }else{
         [showLabel setText:[NSString stringWithFormat:@"%0.1f",addCoins]];
-        [self minusPuuman];
+        [self addPuuman];
     }
 }
 
@@ -241,7 +241,7 @@
 
     if (status == PuumanAnimateNone) {
         status = PuumanAnimateMinus;
-        [self minusPuuman];
+        [self minusAnimation];
     }
 }
 
