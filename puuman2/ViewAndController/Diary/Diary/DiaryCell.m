@@ -229,11 +229,23 @@
     [coinBtn setBackgroundColor:[UIColor clearColor]];
 }
 
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (flag) {
+        [coinBtn selected];
+        coinLabel.text = @"已打赏";
+        [coinLabel setTextColor:PMColor3];
+        [coinBtn setBackgroundColor:[UIColor clearColor]];
+    }
+  
+}
+
 - (void)getCoin {
     
    
     if (_diary.rewarded) {
         [coinBtn selected];
+
     } else {
       
         if ([_diary reward:1]) {
@@ -246,6 +258,8 @@
     }
 
 }
+
+
 
 - (void)buildParentControl
 {

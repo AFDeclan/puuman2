@@ -53,7 +53,6 @@ typedef enum{
     AFSelectedTextImgButton *coinBtn;
     UILabel *coinLabel;
     UIImageView *coinView;
-    
 
 }
 @property (assign, nonatomic)DiaryType diaryType;

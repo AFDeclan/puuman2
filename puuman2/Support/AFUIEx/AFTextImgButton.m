@@ -65,11 +65,29 @@
         SetViewLeftCenter(_title, x, y);
     } else {
         CGFloat contentWidth = ViewWidth(_title);
-        CGFloat x = ( ViewWidth(self) - contentWidth ) / 2;
+        CGFloat x = (ViewWidth(self) - contentWidth ) / 2;
         CGFloat y = ViewHeight(self)/2;
         SetViewLeftCenter(_title, x, y);
     }
+}
 
+- (void)adjustLeftLayout
+{
+    [_title adjustSize];
+    if (iconView.image) {
+        CGFloat contentWidth = ViewWidth(iconView) ;
+        CGFloat x =  contentWidth / 2;
+        CGFloat y = ViewHeight(self)/2;
+        SetViewLeftCenter(iconView, x, y);
+        x = x + ViewWidth(iconView) + 2;
+        SetViewLeftCenter(_title, x, y);
+    } else {
+        CGFloat contentWidth = ViewWidth(_title);
+        CGFloat x = contentWidth / 2;
+        CGFloat y = ViewHeight(self)/2;
+        SetViewLeftCenter(_title, x, y);
+    }
+    
 }
 
 - (void)adjustLeftLayout
