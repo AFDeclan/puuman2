@@ -119,7 +119,12 @@
 
       //  [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }else{
-      //  [self.tableView reloadData];
+        if (num != [[_topic replies:_replyOrder] count]) {
+            [status removeAllObjects];
+            
+            [self.tableView reloadData];
+        }
+        
 
       //  [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }

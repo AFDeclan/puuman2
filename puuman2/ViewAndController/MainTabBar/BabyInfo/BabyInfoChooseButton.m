@@ -124,10 +124,13 @@
             [_stateLabel setTextColor:PMColor4];
             [detailLabel setText:@"(4针未接种)"];
             [detailLabel setTextColor:[UIColor redColor]];
-            [instLabel setText:@"疫苗名称疫苗名称疫苗名称疫苗名称疫苗名称"];
+            NSInteger startIndex = [[BabyData sharedBabyData] startAtIndex];
+            NSDictionary *vacInfo = [[BabyData sharedBabyData] vaccineAtIndex:startIndex];
+            NSString *name = [vacInfo valueForKey:kVaccine_Name];
+            [instLabel setText:name];
             [instLabel setTextColor:PMColor4];
             [instLabel setFont:PMFont2];
-         
+        
         }
             break;
             

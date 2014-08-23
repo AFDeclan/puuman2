@@ -287,7 +287,7 @@
                 [coinBtn selected];
                 [coinBtn setBackgroundColor:[UIColor clearColor]];
                 coinLabel.text = @"已打赏";
-                
+                [coinLabel setTextColor:PMColor3];
             }else {
                 [coinBtn unSelected];
                 if (_diary.UIdentity == Father){

@@ -104,7 +104,7 @@
     [bg_rightImageView setFrame:CGRectMake(688, 80, 64, 944)];
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_shop.png"]];
     [contentShop setFrame:CGRectMake(80, 80, 608, 944)];
-    [myWebView setFrame:CGRectMake(0, 0, 608, 944)];
+    [myWebView setFrame:CGRectMake(0, 02, 608, 944)];
 }
 
 //横屏
