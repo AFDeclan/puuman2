@@ -233,23 +233,27 @@
 
 - (void)getCoin {
     
-    [coinBtn setEnabled:NO];
-    
-    if (_diary.rewarded) {
-        [coinBtn selected];
-
-    } else {
+    if ([[UserInfo sharedUserInfo]UCorns]-1 > 0) {
+        [coinBtn setEnabled:NO];
         
-        if ([_diary reward:1]) {
-            PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
-            [self coinAnimate];
-  
-        }else{
-            [coinBtn unSelected];
-
+        
+        if (_diary.rewarded) {
+            [coinBtn selected];
+            
+        } else {
+            
+            if ([_diary reward:1]) {
+                PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
+                [self coinAnimate];
+                
+            }else{
+                [coinBtn unSelected];
+                
+            }
         }
-    }
 
+    }
+   
 }
 
 
