@@ -47,12 +47,11 @@
     [self.view addSubview:contentShop];
     
     myWebView = [[UIWebView alloc] init];
-    NSString *urlString;
-    NSURL *url =[NSURL URLWithString:urlString];
+    NSURL *url =[NSURL URLWithString:kUrl_ShopEmptyH];
     NSURLRequest *request =[NSURLRequest requestWithURL:url];
     [myWebView loadRequest:request];
     myWebView.delegate =self;
-    
+    myWebView.scalesPageToFit = YES;
     [myWebView setBackgroundColor:[UIColor clearColor]];
     [contentShop addSubview:myWebView];
 }
@@ -105,6 +104,10 @@
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_shop.png"]];
     [contentShop setFrame:CGRectMake(80, 80, 608, 944)];
     [myWebView setFrame:CGRectMake(0, 0, 608, 944)];
+    NSURL *url =[NSURL URLWithString:kUrl_ShopEmptyV];
+    NSURLRequest *request =[NSURLRequest requestWithURL:url];
+    [myWebView loadRequest:request];
+
 }
 
 //横屏
@@ -116,6 +119,9 @@
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_h_shop.png"]];
     [contentShop setFrame:CGRectMake(80, 80, 864, 688)];
     [myWebView setFrame:CGRectMake(0, 0, 864, 688)];
+    NSURL *url =[NSURL URLWithString:kUrl_ShopEmptyH];
+    NSURLRequest *request =[NSURLRequest requestWithURL:url];
+    [myWebView loadRequest:request];
 
 }
 
