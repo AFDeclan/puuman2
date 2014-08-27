@@ -51,7 +51,6 @@
     NSURLRequest *request =[NSURLRequest requestWithURL:url];
     [myWebView loadRequest:request];
     myWebView.delegate =self;
-    myWebView.scalesPageToFit = YES;
     [myWebView setBackgroundColor:[UIColor clearColor]];
     [contentShop addSubview:myWebView];
 }
@@ -103,7 +102,7 @@
     [bg_rightImageView setFrame:CGRectMake(688, 80, 64, 944)];
     [bg_rightImageView setImage:[UIImage imageNamed:@"paper_right_shop.png"]];
     [contentShop setFrame:CGRectMake(80, 80, 608, 944)];
-    [myWebView setFrame:CGRectMake(0, 0, 608, 944)];
+    [myWebView setFrame:CGRectMake(0, 0, 607, 944)];
     NSURL *url =[NSURL URLWithString:kUrl_ShopEmptyV];
     NSURLRequest *request =[NSURLRequest requestWithURL:url];
     [myWebView loadRequest:request];
