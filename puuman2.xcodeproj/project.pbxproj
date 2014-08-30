@@ -848,6 +848,7 @@
 		88C9A94C196171A100C25347 /* BabyInfoChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9A94B196171A100C25347 /* BabyInfoChooseButton.m */; };
 		88CA16EF19347A8F0072F8B8 /* btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CA16EE19347A8F0072F8B8 /* btn1.png */; };
 		88CA16F119347A940072F8B8 /* btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CA16F019347A940072F8B8 /* btn.png */; };
+		88CA7C7419A8762D00D18325 /* TestShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CA7C7319A8762D00D18325 /* TestShopViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2041,6 +2042,8 @@
 		88C9A94B196171A100C25347 /* BabyInfoChooseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoChooseButton.m; sourceTree = "<group>"; };
 		88CA16EE19347A8F0072F8B8 /* btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn1.png; sourceTree = "<group>"; };
 		88CA16F019347A940072F8B8 /* btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn.png; sourceTree = "<group>"; };
+		88CA7C7219A8762D00D18325 /* TestShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShopViewController.h; sourceTree = "<group>"; };
+		88CA7C7319A8762D00D18325 /* TestShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShopViewController.m; sourceTree = "<group>"; };
 		A163B769C9D646389F66C162 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -3791,6 +3794,8 @@
 		54CE112018C1BC6D00966396 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				88CA7C7219A8762D00D18325 /* TestShopViewController.h */,
+				88CA7C7319A8762D00D18325 /* TestShopViewController.m */,
 				54CE112118C1BC6D00966396 /* ShopViewController.h */,
 				54CE112218C1BC6D00966396 /* ShopViewController.m */,
 				54AC20FE18E3FE68001C1357 /* contentView */,
@@ -4886,6 +4891,7 @@
 				54ADE09E18C8608700B166C4 /* NewImportDiaryViewController.m in Sources */,
 				544419EC18D3ED3E00FBE69F /* PropWare.m in Sources */,
 				54B30AA5195D546900007DDC /* WaitView.m in Sources */,
+				88CA7C7419A8762D00D18325 /* TestShopViewController.m in Sources */,
 				54B6F42418D6E33E0055FC72 /* SettingAdviceViewController.m in Sources */,
 				54B4EB3118C576E5004489DA /* UIView+AFAnimation.m in Sources */,
 				54B30A8D195D53EC00007DDC /* ToolsCoinView.m in Sources */,
@@ -5300,7 +5306,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,
@@ -5334,7 +5340,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "puuman2/puuman2-Prefix.pch";
 				INFOPLIST_FILE = "puuman2/puuman2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/umeng,
