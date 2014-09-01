@@ -709,7 +709,6 @@
 		54CE112518C1BC6D00966396 /* DiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE111A18C1BC6D00966396 /* DiaryViewController.m */; };
 		54CE112618C1BC6D00966396 /* MainTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE111D18C1BC6D00966396 /* MainTabBar.m */; };
 		54CE112718C1BC6D00966396 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE111F18C1BC6D00966396 /* MainTabBarController.m */; };
-		54CE112818C1BC6D00966396 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CE112218C1BC6D00966396 /* ShopViewController.m */; };
 		54CE115D18C1C7BF00966396 /* bg_prompt.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE114918C1C7BF00966396 /* bg_prompt.png */; };
 		54CE115F18C1C7BF00966396 /* block1_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE114B18C1C7BF00966396 /* block1_btn.png */; };
 		54CE116018C1C7BF00966396 /* block2_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CE114C18C1C7BF00966396 /* block2_btn.png */; };
@@ -1858,8 +1857,6 @@
 		54CE111D18C1BC6D00966396 /* MainTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBar.m; sourceTree = "<group>"; };
 		54CE111E18C1BC6D00966396 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		54CE111F18C1BC6D00966396 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
-		54CE112118C1BC6D00966396 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
-		54CE112218C1BC6D00966396 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 		54CE114918C1C7BF00966396 /* bg_prompt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_prompt.png; sourceTree = "<group>"; };
 		54CE114B18C1C7BF00966396 /* block1_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block1_btn.png; sourceTree = "<group>"; };
 		54CE114C18C1C7BF00966396 /* block2_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block2_btn.png; sourceTree = "<group>"; };
@@ -3796,8 +3793,6 @@
 			children = (
 				88CA7C7219A8762D00D18325 /* TestShopViewController.h */,
 				88CA7C7319A8762D00D18325 /* TestShopViewController.m */,
-				54CE112118C1BC6D00966396 /* ShopViewController.h */,
-				54CE112218C1BC6D00966396 /* ShopViewController.m */,
 				54AC20FE18E3FE68001C1357 /* contentView */,
 			);
 			path = Shop;
@@ -5077,7 +5072,6 @@
 				547F7643196A7D96004D4F77 /* BabyCustomTableViewCell.m in Sources */,
 				54B0E7C319920E0800E9537A /* TopicCell.m in Sources */,
 				54CC76E2196F875800373B35 /* WareInfoView.m in Sources */,
-				54CE112818C1BC6D00966396 /* ShopViewController.m in Sources */,
 				54B4683418E521CC00745F72 /* WareCellSubView.m in Sources */,
 				54AFBBC618D6938600861A69 /* LoginPregnancyView.m in Sources */,
 				54B0E7BC19920E0800E9537A /* BasicInfoView.m in Sources */,
