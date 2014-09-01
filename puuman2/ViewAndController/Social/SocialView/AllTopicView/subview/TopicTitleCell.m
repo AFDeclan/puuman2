@@ -83,8 +83,7 @@
        
     }else{
         if ([[Forum sharedInstance] onTopic].TNo == topicNum) {
-            _topic = [[Forum sharedInstance] getTopic:topicNum];
-
+            _topic = [Forum sharedInstance].onTopic;
             [noti_current setAlpha:1];
             [info_title setText:_topic.TTitle];
             [titleImageView getImage:[_topic TImgUrl] defaultImage:nil];
