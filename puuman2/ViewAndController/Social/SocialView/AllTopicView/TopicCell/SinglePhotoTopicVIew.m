@@ -11,27 +11,27 @@
 
 @implementation SinglePhotoTopicVIew
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+
         // Initialization code
+        imgView = [[AsyncImgView alloc] initWithFrame:CGRectMake(96, 12, 416, 416)];
+        [imgView setContentMode:UIViewContentModeScaleAspectFit];
+        [contentView addSubview:imgView];
+
     }
     return self;
 }
 
 - (void)buildWithReply:(Reply *)reply
 {
-    if (imgView) {
-        [imgView removeFromSuperview];
-    }
-    imgView = [[AsyncImgView alloc] initWithFrame:CGRectMake(96, 12, 416, 416)];
+  
     if ([[reply photoUrls] count] > 0) {
         [imgView loadImgWithUrl:[[reply photoUrls] objectAtIndex:0]];
     }
-    [imgView setContentMode:UIViewContentModeScaleAspectFit];
 
-    [contentView addSubview:imgView];
 
     CGRect frame = contentView.frame;
     frame.size.height =416 +24;

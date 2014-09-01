@@ -90,10 +90,8 @@
         _cnt = _totalCnt;
     }
     pos.x = ViewWidth(progress)-ViewWidth(progress)*_cnt/_totalCnt;
-    [progress setContentOffset:pos animated:YES];
+    [progress setContentOffset:pos animated:NO];
     
-    [self performSelector:@selector(reset) withObject:nil afterDelay:0];
-
 }
 
 
@@ -102,22 +100,11 @@
     isFinished = YES;
 
     if (progress.contentOffset.x  >0) {
-
-        [UIView animateWithDuration:0.5 animations:^{
-           // progress.contentOffset = CGPointMake(0, 0);
-            [self refreshProgress];
-            [self setAlpha:0];
-            [[DiaryViewController sharedDiaryViewController] loadDownFindished];
-
-        }];
+        [self refreshProgress];
+        [[DiaryViewController sharedDiaryViewController] loadDownFindished];
       
     }
    
 }
 
-- (void)reset
-{
-    isFinished = NO;
-
-}
 @end

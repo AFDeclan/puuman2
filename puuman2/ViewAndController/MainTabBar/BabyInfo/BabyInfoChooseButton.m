@@ -37,14 +37,17 @@
     
     _stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 32, 22)];
     [_stateLabel setFont:PMFont2];
+    [_stateLabel setBackgroundColor:[UIColor clearColor]];
     [self addSubview:_stateLabel];
     
     detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 0,95 , 22)];
     [detailLabel setFont:PMFont2];
+    [detailLabel setBackgroundColor:[UIColor clearColor]];
     [self addSubview:detailLabel];
     
     instLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,24, 180, 46)];
     [instLabel setNumberOfLines:3];
+    [instLabel setBackgroundColor:[UIColor clearColor]];
     [self addSubview:instLabel];
 
 }
