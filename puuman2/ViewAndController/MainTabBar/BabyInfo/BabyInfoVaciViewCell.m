@@ -9,7 +9,6 @@
 #import "BabyInfoVaciViewCell.h"
 #import "ColorsAndFonts.h"
 #import "BabyData.h"
-#import "VaccineInfoTableViewCell.h"
 #import "MainTabBarController.h"
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
@@ -186,17 +185,21 @@
    
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [[BabyData sharedBabyData] vaccineCount];
+
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return [[BabyData sharedBabyData] vaccineCount];
-    
-    
+
+    return 1;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *identity = @"bodyInfoCell";
     VaccineInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identity];
     if (!cell)
@@ -205,21 +208,76 @@
     }
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell setVaccineIndex:indexPath.row];
+    [cell setVacIndex:indexPath.section];
+    [cell setDelegate:self];
     return cell;
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 96;
+    if ([indexPath section] != selectVaccine) {
+        return 96;
+ 
+    }else{
+        return 192+96;
+    }
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectVaccine = [indexPath row];
-    [self selectAtIndex:[indexPath row]];
+}
+
+- (void)saveBtnClick:(NSInteger)index
+{
+    selectVaccine = -1;
+    [dataTable reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)cancelBtnClick:(NSInteger)index
+{
+    selectVaccine = -1;
+    [dataTable reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
+- (void)selectedBtnClick:(NSInteger)index withCanUnFold:(BOOL)unFold
+{
+
+    if (unFold) {
+        if (selectVaccine ==  index) {
+            selectVaccine = - 1;
+            
+        }else{
+            selectVaccine =  index;
+            
+        }
+        
+        [dataTable reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+        
+            
+    }else{
+        if (selectVaccine != -1) {
+            NSInteger num = selectVaccine;
+            selectVaccine = -1;
+
+            [dataTable reloadSections:[NSIndexSet indexSetWithIndex:num] withRowAnimation:UITableViewRowAnimationFade];
+        }
+
+    }
+    [self selectAtIndex:index];
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        if (96*index > dataTable.frame.size.height/2 && 96*index <dataTable.contentSize.height - dataTable.frame.size.height/2 - 96) {
+            [dataTable setContentOffset:CGPointMake(0, 96*index - dataTable.frame.size.height/2 + 96) animated:YES];
+        }
+    }else{
+    
+        if (96*index > dataTable.frame.size.height/2 && 96*index <dataTable.contentSize.height - dataTable.frame.size.height/2 - 96) {
+            [dataTable setContentOffset:CGPointMake(0, 96*index - dataTable.frame.size.height/2 + 96) animated:YES];
+            
+        }
+        
+    }
     
 }
 
@@ -340,6 +398,8 @@
 
 - (void)selectAtIndex:(NSInteger)index
 {
+    
+    
     [leftView setAlpha:1];
     [emptyView setAlpha:0];
     if ([MainTabBarController sharedMainViewController].isVertical) {
@@ -352,12 +412,14 @@
         SetViewLeftUp(backBtn, 0, 336);
         
         [backBtn setEnabled:YES];
+       
     }else{
         
         [UIView animateWithDuration:0.5 animations:^{
             SetViewLeftUp(backBtn, 0, -dataTable.contentOffset.y-30 +index *96);
         }];
-        
+    
+
     }
     date = nil;
     NSDictionary *vacInfo = [[BabyData sharedBabyData] vaccineAtIndex:index];

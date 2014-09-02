@@ -13,6 +13,8 @@
 #import "DateFormatter.h"
 #import "UserInfo.h"
 @implementation VaccineInfoTableViewCell
+@synthesize delegate = _delegate;
+@synthesize vacIndex = _vacIndex;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -20,12 +22,15 @@
     if (self) {
         // Initialization code
         [self initialization];
+        self.contentView.layer.masksToBounds = YES;
+        self.layer.masksToBounds = YES;
     }
     return self;
 }
 
 - (void)initialization
 {
+    canUnFold = YES;
     icon_status = [[UIImageView alloc] initWithFrame:CGRectMake(32, 32, 32, 32)];
     [self.contentView addSubview:icon_status];
     
@@ -57,7 +62,73 @@
     [self.contentView addSubview:info_age];
     
     partLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 94, 432, 2)];
-    [self addSubview:partLine];
+    [self.contentView addSubview:partLine];
+    
+    selectedBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 432, 96)];
+    [selectedBtn addTarget:self action:@selector(selectedBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView  addSubview:selectedBtn];
+    
+    [self initDateView];
+
+}
+
+- (void)initDateView
+{
+    
+    dateView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 432, 192)];
+    [self.contentView addSubview:dateView];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 432, 1)];
+    [lineView setBackgroundColor:PMColor4];
+    [dateView addSubview:lineView];
+    
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(115, 12, 55, 20)];
+    timeLabel.text = @"接种日期";
+    timeLabel.textColor = [UIColor blackColor];
+    timeLabel.font = PMFont3;
+    [dateView addSubview:timeLabel];
+    
+    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 45, 432,156)];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [dateView addSubview:datePicker];
+    
+    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelBtn setFrame:CGRectMake(20, 12, 30, 20)];
+    [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelBtn setTitleColor:PMColor6 forState:UIControlStateNormal];
+    [cancelBtn.titleLabel setFont:PMFont3];
+    [cancelBtn addTarget:self action:@selector(cancelBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [dateView addSubview:cancelBtn];
+    
+    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [saveBtn setFrame:CGRectMake(382, 12, 30, 20)];
+    [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [saveBtn.titleLabel setFont:PMFont3];
+    [saveBtn setTitleColor:PMColor6 forState:UIControlStateNormal];
+    [saveBtn addTarget:self action:@selector(saveBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [dateView addSubview:saveBtn];
+    
+}
+
+- (void)saveBtnClick
+{
+
+    
+    
+     [[BabyData sharedBabyData] updateVaccineAtIndex:_vacIndex withDoneTime:datePicker.date];
+     [_delegate saveBtnClick:_vacIndex];
+    
+    
+}
+
+- (void)selectedBtnClick
+{
+    [_delegate selectedBtnClick:_vacIndex withCanUnFold:canUnFold];
+    [datePicker setDate:[NSDate date] animated:YES];
+}
+
+- (void)cancelBtnClick
+{
+    [_delegate cancelBtnClick:_vacIndex];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -67,9 +138,10 @@
     // Configure the view for the selected state
 }
 
-- (void)setVaccineIndex:(NSInteger)index
+- (void)setVacIndex:(NSInteger)vacIndex
 {
-    NSDictionary *vacInfo = [[BabyData sharedBabyData] vaccineAtIndex:index];
+    _vacIndex = vacIndex;
+    NSDictionary *vacInfo = [[BabyData sharedBabyData] vaccineAtIndex:_vacIndex];
     NSString *name = [vacInfo valueForKey:kVaccine_Name];
     if(NSNotFound != [name rangeOfString:@"（"].location)
     {
@@ -120,6 +192,7 @@
 
 - (void)setDonePreStyle
 {
+    canUnFold = YES;
     [icon_status setImage:[UIImage imageNamed:@"icon_vac2_baby.png"]];
     [label_status setText:@"已经在        月龄接种（待确认）"];
     [label_status setTextColor:PMColor2];
@@ -132,6 +205,7 @@
 
 - (void)setDoneStyle
 {
+    canUnFold = NO;
     [icon_status setImage:[UIImage imageNamed:@"icon_vac1_baby.png"]];
     [label_status setText:@"已经在        月龄接种"];
     [label_status setTextColor:PMColor2];
@@ -144,6 +218,7 @@
 
 - (void)setNowStyle
 {
+    canUnFold = YES;
     [icon_status setImage:[UIImage imageNamed:@"icon_vac3_baby.png"]];
     [label_status setText:@"建议在        月龄接种（推荐）"];
     [label_status setTextColor:[UIColor whiteColor]];
@@ -155,6 +230,7 @@
 }
 - (void)setFutureStyle
 {
+    canUnFold = NO;
     [icon_status setImage:[UIImage imageNamed:@"icon_vac4_baby.png"]];
     [label_status setText:@"建议在        月龄接种"];
     [label_status setTextColor:PMColor7];

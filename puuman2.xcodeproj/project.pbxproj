@@ -640,6 +640,8 @@
 		54BAD46718D151EB003822CC /* ChangePageControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BAD46618D151EB003822CC /* ChangePageControlButton.m */; };
 		54BB09E818D9494C00F805DD /* SkipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB09E718D9494C00F805DD /* SkipViewController.m */; };
 		54BB709F19B573BD007E2825 /* BabyLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB709E19B573BD007E2825 /* BabyLineChartView.m */; };
+		54BB70A719B5D224007E2825 /* VaciPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB70A419B5D224007E2825 /* VaciPopoverContentViewController.m */; };
+		54BB70A819B5D224007E2825 /* VaciPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BB70A619B5D224007E2825 /* VaciPopoverViewController.m */; };
 		54BBE8AB193727E30056390B /* VideoManageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE8AA193727E30056390B /* VideoManageView.m */; };
 		54BC5AF01939AE3B000A5108 /* btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC5AEF1939AE3B000A5108 /* btn.png */; };
 		54BC5AF21939B14D000A5108 /* 扑满惊喜动画.gif in Resources */ = {isa = PBXBuildFile; fileRef = 54BC5AF11939B14D000A5108 /* 扑满惊喜动画.gif */; };
@@ -1759,6 +1761,10 @@
 		54BB09E718D9494C00F805DD /* SkipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipViewController.m; sourceTree = "<group>"; };
 		54BB709D19B573BD007E2825 /* BabyLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyLineChartView.h; sourceTree = "<group>"; };
 		54BB709E19B573BD007E2825 /* BabyLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyLineChartView.m; sourceTree = "<group>"; };
+		54BB70A319B5D224007E2825 /* VaciPopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaciPopoverContentViewController.h; sourceTree = "<group>"; };
+		54BB70A419B5D224007E2825 /* VaciPopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VaciPopoverContentViewController.m; sourceTree = "<group>"; };
+		54BB70A519B5D224007E2825 /* VaciPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaciPopoverViewController.h; sourceTree = "<group>"; };
+		54BB70A619B5D224007E2825 /* VaciPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VaciPopoverViewController.m; sourceTree = "<group>"; };
 		54BBE8A9193727E30056390B /* VideoManageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoManageView.h; path = support/VideoManageView.h; sourceTree = "<group>"; };
 		54BBE8AA193727E30056390B /* VideoManageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoManageView.m; path = support/VideoManageView.m; sourceTree = "<group>"; };
 		54BC5AEF1939AE3B000A5108 /* btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn.png; sourceTree = "<group>"; };
@@ -2738,6 +2744,10 @@
 				88AF77731963B23400E02B43 /* BabyInfoPropViewCell.m */,
 				88AF77751963B24500E02B43 /* BabyInfoVaciViewCell.h */,
 				88AF77761963B24500E02B43 /* BabyInfoVaciViewCell.m */,
+				54BB70A319B5D224007E2825 /* VaciPopoverContentViewController.h */,
+				54BB70A419B5D224007E2825 /* VaciPopoverContentViewController.m */,
+				54BB70A519B5D224007E2825 /* VaciPopoverViewController.h */,
+				54BB70A619B5D224007E2825 /* VaciPopoverViewController.m */,
 				88AF50621966439D00EEC049 /* BabyInfoPropEstiCell.h */,
 				88AF50631966439D00EEC049 /* BabyInfoPropEstiCell.m */,
 				88AF777B1963B56900E02B43 /* BabyInfoBodyViewCell.h */,
@@ -4959,6 +4969,7 @@
 				54ADE09718C8608700B166C4 /* NewAudioDiaryViewController.m in Sources */,
 				54B3814E19791F62003FF386 /* RectWareView.m in Sources */,
 				54B753A318D2A8EB002411CF /* VaccineInfoTableViewCell.m in Sources */,
+				54BB70A819B5D224007E2825 /* VaciPopoverViewController.m in Sources */,
 				54A9288018C95CEF00C9D366 /* NewDiaryDeleteCell.m in Sources */,
 				14038C78194C403400802BD5 /* ShareVideo.m in Sources */,
 				54B4681418E520F200745F72 /* TeachingView.m in Sources */,
@@ -5008,6 +5019,7 @@
 				54B30AC5195D63D200007DDC /* CAKeyframeAnimation+DragAnimation.m in Sources */,
 				14B8DF2A18BC37A30047C6B3 /* ShopModel.m in Sources */,
 				54B6F42118D6D72E0055FC72 /* SettingPassWordViewController.m in Sources */,
+				54BB70A719B5D224007E2825 /* VaciPopoverContentViewController.m in Sources */,
 				54B0E7DB19920E0800E9537A /* CreateTopicViewController.m in Sources */,
 				54B30A8B195D53EC00007DDC /* PieView.m in Sources */,
 				54AE2BBA18E93FEB00D24F92 /* Member.m in Sources */,

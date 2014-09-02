@@ -12,8 +12,9 @@
 #import "AFColorButton.h"
 #import "AddInfoCalendar.h"
 #import "BabyInfoIconViewDelegate.h"
+#import "VaccineInfoTableViewCell.h"
 
-@interface BabyInfoVaciViewCell : UITableViewCell <UITableViewDataSource,UITableViewDelegate,AddInfoCalendarDelegate,BabyInfoIconViewDelegate>
+@interface BabyInfoVaciViewCell : UITableViewCell <UITableViewDataSource,UITableViewDelegate,AddInfoCalendarDelegate,BabyInfoIconViewDelegate,VaccineCellDelegate>
 {
     UITableView *dataTable;
     NSInteger selectVaccine;
