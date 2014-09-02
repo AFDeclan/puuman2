@@ -187,6 +187,7 @@ static BabyData * instance;
     return height;
    
 }
+
 - (float)selectWeightWithDate:(NSDate *)date
 {
     float weight = 0;
@@ -201,6 +202,41 @@ static BabyData * instance;
     }
     return weight;
 }
+
+
+- (NSInteger)heightIndexWithIndex:(NSInteger)index
+{
+    
+    NSDate *date = [[_data objectAtIndex:index] valueForKey:kBabyData_Date];
+    for (NSDictionary * record in _heightArray)
+    {
+        
+        
+        NSDate *recordDate = [record valueForKey:kBabyData_Date];
+        if ([recordDate isSameDayWithDate:date])
+        {
+            return [_heightArray indexOfObject:record];
+        }
+    }
+    return -1;
+
+}
+
+- (NSInteger)weightIndexWithIndex:(NSInteger)index
+{
+    NSDate *date = [[_data objectAtIndex:index] valueForKey:kBabyData_Date];
+    for (NSDictionary * record in _weightArray)
+    {
+        NSDate *recordDate = [record valueForKey:kBabyData_Date];
+        if ([recordDate isSameDayWithDate:date])
+        {
+            return [_weightArray indexOfObject:record];
+            
+        }
+    }
+    return -1;
+}
+
 
 - (void)insertRecordAtDate:(NSDate *)date height:(CGFloat)h weight:(CGFloat)w
 {

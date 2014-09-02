@@ -60,6 +60,7 @@
 #define Noti_PreBabyShowInfo                    @"Noti_PreBabyShowInfo"
 #define Noti_PreBabyHiddenInfo                  @"Noti_PreBabyHiddenInfo"
 #define Noti_UpdatePortrait                     @"Noti_UpdatePortrait"
+#define Noti_ShowBodyRecord                     @"Noti_ShowBodyRecord"
 
 
 #define Noti_ShowAlert                          @"Noti_ShowAlert"

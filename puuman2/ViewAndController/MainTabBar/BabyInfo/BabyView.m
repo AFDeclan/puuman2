@@ -184,17 +184,9 @@
     
         } else if ( index == 0) {
     
-            NSString *cellIdentifier = @"bodyViewCell";
-        
-            BabyInfoBodyViewCell *cell = (BabyInfoBodyViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-        
-            if (!cell) {
-                cell = [[BabyInfoBodyViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            }
-    
-            [cell setBackgroundColor:[UIColor clearColor]];
+            BabyInfoBodyViewCell *cell = [BabyInfoBodyViewCell shareLineChartCell];
+            
             [cell setDelegate:self];
-            [cell refresh];
             return cell;
             
         } else {
@@ -309,6 +301,7 @@
         
     }
 }
+
 
 - (void)backToMianCell
 {

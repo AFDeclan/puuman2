@@ -19,5 +19,5 @@
     UILabel *info_date;
 }
 
-- (void)setInfoIndex:(NSInteger)index;
+@property(nonatomic,assign) NSInteger infoIndex;
 @end

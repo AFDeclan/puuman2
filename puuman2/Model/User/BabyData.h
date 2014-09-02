@@ -58,6 +58,10 @@
 - (NSDictionary *)recordAtIndex:(NSUInteger)index; //获取指定记录
 - (float)selectHeightWithDate:(NSDate *)date;
 - (float)selectWeightWithDate:(NSDate *)date;
+
+- (NSInteger)heightIndexWithIndex:(NSInteger)index;
+- (NSInteger)weightIndexWithIndex:(NSInteger)index;
+
     /*字典结构：
      key:               value:
      kBabyData_ID       (NSInteger)对应数据库中的ID

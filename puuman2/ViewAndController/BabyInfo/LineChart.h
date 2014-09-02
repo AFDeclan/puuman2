@@ -20,6 +20,7 @@
     NSMutableArray *points;
     UILabel *nodeLabel;
     NSArray *records;
+    NSInteger recordIndex;
    
 }
 - (void)setViewType:(BOOL)height andData:(NSArray *)data;

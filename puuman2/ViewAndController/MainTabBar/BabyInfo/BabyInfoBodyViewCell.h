@@ -12,14 +12,13 @@
 #import "ChangePageControlButton.h"
 #import "ShareSelectedViewController.h"
 #import "UIColumnView.h"
-
+#import "BabyLineChartView.h"
 
 @interface BabyInfoBodyViewCell : UITableViewCell<UITableViewDelegate,UITableViewDataSource,BabyInfoIconViewDelegate,ShareViewDelegate,UIColumnViewDataSource,UIColumnViewDelegate,UIScrollViewDelegate>
 
 {
     UITableView *dataTable;
     UIView *emptyView;
-    UITableView *_lineChartView;
     AFColorButton *addDataBtn;
     AFColorButton *shareBtn;
     UILabel *noti_label;
@@ -35,11 +34,14 @@
     UIColumnView *infoTableView;
     UIImageView *leftImgView;
     UIImageView *rightImgView;
+    BabyLineChartView *lineChartView;
+    NSInteger recordIndex;
+    BOOL changedVH;
 }
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;
 @property (nonatomic,retain) NSString *filePath;
-
++(BabyInfoBodyViewCell *)shareLineChartCell;
 - (void)refresh;
 
 @end
