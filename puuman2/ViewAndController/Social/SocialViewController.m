@@ -68,6 +68,8 @@ static SocialViewController * instance;
     if ([[notification object] boolValue]) {
         [leftBtn setAlpha:1];
         [rightBtn setAlpha:1];
+        [leftBtn.title setText:@"数据"];
+        [rightBtn.title setText:@"闲聊"];
     }else{
         [leftBtn setAlpha:0];
         [rightBtn setAlpha:0];
@@ -168,8 +170,7 @@ static SocialViewController * instance;
     selectedTopic = NO;
     [topicBtn unSelected];
     [partnerBtn selected];
-    [leftBtn.title setText:@"数据"];
-    [rightBtn.title setText:@"闲聊"];
+
     [leftBtn adjustLayout];
     [rightBtn adjustLayout];
     [self leftBtnPressed];
