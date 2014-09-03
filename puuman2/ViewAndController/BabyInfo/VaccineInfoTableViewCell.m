@@ -102,7 +102,9 @@
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 45, 432,156)];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [dateView addSubview:datePicker];
-    
+    datePicker.maximumDate = [NSDate date];
+    datePicker.minimumDate = [[UserInfo sharedUserInfo] createTime];
+
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [cancelBtn setFrame:CGRectMake(20, 12, 30, 20)];
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];

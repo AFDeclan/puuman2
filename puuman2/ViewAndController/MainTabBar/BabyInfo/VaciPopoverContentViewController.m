@@ -9,6 +9,7 @@
 #import "VaciPopoverContentViewController.h"
 #import "UniverseConstant.h"
 #import "BabyData.h"
+#import "UserInfo.h"
 
 @interface VaciPopoverContentViewController ()
 
@@ -60,7 +61,8 @@
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(25, 45, 240, 100)];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [self.view addSubview:datePicker];
-    
+    datePicker.maximumDate = [NSDate date];
+    datePicker.minimumDate = [[UserInfo sharedUserInfo] createTime];
 }
 
 - (void)saveBtnClick
@@ -73,10 +75,7 @@
 - (void)cancelBtnClick
 {
     [_vaccineDelegate cancelVacBtnClick];
-
 }
-
-
 
 - (void)viewDidLoad
 {

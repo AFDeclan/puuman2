@@ -33,7 +33,8 @@
     UIButton *backUpBtn;
     UIButton *modifyBtn;
     BOOL dateViewShowed;
-    
+    UIImageView *animateFlag;
+
 }
 @property (strong,nonatomic) VaciPopoverContentViewController *contentViewContorller;
 @property (strong,nonatomic) UIPopoverController *popoverController;

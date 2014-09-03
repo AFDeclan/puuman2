@@ -133,6 +133,11 @@ static BabyInfoVaciViewCell *instance;
     [modifyBtn.titleLabel setFont:PMFont2];
     [modifyBtn addTarget:self action:@selector(modify) forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:modifyBtn];
+    
+    animateFlag = [[UIImageView alloc] initWithFrame:CGRectMake(100, 200, 84, 84)];
+    [animateFlag setImage:[UIImage imageNamed:@"vaccine_icon.png"]];
+    [leftView addSubview:animateFlag];
+    [animateFlag setAlpha:0];
 }
 
 
@@ -194,6 +199,7 @@ static BabyInfoVaciViewCell *instance;
 - (void)saveBtnClick:(NSInteger)index
 {
     selectVaccine = -1;
+    [self showVaccineAnimate];
     [dataTable reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
 }
 
@@ -321,8 +327,31 @@ static BabyInfoVaciViewCell *instance;
     chooseVaccine = 0;
     selectVaccine = -1;
     [dataTable reloadData];
-    
     [self performSelectorOnMainThread:@selector(animateWithVaccineView) withObject:nil waitUntilDone:0];
+    
+}
+
+- (void)showVaccineAnimate
+{
+    CATransition *animation = [CATransition animation];
+    [animation setDelegate:self];
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:0.2] forKey:kCATransactionAnimationDuration];
+    // scale it down
+    CABasicAnimation *shrinkAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    shrinkAnimation.delegate = self;
+    shrinkAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    
+    shrinkAnimation.fromValue = [NSNumber numberWithFloat:5.0];
+    // fade it out
+    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+    fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [animateFlag setAlpha:1];
+    [[animateFlag layer] addAnimation:shrinkAnimation forKey:@"shrinkAnimation"];
+    [[animateFlag layer] addAnimation:fadeAnimation forKey:@"fadeAnimation"];
+    
+    [CATransaction commit];
     
 }
 
@@ -379,9 +408,11 @@ static BabyInfoVaciViewCell *instance;
             month = [[age objectAtIndex:0] integerValue] * 12 + [[age objectAtIndex:1] integerValue];
         }
         [statusText setText:[NSString stringWithFormat:@"已经在%d月龄接种",month]];
-       
+        [animateFlag setAlpha:1];
     }
     else {
+        [animateFlag setAlpha:0];
+
         NSArray *age = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
         NSInteger month = 0;
         if ([age count] == 3)
@@ -470,7 +501,6 @@ static BabyInfoVaciViewCell *instance;
         self.popoverController = nil;
     }
 }
-
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

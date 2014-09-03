@@ -565,6 +565,7 @@
 		54B94A3F197CF536003ABA93 /* ShareVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B94A3E197CF536003ABA93 /* ShareVideoViewController.m */; };
 		54B94A41197D0024003ABA93 /* popeye.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 54B94A40197D0024003ABA93 /* popeye.mp4 */; };
 		54B94A44197D0402003ABA93 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B94A43197D0402003ABA93 /* UIImage+Blur.m */; };
+		54B9582919B6F21D0037F248 /* vaccine_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B9582819B6F21D0037F248 /* vaccine_icon.png */; };
 		54B97E4418FA2B1E00B6C4C9 /* btn_back2_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2618FA2B1E00B6C4C9 /* btn_back2_insure_shop.png */; };
 		54B97E4518FA2B1E00B6C4C9 /* puuman3_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2718FA2B1E00B6C4C9 /* puuman3_insure_shop.png */; };
 		54B97E4618FA2B1E00B6C4C9 /* pic34_insure_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B97E2818FA2B1E00B6C4C9 /* pic34_insure_shop.png */; };
@@ -1679,6 +1680,7 @@
 		54B94A40197D0024003ABA93 /* popeye.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = popeye.mp4; sourceTree = "<group>"; };
 		54B94A42197D0402003ABA93 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
 		54B94A43197D0402003ABA93 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
+		54B9582819B6F21D0037F248 /* vaccine_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vaccine_icon.png; sourceTree = "<group>"; };
 		54B97E2618FA2B1E00B6C4C9 /* btn_back2_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back2_insure_shop.png; sourceTree = "<group>"; };
 		54B97E2718FA2B1E00B6C4C9 /* puuman3_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puuman3_insure_shop.png; sourceTree = "<group>"; };
 		54B97E2818FA2B1E00B6C4C9 /* pic34_insure_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic34_insure_shop.png; sourceTree = "<group>"; };
@@ -2456,6 +2458,7 @@
 				88C965BF1962B5DE0058B842 /* gray_back_right_babyInfo.png */,
 				88C965BB1962B48F0058B842 /* grayline_right_babyInfo.png */,
 				88C965BC1962B48F0058B842 /* grayline_left_babyInfo.png */,
+				54B9582819B6F21D0037F248 /* vaccine_icon.png */,
 				88C965B71962AF860058B842 /* pre_pic_btn.png */,
 				88C965B81962AF860058B842 /* next_pic_btn.png */,
 				88C965B51962AF6D0058B842 /* bg_pregnancy_image_babyInfo.png */,
@@ -4769,6 +4772,7 @@
 				54B381581979268F003FF386 /* left_body_img.png in Resources */,
 				5447C49018D97D1100187BE6 /* btn_topic2_topic.png in Resources */,
 				54D1500318CAEFD70022E1F4 /* pic1_circle_diary.png in Resources */,
+				54B9582919B6F21D0037F248 /* vaccine_icon.png in Resources */,
 				54AC20ED18E3FD30001C1357 /* icon2_clothes_shop.png in Resources */,
 				5463758018C98476004B11EF /* pic_born_login.png in Resources */,
 				5403CD3E18D03D39004CAE22 /* icon17_weather_diary.png in Resources */,
