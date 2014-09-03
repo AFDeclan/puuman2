@@ -8,12 +8,14 @@
 
 #import "VaciPopoverContentViewController.h"
 #import "UniverseConstant.h"
+#import "BabyData.h"
 
 @interface VaciPopoverContentViewController ()
 
 @end
 
 @implementation VaciPopoverContentViewController
+@synthesize vacIndex = _vacIndex;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -63,16 +65,14 @@
 
 - (void)saveBtnClick
 {
-    NSDate *select = [datePicker date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"yy-MM-dd"];
-//    NSString *date  = [dateFormatter stringFromDate:select];
+     [[BabyData sharedBabyData] updateVaccineAtIndex:_vacIndex withDoneTime:[datePicker date]];
+    [_vaccineDelegate saveVacBtnClick:_vacIndex];
+
 }
 
 - (void)cancelBtnClick
 {
-
-
+    [_vaccineDelegate cancelVacBtnClick];
 
 }
 

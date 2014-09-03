@@ -12,6 +12,8 @@
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
 #import "UserInfo.h"
+#import "MainTabBarController.h"
+
 @implementation VaccineInfoTableViewCell
 @synthesize delegate = _delegate;
 @synthesize vacIndex = _vacIndex;
@@ -22,6 +24,16 @@
     if (self) {
         // Initialization code
         [self initialization];
+        if ([[MainTabBarController sharedMainViewController] isVertical]) {
+            [self setVerticalFrame];
+        }else {
+            [self setHorizontalFrame];
+        }
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+
         self.contentView.layer.masksToBounds = YES;
         self.layer.masksToBounds = YES;
     }
@@ -99,7 +111,7 @@
     [cancelBtn addTarget:self action:@selector(cancelBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [dateView addSubview:cancelBtn];
     
-    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [saveBtn setFrame:CGRectMake(382, 12, 30, 20)];
     [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
     [saveBtn.titleLabel setFont:PMFont3];
@@ -111,13 +123,8 @@
 
 - (void)saveBtnClick
 {
-
-    
-    
      [[BabyData sharedBabyData] updateVaccineAtIndex:_vacIndex withDoneTime:datePicker.date];
      [_delegate saveBtnClick:_vacIndex];
-    
-    
 }
 
 - (void)selectedBtnClick
@@ -242,4 +249,21 @@
 }
 
 
+-(void)setVerticalFrame
+{
+    SetViewLeftUp(saveBtn, 332, 12);
+    SetViewLeftUp(datePicker, -25, 45);
+}
+
+-(void)setHorizontalFrame
+{
+    SetViewLeftUp(saveBtn, 382, 12);
+    SetViewLeftUp(datePicker, 0, 45);
+
+}
+
+-(void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
+}
 @end

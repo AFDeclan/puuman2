@@ -47,12 +47,10 @@ static BabyInfoBodyViewCell *instance;
         }else{
             [self setHorizontalFrame];
         }
-        [MyNotiCenter addObserver:self selector:@selector(refresh) name:Noti_BabyDataUpdated object:nil];
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+        changedVH = NO;
 
+        [MyNotiCenter addObserver:self selector:@selector(refresh) name:Noti_BabyDataUpdated object:nil];
+       
     }
     return self;
 }
@@ -64,7 +62,6 @@ static BabyInfoBodyViewCell *instance;
 
 - (void)initialization
 {
-    changedVH = NO;
     recordIndex = -1;
      lineView = [[UIView alloc] init];
     [lineView setBackgroundColor:PMColor6];
@@ -213,21 +210,29 @@ static BabyInfoBodyViewCell *instance;
 
 - (void)refresh
 {
+    recordIndex = -1;
+
     if ([[BabyData sharedBabyData] recordCount] > 0) {
         [emptyView setAlpha:0];
     }
     if ([MainTabBarController sharedMainViewController].isVertical) {
         [self setVerticalFrame];
-        [infoTableView setContentOffset:CGPointMake(recordIndex*224 -208, 0)];
+        changedVH = NO;
 
+        [infoTableView setContentOffset:CGPointMake(0, 0)];
 
     }else{
-
         [self setHorizontalFrame];
+        changedVH = NO;
 
-        [dataTable setContentOffset:CGPointMake(0, recordIndex*136 - 268)];
-
+        [dataTable setContentOffset:CGPointMake(0, 0)];
     }
+
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+
 }
 
 
@@ -279,16 +284,24 @@ static BabyInfoBodyViewCell *instance;
 
 }
 
+
+
 - (void)backBtnClick
 {
+    [MyNotiCenter removeObserver:self];
+
     PostNotification(Noti_HiddenBabyView, nil);
+    changedVH = NO;
 
 }
 
 - (void)rightBtnClick
 {
+    [MyNotiCenter removeObserver:self];
 
     [_delegate backToMianCell];
+    changedVH = NO;
+
 }
 
 
@@ -452,7 +465,13 @@ static BabyInfoBodyViewCell *instance;
         pos.y = index*136 ;
         [scrollView setContentOffset:pos animated:YES];
     }
-   
+
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    changedVH = NO;
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -479,8 +498,7 @@ static BabyInfoBodyViewCell *instance;
         }
         
     }
-    changedVH = NO;
-    
+
 }
 
 

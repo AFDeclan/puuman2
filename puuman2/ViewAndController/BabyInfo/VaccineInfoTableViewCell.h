@@ -22,7 +22,7 @@
     UIDatePicker *datePicker;
     BOOL canUnFold;
     UIButton *selectedBtn;
-
+    UIButton *saveBtn;
 }
 @property(nonatomic,assign)id<VaccineCellDelegate> delegate;
 @property(nonatomic,assign)NSInteger vacIndex;

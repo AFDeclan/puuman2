@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol VaccineDateDelegate;
+
 @interface VaciPopoverContentViewController : UIViewController
 {
     UIDatePicker *datePicker;
 }
 
+@property(nonatomic,assign)id<VaccineDateDelegate> vaccineDelegate;
+@property(nonatomic,assign)NSInteger vacIndex;
+
+@end
+@protocol VaccineDateDelegate <NSObject>
+
+- (void)saveVacBtnClick:(NSInteger)index;
+- (void)cancelVacBtnClick;
 @end

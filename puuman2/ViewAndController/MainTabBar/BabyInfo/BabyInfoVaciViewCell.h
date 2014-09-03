@@ -10,26 +10,20 @@
 #import "CustomTextField.h"
 #import "AnimateShowLabel.h"
 #import "AFColorButton.h"
-#import "AddInfoCalendar.h"
 #import "BabyInfoIconViewDelegate.h"
 #import "VaccineInfoTableViewCell.h"
+#import "VaciPopoverContentViewController.h"
 
-@interface BabyInfoVaciViewCell : UITableViewCell <UITableViewDataSource,UITableViewDelegate,AddInfoCalendarDelegate,BabyInfoIconViewDelegate,VaccineCellDelegate>
+
+@interface BabyInfoVaciViewCell : UITableViewCell <UITableViewDataSource,UITableViewDelegate,BabyInfoIconViewDelegate,VaccineCellDelegate,UIPopoverControllerDelegate,VaccineDateDelegate>
 {
     UITableView *dataTable;
     NSInteger selectVaccine;
-    
+    NSInteger chooseVaccine;
     CustomTextField *statusText;
-    UIButton *selectedDateBtn;
     UITextView *detail;
     AnimateShowLabel *nameLabel;
-    AFColorButton *alreadyBtn;
-    AFColorButton *notBtn;
     AFTextImgButton *backBtn;
-    UIView *maskView;
-    BOOL  right;
-    NSDate *date;
-    AddInfoCalendar *_calendar;
     NSInteger suitMonth;
     UIView *emptyView;
     UIView *leftView;
@@ -37,10 +31,15 @@
     UIButton *leftBtn;
     UIView *lineView;
     UIButton *backUpBtn;
+    UIButton *modifyBtn;
+    BOOL dateViewShowed;
     
 }
+@property (strong,nonatomic) VaciPopoverContentViewController *contentViewContorller;
+@property (strong,nonatomic) UIPopoverController *popoverController;
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;
++(BabyInfoVaciViewCell *)shareVaccineCell;
 - (void)refresh;
 
 @end
