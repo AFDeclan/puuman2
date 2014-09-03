@@ -98,6 +98,7 @@
 
 - (void)addPie
 {
+    if ([[UserInfo sharedUserInfo] UCorns]+[[UserInfo sharedUserInfo] UCorns_connect] != 0) {
 
     if ([UserInfo sharedUserInfo].identity == Mother) {
         [self animateChangeVal:1-[[UserInfo sharedUserInfo] UCorns]/([[UserInfo sharedUserInfo] UCorns]+[[UserInfo sharedUserInfo] UCorns_connect]) andIndex:0];
@@ -117,7 +118,12 @@
 
     [pieView setAlpha:1];
     [pieView setFinishLoad:YES];
-
+    }else{
+        [coinFather setText:[NSString stringWithFormat:@"爸爸%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
+        [coinMother setText:[NSString stringWithFormat:@"妈妈%0.1f",[[UserInfo sharedUserInfo] UCorns_connect]]];
+        [coinView setAlpha:1];
+        
+    }
 }
 
 - (void)addPressedWithValue:(float)value atIndex:(NSInteger)index color:(UIColor *)color
