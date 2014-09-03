@@ -170,9 +170,7 @@
 
 
 - (void)getCoin {
-    
-    PostNotification(Noti_AddCorns, nil);
-    
+        
     if ([[UserInfo sharedUserInfo]UCorns]-1 > 0) {
     
         if (_diary.rewarded) {
