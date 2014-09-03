@@ -27,7 +27,6 @@ typedef enum {
     SocialMyTopicView *myTopic;
     SocialPartnerDataView *partnerData;
     SocialPartnerChatView *partnerChat;
-    
     SocialDetailView *selectedView;
 }
 

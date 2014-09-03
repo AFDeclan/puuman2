@@ -41,6 +41,8 @@
     [coin_num setTextAlignment:NSTextAlignmentRight];
     [coin_num setTextColor:[UIColor whiteColor]];
     [coin_num setFont:PMFont1];
+    [coin_num setShadowOffset:CGSizeMake(1, 1)];
+    [coin_num setShadowColor:[UIColor grayColor]];
     [self addSubview:coin_num];
     
     coin_label = [[UILabel alloc] initWithFrame:CGRectMake(0, 32, 128, 24)];
@@ -48,7 +50,9 @@
     [coin_label setTextAlignment:NSTextAlignmentRight];
     [coin_label setTextColor:[UIColor whiteColor]];
     [coin_label setFont:PMFont2];
-    [coin_label setText:@"金币"];
+    [coin_label setText:@"扑满金币"];
+    [coin_label setShadowColor:[UIColor grayColor]];
+    [coin_label setShadowOffset:CGSizeMake(1, 1)];
     [self addSubview:coin_label];
     [MyNotiCenter addObserver:self selector:@selector(updatePuumanData) name:Noti_UpdatePuumanShow object:nil];
 }
@@ -69,10 +73,11 @@
     portraitView.layer.shadowRadius =0.1;
     [self addSubview:portraitView];
     [self loadAnimateView];
-
+    
     babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(136, 0, 80, 80)];
     [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:babyInfoBtn];
+
 
     [MyNotiCenter addObserver:self selector:@selector(addPuuman:) name:Noti_AddCorns object:nil];
 
@@ -82,83 +87,23 @@
 {
    // [self addPuuman:nil];
     [[MainTabBarController sharedMainViewController] showBabyView];
+
 }
 
 
 - (void)loadAnimateView
 {
-    animateView = [[PuumanButtonAnimateView alloc]initWithFrame:CGRectMake(144,8 , 64, 64)];
-    [animateView setBackgroundColor:[UIColor clearColor]];
-    //[animateView setFillColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
-    [animateView setFillColor:[UIColor orangeColor]];
-    [animateView setStrokeColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
-    animateView.radiusPercent = 0.5 ;
-    [self addSubview:animateView];
-    [animateView setDelegate:self];
-    [animateView loadIndicator];
-    showLabel = [[UILabel alloc] initWithFrame:CGRectMake(144, 8, 64, 64)];
-    [showLabel setBackgroundColor:[UIColor clearColor]];
-    [showLabel setTextAlignment:NSTextAlignmentCenter];
-    [showLabel setTextColor:[UIColor whiteColor]];
-    [showLabel setFont:PMFont2];
-    [showLabel setAlpha:0];
-    [self addSubview:showLabel];
-    
+    profileView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin.png"]];
+    animataView = [[CoinButtonAnimation alloc] initWithPrimaryView:portraitView andSecondaryView:profileView inFrame:portraitView.frame];
+    [animataView setSpinTime:2.0];
+    [self addSubview:animataView];
 }
 
 
 - (void)showAnimation
 {
-    [showLabel setAlpha:1];
     
-    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    fadeAnimation.fromValue = [NSNumber numberWithFloat:1.0];
-    fadeAnimation.toValue = [NSNumber numberWithFloat:1.0];
-    fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    fadeAnimation.duration = 0.5;
-    [fadeAnimation setDelegate:self];
-    [showLabel.layer addAnimation:fadeAnimation forKey:@"opacity"];
-
-    
-    CABasicAnimation *scaleAnimation1 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnimation1.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation1.toValue = [NSNumber numberWithFloat:1.15];
-    scaleAnimation1.duration = 0.2;
-    [scaleAnimation1 setBeginTime:0];
-    scaleAnimation1.removedOnCompletion = NO;
-    scaleAnimation1.fillMode = kCAFillModeForwards;
-    
-    CABasicAnimation *scaleAnimation2 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation2.toValue = [NSNumber numberWithFloat:1];
-    scaleAnimation2.duration = 0.1;
-    [scaleAnimation2 setBeginTime:0.2];
-    scaleAnimation2.removedOnCompletion = NO;
-    scaleAnimation2.fillMode = kCAFillModeForwards;
-    
-    CABasicAnimation *scaleAnimation3 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnimation3.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation3.toValue = [NSNumber numberWithFloat:1.1];
-    scaleAnimation3.duration = 0.1;
-    [scaleAnimation3 setBeginTime:0.3];
-    scaleAnimation3.removedOnCompletion = NO;
-    scaleAnimation3.fillMode = kCAFillModeForwards;
-    
-    CABasicAnimation *scaleAnimation4 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnimation4.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation4.toValue = [NSNumber numberWithFloat:1];
-    scaleAnimation4.duration = 0.1;
-    [scaleAnimation4 setBeginTime:0.4];
-    scaleAnimation4.removedOnCompletion = NO;
-    scaleAnimation4.fillMode = kCAFillModeForwards;
-    
-    CAAnimationGroup*group = [CAAnimationGroup animation];
-    [group  setDuration:0.5];
-    group.removedOnCompletion = NO;
-    group.fillMode = kCAFillModeForwards;
-    [group setAnimations:[NSArray arrayWithObjects:scaleAnimation1,scaleAnimation2, scaleAnimation3,scaleAnimation4, nil]];
-    [showLabel.layer addAnimation:group forKey:@"group"];
-
+ 
 }
 
 
@@ -174,18 +119,14 @@
 
 - (void)addAnimation
 {
-    [animateView updateWithTotalBytes:100 downloadedBytes:100];
+   // [animateView updateWithTotalBytes:100 downloadedBytes:100];
 
 }
 
 - (void)minusAnimation
 {
-    [animateView updateWithTotalBytes:100 downloadedBytes:0];
-    [UIView animateWithDuration:2 animations:^{
-        [showLabel setAlpha:0];
-    }completion:^(BOOL finished) {
-        
-    }];
+   // [animateView updateWithTotalBytes:100 downloadedBytes:0];
+
 }
 
 
@@ -221,20 +162,21 @@
     float addCoins = [[notification object] floatValue];
     
     if (addCoins > 0) {
-        [showLabel setText:[NSString stringWithFormat:@"+%0.1f",addCoins]];
+     
         [self addPuuman];
     }else{
-        [showLabel setText:[NSString stringWithFormat:@"%0.1f",addCoins]];
+    
         [self addPuuman];
     }
 }
 
 - (void)addPuuman
 {
-    if (status == PuumanAnimateNone) {
-        status = PuumanAnimateAdd;
-        [self addAnimation];
-    }
+    [animataView showAnimationCoinView];
+//    if (status == PuumanAnimateNone) {
+//        status = PuumanAnimateAdd;
+//        [self addAnimation];
+//    }
 }
 - (void)minusPuuman
 {

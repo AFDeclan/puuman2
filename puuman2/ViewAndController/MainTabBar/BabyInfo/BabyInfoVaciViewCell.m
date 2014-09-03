@@ -140,6 +140,22 @@ static BabyInfoVaciViewCell *instance;
     [animateFlag setAlpha:0];
 }
 
+- (void)selectedDate
+{
+//    if (_calendar) {
+//        [_calendar removeFromSuperview];
+//    }
+//    _calendar = [[AddInfoCalendar alloc] initWithFrame:CGRectMake(0, 0, 300, 325)];
+//    [_calendar setAlpha:1];
+//    _calendar.delegate = self;
+//    [leftView addSubview:_calendar];
+//    if ([MainTabBarController sharedMainViewController].isVertical) {
+//        
+//        SetViewLeftUp(_calendar, 16, 116);
+//    }else{
+//        SetViewLeftUp(_calendar, 150, 96);
+//    }
+    }
 
 - (void)backUpBtnClick
 {
