@@ -24,6 +24,7 @@
 @synthesize row = _row;
 @synthesize unfold = _unfold;
 @synthesize delegate = _delegate;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

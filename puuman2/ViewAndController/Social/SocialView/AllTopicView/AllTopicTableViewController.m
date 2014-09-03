@@ -75,6 +75,7 @@
 
 - (void)setTopic:(Topic *)topic
 {
+    
     _topic = topic;
     if (!_refreshHeader) {
         _refreshHeader = [[MJRefreshHeaderView alloc] init];
@@ -100,9 +101,8 @@
         num = [[_topic replies:_replyOrder] count];
         [_topic getMoreReplies:5 orderBy:_replyOrder newDirect:NO ];
     }else{
-
+        [self.tableView setContentOffset:CGPointMake(0, 0)];
         [self.tableView reloadData];
-
     //   [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
 }

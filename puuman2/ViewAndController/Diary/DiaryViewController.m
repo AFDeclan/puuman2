@@ -119,9 +119,7 @@ static DiaryViewController * instance;
             [self.view addSubview:headerview];
             [diaryTableVC.tableView reloadData];
         }
-        
-        
-        
+
         [headerview diaryLoadedcnt:[[DiaryModel sharedDiaryModel] downloadedCnt] totalCnt:[[DiaryModel sharedDiaryModel] updateCnt]];
         if ([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt] && [[MainTabBarController sharedMainViewController] hasShareVideo]) {
             [self performSelector:@selector(startGif) withObject:nil afterDelay:0];

@@ -26,7 +26,7 @@
     TopicSelectButton *rightBtn;
     AFSelectedTextImgButton *left_sortBtn;
     AFSelectedTextImgButton *right_sortBtn;
-
+    Topic *curTopic;
     
 }
 

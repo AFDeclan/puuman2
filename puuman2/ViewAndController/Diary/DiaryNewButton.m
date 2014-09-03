@@ -27,6 +27,7 @@
     }
     return self;
 }
+
 - (void)initialization
 {
     bgCommon = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 56, 62)];
@@ -79,6 +80,7 @@
     }
     _commonBtnType = commonBtnType;
 }
+
 - (void)hideOrShowBtns
 {
     if (_newBtnShowed) {
@@ -87,6 +89,7 @@
         [self showBtns];
     }
 }
+
 - (void)showBtns
 {
     if (!_newBtnShowed) {
@@ -111,9 +114,9 @@
     
 
 }
+
 - (void)hiddenBtns
 {
-    
     if (_newBtnShowed) {
         CGRect frame = newBtn.frame;
 //        frame.origin.y = 35;
@@ -133,11 +136,13 @@
     }
    
 }
+
 - (void)addDiary
 {
     [[DiaryViewController sharedDiaryViewController] showNewDiaryViewWithType:_commonBtnType withTaskInfo:nil];
 
 }
+
 - (BOOL)directionChangedWithVertical:(BOOL)vertical;
 {
     BOOL changed;
@@ -146,13 +151,12 @@
     }else{
         changed = YES;
     }
-    
     perVertical = vertical;
     return changed;
 }
+
 - (void)setShowStatus
 {
-    
     CGRect frame = newBtn.frame;
     frame.origin.y = 35;
     [newBtn setFrame:frame];
@@ -161,7 +165,6 @@
 
 - (void)setHideStatus
 {
-    
     CGRect frame = newBtn.frame;
     frame.origin.y = 0;
     [newBtn setFrame:frame];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AFImageView.h"
-#import "PuumanButtonAnimateView.h"
+#import "CoinButtonAnimation.h"
 typedef enum
 {
     PuumanAnimateAdd,
@@ -16,16 +16,16 @@ typedef enum
     PuumanAnimateShow,
     PuumanAnimateNone
 }PuumanAnimateStatus;
-@interface BabyShowButton : UIView<PuumanAnimateDelegate>
+@interface BabyShowButton : UIView 
 {
     UIImageView *bg_babybutton;
     AFImageView *portraitView;
-    PuumanButtonAnimateView *animateView;
+    CoinButtonAnimation *animataView;
     PuumanAnimateStatus status;
-    UILabel *showLabel;
     UILabel *coin_num;
     UILabel *coin_label;
     UIButton *babyInfoBtn;
+    UIImageView *profileView;
 
 }
 

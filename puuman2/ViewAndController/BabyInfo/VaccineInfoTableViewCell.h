@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface VaccineInfoTableViewCell : UITableViewCell
+@interface VaccineInfoTableViewCell : UITableViewCell 
 {
     UIImageView *icon_status;
     UIImageView *time_line;
@@ -18,7 +18,8 @@
     UILabel *info_name;
     UILabel *info_age;
     UIImageView *partLine;
-   
 }
 - (void)setVaccineIndex:(NSInteger)index;
+
+
 @end

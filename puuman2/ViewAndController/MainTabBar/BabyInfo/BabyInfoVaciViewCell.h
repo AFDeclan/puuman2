@@ -13,6 +13,7 @@
 #import "AddInfoCalendar.h"
 #import "BabyInfoIconViewDelegate.h"
 
+
 @interface BabyInfoVaciViewCell : UITableViewCell <UITableViewDataSource,UITableViewDelegate,AddInfoCalendarDelegate,BabyInfoIconViewDelegate>
 {
     UITableView *dataTable;
@@ -41,5 +42,7 @@
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;
 - (void)refresh;
+
+@property (strong,nonatomic) NSMutableArray *dataArray;
 
 @end

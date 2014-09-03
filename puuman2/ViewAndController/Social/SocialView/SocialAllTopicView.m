@@ -66,16 +66,19 @@
 
 - (void)reloadTitleView
 {
-    if (titleColumnView) {
-        [titleColumnView removeFromSuperview];
+    if (curTopic.TNo != [Forum sharedInstance].onTopic.TNo) {
+        if (titleColumnView) {
+            [titleColumnView removeFromSuperview];
+        }
+        titleColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 608, 144)];
+        [titleColumnView setBackgroundColor:[UIColor clearColor]];
+        [titleColumnView setColumnViewDelegate:self];
+        [titleColumnView setViewDataSource:self];
+        [titleColumnView setPagingEnabled:YES];
+        [titleColumnView setScrollEnabled:NO];
+        [titleView addSubview:titleColumnView];
+
     }
-    titleColumnView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 608, 144)];
-    [titleColumnView setBackgroundColor:[UIColor clearColor]];
-    [titleColumnView setColumnViewDelegate:self];
-    [titleColumnView setViewDataSource:self];
-    [titleColumnView setPagingEnabled:YES];
-    [titleColumnView setScrollEnabled:NO];
-    [titleView addSubview:titleColumnView];
 }
 
 
@@ -304,8 +307,11 @@
 
 - (void)receivedTopic:(Topic *)topic
 {
-    [topicTableView setTopic:topic];
-    [self leftSortSelected];
+    if (curTopic.TNo != topic.TNo) {
+        [topicTableView setTopic:topic];
+        [self leftSortSelected];
+    }
+    curTopic = topic;
 
 }
 

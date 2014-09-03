@@ -202,7 +202,7 @@
    // [rightView setFrame:CGRectMake(728, 98, 256, 926)];
     
    // [estiTableView setFrame:CGRectMake(40, 120, 216, ViewHeight(rightView)-120)];
-    [babyPropView setFrame:CGRectMake(130, 280, 544, 448)];
+    [babyPropView setFrame:CGRectMake(130, 250, 544, 448)];
     [leftBtn setFrame:CGRectMake(0, 0, 48, 926)];
     [estiTextField setFrame:CGRectMake(40, 0, 216, 50)];
     [estiView setFrame:CGRectMake(40, 50, 216,70)];

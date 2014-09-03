@@ -16,9 +16,9 @@
 
 
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
        
@@ -42,6 +42,7 @@
     [_showColumnView setPagingEnabled:NO];
     [_showColumnView setScrollEnabled:YES];
     [contentView addSubview:_showColumnView];
+    
     if (_scrollView) {
         [_scrollView removeFromSuperview];
     }

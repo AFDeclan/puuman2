@@ -32,6 +32,8 @@
 #define kUrl_UploadAction @"http://server.puuman.cn/index.php/server/forumTest/upload_action"
 #define kUrl_UpdateAction @"http://server.puuman.cn/index.php/server/forumTest/update_action"
 #define kUrl_GetMember @"http://server.puuman.cn/index.php/server/forumTest/get_member"
+#define kUrl_ShopEmptyH @"http://www.puuman.cn/index.php/shop/show/1"
+#define kUrl_ShopEmptyV @"http://www.puuman.cn/index.php/shop/show/2"
 
 #else
 

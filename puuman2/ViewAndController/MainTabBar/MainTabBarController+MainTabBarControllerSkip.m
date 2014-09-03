@@ -21,7 +21,7 @@
 - (void)showShop
 {
     [tabBar selectedWithTag:kTypeTabBarOfShop];
-    PostNotification(Noti_RefreshMenu, nil);
+     PostNotification(Noti_RefreshMenu, nil);
     
 }
 
