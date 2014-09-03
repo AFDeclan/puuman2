@@ -240,7 +240,6 @@ static BabyInfoBodyViewCell *instance;
 {
     changedVH = YES;
     //[super setVerticalFrame];
-    [rightBtn setBackgroundColor:PMColor6];
     [lineView setFrame:CGRectMake(0, 96, 768, 2)];
     [rightView setFrame:CGRectMake(704, 98, 64, 926)];
     [leftView setFrame:CGRectMake(0, 98, 704, 926)];
