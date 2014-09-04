@@ -54,7 +54,6 @@
     [coin_label setShadowColor:[UIColor grayColor]];
     [coin_label setShadowOffset:CGSizeMake(1, 1)];
     [self addSubview:coin_label];
-    [MyNotiCenter addObserver:self selector:@selector(updatePuumanData) name:Noti_UpdatePuumanShow object:nil];
 }
 
 - (void)initBabyButton
@@ -118,7 +117,7 @@
 
 - (void)loadData
 {
-    [self updatePuumanData];
+    [self updateBytes];
     [self loadPortrait];
 }
 
@@ -127,11 +126,7 @@
     [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
 }
 
-- (void)updatePuumanData
-{
-   
-    
-}
+
 
 -(void)dealloc
 {
