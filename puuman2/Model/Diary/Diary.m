@@ -151,6 +151,7 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
        [_meta setValue:[NSNumber numberWithBool:YES] forKey:DiaryMetaKeyRewarded];
         BOOL up = [[DiaryModel sharedDiaryModel] updateDiary:self needUpload:YES];
         assert(up);
+        [[UserInfo sharedUserInfo] outCorns:cnt];
         return YES;
     }
     return NO;

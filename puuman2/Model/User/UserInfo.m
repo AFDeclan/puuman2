@@ -181,6 +181,11 @@ static UserInfo *instance = nil;
     return YES;
 }
 
+- (void)outCorns:(double)num
+{
+    _UCorns -= num;
+}
+
 - (enum userActionResult)login
 {
     PumanRequest *request = [[PumanRequest alloc] init];

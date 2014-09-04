@@ -118,6 +118,7 @@ typedef enum inviteState {
 
 //新增扑满币，（单日超出上限后返回No）
 - (BOOL)addCorns:(double)add;
+- (void)outCorns:(double)num;
 
 //提交用户信息。
 - (BOOL)uploadUserMetaVal:(NSString *)val forKey:(NSString *)key;

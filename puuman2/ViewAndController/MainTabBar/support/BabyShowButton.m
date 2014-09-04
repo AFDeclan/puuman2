@@ -72,6 +72,12 @@
     portraitView.layer.shadowRadius =0.1;
     [self addSubview:portraitView];
     
+    profileView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin.png"]];
+    animataView = [[CoinButtonAnimation alloc] initWithPrimaryView:portraitView andSecondaryView:profileView inFrame:portraitView.frame];
+    animataView.deledate = self;
+    [animataView setSpinTime:2.0];
+    [self addSubview:animataView];
+    
     babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(136, 0, 80, 80)];
     [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:babyInfoBtn];
@@ -91,28 +97,21 @@
 
 - (void)loadAnimateView
 {
-    profileView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin.png"]];
-    animataView = [[CoinButtonAnimation alloc] initWithPrimaryView:portraitView andSecondaryView:profileView inFrame:portraitView.frame];
-    [animataView setSpinTime:2.0];
-    [self addSubview:animataView];
+   
     [animataView showAnimationCoinView];
+    
 }
 
 
 - (void)addPuuman:(NSNotification *)notification
 {
-    float addCoins = [[notification object] floatValue];
-    
-    if (addCoins > 0) {
         [self loadAnimateView];
-     
-     
-    }
+    
 }
 
 - (void)updateBytes
 {
-  [coin_num setText:[NSString stringWithFormat:@"%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
+   [coin_num setText:[NSString stringWithFormat:@"%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
 }
 
 
