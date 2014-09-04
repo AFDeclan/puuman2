@@ -13,7 +13,6 @@
 #import "DetailShowViewController.h"
 #import "UniverseConstant.h"
 
-
 @implementation VideoDiaryCell
 
 @synthesize reuseIdentifier = _reuseIdentifier;
@@ -123,7 +122,9 @@
 - (void)share:(id)sender
 {
     //子类重载
-    
+    //
+    [super share:sender];
+
 }
 
 - (void)prepareForReuse

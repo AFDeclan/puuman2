@@ -23,7 +23,7 @@ static NSInteger _reqRet;
     PumanRequest *request = [[PumanRequest alloc] init];
     request.urlStr = kUrl_ShareDiary;
     [request setParam:[NSNumber numberWithInteger:[UserInfo sharedUserInfo].UID] forKey:@"UID"];
-    [request setParam:[DateFormatter stringFromDatetime:diary.DCreateTime] forKey:@"DCreateTime"];
+    [request setParam:[DateFormatter timestampStrFromDatetime:diary.DCreateTime] forKey:@"DCreateTime"];
     [request setTimeOutSeconds:5];
     [request postSynchronous];
     _reqRet = request.result;

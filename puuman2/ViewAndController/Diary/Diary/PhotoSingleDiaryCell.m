@@ -99,20 +99,21 @@
 
 - (void)share:(id)sender
 {
-    NSString *text = @"";
-    NSString *photoPathsString = [self.diary.filePaths1 objectAtIndex:0];
-    NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
-    for (NSString *photoPath in photoPaths)
-    {
-        _photoPath = photoPath;
-        
-        if (_photoPath != nil) {
-            break;
-        }
-    }
-    UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
-    NSString *title = self.diary.title;
-    [ShareSelectedViewController shareText:text title:title image:photo];
+    [super share:sender];
+//    NSString *text = @"";
+//    NSString *photoPathsString = [self.diary.filePaths1 objectAtIndex:0];
+//    NSArray  *photoPaths = [photoPathsString componentsSeparatedByString:@"#@#"];
+//    for (NSString *photoPath in photoPaths)
+//    {
+//        _photoPath = photoPath;
+//        
+//        if (_photoPath != nil) {
+//            break;
+//        }
+//    }
+//    UIImage *photo = [DiaryFileManager imageForPath:_photoPath];
+//    NSString *title = self.diary.title;
+//    [ShareSelectedViewController shareText:text title:title image:photo];
 
 }
 

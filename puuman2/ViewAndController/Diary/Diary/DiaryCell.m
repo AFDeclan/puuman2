@@ -16,6 +16,7 @@
 #import "MainTabBarController.h"
 #import "DiaryTableViewController.h"
 #import "Diary.h"
+#import "Share.h"
 
 
 @implementation DiaryCell
@@ -423,8 +424,11 @@
 - (void)share:(id)sender
 {
     //子类重载
-    
-    
+    NSString *url = [Share shareUrlForDiary:self.diary];
+    if (url) {
+        [ShareSelectedViewController shareText:url title:self.diary.title image:[UIImage imageNamed:@"Icon-152.png"]];
+    }
+
 }
 
 - (void)CellVisibled:(NSNotification *)notification
@@ -480,7 +484,7 @@
 - (void)setDiaryType:(DiaryType)diaryType
 {
     _diaryType = diaryType;
-    if(diaryType == kDiaryPhotoType ||diaryType == kDiaryTextType ||diaryType == kDiaryPhotoAudioType)
+    if(diaryType == kDiaryPhotoType ||diaryType == kDiaryTextType ||diaryType == kdiaryPhotoMoreType)
     {
         shareCanShow = YES;
         

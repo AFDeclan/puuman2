@@ -117,6 +117,8 @@
 
 - (void)share:(id)sender
 {
+    [super share:sender];
+
     //子类重载
 //    NSString *text;
 //    UIImage *img;

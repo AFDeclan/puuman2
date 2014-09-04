@@ -165,12 +165,13 @@
 - (void)share:(id)sender
 {    
     //子类重载
-    NSString *text = @"";
-    NSString *path = [self.diary.filePaths1 objectAtIndex:0];
-    UIImage *img = [DiaryFileManager imageForPath:path];
-    NSString *title = self.diary.title;
-    [ShareSelectedViewController shareText:text title:title image:img];
-    
+//    NSString *text = @"";
+//    NSString *path = [self.diary.filePaths1 objectAtIndex:0];
+//    UIImage *img = [DiaryFileManager imageForPath:path];
+//    NSString *title = self.diary.title;
+//    [ShareSelectedViewController shareText:text title:title image:img];
+    [super share:sender];
+
 }
 
 - (void)showPhoto
@@ -178,6 +179,7 @@
     [DetailShowViewController showPhotoPath:[self.diary.filePaths1 objectAtIndex:0] andTitle:titleLabel.text];
 
 }
+
 
 - (void)prepareForReuse
 {
