@@ -54,7 +54,6 @@
     [coin_label setShadowColor:[UIColor grayColor]];
     [coin_label setShadowOffset:CGSizeMake(1, 1)];
     [self addSubview:coin_label];
-    [MyNotiCenter addObserver:self selector:@selector(updatePuumanData) name:Noti_UpdatePuumanShow object:nil];
 }
 
 - (void)initBabyButton
@@ -72,7 +71,6 @@
     portraitView.layer.masksToBounds = YES;
     portraitView.layer.shadowRadius =0.1;
     [self addSubview:portraitView];
-    [self loadAnimateView];
     
     babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(136, 0, 80, 80)];
     [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
@@ -97,6 +95,7 @@
     animataView = [[CoinButtonAnimation alloc] initWithPrimaryView:portraitView andSecondaryView:profileView inFrame:portraitView.frame];
     [animataView setSpinTime:2.0];
     [self addSubview:animataView];
+    [animataView showAnimationCoinView];
 }
 
 
@@ -105,8 +104,9 @@
     float addCoins = [[notification object] floatValue];
     
     if (addCoins > 0) {
+        [self loadAnimateView];
      
-      [animataView showAnimationCoinView];
+     
     }
 }
 
@@ -118,7 +118,7 @@
 
 - (void)loadData
 {
-    [self updatePuumanData];
+    [self updateBytes];
     [self loadPortrait];
 }
 
@@ -127,11 +127,7 @@
     [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
 }
 
-- (void)updatePuumanData
-{
-   
-    
-}
+
 
 -(void)dealloc
 {

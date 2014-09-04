@@ -30,6 +30,5 @@ typedef enum
 }
 
 - (void)addPuuman;
-- (void)minusPuuman;
 - (void)loadData;
 @end
