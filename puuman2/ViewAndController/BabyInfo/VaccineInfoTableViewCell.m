@@ -88,12 +88,13 @@
 {
     
     dateView = [[UIView alloc] initWithFrame:CGRectMake(0, 96, 432, 192)];
+    [dateView setBackgroundColor:PMColor5];
     [self.contentView addSubview:dateView];
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 432, 1)];
     [lineView setBackgroundColor:PMColor4];
     [dateView addSubview:lineView];
     
-    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(115, 12, 55, 20)];
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(192 , 12, 55, 20)];
     timeLabel.text = @"接种日期";
     timeLabel.textColor = [UIColor blackColor];
     timeLabel.font = PMFont3;
@@ -101,6 +102,7 @@
     
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 45, 432,156)];
     datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker setBackgroundColor:PMColor5];
     [dateView addSubview:datePicker];
     datePicker.maximumDate = [NSDate date];
     datePicker.minimumDate = [[UserInfo sharedUserInfo] createTime];

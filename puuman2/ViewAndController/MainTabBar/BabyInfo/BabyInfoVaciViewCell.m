@@ -79,7 +79,7 @@ static BabyInfoVaciViewCell *instance;
 {
     
     dataTable = [[UITableView alloc] init];
-    [dataTable setBackgroundColor:PMColor6];
+    [dataTable setBackgroundColor: PMColor4];
     [dataTable setDataSource:self];
     [dataTable setDelegate:self];
     [rightView addSubview:dataTable];

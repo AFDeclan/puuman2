@@ -5346,6 +5346,7 @@
 					/Users/af_bigwaves/Documents/puuman/puuman2/Support/umeng,
 					/Users/af_bigwaves/Documents/puuman/puuman2/Support/WeiXin,
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6A6453A7-4430-40F2-9F9B-DC8A8FAA5A47";
 				TARGETED_DEVICE_FAMILY = 2;
