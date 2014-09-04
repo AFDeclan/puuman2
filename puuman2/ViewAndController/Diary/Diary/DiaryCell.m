@@ -196,9 +196,9 @@
 - (void)buildParentControl
 {
     SetViewLeftUp(_delBtn,632, 24);
-    SetViewLeftUp(_shareBtn,632, ViewY(_content)+ViewHeight(_content)-24);
-    SetViewLeftUp(coinBtn, 85, ViewY(_content) +ViewHeight(_content));
-    SetViewLeftUp(coinLabel, 119, ViewY(_content) + ViewHeight(_content)+5);
+    SetViewLeftUp(_shareBtn,632, ViewY(_content)+ViewHeight(_content)+10);
+    SetViewLeftUp(coinBtn, 112, ViewY(_content) +ViewHeight(_content)+10);
+    SetViewLeftUp(coinLabel, 146, ViewY(_content) + ViewHeight(_content)+5+10);
     
     SetViewRightCenter(_delScrollView, ViewX(_delBtn), ViewY(_delBtn)+ViewHeight(_delBtn)/2);
     if (self.indexPath.row == 0) {
