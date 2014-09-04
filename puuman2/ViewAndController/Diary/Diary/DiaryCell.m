@@ -483,7 +483,7 @@
 - (void)setDiaryType:(DiaryType)diaryType
 {
     _diaryType = diaryType;
-    if(diaryType == kDiaryPhotoType ||diaryType == kDiaryTextType ||diaryType == kDiaryPhotoAudioType||diaryType == kdiaryPhotoMoreType)
+    if(diaryType == kDiaryPhotoType ||diaryType == kDiaryTextType ||diaryType == kdiaryPhotoMoreType)
     {
         shareCanShow = YES;
         
