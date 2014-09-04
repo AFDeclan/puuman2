@@ -136,7 +136,7 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
 
 - (BOOL)reward:(CGFloat)cnt
 {
-    //assert(_UIdentity != [UserInfo sharedUserInfo].identity);
+    assert(_UIdentity != [UserInfo sharedUserInfo].identity);
     assert(![self rewarded]);
     PumanRequest * req = [[PumanRequest alloc] init];
     req.urlStr = kUrl_RewardDiary;

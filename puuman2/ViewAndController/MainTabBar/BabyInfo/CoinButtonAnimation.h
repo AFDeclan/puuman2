@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
+@protocol CoinButtonAnimationDelagate;
 
 @interface CoinButtonAnimation : UIView
 
@@ -16,9 +17,16 @@
 
 @property (nonatomic,retain) UIView *primaryView;
 @property (nonatomic,retain) UIView *secondaryView;
+@property (nonatomic,assign) id <CoinButtonAnimationDelagate>deledate;
 @property float spinTime;
 
 - (void)showAnimationCoinView;
+
+@end
+
+@protocol CoinButtonAnimationDelagate <NSObject>
+
+- (void)updateBytes;
 
 @end
 

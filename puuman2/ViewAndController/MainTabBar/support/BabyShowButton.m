@@ -100,92 +100,21 @@
 }
 
 
-- (void)showAnimation
-{
-    
- 
-}
-
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    PostNotification(Noti_UpdatePuumanShow, nil);
-    if ([anim isKindOfClass:[CABasicAnimation class]]) {
-        if (flag) {
-            [self animateFinished];
-        }
-    }
-}
-
-- (void)addAnimation
-{
-   // [animateView updateWithTotalBytes:100 downloadedBytes:100];
-
-}
-
-- (void)minusAnimation
-{
-   // [animateView updateWithTotalBytes:100 downloadedBytes:0];
-
-}
-
-
-- (void)animateFinished
-{
-    switch (status) {
-        case PuumanAnimateAdd:
-        {
-            status = PuumanAnimateShow;
-            [self showAnimation];
-            return;
-        }
-        case PuumanAnimateShow:
-        {
-            status = PuumanAnimateMinus;
-            [self minusAnimation];
-            return;
-        }
-        case PuumanAnimateMinus:
-        {
-            status = PuumanAnimateNone;
-            return;
-        }
-        case PuumanAnimateNone:
-            break;
-        default:
-            break;
-    }
-}
-
 - (void)addPuuman:(NSNotification *)notification
 {
     float addCoins = [[notification object] floatValue];
     
     if (addCoins > 0) {
      
-        [self addPuuman];
-    }else{
-    
-        [self addPuuman];
+      [animataView showAnimationCoinView];
     }
 }
 
-- (void)addPuuman
+- (void)updateBytes
 {
-    [animataView showAnimationCoinView];
-//    if (status == PuumanAnimateNone) {
-//        status = PuumanAnimateAdd;
-//        [self addAnimation];
-//    }
+  [coin_num setText:[NSString stringWithFormat:@"%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
 }
-- (void)minusPuuman
-{
 
-    if (status == PuumanAnimateNone) {
-        status = PuumanAnimateMinus;
-        [self minusAnimation];
-    }
-}
 
 - (void)loadData
 {
@@ -200,8 +129,7 @@
 
 - (void)updatePuumanData
 {
-    [coin_num setText:[NSString stringWithFormat:@"%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
-    
+   
     
 }
 

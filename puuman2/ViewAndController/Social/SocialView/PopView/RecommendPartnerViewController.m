@@ -109,6 +109,8 @@
     _member = member;
     if (member.GID == 0 ) {
         [inviteBtn setAlpha:1];
+        [inviteBtn setEnabled:YES];
+
     }else{
         [inviteBtn setAlpha:0];
     }
@@ -175,6 +177,7 @@
 
 - (void)invite
 {
+    [inviteBtn setEnabled:NO];
    // [[Friend sharedInstance] addDelegateObject:self];
     [[Friend sharedInstance]  getGroupData];
     Group *myGroup = [[Friend sharedInstance] myGroup];
@@ -191,6 +194,7 @@
 //Group Action 上传失败
 - (void)actionUploadFailed:(ActionForUpload *)action
 {
+    [inviteBtn setEnabled:YES];
 
 }
 

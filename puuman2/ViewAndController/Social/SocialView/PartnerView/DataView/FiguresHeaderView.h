@@ -24,9 +24,7 @@
     UIButton *manageBtn;
     UIButton *backBtn;
     UITextField *nameTextField;
-    
     Group *myGroup;
-    
     NSString *oldName;
     BOOL changed;
     UIColumnView *figuresColumnView;

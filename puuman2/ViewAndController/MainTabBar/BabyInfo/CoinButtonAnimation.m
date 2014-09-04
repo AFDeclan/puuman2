@@ -7,6 +7,7 @@
 //
 
 #import "CoinButtonAnimation.h"
+#import "UniverseConstant.h"
 
 @interface CoinButtonAnimation ()
 {
@@ -111,10 +112,18 @@
                             toView:(displayingPrimary ? self.primaryView : self.secondaryView)
                           duration:0.8 options: UIViewAnimationOptionTransitionFlipFromLeft + UIViewAnimationOptionCurveEaseInOut
                        completion:^(BOOL finished){
-    
+                           
+                           //PostNotification(Noti_UpdatePuumanShow, nil);
+                           if ([_deledate respondsToSelector:@selector(updateBytes)]) {
+                
+                               [_deledate updateBytes];
+                           
+                           }
+                           
                        }];
-
 }
+
+
 
 
 

@@ -171,7 +171,7 @@
 
 - (void)getCoin {
         
-    if ([[UserInfo sharedUserInfo]UCorns]-1 > 0) {
+    if ([[UserInfo sharedUserInfo]UCorns]-1 >= 0) {
     
         if (_diary.rewarded) {
             [coinBtn selected];
@@ -179,6 +179,10 @@
         } else {
             
             if ([_diary reward:1]) {
+                [coinBtn selected];
+                [coinBtn setBackgroundColor:[UIColor clearColor]];
+                [coinLabel setText:@"已打赏"];
+                [coinLabel setTextColor:PMColor3];
                 PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
                 
             }else{
@@ -188,7 +192,6 @@
         }
 
     }
-   
 }
 
 
@@ -196,9 +199,9 @@
 - (void)buildParentControl
 {
     SetViewLeftUp(_delBtn,632, 24);
-    SetViewLeftUp(_shareBtn,632, ViewY(_content)+ViewHeight(_content)-24);
-    SetViewLeftUp(coinBtn, 20, ViewY(_content) +ViewHeight(_content));
-    SetViewLeftUp(coinLabel, 54, ViewY(_content) + ViewHeight(_content)+5);
+    SetViewLeftUp(_shareBtn,632, ViewY(_content)+ViewHeight(_content)+10);
+    SetViewLeftUp(coinBtn, 112, ViewY(_content) +ViewHeight(_content)+10);
+    SetViewLeftUp(coinLabel, 146, ViewY(_content) + ViewHeight(_content)+5+10);
     
     SetViewRightCenter(_delScrollView, ViewX(_delBtn), ViewY(_delBtn)+ViewHeight(_delBtn)/2);
     if (self.indexPath.row == 0) {
@@ -220,7 +223,7 @@
         [coinLabel setText:@""];
         
     }else{
-        if (_diary.UIdentity == [UserInfo sharedUserInfo].identity){
+        if (_diary.UIdentity != [UserInfo sharedUserInfo].identity){
             [coinBtn setAlpha:1];
             if ([_diary rewarded]) {
                 [coinBtn selected];
@@ -245,10 +248,11 @@
                 if (_diary.UIdentity == Father) {
                     coinLabel.text = @"妈妈赏了你";
                     [coinLabel setTextColor:RGBColor(239, 128, 123)];
+                
                 }else {
                     coinLabel.text = @"爸爸赏了你!";
                     [coinLabel setTextColor:PMColor6];
-                    
+                
                 }
             }
         }
