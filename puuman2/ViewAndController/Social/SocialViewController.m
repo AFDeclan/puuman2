@@ -170,7 +170,8 @@ static SocialViewController * instance;
     selectedTopic = NO;
     [topicBtn unSelected];
     [partnerBtn selected];
-
+    [leftBtn setAlpha:0];
+    [rightBtn setAlpha:0];
     [leftBtn adjustLayout];
     [rightBtn adjustLayout];
     [self leftBtnPressed];
