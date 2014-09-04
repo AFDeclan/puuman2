@@ -827,8 +827,8 @@
 		88B5160B192F52EE006A79AB /* UIImage+CroppedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515E8192F52EE006A79AB /* UIImage+CroppedImage.m */; };
 		88B5160C192F52EE006A79AB /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515EA192F52EE006A79AB /* UIImage+Scale.m */; };
 		88B5160D192F52EE006A79AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B515EC192F52EE006A79AB /* libMobClickLibrary.a */; };
-		88BA0A9D197D13560070CF5F /* coin_diary_receive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BA0A9B197D13560070CF5F /* coin_diary_receive.png */; };
-		88BA0A9E197D13560070CF5F /* coin_diary_noreceive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BA0A9C197D13560070CF5F /* coin_diary_noreceive.png */; };
+		88B58F4819B84AE200BF2880 /* coin_diary_receive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B58F4619B84AE200BF2880 /* coin_diary_receive.png */; };
+		88B58F4919B84AE200BF2880 /* coin_diary_noreceive.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B58F4719B84AE200BF2880 /* coin_diary_noreceive.png */; };
 		88C163591974CE0A00F86DD1 /* img_add_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C163571974CE0A00F86DD1 /* img_add_count.png */; };
 		88C1635A1974CE0A00F86DD1 /* img_reduce_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C163581974CE0A00F86DD1 /* img_reduce_count.png */; };
 		88C965A5196293B80058B842 /* line_right_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C965A3196293B80058B842 /* line_right_babyInfo.png */; };
@@ -2027,9 +2027,9 @@
 		88B515EA192F52EE006A79AB /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		88B515EC192F52EE006A79AB /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		88B515ED192F52EE006A79AB /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		88B58F4619B84AE200BF2880 /* coin_diary_receive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_receive.png; sourceTree = "<group>"; };
+		88B58F4719B84AE200BF2880 /* coin_diary_noreceive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_noreceive.png; sourceTree = "<group>"; };
 		88B794BE1964F6D5000B3406 /* BabyInfoIconViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BabyInfoIconViewDelegate.h; sourceTree = "<group>"; };
-		88BA0A9B197D13560070CF5F /* coin_diary_receive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_receive.png; sourceTree = "<group>"; };
-		88BA0A9C197D13560070CF5F /* coin_diary_noreceive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_noreceive.png; sourceTree = "<group>"; };
 		88C163571974CE0A00F86DD1 /* img_add_count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_add_count.png; sourceTree = "<group>"; };
 		88C163581974CE0A00F86DD1 /* img_reduce_count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_reduce_count.png; sourceTree = "<group>"; };
 		88C965A3196293B80058B842 /* line_right_babyInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line_right_babyInfo.png; sourceTree = "<group>"; };
@@ -3915,9 +3915,9 @@
 			isa = PBXGroup;
 			children = (
 				88CEB8A519B5D74A00AFFA34 /* coin.png */,
+				88B58F4619B84AE200BF2880 /* coin_diary_receive.png */,
+				88B58F4719B84AE200BF2880 /* coin_diary_noreceive.png */,
 				88B2C7FD197E1BEE00A0A2FD /* coinView_diary_image.png */,
-				88BA0A9B197D13560070CF5F /* coin_diary_receive.png */,
-				88BA0A9C197D13560070CF5F /* coin_diary_noreceive.png */,
 				54B06C2A1929C34000539EA5 /* block_photo_diary.png */,
 				548D3A3518F4E3D1006CC6D6 /* pic_default_diary.png */,
 				5403CD0A18D03D39004CAE22 /* DiaryJoinImages */,
@@ -4583,6 +4583,7 @@
 				54D1500118CAEFD70022E1F4 /* paper_top_diary.png in Resources */,
 				544419F018D3EE2D00FBE69F /* pic1_equip_baby.png in Resources */,
 				54ADE0AA18C861B700B166C4 /* btn_audio_newdiary.png in Resources */,
+				88B58F4919B84AE200BF2880 /* coin_diary_noreceive.png in Resources */,
 				5403CE2918D04F5E004CAE22 /* btn_pre2_baby.png in Resources */,
 				540020321973D8B5000C0336 /* btn_blue5.png in Resources */,
 				54AC212018E414EA001C1357 /* icon3_rec_shop.png in Resources */,
@@ -4720,7 +4721,6 @@
 				54CCF1DF18F3E7170081C149 /* btn_diary1_diary.png in Resources */,
 				544419F118D3EE2D00FBE69F /* pic2_equip_baby.png in Resources */,
 				54CE116218C1C7BF00966396 /* block4_btn.png in Resources */,
-				88BA0A9E197D13560070CF5F /* coin_diary_noreceive.png in Resources */,
 				54CCF1E718F3E7770081C149 /* btn_shop1_diary.png in Resources */,
 				54AC20F418E3FD30001C1357 /* icon2_hospital_shop.png in Resources */,
 				5403CD5F18D03DEF004CAE22 /* block2_h_diary.png in Resources */,
@@ -4810,6 +4810,7 @@
 				54AC20F918E3FD30001C1357 /* icon2_wash_shop.png in Resources */,
 				54D14FF418CAEFD70022E1F4 /* btn_delete2_diary.png in Resources */,
 				54AC212118E414EA001C1357 /* icon4_rec_shop.png in Resources */,
+				88B58F4819B84AE200BF2880 /* coin_diary_receive.png in Resources */,
 				54B97EA318FA586800B6C4C9 /* triangle_insure_shop.png in Resources */,
 				54CC76EE196FBF8800373B35 /* btn_price_shop1.png in Resources */,
 				5403CE3618D04F5E004CAE22 /* icon_share_baby.png in Resources */,
@@ -4822,7 +4823,6 @@
 				146FB10418FFEA2E002EABA7 /* Icon-72.png in Resources */,
 				5447C4A218D97D1100187BE6 /* icon_weight_topic.png in Resources */,
 				54B97E9B18FA583F00B6C4C9 /* title1_insure_shop.png in Resources */,
-				88BA0A9D197D13560070CF5F /* coin_diary_receive.png in Resources */,
 				54AC20E118E3FD30001C1357 /* btn_all1_shop.png in Resources */,
 				5403CD5118D03D39004CAE22 /* icon8_weather_diary@2x.png in Resources */,
 				54AF7E0E18FBEC5000FC454C /* btn_record_diary.png in Resources */,
