@@ -179,6 +179,10 @@
         } else {
             
             if ([_diary reward:1]) {
+                [coinBtn selected];
+                [coinBtn setBackgroundColor:[UIColor clearColor]];
+                [coinLabel setText:@"已打赏"];
+                [coinLabel setTextColor:PMColor3];
                 PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
                 
             }else{
@@ -188,7 +192,6 @@
         }
 
     }
-   
 }
 
 
@@ -220,7 +223,7 @@
         [coinLabel setText:@""];
         
     }else{
-        if (_diary.UIdentity == [UserInfo sharedUserInfo].identity){
+        if (_diary.UIdentity != [UserInfo sharedUserInfo].identity){
             [coinBtn setAlpha:1];
             if ([_diary rewarded]) {
                 [coinBtn selected];
@@ -245,10 +248,11 @@
                 if (_diary.UIdentity == Father) {
                     coinLabel.text = @"妈妈赏了你";
                     [coinLabel setTextColor:RGBColor(239, 128, 123)];
+                
                 }else {
                     coinLabel.text = @"爸爸赏了你!";
                     [coinLabel setTextColor:PMColor6];
-                    
+                
                 }
             }
         }

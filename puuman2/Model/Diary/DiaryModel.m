@@ -270,7 +270,7 @@ static DiaryModel * instance;
           [NSNumber numberWithInteger:d.type2],
           [d.filePaths2 JSONData],
           [d.urls2 JSONData],
-          [NSNumber numberWithInteger:[UserInfo sharedUserInfo].identity],
+          [NSNumber numberWithInteger:d.UIdentity],
           [d.meta JSONData],
           [NSNumber numberWithBool:d.deleted],
           [NSNumber numberWithBool:!toUp],
