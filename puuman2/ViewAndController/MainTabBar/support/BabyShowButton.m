@@ -71,7 +71,6 @@
     portraitView.layer.masksToBounds = YES;
     portraitView.layer.shadowRadius =0.1;
     [self addSubview:portraitView];
-    [self loadAnimateView];
     
     babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(136, 0, 80, 80)];
     [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
@@ -96,6 +95,7 @@
     animataView = [[CoinButtonAnimation alloc] initWithPrimaryView:portraitView andSecondaryView:profileView inFrame:portraitView.frame];
     [animataView setSpinTime:2.0];
     [self addSubview:animataView];
+    [animataView showAnimationCoinView];
 }
 
 
@@ -104,8 +104,9 @@
     float addCoins = [[notification object] floatValue];
     
     if (addCoins > 0) {
+        [self loadAnimateView];
      
-      [animataView showAnimationCoinView];
+     
     }
 }
 

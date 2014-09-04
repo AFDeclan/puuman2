@@ -163,7 +163,6 @@
     [coinLabel setFont:PMFont3];
     [self.contentView addSubview:coinLabel];
     
-   
     
 }
 
@@ -234,8 +233,10 @@
                 [coinBtn unSelected];
                 if (_diary.UIdentity == Father){
                     coinLabel.text = @"赏给爸爸!";
-                    [coinLabel setTextColor:PMColor6];
+                       [coinLabel setTextColor:PMColor6];
+                 
                 } else {
+                   
                     coinLabel.text = @"赏给妈妈!";
                     [coinLabel setTextColor:RGBColor(239, 128, 123)];
                 }
@@ -246,11 +247,11 @@
             coinLabel.text = @"";
             if ([_diary rewarded]) {
                 if (_diary.UIdentity == Father) {
-                    coinLabel.text = @"妈妈赏了你";
+                    coinLabel.text = @"妈妈已赏";
                     [coinLabel setTextColor:RGBColor(239, 128, 123)];
                 
                 }else {
-                    coinLabel.text = @"爸爸赏了你!";
+                    coinLabel.text = @"爸爸已赏!";
                     [coinLabel setTextColor:PMColor6];
                 
                 }
@@ -335,8 +336,7 @@
         _icon_from.image = nil;
         return;
     }
-   // NSString *fromIdentity = [self.diaryInfo valueForKey:kDiaryUIdentity];
-   // NSString *fromIdentity = self.diary.UIdentity;
+
     UserIdentity fromIdentity = self.diary.UIdentity;
     if (!(self.diary.sampleDiary) &&fromIdentity ==[UserInfo sharedUserInfo].identity)
     {
@@ -345,9 +345,6 @@
         [_delBtn setAlpha:0];
     }
     
-    if (!fromIdentity) {
-        fromIdentity = [UserInfo sharedUserInfo].identity;
-    }
     if (fromIdentity==Mother)
     {
         _fromLabel.text = @"来自妈妈";
