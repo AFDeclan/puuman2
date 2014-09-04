@@ -184,17 +184,8 @@
     
         } else if ( index == 0) {
     
-            NSString *cellIdentifier = @"bodyViewCell";
-        
-            BabyInfoBodyViewCell *cell = (BabyInfoBodyViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-        
-            if (!cell) {
-                cell = [[BabyInfoBodyViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            }
-    
-            [cell setBackgroundColor:[UIColor clearColor]];
+            BabyInfoBodyViewCell *cell = [BabyInfoBodyViewCell shareLineChartCell];
             [cell setDelegate:self];
-            [cell refresh];
             return cell;
             
         } else {
@@ -215,17 +206,10 @@
               
               return cell;
         } else {
-            
-            NSString *cellIdentifier = @"vaciViewCell";
-            
-            BabyInfoVaciViewCell *cell = (BabyInfoVaciViewCell *)[columnView dequeueReusableCellWithIdentifier:cellIdentifier];
-            
-            if (!cell) {
-                cell = [[BabyInfoVaciViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            }
-            [cell setBackgroundColor:[UIColor clearColor]];
+ 
+            BabyInfoVaciViewCell *cell = [BabyInfoVaciViewCell shareVaccineCell];
             [cell setDelegate:self];
-            [cell refresh];
+            [cell setBackgroundColor:[UIColor clearColor]];
             return cell;
             
             }
@@ -244,8 +228,7 @@
             if (!cell) {
         
             cell = [[BabyInfoPregnancyViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-          
-        }
+            }
         
             [cell setBackgroundColor:[UIColor clearColor]];
             
@@ -295,6 +278,13 @@
 
     }
 
+    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        if (!isProp && currentNum == 2) {
+            [[BabyInfoVaciViewCell shareVaccineCell] refresh];
+        }
+    }
+    
+
 }
 
 - (void)gotoPreCell
@@ -308,7 +298,12 @@
         [babyInfoColumnView setContentOffset:CGPointMake(currentNum*1024, 0) animated:YES];
         
     }
+    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        [[BabyInfoBodyViewCell shareLineChartCell] refresh];
+    }
+    
 }
+
 
 - (void)backToMianCell
 {

@@ -195,6 +195,9 @@
 
 
 
+
+
+
 - (void)buildParentControl
 {
     SetViewLeftUp(_delBtn,632, 24);

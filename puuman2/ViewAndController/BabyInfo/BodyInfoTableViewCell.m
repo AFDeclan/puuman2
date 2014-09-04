@@ -14,22 +14,21 @@
 #import "UserInfo.h"
 
 @implementation BodyInfoTableViewCell
-
+@synthesize infoIndex = _infoIndex;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
         [self initialization];
-                }
-    
-    
+    }
     return self;
 }
 
 
 - (void)initialization
 {
+    _infoIndex = 0;
     icon = [[UIImageView alloc] initWithFrame:CGRectMake(16, 24, 16, 16)];
     [icon setImage:[UIImage imageNamed:@"icon_time_baby.png"]];
     [self.contentView addSubview:icon];
@@ -89,13 +88,15 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    
 }
 
-- (void)setInfoIndex:(NSInteger)index
+- (void)setInfoIndex:(NSInteger)infoIndex
 {
-    NSDictionary *record = [[BabyData sharedBabyData] recordAtIndex:[[BabyData sharedBabyData] recordCount]-index-1];
+    _infoIndex = infoIndex;
+    NSDictionary *record = [[BabyData sharedBabyData] recordAtIndex:[[BabyData sharedBabyData] recordCount]-infoIndex-1];
     float  record_weight =[[record valueForKey:kBabyData_Weight] floatValue];
-    float record_height =[[record valueForKey:kBabyData_Height] floatValue];
+    float  record_height =[[record valueForKey:kBabyData_Height] floatValue];
     if (record_height == 0) {
         [info_height setAlpha:0];
         [label_height setAlpha:0];
@@ -108,7 +109,7 @@
     if (record_weight == 0) {
         [info_weight setAlpha:0];
         [label_weight setAlpha:0];
-       
+        
     }else
     {
         [info_weight setAlpha:1];
@@ -124,7 +125,7 @@
         int monthNum = [[age objectAtIndex:1] intValue];
         int dayNum = [[age objectAtIndex:1] intValue];
         if (yearNum !=0 ) {
-          str_age = [str_age stringByAppendingFormat:@"%d年",yearNum];
+            str_age = [str_age stringByAppendingFormat:@"%d年",yearNum];
         }
         if (monthNum !=0 ) {
             str_age = [str_age stringByAppendingFormat:@"%d个月",monthNum];
@@ -134,7 +135,9 @@
         }
         info_age.text = str_age;
     }
- 
+    
+
 }
+
 
 @end

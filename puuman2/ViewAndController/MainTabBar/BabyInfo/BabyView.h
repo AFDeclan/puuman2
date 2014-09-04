@@ -14,8 +14,6 @@
 #import "BabyInfoIconViewDelegate.h"
 
 
-
-
 @interface BabyView : UIView <UIColumnViewDataSource,UIColumnViewDelegate,BabyInfoIconViewDelegate>
 {
     UIView *titleInfoView;

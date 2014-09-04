@@ -16,9 +16,20 @@
 #import "ColorsAndFonts.h"
 #import "DiaryFileManager.h"
 
+static BabyInfoBodyViewCell *instance;
+
 @implementation BabyInfoBodyViewCell
 @synthesize delegate = _delegate;
 @synthesize filePath = _filePath;
+
++(BabyInfoBodyViewCell *)shareLineChartCell
+{
+    if (!instance)
+    {
+        instance = [[BabyInfoBodyViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BodyCell"];
+    }
+    return instance;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -32,11 +43,14 @@
         [self initWithRightView];
         if ([MainTabBarController sharedMainViewController].isVertical) {
             [self setVerticalFrame];
+            
         }else{
             [self setHorizontalFrame];
-            
         }
+        changedVH = NO;
+
         [MyNotiCenter addObserver:self selector:@selector(refresh) name:Noti_BabyDataUpdated object:nil];
+       
     }
     return self;
 }
@@ -48,6 +62,7 @@
 
 - (void)initialization
 {
+    recordIndex = -1;
      lineView = [[UIView alloc] init];
     [lineView setBackgroundColor:PMColor6];
     [self.contentView addSubview:lineView];
@@ -84,6 +99,10 @@
     [emptyView setBackgroundColor:[UIColor clearColor]];
     [rightView addSubview:emptyView];
     
+    flagRightImage = [[UIImageView alloc] init];
+    [flagRightImage setImage:[UIImage imageNamed:@"babyInfo_Body_flagRight.png"]];
+    [rightView addSubview:flagRightImage];
+    
     rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBtn setBackgroundColor:PMColor7];
     [rightBtn setImage:[UIImage imageNamed:@"back_right_babyInfo.png"] forState:UIControlStateNormal];
@@ -110,18 +129,9 @@
 
 - (void)initWithLeftView
 {
-    _lineChartView  = [[UITableView alloc] initWithFrame:CGRectMake(90, 140, 544, 408)];
     
-    [_lineChartView setDataSource:self];
-    [_lineChartView setDelegate:self];
-    [leftView addSubview:_lineChartView];
-    [_lineChartView setBackgroundColor:[UIColor clearColor]];
-    [_lineChartView setSeparatorColor:[UIColor clearColor]];
-    [_lineChartView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [_lineChartView setShowsHorizontalScrollIndicator:NO];
-    [_lineChartView setShowsVerticalScrollIndicator:NO];
-    [_lineChartView setScrollEnabled:NO];
-    
+    lineChartView = [[BabyLineChartView alloc] initWithFrame:CGRectMake(90, 140, 544, 408)];
+    [leftView addSubview:lineChartView];
     
     addDataBtn = [[AFColorButton alloc] init];
     [addDataBtn.title setText:@"+ 添加"];
@@ -153,6 +163,11 @@
     infoView = [[UIView alloc] initWithFrame:CGRectMake(32, 606, 640, 136)];
     [infoView setBackgroundColor:PMColor6];
     [leftView addSubview:infoView];
+    flagImage =[[UIImageView alloc] init];
+    [flagImage setImage:[UIImage imageNamed:@"babyInfo_Body_flagDown.png"]];
+    [leftView addSubview:flagImage];
+    
+    
     infoTableView = [[UIColumnView alloc] initWithFrame:CGRectMake(0, 0, 640, 136)];
     [infoTableView setBackgroundColor:PMColor6];
     [infoTableView setColumnViewDelegate:self];
@@ -160,7 +175,6 @@
     [infoTableView setPagingEnabled:NO];
     [infoTableView setDelegate:self];
     [infoView addSubview:infoTableView];
-    
     
     
     leftImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 138, 136)];
@@ -205,37 +219,44 @@
 
 - (void)refresh
 {
+    recordIndex = -1;
+
     if ([[BabyData sharedBabyData] recordCount] > 0) {
         [emptyView setAlpha:0];
     }
-    if([[BabyData sharedBabyData]recordCount]>5){
-        [dataTable setContentOffset:CGPointMake(0, 60)];
-        [self performSelectorOnMainThread: @selector(animateWithBodyView) withObject: nil waitUntilDone: 0];
-        
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        [self setVerticalFrame];
+        changedVH = NO;
+
+        [infoTableView setContentOffset:CGPointMake(0, 0)];
+
+    }else{
+        [self setHorizontalFrame];
+        changedVH = NO;
+
+        [dataTable setContentOffset:CGPointMake(0, 0)];
     }
-    
-    [dataTable reloadData];
-    [_lineChartView reloadData];
+
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
+
 }
--(void)animateWithBodyView{
-    [UIView animateWithDuration:0.5 animations:^{
-        [dataTable setContentOffset:CGPointMake(0,0)];
-    } completion:^(BOOL finished){
-    }];
-    
-    
-}
+
 
 -(void)setVerticalFrame
 {
+    changedVH = YES;
     //[super setVerticalFrame];
     [rightBtn setBackgroundColor:PMColor6];
     [lineView setFrame:CGRectMake(0, 96, 768, 2)];
     [rightView setFrame:CGRectMake(704, 98, 64, 926)];
     [leftView setFrame:CGRectMake(0, 98, 704, 926)];
+    [flagImage setAlpha:1];
+    [flagImage setFrame:CGRectMake(350, 606, 15, 10)];
     [showAndHiddenBtn setAlpha:1];
     [dataTable setFrame:CGRectMake(0, 0, 224, 926)];
-    [_lineChartView setFrame:CGRectMake(90, 140, 544, 408)];
     [emptyView setFrame:CGRectMake(64, 192, 88, 112)];
     [rightBtn setFrame:CGRectMake(0, 0, 64, 926)];
     SetViewLeftUp(shareBtn, 0, 800);
@@ -243,17 +264,25 @@
     SetViewLeftUp(backBtn, 320, 992);
     [infoView setAlpha:1];
     [dataTable setAlpha:0];
+    if (recordIndex != -1) {
+        [infoTableView setContentOffset:CGPointMake(recordIndex*224 , 0)];
+
+    }
+
 }
 
 -(void)setHorizontalFrame
 {
+    changedVH = YES;
     //[super setHorizontalFrame];
+    [rightBtn setBackgroundColor:PMColor7];
     [lineView setFrame:CGRectMake(0, 96, 1024, 2)];
     [rightView setFrame:CGRectMake(736,98,288, 670)];
     [leftView setFrame:CGRectMake(0, 98, 735, 670)];
+    [flagImage setAlpha:0];
+    [flagRightImage setFrame:CGRectMake(0, 335, 10, 15)];
     [showAndHiddenBtn setAlpha:0];
     [dataTable setFrame:CGRectMake(0, 0, 224,670)];
-    [_lineChartView setFrame:CGRectMake(90, 140, 544, 408)];
     [emptyView setFrame:CGRectMake(64, 192, 88, 112)];
     [noti_label setFrame:CGRectMake(280,520,544,18)];
     [rightBtn setFrame:CGRectMake(224, 0, 64, 670)];
@@ -262,69 +291,88 @@
     SetViewLeftUp(backBtn, 448, 736);
     [dataTable setAlpha:1];
     [infoView setAlpha:0];
+    if (recordIndex != -1) {
+        [dataTable setContentOffset:CGPointMake(0, recordIndex*136 )];
+
+    }
 
 }
 
+
+
 - (void)backBtnClick
 {
+    [MyNotiCenter removeObserver:self];
+
     PostNotification(Noti_HiddenBabyView, nil);
+    changedVH = NO;
 
 }
 
 - (void)rightBtnClick
 {
+    [MyNotiCenter removeObserver:self];
 
     [_delegate backToMianCell];
+    changedVH = NO;
+
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == dataTable) {
-        // Return the number of rows in the section.
-        return [[BabyData sharedBabyData] recordCount];
-    }else{
-        return 1;
-    }
-    
-    
+    // Return the number of rows in the section.
+    return [[BabyData sharedBabyData] recordCount]+ 2;
+ 
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == dataTable) {
-        static NSString *identity = @"bodyInfoCell";
-        BodyInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identity];
-        if (!cell)
-        {
-            cell = [[BodyInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
-        }
-        [cell setBackgroundColor:[UIColor clearColor]];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [cell setInfoIndex:indexPath.row];
-        return cell;
-    }else{
-        NSString *babyInfoCellIdentifier = @"LineChartCell";
-        LineChartCell *cell = [tableView dequeueReusableCellWithIdentifier:babyInfoCellIdentifier];
+    if ([indexPath row] == 0) {
+        NSString * cellIdentifier = @"HeaderCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil)
         {
-            cell = [[LineChartCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:babyInfoCellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             
         }
-        [cell setViewIsHeight:YES];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [cell.contentView setBackgroundColor:[UIColor whiteColor]];
+        [cell setBackgroundColor:[UIColor clearColor]];
+        
+        return cell;
+    }else if([indexPath row] == [[BabyData sharedBabyData] recordCount] + 1){
+        NSString * cellIdentifier = @"FooterCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            
+        }
+        [cell setBackgroundColor:[UIColor clearColor]];
+        
         return cell;
     }
+
+    
+    static NSString *identity = @"bodyInfoCell";
+    BodyInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identity];
+    if (!cell)
+    {
+        cell = [[BodyInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identity];
+    }
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setInfoIndex:indexPath.row -1];
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == dataTable) {
-        return 136;
-    }else{
-        return 408;
+    if ([indexPath row] == 0) {
+        return 268;
+    }else if([indexPath row] == [[BabyData sharedBabyData] recordCount] + 1){
+        return 268;
     }
+    return 136;
 }
 
 - (void)fold
@@ -418,11 +466,54 @@
     
 }
 
-- (void)scrollViewDidEndDecelerating:(UIColumnView *)scrollView
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    CGPoint pos = scrollView.contentOffset;
-    NSInteger index = pos.x /224;
-    pos.x = index*224;
-    [scrollView setContentOffset:pos animated:YES];
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        CGPoint pos = scrollView.contentOffset;
+        NSInteger index = pos.x /224;
+        pos.x = index*224;
+        [scrollView setContentOffset:pos animated:YES];
+    }else{
+        CGPoint pos = scrollView.contentOffset;
+        NSInteger index = pos.y /136;
+        pos.y = index*136 ;
+        [scrollView setContentOffset:pos animated:YES];
+    }
+
 }
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    changedVH = NO;
+
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (!changedVH) {
+        CGPoint pos = scrollView.contentOffset;
+        if ([MainTabBarController sharedMainViewController].isVertical) {
+            NSInteger num = (pos.x + 208)/224;
+            if (num != recordIndex) {
+                if ( num < [[BabyData sharedBabyData] recordCount] && num >=0) {
+                    PostNotification(Noti_ShowBodyRecord, [NSNumber numberWithInt:num ] );
+                    recordIndex = num;
+                }
+            }
+            
+        }else{
+            NSInteger num = pos.y/136 ;
+            if (num != recordIndex) {
+                if ( num < [[BabyData sharedBabyData] recordCount] && num >=0) {
+                    PostNotification(Noti_ShowBodyRecord, [NSNumber numberWithInt:num ] );
+                    recordIndex = num;
+                }
+            }
+        }
+        
+    }
+
+}
+
+
 @end

@@ -9,13 +9,22 @@
 #import "BabyInfoVaciViewCell.h"
 #import "ColorsAndFonts.h"
 #import "BabyData.h"
-#import "VaccineInfoTableViewCell.h"
 #import "MainTabBarController.h"
 #import "NSDate+Compute.h"
 #import "DateFormatter.h"
 
+static BabyInfoVaciViewCell *instance;
+
 @implementation BabyInfoVaciViewCell
 @synthesize delegate = _delegate;
++(BabyInfoVaciViewCell *)shareVaccineCell
+{
+    if (!instance)
+    {
+        instance = [[BabyInfoVaciViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"VaccineCell"];
+    }
+    return instance;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -26,13 +35,14 @@
         [self initWithLeftView];
         [self initWithRightView];
         if ([[MainTabBarController sharedMainViewController] isVertical]) {
-        
             [self setVerticalFrame];
-        
         }else {
-        
             [self setHorizontalFrame];
         }
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(setVerticalFrame) name:NOTIFICATION_Vertical object:nil];
     }
     return self;
 }
@@ -97,19 +107,12 @@
     [emptyView addSubview:title];
     [emptyView setAlpha:0];
     selectVaccine = -1;
-    right = NO;
-    selectedDateBtn  = [[UIButton alloc] init];
-    [selectedDateBtn addTarget:self action:@selector(selectedDate)  forControlEvents:UIControlEventTouchUpInside];
-    [selectedDateBtn setBackgroundColor:[UIColor clearColor]];
-    [leftView addSubview:selectedDateBtn];
+    chooseVaccine = 0;
     
     statusText = [[CustomTextField alloc] init];
     [statusText setEnabled:NO];
     [statusText setPlaceholder:@"建议在6月龄接种"];
-    [selectedDateBtn addSubview:statusText];
-    
-   
-    
+    [leftView addSubview:statusText];
     
     nameLabel = [[AnimateShowLabel alloc] init];
     [nameLabel setBackgroundColor:[UIColor clearColor]];
@@ -123,37 +126,18 @@
     [detail setTextColor:PMColor2];
     [leftView addSubview:detail];
     
+    modifyBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [modifyBtn setBackgroundColor:[UIColor clearColor]];
+    [modifyBtn setTitle:@"修改" forState:UIControlStateNormal];
+    [modifyBtn setTitleColor:PMColor6 forState:UIControlStateNormal];
+    [modifyBtn.titleLabel setFont:PMFont2];
+    [modifyBtn addTarget:self action:@selector(modify) forControlEvents:UIControlEventTouchUpInside];
+    [leftView addSubview:modifyBtn];
     
-    notBtn = [[AFColorButton alloc] init];
-    [notBtn.title setText:@"未接种"];
-    [notBtn setColorType:kColorButtonBlueColor];
-    [notBtn setDirectionType:kColorButtonLeftUp];
-    [notBtn resetColorButton];
-    [notBtn addTarget:self action:@selector(noBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
-    [leftView addSubview:notBtn];
-    
-    alreadyBtn = [[AFColorButton alloc] init];
-    [alreadyBtn.title setText:@"已接种"];
-    [alreadyBtn setColorType:kColorButtonBlueColor];
-    [alreadyBtn setDirectionType:kColorButtonLeftDown];
-    [alreadyBtn resetColorButton];
-    [alreadyBtn addTarget:self action:@selector(alreadyBtnPressed)  forControlEvents:UIControlEventTouchUpInside];
-    [leftView addSubview:alreadyBtn];
-
-    
-    
-//    backBtn = [[AFTextImgButton alloc] initWithFrame:CGRectMake(0, 0, 48, 672)];
-//    [backBtn addTarget:self action:@selector(backBtnClick)  forControlEvents:UIControlEventTouchUpInside];
-//    [backBtn setBackgroundColor:PMColor6];
-//    //[backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_right.png"] andButtonType:kButtonTypeSix];
-//    [backBtn setImage:[UIImage imageNamed:@"back_left_babyInfo.png"] forState:UIControlStateNormal];
-//    //[backBtn setTransform:CGAffineTransformMakeRotation(M_PI)];
-   
-    
-    maskView = [[UIView alloc] init];
-    [maskView setBackgroundColor:[UIColor clearColor]];
-    [maskView setAlpha:0];
-    [self addSubview:maskView];
+    animateFlag = [[UIImageView alloc] initWithFrame:CGRectMake(100, 200, 84, 84)];
+    [animateFlag setImage:[UIImage imageNamed:@"vaccine_icon.png"]];
+    [leftView addSubview:animateFlag];
+    [animateFlag setAlpha:0];
 }
 
 - (void)selectedDate
@@ -185,17 +169,21 @@
    
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [[BabyData sharedBabyData] vaccineCount];
+
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return [[BabyData sharedBabyData] vaccineCount];
-    
-    
+
+    return 1;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *identity = @"bodyInfoCell";
     VaccineInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identity];
     if (!cell)
@@ -204,21 +192,83 @@
     }
     [cell setBackgroundColor:[UIColor clearColor]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell setVaccineIndex:indexPath.row];
+    [cell setVacIndex:indexPath.section];
+    [cell setDelegate:self];
     return cell;
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 96;
+    if ([indexPath section] != selectVaccine) {
+        return 96;
+ 
+    }else{
+        return 192+96;
+    }
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectVaccine = [indexPath row];
-    [self selectAtIndex:[indexPath row]];
+}
+
+- (void)saveBtnClick:(NSInteger)index
+{
+    selectVaccine = -1;
+    [self showVaccineAnimate];
+    [dataTable reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)cancelBtnClick:(NSInteger)index
+{
+    selectVaccine = -1;
+    [dataTable reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
+- (void)selectedBtnClick:(NSInteger)index withCanUnFold:(BOOL)unFold
+{
+    if (unFold) {
+        if (selectVaccine ==  index) {
+            selectVaccine = - 1;
+
+        }else{
+            selectVaccine =  index;
+        }
+        [dataTable reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+            
+    }else{
+        if (selectVaccine != -1) {
+            NSInteger num = selectVaccine;
+            selectVaccine = -1;
+
+        [dataTable reloadSections:[NSIndexSet indexSetWithIndex:num] withRowAnimation:UITableViewRowAnimationFade];
+        }
+
+    }
+    [self selectAtIndex:index];
+    
+    if ([MainTabBarController sharedMainViewController].isVertical) {
+        if (96*index < dataTable.frame.size.height/2) {
+            [dataTable setContentOffset:CGPointMake(0, 0) animated:YES];
+        }else if (96*index >dataTable.contentSize.height - dataTable.frame.size.height/2 - 96){
+            [dataTable setContentOffset:CGPointMake(0, dataTable.contentSize.height - dataTable.frame.size.height) animated:YES];
+        }else{
+            [dataTable setContentOffset:CGPointMake(0, 96*index - dataTable.frame.size.height/2 + 96) animated:YES];
+            
+        }
+    }else{
+    
+        if (96*index < dataTable.frame.size.height/2) {
+            [dataTable setContentOffset:CGPointMake(0, 0) animated:YES];
+        }else if (96*index >dataTable.contentSize.height - dataTable.frame.size.height/2 - 96){
+            [dataTable setContentOffset:CGPointMake(0, dataTable.contentSize.height - dataTable.frame.size.height) animated:YES];
+        }else{
+            [dataTable setContentOffset:CGPointMake(0, 96*index - dataTable.frame.size.height/2 + 96) animated:YES];
+            
+        }
+        
+    }
     
 }
 
@@ -230,13 +280,17 @@
     [rightView setFrame:CGRectMake(383, 96, 385, 928)];
     [dataTable setFrame:CGRectMake(0, 0, 385, 928)];
     [leftBtn setFrame:CGRectMake(0, 96, 48, 928)];
-    [selectedDateBtn setFrame:CGRectMake(40, 82, 255, 48)];
-    [nameLabel setFrame:CGRectMake(40, 146, 255, 64)];
-    [detail setFrame:CGRectMake(40, 190, 255, 400)];
-    [statusText setFrame:CGRectMake(0, 0, 255, 48)];
-    SetViewLeftUp(notBtn, 224, 814);
-    SetViewLeftUp(alreadyBtn, 223, 854);
-  
+    [nameLabel setFrame:CGRectMake(40, 194, 255, 64)];
+    [detail setFrame:CGRectMake(40, 238, 255, 500)];
+    [statusText setFrame:CGRectMake(40, 130, 255, 48)];
+    SetViewLeftUp(modifyBtn, 40+255-64, 130);
+
+    [self selectAtIndex:chooseVaccine];
+
+    [self performSelector:@selector(scrollDataTable) withObject:nil afterDelay:0];
+    if (dateViewShowed) {
+        [self.popoverController presentPopoverFromRect:modifyBtn.frame inView:leftView permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
+    }
     
 }
 
@@ -249,75 +303,71 @@
    
     [emptyView setFrame:CGRectMake(192, 292, 136, 144)];
     [leftBtn setFrame:CGRectMake(0, 96, 48, 672)];
-    [notBtn setFrame:CGRectMake(432, 550,112, 40)];
-    [alreadyBtn setFrame:CGRectMake(432, 590, 112, 40)];
-    [selectedDateBtn setFrame:CGRectMake(72, 126, 336, 48)];
     [nameLabel setFrame:CGRectMake(72, 190, 336, 64)];
     [detail setFrame:CGRectMake(72, 236, 336, 288)];
-    [statusText setFrame:CGRectMake(0, 0, 336, 48)];
+    [statusText setFrame:CGRectMake(72, 126, 336, 48)];
     SetViewLeftUp(backUpBtn, 448, 736);
+    SetViewLeftUp(modifyBtn, 72+336-64, 126);
+
+    [self selectAtIndex:chooseVaccine];
+    [self performSelector:@selector(scrollDataTable) withObject:nil afterDelay:0];
+    if (dateViewShowed) {
+        [self.popoverController presentPopoverFromRect:modifyBtn.frame inView:leftView permittedArrowDirections:UIPopoverArrowDirectionUp animated:NO];
+    }
+    
+    
 }
 
-////-(void)setVerticalFrame
-////{
-////    //[super setVerticalFrame];
-//////    [leftView setFrame:CGRectMake(0, 0, 608, 832)];
-//////    [rightView setFrame:CGRectMake(608, 0, 608, 832)];
-////    [dataTable setFrame:CGRectMake(88, 0, 432, 832)];
-////    SetViewLeftUp(selectedDateBtn, 144, 48);
-////    SetViewLeftUp(nameLabel, 144, 96);
-////    SetViewLeftUp(alreadyBtn, 486, 736);
-////    SetViewLeftUp(notBtn, 486, 776);
-////    [detail setFrame:CGRectMake(144, 178, 336, 638)];
-////    [maskView setFrame:CGRectMake(0, 0, 608, 832)];
-////    if (selectVaccine != -1) {
-////        [self selectAtIndex:selectVaccine];
-////    }
-////    if (_calendar) {
-////        SetViewLeftUp(_calendar, 162, 96);;
-////    }
-////    [emptyView setAlpha:0];
-////}
-//
-////-(void)setHorizontalFrame
-////{
-//////    [super setHorizontalFrame];
-//////    [leftView setFrame:CGRectMake(0, 0, 432, 576)];
-////    [dataTable setFrame:CGRectMake(0, 0, 432, 576)];
-////   // [rightView setFrame:CGRectMake(432, 0, 432, 576)];
-////    SetViewLeftUp(selectedDateBtn, 48, 48);
-////    SetViewLeftUp(nameLabel, 48, 96);
-////    SetViewLeftUp(alreadyBtn, 320, 480);
-////    SetViewLeftUp(notBtn, 320, 520);
-////    [detail setFrame:CGRectMake(48, 178, 336, 288)];
-////    //[backBtn setTitle:@"" andImg:[UIImage imageNamed:@"tri_blue_left.png"] andButtonType:kButtonTypeSix];
-////    [backBtn setEnabled:NO];
-////    SetViewLeftUp(backBtn, 0, 200);
-////    //    SetViewLeftUp(leftView, 0, -60);
-////    //    [self performSelectorOnMainThread:@selector(animateWithVaccineView) withObject:nil waitUntilDone:0];
-////    //[self setContentOffset:CGPointMake(0, 0)];
-////    [maskView setFrame:CGRectMake(0, 0, 864, 576)];
-////    if (selectVaccine == -1) {
-////        //[rightView setAlpha:0];
-////        [emptyView setAlpha:1];
-////        SetViewLeftUp(backBtn, 0, -156);
-////    }else{
-////        [emptyView setAlpha:0];
-////        [self selectAtIndex:selectVaccine];
-////    }
-////    if (_calendar) {
-////        SetViewLeftUp(_calendar, 66, 96);;
-////    }
-////    [emptyView setFrame:CGRectMake(592, 192, 136, 144)];
-////    
-////}
-////
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    dateViewShowed = NO;
+
+}
+
+- (void)scrollDataTable
+{
+    if (96*chooseVaccine < dataTable.frame.size.height/2) {
+        [dataTable setContentOffset:CGPointMake(0, 0) animated:YES];
+    }else if (96*chooseVaccine >dataTable.contentSize.height - dataTable.frame.size.height/2 - 96){
+        [dataTable setContentOffset:CGPointMake(0, dataTable.contentSize.height - dataTable.frame.size.height) animated:YES];
+    }else{
+        [dataTable setContentOffset:CGPointMake(0, 96*chooseVaccine - dataTable.frame.size.height/2 + 96) animated:YES];
+        
+    }
+}
 
 - (void)refresh
 {
+    dateViewShowed = NO;
+    chooseVaccine = 0;
+    selectVaccine = -1;
     [dataTable reloadData];
-    
     [self performSelectorOnMainThread:@selector(animateWithVaccineView) withObject:nil waitUntilDone:0];
+    
+}
+
+- (void)showVaccineAnimate
+{
+    CATransition *animation = [CATransition animation];
+    [animation setDelegate:self];
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:0.2] forKey:kCATransactionAnimationDuration];
+    // scale it down
+    CABasicAnimation *shrinkAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    shrinkAnimation.delegate = self;
+    shrinkAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    
+    shrinkAnimation.fromValue = [NSNumber numberWithFloat:5.0];
+    // fade it out
+    CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+    fadeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [animateFlag setAlpha:1];
+    [[animateFlag layer] addAnimation:shrinkAnimation forKey:@"shrinkAnimation"];
+    [[animateFlag layer] addAnimation:fadeAnimation forKey:@"fadeAnimation"];
+    
+    [CATransaction commit];
     
 }
 
@@ -339,26 +389,23 @@
 
 - (void)selectAtIndex:(NSInteger)index
 {
+    
+    chooseVaccine = index;
     [leftView setAlpha:1];
     [emptyView setAlpha:0];
     if ([MainTabBarController sharedMainViewController].isVertical) {
-        [maskView setAlpha:1];
-        [UIView animateWithDuration:0.5 animations:^{
-           //  [self setContentOffset:CGPointMake(608, 0)];
-        } completion:^(BOOL finished) {
-            [maskView setAlpha:0];
-        }];
+     
         SetViewLeftUp(backBtn, 0, 336);
-        
         [backBtn setEnabled:YES];
+       
     }else{
         
         [UIView animateWithDuration:0.5 animations:^{
             SetViewLeftUp(backBtn, 0, -dataTable.contentOffset.y-30 +index *96);
         }];
-        
+    
+
     }
-    date = nil;
     NSDictionary *vacInfo = [[BabyData sharedBabyData] vaccineAtIndex:index];
     NSDate *doneDate = [vacInfo valueForKey:kVaccine_DoneTime];
     NSString *title = [vacInfo valueForKey:kVaccine_Name];
@@ -369,12 +416,19 @@
     [detail setText:[vacInfo valueForKey:KVaccine_Info]];
     
     if (doneDate) {
-        
-        [self already];
-        right = YES;
-        date = doneDate;
+        [modifyBtn setAlpha:1];
+        NSInteger month = 0;
+        NSArray *age = [doneDate ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+        if ([age count] == 3)
+        {
+            month = [[age objectAtIndex:0] integerValue] * 12 + [[age objectAtIndex:1] integerValue];
+        }
+        [statusText setText:[NSString stringWithFormat:@"已经在%d月龄接种",month]];
+        [animateFlag setAlpha:1];
     }
     else {
+        [animateFlag setAlpha:0];
+
         NSArray *age = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
         NSInteger month = 0;
         if ([age count] == 3)
@@ -391,22 +445,19 @@
         suitMonth = [[vacInfo valueForKey:kVaccine_SuitMonth] integerValue];
         if (month >= startMonth && month < endMonth)
         {
-            [self noVaccine];
+            [modifyBtn setAlpha:0];
             [statusText setText:[NSString stringWithFormat:@"建议在%d月龄接种",suitMonth]];
-            right  = NO;
             
         }
         else if(month<startMonth)
         {
-            [self noVaccine];
-            [statusText setText:[NSString stringWithFormat:@"已经在%d月龄接种",suitMonth]];
-            right = YES;
-            
+            [modifyBtn setAlpha:0];
+            [statusText setText:[NSString stringWithFormat:@"建议在%d月龄接种",suitMonth]];
             
         }else{
-            [self noVaccine];
-            [statusText setText:[NSString stringWithFormat:@"建议在%d月龄接种",suitMonth]];
-            right  = NO;
+            [modifyBtn setAlpha:0];
+
+            [statusText setText:[NSString stringWithFormat:@"已经在%d月龄接种",suitMonth]];
         }
         
     }
@@ -431,91 +482,41 @@
     }
 }
 
-- (void)already
+- (void)modify
 {
-    [notBtn setEnabled:YES];
-    [alreadyBtn setEnabled:NO];
-    [alreadyBtn selected];
-    [notBtn unSelected];
-    
-}
-
-- (void)noVaccine
-{
-    [notBtn setEnabled:NO];
-    [alreadyBtn setEnabled:YES];
-    [alreadyBtn unSelected];
-    [notBtn selected];
-    
-}
-
-- (void)refreshStatus
-{
-    
-    NSInteger month = 0;
-    if (date) {
-        NSArray *age = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
-        if ([age count] == 3)
-        {
-            month = [[age objectAtIndex:0] integerValue] * 12 + [[age objectAtIndex:1] integerValue];
-        }
-        if (right) {
-            [statusText setText:[NSString stringWithFormat:@"已经在%d月龄接种",month]];
-        }else{
-            [statusText setText:[NSString stringWithFormat:@"建议在%d月龄接种",month]];
-        }
-    }else{
-        month  = suitMonth;
-        if (right) {
-            [statusText setText:[NSString stringWithFormat:@"已经在%d月龄接种",month]];
-        }else{
-            [statusText setText:[NSString stringWithFormat:@"已经在%d月龄接种",month]];
-        }
+    if (self.popoverController) {
+        [self.popoverController dismissPopoverAnimated:YES];
+        self.popoverController = nil;
     }
-    
-    
+    self.contentViewContorller = [[VaciPopoverContentViewController alloc] init];
+    [self.contentViewContorller setVacIndex:chooseVaccine];
+    [self.contentViewContorller setVaccineDelegate:self];
+    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self.contentViewContorller];
+    [self.popoverController setDelegate:self];
+    [self.popoverController presentPopoverFromRect:modifyBtn.frame inView:leftView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    dateViewShowed = YES;
+
 }
 
-- (void)calendar:(AddInfoCalendar *)calendar selectedButton:(DateButton *)dateBtn
+- (void)saveVacBtnClick:(NSInteger)index
 {
-    if ([calendar dateIsAvailable:dateBtn.date])
-    {
-        dateBtn.backgroundColor = calendar.selectedDateBackgroundColor;
-        date = dateBtn.date;
-        [self refreshStatus];
-        [_calendar removeFromSuperview];
-        [[BabyData sharedBabyData] updateVaccineAtIndex:selectVaccine withDoneTime:date];
-        [dataTable reloadData];
-        [self selectAtIndex:selectVaccine];
-
+    selectVaccine = -1;
+    [dataTable reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationFade];
+    [self selectAtIndex:chooseVaccine];
+    if (self.popoverController) {
+        [self.popoverController dismissPopoverAnimated:YES];
+        self.popoverController = nil;
     }
     
 }
 
-
-
-- (void)alreadyBtnPressed
+- (void)cancelVacBtnClick
 {
-    right  = YES;
-    [self already];
-    [self refreshStatus];
-    [self selectedDate];
-    
-}
-
-- (void)noBtnPressed
-{
-    date = nil;
-    right  = NO;
-    [self noVaccine];
-    [self refreshStatus];
-    if (_calendar) {
-        [_calendar removeFromSuperview];
+    if (self.popoverController) {
+        [self.popoverController dismissPopoverAnimated:YES];
+        self.popoverController = nil;
     }
-    [[BabyData sharedBabyData] updateVaccineAtIndex:selectVaccine withDoneTime:date];
-    [self performSelector:@selector(refresh) withObject:nil afterDelay:0];
 }
-
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

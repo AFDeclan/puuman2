@@ -73,6 +73,7 @@
 {
     if ([[[Forum sharedInstance] myReplies] count] == 0) {
         [_refreshHeader beginRefreshing];
+        
     }else{
         [myTopicTable reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -165,9 +166,11 @@
     {
         [_refreshHeader endRefreshing];
         [status removeAllObjects];
-        [myTopicTable reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+       [myTopicTable reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+      
 
     }else{
+        [myTopicTable reloadData];
         [myTopicTable reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
     

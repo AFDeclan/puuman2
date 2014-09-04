@@ -35,10 +35,13 @@
     [title_First setTextColor:color];
     [title_First setText:title];
     [self addSubview:title_First];
+    
+    [title_Second setAlpha:0];
     if (titleSize.width < self.frame.size.width && automatic) {
         canMove = NO;
     }else{
         canMove = YES;
+        [title_Second setAlpha:1];
         [title_Second setFrame:CGRectMake(titleSize.width +88, 0, titleSize.width, self.frame.size.height)];
         [title_Second setFont:font];
         [title_Second setText:title];
@@ -116,11 +119,9 @@
 
 - (void)animateStop
 {
-    if (canMove) {
-        if (animationTimer) {
-            [animationTimer invalidate];
-            animationTimer = nil;
-        }
+    if (animationTimer) {
+        [animationTimer invalidate];
+        animationTimer = nil;
     }
   
 }
