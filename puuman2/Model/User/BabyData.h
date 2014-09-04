@@ -1,6 +1,6 @@
 //
 //  BabyData.h
-//  puman
+//  puuman model
 //
 //  Created by 陈晔 on 13-10-18.
 //  Copyright (c) 2013年 创始人团队. All rights reserved.
@@ -44,6 +44,8 @@
 @property (assign, nonatomic, readonly) float lowestHeightRecord;
 @property (assign, nonatomic, readonly) float highestWeightRecord;
 @property (assign, nonatomic, readonly) float lowestWeightRecord;
+//推荐接种而未接种的疫苗数。
+@property (assign, nonatomic, readonly) NSInteger vaccineCntNotInjured;
 
 //operations
 - (void)reloadData;
@@ -58,13 +60,13 @@
 - (NSDictionary *)recordAtIndex:(NSUInteger)index; //获取指定记录
 - (float)selectHeightWithDate:(NSDate *)date;
 - (float)selectWeightWithDate:(NSDate *)date;
-    /*字典结构：
-     key:               value:
-     kBabyData_ID       (NSInteger)对应数据库中的ID
-     kBabyData_Date     (NSDate)记录的日期
-     kBabyData_Height   (CGFloat)身高
-     kBabyData_Weight   (CGFLoat)体重
-     */
+/*字典结构：
+ key:               value:
+ kBabyData_ID       (NSInteger)对应数据库中的ID
+ kBabyData_Date     (NSDate)记录的日期
+ kBabyData_Height   (CGFloat)身高
+ kBabyData_Weight   (CGFLoat)体重
+ */
 
 - (NSUInteger)vaccineCount;
 - (NSDictionary *)vaccineAtIndex:(NSUInteger)index;
