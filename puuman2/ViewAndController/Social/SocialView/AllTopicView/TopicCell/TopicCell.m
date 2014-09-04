@@ -189,7 +189,8 @@
     }
     if (_reply.TID == [[Forum sharedInstance] onTopic].TID){
        
-        [likeBtn.title setText:[NSString stringWithFormat:@"%d",reply.RCommentCnt]];
+        [likeBtn.title setText:[NSString stringWithFormat:@"%d",reply.RVoteCnt]];
+        [replayBtn.title setText:[NSString stringWithFormat:@"%d",reply.RCommentCnt]];
 
 
         if (_reply.voted) {
@@ -307,6 +308,8 @@
         [likeBtn setIconImg:[UIImage imageNamed:@"btn_like2_topic.png"]];
 
     }
+    [likeBtn.title setText:[NSString stringWithFormat:@"%d",reply.RVoteCnt]];
+
     [likeBtn adjustLayout];
    
     

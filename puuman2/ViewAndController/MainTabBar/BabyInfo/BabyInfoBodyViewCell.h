@@ -37,6 +37,9 @@
     BabyLineChartView *lineChartView;
     NSInteger recordIndex;
     BOOL changedVH;
+    
+    UIImageView *flagImgH;
+    UIImageView *flagImgV;
 }
 
 @property (nonatomic,assign) id<BabyInfoIconViewDelegate>delegate;

@@ -120,7 +120,12 @@ static BabyInfoBodyViewCell *instance;
         [emptyView setAlpha:0];
     }
    
-    
+    flagImgH = [[UIImageView alloc] init];
+    [flagImgH setImage:[UIImage imageNamed:@"babyInfo_Body_flagRight.png"]];
+    [rightView addSubview:flagImgH];
+    [flagImgH setFrame:CGRectMake(0, 335, 10, 15)];
+    [flagImgH setAlpha:0];
+
 }
 
 - (void)initWithLeftView
@@ -176,6 +181,11 @@ static BabyInfoBodyViewCell *instance;
     [rightImgView setImage:[UIImage imageNamed:@"right_body_img.png"]];
     [infoView addSubview:rightImgView];
     
+    flagImgV =[[UIImageView alloc] init];
+    [flagImgV setImage:[UIImage imageNamed:@"babyInfo_Body_flagDown.png"]];
+    [flagImgV setFrame:CGRectMake(350, 606, 15, 10)];
+    [leftView addSubview:flagImgV];
+    [flagImgV setAlpha:0];
 }
 
 - (void)addData
@@ -240,6 +250,7 @@ static BabyInfoBodyViewCell *instance;
 {
     changedVH = YES;
     //[super setVerticalFrame];
+    [rightBtn setBackgroundColor:PMColor6];
     [lineView setFrame:CGRectMake(0, 96, 768, 2)];
     [rightView setFrame:CGRectMake(704, 98, 64, 926)];
     [leftView setFrame:CGRectMake(0, 98, 704, 926)];
@@ -256,6 +267,8 @@ static BabyInfoBodyViewCell *instance;
         [infoTableView setContentOffset:CGPointMake(recordIndex*224 , 0)];
 
     }
+    [flagImgV setAlpha:1];
+    [flagImgH setAlpha:0];
 
 }
 
@@ -263,6 +276,7 @@ static BabyInfoBodyViewCell *instance;
 {
     changedVH = YES;
     //[super setHorizontalFrame];
+    [rightBtn setBackgroundColor:PMColor7];
     [lineView setFrame:CGRectMake(0, 96, 1024, 2)];
     [rightView setFrame:CGRectMake(736,98,288, 670)];
     [leftView setFrame:CGRectMake(0, 98, 735, 670)];
@@ -280,6 +294,8 @@ static BabyInfoBodyViewCell *instance;
         [dataTable setContentOffset:CGPointMake(0, recordIndex*136 )];
 
     }
+    [flagImgV setAlpha:0];
+    [flagImgH setAlpha:1];
 
 }
 

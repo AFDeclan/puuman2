@@ -271,7 +271,9 @@
 {
     prop = isProp;
     currentNum = 1;
-    currentNum ++ ;
+    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        currentNum ++ ;
+    }
     if ([MainTabBarController sharedMainViewController].isVertical) {
         
         [babyInfoColumnView setContentOffset:CGPointMake(currentNum*768, 0) animated:YES];
@@ -292,7 +294,9 @@
 - (void)gotoPreCell
 {
     currentNum = 1;
-    currentNum -- ;
+    if ([[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        currentNum -- ;
+    }
     if ([MainTabBarController sharedMainViewController].isVertical) {
         
         [babyInfoColumnView setContentOffset:CGPointMake(currentNum*768, 0) animated:YES];

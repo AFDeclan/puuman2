@@ -688,6 +688,8 @@
 		54CB2A4019629F2D005EBD3F /* ShopMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A3F19629F2D005EBD3F /* ShopMenuCell.m */; };
 		54CB2A4B1962A930005EBD3F /* DetailSortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A481962A930005EBD3F /* DetailSortTableViewCell.m */; };
 		54CB2A4C1962A930005EBD3F /* SortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB2A4A1962A930005EBD3F /* SortCell.m */; };
+		54CB65F519B805BA00B83B08 /* babyInfo_Body_flagDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CB65F319B805BA00B83B08 /* babyInfo_Body_flagDown.png */; };
+		54CB65F619B805BA00B83B08 /* babyInfo_Body_flagRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CB65F419B805BA00B83B08 /* babyInfo_Body_flagRight.png */; };
 		54CC76DF196F874200373B35 /* WareEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CC76DE196F874200373B35 /* WareEvaluationView.m */; };
 		54CC76E2196F875800373B35 /* WareInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CC76E1196F875800373B35 /* WareInfoView.m */; };
 		54CC76EB196FBF8800373B35 /* btn_heat_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CC76E5196FBF8800373B35 /* btn_heat_shop.png */; };
@@ -1837,6 +1839,8 @@
 		54CB2A481962A930005EBD3F /* DetailSortTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSortTableViewCell.m; sourceTree = "<group>"; };
 		54CB2A491962A930005EBD3F /* SortCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortCell.h; sourceTree = "<group>"; };
 		54CB2A4A1962A930005EBD3F /* SortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortCell.m; sourceTree = "<group>"; };
+		54CB65F319B805BA00B83B08 /* babyInfo_Body_flagDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = babyInfo_Body_flagDown.png; sourceTree = "<group>"; };
+		54CB65F419B805BA00B83B08 /* babyInfo_Body_flagRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = babyInfo_Body_flagRight.png; sourceTree = "<group>"; };
 		54CC76DD196F874200373B35 /* WareEvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WareEvaluationView.h; sourceTree = "<group>"; };
 		54CC76DE196F874200373B35 /* WareEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WareEvaluationView.m; sourceTree = "<group>"; };
 		54CC76E0196F875800373B35 /* WareInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WareInfoView.h; sourceTree = "<group>"; };
@@ -2450,6 +2454,8 @@
 		5403CDF818D04F51004CAE22 /* BabyInfoImages */ = {
 			isa = PBXGroup;
 			children = (
+				54CB65F319B805BA00B83B08 /* babyInfo_Body_flagDown.png */,
+				54CB65F419B805BA00B83B08 /* babyInfo_Body_flagRight.png */,
 				88CEB89D19B59A3100AFFA34 /* icon_babyInfo_btn.png */,
 				88B2B3E719B6CDE800CE177D /* baby_born_background.png */,
 				54B381571979268F003FF386 /* left_body_img.png */,
@@ -3046,6 +3052,8 @@
 		54B0E75F19920E0800E9537A /* TopicCell */ = {
 			isa = PBXGroup;
 			children = (
+				54B0E76819920E0800E9537A /* TopicCell.h */,
+				54B0E76919920E0800E9537A /* TopicCell.m */,
 				54B0E76019920E0800E9537A /* AudioTopicCell.h */,
 				54B0E76119920E0800E9537A /* AudioTopicCell.m */,
 				54B0E76219920E0800E9537A /* PhotoTopicCell.h */,
@@ -3054,8 +3062,6 @@
 				54B0E76519920E0800E9537A /* SinglePhotoTopicVIew.m */,
 				54B0E76619920E0800E9537A /* TextTopicCell.h */,
 				54B0E76719920E0800E9537A /* TextTopicCell.m */,
-				54B0E76819920E0800E9537A /* TopicCell.h */,
-				54B0E76919920E0800E9537A /* TopicCell.m */,
 				54B0E76A19920E0800E9537A /* TopicCommentCell.h */,
 				54B0E76B19920E0800E9537A /* TopicCommentCell.m */,
 				54B0E76C19920E0800E9537A /* TopicCommentView.h */,
@@ -4364,6 +4370,7 @@
 				54B85D021987AB050032E09F /* social_participate_btnpng.png in Resources */,
 				88C965B41962A9C00058B842 /* icon_model_babyInfo.png in Resources */,
 				54CE116118C1C7BF00966396 /* block3_btn.png in Resources */,
+				54CB65F519B805BA00B83B08 /* babyInfo_Body_flagDown.png in Resources */,
 				54C55AC0197E5FCA00C2056D /* saveShareVideo.png in Resources */,
 				54B97E9718FA581D00B6C4C9 /* block_insure_shop.png in Resources */,
 				54B97EA518FA586F00B6C4C9 /* bg_insure_shop.png in Resources */,
@@ -4565,6 +4572,7 @@
 				54B97E5818FA2B1E00B6C4C9 /* pic6_insure_shop.png in Resources */,
 				5447C46118D97D0800187BE6 /* icon_height_fri.png in Resources */,
 				54B97E8218FA572600B6C4C9 /* pic32_insure_shop@.png in Resources */,
+				54CB65F619B805BA00B83B08 /* babyInfo_Body_flagRight.png in Resources */,
 				54D64F0718E8002300B8899D /* icon_time_shop.png in Resources */,
 				54F1D10518C48B340005CDD9 /* bg_prompt.png in Resources */,
 				54B97EAF18FA589800B6C4C9 /* puuman1_insure_shop.png in Resources */,
