@@ -89,8 +89,9 @@
 
     NSString *path=@"http://www.weather.com.cn/data/cityinfo/cityNumber.html";
     path=[path stringByReplacingOccurrencesOfString:@"cityNumber" withString:cityNumberStr];
-    ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:path]];
-    request.delegate = self;
+    NSURL *url = [NSURL URLWithString:path];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDelegate:self];
     [request startAsynchronous];
 
 
