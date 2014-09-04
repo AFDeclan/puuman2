@@ -49,7 +49,7 @@
     }else{
         [self setHorizontalFrame];
     }
-
+   
 
 }
 
@@ -131,7 +131,9 @@
     [babyInfoColumnView setScrollEnabled:NO];
     [self addSubview:babyInfoColumnView];
 
-  }
+}
+
+
 
 - (void)columnView:(UIColumnView *)columnView didSelectColumnAtIndex:(NSUInteger)index
 {

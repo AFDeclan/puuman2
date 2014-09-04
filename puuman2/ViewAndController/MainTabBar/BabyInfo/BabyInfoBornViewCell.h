@@ -35,7 +35,8 @@
     UIView *heiAndWeiView;
     UIView *vaciView;
     UIView *propView;
-    
+    CGPoint touchPos;
+    BOOL hidden;
 }
 
 @property (nonatomic,assign) id <BabyInfoIconViewDelegate>delegate;

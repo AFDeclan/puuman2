@@ -11,6 +11,8 @@
 #import "UniverseConstant.h"
 #import "Models.h"
 #import "DiaryViewController.h"
+#import "Friend.h"
+#import "Forum.h"
 
 @interface SkipViewController ()
 
@@ -68,6 +70,8 @@ static SkipViewController *instance;
     [[MainTabBarController sharedMainViewController] showDiary];
     [[MainTabBarController sharedMainViewController] refreshBabyInfoView];
     [[DiaryViewController sharedDiaryViewController] removeheadView];
+    [Forum releaseInstance];
+    [Friend releaseInstance];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (![userDefaults boolForKey:@"DiarytutorialShowed"]){
         [userDefaults setBool:YES forKey:@"DiarytutorialShowed"];

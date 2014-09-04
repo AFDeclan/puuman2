@@ -70,6 +70,7 @@
     [[UserInfo sharedUserInfo] updateUserInfo];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [MobClick updateOnlineConfig];
+
 //    [MobClick checkUpdateWithDelegate:self selector:@selector(appUpdate:)];
     [self checkUpdate];
     PostNotification(Noti_Refresh, nil);

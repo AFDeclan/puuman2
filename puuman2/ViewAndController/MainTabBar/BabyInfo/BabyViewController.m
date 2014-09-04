@@ -57,9 +57,10 @@
     }else{
         [self setHorizontalFrame];
     }
+    
+  
+    
 }
-
-
 
 - (void)setVerticalFrame
 {

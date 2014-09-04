@@ -27,7 +27,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-     
+        hidden = NO;
         [self initialization];
         [self initClearInfoView];
         if ([[MainTabBarController sharedMainViewController] isVertical]) {
@@ -87,8 +87,44 @@
     [self.contentView addSubview:bottomBtn];
     
     
-
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    touchPos = [[touches anyObject] locationInView:self];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint pos = [[touches anyObject] locationInView:self];
+    if (pos.x - touchPos.x > 50 ||  touchPos.x - pos.x  > 50) {
+        touchPos = pos;
+        
+    }else{
+        if (pos.y - touchPos.y >200) {
+            [self  disAppearInfoView];
+        }
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint pos = [[touches anyObject] locationInView:self];
+    if (pos.x - touchPos.x > 200 ||  touchPos.x - pos.x  > 200) {
+        touchPos = pos;
+
+    }else{
+        if (touchPos.y - pos.y >200) {
+            if (!hidden) {
+                [self  disAppearInfoView];
+                hidden = YES;
+
+            }
+        }
+    }
+    
+}
+
 
 - (void)initClearInfoView
 {
@@ -145,8 +181,9 @@
     [nextPropView setImage:[UIImage imageNamed:@"back_right_babyInfo"]];
     [clearInfoView addSubview:nextPropView];
 
-
+  
 }
+
 
 - (void)setVerticalFrame
 {
