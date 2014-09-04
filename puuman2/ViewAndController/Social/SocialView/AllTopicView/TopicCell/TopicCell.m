@@ -197,6 +197,7 @@
             [likeBtn setEnabled:NO];
             [likeBtn setIconImg:[UIImage imageNamed:@"btn_like1_topic.png"]];
         }else{
+            [likeBtn setIconImg:[UIImage imageNamed:@"btn_like2_topic.png"]];
             [likeBtn setEnabled:YES];
         }
         [likeBtn adjustLayout];
