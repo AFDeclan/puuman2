@@ -20,6 +20,7 @@
 #import "TaskModel.h"
 #import <JSONKit.h>
 
+#define kDiaryUIDName   @"UID"
 #define kDateName       @"date"
 #define kTypeName       @"type"
 #define kType2Name      @"type2"
@@ -72,7 +73,7 @@ static DiaryModel * instance;
 - (void)reloadData
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY, %@ TEXT, %@ REAL, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ INTEGER, %@ INTEGER)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
+    NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY, %@ INTEGER, %@ TEXT, %@ REAL, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ INTEGER, %@ INTEGER)", tableName, kDiaryUIDName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate:sqlCreateTable])
     {
         [ErrorLog errorLog:@"Create table failed!" fromFile:@"DiaryModel.m" error:nil];
@@ -86,6 +87,7 @@ static DiaryModel * instance;
     while ([rs next])
     {
         Diary * diary = [[Diary alloc] init];
+        diary.UID = [rs intForColumn:kDiaryUIDName];
         NSString *title = [rs stringForColumn:kTitleName];
         if (title == nil) title = @"";
         diary.title = title;
@@ -194,8 +196,9 @@ static DiaryModel * instance;
 - (BOOL)addNewDiary:(Diary *)d
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
+    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0)", tableName, kDiaryUIDName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate: sqlInsert,
+          [NSNumber numberWithInteger:[UserInfo sharedUserInfo].UID],
           d.title,
           d.DCreateTime,
           [NSNumber numberWithInteger:d.type1],
@@ -313,8 +316,8 @@ static DiaryModel * instance;
 {
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSString *tableName;
-    if (userInfo.UID > -1) tableName = [NSString stringWithFormat:@"diaryTableForBaby%d_Version2", userInfo.BID];
-    else tableName = @"diaryTableForUnloginedUser_Version2";
+    if (userInfo.UID > -1) tableName = [NSString stringWithFormat:@"diaryTableForBaby%d_Version3", userInfo.BID];
+    else tableName = @"diaryTableForUnloginedUser_Version3";
     return tableName;
 }
 
@@ -421,6 +424,7 @@ static DiaryModel * instance;
                     [d setUrls1WithMainUrl:[dic valueForKey:@"url1"] andSubcnt:[[dic valueForKey:@"subCnt1"] integerValue]];
                     [d setUrls2WithMainUrl:[dic valueForKey:@"url2"] andSubcnt:[[dic valueForKey:@"subCnt2"] integerValue]];
                     d.UTID = [[dic valueForKey:@"UTID"] integerValue];
+                    d.UID = [[dic valueForKey:@"UID"] integerValue];
                     id info = [[dic valueForKey:@"Meta"] objectFromJSONString];
                     if (info) {
                         d.meta = [[NSMutableDictionary alloc] initWithDictionary:info];
@@ -495,8 +499,9 @@ static DiaryModel * instance;
 - (BOOL)addDownloadedDiary:(Diary *)d
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
+    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1)", tableName, kDiaryUIDName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate: sqlInsert,
+          [NSNumber numberWithInteger:d.UID],
           d.title,
           d.DCreateTime,
           [NSNumber numberWithInteger:d.type1],
