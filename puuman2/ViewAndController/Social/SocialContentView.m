@@ -17,7 +17,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setBackgroundColor:[UIColor whiteColor]];
+        [self setBackgroundColor:PMColor5];
         _socialType = kSocialNoneType;
     }
     return self;

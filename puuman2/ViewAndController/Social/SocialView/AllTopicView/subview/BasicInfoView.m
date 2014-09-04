@@ -86,7 +86,6 @@
     _isTopic = isTopic;
     _uid = uid;
     Member  *_member = [[MemberCache sharedInstance] getMemberWithUID:uid];
-    NSLog(@"%@",[_member.UIDs objectAtIndex:0]);
     if (_member) {
         if (![_member belongsTo:[UserInfo sharedUserInfo].UID]&&[[[UserInfo sharedUserInfo] babyInfo] WhetherBirth] &&[[_member babyInfo] WhetherBirth]) {
             [self setInfoWithName:[_member babyInfo].Nickname andPortrailPath:[_member babyInfo].PortraitUrl andRelate:[[[[UserInfo sharedUserInfo] babyInfo] Birthday] relateFromDate:[_member babyInfo].Birthday andSex:[_member babyInfo].Gender] andIsBoy:[_member babyInfo].Gender];

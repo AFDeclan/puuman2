@@ -171,7 +171,7 @@
 
 - (void)getCoin {
         
-    if ([[UserInfo sharedUserInfo]UCorns]-1 > 0) {
+    if ([[UserInfo sharedUserInfo]UCorns]-1 >= 0) {
     
         if (_diary.rewarded) {
             [coinBtn selected];
