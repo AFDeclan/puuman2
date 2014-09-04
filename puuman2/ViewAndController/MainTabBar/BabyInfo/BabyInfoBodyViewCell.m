@@ -15,6 +15,7 @@
 #import "MainTabBarController.h"
 #import "ColorsAndFonts.h"
 #import "DiaryFileManager.h"
+#import "Share.h"
 
 static BabyInfoBodyViewCell *instance;
 
@@ -200,15 +201,17 @@ static BabyInfoBodyViewCell *instance;
 - (void)shareData
 {
 
-    ShareSelectedViewController *shareVC = [[ShareSelectedViewController alloc] initWithNibName:nil bundle:nil];
-    [self addSubview:shareVC.view];
-    [shareVC setShareText:[[UserInfo sharedUserInfo] babyInfo].PortraitUrl];
-    [shareVC setShareTitle:@"我想要分享链接"];
-    [shareVC setShareImg:[DiaryFileManager imageForVideo:_filePath]];
-    [shareVC setStyle:ConfirmError];
-    //shareVC.delegate = self;
-     shareVC.shareDelegate = self;
-    [shareVC show];
+//    ShareSelectedViewController *shareVC = [[ShareSelectedViewController alloc] initWithNibName:nil bundle:nil];
+//    [self addSubview:shareVC.view];
+//    [shareVC setShareText:[[UserInfo sharedUserInfo] babyInfo].PortraitUrl];
+//    [shareVC setShareTitle:@"我想要分享链接"];
+//    [shareVC setShareImg:[DiaryFileManager imageForVideo:_filePath]];
+//    [shareVC setStyle:ConfirmError];
+//    //shareVC.delegate = self;
+//     shareVC.shareDelegate = self;
+//    [shareVC show];
+    
+    [ShareSelectedViewController shareText:[Share shareUrlForMeasure] title:@"" image:[UIImage imageNamed:@"Icon-152.png"]];
 
 }
 

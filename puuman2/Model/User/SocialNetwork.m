@@ -147,19 +147,19 @@ static SocialNetwork * instance;
     }
     SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
     req.scene = WXSceneTimeline;
+    
     if (_shareImg)
     {
         req.bText = NO;
         WXMediaMessage *message = [WXMediaMessage message];
         [message setThumbImage:[UIImage croppedImage:_shareImg WithHeight:96 andWidth:96]];
         WXWebpageObject *ext = [WXWebpageObject object];
-        ext.webpageUrl = @"http://www.baidu.com";
+        ext.webpageUrl = _shareText;
         
         message.mediaObject = ext;
 //        [message setThumbImage:_shareImg];
-        message.title =  [NSString stringWithFormat:@"%@ -- %@", _shareTitle, _shareText];
+        message.title =  _shareTitle;
         req.message = message;
-
     }
     else
     {

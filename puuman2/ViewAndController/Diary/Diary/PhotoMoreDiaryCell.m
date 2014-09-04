@@ -250,19 +250,21 @@
 
 - (void)share:(id)sender
 {
-    NSString *text;
-    UIImage *img;
-    
-    for (NSString *photoPath in _photoPaths)
-    {
-        UIImage *photo = [DiaryFileManager imageForPath:photoPath];
-        if (photo != nil){
-            photo = [photo scaleToWidth:768];
-            img = [img addImage:photo];
-        }
-    }
-    NSString *title = self.diary.title;
-    [ShareSelectedViewController shareText:text title:title image:img];
+    [super share:sender];
+
+//    NSString *text;
+//    UIImage *img;
+//    
+//    for (NSString *photoPath in _photoPaths)
+//    {
+//        UIImage *photo = [DiaryFileManager imageForPath:photoPath];
+//        if (photo != nil){
+//            photo = [photo scaleToWidth:768];
+//            img = [img addImage:photo];
+//        }
+//    }
+//    NSString *title = self.diary.title;
+//    [ShareSelectedViewController shareText:text title:title image:img];
 }
 
 - (void)prepareForReuse

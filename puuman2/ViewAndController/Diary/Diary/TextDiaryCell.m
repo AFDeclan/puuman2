@@ -16,6 +16,7 @@
 #import "DiaryViewController.h"
 #import "DiaryFileManager.h"
 #import "DiaryCell.h"
+#import "Share.h"
 
 #define  TEXT_PHOTO_HEIGHT 128
 
@@ -203,25 +204,27 @@
 - (void)share:(id)sender
 {
    
-
+    [super share:sender];
     //子类重载
-    NSString *text;
-    UIImage *img;
-    NSString *path = [self.diary.filePaths1 objectAtIndex:0] ;
-    NSString *diaryType2 = self.diary.type2Str;
-    if ([[NSFileManager defaultManager]fileExistsAtPath:path])
-        text = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    else text = @"";
-    if ([text length] == 1) {
-        text = [text stringByAppendingString:@" "];
-    }
-    if ([diaryType2 isEqualToString:DiaryTypeStrPhoto])
-    {
-        NSString *photoPath = [self.diary.filePaths2 objectAtIndex:0];
-        img = [[UIImage alloc] initWithContentsOfFile:photoPath];
-    }
-    NSString *title = self.diary.title;
-    [ShareSelectedViewController shareText:text title:title image:img];
+//    NSString *text;
+//    UIImage *img;
+//    NSString *path = [self.diary.filePaths1 objectAtIndex:0] ;
+//    NSString *diaryType2 = self.diary.type2Str;
+//    if ([[NSFileManager defaultManager]fileExistsAtPath:path])
+//        text = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//    else text = @"";
+//    if ([text length] == 1) {
+//        text = [text stringByAppendingString:@" "];
+//    }
+//    if ([diaryType2 isEqualToString:DiaryTypeStrPhoto])
+//    {
+//        NSString *photoPath = [self.diary.filePaths2 objectAtIndex:0];
+//        img = [[UIImage alloc] initWithContentsOfFile:photoPath];
+//    }
+//    NSString *title = self.diary.title;
+//    
+//    
+//    [ShareSelectedViewController shareText:text title:title image:img];
     
     
 }

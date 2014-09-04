@@ -36,7 +36,8 @@
     [shareBtn setImage:[UIImage imageNamed:@"shareVideo.png"] forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(shareBtnPressed)forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:shareBtn];
-
+    [shareBtn setEnabled:NO];
+    
     saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [saveBtn setImage:[UIImage imageNamed:@"saveVideo.png"] forState:UIControlStateNormal];
     [saveBtn addTarget:self action:@selector(saveBtnPressed)forControlEvents:UIControlEventTouchUpInside];
