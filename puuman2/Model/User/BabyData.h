@@ -60,13 +60,17 @@
 - (NSDictionary *)recordAtIndex:(NSUInteger)index; //获取指定记录
 - (float)selectHeightWithDate:(NSDate *)date;
 - (float)selectWeightWithDate:(NSDate *)date;
-/*字典结构：
- key:               value:
- kBabyData_ID       (NSInteger)对应数据库中的ID
- kBabyData_Date     (NSDate)记录的日期
- kBabyData_Height   (CGFloat)身高
- kBabyData_Weight   (CGFLoat)体重
- */
+
+- (NSInteger)heightIndexWithIndex:(NSInteger)index;
+- (NSInteger)weightIndexWithIndex:(NSInteger)index;
+
+    /*字典结构：
+     key:               value:
+     kBabyData_ID       (NSInteger)对应数据库中的ID
+     kBabyData_Date     (NSDate)记录的日期
+     kBabyData_Height   (CGFloat)身高
+     kBabyData_Weight   (CGFLoat)体重
+     */
 
 - (NSUInteger)vaccineCount;
 - (NSDictionary *)vaccineAtIndex:(NSUInteger)index;

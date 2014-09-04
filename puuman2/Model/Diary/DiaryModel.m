@@ -102,7 +102,7 @@ static DiaryModel * instance;
         diary.urls2 = [[rs dataForColumn:kUrl2Name] objectFromJSONData];
         diary.UIdentity = [rs intForColumn:kDiaryUIdentity];
         diary.deleted = [rs boolForColumn:kDeletedDiary];
-        diary.uploaded = [rs boolForColumn:kUploaded];
+        diary.uploaded = [rs intForColumn:kUploaded];
         NSData * metaData = [rs dataForColumn:kDiaryMeta];
         id info = [metaData objectFromJSONData];
         if (info) {
@@ -117,7 +117,7 @@ static DiaryModel * instance;
         {
             [_diaries addObject:diary];
         }
-        if (!diary.uploaded) {
+        if (diary.uploaded != 1) {
             [_toUploadDiaries insertObject:diary atIndex:0];
         }
     }
@@ -262,6 +262,7 @@ static DiaryModel * instance;
 {
     NSString *tableName = [self sqliteTableName];
     NSString *sqlUpdate = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ? WHERE %@ = ?", tableName, kTitleName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded, kDateName];
+    NSInteger uploaded = toUp ? 2 : 1;
     if (![db executeUpdate: sqlUpdate,
           d.title,
           [NSNumber numberWithInteger:d.type1],
@@ -273,7 +274,7 @@ static DiaryModel * instance;
           [NSNumber numberWithInteger:[UserInfo sharedUserInfo].identity],
           [d.meta JSONData],
           [NSNumber numberWithBool:d.deleted],
-          [NSNumber numberWithBool:!toUp],
+          [NSNumber numberWithInteger:uploaded],
           d.DCreateTime])
         return NO;
     return YES;
@@ -531,7 +532,13 @@ static DiaryModel * instance;
 
 - (BOOL)uploadDiary:(Diary *)d
 {
-    if ([d uploadDiary]) {
+    BOOL suc = NO;
+    if (d.uploaded == 2) {
+        suc = [d uploadDiaryInfo];
+    } else {
+        suc = [d uploadDiary];
+    }
+    if (suc) {
         if (d.taskId > 0 && d.taskId != 6) {
             TaskModel *taskModel = [TaskModel sharedTaskModel];
             if (!taskModel.updating)
