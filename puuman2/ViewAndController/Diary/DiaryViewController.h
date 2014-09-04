@@ -11,6 +11,8 @@
 #import "DiaryTableViewController.h"
 #import "JoinView.h"
 #import "CalenderControlView.h"
+#import "ToolsView.h"
+#import "DiaryProgressHeaderView.h"
 
 @interface DiaryViewController : UIViewController<UIGestureRecognizerDelegate>
 {
@@ -20,8 +22,11 @@
     NSTimer *timer;
     JoinView *joinView;
     CalenderControlView *calenderView;
-    UIView *activeNewestView;
     DiaryTableViewController *diaryTableVC;
+    ToolsView *toolsView;
+    UIView *diaryTurorialView;
+    UIImageView *diaryTurorial;
+    DiaryProgressHeaderView *headerview;
 }
 @property (assign,nonatomic) BOOL cameraModel;
 
@@ -34,8 +39,8 @@
 - (void)showNewDiaryViewWithType:(NewButtonType)type withTaskInfo:(NSDictionary *)info;
 - (void)setTaskInfo:(NSDictionary *)taskInfo;
 - (void)refresh;
-- (void)diaryLoaded;
-- (void)refreshTable;
-- (void)setImportTotalNum:(NSInteger)num;
-- (void)autoImportShowed;
+- (void)removeheadView;
+- (void)loadDownFindished;
+- (void)showTurorialView;
+
 @end

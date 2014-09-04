@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomTextField.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 @protocol EndViewDelegate;
 @interface LoginEndView : UIView<UITextFieldDelegate>
@@ -17,10 +17,10 @@
     UILabel *_passwordLabel;
     CustomTextField *_userField;
     CustomTextField *_pwdField;
-    ColorButton *_loginBtn;
-    ColorButton *_registerBtn;
-    ColorButton *_resetPwdBtn;
-    ColorButton *_inviteCodeBtn;
+    AFColorButton *_loginBtn;
+    AFColorButton *_registerBtn;
+    AFColorButton *_resetPwdBtn;
+    AFColorButton *_inviteCodeBtn;
     UILabel *_inviteCodeLabel;
     
     BOOL _hasInviteCode;

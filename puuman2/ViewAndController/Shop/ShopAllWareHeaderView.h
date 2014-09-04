@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFColorButton.h"
 
 @interface ShopAllWareHeaderView : UIView
 {
     UIImageView *icon_ware;
-    UIImageView *icon_tri;
-    UIImageView *partLine;
     UILabel *wareLabel;
-    UILabel *moreLabel;
-    
+   
 }
-
+- (void)setVerticalFrame;
+- (void)setHorizontalFrame;
 - (void)setStatusWithKindIndex:(NSInteger)index andUnfold:(BOOL)unfold;
 @end

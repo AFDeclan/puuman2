@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FileUploader.h"
-#import "JSONKit.h" 
+#import "JSONKit.h"
 #import "MD5.h"
 #import "MobClick.h"
 #import "UniverseConstant.h"
@@ -48,7 +48,7 @@
 #define uMeta_RewardList            @"RewardList"
 
 typedef enum userActionResult{
-     //both
+    //both
     succeeded = -1,
     otherError = 0,
     timeOut = 1,
@@ -110,7 +110,7 @@ typedef enum inviteState {
 + (void)init;
 + (UserInfo *)sharedUserInfo;
 
-//登陆
+//登录
 - (BOOL)loginFromUserDefault;
 - (enum userActionResult)login;
 //登出
@@ -147,13 +147,13 @@ typedef enum inviteState {
 //邀请
 - (enum userActionResult)sendInvitationToMail:(NSString *)mail phoneNum:(NSString *)phone;
 /*
- succeeded, timeOut, otherError, 
+ succeeded, timeOut, otherError,
  dumplicated: 被邀请用户已注册
  */
 - (enum userActionResult)verifyUser:(BOOL)verifMail;
 /*
-succeeded, timeOut, otherError
-*/
+ succeeded, timeOut, otherError
+ */
 - (enum userActionResult)verifyPhoneWithCode:verif;
 /*
  succeeded, timeOut, checkFaild（验证码有误）, otherError

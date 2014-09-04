@@ -16,14 +16,13 @@
 #import "DiaryFileManager.h"
 #import "DiaryViewController.h"
 
-static ImportStore * instance;
+static ImportStore * instance ;
 @implementation ImportStore
 + (ImportStore *)shareImportStore
 {
     if (!instance)
     {
         instance = [[ImportStore alloc] init];
-        [instance customInit];
     }
     return instance;
 }
@@ -32,6 +31,8 @@ static ImportStore * instance;
 {
     self = [super init];
     if (self) {
+        [self customInit];
+
     }
     return self;
 }
@@ -45,12 +46,10 @@ static ImportStore * instance;
 
 -(void)initWithImportData:(NSDictionary *)dataDic
 {
-    count = 0;
     photosArr = [dataDic valueForKey:@"photos"];
     title = [dataDic valueForKey:@"title"];
     total = [[dataDic valueForKey:@"count"] integerValue];
     timeArrs = [dataDic valueForKey:@"createTime"];
-    [[DiaryViewController sharedDiaryViewController] setImportTotalNum:total];
     for (NSArray *arr in photosArr) {
         [self writeAndStoreWithPhotos:arr andTitle:title andCreateTime:[timeArrs objectAtIndex:[photosArr indexOfObject:arr]]];
 
@@ -75,11 +74,15 @@ static ImportStore * instance;
         {
             [ErrorLog errorLog:@"Save photo failed - 1" fromFile:@"DiaryFileManager.m" error:error];
         }
-        count ++;
-        PostNotification(Noti_Imported, [NSNumber numberWithInt:count]);
+        
+        if (i == 0) {
+            PostNotification(Noti_Imported, [NSNumber numberWithBool:YES]);
+        }
+      
+    
         [paths addObject:filePath];
     }
-    
+
     if (title == nil) title = @"";
     Diary *diary = [[Diary alloc] init];
     diary.title = title;
@@ -93,8 +96,15 @@ static ImportStore * instance;
     diary.deleted = NO;
     diary.uploaded = NO;
     [diaryArrs addObject:diary];
+    [self performSelector:@selector(finishImport) withObject:nil afterDelay:0];
+}
+
+- (void)finishImport
+{
+    PostNotification(Noti_Imported, [NSNumber numberWithBool:NO]);
 
 }
+
 
 - (void)addNewDiary
 {
@@ -107,9 +117,9 @@ static ImportStore * instance;
 
 - (void)reset
 {
-    photosArr = nil;
+    [photosArr removeAllObjects];
     title = @"";
-    //diaryInfo = nil;
+    [diaryArrs removeAllObjects];
      progress = 0;
 }
 @end

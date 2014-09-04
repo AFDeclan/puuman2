@@ -37,6 +37,7 @@
     _content = [[UIView alloc] init];
     [_content setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_content];
+    [self.view setBackgroundColor:[UIColor clearColor]];
     
 }
 
@@ -71,4 +72,5 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Vertical object:nil];
 }
+
 @end

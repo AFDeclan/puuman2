@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
 
 @interface SkipViewController : UIViewController
+{
+    LoginViewController *loginViewC;
 
+}
++ (SkipViewController *)sharedController;
 
 @end

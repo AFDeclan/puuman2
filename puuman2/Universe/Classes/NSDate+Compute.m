@@ -7,6 +7,7 @@
 //
 
 #import "NSDate+Compute.h"
+#import "UserInfo.h"
 
 @implementation NSDate(Compute)
 
@@ -57,7 +58,11 @@
 
 - (NSInteger)monthsToDate:(NSDate *)endDate
 {
-    return [NSDate monthsFromDate:self toDate:endDate];
+    
+    NSDate *pregnancyDate = [endDate dateByAddingTimeInterval:-280*24*60*60];
+    return [NSDate monthsFromDate:pregnancyDate toDate: self];
+
+   
 }
 
 - (BOOL)isSameDayWithDate:(NSDate *)date
@@ -68,8 +73,8 @@
 
 - (NSArray *)ageFromDate:(NSDate *)birth
 {
-    if ([self earlierDate:birth] == self)
-    {   //孕期
+    if (![[[UserInfo sharedUserInfo] babyInfo] WhetherBirth]) {
+        //孕期
         NSDate *pregnancyDate = [birth dateByAddingTimeInterval:-280*24*60*60];
         NSInteger day = [pregnancyDate daysToDate:self];
         NSInteger week = day / 7;
@@ -77,7 +82,9 @@
         NSArray *age = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", week],
                         [NSString stringWithFormat:@"%d", day], nil];
         return age;
+ 
     }
+
     NSInteger y1, m1, d1, y2, m2, d2;
     NSInteger year, month, day;
     NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -244,5 +251,17 @@
     }
 }
 
+- (BOOL)LaterThanDate:(NSDate *)date
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSInteger unit = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *comp_ = [calendar components:unit fromDate:self];
+    NSDateComponents *comp_now = [calendar components:unit fromDate:date];
+    if ([comp_ year] > [comp_now year] ||
+        ([comp_ year] == [comp_now year] && [comp_ month] > [comp_now month]) ||
+        ([comp_ year] == [comp_now year] && [comp_ month] == [comp_now month] && [comp_ day] > [comp_now day]))
+        return YES;
+    else return NO;
+}
 
 @end

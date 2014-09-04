@@ -114,10 +114,13 @@
     } completion:^(BOOL finshed){
         [self removeFromSuperview];
         [[NSNotificationCenter defaultCenter]postNotificationName:Noti_TutorialFinshed object:nil];
-        [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Horizontal object:nil];
-        [[NSNotificationCenter defaultCenter] removeObserver:self  name:NOTIFICATION_Vertical object:nil];
+
     }];
 }
 
+- (void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
+}
 
 @end

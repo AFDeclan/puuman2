@@ -7,16 +7,17 @@
 //
 
 #import "CustomPopViewController.h"
-#import "ColorButton.h"
-#import "CartTableViewCell.h"
-@interface ShopCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource,CartCellDelegate>
+#import "AFColorButton.h"
+
+@interface ShopCartViewController : CustomPopViewController<UITableViewDelegate, UITableViewDataSource>
 {
-    ColorButton *btn_unpaid;
-    ColorButton *btn_paid;
-    ColorButton *btn_compared;
+    AFColorButton *cartShowBtn;
+    AFColorButton *orderShowBtn;
+    AFColorButton *orderBtn;
+    AFColorButton *deleteBtn;
+
     UITableView * cartTable;
-    BOOL isPaid;
-    NSInteger unfoldIndex;
+    UITableView * orderTable;
     UILabel *noti_empty;
     UIView *emptyNotiView;
 }

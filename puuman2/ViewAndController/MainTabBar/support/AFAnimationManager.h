@@ -35,7 +35,11 @@ typedef enum _FTAnimationDirection {
     kAFAnimationTopRight,
     kAFAnimationBottomLeft,
     kAFAnimationBottomRight,
-    kAFAnimationNone
+    kAFAnimationNone,
+    kAFAnimationFromTop,
+    kAFAnimationFromOutTop,
+    kAFanimationFromRight
+    
 } AFAnimationDirection;
 
 static inline CGPoint FTAnimationOutOfViewCenterPoint(CGRect enclosingViewFrame, CGRect viewFrame, CGPoint viewCenter, AFAnimationDirection direction) {
@@ -50,6 +54,7 @@ static inline CGPoint FTAnimationOutOfViewCenterPoint(CGRect enclosingViewFrame,
 			return CGPointMake(viewCenter.x, enclosingViewFrame.origin.y - extraOffset);
 			break;
 		}
+     
 		case kAFAnimationLeft: {
 			CGFloat extraOffset = viewFrame.size.width / 2;
 			return CGPointMake(enclosingViewFrame.origin.x - extraOffset, viewCenter.y);
@@ -88,7 +93,21 @@ static inline CGPoint FTAnimationOutOfViewCenterPoint(CGRect enclosingViewFrame,
 			return CGPointMake(viewCenter.x,viewCenter.y);
 			break;
 		}
-       
+        case kAFanimationFromRight:{
+            CGFloat extraOffset = viewFrame.size.width / 2;
+			return CGPointMake(enclosingViewFrame.size.width + extraOffset, viewCenter.y);
+			break;
+        }
+        case kAFAnimationFromTop: {
+			CGFloat extraOffset = viewFrame.size.height/2 ;
+			return CGPointMake(viewCenter.x, enclosingViewFrame.origin.y - extraOffset );
+			break;
+		}
+        case kAFAnimationFromOutTop: {
+			CGFloat extraOffset = viewFrame.size.height/2 + 189;
+			return CGPointMake(viewCenter.x, enclosingViewFrame.origin.y - extraOffset );
+			break;
+		}
 	}
 	return CGPointZero;
 }

@@ -7,7 +7,6 @@
 //
 
 #import "LineChartCell.h"
-#import "BabyInfoViewController.h"
 #import "BabyData.h"
 #import "ColorsAndFonts.h"
 
@@ -76,12 +75,7 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-//    if ((int)(scroll.contentOffset.x/320) == 0) {
-//        [[BabyInfoViewController sharedBabyInfoViewController] setIsHeight:YES];
-//        
-//    }else{
-//         [[BabyInfoViewController sharedBabyInfoViewController] setIsHeight:NO];
-//    }
+
     [scrollView setPagingEnabled:YES];
     
 }

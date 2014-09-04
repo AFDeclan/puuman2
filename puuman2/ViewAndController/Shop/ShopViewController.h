@@ -7,23 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFSelecedTextImgButton.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 #import "SearchTextField.h"
 #import "ShopContentView.h"
+#import "ShopSectionView.h"
+#import "ShopCartViewController.h"
 
-@interface ShopViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate>
+@interface ShopViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate,PopViewDelegate>
 {
     UIImageView *bg_topImageView;
     UIImageView *bg_rightImageView;
-    AFSelecedTextImgButton *rectWareBtn;
-  AFSelecedTextImgButton  *allWareBtn;
-    ColorButton *searchBtn;
+
     SearchTextField *searchTextField;
+    AFColorButton *searchBtn;
     UIView *searchView;
     ShopContentView *contentShop;
     UIButton *cartBtn;
+    ShopSectionView *sectionView;
+    BOOL wareInfoShow;
 }
 
+@property(nonatomic,assign)    BOOL wareInfoShow;
 
++ (ShopViewController *)sharedShopViewController;
+- (void)showWareInfo;
 @end

@@ -18,51 +18,37 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setBackgroundColor:PMColor5];
-        icon_ware = [[UIImageView alloc] initWithFrame:CGRectMake(16, 24, 32, 32)];
+        icon_ware = [[UIImageView alloc] initWithFrame:CGRectMake(16, 18, 32, 32)];
         [self addSubview:icon_ware];
-        icon_tri = [[UIImageView alloc] initWithFrame:CGRectMake(588, 24, 16, 28)];
-        [icon_tri setImage:[UIImage imageNamed:@"tri_blue_right.png"]];
-        [self addSubview:icon_tri];
+   
         
-        partLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 38, 0, 2)];
-        [partLine setBackgroundColor:RGBColor(210, 227, 238)];
-        [self addSubview:partLine];
-        
-        wareLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 24, 0, 28)];
+               
+        wareLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 18, 0, 28)];
         [wareLabel setBackgroundColor:[UIColor clearColor]];
         [wareLabel setFont:PMFont1];
         [wareLabel setTextColor:PMColor6];
         [self addSubview:wareLabel];
-        
-        moreLabel= [[UILabel alloc] initWithFrame:CGRectMake(548, 24, 40, 28)];
-        [moreLabel setBackgroundColor:[UIColor clearColor]];
-        [moreLabel setTextAlignment:NSTextAlignmentCenter];
-        [moreLabel setFont:PMFont4];
-        [moreLabel setTextColor:PMColor6];
-        [self addSubview:moreLabel];
       
     }
     return self;
 }
 
-- (void)setStatusWithKindIndex:(NSInteger)index andUnfold:(BOOL)unfold;
+
+
+
+- (void)setStatusWithKindIndex:(NSInteger)index andUnfold:(BOOL)unfold
 {
     [icon_ware setImage:[ShopClassModel iconForSectionAtIndex:index]];
     NSString *titleName;
     if (unfold) {
-        [moreLabel setText:@"返回"];
         if ([ShopModel sharedInstance].subClassIndex < 0) {
             
              titleName = [ShopClassModel titleForSectionAtIndex:[ShopModel sharedInstance].sectionIndex];
         }else{
              titleName = [ShopClassModel titleForSectionAtIndex:[ShopModel sharedInstance].sectionIndex andSubType:[ShopModel sharedInstance].subClassIndex];
         }
-      
-        [icon_tri setImage:[UIImage imageNamed:@"tri_blue_left.png"]];
-    }else{
+        }else{
         titleName = [ShopClassModel titleForSectionAtIndex:index];
-        [moreLabel setText:@"更多"];
-        [icon_tri setImage:[UIImage imageNamed:@"tri_blue_right.png"]];
     }
 
     CGSize size = [titleName sizeWithFont:wareLabel.font];
@@ -70,15 +56,19 @@
     CGRect nameFrame = wareLabel.frame;
     nameFrame.size.width = size.width;
     [wareLabel setFrame:nameFrame];
-     CGRect partFrame = partLine.frame;
-    partFrame.origin.x = nameFrame.origin.x +nameFrame.size.width +2;
-    partFrame.size.width = moreLabel.frame.origin.x- partFrame.origin.x;
-    [partLine setFrame:partFrame];
     
 
-    
 }
 
+- (void)setVerticalFrame
+{
+
+}
+
+- (void)setHorizontalFrame
+{
+
+}
 
 
 @end

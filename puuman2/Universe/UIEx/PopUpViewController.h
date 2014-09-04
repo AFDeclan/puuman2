@@ -16,5 +16,6 @@
 }
 
 @property (nonatomic, assign) AFAnimationDirection animationType;
+- (void)exit;
 + (void)showOnView:(UIView *)view animationType:(AFAnimationDirection)type;
 @end

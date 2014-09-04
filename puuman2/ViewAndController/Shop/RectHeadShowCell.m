@@ -10,7 +10,6 @@
 #import "ColorsAndFonts.h"
 #import "UniverseConstant.h"
 #import "RecomWare.h"
-#import "ShopWebViewController.h"
 #import "MainTabBarController.h"
 
 
@@ -179,13 +178,13 @@
 
 -(void)pressShowPic{
     
-    if ([wareArray count]> selectedIndex) {
-        RecomWare* showPicWare = [wareArray objectAtIndex:selectedIndex];
-        ShopWebViewController  *webVC = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
-        [[MainTabBarController sharedMainViewController].view addSubview:webVC.view];
-        [webVC setRecWebUrl:showPicWare.RWShopLink wareName:showPicWare.RWName wareId:showPicWare.RWID warePrice:showPicWare.RWPrice shopName:showPicWare.RWShop shopIndex:0 imgLink:showPicWare.RWPicLink];
-        [webVC show];
-    }
+//    if ([wareArray count]> selectedIndex) {
+//        RecomWare* showPicWare = [wareArray objectAtIndex:selectedIndex];
+//        ShopWebViewController  *webVC = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
+//        [[MainTabBarController sharedMainViewController].view addSubview:webVC.view];
+//        [webVC setRecWebUrl:showPicWare.RWShopLink wareName:showPicWare.RWName wareId:showPicWare.RWID warePrice:showPicWare.RWPrice shopName:showPicWare.RWShop shopIndex:0 imgLink:showPicWare.RWPicLink];
+//        [webVC show];
+//    }
     
     
 }

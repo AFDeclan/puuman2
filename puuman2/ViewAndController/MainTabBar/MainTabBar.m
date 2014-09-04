@@ -8,9 +8,10 @@
 
 #import "MainTabBar.h"
 #import "UniverseConstant.h"
+#import "DiaryViewController.h"
+#import "MainTabBarController+MainTabBarControllerSkip.h"
 
 @implementation MainTabBar
-@synthesize delegate = _delegate;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -23,7 +24,6 @@
 
 - (void)initWithSelectBoard
 {
-    animating = NO;
     selectedBoard = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 368)];
     [self addSubview:selectedBoard];
     
@@ -32,67 +32,56 @@
     [selectedBoard addSubview:bg_Btn];
     
     diaryBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,24, 64, 80)];
-    diaryBtn.tag = 1;
-    [diaryBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    diaryBtn.normalImage = [UIImage imageNamed:@"btn_diary2_diary.png"];
-    diaryBtn.selectedImage = [UIImage imageNamed:@"btn_diary1_diary.png"];
-    [diaryBtn setSelected:YES withAnimate:NO];
+    diaryBtn.animate = YES;
+    diaryBtn.flagTag = kTypeTabBarOfDiary;
+    diaryBtn.delegate = self;
     [selectedBoard addSubview:diaryBtn];
-    
-    babyInfoBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,104, 64, 80)];
-    babyInfoBtn.tag = 2;
-    [babyInfoBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    babyInfoBtn.normalImage = [UIImage imageNamed:@"btn_baby2_diary.png"];
-    babyInfoBtn.selectedImage = [UIImage imageNamed:@"btn_baby1_diary.png"];
-    [selectedBoard addSubview:babyInfoBtn];
-      [babyInfoBtn setSelected:NO];
-    socialBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,184, 64, 80)];
-    socialBtn.tag = 3;
-    [socialBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    socialBtn.normalImage = [UIImage imageNamed:@"btn_look2_diary.png"];
-    socialBtn.selectedImage = [UIImage imageNamed:@"btn_look1_diary.png"];
+    [diaryBtn setSelected:YES];
+
+    socialBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,104, 64, 80)];
+    socialBtn.animate = YES;
+    socialBtn.flagTag = kTypeTabBarOfSocial;
+    socialBtn.delegate = self;
     [selectedBoard addSubview:socialBtn];
-      [socialBtn setSelected:NO];
-    shopBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,264, 64, 80)];
-    shopBtn.tag = 4;
-    [shopBtn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
-    shopBtn.normalImage = [UIImage imageNamed:@"btn_shop2_diary.png"];
-    shopBtn.selectedImage = [UIImage imageNamed:@"btn_shop1_diary.png"];
+    [socialBtn setSelected:NO];
+    
+    
+    shopBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0,184, 64, 80)];
+    shopBtn.animate = YES;
+    shopBtn.flagTag = kTypeTabBarOfShop;
+    shopBtn.delegate = self;
     [selectedBoard addSubview:shopBtn];
     [shopBtn setSelected:NO];
-    selectedBtn = diaryBtn;
     
     settingBtn = [[MainTabBarButton alloc] initWithFrame:CGRectMake(0, 688, 64, 80)];
-    settingBtn.normalImage = [UIImage imageNamed:@"btn_set2_diary.png"];
+    settingBtn.animate = NO;
+    settingBtn.flagTag = kTypeTabBarOfSetting;
+    settingBtn.delegate = self;
     [settingBtn setSelected:NO];
-    [settingBtn addTarget:self action:@selector(settingBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:settingBtn];
+    selectedBtn = nil;
 }
 
-- (void)clickedBtn:(MainTabBarButton *)sender
+- (void)clickAFButtonWithButton:(AFButton *)button
 {
     
-    if (!animating) {
-        [selectedBtn setSelected:NO];
-        [sender setSelected:YES];
-        selectedBtn = sender;
-        NSInteger tag = sender.tag;
-        NSLog(@"%d",tag);
-        [_delegate selectedWithTag:tag];
-        animating = YES;
-        [UIView animateWithDuration:animateTime animations:^{
-            SetViewLeftUp(bg_Btn,0,(tag-1)*80);
-        }completion:^(BOOL finished) {
-            animating = NO;
+    if (button.flagTag == kTypeTabBarOfSetting) {
+        [[MainTabBarController sharedMainViewController] showSettingView];
+    }else{
+        if (selectedBtn) {
+            [selectedBtn setSelected:NO];
+        }
+        [(MainTabBarButton *)button setSelected:YES];
+        selectedBtn = (MainTabBarButton *)button;
+        [[MainTabBarController sharedMainViewController] selectedWithTag:button.flagTag];
+        [UIView animateWithDuration:MainTabBarButtonanimateTime animations:^{
+            SetViewLeftUp(bg_Btn,0,(button.flagTag - 1)*80);
         }];
     }
 
+ 
 }
 
-- (void)settingBtnPressed
-{
-    [_delegate showSettingView];
-}
 
 -(void)setVerticalFrame
 {
@@ -108,23 +97,30 @@
     SetViewLeftUp(settingBtn, 0, 688);
 }
 
-- (void)selectedWithTag:(NSInteger)tag
+- (void)selectedWithTag:(TypeTabBarButton)tag
 {
-    if (tag == 1) {
-         [self clickedBtn:diaryBtn];
+    switch (tag) {
+        case kTypeTabBarOfDiary:
+        {
+            [[DiaryViewController alloc] refresh];
+            [self clickAFButtonWithButton:diaryBtn];
+            return;
+        }
+        case kTypeTabBarOfSocial:
+        {
+            [self clickAFButtonWithButton:socialBtn];
+            return;
+        }
+        case kTypeTabBarOfShop:
+        {
+            [self clickAFButtonWithButton:shopBtn];
+            return;
+        }
+            
+        default:
+            break;
     }
-    
-    if (tag == 2) {
-        [self clickedBtn:babyInfoBtn];
-    }
-    
-    if (tag == 3) {
-        [self clickedBtn:socialBtn];
-    }
-    
-    if (tag == 4) {
-        [self clickedBtn:shopBtn];
-    }
+
 }
 
 @end

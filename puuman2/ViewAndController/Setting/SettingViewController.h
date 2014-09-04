@@ -8,16 +8,17 @@
 
 #import "PopViewController.h"
 #import "AFTextImgButton.h"
-#import "ColorButton.h"
+#import "AFColorButton.h"
 
 @interface SettingViewController : PopViewController<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *settingTable;
     BOOL canSelected;
     AFTextImgButton *backBtn;
-    ColorButton *logOut;
+    AFColorButton *logOut;
     UILabel *versionLabel;
 }
+
 - (void)show;
 - (void)back;
 @end

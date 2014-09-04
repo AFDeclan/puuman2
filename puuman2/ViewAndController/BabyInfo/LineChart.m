@@ -12,6 +12,7 @@
 #import "NSDate+Compute.h"
 #import "StandardLine.h"
 #import "UserInfo.h"
+#import "MainTabBarController.h"
 
 #define showHeight 280
 #define lowestWeight 2
@@ -58,16 +59,144 @@
         [nodeLabel setTextAlignment:NSTextAlignmentLeft];
         [self addSubview:nodeLabel];
         points = [[NSMutableArray alloc] init];
+        NSInteger num = 0;
+
+        if (isHeight) {
+            recordIndex = [[[BabyData sharedBabyData] heightArray] count] -1 - [[BabyData sharedBabyData]  heightIndexWithIndex:num ];
+            
+        }else{
+            recordIndex = [[[BabyData sharedBabyData] weightArray] count] -1  -  [[BabyData sharedBabyData]  weightIndexWithIndex:num];
+        }
+
+        [MyNotiCenter addObserver:self selector:@selector(showBodyRecord:) name:Noti_ShowBodyRecord object:nil];
+
     }
     return self;
 }
+
+- (void)showBodyRecord:(NSNotification *)notification
+{
+    NSInteger num = [[BabyData sharedBabyData] recordCount]-1 - [[notification object] integerValue];
+    
+
+    if (isHeight) {
+        num = [[BabyData sharedBabyData]  heightIndexWithIndex:num ];
+        if (num == -1 ) {
+            [self hideIndicator];
+            return;
+        }
+        
+    }else{
+        num =  [[BabyData sharedBabyData]  weightIndexWithIndex:num];
+        if (num == -1) {
+            [self hideIndicator];
+            return;
+        }
+    }
+
+    recordIndex = num;
+    [self showRecordWithIndex:recordIndex];
+    
+   
+}
+
+- (void)showRecordWithIndex:(NSInteger)num
+{
+    
+    if(!infoView) {
+        
+        infoView = [[InfoView alloc] init];
+        [self addSubview:infoView];
+    }
+    UIImageView *flag =[points objectAtIndex:[records count] - num -1];
+    float pointX = flag.frame.origin.x +1;
+    float pointY = flag.frame.origin.y;
+    
+    NSDictionary *dic = [records objectAtIndex:num];
+    NSDate *date =[dic valueForKey:kBabyData_Date];
+    NSString *string = @"";
+    NSString *nodeString = @"";
+    if (isHeight) {
+        nodeString = [[StandardLine alloc] getNodeStringStandardwithDate:date andValue:[[dic valueForKey:kBabyData_Height] floatValue] andIsHeight:isHeight];
+    }else{
+        nodeString = [[StandardLine alloc] getNodeStringStandardwithDate:date andValue:[[dic valueForKey:kBabyData_Weight] floatValue] andIsHeight:isHeight];
+    }
+    
+    NSArray *age = [date ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+    NSString *y ;
+    NSString *m ;
+    NSString *d ;
+    if ([age count] == 3) {
+        y = [age objectAtIndex:0];
+        m = [age objectAtIndex:1];
+        d = [age objectAtIndex:2];
+    }else{
+        y = @"0";
+        m = @"0";
+        d = @"0";
+    }
+    
+    
+    
+    
+    if ([y integerValue] > 0)
+    {
+        string = [string stringByAppendingFormat:@"%@岁",y];
+    }
+    if ([m integerValue] > 0)
+    {
+        string = [string stringByAppendingFormat:@"%@个月",m];
+    }
+    if ([d integerValue] >= 0)
+    {
+        string = [string stringByAppendingFormat:@"%@天",d];
+    }
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        dateLabel.alpha = 1.0;
+        currentPosView.alpha = 1.0;
+        infoView.alpha = 1.0;
+        nodeLabel.alpha = 1.0;
+        nodeLabel.text = nodeString;
+        dateLabel.text = string;
+        
+        if (isHeight) {
+            infoView.infoLabel.text =[NSString stringWithFormat:@"%0.1fcm",[[dic valueForKey:kBabyData_Height] floatValue]];
+        }else
+        {
+            infoView.infoLabel.text =[NSString stringWithFormat:@"%0.1fkg",[[dic valueForKey:kBabyData_Weight] floatValue]];
+        }
+        
+        
+        infoView.tapPoint = CGPointMake(pointX-3,pointY);
+        [infoView sizeToFit];
+        [infoView setNeedsLayout];
+        [infoView setNeedsDisplay];
+        [nodeLabel setFrame:CGRectMake(pointX-50/2, 10, 50,36)];
+        
+        CGRect posframe = currentPosView.frame;
+        posframe.origin.x = pointX;
+        currentPosView.frame =posframe;
+        if(dateLabel.text != nil) {
+            CGSize size =[string sizeWithFont:PMFont3];
+            CGRect frame = dateLabel.frame;
+            frame.size =size;
+            frame.origin.x =pointX-size.width/2;
+            frame.origin.y =0;
+            [dateLabel setFrame:frame];
+        }
+    }];
+
+}
+
 - (void)setViewType:(BOOL)height andData:(NSArray *)data
 {
     isHeight = height;
-    records =data;
+    records = data;
     [currentPosView setFrame:CGRectMake(0, 45, 1 / self.contentScaleFactor, 280)];
     [dateLabel setFrame:CGRectMake(0, 0, 150, 20)];
     [nodeLabel setFrame:CGRectMake(0, 10, 50, 36)];
+    
 }
 
 - (void)drawRect:(CGRect)rect
@@ -135,26 +264,28 @@
 
     }
      CGContextStrokePath(context);
+    [self showRecordWithIndex:recordIndex];
   
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self showIndicatorForTouch:[touches anyObject]];
-}
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self showIndicatorForTouch:[touches anyObject]];
-
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    //[self hideIndicator];
- 
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    //[self hideIndicator];
-   
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    [self showIndicatorForTouch:[touches anyObject]];
+//}
+//
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+//    [self showIndicatorForTouch:[touches anyObject]];
+//
+//}
+//
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//    //[self hideIndicator];
+// 
+//}
+//
+//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+//    //[self hideIndicator];
+//   
+//}
 
 - (void)showIndicatorForTouch:(UITouch *)touch {
     
@@ -269,5 +400,10 @@
         nodeLabel.alpha = 0.0;
         infoView.alpha = 0.0;
     }];
+}
+
+- (void)dealloc
+{
+    [MyNotiCenter removeObserver:self];
 }
 @end

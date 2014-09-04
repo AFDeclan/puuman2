@@ -10,7 +10,7 @@
 #import "ColorsAndFonts.h"
 #import "AuToImportImgCell.h"
 #import "NSDate+Compute.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+AutoImport.h"
 #import "DateFormatter.h"
 #import "DiaryFileManager.h"
 #import "ImportStore.h"
@@ -33,7 +33,6 @@
         // Custom initialization
         selectedNum = 0;
     
-        
         titleTield = [[CustomTextField  alloc] initWithFrame:CGRectMake(96, 112, 512, 48)];
         titleTield.keyboardType = UIKeyboardTypeDefault;
         titleTield.returnKeyType = UIReturnKeyDone;
@@ -82,7 +81,8 @@
         UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
         [_content addGestureRecognizer:tap];
         [self preparePhotos];
-    }
+        
+          }
     return self;
 }
 
@@ -162,7 +162,7 @@
     [arrTime addObject:startDate];
 
     [super finishBtnPressed];
-    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:arr,@"photos",titleTield.text,@"title",[NSNumber numberWithInt:[dateArr count]],@"count",arrTime,@"createTime", nil];
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:arr,@"photos",titleTield.text,@"title",[NSNumber numberWithInt:[arr count]],@"count",arrTime,@"createTime", nil];
     [self performSelector:@selector(updatePhotos:) withObject:dic afterDelay:1];
 }
 
@@ -184,10 +184,11 @@
     lastDate = (NSDate *)[userDefaults valueForKey:@"closeDate"];
     if (lastDate) {
         NSInteger hour = [[NSDate date] hoursFromDate:lastDate];
-       if (hour < 2) {
-            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
-            return;
-        }
+//       if (hour < 2) {
+//            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
+//            return;
+//        }
+        hour = 200;
         __block BOOL foundThePhoto = NO;
         ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
         library = assetLibrary;
@@ -208,9 +209,8 @@
                                            [pickerTable reloadData];
                                            
                                            [[MainTabBarController sharedMainViewController ] showAutoImportView];
-                                           selectedNum = [dateArr count];
                                            for (int i = 0 ; i < [dateArr count]; i ++) {
-                                               [photoStatus setValue:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%d",i]];
+                                               [photoStatus setValue:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",i]];
                                            }
                                        }else{
                                            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
@@ -353,6 +353,7 @@
     return cell;
     
 }
+
 - (BOOL)hasNewPic
 {
     if ([dateArr count] >0) {
@@ -361,6 +362,7 @@
         return NO;
     }
 }
+
 -(void)clickedWithAdd:(BOOL)add andFlag:(NSInteger)num
 {
     
@@ -371,11 +373,11 @@
         [photoStatus setValue:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",num]];
         selectedNum--;
     }
-    [finishBtn setEnabled:YES];
-    [finishBtn setAlpha:1];
+    [_finishBtn setEnabled:YES];
+    [_finishBtn setAlpha:1];
     if (selectedNum == 0) {
-        [finishBtn setEnabled:NO];
-        [finishBtn setAlpha:0.5];
+        [_finishBtn setEnabled:NO];
+        [_finishBtn setAlpha:0.5];
     }
     [titleTield resignFirstResponder];
 }
@@ -385,5 +387,13 @@
     
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)setControlBtnType:(ControlBtnType)controlBtnType
+{
+    [super setControlBtnType:controlBtnType];
+    [_finishBtn setEnabled:NO];
+    [_finishBtn setAlpha:0.5];
+
 }
 @end

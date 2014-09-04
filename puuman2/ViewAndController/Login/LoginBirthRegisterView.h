@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomTextField.h"
 #import "BirthCalendar.h"
-#import "AFTextImgButton.h"
+#import "AFSelectedButton.h"
 #import "NewTextPhotoSelectedViewController.h"
 #import "UserInfo.h"
 #import "AFImageView.h"
@@ -25,8 +25,8 @@ typedef enum{
 {
     CustomTextField *name_textfield;
     CustomTextField *age;
-    AFTextImgButton *boy;
-    AFTextImgButton *girl;
+    AFSelectedButton *boy;
+    AFSelectedButton *girl;
     UIView *calendarView;
     NSDate *birthday;
     AFImageView *portraitView;

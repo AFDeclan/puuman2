@@ -64,7 +64,7 @@
         [_ageLabel3 setBackgroundColor:[UIColor clearColor]];
         [_ageLabel3 setTextAlignment:NSTextAlignmentCenter];
         [self.contentView addSubview:_ageLabel3];
-        _icon_from  = [[UIImageView alloc] initWithFrame:CGRectMake(80, 24, 16, 16)];
+        _icon_from  = [[UIImageView alloc] initWithFrame:CGRectMake(85, 24, 16, 16)];
         [_icon_from setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:_icon_from];
         
@@ -74,7 +74,6 @@
         _dateLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_dateLabel];
         
-
         _content = [[UIView alloc] init];
         _content.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_content];
@@ -92,7 +91,6 @@
     }
     return self;
 }
-
 
 - (void)loadInfo
 {
@@ -112,6 +110,7 @@
     if ([DiaryTableViewController needLoadInfo]) {
         [self loadInfo];
     }
+      [self loadData];
 }
 
 - (void)initWithShareAndDelBtn
@@ -148,12 +147,59 @@
     }else{
         [_delBtn setEnabled:YES];
     }
+    
+    coinBtn = [[AFSelectedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
+    [coinBtn setUnSelectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
+    [coinBtn setIconSize:CGSizeMake(32, 32)];
+    [coinBtn adjustLayout];
+    [coinBtn addTarget:self action:@selector(getCoin) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:coinBtn];
+    [coinBtn unSelected];
+    
+    coinLabel = [[UILabel alloc] init];
+    [coinLabel setFrame:CGRectMake(0, 0, 66, 24)];
+    [coinLabel setBackgroundColor:[UIColor clearColor]];
+    [coinLabel setFont:PMFont3];
+    [self.contentView addSubview:coinLabel];
+    
+   
+    
 }
+
+
+
+- (void)getCoin {
+        
+    if ([[UserInfo sharedUserInfo]UCorns]-1 > 0) {
+    
+        if (_diary.rewarded) {
+            [coinBtn selected];
+            
+        } else {
+            
+            if ([_diary reward:1]) {
+                PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
+                
+            }else{
+                [coinBtn unSelected];
+                
+            }
+        }
+
+    }
+   
+}
+
+
 
 - (void)buildParentControl
 {
     SetViewLeftUp(_delBtn,632, 24);
     SetViewLeftUp(_shareBtn,632, ViewY(_content)+ViewHeight(_content)-24);
+    SetViewLeftUp(coinBtn, 20, ViewY(_content) +ViewHeight(_content));
+    SetViewLeftUp(coinLabel, 54, ViewY(_content) + ViewHeight(_content)+5);
+    
     SetViewRightCenter(_delScrollView, ViewX(_delBtn), ViewY(_delBtn)+ViewHeight(_delBtn)/2);
     if (self.indexPath.row == 0) {
         [_timeLine setFrame:CGRectMake(86, 32, 1, kHeaderHeight + kFooterHeight + ViewHeight(_content) )];
@@ -162,9 +208,53 @@
     }
     [self buildAgeLabels];
     [self buildFromIdentity];
+ 
     
-    
-    
+}
+
+- (void)loadData
+{
+
+    if (_diary.sampleDiary) {
+        [coinBtn setAlpha:0];
+        [coinLabel setText:@""];
+        
+    }else{
+        if (_diary.UIdentity == [UserInfo sharedUserInfo].identity){
+            [coinBtn setAlpha:1];
+            if ([_diary rewarded]) {
+                [coinBtn selected];
+                [coinBtn setBackgroundColor:[UIColor clearColor]];
+                coinLabel.text = @"已打赏";
+                [coinLabel setTextColor:PMColor3];
+            }else {
+                [coinBtn unSelected];
+                if (_diary.UIdentity == Father){
+                    coinLabel.text = @"赏给爸爸!";
+                    [coinLabel setTextColor:PMColor6];
+                } else {
+                    coinLabel.text = @"赏给妈妈!";
+                    [coinLabel setTextColor:RGBColor(239, 128, 123)];
+                }
+            }
+        }else{
+            [coinBtn unSelected];
+            [coinBtn setAlpha:0];
+            coinLabel.text = @"";
+            if ([_diary rewarded]) {
+                if (_diary.UIdentity == Father) {
+                    coinLabel.text = @"妈妈赏了你";
+                    [coinLabel setTextColor:RGBColor(239, 128, 123)];
+                }else {
+                    coinLabel.text = @"爸爸赏了你!";
+                    [coinLabel setTextColor:PMColor6];
+                    
+                }
+            }
+        }
+    }
+
+
 }
 
 - (void)buildAgeLabels

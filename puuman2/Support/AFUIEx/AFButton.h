@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol AFButtonDelegate;
 
 @interface AFButton : UIButton
 
-@property (nonatomic, retain) NSIndexPath *indexPath;
-@property (nonatomic, retain) NSDictionary *userInfo;
+@property(nonatomic,assign)NSInteger flagTag;
+@property(nonatomic,assign)id<AFButtonDelegate> delegate;
+@property(assign,nonatomic)BOOL selected;
+
+@end
+
+@protocol AFButtonDelegate <NSObject>
+
+- (void)clickAFButtonWithButton:(AFButton *)button;
 
 @end

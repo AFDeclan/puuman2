@@ -92,6 +92,7 @@ static UserInfo *instance = nil;
         _createTime = [uInfo valueForKey:userInfo_createTime];
         _UCorns = [[uInfo valueForKey:userInfo_UCorns] doubleValue];
         _UCorns_connect = [[uInfo valueForKey:userInfo_UCornsConnect] doubleValue];
+        
         _UCornsUsed = [[uInfo valueForKey:userInfo_UCornsUsed] doubleValue];
         _UCornsBound = [[uInfo valueForKey:userInfo_pumanBound] doubleValue];
         _UCornsLocalAdded = [[uInfo valueForKey:userInfo_pumanLocalAdded] doubleValue];
@@ -352,16 +353,14 @@ static UserInfo *instance = nil;
     _pwd_md5 = [dic objectForKey:@"UPwd"];
     _UCorns = [[dic valueForKey:@"UCorns"] doubleValue];
     _UCorns_connect = [[dic valueForKey:@"UCorns_connect"] doubleValue];
+    
     _UCornsUsed = [[dic valueForKey:@"UCornsUsed"] doubleValue];
     _UCornsBound = [[dic valueForKey:@"UCornsBound"] doubleValue];
     _UCornsLocalAdded = 0;
     _UCornsLocalAdded_daily = 0;
     _babyInfo = [[BabyInfo alloc] init];
     [_babyInfo setWithDic:[dic valueForKey:@"Baby"]];
-    if ([[dic valueForKey:@"ShareInfo"] isKindOfClass:[NSDictionary class]]) {
-        _shareVideo = [[ShareVideo alloc] init];
-        [_shareVideo initWithData:[dic valueForKey:@"ShareInfo"]];
-    }
+
     NSMutableDictionary* mm = nil;
     tp = [dic objectForKey:@"Metas"];
     if( tp != nil ){
@@ -382,8 +381,7 @@ static UserInfo *instance = nil;
         if (_shareVideo && _shareVideo.RID ==[[tp valueForKey:@"RID"] integerValue]) {
             _shareVideo = [[ShareVideo alloc] init];
             [_shareVideo initWithData:tp];
-
-
+            
         }else{
             if (!_shareVideo) {
                 _shareVideo = [[ShareVideo alloc] init];

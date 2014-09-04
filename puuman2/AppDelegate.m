@@ -7,23 +7,23 @@
 //
 
 #import "AppDelegate.h"
-#import "MainTabBarController.h"
+#import "MainTabBarController+AutoImport.h"
 #import "DiaryViewController.h"
-//#import "PuumanViewController.h"
 #import "ShopViewController.h"
-#import "BabyInfoViewController.h"
+#import "TestShopViewController.h"
 #import "SocialViewController.h"
 #import "SkipViewController.h"
 #import "CustomAlertViewController.h"
-#import "Models.h"
 #import "NSString+VersionCompare.h"
 #import "EnterTutorialView.h"
+#import "Models.h"
 
 @implementation AppDelegate
 @synthesize rootTabBarC = _rootTabBarC;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -44,13 +44,13 @@
 {
     _rootTabBarC = [MainTabBarController sharedMainViewController];
     DiaryViewController *diaryVC = [DiaryViewController sharedDiaryViewController];
-    BabyInfoViewController *babyInfoVC = [[BabyInfoViewController alloc] init];
-    SocialViewController *socialVC = [[SocialViewController alloc] init];
-    ShopViewController *shopVC = [[ShopViewController alloc] init];
-    SkipViewController *skipVC = [[SkipViewController alloc] init];
+    SocialViewController *socialVC = [SocialViewController  sharedViewController];
+    //ShopViewController *shopVC = [ShopViewController  sharedShopViewController];
+    TestShopViewController *shopVC = [[TestShopViewController  alloc] init];
+
+    SkipViewController *skipVC = [SkipViewController sharedController];
     [_rootTabBarC addChildViewController:skipVC];
     [_rootTabBarC addChildViewController:diaryVC];
-    [_rootTabBarC addChildViewController:babyInfoVC];
     [_rootTabBarC addChildViewController:socialVC];
     [_rootTabBarC addChildViewController:shopVC];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -70,6 +70,7 @@
     [[UserInfo sharedUserInfo] updateUserInfo];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [MobClick updateOnlineConfig];
+
 //    [MobClick checkUpdateWithDelegate:self selector:@selector(appUpdate:)];
     [self checkUpdate];
     PostNotification(Noti_Refresh, nil);
@@ -79,7 +80,7 @@
 - (void)checkUpdate
 {
     [ASIHTTPRequest setSessionCookies:nil];
-    NSURL* url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", APPID]];
+    NSURL* url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"@""", APPID]];
     ASIHTTPRequest* request = [[ASIHTTPRequest alloc] initWithURL:url];
     request.delegate = self;
     [request setTimeOutSeconds:5];
@@ -182,7 +183,7 @@
     if ([[MainTabBarController sharedMainViewController] videoShowed]) {
         PostNotification(Noti_ContinueVideo, nil);
     }
-    [[DiaryViewController sharedDiaryViewController] autoImportShowed];
+   // [[MainTabBarController sharedMainViewController] showAutoImportView];
 
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
@@ -207,6 +208,7 @@
 {
     return [SocialNetwork handleOpenURL:url];
 }
+
 
 
 @end

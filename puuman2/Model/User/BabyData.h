@@ -71,4 +71,5 @@
 - (NSUInteger)vaccineCount;
 - (NSDictionary *)vaccineAtIndex:(NSUInteger)index;
 
+- (NSInteger)startAtIndex;
 @end

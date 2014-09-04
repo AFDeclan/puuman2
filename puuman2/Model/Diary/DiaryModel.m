@@ -104,7 +104,11 @@ static DiaryModel * instance;
         diary.deleted = [rs boolForColumn:kDeletedDiary];
         diary.uploaded = [rs boolForColumn:kUploaded];
         NSData * metaData = [rs dataForColumn:kDiaryMeta];
-        diary.meta = [metaData objectFromJSONData];
+        id info = [metaData objectFromJSONData];
+        if (info) {
+            diary.meta = [[NSMutableDictionary alloc] initWithDictionary:info];
+        }
+        
         if (diary.deleted)
         {
             [_deletedDiaries addObject:diary];
@@ -208,8 +212,10 @@ static DiaryModel * instance;
         [_diaries removeAllObjects];
     _sampleDiary = NO;
     [_diaries addObject:d];
-    PostNotification(Noti_ReloadDiaryTable, nil);
-    [[UserInfo sharedUserInfo] addCorns:0.1];
+    if ( [[UserInfo sharedUserInfo] addCorns:0.1]) {
+        PostNotification(Noti_AddCorns, nil);
+
+    }
     [self performSelectorInBackground:@selector(uploadDiary:) withObject:d];
     return YES;
 }
@@ -220,7 +226,7 @@ static DiaryModel * instance;
     NSDate *date = d.DCreateTime;
     if (date == nil) return  NO;
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlDel = [NSString stringWithFormat:@"UPDATE %@ SET %@ = 1 AND %@ = 0 WHERE %@ = ?", tableName, kDeletedDiary, kUploaded, kDateName];
+    NSString *sqlDel = [NSString stringWithFormat:@"UPDATE %@ SET %@ = 1 , %@ = 0 WHERE %@ = ?", tableName, kDeletedDiary, kUploaded, kDateName];
     if (![db executeUpdate:sqlDel, date]) return NO;
     //delete file
     for (NSString *filePath in d.filePaths1) {
@@ -255,10 +261,9 @@ static DiaryModel * instance;
 - (BOOL)updateDiary:(Diary *)d needUpload:(BOOL)toUp
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlUpdate = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?) WHERE %@ = ?", tableName, kTitleName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded, kDateName];
+    NSString *sqlUpdate = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ? WHERE %@ = ?", tableName, kTitleName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded, kDateName];
     if (![db executeUpdate: sqlUpdate,
           d.title,
-          d.DCreateTime,
           [NSNumber numberWithInteger:d.type1],
           [d.filePaths1 JSONData],
           [d.urls1 JSONData],
@@ -268,7 +273,8 @@ static DiaryModel * instance;
           [NSNumber numberWithInteger:[UserInfo sharedUserInfo].identity],
           [d.meta JSONData],
           [NSNumber numberWithBool:d.deleted],
-          [NSNumber numberWithBool:!toUp]])
+          [NSNumber numberWithBool:!toUp],
+          d.DCreateTime])
         return NO;
     return YES;
 }
@@ -414,7 +420,10 @@ static DiaryModel * instance;
                     [d setUrls1WithMainUrl:[dic valueForKey:@"url1"] andSubcnt:[[dic valueForKey:@"subCnt1"] integerValue]];
                     [d setUrls2WithMainUrl:[dic valueForKey:@"url2"] andSubcnt:[[dic valueForKey:@"subCnt2"] integerValue]];
                     d.UTID = [[dic valueForKey:@"UTID"] integerValue];
-                    d.meta = [[dic valueForKey:@"Meta"] objectFromJSONString];
+                    id info = [[dic valueForKey:@"Meta"] objectFromJSONString];
+                    if (info) {
+                        d.meta = [[NSMutableDictionary alloc] initWithDictionary:info];
+                    }
                     [_toDownloadDiaries addObject:d];
                 }
             }

@@ -7,30 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AllTopicView.h"
-#import "MyTopicView.h"
-#import "PartnerDataView.h"
-#import "PartnerChatView.h"
-
+#import "SocialAllTopicView.h"
+#import "SocialMyTopicView.h"
+#import "SocialPartnerDataView.h"
+#import "SocialPartnerChatView.h"
+#import "SocialDetailView.h"
 
 typedef enum {
-    kAllTopicView,
-    kMyTopicView,
-    kPartnerDataView,
-    kPartnerChatView,
+    kSocialAllTopicView,
+    kSocialMyTopicView,
+    kSocialPartnerDataView,
+    kSocialPartnerChatView,
     kSocialNoneType
 } SocialViewType;
 
 @interface SocialContentView : UIView
 {
-    PartnerDataView *partnerData;
-    PartnerChatView *partnerChat;
-    AllTopicView *allTopic;
-    MyTopicView *myTopic;
-    SocialViewType socialType;
+    SocialAllTopicView *allTopic;
+    SocialMyTopicView *myTopic;
+    SocialPartnerDataView *partnerData;
+    SocialPartnerChatView *partnerChat;
+    SocialDetailView *selectedView;
 }
 
-- (void)selectWithType:(SocialViewType)type;
+@property(nonatomic,assign)SocialViewType socialType;
 - (void)setVerticalFrame;
 - (void)setHorizontalFrame;
 @end

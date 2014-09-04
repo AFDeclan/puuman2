@@ -23,9 +23,11 @@
         perVertical= ![MainTabBarController sharedMainViewController].isVertical;
         // Initialization code
         [self initialization];
+        self.layer.masksToBounds = NO;
     }
     return self;
 }
+
 - (void)initialization
 {
     bgCommon = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 56, 62)];
@@ -35,16 +37,26 @@
     [bgCommon setShowsHorizontalScrollIndicator:NO];
     [bgCommon setShowsVerticalScrollIndicator:NO];
     [self addSubview:bgCommon];
+
+    
+    
     newBtn =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 56, 88)];
     [newBtn setImage:[UIImage imageNamed:@"btn_more_diary.png"] forState:UIControlStateNormal];
     [newBtn addTarget:self action:@selector(hideOrShowBtns) forControlEvents:UIControlEventTouchUpInside];
     [bgCommon addSubview:newBtn];
   
+    
+    
     commonBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 33, 55, 55)];
     [commonBtn addTarget:self action:@selector(addDiary) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:commonBtn];
+    
+    
+    
 
 }
+
+
 - (void)setCommonBtnType:(NewButtonType)commonBtnType
 {
     switch (commonBtnType) {
@@ -68,6 +80,7 @@
     }
     _commonBtnType = commonBtnType;
 }
+
 - (void)hideOrShowBtns
 {
     if (_newBtnShowed) {
@@ -76,6 +89,7 @@
         [self showBtns];
     }
 }
+
 - (void)showBtns
 {
     if (!_newBtnShowed) {
@@ -100,9 +114,9 @@
     
 
 }
+
 - (void)hiddenBtns
 {
-    
     if (_newBtnShowed) {
         CGRect frame = newBtn.frame;
 //        frame.origin.y = 35;
@@ -122,11 +136,13 @@
     }
    
 }
+
 - (void)addDiary
 {
     [[DiaryViewController sharedDiaryViewController] showNewDiaryViewWithType:_commonBtnType withTaskInfo:nil];
 
 }
+
 - (BOOL)directionChangedWithVertical:(BOOL)vertical;
 {
     BOOL changed;
@@ -135,13 +151,12 @@
     }else{
         changed = YES;
     }
-    
     perVertical = vertical;
     return changed;
 }
+
 - (void)setShowStatus
 {
-    
     CGRect frame = newBtn.frame;
     frame.origin.y = 35;
     [newBtn setFrame:frame];
@@ -150,7 +165,6 @@
 
 - (void)setHideStatus
 {
-    
     CGRect frame = newBtn.frame;
     frame.origin.y = 0;
     [newBtn setFrame:frame];

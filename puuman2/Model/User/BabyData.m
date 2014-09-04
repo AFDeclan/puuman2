@@ -205,6 +205,7 @@ static BabyData * instance;
     return height;
     
 }
+
 - (float)selectWeightWithDate:(NSDate *)date
 {
     float weight = 0;
@@ -219,6 +220,41 @@ static BabyData * instance;
     }
     return weight;
 }
+
+
+- (NSInteger)heightIndexWithIndex:(NSInteger)index
+{
+    
+    NSDate *date = [[_data objectAtIndex:index] valueForKey:kBabyData_Date];
+    for (NSDictionary * record in _heightArray)
+    {
+        
+        
+        NSDate *recordDate = [record valueForKey:kBabyData_Date];
+        if ([recordDate isSameDayWithDate:date])
+        {
+            return [_heightArray indexOfObject:record];
+        }
+    }
+    return -1;
+
+}
+
+- (NSInteger)weightIndexWithIndex:(NSInteger)index
+{
+    NSDate *date = [[_data objectAtIndex:index] valueForKey:kBabyData_Date];
+    for (NSDictionary * record in _weightArray)
+    {
+        NSDate *recordDate = [record valueForKey:kBabyData_Date];
+        if ([recordDate isSameDayWithDate:date])
+        {
+            return [_weightArray indexOfObject:record];
+            
+        }
+    }
+    return -1;
+}
+
 
 - (void)insertRecordAtDate:(NSDate *)date height:(CGFloat)h weight:(CGFloat)w
 {
@@ -550,6 +586,35 @@ static BabyData * instance;
             
             break;
     }
+}
+
+- (NSInteger)startAtIndex
+{
+    for (NSDictionary *vacInfo in _vaccine) {
+        NSDate *doneDate = [vacInfo valueForKey:kVaccine_DoneTime];
+        if (!doneDate) {
+            NSArray *age = [[NSDate date] ageFromDate:[[[UserInfo sharedUserInfo] babyInfo] Birthday]];
+            NSInteger month = 0;
+            if ([age count] == 3)
+            {
+                month = [[age objectAtIndex:0] integerValue] * 12 + [[age objectAtIndex:1] integerValue];
+            }
+            NSArray *suitMonths = [[vacInfo valueForKey:kVaccine_SuitMonth] componentsSeparatedByString:@"~"];
+            NSInteger startMonth = 0, endMonth = 0;
+            if ([suitMonths count] == 2)
+            {
+                startMonth = [[suitMonths objectAtIndex:0] integerValue];
+                endMonth = [[suitMonths objectAtIndex:1] integerValue];
+            }
+            
+            if(month<startMonth) {
+                return [_vaccine indexOfObject:vacInfo] ;
+            }
+            
+
+        }
+    }
+    return 0;
 }
 
 - (void)dealloc
