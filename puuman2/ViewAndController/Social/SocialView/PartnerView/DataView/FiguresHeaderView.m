@@ -32,10 +32,16 @@
 
 - (void)initialization
 {
+    
     headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 44)];
     [self addSubview:headerView];
     headerView.layer.masksToBounds = YES;
     [headerView setBackgroundColor:[UIColor clearColor]];
+    
+    UIImageView *bgImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 864, 44)];
+    [bgImg setBackgroundColor:[UIColor clearColor]];
+    [bgImg setImage:[UIImage imageNamed:@"topic_partner_title.png"]];
+    [headerView addSubview:bgImg];
     
     contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 864, 124)];
     [contentView setBackgroundColor:[UIColor clearColor]];
