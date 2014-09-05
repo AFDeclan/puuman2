@@ -40,6 +40,8 @@ static DiaryModel * instance;
 
 @synthesize updateCnt = _updateCnt;
 @synthesize downloadedCnt = _downloadedCnt;
+@synthesize diaryKeys = _diaryKeys;
+@synthesize diariesDic = _diariesDic;
 
 + (DiaryModel *)sharedDiaryModel
 {
@@ -56,6 +58,8 @@ static DiaryModel * instance;
         _diaries = [[NSMutableArray alloc] init];
         _deletedDiaries = [[NSMutableArray alloc] init];
         _toUploadDiaries = [[NSMutableArray alloc] init];
+        _diaryKeys = [[NSMutableArray alloc] init];
+        _diariesDic = [[NSMutableDictionary alloc] init];
         _updateCnt = 0;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documents = [paths objectAtIndex:0];
@@ -82,6 +86,8 @@ static DiaryModel * instance;
     [_diaries removeAllObjects];
     [_deletedDiaries removeAllObjects];
     [_toUploadDiaries removeAllObjects];
+    [_diaryKeys removeAllObjects];
+    [_diariesDic removeAllObjects];
     NSString *sqlSelect = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC", tableName, kDateName];
     FMResultSet *rs = [db executeQuery: sqlSelect];
     while ([rs next])
@@ -117,7 +123,7 @@ static DiaryModel * instance;
         }
         else
         {
-            [_diaries addObject:diary];
+            [self addDiary:diary];
         }
         if (diary.uploaded != 1) {
             [_toUploadDiaries insertObject:diary atIndex:0];
@@ -161,7 +167,7 @@ static DiaryModel * instance;
     d.type2 = DiaryContentTypeNone;
     d.sampleDiary = YES;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
-    [_diaries addObject:d];
+    [self addDiary:d];
     
     //sample diary - auphoto
     filePath = [[NSBundle mainBundle] pathForResource:@"sampleDiary_auphoto" ofType:@"jpg" ];
@@ -174,7 +180,7 @@ static DiaryModel * instance;
     d.sampleDiary = YES;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.filePaths2 = [NSArray arrayWithObject:filePath2];
-    [_diaries addObject:d];
+    [self addDiary:d];
     
     _downloadedDiaries = [[NSMutableArray alloc] init];
     
@@ -191,6 +197,50 @@ static DiaryModel * instance;
         return 0;
     }
 }
+
+- (void)addDiary:(Diary *)diary
+{
+    [_diaries addObject:diary];
+    NSString *dateKey;
+    if (diary.sampleDiary) {
+        dateKey = @"sampleDiary";
+    }else{
+        dateKey = [DateFormatter stringFromDate:diary.DCreateTime ];
+        
+    }
+    if ([_diariesDic valueForKey:dateKey]) {
+        NSMutableArray *arr = [_diariesDic valueForKey:dateKey];
+        [arr addObject:diary];
+        [_diariesDic setValue:arr forKey:dateKey];
+    } else {
+        [_diariesDic setValue:[NSMutableArray arrayWithObject:diary] forKey:dateKey];
+        [_diaryKeys addObject:dateKey];
+    }
+    
+}
+
+- (void)removeDiary:(Diary *)diary
+{
+    [_deletedDiaries addObject:diary];
+    [_diaries removeObject:diary];
+    
+    NSString *dateKey = [DateFormatter stringFromDate:diary.DCreateTime ];
+    NSMutableArray *arr = [_diariesDic valueForKey:dateKey];
+    [arr removeObject:diary];
+    arr = [_diariesDic valueForKey:dateKey];
+    
+    if (arr.count == 0) {
+        for (int i=0; i<_diaryKeys.count; i++) {
+            if ([[_diaryKeys objectAtIndex:i] isEqualToString:dateKey]) {
+                [_diaryKeys removeObjectAtIndex:i];
+                break;
+            }
+        }
+    }else{
+        [_diariesDic setValue:arr forKey:dateKey];
+    }
+}
+
 
 //新增日记，更新数据库以及model的数组
 - (BOOL)addNewDiary:(Diary *)d
@@ -211,14 +261,19 @@ static DiaryModel * instance;
           [d.meta JSONData]])
         return NO;
     d.UIdentity = [UserInfo sharedUserInfo].identity;
-    if (_sampleDiary)
+    if (_sampleDiary) {
         [_diaries removeAllObjects];
-    _sampleDiary = NO;
-    [_diaries addObject:d];
-    if ( [[UserInfo sharedUserInfo] addCorns:0.1]) {
-        PostNotification(Noti_AddCorns, nil);
-
+        [_diaryKeys removeAllObjects];
+        [_diariesDic removeAllObjects];
     }
+    _sampleDiary = NO;
+    [self addDiary:d];
+    PostNotification(Noti_ReloadDiaryTable, nil);
+    if([[UserInfo sharedUserInfo] addCorns:0.1]){
+        PostNotification(Noti_AddCorns, nil);
+        
+    }
+    
     [self performSelectorInBackground:@selector(uploadDiary:) withObject:d];
     return YES;
 }
@@ -242,17 +297,8 @@ static DiaryModel * instance;
     }
     //update model
     
-    for (int i = 0; i<[_diaries count]; i++)
-    {
-        Diary *diaryInfo = [_diaries objectAtIndex:i];
-        NSDate *theDate = diaryInfo.DCreateTime;
-        if ([date isEqualToDate:theDate])
-        {
-            [_deletedDiaries addObject:[_diaries objectAtIndex:i]];
-            [_diaries removeObjectAtIndex:i];
-            break;
-        }
-    }
+    [self removeDiary:d];
+    
     if ([_diaries count] <=1) {
         [self reloadData];
     } else {

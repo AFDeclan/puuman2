@@ -35,6 +35,9 @@
 
 @property (retain, readonly) NSMutableArray * diaries;
 @property (retain, readonly) NSMutableArray * deletedDiaries;
+@property (retain, readonly) NSMutableArray * diaryKeys;
+@property (retain, readonly) NSMutableDictionary * diariesDic;
+
 
 + (DiaryModel *)sharedDiaryModel;
 
