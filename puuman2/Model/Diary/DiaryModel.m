@@ -483,6 +483,12 @@ static DiaryModel * instance;
         if (_updateCnt > 0)
         {
             PostNotification(Noti_UpdateDiaryStateRefreshed, nil);
+            if (![[Reachability reachabilityForInternetConnection] isReachable])
+            {
+                return;
+            }
+            [[DiaryModel sharedDiaryModel]  downloadDiaries];
+
         }
         
     }
