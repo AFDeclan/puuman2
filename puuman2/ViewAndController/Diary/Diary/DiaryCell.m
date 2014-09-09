@@ -247,7 +247,7 @@
             coinLabel.text = @"";
             if ([_diary rewarded]) {
                 if (_diary.UIdentity == Father) {
-                    coinLabel.text = @"妈妈已赏";
+                    coinLabel.text = @"妈妈已赏!";
                     [coinLabel setTextColor:RGBColor(239, 128, 123)];
                 
                 }else {

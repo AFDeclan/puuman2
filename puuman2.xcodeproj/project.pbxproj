@@ -562,7 +562,6 @@
 		54B85D021987AB050032E09F /* social_participate_btnpng.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B85CFF1987AB050032E09F /* social_participate_btnpng.png */; };
 		54B85D031987AB050032E09F /* social_reward_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B85D001987AB050032E09F /* social_reward_btn.png */; };
 		54B94A3F197CF536003ABA93 /* ShareVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B94A3E197CF536003ABA93 /* ShareVideoViewController.m */; };
-		54B94A41197D0024003ABA93 /* popeye.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 54B94A40197D0024003ABA93 /* popeye.mp4 */; };
 		54B94A44197D0402003ABA93 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B94A43197D0402003ABA93 /* UIImage+Blur.m */; };
 		54B9582919B6F21D0037F248 /* vaccine_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B9582819B6F21D0037F248 /* vaccine_icon.png */; };
 		54B9583519B6FB3E0037F248 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B9583319B6FB3E0037F248 /* ShopViewController.m */; };
@@ -1679,7 +1678,6 @@
 		54B85D001987AB050032E09F /* social_reward_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = social_reward_btn.png; sourceTree = "<group>"; };
 		54B94A3D197CF536003ABA93 /* ShareVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareVideoViewController.h; sourceTree = "<group>"; };
 		54B94A3E197CF536003ABA93 /* ShareVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareVideoViewController.m; sourceTree = "<group>"; };
-		54B94A40197D0024003ABA93 /* popeye.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = popeye.mp4; sourceTree = "<group>"; };
 		54B94A42197D0402003ABA93 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
 		54B94A43197D0402003ABA93 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
 		54B9582819B6F21D0037F248 /* vaccine_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vaccine_icon.png; sourceTree = "<group>"; };
@@ -3599,7 +3597,6 @@
 				54BBE8AA193727E30056390B /* VideoManageView.m */,
 				54B94A42197D0402003ABA93 /* UIImage+Blur.h */,
 				54B94A43197D0402003ABA93 /* UIImage+Blur.m */,
-				54B94A40197D0024003ABA93 /* popeye.mp4 */,
 			);
 			name = ShareVideo;
 			sourceTree = "<group>";
@@ -4681,7 +4678,6 @@
 				54B97EB318FA594B00B6C4C9 /* pic_minan_shop.png in Resources */,
 				54B97E4618FA2B1E00B6C4C9 /* pic34_insure_shop.png in Resources */,
 				54D14FF618CAEFD70022E1F4 /* circle_coin_diary.png in Resources */,
-				54B94A41197D0024003ABA93 /* popeye.mp4 in Resources */,
 				5403CE3718D04F5E004CAE22 /* icon_time_baby.png in Resources */,
 				54B97E8B18FA572600B6C4C9 /* pic17_insure_shop.png in Resources */,
 				540020331973D8B5000C0336 /* btn_blue6.png in Resources */,

@@ -105,7 +105,7 @@
 
 - (void)addPuuman:(NSNotification *)notification
 {
-        [self loadAnimateView];
+    [self loadAnimateView];
     
 }
 
