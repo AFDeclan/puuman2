@@ -16,7 +16,7 @@ typedef enum
     PuumanAnimateShow,
     PuumanAnimateNone
 }PuumanAnimateStatus;
-@interface BabyShowButton : UIView 
+@interface BabyShowButton : UIView<CoinButtonAnimationDelagate>
 {
     UIImageView *bg_babybutton;
     AFImageView *portraitView;
@@ -29,7 +29,5 @@ typedef enum
 
 }
 
-- (void)addPuuman;
-- (void)minusPuuman;
 - (void)loadData;
 @end

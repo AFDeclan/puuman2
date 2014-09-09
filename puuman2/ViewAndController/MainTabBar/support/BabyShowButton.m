@@ -54,7 +54,6 @@
     [coin_label setShadowColor:[UIColor grayColor]];
     [coin_label setShadowOffset:CGSizeMake(1, 1)];
     [self addSubview:coin_label];
-    [MyNotiCenter addObserver:self selector:@selector(updatePuumanData) name:Noti_UpdatePuumanShow object:nil];
 }
 
 - (void)initBabyButton
@@ -72,7 +71,12 @@
     portraitView.layer.masksToBounds = YES;
     portraitView.layer.shadowRadius =0.1;
     [self addSubview:portraitView];
-    [self loadAnimateView];
+    
+    profileView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin.png"]];
+    animataView = [[CoinButtonAnimation alloc] initWithPrimaryView:portraitView andSecondaryView:profileView inFrame:portraitView.frame];
+    animataView.deledate = self;
+    [animataView setSpinTime:2.0];
+    [self addSubview:animataView];
     
     babyInfoBtn = [[UIButton alloc ]initWithFrame:CGRectMake(136, 0, 80, 80)];
     [babyInfoBtn addTarget:self action:@selector(showBabyView) forControlEvents:UIControlEventTouchUpInside];
@@ -93,103 +97,27 @@
 
 - (void)loadAnimateView
 {
-    profileView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin.png"]];
-    animataView = [[CoinButtonAnimation alloc] initWithPrimaryView:portraitView andSecondaryView:profileView inFrame:portraitView.frame];
-    [animataView setSpinTime:2.0];
-    [self addSubview:animataView];
-}
-
-
-- (void)showAnimation
-{
+   
+    [animataView showAnimationCoinView];
     
- 
 }
 
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    PostNotification(Noti_UpdatePuumanShow, nil);
-    if ([anim isKindOfClass:[CABasicAnimation class]]) {
-        if (flag) {
-            [self animateFinished];
-        }
-    }
-}
-
-- (void)addAnimation
-{
-   // [animateView updateWithTotalBytes:100 downloadedBytes:100];
-
-}
-
-- (void)minusAnimation
-{
-   // [animateView updateWithTotalBytes:100 downloadedBytes:0];
-
-}
-
-
-- (void)animateFinished
-{
-    switch (status) {
-        case PuumanAnimateAdd:
-        {
-            status = PuumanAnimateShow;
-            [self showAnimation];
-            return;
-        }
-        case PuumanAnimateShow:
-        {
-            status = PuumanAnimateMinus;
-            [self minusAnimation];
-            return;
-        }
-        case PuumanAnimateMinus:
-        {
-            status = PuumanAnimateNone;
-            return;
-        }
-        case PuumanAnimateNone:
-            break;
-        default:
-            break;
-    }
-}
 
 - (void)addPuuman:(NSNotification *)notification
 {
-    float addCoins = [[notification object] floatValue];
+    [self loadAnimateView];
     
-    if (addCoins > 0) {
-     
-        [self addPuuman];
-    }else{
-    
-        [self addPuuman];
-    }
 }
 
-- (void)addPuuman
+- (void)updateBytes
 {
-    [animataView showAnimationCoinView];
-//    if (status == PuumanAnimateNone) {
-//        status = PuumanAnimateAdd;
-//        [self addAnimation];
-//    }
+   [coin_num setText:[NSString stringWithFormat:@"%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
 }
-- (void)minusPuuman
-{
 
-    if (status == PuumanAnimateNone) {
-        status = PuumanAnimateMinus;
-        [self minusAnimation];
-    }
-}
 
 - (void)loadData
 {
-    [self updatePuumanData];
+    [self updateBytes];
     [self loadPortrait];
 }
 
@@ -198,12 +126,7 @@
     [portraitView getImage:[[[UserInfo sharedUserInfo] babyInfo] PortraitUrl] defaultImage:default_portrait_image];
 }
 
-- (void)updatePuumanData
-{
-    [coin_num setText:[NSString stringWithFormat:@"%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
-    
-    
-}
+
 
 -(void)dealloc
 {
