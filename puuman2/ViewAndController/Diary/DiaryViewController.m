@@ -64,10 +64,7 @@ static DiaryViewController * instance;
         [newDiaryBtn[i] addTarget:self action:@selector(showNewDiaryView:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:newDiaryBtn[i]];
     }
-
 }
-
-
 
 - (void)viewDidLoad
 {

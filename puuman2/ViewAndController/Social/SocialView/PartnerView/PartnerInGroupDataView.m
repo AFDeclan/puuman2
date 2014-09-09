@@ -56,7 +56,7 @@
 {
     if (managing) {
         [blockView setFrame:CGRectMake(0, 0, 1024, 768)];
-        [figuresHeader setFrame:CGRectMake(80, 80, 608, 168)];
+        [figuresHeader setFrame:CGRectMake(80, 80, 864, 168)];
 
     }else{
         [dataInfoView setFrame:CGRectMake(0,168, 864, 520)];
@@ -86,6 +86,7 @@
     
     if (!blockView) {
         blockView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        blockView.layer.masksToBounds = YES;
     }
 
     if (managing) {
