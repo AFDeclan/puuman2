@@ -68,4 +68,7 @@
 //日记更新数据置零
 - (void)resetUpdateDiaryCnt;
 
+//开始下载日记
+- (void)downloadDiaries;
+
 @end

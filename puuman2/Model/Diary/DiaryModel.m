@@ -483,11 +483,15 @@ static DiaryModel * instance;
         if (_updateCnt > 0)
         {
             PostNotification(Noti_UpdateDiaryStateRefreshed, nil);
-            _downloadedDiaries = [[NSMutableArray alloc] init];
-            [self performSelectorInBackground:@selector(downloadUpdateDiary) withObject:nil];
         }
         
     }
+}
+
+- (void)downloadDiaries
+{
+    _downloadedDiaries = [[NSMutableArray alloc] init];
+    [self performSelectorInBackground:@selector(downloadUpdateDiary) withObject:nil];
 }
 
 - (void)downloadUpdateDiary
