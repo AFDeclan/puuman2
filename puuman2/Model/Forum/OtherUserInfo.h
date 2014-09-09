@@ -1,7 +1,7 @@
 //
 //  OtherUserInfo.h
 //  用于获取其他用户的基本信息
-//  puuman2
+//  puuman model
 //
 //  Created by Declan on 14-3-24.
 //  Copyright (c) 2014年 AFITC. All rights reserved.

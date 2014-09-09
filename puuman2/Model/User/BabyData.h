@@ -1,6 +1,6 @@
 //
 //  BabyData.h
-//  puman
+//  puuman model
 //
 //  Created by 陈晔 on 13-10-18.
 //  Copyright (c) 2013年 创始人团队. All rights reserved.
@@ -44,6 +44,8 @@
 @property (assign, nonatomic, readonly) float lowestHeightRecord;
 @property (assign, nonatomic, readonly) float highestWeightRecord;
 @property (assign, nonatomic, readonly) float lowestWeightRecord;
+//推荐接种而未接种的疫苗数。
+@property (assign, nonatomic, readonly) NSInteger vaccineCntNotInjured;
 
 //operations
 - (void)reloadData;
