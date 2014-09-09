@@ -242,6 +242,7 @@
 		5447C4A318D97D1100187BE6 /* line_topic.png in Resources */ = {isa = PBXBuildFile; fileRef = 5447C48618D97D1100187BE6 /* line_topic.png */; };
 		5447C4A418D97D1100187BE6 /* pic_start_topic.png in Resources */ = {isa = PBXBuildFile; fileRef = 5447C48718D97D1100187BE6 /* pic_start_topic.png */; };
 		5448D58C18FE2F2300DA696C /* SocialContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5448D58B18FE2F2300DA696C /* SocialContentView.m */; };
+		5448FE5C19BEB3C6007955F8 /* topic_partner_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 5448FE5B19BEB3C6007955F8 /* topic_partner_title.png */; };
 		545EB7E718D7E6BD00D8EB7F /* CalenderControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7E618D7E6BD00D8EB7F /* CalenderControlView.m */; };
 		545EB7ED18D7ECCF00D8EB7F /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7EC18D7ECCF00D8EB7F /* CalendarView.m */; };
 		545EB7F318D7F22900D8EB7F /* AgeCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545EB7F218D7F22900D8EB7F /* AgeCalendarView.m */; };
@@ -1169,6 +1170,7 @@
 		5447C48718D97D1100187BE6 /* pic_start_topic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_start_topic.png; sourceTree = "<group>"; };
 		5448D58A18FE2F2300DA696C /* SocialContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialContentView.h; sourceTree = "<group>"; };
 		5448D58B18FE2F2300DA696C /* SocialContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialContentView.m; sourceTree = "<group>"; };
+		5448FE5B19BEB3C6007955F8 /* topic_partner_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topic_partner_title.png; sourceTree = "<group>"; };
 		545EB7E518D7E6BD00D8EB7F /* CalenderControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderControlView.h; sourceTree = "<group>"; };
 		545EB7E618D7E6BD00D8EB7F /* CalenderControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderControlView.m; sourceTree = "<group>"; };
 		545EB7EB18D7ECCF00D8EB7F /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
@@ -2582,6 +2584,7 @@
 			isa = PBXGroup;
 			children = (
 				54C7119E1988D143007F8E69 /* socail_vote_btn.png */,
+				5448FE5B19BEB3C6007955F8 /* topic_partner_title.png */,
 				54B85CFE1987AB050032E09F /* socail_current_btn.png */,
 				54B85CFF1987AB050032E09F /* social_participate_btnpng.png */,
 				54B85D001987AB050032E09F /* social_reward_btn.png */,
@@ -4445,6 +4448,7 @@
 				54AC20E218E3FD30001C1357 /* btn_all2_shop.png in Resources */,
 				54B97E4818FA2B1E00B6C4C9 /* pic35_insure_shop.png in Resources */,
 				54441A0718D462DE00FBE69F /* block_new_puuman.png in Resources */,
+				5448FE5C19BEB3C6007955F8 /* topic_partner_title.png in Resources */,
 				54B4684818E527D700745F72 /* icon_abroad_shop.png in Resources */,
 				54B97EAD18FA589800B6C4C9 /* pic_insure3_shop.png in Resources */,
 				88CA16EF19347A8F0072F8B8 /* btn1.png in Resources */,
