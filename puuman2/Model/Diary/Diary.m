@@ -379,5 +379,24 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
 
 }
 
+- (BOOL)uploadDiaryInfo
+{
+    PumanRequest *request = [[PumanRequest alloc] init];
+    request.urlStr = kUrl_UploadUserTaskInfo;
+    [request setIntegerParam:_UID forKey:@"UID"];
+    [request setParam:_title forKey:@"title"];
+    [request setParam:_type1Str forKey:@"type1"];
+    [request setParam:_type2Str forKey:@"type2"];
+    NSString *diaryCreateTime = [DateFormatter stringFromDatetime:_DCreateTime];
+    [request setParam:diaryCreateTime forKey:@"DCreateTime"];
+    [request setParam:_meta forKey:@"Meta" usingFormat:AFDataFormat_Json];
+    [request postSynchronous];
+    if (request.result == PumanRequest_Succeeded)
+    {
+        return YES;
+    }else{
+        return NO;
+    }
+}
 
 @end

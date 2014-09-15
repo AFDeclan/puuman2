@@ -1,6 +1,6 @@
 //
 //  MemberCache.m
-//  puuman2
+//  puuman model
 //
 //  Created by Declan on 14-3-31.
 //  Copyright (c) 2014年 AFITC. All rights reserved.

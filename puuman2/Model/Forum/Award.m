@@ -1,6 +1,6 @@
 //
 //  Award.m
-//  puuman2
+//  puuman model
 //
 //  Created by Declan on 14-4-1.
 //  Copyright (c) 2014年 AFITC. All rights reserved.

@@ -487,7 +487,6 @@
     if(diaryType == kDiaryPhotoType ||diaryType == kDiaryTextType ||diaryType == kdiaryPhotoMoreType)
     {
         shareCanShow = YES;
-        
     }else{
         shareCanShow = NO;
     }

@@ -51,7 +51,7 @@ typedef void (^DiaryRecallBlock)(BOOL);
 @property (nonatomic, retain) NSArray * urls1;
 @property (nonatomic, retain) NSArray * urls2;
 @property (nonatomic, assign) BOOL deleted;
-@property (nonatomic, assign) BOOL uploaded;
+@property (nonatomic, assign) NSInteger uploaded;   //0未上传，1已上传，2信息待更新
 @property (nonatomic, assign) BOOL sampleDiary;
 @property (nonatomic, retain) NSMutableDictionary * meta;
 
@@ -72,7 +72,8 @@ typedef void (^DiaryRecallBlock)(BOOL);
 - (void)redownloadContent1AtIndex:(NSInteger)index withRecall:(DiaryRecallBlock)block;
 - (void)redownloadContent2AtIndex:(NSInteger)index withRecall:(DiaryRecallBlock)block;
 //上传，同步方法
-- (BOOL)uploadDiary;
+- (BOOL)uploadDiary;        //上传文件和信息
+- (BOOL)uploadDiaryInfo;    //更新信息
 
 
 @end

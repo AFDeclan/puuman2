@@ -1,6 +1,6 @@
 //
 //  BabyData.m
-//  puman
+//  puuman model
 //
 //  Created by 陈晔 on 13-10-18.
 //  Copyright (c) 2013年 创始人团队. All rights reserved.
@@ -77,7 +77,7 @@ static BabyData * instance;
     [self updateBabyData];
     [self updateVaccineData];
 }
-    
+
 - (void)reloadBabyData
 {
     NSString *tableName = [self babydataTableName];
@@ -99,7 +99,7 @@ static BabyData * instance;
         NSDate *date = [rs dateForColumn:kBabyData_Date];
         if (date == nil)
         {
-        
+            
             [ErrorLog errorLog:@"Create BabyData table failed!." fromFile:@"BabyData.m" error:nil];
             NSLog(@"BabyData : Error date record!");
             continue;
@@ -108,12 +108,12 @@ static BabyData * instance;
         CGFloat weight = [rs doubleForColumn:kBabyData_Weight];
         BOOL uploaded = [rs boolForColumn:kBabyData_Uploaded];
         NSMutableDictionary *record = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                [NSNumber numberWithInteger:ID], kBabyData_ID,
-                                [NSNumber numberWithDouble:height], kBabyData_Height,
-                                [NSNumber numberWithDouble:weight], kBabyData_Weight,
-                                [NSNumber numberWithBool:uploaded], kBabyData_Uploaded,
-                                date, kBabyData_Date,
-                                nil];
+                                       [NSNumber numberWithInteger:ID], kBabyData_ID,
+                                       [NSNumber numberWithDouble:height], kBabyData_Height,
+                                       [NSNumber numberWithDouble:weight], kBabyData_Weight,
+                                       [NSNumber numberWithBool:uploaded], kBabyData_Uploaded,
+                                       date, kBabyData_Date,
+                                       nil];
         [_data addObject:record];
         if (height != 0)
         {
@@ -151,6 +151,14 @@ static BabyData * instance;
     NSString *sqlSelect = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ ASC", tableName, kVaccine_Order];
     FMResultSet *rs = [_db executeQuery: sqlSelect];
     [_vaccine removeAllObjects];
+    _vaccineCntNotInjured = 0;
+    NSArray *age = [[NSDate date] ageFromDate:[[UserInfo sharedUserInfo] babyInfo].Birthday];
+    NSInteger month = 0;
+    if ([age count] == 3)
+    {
+        month = [[age objectAtIndex:0] integerValue] * 12 + [[age objectAtIndex:1] integerValue];
+    }
+    
     while ([rs next])
     {
         NSInteger ID = [rs intForColumnIndex:0];
@@ -162,12 +170,22 @@ static BabyData * instance;
         NSString * suitMonth = [rs stringForColumnIndex:4];
         BOOL uploaded = [rs boolForColumn:kVaccine_Uploaded];
         NSMutableDictionary *vaccineRecord = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:ID], kVaccine_ID,
-            name, kVaccine_Name,
-            info, KVaccine_Info,
-            [NSNumber numberWithBool:uploaded], kVaccine_Uploaded,
-            suitMonth, kVaccine_SuitMonth,
-            date, kVaccine_DoneTime, nil];
+                                              name, kVaccine_Name,
+                                              info, KVaccine_Info,
+                                              [NSNumber numberWithBool:uploaded], kVaccine_Uploaded,
+                                              suitMonth, kVaccine_SuitMonth,
+                                              date, kVaccine_DoneTime, nil];
         [_vaccine addObject:vaccineRecord];
+        NSArray *suitMonths = [suitMonth componentsSeparatedByString:@"~"];
+        NSInteger startMonth = 0, endMonth = 0;
+        if ([suitMonths count] == 2)
+        {
+            startMonth = [[suitMonths objectAtIndex:0] integerValue];
+            endMonth = [[suitMonths objectAtIndex:1] integerValue];
+            if (month >= startMonth && month < endMonth) {
+                _vaccineCntNotInjured ++;
+            }
+        }
     }
     
 }
@@ -185,7 +203,7 @@ static BabyData * instance;
         }
     }
     return height;
-   
+    
 }
 
 - (float)selectWeightWithDate:(NSDate *)date
@@ -275,7 +293,7 @@ static BabyData * instance;
         if (![_db executeUpdate: sqlInsert, date, [NSNumber numberWithDouble:h], [NSNumber numberWithDouble:w], [NSNumber numberWithBool:fromSer]])
         {
             
-             [ErrorLog errorLog:  @"BabyData : Insert new record failed!" fromFile:@"BabyData.m" error:nil];
+            [ErrorLog errorLog:  @"BabyData : Insert new record failed!" fromFile:@"BabyData.m" error:nil];
             NSLog(@"BabyData : Insert new record failed!");
             return;
         }
@@ -302,7 +320,7 @@ static BabyData * instance;
     if (![_db executeUpdate:sqlUpdate, date, [NSNumber numberWithBool:fromSer], [NSNumber numberWithInteger:VID]])
     {
         [ErrorLog errorLog: @"BabyData vaccine update Failed:" fromFile:@"BabyData.m" error:nil];
-         NSLog(@"BabyData vaccine update Failed: %@ %@ %d", sqlUpdate, date, VID);
+        NSLog(@"BabyData vaccine update Failed: %@ %@ %d", sqlUpdate, date, VID);
     }
     
 }
@@ -401,7 +419,7 @@ static BabyData * instance;
         NSNumber *order = [vaccine valueForKey:@"Order"];
         if (![_db executeUpdate:sqlInsert, ID, name, info, suitMonth, order, @YES])
         {
-        
+            
             [ErrorLog errorLog: @"BabyData vaccine insert Failed:" fromFile:@"BabyData.m" error:nil];
             NSLog(@"BabyData vaccine insert Failed: %@ %@ %@ %@ %@ %@", sqlInsert, ID, name, info, suitMonth, order);
         }
@@ -428,8 +446,8 @@ static BabyData * instance;
 - (void)vaccineUploaded:(NSArray *)uploaded
 {
     for (NSMutableDictionary *vaccine in uploaded)
-         [vaccine setValue:@YES forKey:kVaccine_Uploaded];
-
+        [vaccine setValue:@YES forKey:kVaccine_Uploaded];
+    
     NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? WHERE %@ = ?", [self vaccineTableName], kVaccine_Uploaded, kVaccine_ID];
     for (NSDictionary *vac in uploaded)
         if (![_db executeUpdate:sql, @YES, [vac valueForKey:kVaccine_ID]])
@@ -438,7 +456,7 @@ static BabyData * instance;
             [ErrorLog errorLog: @"BabyData vaccineTable updated failed:" fromFile:@"BabyData.m" error:nil];
             NSLog(@"BabyData vaccineTable updated failed:%@", sql);
         }
-
+    
 }
 //Update BabyData
 - (void)updateBabyData
@@ -467,7 +485,7 @@ static BabyData * instance;
     request.delegate = self;
     request.resEncoding = PumanRequestRes_JsonEncoding;
     [request postAsynchronous];
-
+    
 }
 
 - (NSString *)babyDataUpdatedID
@@ -565,7 +583,7 @@ static BabyData * instance;
             break;
         }
         default:
-
+            
             break;
     }
 }

@@ -20,6 +20,7 @@
 #import "TaskModel.h"
 #import <JSONKit.h>
 
+#define kDiaryUIDName   @"UID"
 #define kDateName       @"date"
 #define kTypeName       @"type"
 #define kType2Name      @"type2"
@@ -39,6 +40,8 @@ static DiaryModel * instance;
 
 @synthesize updateCnt = _updateCnt;
 @synthesize downloadedCnt = _downloadedCnt;
+@synthesize diaryKeys = _diaryKeys;
+@synthesize diariesDic = _diariesDic;
 
 + (DiaryModel *)sharedDiaryModel
 {
@@ -55,6 +58,8 @@ static DiaryModel * instance;
         _diaries = [[NSMutableArray alloc] init];
         _deletedDiaries = [[NSMutableArray alloc] init];
         _toUploadDiaries = [[NSMutableArray alloc] init];
+        _diaryKeys = [[NSMutableArray alloc] init];
+        _diariesDic = [[NSMutableDictionary alloc] init];
         _updateCnt = 0;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documents = [paths objectAtIndex:0];
@@ -72,7 +77,7 @@ static DiaryModel * instance;
 - (void)reloadData
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY, %@ TEXT, %@ REAL, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ INTEGER, %@ INTEGER)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
+    NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY, %@ INTEGER, %@ TEXT, %@ REAL, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ BLOB, %@ INTEGER, %@ BLOB, %@ INTEGER, %@ INTEGER)", tableName, kDiaryUIDName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate:sqlCreateTable])
     {
         [ErrorLog errorLog:@"Create table failed!" fromFile:@"DiaryModel.m" error:nil];
@@ -81,11 +86,14 @@ static DiaryModel * instance;
     [_diaries removeAllObjects];
     [_deletedDiaries removeAllObjects];
     [_toUploadDiaries removeAllObjects];
+    [_diaryKeys removeAllObjects];
+    [_diariesDic removeAllObjects];
     NSString *sqlSelect = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC", tableName, kDateName];
     FMResultSet *rs = [db executeQuery: sqlSelect];
     while ([rs next])
     {
         Diary * diary = [[Diary alloc] init];
+        diary.UID = [rs intForColumn:kDiaryUIDName];
         NSString *title = [rs stringForColumn:kTitleName];
         if (title == nil) title = @"";
         diary.title = title;
@@ -102,7 +110,7 @@ static DiaryModel * instance;
         diary.urls2 = [[rs dataForColumn:kUrl2Name] objectFromJSONData];
         diary.UIdentity = [rs intForColumn:kDiaryUIdentity];
         diary.deleted = [rs boolForColumn:kDeletedDiary];
-        diary.uploaded = [rs boolForColumn:kUploaded];
+        diary.uploaded = [rs intForColumn:kUploaded];
         NSData * metaData = [rs dataForColumn:kDiaryMeta];
         id info = [metaData objectFromJSONData];
         if (info) {
@@ -115,9 +123,9 @@ static DiaryModel * instance;
         }
         else
         {
-            [_diaries addObject:diary];
+            [self addDiary:diary];
         }
-        if (!diary.uploaded) {
+        if (diary.uploaded != 1) {
             [_toUploadDiaries insertObject:diary atIndex:0];
         }
     }
@@ -159,7 +167,7 @@ static DiaryModel * instance;
     d.type2 = DiaryContentTypeNone;
     d.sampleDiary = YES;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
-    [_diaries addObject:d];
+    [self addDiary:d];
     
     //sample diary - auphoto
     filePath = [[NSBundle mainBundle] pathForResource:@"sampleDiary_auphoto" ofType:@"jpg" ];
@@ -172,7 +180,7 @@ static DiaryModel * instance;
     d.sampleDiary = YES;
     d.filePaths1 = [NSArray arrayWithObject:filePath];
     d.filePaths2 = [NSArray arrayWithObject:filePath2];
-    [_diaries addObject:d];
+    [self addDiary:d];
     
     _downloadedDiaries = [[NSMutableArray alloc] init];
     
@@ -190,12 +198,57 @@ static DiaryModel * instance;
     }
 }
 
+- (void)addDiary:(Diary *)diary
+{
+    [_diaries addObject:diary];
+    NSString *dateKey;
+    if (diary.sampleDiary) {
+        dateKey = @"sampleDiary";
+    }else{
+        dateKey = [DateFormatter stringFromDate:diary.DCreateTime ];
+        
+    }
+    if ([_diariesDic valueForKey:dateKey]) {
+        NSMutableArray *arr = [_diariesDic valueForKey:dateKey];
+        [arr addObject:diary];
+        [_diariesDic setValue:arr forKey:dateKey];
+    } else {
+        [_diariesDic setValue:[NSMutableArray arrayWithObject:diary] forKey:dateKey];
+        [_diaryKeys addObject:dateKey];
+    }
+    
+}
+
+- (void)removeDiary:(Diary *)diary
+{
+    [_deletedDiaries addObject:diary];
+    [_diaries removeObject:diary];
+    
+    NSString *dateKey = [DateFormatter stringFromDate:diary.DCreateTime ];
+    NSMutableArray *arr = [_diariesDic valueForKey:dateKey];
+    [arr removeObject:diary];
+    arr = [_diariesDic valueForKey:dateKey];
+    
+    if (arr.count == 0) {
+        for (int i=0; i<_diaryKeys.count; i++) {
+            if ([[_diaryKeys objectAtIndex:i] isEqualToString:dateKey]) {
+                [_diaryKeys removeObjectAtIndex:i];
+                break;
+            }
+        }
+    }else{
+        [_diariesDic setValue:arr forKey:dateKey];
+    }
+}
+
+
 //新增日记，更新数据库以及model的数组
 - (BOOL)addNewDiary:(Diary *)d
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
+    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0)", tableName, kDiaryUIDName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate: sqlInsert,
+          [NSNumber numberWithInteger:[UserInfo sharedUserInfo].UID],
           d.title,
           d.DCreateTime,
           [NSNumber numberWithInteger:d.type1],
@@ -208,14 +261,19 @@ static DiaryModel * instance;
           [d.meta JSONData]])
         return NO;
     d.UIdentity = [UserInfo sharedUserInfo].identity;
-    if (_sampleDiary)
+    if (_sampleDiary) {
         [_diaries removeAllObjects];
-    _sampleDiary = NO;
-    [_diaries addObject:d];
-    if ( [[UserInfo sharedUserInfo] addCorns:0.1]) {
-        PostNotification(Noti_AddCorns, nil);
-
+        [_diaryKeys removeAllObjects];
+        [_diariesDic removeAllObjects];
     }
+    _sampleDiary = NO;
+    [self addDiary:d];
+    PostNotification(Noti_ReloadDiaryTable, nil);
+    if([[UserInfo sharedUserInfo] addCorns:0.1]){
+        PostNotification(Noti_AddCorns, nil);
+        
+    }
+    
     [self performSelectorInBackground:@selector(uploadDiary:) withObject:d];
     return YES;
 }
@@ -239,17 +297,8 @@ static DiaryModel * instance;
     }
     //update model
     
-    for (int i = 0; i<[_diaries count]; i++)
-    {
-        Diary *diaryInfo = [_diaries objectAtIndex:i];
-        NSDate *theDate = diaryInfo.DCreateTime;
-        if ([date isEqualToDate:theDate])
-        {
-            [_deletedDiaries addObject:[_diaries objectAtIndex:i]];
-            [_diaries removeObjectAtIndex:i];
-            break;
-        }
-    }
+    [self removeDiary:d];
+    
     if ([_diaries count] <=1) {
         [self reloadData];
     } else {
@@ -262,6 +311,7 @@ static DiaryModel * instance;
 {
     NSString *tableName = [self sqliteTableName];
     NSString *sqlUpdate = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ?, %@ = ? WHERE %@ = ?", tableName, kTitleName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded, kDateName];
+    NSInteger uploaded = toUp ? 2 : 1;
     if (![db executeUpdate: sqlUpdate,
           d.title,
           [NSNumber numberWithInteger:d.type1],
@@ -273,7 +323,7 @@ static DiaryModel * instance;
           [NSNumber numberWithInteger:d.UIdentity],
           [d.meta JSONData],
           [NSNumber numberWithBool:d.deleted],
-          [NSNumber numberWithBool:!toUp],
+          [NSNumber numberWithInteger:uploaded],
           d.DCreateTime])
         return NO;
     return YES;
@@ -312,8 +362,8 @@ static DiaryModel * instance;
 {
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSString *tableName;
-    if (userInfo.UID > -1) tableName = [NSString stringWithFormat:@"diaryTableForBaby%d_Version2", userInfo.BID];
-    else tableName = @"diaryTableForUnloginedUser_Version2";
+    if (userInfo.UID > -1) tableName = [NSString stringWithFormat:@"diaryTableForBaby%d_Version3", userInfo.BID];
+    else tableName = @"diaryTableForUnloginedUser_Version3";
     return tableName;
 }
 
@@ -420,6 +470,7 @@ static DiaryModel * instance;
                     [d setUrls1WithMainUrl:[dic valueForKey:@"url1"] andSubcnt:[[dic valueForKey:@"subCnt1"] integerValue]];
                     [d setUrls2WithMainUrl:[dic valueForKey:@"url2"] andSubcnt:[[dic valueForKey:@"subCnt2"] integerValue]];
                     d.UTID = [[dic valueForKey:@"UTID"] integerValue];
+                    d.UID = [[dic valueForKey:@"UID"] integerValue];
                     id info = [[dic valueForKey:@"Meta"] objectFromJSONString];
                     if (info) {
                         d.meta = [[NSMutableDictionary alloc] initWithDictionary:info];
@@ -432,11 +483,21 @@ static DiaryModel * instance;
         if (_updateCnt > 0)
         {
             PostNotification(Noti_UpdateDiaryStateRefreshed, nil);
-            _downloadedDiaries = [[NSMutableArray alloc] init];
-            [self performSelectorInBackground:@selector(downloadUpdateDiary) withObject:nil];
+            if (![[Reachability reachabilityForInternetConnection] isReachable])
+            {
+                return;
+            }
+            [[DiaryModel sharedDiaryModel]  downloadDiaries];
+
         }
         
     }
+}
+
+- (void)downloadDiaries
+{
+    _downloadedDiaries = [[NSMutableArray alloc] init];
+    [self performSelectorInBackground:@selector(downloadUpdateDiary) withObject:nil];
 }
 
 - (void)downloadUpdateDiary
@@ -494,8 +555,9 @@ static DiaryModel * instance;
 - (BOOL)addDownloadedDiary:(Diary *)d
 {
     NSString *tableName = [self sqliteTableName];
-    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1)", tableName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
+    NSString *sqlInsert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1)", tableName, kDiaryUIDName, kTitleName, kDateName, kTypeName, kFilePathName, kUrlName, kType2Name, kFilePath2Name, kUrl2Name, kDiaryUIdentity, kDiaryMeta, kDeletedDiary, kUploaded];
     if (![db executeUpdate: sqlInsert,
+          [NSNumber numberWithInteger:d.UID],
           d.title,
           d.DCreateTime,
           [NSNumber numberWithInteger:d.type1],
@@ -531,7 +593,13 @@ static DiaryModel * instance;
 
 - (BOOL)uploadDiary:(Diary *)d
 {
-    if ([d uploadDiary]) {
+    BOOL suc = NO;
+    if (d.uploaded == 2) {
+        suc = [d uploadDiaryInfo];
+    } else {
+        suc = [d uploadDiary];
+    }
+    if (suc) {
         if (d.taskId > 0 && d.taskId != 6) {
             TaskModel *taskModel = [TaskModel sharedTaskModel];
             if (!taskModel.updating)

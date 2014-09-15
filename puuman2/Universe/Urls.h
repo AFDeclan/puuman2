@@ -91,7 +91,7 @@
 #define kUrl_ChangePwd @"http://server.puuman.cn/index.php/server/user/change_pwd"
 #define kUrl_ChangeMailOrPhone @"http://server.puuman.cn/index.php/server/user/change_account"
 #define kUrl_ConnectUser @"http://server.puuman.cn/index.php/server/user/connect"
-#define kUrl_SetDeviceToken @"http://server.puuman.cn/index.php/server/user/set_device_token/iPhone"
+#define kUrl_SetDeviceToken @"http://server.puuman.cn/index.php/server/user/set_device_token/iPad"
 //user/baby
 #define kUrl_UpdateVaccine @"http://server.puuman.cn/index.php/server/baby/update_vaccine"
 #define kUrl_UpdateBabyData @"http://server.puuman.cn/index.php/server/baby/update_data"
@@ -99,6 +99,7 @@
 //diary
 #define kUrl_UpdateDiary @"http://server.puuman.cn/index.php/server/diary/update"
 #define kUrl_UploadUserTask @"http://server.puuman.cn/index.php/server/diary/upload"
+#define kUrl_UploadUserTaskInfo @"http://server.puuman.cn/index.php/server/diary/uploadInfo"
 #define kUrl_GetUserTask    @"http://server.puuman.cn/index.php/server/diary/get_task"
 #define kUrl_RewardDiary @"http://server.puuman.cn/index.php/server/diary/reward"
 
