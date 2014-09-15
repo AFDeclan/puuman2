@@ -21,4 +21,6 @@
 }
 - (void)showAnimate;
 - (void)reloadView;
+- (void)addPie;
+
 @end

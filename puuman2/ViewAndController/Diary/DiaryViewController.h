@@ -42,5 +42,7 @@
 - (void)removeheadView;
 - (void)loadDownFindished;
 - (void)showTurorialView;
+- (void)refreshToosView;
+
 
 @end
