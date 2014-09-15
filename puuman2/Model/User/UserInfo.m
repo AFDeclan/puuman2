@@ -184,6 +184,7 @@ static UserInfo *instance = nil;
 - (void)outCorns:(double)num
 {
     _UCorns -= num;
+    _UCorns_connect += num;
 }
 
 - (enum userActionResult)login
