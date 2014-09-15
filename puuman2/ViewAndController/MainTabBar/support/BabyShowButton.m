@@ -40,7 +40,7 @@
     [coin_num setBackgroundColor:[UIColor clearColor]];
     [coin_num setTextAlignment:NSTextAlignmentRight];
     [coin_num setTextColor:[UIColor whiteColor]];
-    [coin_num setFont:PMFont1];
+    [coin_num setFont:[UIFont fontWithName:@"corbel" size:24.f]];
     [coin_num setShadowOffset:CGSizeMake(1, 1)];
     [coin_num setShadowColor:[UIColor grayColor]];
     [self addSubview:coin_num];
@@ -49,7 +49,7 @@
     [coin_label setBackgroundColor:[UIColor clearColor]];
     [coin_label setTextAlignment:NSTextAlignmentRight];
     [coin_label setTextColor:[UIColor whiteColor]];
-    [coin_label setFont:PMFont2];
+    [coin_label setFont:[UIFont fontWithName:@"RTWSYueGoTrial-Regular" size:18.f]];
     [coin_label setText:@"扑满金币"];
     [coin_label setShadowColor:[UIColor grayColor]];
     [coin_label setShadowOffset:CGSizeMake(1, 1)];

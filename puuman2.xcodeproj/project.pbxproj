@@ -796,6 +796,8 @@
 		88B2B3E819B6CDE800CE177D /* baby_born_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2B3E719B6CDE800CE177D /* baby_born_background.png */; };
 		88B2C7FE197E1BEE00A0A2FD /* coinView_diary_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2C7FD197E1BEE00A0A2FD /* coinView_diary_image.png */; };
 		88B2E5781973D6CF0095504B /* icon_gold_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B2E5771973D6CF0095504B /* icon_gold_image.png */; };
+		88B3900619C69003008DAAF6 /* RTWSYueGoTrial-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88B3900419C69003008DAAF6 /* RTWSYueGoTrial-Regular.otf */; };
+		88B3900719C69003008DAAF6 /* corbel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88B3900519C69003008DAAF6 /* corbel.ttf */; };
 		88B3AE93196E3A4800955499 /* btn_cart_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B3AE92196E3A4800955499 /* btn_cart_shop.png */; };
 		88B515A4192F4AE1006A79AB /* CutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515A3192F4AE1006A79AB /* CutViewController.m */; };
 		88B515AA192F50C2006A79AB /* BabyPhotoSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B515A9192F50C2006A79AB /* BabyPhotoSelectedViewController.m */; };
@@ -1966,6 +1968,8 @@
 		88B2B3E719B6CDE800CE177D /* baby_born_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_born_background.png; sourceTree = "<group>"; };
 		88B2C7FD197E1BEE00A0A2FD /* coinView_diary_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coinView_diary_image.png; sourceTree = "<group>"; };
 		88B2E5771973D6CF0095504B /* icon_gold_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_gold_image.png; sourceTree = "<group>"; };
+		88B3900419C69003008DAAF6 /* RTWSYueGoTrial-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RTWSYueGoTrial-Regular.otf"; sourceTree = "<group>"; };
+		88B3900519C69003008DAAF6 /* corbel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = corbel.ttf; sourceTree = "<group>"; };
 		88B3AE92196E3A4800955499 /* btn_cart_shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_cart_shop.png; sourceTree = "<group>"; };
 		88B515A2192F4AE1006A79AB /* CutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutViewController.h; sourceTree = "<group>"; };
 		88B515A3192F4AE1006A79AB /* CutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutViewController.m; sourceTree = "<group>"; };
@@ -2213,6 +2217,8 @@
 			children = (
 				148D7A0318B8A71A001B4FA7 /* puuman2Tests-Info.plist */,
 				148D7A0418B8A71A001B4FA7 /* InfoPlist.strings */,
+				88B3900419C69003008DAAF6 /* RTWSYueGoTrial-Regular.otf */,
+				88B3900519C69003008DAAF6 /* corbel.ttf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -4318,6 +4324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5403CE3318D04F5E004CAE22 /* icon_judge_baby.png in Resources */,
+				88B3900619C69003008DAAF6 /* RTWSYueGoTrial-Regular.otf in Resources */,
 				14B8DF3318BC37A30047C6B3 /* sampleDiary_photo2.jpg in Resources */,
 				54B97E8418FA572600B6C4C9 /* pic33_insure_shop.png in Resources */,
 				5447C49D18D97D1100187BE6 /* icon_reply_topic.png in Resources */,
@@ -4435,6 +4442,7 @@
 				88B2E5781973D6CF0095504B /* icon_gold_image.png in Resources */,
 				5403CD3D18D03D39004CAE22 /* icon16_weather_diary@2x.png in Resources */,
 				5403CD4618D03D39004CAE22 /* icon3_weather_diary.png in Resources */,
+				88B3900719C69003008DAAF6 /* corbel.ttf in Resources */,
 				541970B018D188F40058FE64 /* pic2_bank_blank.png in Resources */,
 				54AC20F618E3FD30001C1357 /* icon2_mom_shop.png in Resources */,
 				88C965BA1962AF860058B842 /* next_pic_btn.png in Resources */,
