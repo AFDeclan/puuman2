@@ -178,6 +178,7 @@ static UserInfo *instance = nil;
     }
     _UCornsLocalAdded += add;
     _UCorns += add;
+    [self saveToUserDefault];
     return YES;
 }
 
@@ -222,7 +223,7 @@ static UserInfo *instance = nil;
     request.tag = 2;
     [request setTimeOutSeconds:5];
     [request setIntegerParam:_UID forKey:@"UID"];
-    [request setIntegerParam:_UCornsLocalAdded forKey:@"UCornsLocalAdded"];
+    [request setFloatParam:_UCornsLocalAdded forKey:@"UCornsLocalAdded"];
     request.resEncoding = PumanRequestRes_JsonEncoding;
     [request postAsynchronous];
 }

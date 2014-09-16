@@ -5323,7 +5323,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 721904F09AE644A085A71BDA /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: JeongWoo. SIM (Z7T3K8BR2H)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/Tencent,
@@ -5346,10 +5346,11 @@
 					/Users/af_bigwaves/Documents/puuman/puuman2/Support/umeng,
 					/Users/af_bigwaves/Documents/puuman/puuman2/Support/WeiXin,
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "863751f0-50ba-4cc2-99ae-1576d2b9e8a3";
+				PROVISIONING_PROFILE = "6c49c60f-e4e8-4df3-a67e-0502d863ffd5";
 				TARGETED_DEVICE_FAMILY = 2;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5358,7 +5359,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 721904F09AE644A085A71BDA /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: PaaPaa (Beijing) Technology Co., Ltd. (59GGSXZDVK)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/declan/Documents/puuman2/puuman2/Support/Tencent,

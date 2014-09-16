@@ -381,8 +381,14 @@ static NSString * typeStrs[5] = {DiaryTypeStrNone, DiaryTypeStrText, DiaryTypeSt
 
 - (BOOL)uploadDiaryInfo
 {
+    NSInteger tid = [self taskId];
+    if (tid == 0) tid = 6;
+    if (_deleted) {
+        tid = -1;
+    }
     PumanRequest *request = [[PumanRequest alloc] init];
     request.urlStr = kUrl_UploadUserTaskInfo;
+    [request setIntegerParam:tid forKey:@"TID"];
     [request setIntegerParam:_UID forKey:@"UID"];
     [request setParam:_title forKey:@"title"];
     [request setParam:_type1Str forKey:@"type1"];
