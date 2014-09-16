@@ -21,5 +21,6 @@
 }
 
 - (void)addPie;
+- (void)changedPie;
 
 @end

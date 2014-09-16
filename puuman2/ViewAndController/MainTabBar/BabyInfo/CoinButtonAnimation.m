@@ -8,6 +8,7 @@
 
 #import "CoinButtonAnimation.h"
 #import "UniverseConstant.h"
+#import "DiaryViewController.h"
 
 @interface CoinButtonAnimation ()
 {
@@ -117,6 +118,7 @@
                            if ([_deledate respondsToSelector:@selector(updateBytes)]) {
                 
                                [_deledate updateBytes];
+                               [[DiaryViewController sharedDiaryViewController] refreshToosView];
                            
                            }
                            

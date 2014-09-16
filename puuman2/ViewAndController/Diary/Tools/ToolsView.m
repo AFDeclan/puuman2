@@ -160,6 +160,14 @@
     
 }
 
+- (void)changedPie
+{
+    if (selectedIndex == 1) {
+        [(ToolsCoinView *)unitViews[1] changedPie];
+    }
+
+}
+
 - (void)addPie
 {
     [(ToolsCoinView *)unitViews[1] addPie];

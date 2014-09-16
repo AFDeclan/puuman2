@@ -96,6 +96,12 @@
 
 }
 
+- (void)changedPie
+{
+    [self animateStartEnd];
+    [self addPie];
+}
+
 - (void)addPie
 {
     if ([[UserInfo sharedUserInfo] UCorns]+[[UserInfo sharedUserInfo] UCorns_connect] != 0) {

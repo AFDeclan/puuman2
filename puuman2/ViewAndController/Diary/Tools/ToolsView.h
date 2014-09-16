@@ -22,5 +22,7 @@
 - (void)showAnimate;
 - (void)reloadView;
 - (void)addPie;
+- (void)changedPie;
+
 
 @end

@@ -106,8 +106,8 @@ static DiaryViewController * instance;
 
 - (void)refreshToosView
 {
-    [toolsView reloadView];
-   // [toolsView addPie];
+    //[toolsView reloadView];
+    [toolsView changedPie];
 }
 
 - (void)updateDiaryCount

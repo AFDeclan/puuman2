@@ -119,6 +119,7 @@
 {
     [self updateBytes];
     [self loadPortrait];
+
 }
 
 -(void)loadPortrait
