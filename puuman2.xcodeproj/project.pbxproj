@@ -789,6 +789,7 @@
 		6F55ACF60C854228AC3CE39E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A163B769C9D646389F66C162 /* libPods.a */; };
 		8829DD0D196798F50023678D /* esti_image_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8829DD0C196798F50023678D /* esti_image_babyInfo.png */; };
 		8829DD0F19679D7E0023678D /* share_image_babyInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8829DD0E19679D7E0023678D /* share_image_babyInfo.png */; };
+		88AEE87A19C82622008A22CB /* coin_diary_receiveLast.png in Resources */ = {isa = PBXBuildFile; fileRef = 88AEE87919C82622008A22CB /* coin_diary_receiveLast.png */; };
 		88AF50641966439D00EEC049 /* BabyInfoPropEstiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF50631966439D00EEC049 /* BabyInfoPropEstiCell.m */; };
 		88AF77741963B23400E02B43 /* BabyInfoPropViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF77731963B23400E02B43 /* BabyInfoPropViewCell.m */; };
 		88AF77771963B24500E02B43 /* BabyInfoVaciViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AF77761963B24500E02B43 /* BabyInfoVaciViewCell.m */; };
@@ -1957,6 +1958,7 @@
 		721904F09AE644A085A71BDA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8829DD0C196798F50023678D /* esti_image_babyInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = esti_image_babyInfo.png; sourceTree = "<group>"; };
 		8829DD0E19679D7E0023678D /* share_image_babyInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_image_babyInfo.png; sourceTree = "<group>"; };
+		88AEE87919C82622008A22CB /* coin_diary_receiveLast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_diary_receiveLast.png; sourceTree = "<group>"; };
 		88AF50621966439D00EEC049 /* BabyInfoPropEstiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoPropEstiCell.h; sourceTree = "<group>"; };
 		88AF50631966439D00EEC049 /* BabyInfoPropEstiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyInfoPropEstiCell.m; sourceTree = "<group>"; };
 		88AF77721963B23400E02B43 /* BabyInfoPropViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyInfoPropViewCell.h; sourceTree = "<group>"; };
@@ -3921,6 +3923,7 @@
 			isa = PBXGroup;
 			children = (
 				88CEB8A519B5D74A00AFFA34 /* coin.png */,
+				88AEE87919C82622008A22CB /* coin_diary_receiveLast.png */,
 				88B58F4619B84AE200BF2880 /* coin_diary_receive.png */,
 				88B58F4719B84AE200BF2880 /* coin_diary_noreceive.png */,
 				88B2C7FD197E1BEE00A0A2FD /* coinView_diary_image.png */,
@@ -4819,6 +4822,7 @@
 				54D14FF418CAEFD70022E1F4 /* btn_delete2_diary.png in Resources */,
 				54AC212118E414EA001C1357 /* icon4_rec_shop.png in Resources */,
 				88B58F4819B84AE200BF2880 /* coin_diary_receive.png in Resources */,
+				88AEE87A19C82622008A22CB /* coin_diary_receiveLast.png in Resources */,
 				54B97EA318FA586800B6C4C9 /* triangle_insure_shop.png in Resources */,
 				54CC76EE196FBF8800373B35 /* btn_price_shop1.png in Resources */,
 				5403CE3618D04F5E004CAE22 /* icon_share_baby.png in Resources */,

@@ -149,10 +149,9 @@
         [_delBtn setEnabled:YES];
     }
     
-    coinBtn = [[AFSelectedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
-    [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
+    coinBtn = [[AFSelectedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 24, 24)];
     [coinBtn setUnSelectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
-    [coinBtn setIconSize:CGSizeMake(32, 32)];
+    [coinBtn setIconSize:CGSizeMake(24, 24)];
     [coinBtn adjustLayout];
     [coinBtn addTarget:self action:@selector(getCoin) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:coinBtn];
@@ -170,7 +169,7 @@
 
 
 - (void)getCoin {
-        
+    
     if ([[UserInfo sharedUserInfo]UCorns]-1 >= 0) {
     
         if (_diary.rewarded) {
@@ -180,6 +179,7 @@
             
             if ([_diary reward:1]) {
                 [coinBtn selected];
+                [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
                 [coinBtn setBackgroundColor:[UIColor clearColor]];
                 [coinLabel setText:@"已打赏"];
                 [coinLabel setTextColor:PMColor3];
@@ -192,6 +192,7 @@
         }
 
     }
+    
 }
 
 
@@ -201,7 +202,7 @@
     SetViewLeftUp(_delBtn,632, 24);
     SetViewLeftUp(_shareBtn,632, ViewY(_content)+ViewHeight(_content)+10);
     SetViewLeftUp(coinBtn, 112, ViewY(_content) +ViewHeight(_content)+10);
-    SetViewLeftUp(coinLabel, 146, ViewY(_content) + ViewHeight(_content)+5+10);
+    SetViewLeftUp(coinLabel, 138, ViewY(_content) + ViewHeight(_content)+10);
     
     SetViewRightCenter(_delScrollView, ViewX(_delBtn), ViewY(_delBtn)+ViewHeight(_delBtn)/2);
     if (self.indexPath.row == 0) {
@@ -227,6 +228,7 @@
             [coinBtn setAlpha:1];
             if ([_diary rewarded]) {
                 [coinBtn selected];
+                [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
                 [coinBtn setBackgroundColor:[UIColor clearColor]];
                 coinLabel.text = @"已打赏";
                 [coinLabel setTextColor:PMColor3];
@@ -247,13 +249,17 @@
             [coinBtn setAlpha:0];
             coinLabel.text = @"";
             if ([_diary rewarded]) {
+                [coinBtn setAlpha:1];
+                [coinBtn selected];
+                [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receiveLast.png"]];
+                [coinBtn setBackgroundColor:[UIColor clearColor]];
                 if (_diary.UIdentity == Father) {
                     coinLabel.text = @"妈妈已赏!";
-                    [coinLabel setTextColor:RGBColor(239, 128, 123)];
+                    [coinLabel setTextColor:PMColor3];
                 
                 }else {
                     coinLabel.text = @"爸爸已赏!";
-                    [coinLabel setTextColor:PMColor6];
+                    [coinLabel setTextColor:PMColor3];
                 
                 }
             }
