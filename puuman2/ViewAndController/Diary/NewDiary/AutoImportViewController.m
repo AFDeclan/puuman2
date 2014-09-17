@@ -136,15 +136,17 @@
     NSMutableArray *arr = [[NSMutableArray alloc] init];
     NSMutableArray *arrImg = [[NSMutableArray alloc] init];
     NSMutableArray *arrTime = [[NSMutableArray alloc] init];
+    int j = 0;
     for (int i = 0; i < [dateArr count]; i++) {
         if ([[photoStatus valueForKey:[NSString stringWithFormat:@"%d",i]] boolValue]) {
-            
+          
             UIImage  *img =[UIImage imageWithCGImage:[[(ALAsset *)[assetsArr objectAtIndex:i] defaultRepresentation] fullScreenImage]];
             NSDate  *date =  [(ALAsset *)[assetsArr objectAtIndex:i] valueForProperty:ALAssetPropertyDate ];
-            if (i == 0) {
+            if (j == 0) {
                 startDate = date;
             }
             float hour = [date hoursFromDate:startDate];
+            
             if (hour < 2 ) {
                 [arrImg addObject:img];
             }else{
