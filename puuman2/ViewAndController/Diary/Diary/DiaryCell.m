@@ -89,6 +89,7 @@
         [dividingLine setImage:[UIImage imageNamed:@"line2_diary.png"]];
         [self.contentView addSubview:dividingLine];
         [MyNotiCenter addObserver:self selector:@selector(CellVisibled:) name:Noti_DiaryCellVisible object:nil];
+        [MyNotiCenter addObserver:self selector:@selector(animationFinished) name:Noti_AddCornsFinished object:nil];
     }
     return self;
 }
@@ -148,7 +149,7 @@
     }else{
         [_delBtn setEnabled:YES];
     }
-    
+    flag = YES;
     coinBtn = [[AFSelectedTextImgButton alloc]initWithFrame:CGRectMake(0, 0, 24, 24)];
     [coinBtn setUnSelectedImg:[UIImage imageNamed:@"coin_diary_noreceive.png"]];
     [coinBtn setIconSize:CGSizeMake(24, 24)];
@@ -169,33 +170,41 @@
 
 
 - (void)getCoin {
-    
-    if ([[UserInfo sharedUserInfo]UCorns]-1 >= 0) {
-    
-        if (_diary.rewarded) {
-            [coinBtn selected];
+    while (flag) {
+        
+        flag = NO;
+        
+        if ([[UserInfo sharedUserInfo]UCorns]-1 >= 0) {
             
-        } else {
-            
-            if ([_diary reward:1]) {
+            if (_diary.rewarded) {
                 [coinBtn selected];
-                [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
-                [coinBtn setBackgroundColor:[UIColor clearColor]];
-                [coinLabel setText:@"已打赏"];
-                [coinLabel setTextColor:PMColor3];
-                PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
                 
-            }else{
-                [coinBtn unSelected];
+            } else {
                 
+                if ([_diary reward:1]) {
+                    [coinBtn selected];
+                    [coinBtn setSelectedImg:[UIImage imageNamed:@"coin_diary_receive.png"]];
+                    [coinBtn setBackgroundColor:[UIColor clearColor]];
+                    [coinLabel setText:@"已打赏"];
+                    [coinLabel setTextColor:PMColor3];
+                    PostNotification(Noti_AddCorns, [NSNumber numberWithFloat:-1]);
+                    
+                }else{
+                    [coinBtn unSelected];
+                    
+                }
             }
+            
         }
-
     }
     
 }
 
+- (void)animationFinished
+{
+    flag = YES;
 
+}
 
 - (void)buildParentControl
 {

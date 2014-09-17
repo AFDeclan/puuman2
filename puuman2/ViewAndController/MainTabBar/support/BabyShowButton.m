@@ -112,6 +112,7 @@
 - (void)updateBytes
 {
    [coin_num setText:[NSString stringWithFormat:@"%0.1f",[[UserInfo sharedUserInfo] UCorns]]];
+
 }
 
 
