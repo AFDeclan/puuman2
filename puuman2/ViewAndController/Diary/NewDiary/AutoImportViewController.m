@@ -184,14 +184,15 @@
     lastDate = (NSDate *)[userDefaults valueForKey:@"closeDate"];
     if (lastDate) {
         NSInteger hour = [[NSDate date] hoursFromDate:lastDate];
-       if (hour < 2) {
-            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
-            return;
-        }
+//       if (hour < 2) {
+//            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
+//            return;
+//        }
+        hour =200;
         __block BOOL foundThePhoto = NO;
         ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
         library = assetLibrary;
-        dispatch_async(dispatch_get_main_queue(), ^
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
                        {
                            @autoreleasepool {
                                
@@ -205,12 +206,15 @@
                                    
                                    if (*stop) {
                                        if ([self hasNewPic]) {
-                                           [pickerTable reloadData];
                                            
-                                           [[MainTabBarController sharedMainViewController ] showAutoImportView];
-                                           for (int i = 0 ; i < [dateArr count]; i ++) {
-                                               [photoStatus setValue:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",i]];
-                                           }
+                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                               
+                                               [[MainTabBarController sharedMainViewController] showAutoImportView];
+                                           
+                                               [pickerTable reloadData];
+
+                                           });
+                                         
                                        }else{
                                            [[MainTabBarController sharedMainViewController ] removeAutoImportView];
                                        }
@@ -218,7 +222,7 @@
                                        return ;
                                    }
                                    if (group == nil) {
-                                      // [[MainTabBarController sharedMainViewController ] removeAutoImportView];
+                                       [[MainTabBarController sharedMainViewController ] removeAutoImportView];
                                        return;
                                    }
                                    // added fix for camera albums order
@@ -245,6 +249,8 @@
                                                        [dateArr addObject:dateTime];
                                                        [assetsArr addObject:result];
                                                        [photoArr addObject: [UIImage imageWithCGImage:[result thumbnail]]];
+                                                       [photoStatus setValue:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",[dateArr count]-1]];
+
                                                    }
                                                    
                                                }
@@ -265,8 +271,13 @@
                                // Group Enumerator Failure Block
                                void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
                                    
-                                   UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Album Error: %@ - %@", [error localizedDescription], [error localizedRecoverySuggestion]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-                                   [alert show];
+                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                       
+                                       UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Album Error: %@ - %@", [error localizedDescription], [error localizedRecoverySuggestion]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                                       [alert show];
+                                       
+                                       
+                                   });
                                    
                                    NSLog(@"A problem occured %@", [error description]);
                                };

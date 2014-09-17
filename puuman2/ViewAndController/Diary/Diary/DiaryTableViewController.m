@@ -418,11 +418,7 @@ static BOOL needLoadInfo = YES;
 - (void)addDiary
 {
     [[DiaryModel sharedDiaryModel] reloadData];
-    [self.tableView beginUpdates];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-    NSArray *insertIndexPath = [NSArray arrayWithObjects:indexPath, nil];
-    [self.tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationTop];
-    [self.tableView endUpdates];
+
     
 }
 

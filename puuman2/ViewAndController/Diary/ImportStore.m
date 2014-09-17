@@ -102,6 +102,7 @@ static ImportStore * instance ;
 - (void)finishImport
 {
     PostNotification(Noti_Imported, [NSNumber numberWithBool:NO]);
+    [self addNewDiary];
 
 }
 
