@@ -15,6 +15,7 @@
 #import "NewAudioDiaryViewController.h"
 #import "NewCameraViewController.h"
 #import "CustomAlertViewController.h"
+#import <Reachability.h>
 
 
 NSString * newDiaryBtnImageName[5] = {@"btn_input_newdiary.png",@"btn_text_newdiary.png", @"btn_audio_newdiary.png", @"btn_photo_newdiary.png",@"btn_video_newdiary.png"};
@@ -112,6 +113,26 @@ static DiaryViewController * instance;
 
 - (void)updateDiaryCount
 {
+    if (![[Reachability reachabilityForInternetConnection] isReachable])
+    {
+        return;
+    }
+    else if ([[Reachability reachabilityForInternetConnection] isReachableViaWiFi])
+    {
+        [[DiaryModel sharedDiaryModel] downloadDiaries];
+    }
+    else if ([[Reachability reachabilityForInternetConnection] isReachableViaWWAN])
+    {
+        [CustomAlertViewController showAlertWithTitle:@"您当前处于非WiFi网络环境条件下，确定下载？" confirmHandler:^{
+        
+            [[DiaryModel sharedDiaryModel] downloadDiaries];
+            
+        } cancelHandler:^{
+        
+        }];
+        
+    }
+
     //取数据判断是否下载更新
     if ([DiaryModel sharedDiaryModel].updateCnt > 0) {
         //if ([DiaryModel sharedDiaryModel].downloadedCnt == 0) [self  diaryLoading];

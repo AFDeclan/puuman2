@@ -119,16 +119,14 @@
                 
                                [_deledate updateBytes];
                                [[DiaryViewController sharedDiaryViewController] refreshToosView];
-                               [self performSelector:@selector(changeFlag) withObject:nil afterDelay:1];
+                                PostNotification(Noti_AddCornsFinished, nil);
                          }
                        }];
 }
 
 
-- (void)changeFlag
-{
-    PostNotification(Noti_AddCornsFinished, nil);
-}
+
+
 
 
 

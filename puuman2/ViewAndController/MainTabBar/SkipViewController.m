@@ -37,7 +37,7 @@ static SkipViewController *instance;
         // Custom initialization
         [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
         [MyNotiCenter addObserver:self selector:@selector(userChanged) name:Noti_UserLogined object:nil];
-
+        [MyNotiCenter addObserver:self selector:@selector(reloadUserData) name:Noti_UserInfoUpdated object:nil];
 
     }
     return self;
@@ -61,14 +61,14 @@ static SkipViewController *instance;
     }
     
     [[BabyData sharedBabyData] reloadData];
-    [[TaskModel sharedTaskModel] updateTasks];
-    [[PumanBookModel bookModel] initialize];
-    [[CartModel sharedCart] update:NO];
-    [SocialNetwork initSocialNetwork];
+    //`[[TaskModel sharedTaskModel] updateTasks];
+   
+   
+  
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [[MainTabBarController sharedMainViewController] showDiary];
-    [[MainTabBarController sharedMainViewController] refreshBabyInfoView];
+    
     [[DiaryViewController sharedDiaryViewController] removeheadView];
     [Forum releaseInstance];
     [Friend releaseInstance];
@@ -77,6 +77,16 @@ static SkipViewController *instance;
         [userDefaults setBool:YES forKey:@"DiarytutorialShowed"];
         [[DiaryViewController sharedDiaryViewController] showTurorialView];
     }
+     [self performSelector:@selector(reloadUserData) withObject:nil afterDelay:0];
+}
+
+- (void)reloadUserData
+{
+  [SocialNetwork initSocialNetwork];
+  [[PumanBookModel bookModel] initialize];
+ [[CartModel sharedCart] update:NO];
+ [[MainTabBarController sharedMainViewController] refreshBabyInfoView];
+ 
 }
 
 //
