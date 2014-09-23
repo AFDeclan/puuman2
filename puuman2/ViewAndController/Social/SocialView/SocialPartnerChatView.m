@@ -64,9 +64,12 @@
     [self addSubview:chatTable];
     [chatTable setBackgroundColor:[UIColor clearColor]];
     
-    bgHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 864, 44)];
-    [bgHeadView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"pic_talk_fri.png"]]];
-    [self addSubview:bgHeadView];
+
+    
+    UIImageView *bgImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 864, 44)];
+    [bgImg setBackgroundColor:[UIColor clearColor]];
+    [bgImg setImage:[UIImage imageNamed:@"topic_partner_title.png"]];
+    [self addSubview:bgImg];
     
     icon_headDown = [[UIView alloc]initWithFrame:CGRectMake(0, 14, 864, 30)];
     [icon_headDown setBackgroundColor:PMColor6];
