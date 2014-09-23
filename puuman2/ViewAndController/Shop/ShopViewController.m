@@ -268,6 +268,12 @@ static ShopViewController * instance;
     
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self search];

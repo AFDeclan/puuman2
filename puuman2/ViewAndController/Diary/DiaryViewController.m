@@ -89,6 +89,8 @@ static DiaryViewController * instance;
     {
         [self setHorizontalFrame];
     }
+   
+
     [self refresh];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(setHorizontalFrame) name:NOTIFICATION_Horizontal object:nil];
@@ -97,6 +99,10 @@ static DiaryViewController * instance;
     [self performSelector:@selector(loadTable) withObject:nil afterDelay:0.1];
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 - (void)initToolsView
 {

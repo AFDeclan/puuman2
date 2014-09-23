@@ -37,6 +37,7 @@ static SkipViewController *instance;
         // Custom initialization
         [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
         [MyNotiCenter addObserver:self selector:@selector(userChanged) name:Noti_UserLogined object:nil];
+        [self.navigationController setNavigationBarHidden:YES];
 
 
     }
@@ -52,6 +53,10 @@ static SkipViewController *instance;
   
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 - (void)userChanged
 {

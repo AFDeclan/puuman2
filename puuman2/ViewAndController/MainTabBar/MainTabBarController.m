@@ -61,7 +61,7 @@ static MainTabBarController *instance;
     _isReply = YES;
     _videoShowed = NO;
     _hasShareVideo = NO;
-   
+
     userInfo = [UserInfo sharedUserInfo];
    // _loadingVideo = YES;
     videoBtn = [[VideoShowButton alloc] initWithFrame:CGRectMake(608, -180, 189,180) fileName:@"animate_puuman"];
@@ -96,6 +96,10 @@ static MainTabBarController *instance;
 }
 
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 - (void)startApp
 {

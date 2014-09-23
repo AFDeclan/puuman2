@@ -76,6 +76,11 @@
 
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 -(void)refresh
 {
     if([MainTabBarController sharedMainViewController].isVertical)

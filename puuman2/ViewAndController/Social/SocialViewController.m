@@ -339,6 +339,11 @@ static SocialViewController * instance;
 
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)popViewfinished
 {
     [participateBtn setEnabled:YES];
