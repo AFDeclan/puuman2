@@ -66,14 +66,14 @@ static SkipViewController *instance;
     }
     
     [[BabyData sharedBabyData] reloadData];
-    [[TaskModel sharedTaskModel] updateTasks];
-    [[PumanBookModel bookModel] initialize];
-    [[CartModel sharedCart] update:NO];
-    [SocialNetwork initSocialNetwork];
+    //`[[TaskModel sharedTaskModel] updateTasks];
+   
+   
+  
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [[MainTabBarController sharedMainViewController] showDiary];
-    [[MainTabBarController sharedMainViewController] refreshBabyInfoView];
+    
     [[DiaryViewController sharedDiaryViewController] removeheadView];
     [Forum releaseInstance];
     [Friend releaseInstance];
@@ -82,6 +82,16 @@ static SkipViewController *instance;
         [userDefaults setBool:YES forKey:@"DiarytutorialShowed"];
         [[DiaryViewController sharedDiaryViewController] showTurorialView];
     }
+     [self performSelector:@selector(reloadUserData) withObject:nil afterDelay:0];
+}
+
+- (void)reloadUserData
+{
+  [SocialNetwork initSocialNetwork];
+  [[PumanBookModel bookModel] initialize];
+ [[CartModel sharedCart] update:NO];
+ [[MainTabBarController sharedMainViewController] refreshBabyInfoView];
+ 
 }
 
 //

@@ -119,11 +119,11 @@
                 
                                [_deledate updateBytes];
                                [[DiaryViewController sharedDiaryViewController] refreshToosView];
-                           
-                           }
-                           
+                                PostNotification(Noti_AddCornsFinished, nil);
+                         }
                        }];
 }
+
 
 
 
