@@ -480,7 +480,7 @@ static DiaryModel * instance;
             }
         }
         _updateCnt = [_toDownloadDiaries count];
-        if (!_updateCnt > 0)
+        if (_updateCnt > 0)
         {
             PostNotification(Noti_UpdateDiaryStateRefreshed, nil);
 

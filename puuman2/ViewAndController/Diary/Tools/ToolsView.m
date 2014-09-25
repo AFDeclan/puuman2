@@ -149,9 +149,7 @@
                     animated =  NO;
                     if (flag == 1) {
                         [self performSelector:@selector(addPie) withObject:nil afterDelay:0];
-
                     }
-                    
                 }];
 
             }

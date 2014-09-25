@@ -11,6 +11,7 @@
 #import "DateFormatter.h"
 #import "NSDate+Compute.h"
 #import "ErrorLog.h"
+#import "MainTabBarController.h"
 
 static BabyData * instance;
 
@@ -28,6 +29,15 @@ static BabyData * instance;
     if (!instance)
         instance = [[BabyData alloc] init];
     return instance;
+}
+
+- (NSOperationQueue *)sharedQueue
+{
+    if (!operationQueue) {
+        operationQueue = [[NSOperationQueue alloc] init];
+        [operationQueue setMaxConcurrentOperationCount:1];
+    }
+    return operationQueue;
 }
 
 - (id)init
@@ -135,8 +145,16 @@ static BabyData * instance;
     _highestWeightRecord = maxWeight;
     _lowestWeightRecord = minWeight;
     [rs close];
+    [self performSelector:@selector(refreshBabyInfo) withObject:nil afterDelay:0];
+
+}
+
+- (void)refreshBabyInfo
+{
+    [[MainTabBarController sharedMainViewController] refreshBabyInfoView];
     
 }
+
 
 - (void)reloadVaccineData
 {
@@ -567,15 +585,12 @@ static BabyData * instance;
             NSArray *records = [resDic valueForKey:@"Records"];
             if (![records isKindOfClass:[NSNull class]])
             {
-                for (NSDictionary *record in records)
-                {
-                    CGFloat h = [[record valueForKey:@"Height"] doubleValue];
-                    CGFloat w = [[record valueForKey:@"Weight"] doubleValue];
-                    NSString *dateStr = [record valueForKey:@"Date"];
-                    NSDate *date = [DateFormatter datetimeFromString:dateStr withFormat:@"yyyy-MM-dd HH:mm:ss"];
-                    if (!date) date = [NSDate date];
-                    [self insertRecordAtDate:date height:h weight:w fromServer:YES];
-                }
+                
+                NSInvocationOperation *operation = [[NSInvocationOperation alloc]initWithTarget:self
+                                                                                       selector:@selector(loadRecord:)
+                                                                                         object:records];
+                [[self sharedQueue] addOperation:operation];
+
                 PostNotification(Noti_BabyDataUpdated, nil);
             }
             NSString *updatedBDID = [resDic valueForKey:@"BDID"];
@@ -586,6 +601,21 @@ static BabyData * instance;
             
             break;
     }
+}
+
+
+- (void)loadRecord:(NSArray *)records
+{
+    for (NSDictionary *record in records)
+    {
+        CGFloat h = [[record valueForKey:@"Height"] doubleValue];
+        CGFloat w = [[record valueForKey:@"Weight"] doubleValue];
+        NSString *dateStr = [record valueForKey:@"Date"];
+        NSDate *date = [DateFormatter datetimeFromString:dateStr withFormat:@"yyyy-MM-dd HH:mm:ss"];
+        if (!date) date = [NSDate date];
+        [self insertRecordAtDate:date height:h weight:w fromServer:YES];
+    }
+
 }
 
 - (NSInteger)startAtIndex

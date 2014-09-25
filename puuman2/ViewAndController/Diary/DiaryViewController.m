@@ -119,24 +119,27 @@ static DiaryViewController * instance;
 
 - (void)updateDiaryCount
 {
-    if (![[Reachability reachabilityForInternetConnection] isReachable])
-    {
-        return;
-    }
-    else if ([[Reachability reachabilityForInternetConnection] isReachableViaWiFi])
-    {
-        [[DiaryModel sharedDiaryModel] downloadDiaries];
-    }
-    else if ([[Reachability reachabilityForInternetConnection] isReachableViaWWAN])
-    {
-        [CustomAlertViewController showAlertWithTitle:@"您当前处于非WiFi网络环境条件下，确定下载？" confirmHandler:^{
-        
+    if ([[DiaryModel sharedDiaryModel] downloadedCnt] == 0) {
+        if (![[Reachability reachabilityForInternetConnection] isReachable])
+        {
+            return;
+        }
+        else if ([[Reachability reachabilityForInternetConnection] isReachableViaWiFi])
+        {
             [[DiaryModel sharedDiaryModel] downloadDiaries];
+        }
+        else if ([[Reachability reachabilityForInternetConnection] isReachableViaWWAN])
+        {
+            [CustomAlertViewController showAlertWithTitle:@"您当前处于非WiFi网络环境条件下，确定下载？" confirmHandler:^{
+                
+                [[DiaryModel sharedDiaryModel] downloadDiaries];
+                
+            } cancelHandler:^{
+                
+            }];
             
-        } cancelHandler:^{
-        
-        }];
-        
+        }
+
     }
 
     //取数据判断是否下载更新
@@ -150,6 +153,7 @@ static DiaryViewController * instance;
         }
 
         [headerview diaryLoadedcnt:[[DiaryModel sharedDiaryModel] downloadedCnt] totalCnt:[[DiaryModel sharedDiaryModel] updateCnt]];
+        
         if ([[DiaryModel sharedDiaryModel] downloadedCnt] == [[DiaryModel sharedDiaryModel] updateCnt] && [[MainTabBarController sharedMainViewController] hasShareVideo]) {
             [self performSelector:@selector(startGif) withObject:nil afterDelay:0];
         }

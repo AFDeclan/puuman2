@@ -74,6 +74,8 @@
     [self checkUpdate];
     PostNotification(Noti_Refresh, nil);
     
+
+    
 }
 
 - (void)checkUpdate

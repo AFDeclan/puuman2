@@ -32,7 +32,7 @@
     FMDatabase *_db;
     NSMutableArray *_data;
     NSMutableArray *_vaccine;
-    
+    NSOperationQueue * operationQueue;
     BOOL _vaccineUpdating;
 }
 

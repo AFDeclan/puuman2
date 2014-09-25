@@ -37,8 +37,7 @@ static SkipViewController *instance;
         // Custom initialization
         [MyNotiCenter addObserver:self selector:@selector(showLoginView) name:Noti_UserLogouted object:nil];
         [MyNotiCenter addObserver:self selector:@selector(userChanged) name:Noti_UserLogined object:nil];
-        [self.navigationController setNavigationBarHidden:YES];
-
+        [MyNotiCenter addObserver:self selector:@selector(reloadUserData) name:Noti_UserInfoUpdated object:nil];
 
     }
     return self;
@@ -60,37 +59,40 @@ static SkipViewController *instance;
 
 - (void)userChanged
 {
-    
     if (loginViewC) {
         [loginViewC loginSucceed];
     }
     
-    [[BabyData sharedBabyData] reloadData];
+    [Forum releaseInstance];
+    [Friend releaseInstance];
     //`[[TaskModel sharedTaskModel] updateTasks];
-   
-   
-  
     [[DiaryModel sharedDiaryModel] reloadData];
     [[DiaryModel sharedDiaryModel] updateDiaryFromServer];
     [[MainTabBarController sharedMainViewController] showDiary];
     
     [[DiaryViewController sharedDiaryViewController] removeheadView];
-    [Forum releaseInstance];
-    [Friend releaseInstance];
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (![userDefaults boolForKey:@"DiarytutorialShowed"]){
         [userDefaults setBool:YES forKey:@"DiarytutorialShowed"];
         [[DiaryViewController sharedDiaryViewController] showTurorialView];
     }
-     [self performSelector:@selector(reloadUserData) withObject:nil afterDelay:0];
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[BabyData sharedBabyData] reloadData];
+    });
+    
 }
 
 - (void)reloadUserData
 {
-  [SocialNetwork initSocialNetwork];
-  [[PumanBookModel bookModel] initialize];
- [[CartModel sharedCart] update:NO];
- [[MainTabBarController sharedMainViewController] refreshBabyInfoView];
+    [SocialNetwork initSocialNetwork];
+    [[PumanBookModel bookModel] initialize];
+    [[CartModel sharedCart] update:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[MainTabBarController sharedMainViewController] refreshBabyInfoView];
+    });
  
 }
 
