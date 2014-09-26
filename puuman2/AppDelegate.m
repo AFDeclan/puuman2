@@ -81,7 +81,7 @@
 - (void)checkUpdate
 {
     [ASIHTTPRequest setSessionCookies:nil];
-    NSURL* url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"@""", APPID]];
+    NSURL* url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@", APPID]];
     ASIHTTPRequest* request = [[ASIHTTPRequest alloc] initWithURL:url];
     request.delegate = self;
     [request setTimeOutSeconds:5];
